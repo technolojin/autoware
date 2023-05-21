@@ -10,8 +10,8 @@ repositories:
     version: main
   autoware/launcher:
     type: git
-    url: https://github.com/tier4/autoware_launch.git
-    version: tier4/main
+    url: git@github.com:tier4/autoware_launch.x2.git
+    version: main
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
@@ -38,7 +38,7 @@ repositories:
     version: main
   autoware/individual_params:
     type: git
-    url: https://github.com/tier4/autoware_individual_params.git
+    url: git@github.com:tier4/autoware_individual_params.j6_gen1.git
     version: main
   autoware/ml_model_provider:
     type: git
@@ -49,19 +49,19 @@ repositories:
     type: git
     url: https://github.com/tier4/sensor_component_description.git
     version: main
-  description/vehicle/lexus_description:
+  description/vehicle/j6_gen1_description:
     type: git
-    url: https://github.com/tier4/lexus_description.iv.git
-    version: tier4/universe
+    url: git@github.com:tier4/j6_gen1_description.git
+    version: main
   # ecu_system_setup
   ecu_system_setup:
     type: git
     url: git@github.com:tier4/autoware_ecu_system_setup.git
     version: main
   # vendor
-  vendor/pacmod_interface:
+  vendor/j6_interface:
     type: git
-    url: https://github.com/tier4/pacmod_interface.git
+    url: git@github.com:tier4/j6_interface.git
     version: main
   vendor/tamagawa_imu_driver:
     type: git
@@ -71,14 +71,10 @@ repositories:
     type: git
     url: https://github.com/tier4/ublox.git
     version: tier4/rolling
-  vendor/lidar-driver:
+  vendor/hesai_pandar:
     type: git
-    url: git@github.com:tier4/lidar_driver.git
-    version: v0.1.4
-  vendor/velodyne_vls:
-    type: git
-    url: https://github.com/tier4/velodyne_vls.git
-    version: tier4/universe
+    url: https://github.com/tier4/hesai_pandar.git
+    version: tier4/develop
   vendor/ndt_omp:
     type: git
     url: https://github.com/tier4/ndt_omp.git
@@ -95,10 +91,6 @@ repositories:
     type: git
     url: https://github.com/tier4/ars408_driver.git
     version: main
-  vendor/spinnaker:
-    type: git
-    url: https://github.com/tier4/spinnaker.git
-    version: 4c74d319ef9186a4fb643dbd82e1b5f7918e75ea
   vendor/morai_msgs:
     type: git
     url: https://github.com/MORAI-Autonomous/MORAI-ROS2_morai_msgs.git
@@ -115,3 +107,12 @@ repositories:
     type: git
     url: https://github.com/MapIV/llh_converter.git
     version: ros2
+  # product
+  product/boot_shutdown_tools:
+    type: git
+    url: https://github.com/tier4/boot_shutdown_tools.git
+    version: main
+  product/autoware_logging_suite:
+    type: git
+    url: git@github.com:tier4/autoware_logging_suite.git
+    version: main
