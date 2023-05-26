@@ -62,21 +62,21 @@ function help() {
     exit 0 #default exit code
 }
 
-if [ "${1:-}" = "--help" ] || [ "${1:-}" = "-h" ]; then
+if [ "${1-}" = "--help" ] || [ "${1-}" = "-h" ]; then
     help "$@"
-elif [ "${1:-}" = "--rosdep" ]; then
+elif [ "${1-}" = "--rosdep" ]; then
     rosdep_update
-elif [ "${1:-}" = "--build" ]; then
+elif [ "${1-}" = "--build" ]; then
     build "${@:2}"
-elif [ "${1:-}" = "--build_ccache" ]; then
+elif [ "${1-}" = "--build_ccache" ]; then
     build_ccache "${@:2}"
-elif [ "${1:-}" = "--autoware" ]; then
+elif [ "${1-}" = "--autoware" ]; then
     launch_autoware "${@:2}"
-elif [ "${1:-}" = "--psim" ]; then
+elif [ "${1-}" = "--psim" ]; then
     launch_psim "${@:2}"
-elif [ "${1:-}" = "--kill" ]; then
+elif [ "${1-}" = "--kill" ]; then
     kill_zombie
-elif [ "${1:-}" = "--clean" ]; then
+elif [ "${1-}" = "--clean" ]; then
     clean
 else
     echo "please pass the correct arguments! Use '-h' or '--help' command if you check the arguments"
