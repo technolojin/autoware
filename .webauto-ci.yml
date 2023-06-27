@@ -10,12 +10,20 @@ artifacts:
       type: tier4/universe/main/amd64/v1
       environment_variables:
         ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2.yaml
-  - name: perception
+  - name: object-recognition
     build:
-      type: tier4/x2/rqx-58g/arm64/v2
+      type: tier4/general/rqx-58g/arm64/v1
       environment_variables:
         ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-perception.yaml
         APP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-perception-application.yaml
+        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK_ARGS: -e reload_systemd=no -e perception_type=od -e vehicle_model=j6 -e use_oem_setup=yes
+  - name: traffic-light-recognition
+    build:
+      type: tier4/general/rqx-58g/arm64/v1
+      environment_variables:
+        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-perception.yaml
+        APP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-perception-application.yaml
+        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK_ARGS: -e reload_systemd=no -e perception_type=tlr -e vehicle_model=j6 -e use_oem_setup=yes
   - name: mot
     build:
       type: tier4/general/ubuntu/jammy/amd64/v1
@@ -137,19 +145,19 @@ release:
     - name: perception1
       deployment:
         type: rootfs
-        artifact: perception
+        artifact: object-recognition
     - name: perception2
       deployment:
         type: rootfs
-        artifact: perception
+        artifact: object-recognition
     - name: perception3
       deployment:
         type: rootfs
-        artifact: perception
+        artifact: object-recognition
     - name: perception4
       deployment:
         type: rootfs
-        artifact: perception
+        artifact: traffic-light-recognition
     - name: mot
       deployment:
         type: rootfs
