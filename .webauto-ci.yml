@@ -10,6 +10,9 @@ artifacts:
       type: tier4/universe/main/amd64/v1
       environment_variables:
         ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2.yaml
+      ml_packages:
+        - name: centerpoint
+          release: x2/mlmodel/v0.1.0
   - name: object-recognition
     build:
       type: tier4/general/rqx-58g/arm64/v1
