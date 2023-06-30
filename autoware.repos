@@ -107,6 +107,10 @@ repositories:
     type: git
     url: https://github.com/MapIV/llh_converter.git
     version: ros2
+  vendor/pyrocan:
+    type: git
+    url: git@github.com:tier4/pyrocan.git
+    version: main
   # product
   product/boot_shutdown_tools:
     type: git
