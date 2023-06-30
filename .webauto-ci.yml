@@ -8,6 +8,48 @@ artifacts:
   - name: main
     build:
       type: tier4/universe/main/amd64/v1
+      environment_variables:
+        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2.yaml
+      ml_packages:
+        - name: centerpoint
+          release: x2/mlmodel/v0.1.0
+  - name: object-recognition
+    build:
+      type: tier4/general/rqx-58g/arm64/v1
+      environment_variables:
+        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-perception.yaml
+        APP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-perception-application.yaml
+        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK_ARGS: -e reload_systemd=no -e perception_type=od -e vehicle_model=j6 -e use_oem_setup=yes
+  - name: traffic-light-recognition
+    build:
+      type: tier4/general/rqx-58g/arm64/v1
+      environment_variables:
+        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-perception.yaml
+        APP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-perception-application.yaml
+        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK_ARGS: -e reload_systemd=no -e perception_type=tlr -e vehicle_model=j6 -e use_oem_setup=yes
+  - name: mot
+    build:
+      type: tier4/general/ubuntu/jammy/amd64/v1
+      environment_variables:
+        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-mot.yaml
+        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK_ARGS: -e reload_systemd=no
+  - name: sub
+    build:
+      type: tier4/universe/main/amd64/v1
+      environment_variables:
+        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-sub.yaml
+  - name: signage
+    build:
+      type: tier4/x2/raspi/arm64/v1
+      environment_variables:
+        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-signage.yaml
+        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK_ARGS: -e reload_systemd=no
+  - name: voice-system
+    build:
+      type: tier4/x2/raspi/arm64/v1
+      environment_variables:
+        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-voice-system.yaml
+        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK_ARGS: -e reload_systemd=no
 
 simulations:
   - name: planning_sim_v2
@@ -19,8 +61,8 @@ simulations:
       runtime:
         type: standard1/amd64/medium
       parameters:
-        vehicle_model: lexus
-        sensor_model: aip_xx1
+        vehicle_model: j6_gen1
+        sensor_model: aip_x2
         autoware_launch_package: autoware_launch
         autoware_launch_file: planning_simulator.launch.xml
         architecture_type: awf/universe
@@ -86,3 +128,44 @@ release:
       deployment:
         type: rootfs
         artifact: main
+      alternative_deployments:
+        - type: installer
+          artifact: main
+    - name: perception1
+      deployment:
+        type: rootfs
+        artifact: object-recognition
+    - name: perception2
+      deployment:
+        type: rootfs
+        artifact: object-recognition
+    - name: perception3
+      deployment:
+        type: rootfs
+        artifact: object-recognition
+    - name: perception4
+      deployment:
+        type: rootfs
+        artifact: traffic-light-recognition
+    - name: mot
+      deployment:
+        type: rootfs
+        artifact: mot
+      alternative_deployments:
+        - type: installer
+          artifact: mot
+    - name: sub
+      deployment:
+        type: rootfs
+        artifact: sub
+      alternative_deployments:
+        - type: installer
+          artifact: sub
+    - name: signage
+      deployment:
+        type: rootfs
+        artifact: signage
+    - name: voice-system
+      deployment:
+        type: rootfs
+        artifact: voice-system
