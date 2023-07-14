@@ -120,7 +120,15 @@ simulations:
         type: container
         artifact: main
       runtime:
-        type: standard1/amd64/medium
+        type: gpu1/amd64/large
+      pre_tasks:
+        - exec: source /home/autoware/autoware.proj/install/setup.bash && ros2 launch lidar_centerpoint lidar_centerpoint.launch.xml model_name:=aip_x2 model_path:=/opt/autoware/mlmodels/centerpoint model_param_path:=/opt/autoware/mlmodels/centerpoint/aip_x2.param.yaml build_only:=true
+          mounts:
+            - volume: model
+      volumes:
+        - name: model
+          path: /opt/autoware/autoware/mlmodels/centerpoint
+          preserve_original_files: true
 
 release:
   components:
