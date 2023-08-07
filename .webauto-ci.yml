@@ -50,6 +50,13 @@ artifacts:
       environment_variables:
         ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-voice-system.yaml
         ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK_ARGS: -e reload_systemd=no
+  - name: media-streaming
+    build:
+      type: tier4/x2/rqx-58g/arm64/v2
+      environment_variables:
+        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-media-streaming.yaml
+        APP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-media-streaming-container.yaml
+        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK_ARGS: -e reload_systemd=no
 
 simulations:
   - name: planning_sim_v2
@@ -177,3 +184,7 @@ release:
       deployment:
         type: rootfs
         artifact: voice-system
+    - name: media-streaming
+      deployment:
+        type: rootfs
+        artifact: media-streaming
