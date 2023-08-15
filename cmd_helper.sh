@@ -30,12 +30,12 @@ function build_ccache() {
 
 # --autoware:     Launch autoware
 function launch_autoware() {
-    ros2 launch autoware_launch autoware.launch.xml map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@"
+    ros2 launch autoware_launch autoware.launch.xml map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee $SCRIPT_DIR/autoware.log
 }
 
 # --psim:         Launch simple planning simulator
 function launch_psim() {
-    ros2 launch autoware_launch planning_simulator.launch.xml map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@"
+    ros2 launch autoware_launch planning_simulator.launch.xml map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee $SCRIPT_DIR/autoware.log
 }
 
 # --kill:         Kill all ros2 zombie nodes
