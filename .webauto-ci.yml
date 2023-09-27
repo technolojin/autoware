@@ -81,6 +81,24 @@ simulations:
       runtime:
         type: standard1/amd64/medium
 
+  - name: yabloc
+    type: yabloc
+    simulator:
+      deployment:
+        type: container
+        artifact: main
+      runtime:
+        type: standard1/amd64/medium
+
+  - name: eagleye
+    type: eagleye
+    simulator:
+      deployment:
+        type: container
+        artifact: main
+      runtime:
+        type: standard1/amd64/medium
+
 release:
   components:
     - name: autoware
