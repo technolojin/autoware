@@ -135,7 +135,7 @@ simulations:
             - volume: model
       volumes:
         - name: model
-          path: /opt/autoware/autoware/mlmodels/centerpoint
+          path: /opt/autoware/mlmodels/centerpoint
           preserve_original_files: true
 
 release:
