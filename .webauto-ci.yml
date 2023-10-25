@@ -77,6 +77,7 @@ artifacts:
           user: autoware
           exec: ./.webauto-ci/main/ecu-system-setup/run.sh
           environment_variables:
+            ECU_SYSTEM_SETUP_SOURCE_PATH: src/ecu_system_setup
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/xx1.yaml
           caches:
             - name: apt-lists
