@@ -1,13 +1,18 @@
 #!/bin/bash -e
 
+: "${WEBAUTO_CI_SOURCE_PATH:?is not set}"
 : "${WEBAUTO_CI_GITHUB_TOKEN:?is not set}"
 
 : "${AUTOWARE_PATH:?is not set}"
+: "${ECU_SYSTEM_SETUP_SOURCE_PATH:?is not set}"
 : "${ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK:?is not set}"
 
 cd "$AUTOWARE_PATH"
 # Delete files for incremental builds created in the autoware-build phase.
 find "$AUTOWARE_PATH" \( -name ".rsync-include" -or -name ".rsync-exclude" \) -print0 | xargs -0 rm
+
+rm -rf "$ECU_SYSTEM_SETUP_SOURCE_PATH"
+cp -r "${WEBAUTO_CI_SOURCE_PATH}/${ECU_SYSTEM_SETUP_SOURCE_PATH}" "$ECU_SYSTEM_SETUP_SOURCE_PATH"
 
 sudo -E apt-get -y update
 sudo -E apt-get -y install "linux-image-$(uname -r)" "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
@@ -31,4 +36,4 @@ ansible-playbook "${ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK}" \
 
 git config --global --unset-all url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf
 
-sudo sed -i '/^autoware\sALL=\(ALL\)\sNOPASSWD:ALL/d' /etc/sudoers
+sudo sed -i '/^autoware\sALL=(ALL)\sNOPASSWD:ALL/d' /etc/sudoers
