@@ -19,7 +19,7 @@ artifacts:
             - simulator.repos
           import_path: src
       environment_variables:
-        AUTOWARE_PATH: /home/autoware/autoware.proj
+        AUTOWARE_PATH: /home/autoware/pilot-auto
         ML_MODELS_PATH: /opt/autoware/mlmodels
         DEBIAN_FRONTEND: noninteractive
         LANG: C.UTF-8
@@ -78,7 +78,7 @@ artifacts:
           exec: ./.webauto-ci/main/ecu-system-setup/run.sh
           environment_variables:
             ECU_SYSTEM_SETUP_SOURCE_PATH: src/ecu_system_setup
-            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/xx1.yaml
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/common.yaml
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
@@ -92,11 +92,11 @@ artifacts:
         from: ubuntu:22.04
       output_container_image:
         from: autoware-build
-        workdir: /home/autoware/autoware.proj
+        workdir: /home/autoware/pilot-auto
         user: autoware
       output_rootfs_image:
         from: ecu-system-setup
-        persistent_file_path: /home/autoware/autoware.proj/.webauto-ci/main/ecu-system-setup/persistents.txt
+        persistent_file_path: /home/autoware/pilot-auto/.webauto-ci/main/ecu-system-setup/persistents.txt
       output_installer_image:
         from: ecu-system-setup
         type: iso
@@ -174,7 +174,7 @@ simulations:
       runtime:
         type: gpu1/amd64/large
       pre_tasks:
-        - exec: source /home/autoware/autoware.proj/install/setup.bash && ros2 launch lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
+        - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
           mounts:
             - volume: model
       volumes:
