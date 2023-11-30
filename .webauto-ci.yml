@@ -6,50 +6,380 @@ version: 2
 
 artifacts:
   - name: main
+    metadata:
+      play-ondemand.ci.web.auto/buildspec: Autoware-Humble
     build:
-      type: tier4/universe/main/amd64/v1
+      type: custom
+      runtime:
+        type: standard1/amd64/large
+      source:
+        vcstool:
+          repositories_files:
+            - autoware.repos
+            - simulator.repos
+          import_path: src
       environment_variables:
-        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2.yaml
-      ml_packages:
-        - name: centerpoint
-          release: x2/mlmodel/v0.1.2
+        AUTOWARE_PATH: /home/autoware/autoware.proj
+        ML_MODELS_PATH: /opt/autoware/mlmodels
+        DEBIAN_FRONTEND: noninteractive
+        LANG: C.UTF-8
+      linux_parameters:
+        kernel_version: 5.15.0-72-generic
+      phases:
+        - name: environment-setup
+          user: root
+          exec: ./.webauto-ci/main/environment-setup/run.sh
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/main/environment-setup/**/*
+        - name: autoware-setup
+          user: autoware
+          exec: ./.webauto-ci/main/autoware-setup/run.sh
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/main/autoware-setup/**/*
+              - ansible/**/*
+              - ansible-galaxy-requirements.yaml
+              - amd64.env
+          incremental_build:
+            enabled: true
+        - name: autoware-build
+          user: autoware
+          exec: ./.webauto-ci/main/autoware-build/run.sh
+          environment_variables:
+            PARALLEL_WORKERS: "32"
+            CCACHE_DIR: /tmp/build/cache/ccache
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+            - name: ccache
+              mountpoint: /tmp/build/cache/ccache
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/main/autoware-build/**/*
+              - src/**/*
+              - "!src/ecu_system_setup/**"
+          incremental_build:
+            enabled: true
+        - name: asset-deploy
+          user: autoware
+          exec: ./.webauto-ci/main/asset-deploy/run.sh
+          ml_packages:
+            - name: centerpoint
+              release: x2/mlmodel/v0.1.2
+        - name: ecu-system-setup
+          user: autoware
+          exec: ./.webauto-ci/main/ecu-system-setup/run.sh
+          environment_variables:
+            ECU_SYSTEM_SETUP_SOURCE_PATH: src/ecu_system_setup
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2.yaml
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/main/ecu-system-setup/**/*
+              - src/ecu_system_setup/**/*
+      base_container_image:
+        from: ubuntu:22.04
+      output_container_image:
+        from: asset-deploy
+        workdir: /home/autoware/autoware.proj
+        user: autoware
+      output_rootfs_image:
+        from: ecu-system-setup
+        persistent_file_path: /home/autoware/autoware.proj/.webauto-ci/main/ecu-system-setup/persistents.txt
+      output_installer_image:
+        from: ecu-system-setup
+        type: iso
+        base_iso: ubuntu-20.04.3-live-server-amd64
+
   - name: object-recognition
     build:
-      type: tier4/general/rqx-58g/arm64/v1
-      environment_variables:
-        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-perception.yaml
-        APP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-perception-application.yaml
-        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK_ARGS: -e reload_systemd=no -e perception_type=od -e vehicle_model=j6 -e use_oem_setup=yes
+      type: custom
+      runtime:
+        type: standard1/arm64/large
+      source:
+        vcstool:
+          repositories_files:
+            - autoware.repos
+          import_path: src
+      linux_parameters:
+        kernel_version: 4.9.253-rqx58g
+      phases:
+        - name: ecu-system-setup
+          exec: ./.webauto-ci/perception/ecu-system-setup/run.sh
+          environment_variables:
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-perception.yaml
+            PERCEPTION_TYPE: od
+            VEHICLE_MODEL: j6
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/perception/ecu-system-setup/**/*
+              - src/ecu_system_setup/**/*
+      base_container_image:
+        from: 947232557913.dkr.ecr.ap-northeast-1.amazonaws.com/tier4/ci-prd-buildspecs-base:t4-gen-rqx58g-arm64-v1
+      output_rootfs_image:
+        from: ecu-system-setup
+        persistent_file_path: /etc/ota/persistents.txt
+
   - name: traffic-light-recognition
     build:
-      type: tier4/general/rqx-58g/arm64/v1
-      environment_variables:
-        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-perception.yaml
-        APP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-perception-application.yaml
-        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK_ARGS: -e reload_systemd=no -e perception_type=tlr -e vehicle_model=j6 -e use_oem_setup=yes
+      type: custom
+      runtime:
+        type: standard1/arm64/large
+      source:
+        vcstool:
+          repositories_files:
+            - autoware.repos
+          import_path: src
+      linux_parameters:
+        kernel_version: 4.9.253-rqx58g
+      phases:
+        - name: ecu-system-setup
+          exec: ./.webauto-ci/perception/ecu-system-setup/run.sh
+          environment_variables:
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-perception.yaml
+            PERCEPTION_TYPE: tlr
+            VEHICLE_MODEL: j6
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/perception/ecu-system-setup/**/*
+              - src/ecu_system_setup/**/*
+      base_container_image:
+        from: 947232557913.dkr.ecr.ap-northeast-1.amazonaws.com/tier4/ci-prd-buildspecs-base:t4-gen-rqx58g-arm64-v1
+      output_rootfs_image:
+        from: ecu-system-setup
+        persistent_file_path: /etc/ota/persistents.txt
+
   - name: mot
     build:
-      type: tier4/general/ubuntu/jammy/amd64/v1
+      type: custom
+      runtime:
+        type: standard1/amd64/large
+      source:
+        vcstool:
+          repositories_files:
+            - autoware.repos
+          import_path: src
       environment_variables:
-        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-mot.yaml
-        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK_ARGS: -e reload_systemd=no
+        DEBIAN_FRONTEND: noninteractive
+        LANG: C.UTF-8
+      linux_parameters:
+        kernel_version: 5.19.0-43-generic
+      phases:
+        - name: environment-setup
+          exec: ./.webauto-ci/mot/environment-setup/run.sh
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/mot/environment-setup/**/*
+        - name: ecu-system-setup
+          exec: ./.webauto-ci/mot/ecu-system-setup/run.sh
+          environment_variables:
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-mot.yaml
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/mot/ecu-system-setup/**/*
+              - src/ecu_system_setup/**/*
+      base_container_image:
+        from: ubuntu:22.04
+      output_rootfs_image:
+        from: ecu-system-setup
+        persistent_file_path: /etc/ota/persistents.txt
+      output_installer_image:
+        from: ecu-system-setup
+        type: iso
+        base_iso: ubuntu-20.04.3-live-server-amd64
+
   - name: sub
     build:
-      type: tier4/universe/main/amd64/v1
+      type: custom
+      runtime:
+        type: standard1/amd64/large
+      source:
+        vcstool:
+          repositories_files:
+            - autoware.repos
+          import_path: src
       environment_variables:
-        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-sub.yaml
+        AUTOWARE_PATH: /home/autoware/autoware.proj
+        DEBIAN_FRONTEND: noninteractive
+        LANG: C.UTF-8
+      linux_parameters:
+        kernel_version: 5.15.0-72-generic
+      phases:
+        - name: environment-setup
+          user: root
+          exec: ./.webauto-ci/main/environment-setup/run.sh
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/main/environment-setup/**/*
+        - name: autoware-setup
+          user: autoware
+          exec: ./.webauto-ci/main/autoware-setup/run.sh
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/main/autoware-setup/**/*
+              - ansible/**/*
+              - ansible-galaxy-requirements.yaml
+              - amd64.env
+          incremental_build:
+            enabled: true
+        - name: autoware-build
+          user: autoware
+          exec: ./.webauto-ci/main/autoware-build/run.sh
+          environment_variables:
+            PARALLEL_WORKERS: "32"
+            CCACHE_DIR: /tmp/build/cache/ccache
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+            - name: ccache
+              mountpoint: /tmp/build/cache/ccache
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/main/autoware-build/**/*
+              - src/**/*
+              - "!src/ecu_system_setup/**"
+          incremental_build:
+            enabled: true
+        - name: ecu-system-setup
+          user: autoware
+          exec: ./.webauto-ci/main/ecu-system-setup/run.sh
+          environment_variables:
+            ECU_SYSTEM_SETUP_SOURCE_PATH: src/ecu_system_setup
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-sub.yaml
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/main/ecu-system-setup/**/*
+              - src/ecu_system_setup/**/*
+      base_container_image:
+        from: ubuntu:22.04
+      output_container_image:
+        from: autoware-build
+        workdir: /home/autoware/autoware.proj
+        user: autoware
+      output_rootfs_image:
+        from: ecu-system-setup
+        persistent_file_path: /home/autoware/autoware.proj/.webauto-ci/main/ecu-system-setup/persistents.txt
+      output_installer_image:
+        from: ecu-system-setup
+        type: iso
+        base_iso: ubuntu-20.04.3-live-server-amd64
+
   - name: signage
     build:
-      type: tier4/x2/raspi/arm64/v1
-      environment_variables:
-        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-signage.yaml
-        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK_ARGS: -e reload_systemd=no
+      type: custom
+      runtime:
+        type: standard1/arm64/large
+      source:
+        vcstool:
+          repositories_files:
+            - autoware.repos
+          import_path: src
+      phases:
+        - name: ecu-system-setup
+          user: autoware
+          exec: ./.webauto-ci/raspi/ecu-system-setup/run.sh
+          environment_variables:
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-signage.yaml
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/raspi/ecu-system-setup/**/*
+              - src/ecu_system_setup/**/*
+      base_container_image:
+        from: 947232557913.dkr.ecr.ap-northeast-1.amazonaws.com/tier4/ci-prd-buildspecs-base:t4-x2-raspi-arm64-v1
+      output_rootfs_image:
+        from: ecu-system-setup
+        persistent_file_path: /etc/ota/persistents.txt
+
   - name: voice-system
     build:
-      type: tier4/x2/raspi/arm64/v1
-      environment_variables:
-        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-voice-system.yaml
-        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK_ARGS: -e reload_systemd=no
+      type: custom
+      runtime:
+        type: standard1/arm64/large
+      source:
+        vcstool:
+          repositories_files:
+            - autoware.repos
+          import_path: src
+      phases:
+        - name: ecu-system-setup
+          user: autoware
+          exec: ./.webauto-ci/raspi/ecu-system-setup/run.sh
+          environment_variables:
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-voice-system.yaml
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/raspi/ecu-system-setup/**/*
+              - src/ecu_system_setup/**/*
+      base_container_image:
+        from: 947232557913.dkr.ecr.ap-northeast-1.amazonaws.com/tier4/ci-prd-buildspecs-base:t4-x2-raspi-arm64-v1
+      output_rootfs_image:
+        from: ecu-system-setup
+        persistent_file_path: /etc/ota/persistents.txt
+
   - name: media-streaming
     build:
       type: tier4/x2/rqx-58g/arm64/v2
