@@ -22,6 +22,8 @@ ansible-playbook "ansible/playbooks/local_dev_env.yaml" \
     -e WORKSPACE_ROOT="$(pwd)" \
     --skip-tags vcs
 
+pip install 'opencv-python<4.8.0.76'
+
 # get installed ros distro
 # shellcheck disable=SC2012
 ROS_DISTRO=$(ls -1 /opt/ros | head -1)
