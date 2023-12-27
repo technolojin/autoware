@@ -7,8 +7,6 @@ add-apt-repository universe
 
 pip install --no-cache-dir 'ansible==6.*'
 
-echo hoge test
-
 user=autoware
 useradd -m "$user" -s /bin/bash
 echo "$user:$user" | chpasswd

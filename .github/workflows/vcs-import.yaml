@@ -14,7 +14,7 @@ jobs:
     container: ros:${{ needs.load-env.outputs.rosdistro }}
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install pip for rosdep
         run: |
@@ -26,17 +26,17 @@ jobs:
         with:
           rosdistro: ${{ needs.load-env.outputs.rosdistro }}
 
-      - name: Register kvaser-linux repository
-        run: |
-          sudo apt-get -y update
-          sudo apt-get -y install software-properties-common
-          sudo add-apt-repository -y ppa:astuff/kvaser-linux
-          sudo apt-get -y update
+      - name: Generate token
+        id: generate-token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
 
       - name: Set git config
         uses: autowarefoundation/autoware-github-actions/set-git-config@v1
         with:
-          token: ${{ secrets.REPO_TOKEN }}
+          token: ${{ steps.generate-token.outputs.token }}
 
       - name: Run vcs import
         run: |

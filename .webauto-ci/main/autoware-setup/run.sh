@@ -7,6 +7,8 @@ sudo -E apt-get -y install usbutils # For kvaser
 
 ansible_args=()
 ansible_args+=("--extra-vars" "prompt_install_nvidia=y")
+ansible_args+=("--extra-vars" "prompt_download_artifacts=y")
+ansible_args+=("--extra-vars" "data_dir=$HOME/autoware_data")
 
 # read amd64 env file and expand ansible arguments
 source 'amd64.env'
