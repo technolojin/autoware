@@ -25,6 +25,7 @@ rsync -rlpc -f":+ .rsync-include" -f":- .rsync-exclude" --del "$src"/src/ "$AUTO
 #find "$AUTOWARE_PATH" \( -name ".rsync-include" -or -name ".rsync-exclude" \) -print0 | xargs -0 rm
 rm -rf "$src"
 
+chmod 755 "$AUTOWARE_PATH"
 cd "$AUTOWARE_PATH"
 
 if [ -n "$CCACHE_DIR" ]; then
