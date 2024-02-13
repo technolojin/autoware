@@ -557,6 +557,7 @@ scenario_parameter_groups:
       left_overhang: 0.273 # 1.150-2.08/2 between left wheel center and vehicle left
       right_overhang: 0.273 # between right wheel center and vehicle right
       max_steer_angle: 0.646 # [rad]
+      stop_line_distance: 0.0 # param name in autoware_launch: stop_margin
       blind_spot_stop_line_distance: 1.0 # param name in autoware_launch: stop_line_margin
       obstacle_stop_line_distance: 6.0
       crosswalk_stop_line_distance: 3.5
