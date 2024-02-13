@@ -19,8 +19,224 @@ artifacts:
             - simulator.repos
           import_path: src
       environment_variables:
-        AUTOWARE_PATH: /home/autoware/pilot-auto
+        AUTOWARE_PATH: /home/autoware/autoware.proj
         ML_MODELS_PATH: /opt/autoware/mlmodels
+        DEBIAN_FRONTEND: noninteractive
+        LANG: C.UTF-8
+      linux_parameters:
+        kernel_version: 5.15.0-72-generic
+      phases:
+        - name: environment-setup
+          user: root
+          exec: ./.webauto-ci/main/environment-setup/run.sh
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/main/environment-setup/**/*
+        - name: autoware-setup
+          user: autoware
+          exec: ./.webauto-ci/main/autoware-setup/run.sh
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/main/autoware-setup/**/*
+              - ansible/**/*
+              - ansible-galaxy-requirements.yaml
+              - amd64.env
+          incremental_build:
+            enabled: true
+        - name: autoware-build
+          user: autoware
+          exec: ./.webauto-ci/main/autoware-build/run.sh
+          environment_variables:
+            PARALLEL_WORKERS: "32"
+            CCACHE_DIR: /tmp/build/cache/ccache
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+            - name: ccache
+              mountpoint: /tmp/build/cache/ccache
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/main/autoware-build/**/*
+              - src/**/*
+              - "!src/ecu_system_setup/**"
+          incremental_build:
+            enabled: true
+        - name: asset-deploy
+          user: autoware
+          exec: ./.webauto-ci/main/asset-deploy/run.sh
+          ml_packages:
+            - name: centerpoint
+              release: x2/mlmodel/v0.1.2
+        - name: ecu-system-setup
+          user: autoware
+          exec: ./.webauto-ci/main/ecu-system-setup/run.sh
+          environment_variables:
+            ECU_SYSTEM_SETUP_SOURCE_PATH: src/ecu_system_setup
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2.yaml
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/main/ecu-system-setup/**/*
+              - src/ecu_system_setup/**/*
+      base_container_image:
+        from: ubuntu:22.04
+      output_container_image:
+        from: asset-deploy
+        workdir: /home/autoware/autoware.proj
+        user: autoware
+      output_rootfs_image:
+        from: ecu-system-setup
+        persistent_file_path: /home/autoware/autoware.proj/.webauto-ci/main/ecu-system-setup/persistents.txt
+      output_installer_image:
+        from: ecu-system-setup
+        type: iso
+        base_iso: ubuntu-20.04.3-live-server-amd64
+
+  - name: object-recognition
+    build:
+      type: custom
+      runtime:
+        type: standard1/arm64/large
+      source:
+        vcstool:
+          repositories_files:
+            - autoware.repos
+          import_path: src
+      linux_parameters:
+        kernel_version: 4.9.253-rqx58g
+      phases:
+        - name: ecu-system-setup
+          exec: ./.webauto-ci/perception/ecu-system-setup/run.sh
+          environment_variables:
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-perception.yaml
+            PERCEPTION_TYPE: od
+            VEHICLE_MODEL: j6
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/perception/ecu-system-setup/**/*
+              - src/ecu_system_setup/**/*
+      base_container_image:
+        from: 947232557913.dkr.ecr.ap-northeast-1.amazonaws.com/tier4/ci-prd-buildspecs-base:t4-gen-rqx58g-arm64-v1
+      output_rootfs_image:
+        from: ecu-system-setup
+        persistent_file_path: /etc/ota/persistents.txt
+
+  - name: traffic-light-recognition
+    build:
+      type: custom
+      runtime:
+        type: standard1/arm64/large
+      source:
+        vcstool:
+          repositories_files:
+            - autoware.repos
+          import_path: src
+      linux_parameters:
+        kernel_version: 4.9.253-rqx58g
+      phases:
+        - name: ecu-system-setup
+          exec: ./.webauto-ci/perception/ecu-system-setup/run.sh
+          environment_variables:
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-perception.yaml
+            PERCEPTION_TYPE: tlr
+            VEHICLE_MODEL: j6
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/perception/ecu-system-setup/**/*
+              - src/ecu_system_setup/**/*
+      base_container_image:
+        from: 947232557913.dkr.ecr.ap-northeast-1.amazonaws.com/tier4/ci-prd-buildspecs-base:t4-gen-rqx58g-arm64-v1
+      output_rootfs_image:
+        from: ecu-system-setup
+        persistent_file_path: /etc/ota/persistents.txt
+
+  - name: mot
+    build:
+      type: custom
+      runtime:
+        type: standard1/amd64/large
+      source:
+        vcstool:
+          repositories_files:
+            - autoware.repos
+          import_path: src
+      environment_variables:
+        DEBIAN_FRONTEND: noninteractive
+        LANG: C.UTF-8
+      linux_parameters:
+        kernel_version: 5.19.0-43-generic
+      phases:
+        - name: environment-setup
+          exec: ./.webauto-ci/mot/environment-setup/run.sh
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/mot/environment-setup/**/*
+        - name: ecu-system-setup
+          exec: ./.webauto-ci/mot/ecu-system-setup/run.sh
+          environment_variables:
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-mot.yaml
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/mot/ecu-system-setup/**/*
+              - src/ecu_system_setup/**/*
+      base_container_image:
+        from: ubuntu:22.04
+      output_rootfs_image:
+        from: ecu-system-setup
+        persistent_file_path: /etc/ota/persistents.txt
+      output_installer_image:
+        from: ecu-system-setup
+        type: iso
+        base_iso: ubuntu-20.04.3-live-server-amd64
+
+  - name: sub
+    build:
+      type: custom
+      runtime:
+        type: standard1/amd64/large
+      source:
+        vcstool:
+          repositories_files:
+            - autoware.repos
+          import_path: src
+      environment_variables:
+        AUTOWARE_PATH: /home/autoware/autoware.proj
         DEBIAN_FRONTEND: noninteractive
         LANG: C.UTF-8
       linux_parameters:
@@ -78,7 +294,7 @@ artifacts:
           exec: ./.webauto-ci/main/ecu-system-setup/run.sh
           environment_variables:
             ECU_SYSTEM_SETUP_SOURCE_PATH: src/ecu_system_setup
-            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/common.yaml
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-sub.yaml
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
@@ -90,18 +306,87 @@ artifacts:
               - src/ecu_system_setup/**/*
       base_container_image:
         from: ubuntu:22.04
-        # from: ghcr.io/tier4/pilot-auto/base-image:latest # use base image
       output_container_image:
         from: autoware-build
-        workdir: /home/autoware/pilot-auto
+        workdir: /home/autoware/autoware.proj
         user: autoware
       output_rootfs_image:
         from: ecu-system-setup
-        persistent_file_path: /home/autoware/pilot-auto/.webauto-ci/main/ecu-system-setup/persistents.txt
+        persistent_file_path: /home/autoware/autoware.proj/.webauto-ci/main/ecu-system-setup/persistents.txt
       output_installer_image:
         from: ecu-system-setup
         type: iso
         base_iso: ubuntu-20.04.3-live-server-amd64
+
+  - name: signage
+    build:
+      type: custom
+      runtime:
+        type: standard1/arm64/large
+      source:
+        vcstool:
+          repositories_files:
+            - autoware.repos
+          import_path: src
+      phases:
+        - name: ecu-system-setup
+          user: autoware
+          exec: ./.webauto-ci/raspi/ecu-system-setup/run.sh
+          environment_variables:
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-signage.yaml
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/raspi/ecu-system-setup/**/*
+              - src/ecu_system_setup/**/*
+      base_container_image:
+        from: 947232557913.dkr.ecr.ap-northeast-1.amazonaws.com/tier4/ci-prd-buildspecs-base:t4-x2-raspi-arm64-v1
+      output_rootfs_image:
+        from: ecu-system-setup
+        persistent_file_path: /etc/ota/persistents.txt
+
+  - name: voice-system
+    build:
+      type: custom
+      runtime:
+        type: standard1/arm64/large
+      source:
+        vcstool:
+          repositories_files:
+            - autoware.repos
+          import_path: src
+      phases:
+        - name: ecu-system-setup
+          user: autoware
+          exec: ./.webauto-ci/raspi/ecu-system-setup/run.sh
+          environment_variables:
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-voice-system.yaml
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/raspi/ecu-system-setup/**/*
+              - src/ecu_system_setup/**/*
+      base_container_image:
+        from: 947232557913.dkr.ecr.ap-northeast-1.amazonaws.com/tier4/ci-prd-buildspecs-base:t4-x2-raspi-arm64-v1
+      output_rootfs_image:
+        from: ecu-system-setup
+        persistent_file_path: /etc/ota/persistents.txt
+
+  - name: media-streaming
+    build:
+      type: tier4/x2/rqx-58g/arm64/v2
+      environment_variables:
+        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-media-streaming.yaml
+        APP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-media-streaming-container.yaml
+        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK_ARGS: -e reload_systemd=no
 
 simulations:
   - name: planning_sim_v2
@@ -114,8 +399,8 @@ simulations:
       runtime:
         type: standard1/amd64/medium
       parameters:
-        vehicle_model: lexus
-        sensor_model: aip_xx1
+        vehicle_model: j6_gen1
+        sensor_model: aip_x2
         autoware_launch_package: autoware_launch
         autoware_launch_file: planning_simulator.launch.xml
         architecture_type: awf/universe/20230906
@@ -175,12 +460,12 @@ simulations:
       runtime:
         type: gpu1/amd64/large
       pre_tasks:
-        - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
+        - exec: source /home/autoware/autoware.proj/install/setup.bash && ros2 launch lidar_centerpoint lidar_centerpoint.launch.xml model_name:=aip_x2 model_path:=/opt/autoware/mlmodels/centerpoint model_param_path:=/opt/autoware/mlmodels/centerpoint/aip_x2.param.yaml build_only:=true
           mounts:
             - volume: model
       volumes:
         - name: model
-          path: /home/autoware/autoware_data/lidar_centerpoint
+          path: /opt/autoware/mlmodels/centerpoint
           preserve_original_files: true
 
   - name: yabloc
@@ -207,30 +492,75 @@ release:
       deployment:
         type: rootfs
         artifact: main
+      alternative_deployments:
+        - type: installer
+          artifact: main
+    - name: perception1
+      deployment:
+        type: rootfs
+        artifact: object-recognition
+    - name: perception2
+      deployment:
+        type: rootfs
+        artifact: object-recognition
+    - name: perception3
+      deployment:
+        type: rootfs
+        artifact: object-recognition
+    - name: perception4
+      deployment:
+        type: rootfs
+        artifact: traffic-light-recognition
+    - name: mot
+      deployment:
+        type: rootfs
+        artifact: mot
+      alternative_deployments:
+        - type: installer
+          artifact: mot
+    - name: sub
+      deployment:
+        type: rootfs
+        artifact: sub
+      alternative_deployments:
+        - type: installer
+          artifact: sub
+    - name: signage
+      deployment:
+        type: rootfs
+        artifact: signage
+    - name: voice-system
+      deployment:
+        type: rootfs
+        artifact: voice-system
+    - name: media-streaming
+      deployment:
+        type: rootfs
+        artifact: media-streaming
 
 scenario_parameter_groups:
   # Necessary to update the parameters for each vehicle type
   - name: common
     parameters:
-      __ego_center_x__: 1.345
+      __ego_center_x__: 2.08875 # ego_dimensions_length / 2.0 - rear_overhang
       __ego_center_y__: 0
-      __ego_center_z__: 1.25
-      __ego_dimensions_width__: 1.896
-      __ego_dimensions_length__: 4.89
-      __ego_dimensions_height__: 2.5
-      wheel_radius: 0.383
-      wheel_width: 0.235
-      wheel_base: 2.79 # between front wheel center and rear wheel center
-      wheel_tread: 1.64 # between left wheel center and right wheel center
-      front_overhang: 1.0 # between front wheel center and vehicle front
-      rear_overhang: 1.1 # between rear wheel center and vehicle rear
-      left_overhang: 0.128 # between left wheel center and vehicle left
-      right_overhang: 0.128 # between right wheel center and vehicle right
-      max_steer_angle: 0.70 # [rad]
+      __ego_center_z__: 1.54 # ego_dimensions_height / 2.0
+      __ego_dimensions_width__: 2.3 # wheel_tread + left_overhang + right_overhang
+      __ego_dimensions_length__: 7.1734 # wheel_base + front_overhang + rear_overhang
+      __ego_dimensions_height__: 3.06
+      wheel_radius: 0.3725
+      wheel_width: 0.215
+      wheel_base: 4.76 # between front wheel center and rear wheel center
+      wheel_tread: 1.754 # front:1.754 rear:1.564 between left wheel center and right wheel center
+      front_overhang: 0.9154 # between front wheel center and vehicle front
+      rear_overhang: 1.498 # between rear wheel center and vehicle rear
+      left_overhang: 0.273 # 1.150-2.08/2 between left wheel center and vehicle left
+      right_overhang: 0.273 # between right wheel center and vehicle right
+      max_steer_angle: 0.646 # [rad]
       stop_line_distance: 0.0 # param name in autoware_launch: stop_margin
       blind_spot_stop_line_distance: 1.0 # param name in autoware_launch: stop_line_margin
-      obstacle_stop_line_distance: 5.0 # param name in autoware_launch: max_longitudinal_margin
-      crosswalk_stop_line_distance: 3.5 # param name in autoware_launch: stop_distance_from_crosswalk
-      walkway_stop_line_distance: 3.5 # param name in autoware_launch: stop_distance_from_crosswalk
-      intersection_stop_line_distance: 3.0 # param name in autoware_launch: stop_line_margin
-      traffic_light_stop_line_distance: 0.0 # param name in autoware_launch: stop_margin
+      obstacle_stop_line_distance: 6.0
+      crosswalk_stop_line_distance: 3.5
+      walkway_stop_line_distance: 0.0
+      intersection_stop_line_distance: 3.0
+      traffic_light_stop_line_distance: 0.0

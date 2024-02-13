@@ -10,12 +10,12 @@ repositories:
     version: main
   autoware/launcher:
     type: git
-    url: https://github.com/tier4/autoware_launch.git
+    url: git@github.com:tier4/autoware_launch.x2.git
     version: tier4/main
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: tier4/universe
+    version: temp/x2/remove-nebula-dependency
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
@@ -38,26 +38,26 @@ repositories:
     version: main
   autoware/individual_params:
     type: git
-    url: https://github.com/tier4/autoware_individual_params.git
+    url: git@github.com:tier4/autoware_individual_params.j6_gen1.git
     version: main
   # description
   description/sensor/sensor_component_description:
     type: git
     url: https://github.com/tier4/sensor_component_description.git
     version: main
-  description/vehicle/lexus_description:
+  description/vehicle/j6_gen1_description:
     type: git
-    url: https://github.com/tier4/lexus_description.iv.git
-    version: tier4/universe
+    url: git@github.com:tier4/j6_gen1_description.git
+    version: main
   # ecu_system_setup
   ecu_system_setup:
     type: git
     url: git@github.com:tier4/autoware_ecu_system_setup.git
     version: main
   # vendor
-  vendor/pacmod_interface:
+  vendor/j6_interface:
     type: git
-    url: https://github.com/tier4/pacmod_interface.git
+    url: git@github.com:tier4/j6_interface.git
     version: main
   vendor/tamagawa_imu_driver:
     type: git
@@ -67,18 +67,19 @@ repositories:
     type: git
     url: https://github.com/tier4/ublox.git
     version: tier4/rolling
-  vendor/lidar-driver:
+  vendor/hesai_pandar:
     type: git
-    url: git@github.com:tier4/lidar_driver.git
-    version: v0.1.4
-  vendor/nebula:
-    type: git
-    url: https://github.com/tier4/nebula.git
-    version: main
-  vendor/transport_drivers:
-    type: git
-    url: https://github.com/MapIV/transport_drivers.git
-    version: boost
+    url: https://github.com/tier4/hesai_pandar.git
+    version: tier4/develop
+  # temporary until transition to nebula has done
+  # vendor/nebula:
+  #   type: git
+  #   url: https://github.com/tier4/nebula.git
+  #   version: main
+  # vendor/transport_drivers:
+  #   type: git
+  #   url: https://github.com/MapIV/transport_drivers.git
+  #   version: boost
   vendor/ndt_omp:
     type: git
     url: https://github.com/tier4/ndt_omp.git
@@ -95,10 +96,6 @@ repositories:
     type: git
     url: https://github.com/tier4/ars408_driver.git
     version: main
-  vendor/spinnaker:
-    type: git
-    url: https://github.com/tier4/spinnaker.git
-    version: 4c74d319ef9186a4fb643dbd82e1b5f7918e75ea
   vendor/morai_msgs:
     type: git
     url: https://github.com/MORAI-Autonomous/MORAI-ROS2_morai_msgs.git
@@ -120,14 +117,21 @@ repositories:
     url: https://github.com/tier4/rclcpp.git
     # This old version is not directly related to the issue, but it is stable.
     version: humble-with-fix-service-connection-patch
-
-  # awsim
-  awsim/awsim_sensor_kit_launch: # TODO: Integrate into sample_sensor_kit_launch
+  vendor/pyrocan:
     type: git
-    url: https://github.com/RobotecAI/awsim_sensor_kit_launch.git
+    url: git@github.com:tier4/pyrocan.git
     version: main
-  # vehicle
-  awsim/sample_vehicle_launch:
+  # product
+  product/boot_shutdown_tools:
     type: git
-    url: https://github.com/autowarefoundation/sample_vehicle_launch.git
+    url: https://github.com/tier4/boot_shutdown_tools.git
+    version: main
+  product/autoware_logging_suite:
+    type: git
+    url: git@github.com:tier4/autoware_logging_suite.git
+    version: main
+  # V2X
+  v2x/vehicle2infrastructure:
+    type: git
+    url: git@github.com:tier4/vehicle2infrastructure.git
     version: main
