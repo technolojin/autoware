@@ -121,6 +121,11 @@ repositories:
     # This old version is not directly related to the issue, but it is stable.
     version: humble-with-fix-service-connection-patch
 
+  ament_cmake: # TODO(mitsudome-r): remove when https://github.com/ament/ament_cmake/pull/448 is merged
+    type: git
+    url: https://github.com/autowarefoundation/ament_cmake.git
+    version: feat/faster_ament_libraries_deduplicate
+
   # awsim
   awsim/awsim_sensor_kit_launch: # TODO: Integrate into sample_sensor_kit_launch
     type: git
