@@ -157,6 +157,10 @@ repositories:
     type: git
     url: git@github.com:tier4/autoware_logging_suite.git
     version: v0.6.0
+  product/l4_toolkit:
+    type: git
+    url: git@github.com:tier4/l4_toolkit.git
+    version: 95847a40f6897d70c61cd91b777dd0211ce78330
   # V2X
   v2x/vehicle2infrastructure:
     type: git
