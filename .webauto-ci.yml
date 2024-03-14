@@ -216,6 +216,7 @@ artifacts:
             key_files:
               - .webauto-ci/mot/environment-setup/**/*
         - name: ecu-system-setup
+          user: autoware
           exec: ./.webauto-ci/mot/ecu-system-setup/run.sh
           environment_variables:
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_mot.yaml
