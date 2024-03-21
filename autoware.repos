@@ -3,7 +3,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
-    version: tier4/main
+    version: awf-latest
   autoware/common:
     type: git
     url: https://github.com/autowarefoundation/autoware_common.git
@@ -11,7 +11,7 @@ repositories:
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: tier4/main
+    version: awf-latest
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
@@ -53,6 +53,14 @@ repositories:
     type: git
     url: https://github.com/tier4/lexus_description.iv.git
     version: tier4/universe
+  description/vehicle/j6_gen1_description:
+    type: git
+    url: https://github.com/tier4/j6_gen1_description.git
+    version: main
+  description/vehicle/ymc_golfcart_m0_description:
+    type: git
+    url: https://github.com/tier4/ymc_golfcart_m0_description.iv.git
+    version: tmp/common/minimum-dependency
   # ecu_system_setup
   ecu_system_setup:
     type: git
