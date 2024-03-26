@@ -53,14 +53,10 @@ repositories:
     type: git
     url: https://github.com/tier4/lexus_description.iv.git
     version: tier4/universe
-  description/vehicle/j6_gen1_description:
+  description/vehicle/reference_vehicle_descriptions:
     type: git
-    url: https://github.com/tier4/j6_gen1_description.git
+    url: https://github.com/tier4/reference_vehicle_descriptions.git
     version: main
-  description/vehicle/ymc_golfcart_m0_description:
-    type: git
-    url: https://github.com/tier4/ymc_golfcart_m0_description.iv.git
-    version: tmp/common/minimum-dependency
   # ecu_system_setup
   ecu_system_setup:
     type: git
