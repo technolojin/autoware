@@ -125,6 +125,14 @@ repositories:
     type: git
     url: https://github.com/autowarefoundation/ament_cmake.git
     version: feat/faster_ament_libraries_deduplicate
+  vendor/pyrocan:
+    type: git
+    url: git@github.com:tier4/pyrocan.git
+    version: main
+  vendor/dynamic_message_introspection:
+    type: git
+    url: https://github.com/osrf/dynamic_message_introspection.git
+    version: 50277e341f61455c42a6015b5718804a4f8588f6
   # product
   product/boot_shutdown_tools:
     type: git
