@@ -3,7 +3,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
-    version: tier4/main
+    version: awf-latest
   autoware/common:
     type: git
     url: https://github.com/autowarefoundation/autoware_common.git
@@ -35,6 +35,10 @@ repositories:
   autoware/autoware_adapi_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_adapi_msgs.git
+    version: main
+  autoware/autoware_internal_msgs:
+    type: git
+    url: https://github.com/autowarefoundation/autoware_internal_msgs.git
     version: main
   autoware/individual_params:
     type: git
@@ -117,10 +121,10 @@ repositories:
     url: https://github.com/tier4/rclcpp.git
     # This old version is not directly related to the issue, but it is stable.
     version: humble-with-fix-service-connection-patch
-  vendor/pyrocan:
+  ament_cmake: # TODO(mitsudome-r): remove when https://github.com/ament/ament_cmake/pull/448 is merged
     type: git
-    url: git@github.com:tier4/pyrocan.git
-    version: main
+    url: https://github.com/autowarefoundation/ament_cmake.git
+    version: feat/faster_ament_libraries_deduplicate
   # product
   product/boot_shutdown_tools:
     type: git

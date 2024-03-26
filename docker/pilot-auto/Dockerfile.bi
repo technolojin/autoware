@@ -7,7 +7,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 ARG ROS_DISTRO
 ARG SETUP_ARGS
-ARG REPO_TOKEN
+ARG GITHUB_TOKEN
 ARG DESCRIPTION
 
 LABEL org.opencontainers.image.description=$DESCRIPTION
@@ -35,7 +35,7 @@ RUN --mount=type=ssh ./setup-dev-env.sh -y $SETUP_ARGS \
   && pip uninstall -y ansible ansible-core
 
 RUN sed -i "s/git@github\.com:/https:\/\/github\.com\//g" ./autoware.repos \
-  && sed -i "s/https:\/\/github.com/https:\/\/$REPO_TOKEN@github.com/g" ./autoware.repos \
+  && sed -i "s/https:\/\/github.com/https:\/\/x-access-token:$GITHUB_TOKEN@github.com/g" ./autoware.repos \
   && cat ./autoware.repos \
   && mkdir -p src
 
