@@ -9,7 +9,7 @@ jobs:
 
   setup-local-dev-env:
     needs: load-env
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest-m
     container: ${{ needs.load-env.outputs.base-image }}
     steps:
       - name: Check out repository
