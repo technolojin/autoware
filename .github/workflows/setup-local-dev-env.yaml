@@ -4,13 +4,8 @@ on:
   pull_request:
 
 jobs:
-  load-env:
-    uses: ./.github/workflows/load-env.yaml
-
   setup-local-dev-env:
-    needs: load-env
-    runs-on: ubuntu-latest-m
-    container: ${{ needs.load-env.outputs.base-image }}
+    runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
