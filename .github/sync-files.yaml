@@ -9,7 +9,6 @@
     - source: .github/workflows/cancel-previous-workflows.yaml
     - source: .github/workflows/github-release.yaml
     - source: .github/workflows/pre-commit.yaml
-    - source: .github/workflows/pre-commit-ansible.yaml
     - source: .github/workflows/pre-commit-optional.yaml
     - source: .github/workflows/semantic-pull-request.yaml
     - source: .github/workflows/spell-check-differential.yaml
@@ -52,8 +51,33 @@
       pre-commands: |
         sd "setup-universe" "setup-local-dev-env" {source}
         sd "universe" "local_dev_env" {source}
+        sd -s -- \
+        "     - name: Set git config" \
+        "     - name: Generate token
+                id: generate-token
+                uses: tibdex/github-app-token@v1
+                with:
+                  app_id: \${{ secrets.APP_ID }}
+                  private_key: \${{ secrets.PRIVATE_KEY }}
+
+              - name: Set git config" {source}
+        sd "secrets.GITHUB_TOKEN" "steps.generate-token.outputs.token" {source}
 
     - source: .github/workflows/vcs-import.yaml
+      pre-commands: |
+        sd -s -- \
+        "     - name: Set git config" \
+        "     - name: Generate token
+                id: generate-token
+                uses: tibdex/github-app-token@v1
+                with:
+                  app_id: \${{ secrets.APP_ID }}
+                  private_key: \${{ secrets.PRIVATE_KEY }}
+
+              - name: Set git config" {source}
+        sd "secrets.GITHUB_TOKEN" "steps.generate-token.outputs.token" {source}
+
+    - source: .github/workflows/pre-commit-ansible.yaml
       pre-commands: |
         sd -s -- \
         "     - name: Set git config" \
