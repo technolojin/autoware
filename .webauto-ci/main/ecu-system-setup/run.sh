@@ -29,6 +29,7 @@ git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/
 git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "git@github.com:"
 
 readonly dummy_vehicle_id=default # Reconfigure during OTA update
+ansible-galaxy collection install -f -r "ansible-galaxy-requirements.yaml"
 ansible-playbook "${ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK}" \
     -e autoware_install_dir="$(pwd)" \
     -e vehicle_id="${dummy_vehicle_id}" \

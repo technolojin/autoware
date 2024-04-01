@@ -1,0 +1,12 @@
+- name: Setup ECU by development roles
+  hosts: localhost
+  vars_files:
+    - ./vars/ecu_setup.yaml
+  roles:
+    - { role: autoware.ecu_system_setup.additional_fonts, tags: [additional_fonts] }
+    - { role: autoware.ecu_system_setup.disable_lock_screen, tags: [disable_lock_screen] }
+    - { role: autoware.ecu_system_setup.fzf, tags: [fzf] }
+    - { role: autoware.ecu_system_setup.google_chrome, tags: [google_chrome] }
+    - { role: autoware.ecu_system_setup.ibus_mozc, tags: [ibus_mozc] }
+    - { role: autoware.ecu_system_setup.keyboard, tags: [keyboard] }
+    - { role: autoware.ecu_system_setup.vscode, tags: [vscode] }
