@@ -2,17 +2,6 @@
 
 See [GitHub Pages](https://autowarefoundation.github.io/autoware-documentation/main/).
 
-## 無印pilot-autoのリリースプロセス
-
-[こちら](https://docs.google.com/presentation/d/1N7He7rmJA8PY1P2t7Ood1nxvssh2KtZpkjKLQcNmWHw/edit#slide=id.g26de3aa984c_0_24)を参照ください。
-
-## 使用しているautoware.universe、autoware_launch
-
-- `autoware.universe`: [tier4/のawf-latestブランチ](https://github.com/tier4/autoware.universe/tree/awf-latest) を使用
-  - ※このブランチは [GitHub Workflow](https://github.com/tier4/autoware.universe/blob/tier4/main/.github/workflows/sync-awf-latest.yaml) によって作成される
-- `autoware_launch`: [tier4/のawf-latestブランチ](https://github.com/tier4/autoware_launch/tree/awf-latest) を使用
-  - ※このブランチは [GitHub Workflow](https://github.com/tier4/autoware_launch/blob/tier4/main/.github/workflows/sync-awf-latest.yaml) によって作成される
-
 ## MLモデルのダウンロード方法
 
 **注意** : OTAイメージを利用しない場合は必ず下記の手順に従ってMLモデルをダウンロードしてください。ダウンロードしないとpointpaintingなどの物体認識ノードが動きません。
