@@ -55,7 +55,7 @@ repositories:
     version: tier4/universe
   description/vehicle/reference_vehicle_descriptions:
     type: git
-    url: https://github.com/tier4/reference_vehicle_descriptions.git
+    url: git@github.com:tier4/reference_vehicle_descriptions.git
     version: main
   # ecu_system_setup: When you use your own customized ecu_system_setup, uncomment this.
   # ecu_system_setup:
