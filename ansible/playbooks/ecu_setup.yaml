@@ -1,0 +1,13 @@
+- name: Include additional playbook for common
+  ansible.builtin.import_playbook: pilot_auto.dev_env.ecu_common
+
+- name: Include playbook for development
+  ansible.builtin.import_playbook: pilot_auto.dev_env.ecu_develop
+
+- name: Setup ECU by additional roles
+  hosts: localhost
+  vars_files:
+    - ./vars/ecu_setup.yaml
+  roles:
+    # add your necessary roles
+    - { role: sample_role, tags: [sample_role] }

@@ -1,9 +1,15 @@
 #!/bin/bash -e
 
+: "${WEBAUTO_CI_GITHUB_TOKEN:?is not set}"
+
 sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(source /etc/os-release && echo "$UBUNTU_CODENAME") main" | sudo tee /etc/apt/sources.list.d/ros2.list >/dev/null
 sudo -E apt-get -y update
 sudo -E apt-get -y install usbutils # For kvaser
+
+export GITHUB_TOKEN="$WEBAUTO_CI_GITHUB_TOKEN"
+git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
+git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "git@github.com:"
 
 ansible_args=()
 ansible_args+=("--extra-vars" "prompt_install_nvidia=y")
@@ -22,6 +28,8 @@ ansible-playbook "ansible/playbooks/local_dev_env.yaml" \
     -e WORKSPACE_ROOT="$(pwd)" \
     -e install_devel="false" \
     --skip-tags vcs
+
+git config --global --unset-all url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf
 
 # get installed ros distro
 # shellcheck disable=SC2012
