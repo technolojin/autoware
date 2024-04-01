@@ -20,6 +20,7 @@ ansible-galaxy collection install -f -r "ansible-galaxy-requirements.yaml"
 ansible-playbook "ansible/playbooks/local_dev_env.yaml" \
     "${ansible_args[@]}" \
     -e WORKSPACE_ROOT="$(pwd)" \
+    -e install_devel="false" \
     --skip-tags vcs
 
 pip install 'opencv-python<4.8.0.76'
