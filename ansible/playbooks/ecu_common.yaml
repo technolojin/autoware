@@ -1,3 +1,4 @@
+# cspell: ignore enablehighlevelapi
 - name: Setup ECU by common roles
   hosts: localhost
   vars_files:
@@ -30,4 +31,5 @@
     - { role: autoware.ecu_system_setup.set_autoware_env, tags: [set_autoware_env] }
     - { role: autoware.ecu_system_setup.stop_auto_upgrade, tags: [stop_auto_upgrade] }
     - { role: autoware.ecu_system_setup.timezone, tags: [timezone] }
+    - { role: autoware.ecu_system_setup.touch_enablehighlevelapi, tags: [touch_enablehighlevelapi] }
     - { role: autoware.ecu_system_setup.traffic_reader, tags: [traffic_reader] }
