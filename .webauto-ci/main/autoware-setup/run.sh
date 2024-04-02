@@ -31,6 +31,8 @@ ansible-playbook "ansible/playbooks/local_dev_env.yaml" \
 
 git config --global --unset-all url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf
 
+pip install 'opencv-python<4.8.0.76'
+
 # get installed ros distro
 # shellcheck disable=SC2012
 ROS_DISTRO=$(ls -1 /opt/ros | head -1)
