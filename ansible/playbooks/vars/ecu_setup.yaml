@@ -6,7 +6,7 @@ ros_domain_id: 1
 autoware_env_dir: "{{ ansible_env.HOME }}"
 autoware_env_dir_privileged: false
 
-# ========== ecu_setup.yaml ==========
+# ========== ecu_common.yaml ==========
 
 # cyclonedds
 cyclonedds:
@@ -52,7 +52,10 @@ timezone: Asia/Tokyo
 additional_font_packages:
   - fonts-noto-cjk
 
-# keyboard
-# Select keyboard.jp, keyboard.jp+ctrl_nocaps or keyboard.us+ctrl_nocaps
+# keyboard: Select keyboard.jp, keyboard.jp+ctrl_nocaps or keyboard.us+ctrl_nocaps
 keyboard_layout_file: keyboard.jp+ctrl_nocaps
-# ========== ecu_setup_additional.yaml ==========
+
+# ========== ecu_setup.yaml ==========
+
+# sample_role
+sample_role_msg: This is sample role world!
