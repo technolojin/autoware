@@ -10,4 +10,4 @@
     - ./vars/ecu_setup.yaml
   roles:
     # add your necessary roles
-    - { role: sample_role, tags: [sample_role] }
+    - { role: sample_role }

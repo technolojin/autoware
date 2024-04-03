@@ -4,32 +4,26 @@
   vars_files:
     - ./vars/ecu_setup.yaml
   roles:
-    - { role: autoware.ecu_system_setup.bash_completion, tags: [bash_completion] }
-    - { role: autoware.ecu_system_setup.clean_ros_log, tags: [clean_ros_log] }
-    - { role: autoware.ecu_system_setup.chrony, tags: [chrony] }
-    - { role: autoware.ecu_system_setup.cyclonedds, tags: [cyclonedds] }
-    # yamllint disable rule:indentation
-    - {
-        role: autoware.ecu_system_setup.evaluator_self_hosted_environment,
-        tags: [evaluator_self_hosted_environment],
-      }
-    # yamllint enable rule:indentation
-    - { role: autoware.ecu_system_setup.greengrass_dependencies, tags: [greengrass_dependencies] }
+    - { role: autoware.ecu_system_setup.bash_completion }
+    - { role: autoware.ecu_system_setup.clean_ros_log }
+    - { role: autoware.ecu_system_setup.chrony }
+    - { role: autoware.ecu_system_setup.cyclonedds }
+    - { role: autoware.ecu_system_setup.evaluator_self_hosted_environment }
+    - { role: autoware.ecu_system_setup.greengrass_dependencies }
     # yamllint disable rule:indentation
     - {
         role: autoware.ecu_system_setup.greengrass_v2,
-        tags: [greengrass_v2],
         when: ansible_distribution_version == "22.04",
       }
     # yamllint enable rule:indentation
-    - { role: autoware.ecu_system_setup.hdd_reader, tags: [hdd_reader] }
-    - { role: autoware.ecu_system_setup.msr_reader, tags: [msr_reader] }
-    - { role: autoware.ecu_system_setup.netplan, tags: [netplan] }
-    - { role: autoware.ecu_system_setup.nftables, tags: [nftables] }
-    - { role: autoware.ecu_system_setup.ota_client, tags: [ota_client] }
-    - { role: autoware.ecu_system_setup.ota_client_logger, tags: [ota_client_logger] }
-    - { role: autoware.ecu_system_setup.set_autoware_env, tags: [set_autoware_env] }
-    - { role: autoware.ecu_system_setup.stop_auto_upgrade, tags: [stop_auto_upgrade] }
-    - { role: autoware.ecu_system_setup.timezone, tags: [timezone] }
-    - { role: autoware.ecu_system_setup.touch_enablehighlevelapi, tags: [touch_enablehighlevelapi] }
-    - { role: autoware.ecu_system_setup.traffic_reader, tags: [traffic_reader] }
+    - { role: autoware.ecu_system_setup.hdd_reader }
+    - { role: autoware.ecu_system_setup.msr_reader }
+    - { role: autoware.ecu_system_setup.netplan }
+    - { role: autoware.ecu_system_setup.nftables }
+    - { role: autoware.ecu_system_setup.ota_client }
+    - { role: autoware.ecu_system_setup.ota_client_logger }
+    - { role: autoware.ecu_system_setup.set_autoware_env }
+    - { role: autoware.ecu_system_setup.stop_auto_upgrade }
+    - { role: autoware.ecu_system_setup.timezone }
+    - { role: autoware.ecu_system_setup.touch_enablehighlevelapi }
+    - { role: autoware.ecu_system_setup.traffic_reader }
