@@ -2,6 +2,7 @@
 
 set -e
 
+args=()
 SCRIPT_DIR=$(readlink -f "$(dirname "$0")")
 ansible_args=()
 
@@ -19,9 +20,19 @@ while [ "$1" != "" ]; do
         # Use non-interactive mode.
         option_yes=true
         ;;
+    *)
+        args+=("$1")
+        ;;
     esac
     shift
 done
+
+# Select installation type
+target_playbook="pilot_auto.dev_env.ecu_setup" # default
+
+if [ ${#args[@]} -ge 1 ]; then
+    target_playbook="pilot_auto.dev_env.${args[0]}"
+fi
 
 # Check yes Option
 if [ "$option_yes" = "true" ]; then
@@ -77,8 +88,8 @@ echo -e "\e[36m"ansible-galaxy collection install -f -r "$SCRIPT_DIR/ansible-gal
 ansible-galaxy collection install -f -r "$SCRIPT_DIR/ansible-galaxy-requirements.yaml"
 
 # Run ansible
-echo -e "\e[36m"ansible-playbook ./ansible/playbooks/ecu_setup.yaml "${ansible_args[@]}" "\e[m"
-if ansible-playbook "$SCRIPT_DIR/ansible/playbooks/ecu_setup.yaml" "${ansible_args[@]}"; then
+echo -e "\e[36m"ansible-playbook "$target_playbook" "${ansible_args[@]}" "\e[m"
+if ansible-playbook "$target_playbook" "${ansible_args[@]}"; then
     echo -e "\e[32mCompleted.\e[0m"
     exit 0
 else
