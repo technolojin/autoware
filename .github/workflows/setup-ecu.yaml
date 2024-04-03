@@ -6,6 +6,17 @@ on:
 jobs:
   setup-ecu:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        playbook:
+          - ecu_setup
+          - ecu_develop
+        include:
+          - playbook: ecu_setup
+            additional_args: -y -v -e vehicle_id=1234
+          - playbook: ecu_develop
+            additional_args: -y -v -e vehicle_id=1234
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -24,4 +35,4 @@ jobs:
 
       - name: Run setup script
         run: |
-          ./setup-ecu.sh -y -v -e vehicle_id=1234
+          ./setup-ecu.sh ${{ matrix.playbook }} ${{ matrix.additional_args }}
