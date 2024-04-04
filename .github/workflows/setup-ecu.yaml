@@ -11,11 +11,8 @@ jobs:
       matrix:
         playbook:
           - ecu_setup
-          - ecu_develop
         include:
           - playbook: ecu_setup
-            additional_args: -y -v -e vehicle_id=1234
-          - playbook: ecu_develop
             additional_args: -y -v -e vehicle_id=1234
     steps:
       - name: Check out repository
