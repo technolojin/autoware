@@ -32,4 +32,4 @@ jobs:
 
       - name: Run setup script
         run: |
-          ./setup-ecu.sh ${{ matrix.playbook }} ${{ matrix.additional_args }}
+          ./setup-ecu.sh ${{ matrix.playbook }} ${{ matrix.additional_args }} -e reload_systemd=no
