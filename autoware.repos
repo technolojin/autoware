@@ -53,7 +53,7 @@ repositories:
     type: git
     url: git@github.com:tier4/j6_gen1_description.git
     version: main
-  # ecu_system_setup
+  # ecu_system_setup: When you use your own customized ecu_system_setup, uncomment this.
   ecu_system_setup:
     type: git
     url: git@github.com:tier4/autoware_ecu_system_setup.git

@@ -2,6 +2,8 @@
 # and remote update (Over The Air update) to real cars.
 # If you have any additional questions, please contact us at #tier4-dev channel.
 
+# cSpell: ignore persistents
+
 version: 2
 
 artifacts:
@@ -304,6 +306,8 @@ artifacts:
             key_files:
               - .webauto-ci/main/ecu-system-setup/**/*
               - src/ecu_system_setup/**/*
+              - ansible/**/*
+              - ansible-galaxy-requirements.yaml
       base_container_image:
         from: ubuntu:22.04
       output_container_image:

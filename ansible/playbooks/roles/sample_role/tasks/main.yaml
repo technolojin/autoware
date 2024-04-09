@@ -1,0 +1,3 @@
+- name: Sample role message
+  ansible.builtin.debug:
+    msg: "{{ sample_role_msg }}"

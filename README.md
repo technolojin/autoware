@@ -24,3 +24,54 @@ See [GitHub Pages](https://autowarefoundation.github.io/autoware-documentation/m
 パッケージ名やパッケージリリース名は、Autoware Evaluatorから確認できます。
 
 [pointpaintingの例](https://evaluation.tier4.jp/evaluation/mlpackages/5b56c824-de65-406e-b12f-d7271589cc70?project_id=prd_jt)
+
+## ansibleについて
+
+### ansible playbook
+
+ansibleディレクトリには、2種類のセットアップ用playbookが存在します。
+
+- Autoware Setup
+  - local_dev_env.yaml
+- ECU Setup
+  - ecu_setup.yaml
+  - ecu_common.yaml
+  - ecu_develop.yaml
+
+また、上記playbookはansible-galaxyを介してroleを設定する形となっています。
+そのroleを有するリポジトリをimportするために、[ansible-galaxy-requirements.yaml](https://github.com/tier4/pilot-auto/blob/main/ansible-galaxy-requirements.yaml)があります。
+もし追加で参照したいリポジトリがある場合は、このyamlを編集してください。
+
+#### ecu_common.yaml
+
+ECUセットアップにおいて、どのプロジェクトにも必ず必要となるroleをまとめています。
+
+#### ecu_develop.yaml
+
+ECUに開発環境を整えるためのroleをまとめています。
+本番環境では不要なものなので、その場合はコメントアウトしても問題ありません。
+
+#### ecu_setup.yaml
+
+実際にECU Setup時に参照されるplaybookです。
+ecu_common.yamlとecu_develop.yamlをincludeしています。
+また、プロジェクトごとに必要となるroleもある可能性を踏まえて、追加でroleを指定できるようにしています。
+例としてsample_roleを設定しているので、これを参考に必要なroleを適宜追加してください。
+
+### playbookの実行
+
+Autoware Setup、およびECU Setupのために、以下のスクリプトが用意されています
+
+- Autoware Setup: setup-dev-env.sh
+- ECU Setup: setup-ecu.sh
+
+実行例は以下のとおりです
+
+```bash
+# non interactiveかつverboseモードで実行
+./setup-local-dev-env.sh -y -v
+
+# interactive、vehicle_id=1234、かつverboseモードで実行
+./setup-ecu.sh -v -e vehicle_id=1234
+
+```
