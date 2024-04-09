@@ -144,6 +144,10 @@ repositories:
     type: git
     url: git@github.com:foxglove/ros-foxglove-bridge.git
     version: 0.7.6
+  vendor/emergency_vehicle_detector:
+    type: git
+    url: git@github.com:tier4/emergency_vehicle_detector.git
+    version: e39b53a312c05b51876a3ddddb2b987f20ac53dd
   # product
   product/boot_shutdown_tools:
     type: git
