@@ -2,7 +2,7 @@
 # and remote update (Over The Air update) to real cars.
 # If you have any additional questions, please contact us at #tier4-dev channel.
 
-# cSpell: ignore persistents
+# cSpell: ignore persistents buildspecs
 
 version: 2
 
@@ -85,8 +85,8 @@ artifacts:
           user: autoware
           exec: ./.webauto-ci/main/ecu-system-setup/run.sh
           environment_variables:
-            ECU_SYSTEM_SETUP_SOURCE_PATH: src/ecu_system_setup
-            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2.yaml
+            ECU_SYSTEM_SETUP_SOURCE_PATH: ansible
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/ecu_setup.yaml
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
@@ -96,6 +96,8 @@ artifacts:
             key_files:
               - .webauto-ci/main/ecu-system-setup/**/*
               - src/ecu_system_setup/**/*
+              - ansible/**/*
+              - ansible-galaxy-requirements.yaml
       base_container_image:
         from: ubuntu:22.04
       output_container_image:

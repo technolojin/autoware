@@ -1,0 +1,3 @@
+dependencies:
+  - role: autoware.ecu_system_setup.set_autoware_env
+  - role: autoware.ecu_system_setup.peak_can_mini_pcie
