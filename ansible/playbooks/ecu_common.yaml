@@ -8,6 +8,7 @@
     - { role: autoware.ecu_system_setup.clean_ros_log }
     - { role: autoware.ecu_system_setup.chrony }
     - { role: autoware.ecu_system_setup.cyclonedds }
+    - { role: autoware.ecu_system_setup.edac }
     - { role: autoware.ecu_system_setup.evaluator_self_hosted_environment }
     - { role: autoware.ecu_system_setup.greengrass_dependencies }
     # yamllint disable rule:indentation
