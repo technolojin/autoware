@@ -113,10 +113,10 @@
     # Docker
     - source: docker/README.md
       pre-commands: |
-        sd "autowarefoundation" "tier4" {source}
-        sd "autoware-universe" "pilot-auto" {source}
-        sd "Autoware Universe" "Pilot.Auto" {source}
-        sd "Autoware" "Pilot.Auto" {source}
+        perl -pi -e 's/(?<!:\/\/)(?<!\[)(autowarefoundation)/tier4/g' {source}
+        perl -pi -e 's/(?<!:\/\/)(?<!\[)(autoware-universe)/pilot-auto/g' {source}
+        perl -pi -e 's/(?<!:\/\/)(?<!\[)(Autoware Universe)/Pilot.Auto/g' {source}
+        perl -pi -e 's/(?<!:\/\/)(?<!\[)(Autoware)/Pilot.Auto/g' {source}
         sd -s "../" "https://github.com/autowarefoundation/autoware/tree/main/" {source}
 
     - source: docker/build.sh
