@@ -297,8 +297,8 @@ artifacts:
           user: autoware
           exec: ./.webauto-ci/main/ecu-system-setup/run.sh
           environment_variables:
-            ECU_SYSTEM_SETUP_SOURCE_PATH: src/ecu_system_setup
-            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-sub.yaml
+            ECU_SYSTEM_SETUP_SOURCE_PATH: ansible
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_sub.yaml
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
