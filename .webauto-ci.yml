@@ -370,7 +370,7 @@ artifacts:
           user: autoware
           exec: ./.webauto-ci/raspi/ecu-system-setup/run.sh
           environment_variables:
-            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-voice-system.yaml
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_voice_system.yaml
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
@@ -380,6 +380,8 @@ artifacts:
             key_files:
               - .webauto-ci/raspi/ecu-system-setup/**/*
               - src/ecu_system_setup/**/*
+              - ansible/**/*
+              - ansible-galaxy-requirements.yaml
       base_container_image:
         from: 947232557913.dkr.ecr.ap-northeast-1.amazonaws.com/tier4/ci-prd-buildspecs-base:t4-x2-raspi-arm64-v1
       output_rootfs_image:

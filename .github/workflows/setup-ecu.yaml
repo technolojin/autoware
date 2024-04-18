@@ -15,6 +15,7 @@ jobs:
           - awsim_pc
           - x2_sub
           - x2_sub_cert
+          - x2_voice_system
         include:
           - playbook: ecu_setup
             additional_args: -y -v -e vehicle_id=1234
@@ -26,6 +27,8 @@ jobs:
             additional_args: -y -v -e vehicle_id=1234 -e skip_rviz=true
           - playbook: x2_sub_cert
             additional_args: -y -v -e vehicle_id=1234 -e skip_rviz=true
+          - playbook: x2_voice_system
+            additional_args: -y -v -e skip_upgrade=true
 
     steps:
       - name: Check out repository
