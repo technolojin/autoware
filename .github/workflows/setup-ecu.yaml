@@ -10,19 +10,22 @@ jobs:
       fail-fast: false
       matrix:
         playbook:
+          - awsim_pc
           - ecu_setup
           - x2_cert
-          - awsim_pc
+          - x2_signage
           - x2_sub
           - x2_sub_cert
           - x2_voice_system
         include:
+          - playbook: awsim_pc
+            additional_args: -y -v -e vehicle_id=1234
           - playbook: ecu_setup
             additional_args: -y -v -e vehicle_id=1234
           - playbook: x2_cert
             additional_args: -y -v -e vehicle_id=1234
-          - playbook: awsim_pc
-            additional_args: -y -v -e vehicle_id=1234
+          - playbook: x2_signage
+            additional_args: -y -v -e github_token='' -e skip_upgrade=true
           - playbook: x2_sub
             additional_args: -y -v -e vehicle_id=1234 -e skip_rviz=true
           - playbook: x2_sub_cert
