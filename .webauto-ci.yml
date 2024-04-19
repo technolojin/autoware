@@ -25,6 +25,10 @@ artifacts:
         ML_MODELS_PATH: /opt/autoware/mlmodels
         DEBIAN_FRONTEND: noninteractive
         LANG: C.UTF-8
+      developer_options:
+        - name: webauto:ci:caret_enabled
+          environment_variables:
+            WEBAUTO_CI_BUILD_OPTION_CARET_ENABLED: ENABLED
       linux_parameters:
         kernel_version: 5.15.0-72-generic
       phases:
