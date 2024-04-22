@@ -15,5 +15,3 @@
 '/opt/autoware/area_map'
 '/opt/devtools'
 '/opt/dssad/'
-'/swapfile'
-'/swap.img'
