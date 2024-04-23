@@ -83,7 +83,7 @@ repositories:
     type: git
     url: https://github.com/tier4/nebula.git
     version: main
-  vendor/transport_drivers:
+  vendor/boost_transport_drivers:
     type: git
     url: https://github.com/MapIV/transport_drivers.git
     version: boost
