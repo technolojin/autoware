@@ -1,4 +1,5 @@
 #!/bin/bash -e
+# cspell: ignore persistents
 
 : "${WEBAUTO_CI_GITHUB_TOKEN:?is not set}"
 
@@ -17,6 +18,7 @@ export GITHUB_TOKEN="$WEBAUTO_CI_GITHUB_TOKEN"
 git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
 git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "git@github.com:"
 
+ansible-galaxy collection install -f -r "ansible-galaxy-requirements.yaml"
 eval ansible-playbook "'${ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK}'" \
     -e github_token="${GITHUB_TOKEN}" \
     -e reload_systemd=no

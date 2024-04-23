@@ -209,7 +209,7 @@ artifacts:
         - name: ecu-system-setup
           exec: ./.webauto-ci/mot/ecu-system-setup/run.sh
           environment_variables:
-            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-mot.yaml
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_mot.yaml
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
@@ -219,6 +219,8 @@ artifacts:
             key_files:
               - .webauto-ci/mot/ecu-system-setup/**/*
               - src/ecu_system_setup/**/*
+              - ansible/**/*
+              - ansible-galaxy-requirements.yaml
       base_container_image:
         from: ubuntu:22.04
       output_rootfs_image:

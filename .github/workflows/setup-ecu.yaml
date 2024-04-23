@@ -13,6 +13,7 @@ jobs:
           - awsim_pc
           - ecu_setup
           - x2_cert
+          - x2_mot
           - x2_signage
           - x2_sub
           - x2_sub_cert
@@ -24,6 +25,8 @@ jobs:
             additional_args: -y -v -e vehicle_id=1234
           - playbook: x2_cert
             additional_args: -y -v -e vehicle_id=1234
+          - playbook: x2_mot
+            additional_args: -y -v -e github_token='' -e skip_upgrade=true
           - playbook: x2_signage
             additional_args: -y -v -e github_token='' -e skip_upgrade=true
           - playbook: x2_sub
