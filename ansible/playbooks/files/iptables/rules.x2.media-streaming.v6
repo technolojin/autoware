@@ -1,0 +1,50 @@
+# cspell: ignore dport
+
+*filter
+# Default Policy
+:INPUT DROP [0:0]
+:FORWARD DROP [0:0]
+:OUTPUT DROP [0:0]
+
+# INPUT rules
+# local loopback accept
+-A INPUT -i lo -j ACCEPT
+
+# internal network accept
+-A INPUT -i vlan.500 -j ACCEPT
+
+# LTE Router established/related accept
+-A INPUT -i vlan.100 -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A INPUT -i vlan.200 -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A INPUT -i vlan.300 -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A INPUT -i vlan.400 -m state --state RELATED,ESTABLISHED -j ACCEPT
+
+# OUTPUT rules
+# local loopback accept
+-A OUTPUT -o lo -j ACCEPT
+
+# internal network accept
+-A OUTPUT -o vlan.500 -j ACCEPT
+
+# Web RTC(UDP Any port), DHCP(UDP:67), DNS(UDP:53), NTP(UDP:123), MQTT(UDP:8883) accept
+-A OUTPUT -o vlan.100 -p udp -m udp --dport 1:65535 -j ACCEPT
+-A OUTPUT -o vlan.200 -p udp -m udp --dport 1:65535 -j ACCEPT
+-A OUTPUT -o vlan.300 -p udp -m udp --dport 1:65535 -j ACCEPT
+-A OUTPUT -o vlan.400 -p udp -m udp --dport 1:65535 -j ACCEPT
+
+# HTTPS (OTA, FMS REST API) accept
+-A OUTPUT -o vlan.100 -p tcp -m tcp --dport 443 -j ACCEPT
+-A OUTPUT -o vlan.200 -p tcp -m tcp --dport 443 -j ACCEPT
+-A OUTPUT -o vlan.300 -p tcp -m tcp --dport 443 -j ACCEPT
+-A OUTPUT -o vlan.400 -p tcp -m tcp --dport 443 -j ACCEPT
+-A OUTPUT -o vlan.100 -p tcp -m tcp --dport 8443 -j ACCEPT
+-A OUTPUT -o vlan.200 -p tcp -m tcp --dport 8443 -j ACCEPT
+-A OUTPUT -o vlan.300 -p tcp -m tcp --dport 8443 -j ACCEPT
+-A OUTPUT -o vlan.400 -p tcp -m tcp --dport 8443 -j ACCEPT
+
+# MQTT (FMS data sharing / TCP) accept
+-A OUTPUT -o vlan.100 -p tcp -m tcp --dport 8883 -j ACCEPT
+-A OUTPUT -o vlan.200 -p tcp -m tcp --dport 8883 -j ACCEPT
+-A OUTPUT -o vlan.300 -p tcp -m tcp --dport 8883 -j ACCEPT
+-A OUTPUT -o vlan.400 -p tcp -m tcp --dport 8883 -j ACCEPT
+COMMIT

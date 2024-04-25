@@ -396,8 +396,8 @@ artifacts:
     build:
       type: tier4/x2/rqx-58g/arm64/v2
       environment_variables:
-        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-media-streaming.yaml
-        APP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-media-streaming-container.yaml
+        ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_media_streaming.yaml
+        APP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_media_streaming_container.yaml
         ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK_ARGS: -e reload_systemd=no
 
 simulations:
