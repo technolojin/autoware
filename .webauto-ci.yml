@@ -128,7 +128,7 @@ artifacts:
         - name: ecu-system-setup
           exec: ./.webauto-ci/perception/ecu-system-setup/run.sh
           environment_variables:
-            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-perception.yaml
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_perception.yaml
             PERCEPTION_TYPE: od
             VEHICLE_MODEL: j6
           caches:
@@ -140,6 +140,8 @@ artifacts:
             key_files:
               - .webauto-ci/perception/ecu-system-setup/**/*
               - src/ecu_system_setup/**/*
+              - ansible/**/*
+              - ansible-galaxy-requirements.yaml
       base_container_image:
         from: 947232557913.dkr.ecr.ap-northeast-1.amazonaws.com/tier4/ci-prd-buildspecs-base:t4-gen-rqx58g-arm64-v1
       output_rootfs_image:
@@ -162,7 +164,7 @@ artifacts:
         - name: ecu-system-setup
           exec: ./.webauto-ci/perception/ecu-system-setup/run.sh
           environment_variables:
-            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: src/ecu_system_setup/x2-perception.yaml
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_perception.yaml
             PERCEPTION_TYPE: tlr
             VEHICLE_MODEL: j6
           caches:
@@ -174,6 +176,8 @@ artifacts:
             key_files:
               - .webauto-ci/perception/ecu-system-setup/**/*
               - src/ecu_system_setup/**/*
+              - ansible/**/*
+              - ansible-galaxy-requirements.yaml
       base_container_image:
         from: 947232557913.dkr.ecr.ap-northeast-1.amazonaws.com/tier4/ci-prd-buildspecs-base:t4-gen-rqx58g-arm64-v1
       output_rootfs_image:
