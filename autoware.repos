@@ -127,6 +127,10 @@ repositories:
     type: git
     url: https://github.com/osrf/dynamic_message_introspection.git
     version: 50277e341f61455c42a6015b5718804a4f8588f6
+  vendor/glog:  # TODO: to use isGoogleInitialized() API in v0.6.0. Remove when the rosdep glog version is updated to v0.6.0 (already updated in Ubuntu 24.04)
+    type: git
+    url: https://github.com/tier4/glog.git
+    version: v0.6.0_t4-ros
   rclcpp: # for temporally fix https://github.com/ros2/rclcpp/issues/2163
     type: git
     url: https://github.com/tier4/rclcpp.git
