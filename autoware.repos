@@ -131,11 +131,10 @@ repositories:
     type: git
     url: https://github.com/tier4/glog.git
     version: v0.6.0_t4-ros
-  rclcpp: # for temporally fix https://github.com/ros2/rclcpp/issues/2163
+  rclcpp:  # Based stable version, the fix-patch for service in initialization and the glog feature is added
     type: git
     url: https://github.com/tier4/rclcpp.git
-    # This old version is not directly related to the issue, but it is stable.
-    version: humble-with-fix-service-connection-patch
+    version: t4-main
 
   ament_cmake: # TODO(mitsudome-r): remove when https://github.com/ament/ament_cmake/pull/448 is merged
     type: git
