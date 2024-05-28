@@ -30,6 +30,9 @@ RUN ls /autoware
 RUN mkdir -p ~/.ssh \
   && ssh-keyscan github.com >> ~/.ssh/known_hosts
 
+## replace git@github with https://x-access-token
+RUN sed -i "s/git@github\.com:/https:\/\/github\.com\//g" ./ansible-galaxy-requirements.yaml \
+  && sed -i "s/https:\/\/github.com/https:\/\/x-access-token:$GITHUB_TOKEN@github.com/g" ./ansible-galaxy-requirements.yaml
 ## Set up development environment
 RUN --mount=type=ssh ./setup-dev-env.sh -y $SETUP_ARGS \
   && pip uninstall -y ansible ansible-core
