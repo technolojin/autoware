@@ -1,4 +1,4 @@
-# cspell: ignore dustynv ipaddr maxsize rexmit
+# cspell: ignore dustynv ipaddr maxsize rexmit compat
 # common
 daemon_reload: "{{ reload_systemd | default('yes') }}"
 is_in_docker: "{{ daemon_reload == 'no' }}"
@@ -37,12 +37,10 @@ iptables_ipv6_conf_file: iptables/rules.x2.media-streaming.v6
 # netplan
 netplan_files: netplan/99-autoware.x2-media-streaming.yaml
 
-# ota-client ecu_info.yaml
-ota_client_install_dir: /opt/ota/client
-ecu_info_yaml: ota_client/ecu_info.yaml.x2-media-streaming
-proxy_info_yaml: ota_client/proxy_info.yaml.x2-mot.j2 # x2-mot setting can be used since on the same network
-ota_client_log_server_port: 8083
-python_executable: python3.8
+# otaclient
+otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-media-streaming
+otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-mot.j2 # x2-mot setting can be used since on the same network
+otaclient_bionic_compat: true
 
 # boot_shutdown
 boot_shutdown_interface_run_script: run.sh.docker.jinja2

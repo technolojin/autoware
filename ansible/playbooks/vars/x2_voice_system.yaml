@@ -55,8 +55,6 @@ rsyslog_server_ipaddr: 192.168.30.21 # x2-sub
 # rsyslog_protocol: tcp
 rsyslog_queue_maxsize: 1g
 
-# ota-client ecu_info.yaml
-ota_client_install_dir: /opt/ota/client
-ecu_info_yaml: ota_client/ecu_info.yaml.x2-voice-system
-proxy_info_yaml: ota_client/proxy_info.yaml.x2-mot.j2 # x2-mot setting can be used since on the same network
-ota_client_log_server_port: 8083
+# otaclient
+otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-voice-system
+otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-voice-system.j2

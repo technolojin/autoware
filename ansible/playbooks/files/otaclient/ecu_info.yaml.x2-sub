@@ -1,4 +1,4 @@
 format_version: 1
-ecu_id: "sub"
+ecu_id: sub
 ip_addr: "192.168.10.21"
-bootloader: "grub"
+bootloader: grub

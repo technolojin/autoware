@@ -41,12 +41,9 @@ simple_system_service_file: mot.service
 # netplan
 netplan_files: netplan/99-autoware.x2-mot.yaml
 
-# ota-client ecu_info.yaml
-ota_client_install_dir: /opt/ota/client
-ecu_info_yaml: ota_client/ecu_info.yaml.x2-mot
-proxy_info_yaml: ota_client/proxy_info.yaml.x2-mot.j2
-ota_client_log_server_port: 8083
-
+# otaclient
+otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-mot
+otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-mot.j2
 # syslog collector
 syslog_collector_type: Client
 # rsyslog_server_ipaddr: 192.168.30.11 # x2

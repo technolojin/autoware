@@ -1,4 +1,4 @@
-# cspell: ignore ipaddr prptocol maxsize rexmit
+# cspell: ignore ipaddr prptocol maxsize rexmit compat
 # common
 daemon_reload: "{{ reload_systemd | default('yes') }}"
 autoware_env_dir: /opt/autoware/env
@@ -32,12 +32,10 @@ ptp4l_network_port: eth1
 # netplan
 netplan_files: netplan/99-autoware.x2-perception.yaml
 
-# ota-client ecu_info.yaml
-ota_client_install_dir: /opt/ota/client
-ecu_info_yaml: ota_client/ecu_info.yaml.x2-perception
-proxy_info_yaml: ota_client/proxy_info.yaml.x2-perception.j2
-ota_client_log_server_port: 8083
-python_executable: python3.8
+# otaclient
+otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-perception
+otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-perception.j2
+otaclient_bionic_compat: true
 
 # syslog collector - client
 syslog_collector_type: Client

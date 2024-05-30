@@ -12,7 +12,7 @@
     - role: autoware.ecu_system_setup.media_streaming
       when: skip_media_streaming is not defined or not skip_media_streaming | bool
     - { role: autoware.ecu_system_setup.netplan }
-    - { role: autoware.ecu_system_setup.ota_client }
+    - { role: autoware.ecu_system_setup.otaclient }
     - { role: autoware.ecu_system_setup.rsyslog }
     - { role: autoware.ecu_system_setup.rqx_58g_firmware }
     - { role: autoware.ecu_system_setup.stop_auto_upgrade }

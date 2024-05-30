@@ -23,7 +23,7 @@
     - { role: autoware.ecu_system_setup.jetson_clocks }
     - { role: autoware.ecu_system_setup.jetson_perception_service }
     - { role: autoware.ecu_system_setup.netplan }
-    - { role: autoware.ecu_system_setup.ota_client }
+    - { role: autoware.ecu_system_setup.otaclient }
     - { role: autoware.ecu_system_setup.evaluator_self_hosted_environment }
     - { role: autoware.ecu_system_setup.ptp4l }
     - { role: autoware.ecu_system_setup.rqx_58g_firmware }

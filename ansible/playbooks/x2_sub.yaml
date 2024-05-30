@@ -14,7 +14,7 @@
     - { role: autoware.ecu_system_setup.lenovo_keyboard }
     - { role: autoware.ecu_system_setup.logpacker }
     - { role: autoware.ecu_system_setup.netplan }
-    - { role: autoware.ecu_system_setup.ota_client }
+    - { role: autoware.ecu_system_setup.otaclient }
     - { role: autoware.ecu_system_setup.peak_can_mini_pcie }
     - { role: autoware.ecu_system_setup.ptp4l }
     - { role: autoware.ecu_system_setup.pyrocan }

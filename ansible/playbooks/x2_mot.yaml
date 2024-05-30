@@ -26,7 +26,7 @@
     - { role: autoware.ecu_system_setup.foxglove_bridge_service }
     - { role: autoware.ecu_system_setup.install_openssh_server }
     - { role: autoware.ecu_system_setup.netplan } # need to be the last, as the internet will lost after this
-    - { role: autoware.ecu_system_setup.ota_client }
+    - { role: autoware.ecu_system_setup.otaclient }
     - { role: autoware.ecu_system_setup.ptp4l }
     - { role: autoware.ecu_system_setup.ros2_setup }
     - { role: autoware.ecu_system_setup.rsyslog }
