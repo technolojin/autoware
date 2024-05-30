@@ -26,7 +26,7 @@ ansible-galaxy collection install -f -r "ansible-galaxy-requirements.yaml"
 ansible-playbook "ansible/playbooks/local_dev_env.yaml" \
     "${ansible_args[@]}" \
     -e WORKSPACE_ROOT="$(pwd)" \
-    -e install_devel="true" \
+    -e install_devel="y" \
     --skip-tags vcs
 
 git config --global --unset-all url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf

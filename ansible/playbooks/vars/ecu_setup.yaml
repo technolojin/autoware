@@ -33,11 +33,11 @@ netplan_files: netplan/99-autoware.yaml
 # nftables
 nftables_conf_file: nftables/nftables.conf
 
-# ota-client
-ota_client_install_dir: /opt/ota/client
-ecu_info_yaml: ota_client/ecu_info.yaml
-proxy_info_yaml: ota_client/proxy_info.yaml.j2
-ota_client_log_server_port: 8083
+# otaclient: sample setup for single ECU
+otaclient_ecu_info_yaml: otaclient/ecu_info.yaml
+otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.j2
+# otaclient_logger, for single ECU
+otaclient_logger_listen_address: 127.0.0.1
 
 # set-autoware-env
 autoware_install_dir: /home/autoware/pilot-auto.x2
