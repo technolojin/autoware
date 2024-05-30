@@ -30,10 +30,3 @@ ansible-playbook "ansible/playbooks/local_dev_env.yaml" \
     --skip-tags vcs
 
 git config --global --unset-all url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf
-
-# get installed ros distro
-# shellcheck disable=SC2012
-ROS_DISTRO=$(ls -1 /opt/ros | head -1)
-
-# install cyclone dds
-sudo -E apt-get -y install "ros-${ROS_DISTRO}-rmw-cyclonedds-cpp"
