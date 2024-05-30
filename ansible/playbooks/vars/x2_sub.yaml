@@ -38,6 +38,7 @@ logpacker_enable_rosbag_plugin: true
 qos_profile_overrides_template: logpacker/qos_profile_overrides_x2.yaml
 # - bagtaker
 rosbag_copy_directory: /media/autoware/ROSBAG
+bagtaker_params_template: bagtaker2/bagtaker_params_x2.yaml.jinja2
 
 # netplan
 netplan_files: netplan/99-autoware.x2-sub.yaml
