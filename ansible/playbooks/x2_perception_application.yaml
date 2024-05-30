@@ -1,0 +1,8 @@
+- name: Setup x2 perception application
+  hosts: localhost
+  vars_files:
+    - ./vars/x2_perception_application.yaml
+  roles:
+    - role: autoware.ecu_system_setup.boot_shutdown_docker # overrides docker image built by x2_perception_application
+      when: skip_docker is not defined or not skip_docker | bool
+    - role: autoware.ecu_system_setup.x2_perception_application

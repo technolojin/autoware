@@ -1,0 +1,7 @@
+- name: Setup x2 media streaming container
+  hosts: localhost
+  vars_files:
+    - ./vars/x2_media_streaming_container.yaml
+  roles:
+    - role: autoware.ecu_system_setup.boot_shutdown_docker
+      when: skip_docker is not defined or not skip_docker | bool

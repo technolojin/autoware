@@ -1,0 +1,4 @@
+format_version: 1
+ecu_id: "media-streaming"
+ip_addr: "192.168.30.61"
+bootloader: "cboot"

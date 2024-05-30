@@ -1,0 +1,9 @@
+- name: Setup x2 cert
+  hosts: localhost
+  vars_files:
+    - ./vars/x2_cert.yaml
+  roles:
+    - { role: autoware.ecu_system_setup.usbguard }
+
+- name: Execute x2 master playbook
+  ansible.builtin.import_playbook: pilot_auto.dev_env.ecu_setup

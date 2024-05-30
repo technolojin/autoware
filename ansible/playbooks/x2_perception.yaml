@@ -1,0 +1,93 @@
+- name: Setup x2 perception
+  hosts: localhost
+  vars_files:
+    - ./vars/x2_perception.yaml
+
+  vars:
+    perception_type: od # "od" or "tlr"
+
+  pre_tasks:
+    - name: Check 'perception_type' contents
+      ansible.builtin.assert:
+        that:
+          - (perception_type == 'od') or (perception_type == 'tlr')
+        fail_msg: perception_type should be one of ['od' or 'tlr']
+
+    - name: Determine installed dtb file type according to perception_type
+      ansible.builtin.set_fact:
+        dtb_sensor_type: "{% if perception_type == 'od' %}isx021{% elif perception_type == 'tlr' %}isx021_imx490{% endif %}"
+
+  roles:
+    - { role: autoware.ecu_system_setup.cyclonedds }
+    - { role: autoware.ecu_system_setup.docker_nvidia }
+    - { role: autoware.ecu_system_setup.jetson_clocks }
+    - { role: autoware.ecu_system_setup.jetson_perception_service }
+    - { role: autoware.ecu_system_setup.netplan }
+    - { role: autoware.ecu_system_setup.ota_client }
+    - { role: autoware.ecu_system_setup.evaluator_self_hosted_environment }
+    - { role: autoware.ecu_system_setup.ptp4l }
+    - { role: autoware.ecu_system_setup.rqx_58g_firmware }
+    - { role: autoware.ecu_system_setup.rsyslog }
+    - { role: autoware.ecu_system_setup.set_autoware_env }
+    - { role: autoware.ecu_system_setup.syslog_collector_client }
+    - { role: autoware.ecu_system_setup.tmp_cpu_off }
+    - { role: autoware.ecu_system_setup.timezone }
+    - { role: autoware.ecu_system_setup.set_large_txqueue }
+
+  # Any `tasks` defined in the play will be executed after each role listed in `roles`
+  # see: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html#using-roles-at-the-play-level
+  tasks:
+    - name: Setup ECU for Object Recognition or Traffic Light Recognition
+      when: skip_od_tlr_setup is not defined or not skip_od_tlr_setup | bool
+      block:
+        - name: ROS 2 base native build
+
+          ansible.builtin.include_role:
+            name: autoware.ecu_system_setup.ros2_native_build_for_perception_ecu
+            tasks_from: base.yaml
+
+        - name: ROS 2 application build
+          ansible.builtin.include_role:
+            name: autoware.ecu_system_setup.ros2_native_build_for_perception_ecu
+            tasks_from: application.yaml
+          vars:
+            aip_repos_file_name: aip_{{ vehicle_model }}.repos # noqa: var-naming[no-role-prefix]
+
+        - name: Setup as object recognition ECU
+          when:
+            - perception_type == 'od'
+          block:
+            - name: Download yolox model
+              ansible.builtin.include_role:
+                name: autoware.ecu_system_setup.download_yolox_model
+            - name: TIER IV camera driver
+              ansible.builtin.include_role:
+                name: autoware.ecu_system_setup.tier4_camera_driver
+              vars:
+                dtb_sensor_type: isx021 # noqa: var-naming[no-role-prefix]
+
+        - name: Setup as traffic light recognition ECU
+          when:
+            - perception_type == 'tlr'
+          block:
+            - name: Download yolox model
+              ansible.builtin.include_role:
+                name: autoware.ecu_system_setup.download_yolox_model
+            - name: Download tlr model
+              ansible.builtin.include_role:
+                name: autoware.ecu_system_setup.download_tlr_model
+            - name: TIER IV camera driver
+              ansible.builtin.include_role:
+                name: autoware.ecu_system_setup.tier4_camera_driver
+              vars:
+                dtb_sensor_type: isx021_imx490 # noqa: var-naming[no-role-prefix]
+
+    - name: Install boot_shutdown
+      when: skip_boot_shutdown is not defined or not skip_boot_shutdown | bool
+      block:
+        - name: Install boot_shutdown_interface
+          ansible.builtin.include_role:
+            name: autoware.ecu_system_setup.boot_shutdown_interface
+        - name: Build boot_shutdown_interface
+          ansible.builtin.include_role:
+            name: autoware.ecu_system_setup.boot_shutdown_interface_build

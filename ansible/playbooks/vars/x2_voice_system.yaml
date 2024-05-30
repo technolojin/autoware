@@ -1,0 +1,62 @@
+# cspell: ignore ipaddr maxsize pactl rexmit
+# common
+daemon_reload: "{{ reload_systemd | default('yes') }}"
+ros_domain_id: 1
+autoware_install_dir: "{{ ansible_env.HOME }}/vehicle_voice_alert_system"
+systemctl_default: multi-user.target
+autoware_env_dir: "{{ ansible_env.HOME }}"
+autoware_env_dir_privileged: false
+
+# additional-fonts
+additional_font_packages:
+  - fonts-noto-cjk
+
+# boot_shutdown_interface
+boot_shutdown_interface_param_file: boot_shutdown_interface/empty_topic_boot_shutdown.param.yaml
+
+# timezone
+timezone: Asia/Tokyo
+
+# keyboard
+keyboard_layout_file: keyboard.jp
+
+# cyclonedds
+cyclonedds:
+  network_interface_address:
+    - eth0
+  minimum_socket_receive_buffer_size: 20MB
+  minimum_socket_send_buffer_size: default
+  max_message_size: 65500B
+  fragment_size: 4000B
+  max_rexmit_message_size: 1456B # Default value from CycloneDDS documentation
+  water_mark_whc_high: 500kB # Default value from CycloneDDS documentation
+  water_mark_whc_low: 1kB # Default value from CycloneDDS documentation
+
+# ptp4l port
+ptp4l_network_port: eth0
+
+# ros2-app-build
+ros2_app_repository: git@github.com:tier4/vehicle_voice_alert_system.git
+ros2_app_repository_version: b3e9b4e84fcedcbfb6f24350e9ef9365c0cfdb7e
+depends_repos: vehicle_voice_alert_system.repos
+
+# simple system launch
+simple_system_launch_command: pactl -- set-sink-volume 0 50%; ros2 launch vehicle_voice_alert_system vehicle_voice_alert_system.launch.xml
+simple_system_service_file: vehicle_sound.service
+
+# netplan
+netplan_files: netplan/99-autoware.x2-voice-system.yaml
+
+# syslog collector
+syslog_collector_type: Client
+# rsyslog_server_ipaddr: 192.168.30.11 # x2
+rsyslog_server_ipaddr: 192.168.30.21 # x2-sub
+# rsyslog_server_port: 514
+# rsyslog_protocol: tcp
+rsyslog_queue_maxsize: 1g
+
+# ota-client ecu_info.yaml
+ota_client_install_dir: /opt/ota/client
+ecu_info_yaml: ota_client/ecu_info.yaml.x2-voice-system
+proxy_info_yaml: ota_client/proxy_info.yaml.x2-mot.j2 # x2-mot setting can be used since on the same network
+ota_client_log_server_port: 8083

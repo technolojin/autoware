@@ -1,0 +1,6 @@
+# common
+daemon_reload: "{{ reload_systemd | default('yes') }}"
+autoware_env_dir: /opt/autoware/env
+
+# boot_shutdown_docker
+boot_shutdown_docker_base: ghcr.io/tier4/object-recognition:x2
