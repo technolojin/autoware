@@ -2,7 +2,7 @@ repositories:
   simulator/scenario_simulator:
     type: git
     url: https://github.com/tier4/scenario_simulator_v2.git
-    version: master
+    version: RJD-736/autoware_msgs_support # switch back to master once this branch is merged
   simulator/logsim:
     type: git
     url: git@github.com:tier4/logsim.git
