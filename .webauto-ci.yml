@@ -19,6 +19,7 @@ artifacts:
           repositories_files:
             - autoware.repos
             - simulator.repos
+            - tools.repos
           import_path: src
       environment_variables:
         AUTOWARE_PATH: /home/autoware/pilot-auto
