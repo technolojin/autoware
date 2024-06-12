@@ -9,7 +9,7 @@ version: 2
 artifacts:
   - name: main
     metadata:
-      play-ondemand.ci.web.auto/buildspec: Autoware-Humble
+      play-ondemand.ci.web.auto/buildspec: Autoware-Humble_v0.29.0
     build:
       type: custom
       runtime:
