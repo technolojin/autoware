@@ -1,0 +1,4 @@
+format_version: 1
+ecu_id: mot
+ip_addr: "192.168.30.31"
+bootloader: grub

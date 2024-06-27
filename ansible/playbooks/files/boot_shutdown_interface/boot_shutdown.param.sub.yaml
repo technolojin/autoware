@@ -1,0 +1,14 @@
+/**:
+  ros__parameters:
+    startup_timeout: 180
+    prepare_shutdown_time: 1
+    execute_shutdown_time: 13
+
+    topic_config:
+      name: /bagpacker/state
+      type: std_msgs/msg/String
+      transient_local: false
+      best_effort: false
+
+    additional_prepare_shutdown_command:
+      [systemctl stop bagpacker.service, systemctl stop syslog-collector.service]

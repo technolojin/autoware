@@ -1,0 +1,78 @@
+# cspell: ignore ipaddr maxsize mincho momo pactl rexmit
+# common
+daemon_reload: "{{ reload_systemd | default('yes') }}"
+ros_domain_id: 1
+autoware_install_dir: "{{ ansible_env.HOME }}/AutowareSignage"
+systemctl_default: multi-user.target
+autoware_env_dir: "{{ ansible_env.HOME }}"
+autoware_env_dir_privileged: false
+
+# additional-fonts
+additional_font_packages:
+  - fonts-noto-cjk
+  - fonts-takao-mincho
+
+# boot_shutdown_interface
+boot_shutdown_interface_param_file: empty_topic_boot_shutdown.param.yaml
+
+# timezone
+timezone: Asia/Tokyo
+
+# keyboard
+keyboard_layout_file: keyboard.jp
+
+# ros2-app-build
+ros2_app_repository: git@github.com:tier4/AutowareSignage.git
+ros2_app_repository_version: 2316a6f874d8d2c8d26fabb6ba4923471d44c72c
+depends_repos: signage.repos
+
+# cyclonedds
+cyclonedds:
+  network_interface_address:
+    - eth0
+  minimum_socket_receive_buffer_size: 20MB
+  minimum_socket_send_buffer_size: default
+  max_message_size: 65500B
+  fragment_size: 4000B
+  max_rexmit_message_size: 1456B # Default value from CycloneDDS documentation
+  water_mark_whc_high: 500kB # Default value from CycloneDDS documentation
+  water_mark_whc_low: 1kB # Default value from CycloneDDS documentation
+
+# ptp4l port
+ptp4l_network_port: eth0
+
+# fms
+fms_url: fms.web.auto
+autoware_pc_ip: 192.168.30.11
+
+# x2-call
+x2_call_repo: git@github.com:tier4/x2-call.git
+x2_call_workspace: "{{ ansible_env.HOME }}/x2-call"
+x2_call_location: /opt/x2-call
+x2_call_version: 740a74e486530ae067060412e63ede4ae651cdff
+momo_release_tags: 2022.2+tier4-4
+
+# simple-system-launch
+simple_system_launch_command: pactl -- set-sink-volume 1 40%; ros2 launch signage signage.launch.xml
+simple_system_service_file: signage.service
+
+# netplan
+netplan_files: netplan/99-autoware.x2-signage.yaml
+
+# nftables
+nftables_conf_file: nftables/nftables.x2-signage.conf
+
+# syslog collector - client
+syslog_collector_type: Client
+# rsyslog_server_ipaddr: 192.168.30.11 # x2
+rsyslog_server_ipaddr: 192.168.30.21 # x2-sub
+# rsyslog_server_port: 514
+# rsyslog_protocol: tcp
+rsyslog_queue_maxsize: 1g
+
+# otaclient
+otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-signage
+otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-signage.j2
+
+# vlan
+setup_vlan: true

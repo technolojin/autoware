@@ -1,0 +1,42 @@
+# cspell: ignore rexmit systemlog
+# common
+daemon_reload: "{{ reload_systemd | default('yes') }}"
+autoware_env_dir: "{{ ansible_env.HOME }}"
+autoware_install_dir: "{{ ansible_env.HOME }}/pilot-auto.x2"
+autoware_env_dir_privileged: false
+ros_domain_id: 180
+vehicle_model: j6_gen1
+vehicle_id: default
+sensor_model: aip_x2
+
+# additional-fonts
+additional_font_packages:
+  - fonts-noto-cjk
+
+# cyclonedds
+cyclonedds:
+  network_interface_address:
+    - lo
+  minimum_socket_receive_buffer_size: 20MB
+  minimum_socket_send_buffer_size: default
+  max_message_size: 65500B
+  fragment_size: 4000B
+  max_rexmit_message_size: 1456B # Default value from CycloneDDS documentation
+  water_mark_whc_high: 500kB # Default value from CycloneDDS documentation
+  water_mark_whc_low: 1kB # Default value from CycloneDDS documentation
+
+# bagpacker
+bagpacker_version: v0.9.4 # xx1-logger_pattern2.yamlのアップデートも忘れないこと
+bagpacker_conf_template: bagpacker/bagpacker_x2.conf.jinja2
+bagpacker_operation_mode_conf_template: bagpacker/bagpacker_operation_mode_xx1.conf.jinja2
+qos_profile_overrides_template: bagpacker/qos_profile_overrides_x2.yaml
+cyclonedds_uri_bagpacker_env: file:///opt/autoware/cyclonedds/cyclonedds.xml
+rosbag_logging_directory: /media/autoware/store_data
+
+# syslog collector
+syslog_collector_version: v0.3.0 # syslog_collector.confのoutput-atの更新も忘れないこと
+syslog_collector_type: StandAlone
+syslog_collector_disk_type: internal
+syslog_collector_conf_template: syslog-collector.conf.standalone.jinja2
+systemlog_conf_template: systemlog.conf.standalone.template.jinja2
+syslog_pre_service_template: syslog-pre.service

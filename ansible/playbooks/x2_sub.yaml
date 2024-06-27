@@ -1,0 +1,32 @@
+- name: Setup x2 sub
+  hosts: localhost
+  vars_files:
+    - ./vars/x2_sub.yaml
+  roles:
+    - { role: autoware.ecu_system_setup.automatic_login }
+    - { role: autoware.ecu_system_setup.bagtaker2 }
+    - { role: autoware.ecu_system_setup.bash_completion }
+    - { role: autoware.ecu_system_setup.boot_shutdown_interface }
+    - { role: autoware.ecu_system_setup.boot_shutdown_service }
+    - { role: autoware.ecu_system_setup.chrony }
+    - { role: autoware.ecu_system_setup.clean_ros_log }
+    - { role: autoware.ecu_system_setup.cyclonedds }
+    - { role: autoware.ecu_system_setup.lenovo_keyboard }
+    - { role: autoware.ecu_system_setup.logpacker }
+    - { role: autoware.ecu_system_setup.netplan }
+    - { role: autoware.ecu_system_setup.otaclient }
+    - { role: autoware.ecu_system_setup.peak_can_mini_pcie }
+    - { role: autoware.ecu_system_setup.ptp4l }
+    - { role: autoware.ecu_system_setup.pyrocan }
+    - { role: autoware.ecu_system_setup.release_rosbag_page_cache }
+    - { role: autoware.ecu_system_setup.rsyslog }
+    - role: autoware.ecu_system_setup.rviz
+      when: skip_rviz is not defined or not skip_rviz | bool
+    - { role: autoware.ecu_system_setup.set_autoware_env }
+    - { role: autoware.ecu_system_setup.stop_auto_upgrade }
+    - { role: autoware.ecu_system_setup.timezone }
+    - { role: autoware.ecu_system_setup.udev_usb_storage }
+    - { role: x2_sub_misc }
+
+- name: Include playbook for development
+  ansible.builtin.import_playbook: pilot_auto.dev_env.ecu_develop

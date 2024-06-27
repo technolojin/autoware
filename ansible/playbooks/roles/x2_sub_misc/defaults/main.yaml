@@ -1,0 +1,7 @@
+temporary_logging_directory: /mnt/LOG # noqa var-naming[no-role-prefix]
+rosbag_logging_directory: /mnt/ROSBAG # noqa var-naming[no-role-prefix]
+rosbag_storage_label: ROSBAG_INTERNAL # noqa var-naming[no-role-prefix]
+
+# X2 specific
+rosbag_external_storage_label: ROSBAG # noqa var-naming[no-role-prefix]
+rosbag_copy_directory: /media/autoware/ROSBAG # noqa var-naming[no-role-prefix]

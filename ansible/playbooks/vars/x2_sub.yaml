@@ -1,0 +1,75 @@
+# cspell: ignore rexmit nocaps
+# common
+daemon_reload: "{{ reload_systemd | default('yes') }}"
+rosbridge_host: 192.168.10.11
+ros_domain_id: 1
+rosbag_logging_directory: /mnt/ROSBAG
+autoware_env_dir: "{{ ansible_env.HOME }}"
+autoware_env_dir_privileged: false
+
+# additional-fonts
+additional_font_packages:
+  - fonts-noto-cjk
+
+# cyclonedds
+cyclonedds:
+  network_interface_address:
+    - eno1
+    - enp5s0
+    - enp2s0f0
+  minimum_socket_receive_buffer_size: 20MB
+  minimum_socket_send_buffer_size: default
+  max_message_size: 65500B
+  fragment_size: 4000B
+  max_rexmit_message_size: 1456B # Default value from CycloneDDS documentation
+  water_mark_whc_high: 500kB # Default value from CycloneDDS documentation
+  water_mark_whc_low: 1kB # Default value from CycloneDDS documentation
+
+# keyboard
+keyboard_layout_file: keyboard.jp+ctrl_nocaps
+
+# autoware logging suite
+# - logpacker
+logpacker_config_template: logpacker/logpacker_config_x2.yaml.jinja2
+# - logpacker - syslog plugin
+logpacker_enable_syslog_plugin: true
+# - logpacker - rosbag plugin
+logpacker_enable_rosbag_plugin: true
+qos_profile_overrides_template: logpacker/qos_profile_overrides_x2.yaml
+# - bagtaker
+rosbag_copy_directory: /media/autoware/ROSBAG
+bagtaker_params_template: bagtaker2/bagtaker_params_x2.yaml.jinja2
+
+# netplan
+netplan_files: netplan/99-autoware.x2-sub.yaml
+
+# pcan
+peak_can_mini_pcie:
+  - device: pcan0 # VCU
+    rule: SUBSYSTEMS=="pci", ATTR{dev_id}=="0x0"
+    bitrate: 500000
+  - device: pcan1 # IMU
+    rule: SUBSYSTEMS=="pci", ATTR{dev_id}=="0x1"
+    bitrate: 500000
+  - device: pcan2 # Thermometer
+    rule: SUBSYSTEMS=="usb", DRIVERS=="peak_usb"
+    bitrate: 250000
+
+# ptp4l port
+ptp4l_network_port: eno1
+
+# set-autoware-env
+autoware_install_dir: /home/autoware/pilot-auto.x2
+vehicle_id: default
+vehicle_model: j6_gen1
+sensor_model: aip_x2
+
+# timezone
+timezone: Asia/Tokyo
+
+# otaclient
+otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-sub
+otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-sub.j2
+
+# boot_shutdown_interface
+boot_shutdown_interface_param_file: boot_shutdown_interface/boot_shutdown.param.sub.yaml

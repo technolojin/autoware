@@ -11,6 +11,7 @@
 '/home/autoware/vehicle.env'
 '/greengrass/config/config.json'
 '/greengrass/certs'
+'/greengrass/v2/init_config'
 '/opt/autoware/maps'
 '/opt/autoware/area_map'
 '/opt/devtools'
