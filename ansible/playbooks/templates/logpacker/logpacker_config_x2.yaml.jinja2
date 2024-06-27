@@ -8,6 +8,7 @@ env_file_paths:
   - "/home/autoware/vehicle.env"
   - "/root/vehicle.env"
 upload_dest: "aws"
+use_old_name: true
 directories:
   - output_at: "{{ rosbag_logging_directory }}"
     output_mountpoint: "{{ rosbag_logging_directory_mountpoint }}"
