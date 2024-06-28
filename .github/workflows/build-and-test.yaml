@@ -1,0 +1,85 @@
+name: build-and-test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest-m
+    container: ${{ matrix.container }}${{ matrix.container-suffix }}
+    strategy:
+      fail-fast: false
+      matrix:
+        rosdistro:
+          - humble
+        container-suffix:
+          - ""
+        include:
+          - rosdistro: humble
+            container: ghcr.io/autowarefoundation/autoware:latest-prebuilt
+            build-depends-repos: ""
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install vcstool
+        run: |
+          sudo apt-get -y update
+          sudo apt-get -y install python3-pip
+          pip install --no-cache-dir vcstool
+
+      - name: Generate token
+        id: generate-token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Set git config
+        uses: autowarefoundation/autoware-github-actions/set-git-config@v1
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+
+      - name: Run vcs import
+        run: |
+          mkdir src
+          vcs import src < ci.repos
+
+      - name: Show disk space before the tasks
+        run: df -h
+
+      - name: Remove exec_depend
+        uses: autowarefoundation/autoware-github-actions/remove-exec-depend@v1
+
+      - name: Get self packages
+        id: get-self-packages
+        uses: autowarefoundation/autoware-github-actions/get-self-packages@v1
+
+      - name: Build
+        if: ${{ steps.get-self-packages.outputs.self-packages != '' }}
+        uses: autowarefoundation/autoware-github-actions/colcon-build@v1
+        with:
+          rosdistro: ${{ matrix.rosdistro }}
+          target-packages: ${{ steps.get-self-packages.outputs.self-packages }}
+          build-depends-repos: ${{ matrix.build-depends-repos }}
+
+      - name: Test
+        if: ${{ steps.get-self-packages.outputs.self-packages != '' }}
+        id: test
+        uses: autowarefoundation/autoware-github-actions/colcon-test@v1
+        with:
+          rosdistro: ${{ matrix.rosdistro }}
+          target-packages: ${{ steps.get-self-packages.outputs.self-packages }}
+          build-depends-repos: ${{ matrix.build-depends-repos }}
+
+      - name: Upload coverage to CodeCov
+        if: ${{ steps.test.outputs.coverage-report-files != '' }}
+        uses: codecov/codecov-action@v3
+        with:
+          files: ${{ steps.test.outputs.coverage-report-files }}
+          fail_ci_if_error: false
+          verbose: true
+          flags: total
+
+      - name: Show disk space after the tasks
+        run: df -h
