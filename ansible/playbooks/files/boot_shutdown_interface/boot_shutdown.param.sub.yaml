@@ -5,10 +5,9 @@
     execute_shutdown_time: 13
 
     topic_config:
-      name: /bagpacker/state
-      type: std_msgs/msg/String
+      name: /api/autoware/get/rosbag_record_status
+      type: tier4_external_api_msgs/msg/RosbagRecordStatus
       transient_local: false
       best_effort: false
 
-    additional_prepare_shutdown_command:
-      [systemctl stop bagpacker.service, systemctl stop syslog-collector.service]
+    additional_prepare_shutdown_command: [systemctl stop bagpacker.service]
