@@ -10,5 +10,4 @@
       transient_local: false
       best_effort: false
 
-    additional_prepare_shutdown_command:
-      [systemctl stop bagpacker.service]
+    additional_prepare_shutdown_command: [systemctl stop bagpacker.service]
