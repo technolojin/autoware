@@ -8,7 +8,6 @@
     - { role: autoware.ecu_system_setup.bash_completion }
     - { role: autoware.ecu_system_setup.boot_shutdown_interface }
     - { role: autoware.ecu_system_setup.boot_shutdown_service }
-    - { role: autoware.ecu_system_setup.chrony }
     - { role: autoware.ecu_system_setup.clean_ros_log }
     - { role: autoware.ecu_system_setup.cyclonedds }
     - { role: autoware.ecu_system_setup.lenovo_keyboard }
