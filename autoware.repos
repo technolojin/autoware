@@ -140,6 +140,10 @@ repositories:
     type: git
     url: https://github.com/osrf/dynamic_message_introspection.git
     version: 50277e341f61455c42a6015b5718804a4f8588f6
+  vendor/foxglove_bridge: # TODO: Remove this once .idl format are no longer used
+    type: git
+    url: git@github.com:foxglove/ros-foxglove-bridge.git
+    version: 0.7.6
   # product
   product/boot_shutdown_tools:
     type: git
