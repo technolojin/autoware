@@ -136,14 +136,14 @@
     - source: docker/build.sh
       pre-commands: |
         sd "autowarefoundation" "tier4" {source}
-        sd "autoware-universe" "pilot-auto" {source}
+        sd "autoware" "pilot-auto" {source}
 
-    - source: docker/autoware-universe/docker-bake.hcl
+    - source: docker/docker-bake.hcl
       dest: docker/pilot-auto/docker-bake.hcl
       pre-commands: |
         sd "autoware-universe" "pilot-auto" {source}
 
-    - source: docker/autoware-universe/Dockerfile
+    - source: docker/Dockerfile
       dest: docker/pilot-auto/Dockerfile
       pre-commands: |
         sd "universe" "local_dev_env" {source}
