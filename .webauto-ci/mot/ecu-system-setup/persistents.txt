@@ -11,5 +11,6 @@
 '/greengrass/certs'
 '/opt/autoware/maps'
 '/opt/autoware/area_map'
+'/opt/pilotauto'
 '/swapfile'
 '/swap.img'
