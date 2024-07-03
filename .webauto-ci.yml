@@ -13,7 +13,7 @@ artifacts:
     build:
       type: custom
       runtime:
-        type: standard1/amd64/large
+        type: standard1/amd64/xlarge
       source:
         vcstool:
           repositories_files:
@@ -244,7 +244,7 @@ artifacts:
     build:
       type: custom
       runtime:
-        type: standard1/amd64/large
+        type: standard1/amd64/xlarge
       source:
         vcstool:
           repositories_files:
