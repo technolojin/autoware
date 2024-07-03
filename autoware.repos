@@ -160,7 +160,7 @@ repositories:
   product/l4_toolkit:
     type: git
     url: git@github.com:tier4/l4_toolkit.git
-    version: 95847a40f6897d70c61cd91b777dd0211ce78330
+    version: cf9231abf071ea6b8d912a394bb7633ff9c87b7e
   # V2X
   v2x/vehicle2infrastructure:
     type: git
