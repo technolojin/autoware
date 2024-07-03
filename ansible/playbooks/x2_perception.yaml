@@ -33,6 +33,7 @@
     - { role: autoware.ecu_system_setup.tmp_cpu_off }
     - { role: autoware.ecu_system_setup.timezone }
     - { role: autoware.ecu_system_setup.set_large_txqueue }
+    - { role: hold_storage }
 
   # Any `tasks` defined in the play will be executed after each role listed in `roles`
   # see: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html#using-roles-at-the-play-level

@@ -8,6 +8,7 @@ env_file_paths:
   - "/home/autoware/vehicle.env"
   - "/root/vehicle.env"
 upload_dest: "aws"
+use_old_name: true
 directories:
   - output_at: "{{ rosbag_logging_directory }}"
     output_mountpoint: "{{ rosbag_logging_directory_mountpoint }}"
@@ -40,7 +41,6 @@ rosbag:
     - "/sensing/camera/camera(.*)/image_rect_color/compressed$"
     - "/sensing/camera/camera7/image_raw/compressed$"
     - "/sensing/radar/(.*)/objects_raw$"
-    - "/sensing/radar/(.*)/from_can_bus$"
     - "/sensing/radar/detected_objects$"
     - "/perception/object_recognition/detection/apollo/validation/objects$"
     - "/perception/object_recognition/detection/centerpoint/objects$"

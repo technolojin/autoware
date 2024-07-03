@@ -23,7 +23,6 @@
     - { role: autoware.ecu_system_setup.clean_ros_log }
     - { role: autoware.ecu_system_setup.cyclonedds }
     - { role: autoware.ecu_system_setup.disable_lock_screen }
-    - { role: autoware.ecu_system_setup.foxglove_bridge_service }
     - { role: autoware.ecu_system_setup.install_openssh_server }
     - { role: autoware.ecu_system_setup.netplan } # need to be the last, as the internet will lost after this
     - { role: autoware.ecu_system_setup.otaclient }
@@ -36,4 +35,4 @@
     - { role: autoware.ecu_system_setup.syslog_collector_client }
     - { role: autoware.ecu_system_setup.timezone }
     - { role: autoware.ecu_system_setup.turn_off_desktop_notification }
-    - { role: autoware.ecu_system_setup.x2_mot_env_setup }
+    - { role: autoware.ecu_system_setup.mot_env_setup }

@@ -60,3 +60,6 @@ log_storage_period: -1 month
 target_remove_log_dirs:
   - /opt/mot/logs/*
   - /home/autoware/.config/MaintenanceOperationTool/logs/*
+
+# mot_env_setup
+mot_repository_version_humble: f2b0d282fc001fe4f817db0999fe571badb2749d

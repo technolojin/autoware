@@ -4,6 +4,6 @@ format_version: 1
 enable_local_ota_proxy: true
 enable_local_ota_proxy_cache: true
 local_ota_proxy_listen_addr: "127.0.0.1"
-local_ota_proxy_listen_port: "{{ otaclient_otaproxy_listen_port }}"
+local_ota_proxy_listen_port: {{ otaclient_otaproxy_listen_port }}
 # if otaclient-logger is installed locally
 logging_server: "http://127.0.0.1:{{ otaclient_logger_listen_port }}"
