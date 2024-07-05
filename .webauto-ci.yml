@@ -117,77 +117,77 @@ artifacts:
         type: iso
         base_iso: ubuntu-20.04.3-live-server-amd64
 
-  - name: object-recognition
-    build:
-      type: custom
-      runtime:
-        type: standard1/arm64/large
-      source:
-        vcstool:
-          repositories_files:
-            - autoware.repos
-          import_path: src
-      linux_parameters:
-        kernel_version: 4.9.253-rqx58g
-      phases:
-        - name: ecu-system-setup
-          exec: ./.webauto-ci/perception/ecu-system-setup/run.sh
-          environment_variables:
-            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_perception.yaml
-            PERCEPTION_TYPE: od
-            VEHICLE_MODEL: j6
-          caches:
-            - name: apt-lists
-              mountpoint: /var/lib/apt/lists
-            - name: apt-archives
-              mountpoint: /var/cache/apt/archives
-          build_result_reuse:
-            key_files:
-              - .webauto-ci/perception/ecu-system-setup/**/*
-              - src/ecu_system_setup/**/*
-              - ansible/**/*
-              - ansible-galaxy-requirements.yaml
-      base_container_image:
-        from: 947232557913.dkr.ecr.ap-northeast-1.amazonaws.com/tier4/ci-prd-buildspecs-base:t4-gen-rqx58g-arm64-v1
-      output_rootfs_image:
-        from: ecu-system-setup
-        persistent_file_path: /etc/ota/persistents.txt
+  # - name: object-recognition
+  #   build:
+  #     type: custom
+  #     runtime:
+  #       type: standard1/arm64/large
+  #     source:
+  #       vcstool:
+  #         repositories_files:
+  #           - autoware.repos
+  #         import_path: src
+  #     linux_parameters:
+  #       kernel_version: 4.9.253-rqx58g
+  #     phases:
+  #       - name: ecu-system-setup
+  #         exec: ./.webauto-ci/perception/ecu-system-setup/run.sh
+  #         environment_variables:
+  #           ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_perception.yaml
+  #           PERCEPTION_TYPE: od
+  #           VEHICLE_MODEL: j6
+  #         caches:
+  #           - name: apt-lists
+  #             mountpoint: /var/lib/apt/lists
+  #           - name: apt-archives
+  #             mountpoint: /var/cache/apt/archives
+  #         build_result_reuse:
+  #           key_files:
+  #             - .webauto-ci/perception/ecu-system-setup/**/*
+  #             - src/ecu_system_setup/**/*
+  #             - ansible/**/*
+  #             - ansible-galaxy-requirements.yaml
+  #     base_container_image:
+  #       from: 947232557913.dkr.ecr.ap-northeast-1.amazonaws.com/tier4/ci-prd-buildspecs-base:t4-gen-rqx58g-arm64-v1
+  #     output_rootfs_image:
+  #       from: ecu-system-setup
+  #       persistent_file_path: /etc/ota/persistents.txt
 
-  - name: traffic-light-recognition
-    build:
-      type: custom
-      runtime:
-        type: standard1/arm64/large
-      source:
-        vcstool:
-          repositories_files:
-            - autoware.repos
-          import_path: src
-      linux_parameters:
-        kernel_version: 4.9.253-rqx58g
-      phases:
-        - name: ecu-system-setup
-          exec: ./.webauto-ci/perception/ecu-system-setup/run.sh
-          environment_variables:
-            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_perception.yaml
-            PERCEPTION_TYPE: tlr
-            VEHICLE_MODEL: j6
-          caches:
-            - name: apt-lists
-              mountpoint: /var/lib/apt/lists
-            - name: apt-archives
-              mountpoint: /var/cache/apt/archives
-          build_result_reuse:
-            key_files:
-              - .webauto-ci/perception/ecu-system-setup/**/*
-              - src/ecu_system_setup/**/*
-              - ansible/**/*
-              - ansible-galaxy-requirements.yaml
-      base_container_image:
-        from: 947232557913.dkr.ecr.ap-northeast-1.amazonaws.com/tier4/ci-prd-buildspecs-base:t4-gen-rqx58g-arm64-v1
-      output_rootfs_image:
-        from: ecu-system-setup
-        persistent_file_path: /etc/ota/persistents.txt
+  # - name: traffic-light-recognition
+  #   build:
+  #     type: custom
+  #     runtime:
+  #       type: standard1/arm64/large
+  #     source:
+  #       vcstool:
+  #         repositories_files:
+  #           - autoware.repos
+  #         import_path: src
+  #     linux_parameters:
+  #       kernel_version: 4.9.253-rqx58g
+  #     phases:
+  #       - name: ecu-system-setup
+  #         exec: ./.webauto-ci/perception/ecu-system-setup/run.sh
+  #         environment_variables:
+  #           ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_perception.yaml
+  #           PERCEPTION_TYPE: tlr
+  #           VEHICLE_MODEL: j6
+  #         caches:
+  #           - name: apt-lists
+  #             mountpoint: /var/lib/apt/lists
+  #           - name: apt-archives
+  #             mountpoint: /var/cache/apt/archives
+  #         build_result_reuse:
+  #           key_files:
+  #             - .webauto-ci/perception/ecu-system-setup/**/*
+  #             - src/ecu_system_setup/**/*
+  #             - ansible/**/*
+  #             - ansible-galaxy-requirements.yaml
+  #     base_container_image:
+  #       from: 947232557913.dkr.ecr.ap-northeast-1.amazonaws.com/tier4/ci-prd-buildspecs-base:t4-gen-rqx58g-arm64-v1
+  #     output_rootfs_image:
+  #       from: ecu-system-setup
+  #       persistent_file_path: /etc/ota/persistents.txt
 
   - name: mot
     build:
@@ -517,22 +517,22 @@ release:
       alternative_deployments:
         - type: installer
           artifact: main
-    - name: perception1
-      deployment:
-        type: rootfs
-        artifact: object-recognition
-    - name: perception2
-      deployment:
-        type: rootfs
-        artifact: object-recognition
-    - name: perception3
-      deployment:
-        type: rootfs
-        artifact: object-recognition
-    - name: perception4
-      deployment:
-        type: rootfs
-        artifact: traffic-light-recognition
+    # - name: perception1
+    #   deployment:
+    #     type: rootfs
+    #     artifact: object-recognition
+    # - name: perception2
+    #   deployment:
+    #     type: rootfs
+    #     artifact: object-recognition
+    # - name: perception3
+    #   deployment:
+    #     type: rootfs
+    #     artifact: object-recognition
+    # - name: perception4
+    #   deployment:
+    #     type: rootfs
+    #     artifact: traffic-light-recognition
     - name: mot
       deployment:
         type: rootfs
