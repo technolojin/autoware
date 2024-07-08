@@ -250,6 +250,7 @@ artifacts:
         vcstool:
           repositories_files:
             - autoware.repos
+            - tools.repos
           import_path: src
       environment_variables:
         AUTOWARE_PATH: /home/autoware/autoware.proj
