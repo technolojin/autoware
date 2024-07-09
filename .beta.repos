@@ -15,7 +15,7 @@ repositories:
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 35156f257f6254556ce04005cd5c6391a1b80707
+    version: beta/v0.29.0
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
@@ -71,19 +71,14 @@ repositories:
     type: git
     url: https://github.com/tier4/ublox.git
     version: dc49c2dcc9384401030c77d7db05fea9161cbcc0
-  vendor/hesai_pandar:
+  vendor/nebula:
     type: git
-    url: https://github.com/tier4/hesai_pandar.git
-    version: 407460e7af90f9bbae501bcce6b371f1d91d3702
-  # temporary until transition to nebula has done
-  # vendor/nebula:
-  #   type: git
-  #   url: https://github.com/tier4/nebula.git
-  #   version: main
-  # vendor/transport_drivers:
-  #   type: git
-  #   url: https://github.com/MapIV/transport_drivers.git
-  #   version: boost
+    url: https://github.com/tier4/nebula.git
+    version: d9aaefc9a4c06f6dae86cd7ef22f6353f1379e4f
+  vendor/boost_transport_drivers:
+    type: git
+    url: https://github.com/MapIV/transport_drivers.git
+    version: e7e25ed52b58b3556fa8b0f75a87f7c5d42fbef1
   vendor/ndt_omp:
     type: git
     url: https://github.com/tier4/ndt_omp.git
