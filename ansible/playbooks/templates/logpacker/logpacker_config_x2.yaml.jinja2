@@ -186,3 +186,60 @@ syslog:
       - "192.168.20.0/24"
       - "192.168.30.0/24"
   output_at: "{{ rosbag_logging_directory }}"
+# -------------------------------------------------------------------------------------------------
+# coredump plugin configurations
+# -------------------------------------------------------------------------------------------------
+coredump:
+  # If you use the other file for the coredump configuration, define its file path.
+  # params_file: /etc/logging_system/logpacker/coredump_params.yaml
+  # log_directory_path: "/var/lib/systemd/coredump"
+  hosts:
+    - host_name: autoware
+      ip_addr: 192.168.20.11
+      rsync_module: export
+      # If 'host_name' and 'ip_addr are empty, it means local host.
+      # Local host needs log_dir_path, instead of 'rsync_module'.
+      # log_dir_path: /var/lib/systemd/coredump
+      options:
+        - "-auv"
+    - host_name: perception1
+      ip_addr: 192.168.20.31
+      rsync_module: export
+      # If 'host_name' and 'ip_addr are empty, it means local host.
+      # Local host needs log_dir_path, instead of 'rsync_module'.
+      # log_dir_path: /var/lib/systemd/coredump
+      options:
+        - "-auv"
+    - host_name: perception2
+      ip_addr: 192.168.20.32
+      rsync_module: export
+      # If 'host_name' and 'ip_addr are empty, it means local host.
+      # Local host needs log_dir_path, instead of 'rsync_module'.
+      # log_dir_path: /var/lib/systemd/coredump
+      options:
+        - "-auv"
+    - host_name: perception3
+      ip_addr: 192.168.20.33
+      rsync_module: export
+      # If 'host_name' and 'ip_addr are empty, it means local host.
+      # Local host needs log_dir_path, instead of 'rsync_module'.
+      # log_dir_path: /var/lib/systemd/coredump
+      options:
+        - "-auv"
+    - host_name: perception4
+      ip_addr: 192.168.20.41
+      rsync_module: export
+      # If 'host_name' and 'ip_addr are empty, it means local host.
+      # Local host needs log_dir_path, instead of 'rsync_module'.
+      # log_dir_path: /var/lib/systemd/coredump
+      options:
+        - "-auv"
+  output_at: "{{ rosbag_logging_directory }}"
+# -------------------------------------------------------------------------------------------------
+# kdump plugin configurations
+# -------------------------------------------------------------------------------------------------
+kdump:
+  # If you use the other file for the kdump configuration, define its file path.
+  # params_file: "{{ logpacker_config_dir }}/kdump_params.yaml"
+  log_directory_path: "/var/crash"
+  output_at: "{{ rosbag_logging_directory }}"

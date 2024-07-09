@@ -25,6 +25,7 @@
     - { role: autoware.ecu_system_setup.stop_auto_upgrade }
     - { role: autoware.ecu_system_setup.timezone }
     - { role: autoware.ecu_system_setup.udev_usb_storage }
+    - { role: autoware.ecu_system_setup.rsyncd }
     - { role: x2_sub_misc }
 
 - name: Include playbook for development

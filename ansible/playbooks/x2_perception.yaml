@@ -33,6 +33,7 @@
     - { role: autoware.ecu_system_setup.tmp_cpu_off }
     - { role: autoware.ecu_system_setup.timezone }
     - { role: autoware.ecu_system_setup.set_large_txqueue }
+    - { role: autoware.ecu_system_setup.rsyncd }
     - { role: hold_storage }
 
   # Any `tasks` defined in the play will be executed after each role listed in `roles`
