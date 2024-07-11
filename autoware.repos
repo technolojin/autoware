@@ -3,7 +3,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
-    version: 65e1d20b68b309954946f9f225d2583fd3d5be87
+    version: 898eb5a9009a48021ef813f9c51a995e7327e3e3
   autoware/common:
     type: git
     url: https://github.com/autowarefoundation/autoware_common.git
@@ -11,11 +11,11 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: 59aedf4c36c7f843f63ebc06e397888d95a76801
+    version: b45ca366f40e54e8336f4493b803b193cfb5b70b
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 8ef3f017ec5de18cf7080db33e9a377dbd078cf6
+    version: ebb54ef44d302230a9af27fcfbc5b497d89c061a
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
