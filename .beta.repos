@@ -147,7 +147,7 @@ repositories:
   product/boot_shutdown_tools:
     type: git
     url: https://github.com/tier4/boot_shutdown_tools.git
-    version: v0.1.2
+    version: main
   product/autoware_logging_suite:
     type: git
     url: git@github.com:tier4/autoware_logging_suite.git
