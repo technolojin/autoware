@@ -3,7 +3,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
-    version: 898eb5a9009a48021ef813f9c51a995e7327e3e3
+    version: 7fc43944d32002452ff7bfd01647bb12672ef5fb
   autoware/common:
     type: git
     url: https://github.com/autowarefoundation/autoware_common.git
@@ -11,11 +11,11 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: 6f72857f520d26a5c2708ed065491f5e649310aa
+    version: f71dcce8596b8266091ea861271e5e6bb66d05f2
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: cec1431dc637a62125bbf085525d7a6415960b85
+    version: 02202d27f4b03bf434cfe1275b3412a832e04609
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
@@ -155,7 +155,7 @@ repositories:
   product/l4_toolkit:
     type: git
     url: git@github.com:tier4/l4_toolkit.git
-    version: cf9231abf071ea6b8d912a394bb7633ff9c87b7e
+    version: 26ddac86693d2328b207ea838ca71b60a0702113
   # V2X
   v2x/vehicle2infrastructure:
     type: git
