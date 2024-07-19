@@ -2468,3 +2468,143 @@
   durability: volatile
   history: keep_last
   reliability: best_effort
+/j6/can/command/b0_command:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/j6/can/command/b1_command:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/j6/can/command/m0_command:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/j6/can/command/m1_command:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/j6/can/debug/t0_debug:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/j6/can/diagnostics/d0_diagnostics:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/j6/can/status/b0_status:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/j6/can/status/b1_status:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/j6/can/status/m0_status:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/j6/can/status/m1_status:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/j6/can/status/m2_status:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/j6/can/status/m3_status:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/j6/from_can_bus:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/j6/input/headlights_cmd:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/j6/input/horn_cmd:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/j6/input/turn_indicators_cmd:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/j6/input/wipers_cmd:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/j6/socket_can_receiver/transition_event:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/j6/socket_can_sender/transition_event:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/j6/to_can_bus:
+  depth: 500
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/omron/traffic_light_info:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/v2i/external/v2i_traffic_light_info:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/sensing/radar/front_center/objects_raw:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/sensing/radar/front_left/objects_raw:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/sensing/radar/front_right/objects_raw:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/sensing/radar/rear_center/objects_raw:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/sensing/radar/rear_left/objects_raw:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/sensing/radar/rear_right/objects_raw:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
