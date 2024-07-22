@@ -74,6 +74,10 @@ otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-sub.j2
 # boot_shutdown_interface
 boot_shutdown_interface_param_file: boot_shutdown_interface/boot_shutdown.param.sub.yaml
 
+# godot_based_visualizer
+godot_rviz2_repository_version: j6
+godot_rviz2_autostart: false
+
 # rsyncd - add systemd-tmpfiles configuration for logpacker coredump plugin
 setup_coredump_rsyncd_service: false
 setup_coredump_tmpfiles_service: true
