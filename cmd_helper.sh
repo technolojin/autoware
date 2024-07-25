@@ -6,11 +6,11 @@ SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 
 # Set Environment Variables when not sourced
 if [ "${VEHICLE_MODEL:-false}" ]; then
-    export VEHICLE_MODEL=j6_gen1
+    export VEHICLE_MODEL=j6_gen2
 fi
 
 if [ "${SENSOR_MODEL:-false}" ]; then
-    export SENSOR_MODEL=aip_x2
+    export SENSOR_MODEL=aip_x2_gen2
 fi
 
 # --rosdep:        rosdep update and install
