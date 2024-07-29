@@ -23,6 +23,7 @@
     - { role: autoware.ecu_system_setup.nftables }
     - { role: autoware.ecu_system_setup.otaclient }
     - { role: autoware.ecu_system_setup.otaclient_logger }
+    - { role: autoware.ecu_system_setup.prevent_ros2_bag_play }
     - { role: autoware.ecu_system_setup.set_autoware_env }
     - { role: autoware.ecu_system_setup.stop_auto_upgrade }
     - { role: autoware.ecu_system_setup.timezone }
