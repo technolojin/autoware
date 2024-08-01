@@ -1,0 +1,11 @@
+[Unit]
+Description=autoware
+After=network-online.target peak-can-mini-pcie.service
+
+[Service]
+ExecStart=/opt/autoware/services/autoware/run.sh
+KillSignal=SIGINT
+User=autoware
+
+[Install]
+WantedBy=multi-user.target

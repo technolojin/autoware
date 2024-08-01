@@ -43,6 +43,10 @@ vehicle_id: default
 vehicle_model: lexus
 sensor_model: aip_xx1
 
+# simple_system_launch
+simple_system_launch_command: ros2 launch autoware_launch autoware.launch.xml
+simple_system_service_file: simple_system_launch/autoware_launch.service
+
 # timezone
 timezone: Asia/Tokyo
 
