@@ -7,7 +7,6 @@
 '/etc/nftables.conf'
 '/etc/tpm2_pkcs11/tpm2_pkcs11.sqlite3'
 '/etc/usbguard/rules.conf'
-'/etc/nftables.conf'
 '/home/autoware/vehicle.env'
 '/greengrass/config/config.json'
 '/greengrass/certs'
