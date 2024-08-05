@@ -14,12 +14,13 @@
     - { role: autoware.ecu_system_setup.boot_shutdown_interface }
     - { role: autoware.ecu_system_setup.boot_shutdown_manager }
     - { role: autoware.ecu_system_setup.boot_shutdown_service }
-    - { role: autoware.ecu_system_setup.foxglove_bridge_service }
     - { role: autoware.ecu_system_setup.ip_routing_policy }
     - { role: autoware.ecu_system_setup.lenovo_keyboard }
-    - { role: autoware.ecu_system_setup.peak_can_mini_pcie }
     - { role: autoware.ecu_system_setup.ptp4l_master }
     - { role: autoware.ecu_system_setup.rootfs_encrypt }
     - { role: autoware.ecu_system_setup.rsyslog }
     - { role: autoware.ecu_system_setup.syslog_collector_client }
+    - { role: autoware.ecu_system_setup.fintek_can_driver }
+    - { role: autoware.ecu_system_setup.marvell_switch_driver }
     - { role: x2_autoware }
+    - { role: x2_can_adm }

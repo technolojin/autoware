@@ -1,8 +1,0 @@
-format_version: 1
-# fully disable local ota cache on slow IO device
-enable_local_ota_proxy: false
-enable_local_ota_proxy_cache: false
-local_ota_proxy_listen_addr: "127.0.0.1"
-local_ota_proxy_listen_port: {{ otaclient_otaproxy_listen_port }}
-upper_ota_proxy: "http://192.168.30.11:{{ otaclient_otaproxy_listen_port }}"
-logging_server: "http://192.168.30.11:{{ otaclient_logger_listen_port }}"

@@ -2,107 +2,48 @@ network:
   version: 2
   renderer: networkd
   ethernets:
-    # internet
-    enp2s0f1:
+    # 1GbE SW Hub
+    # Internet, HMI
+    enp5s0f0:
       dhcp4: false
       dhcp6: false
-    # HMI
-    enp2s0f0:
+      optional: true
+    # 10GbE SW Hub
+    enp5s0f1:
       addresses: [192.168.30.11/24]
       dhcp4: false
       dhcp6: false
-    # LiDAR#1
+      optional: true
+      mtu: 9000
+    # Internal 10GbE SW IC
+    # RADAR
     enp3s0:
-      addresses: [192.168.110.11/24]
       dhcp4: false
       dhcp6: false
       optional: true
-    # LiDAR#2
+    # Internal 10GbE SW IC
+    # LiDAR, Sub ECU
     enp4s0:
-      addresses: [192.168.120.11/24]
+      addresses: [192.168.1.11/24]
       dhcp4: false
       dhcp6: false
+      mtu: 9000
       optional: true
-    # Perception
-    enp5s0:
-      addresses: [192.168.20.11/24]
-      dhcp4: false
-      dhcp6: false
-    # GNSS
-    enp6s0:
-      addresses: [192.168.100.11/24]
-      dhcp4: false
-      dhcp6: false
-      optional: true
-    # Sub ECU
-    eno1:
-      addresses: [192.168.10.11/24]
-      dhcp4: false
-      dhcp6: false
 
   #### "routes" and "routing-policy" configurations below are not reflected to the routing table and the routing policy database.
   #### Therefore, in this version, they are additionally configured in "policy_routing.service".
   vlans:
+    # RADAR
+    vlan.19:
+      id: 19
+      link: enp3s0
+      dhcp4: false
+      dhcp6: false
+      addresses: [10.13.1.166/24]
+    # Internet
     vlan.100:
       id: 100
-      link: enp2s0f1
-      dhcp4: false
-      dhcp6: false
-      addresses: [192.168.254.11/24]
-      nameservers:
-        addresses: [8.8.8.8]
-      routes:
-        - to: 0.0.0.0/0
-          via: 192.168.254.1
-          table: 100
-        - to: 0.0.0.0/0
-          via: 192.168.254.1
-          metric: 80
-      routing-policy:
-        - from: 192.168.254.0/24
-          table: 100
-          priority: 100
-    vlan.200:
-      id: 200
-      link: enp2s0f1
-      dhcp4: false
-      dhcp6: false
-      addresses: [192.168.253.11/24]
-      nameservers:
-        addresses: [8.8.8.8]
-      routes:
-        - to: 0.0.0.0/0
-          via: 192.168.253.1
-          table: 200
-        - to: 0.0.0.0/0
-          via: 192.168.253.1
-          metric: 90
-      routing-policy:
-        - from: 192.168.253.0/24
-          table: 200
-          priority: 200
-    vlan.300:
-      id: 300
-      link: enp2s0f1
-      dhcp4: false
-      dhcp6: false
-      addresses: [192.168.252.11/24]
-      nameservers:
-        addresses: [8.8.8.8]
-      routes:
-        - to: 0.0.0.0/0
-          via: 192.168.252.1
-          table: 300
-        - to: 0.0.0.0/0
-          via: 192.168.252.1
-          metric: 100
-      routing-policy:
-        - from: 192.168.252.0/24
-          table: 300
-          priority: 300
-    vlan.400:
-      id: 400
-      link: enp2s0f1
+      link: enp5s0f0
       dhcp4: false
       dhcp6: false
       addresses: [192.168.251.11/24]
@@ -111,11 +52,75 @@ network:
       routes:
         - to: 0.0.0.0/0
           via: 192.168.251.1
-          table: 400
+          table: 100
         - to: 0.0.0.0/0
           via: 192.168.251.1
-          metric: 110
+          metric: 80
       routing-policy:
         - from: 192.168.251.0/24
+          table: 100
+          priority: 100
+    vlan.200:
+      id: 200
+      link: enp5s0f0
+      dhcp4: false
+      dhcp6: false
+      addresses: [192.168.252.11/24]
+      nameservers:
+        addresses: [8.8.8.8]
+      routes:
+        - to: 0.0.0.0/0
+          via: 192.168.252.1
+          table: 200
+        - to: 0.0.0.0/0
+          via: 192.168.252.1
+          metric: 90
+      routing-policy:
+        - from: 192.168.252.0/24
+          table: 200
+          priority: 200
+    vlan.300:
+      id: 300
+      link: enp5s0f0
+      dhcp4: false
+      dhcp6: false
+      addresses: [192.168.253.11/24]
+      nameservers:
+        addresses: [8.8.8.8]
+      routes:
+        - to: 0.0.0.0/0
+          via: 192.168.253.1
+          table: 300
+        - to: 0.0.0.0/0
+          via: 192.168.253.1
+          metric: 100
+      routing-policy:
+        - from: 192.168.253.0/24
+          table: 300
+          priority: 300
+    vlan.400:
+      id: 400
+      link: enp5s0f0
+      dhcp4: false
+      dhcp6: false
+      addresses: [192.168.254.11/24]
+      nameservers:
+        addresses: [8.8.8.8]
+      routes:
+        - to: 0.0.0.0/0
+          via: 192.168.254.1
+          table: 400
+        - to: 0.0.0.0/0
+          via: 192.168.254.1
+          metric: 110
+      routing-policy:
+        - from: 192.168.254.0/24
           table: 400
           priority: 400
+    # HMI + PTPv2
+    vlan.500:
+      id: 500
+      link: enp5s0f0
+      dhcp4: false
+      dhcp6: false
+      addresses: [192.168.20.11/24]

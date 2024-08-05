@@ -11,24 +11,26 @@ autoware_env_dir_privileged: false
 # cyclonedds
 cyclonedds:
   network_interface_address:
-    - eno1
-    - enp5s0
-    - enp2s0f0
-  minimum_socket_receive_buffer_size: 20MB
-  minimum_socket_send_buffer_size: default
-  max_message_size: 65500B
-  fragment_size: 4000B
-  max_rexmit_message_size: 1456B # Default value from CycloneDDS documentation # cspell:disable-line
-  water_mark_whc_high: 500kB # Default value from CycloneDDS documentation
-  water_mark_whc_low: 1kB # Default value from CycloneDDS documentation
-ipv4_ipfrag_high_thresh: 268435456
+    - enp5s0f1
+    - vlan.500
+  minimum_socket_receive_buffer_size: 10MB
+  minimum_socket_send_buffer_size: 10MB
+  max_message_size: 8950B
+  fragment_size: 8850B
+  max_rexmit_message_size: 8950B
+  water_mark_whc_high: 4MB
+  water_mark_whc_low: 10kB
+ipv4_ipfrag_time: 1
+ipv4_ipfrag_high_thresh: 134217728
+netcore_rmem_max: 2147483647
+netcore_wmem_max: 2147483647
 
 # greengrass user/group
 ggc_user_uid: 919
 ggc_group_gid: 929
 
 # netplan
-netplan_files: netplan/99-autoware.yaml
+netplan_files: netplan/99-autoware.x2.yaml
 
 # nftables
 nftables_conf_file: nftables/nftables.conf
@@ -40,8 +42,8 @@ otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2.j2
 # set-autoware-env
 autoware_install_dir: /home/autoware/pilot-auto.x2
 vehicle_id: default
-vehicle_model: j6_gen1
-sensor_model: aip_x2
+vehicle_model: j6_gen2
+sensor_model: aip_x2_gen2
 
 # timezone
 timezone: Asia/Tokyo
@@ -57,43 +59,17 @@ keyboard_layout_file: keyboard.jp+ctrl_nocaps
 
 # ========== ecu_setup.yaml ==========
 
-# pcan
-peak_can_mini_pcie:
-  - device: pcan0 # VCU
-    rule: SUBSYSTEMS=="pci", ATTR{dev_id}=="0x0"
-    bitrate: 500000
-  - device: pcan1 # IMU
-    rule: SUBSYSTEMS=="pci", ATTR{dev_id}=="0x1"
-    bitrate: 500000
-  - device: pcan2 # Radar: front_center
-    rule: SUBSYSTEMS=="usb", ATTR{dev_id}=="0x0", KERNELS=="*.1*"
-    bitrate: 500000
-  - device: pcan3 # Radar: left_front
-    rule: SUBSYSTEMS=="usb", ATTR{dev_id}=="0x1", KERNELS=="*.1*"
-    bitrate: 500000
-  - device: pcan4 # Radar: left_rear
-    rule: SUBSYSTEMS=="usb", ATTR{dev_id}=="0x0", KERNELS=="*.2*"
-    bitrate: 500000
-  - device: pcan5 # Radar: rear_center
-    rule: SUBSYSTEMS=="usb", ATTR{dev_id}=="0x1", KERNELS=="*.2*"
-    bitrate: 500000
-  - device: pcan6 # Radar: right_rear
-    rule: SUBSYSTEMS=="usb", ATTR{dev_id}=="0x0", KERNELS=="*.3*"
-    bitrate: 500000
-  - device: pcan7 # Radar: right_front
-    rule: SUBSYSTEMS=="usb", ATTR{dev_id}=="0x1", KERNELS=="*.3*"
-    bitrate: 500000
-  - device: pcan8 # EBS
-    rule: SUBSYSTEM=="net", ATTRS{idProduct}=="000c", ATTRS{idVendor}=="0c72"
-    bitrate: 250000
-
 # ptp4l
-ptp4l_master_ports:
-  - enp3s0
-  - enp4s0
-  - enp5s0
-  - enp2s0f0
-  - eno1
+# TODO: Add ptp for LiDARs
+ptp4l_masters:
+  - name: enp3s0_radar
+    port_name: enp3s0
+    config_name: tier4_radar_gptp.cfg
+    use_phc2sys: true
+  - name: enp5s0f0_ecu
+    port_name: vlan.500
+    config_name: tier4_normal_software_ptp.cfg
+    use_phc2sys: false
 
 # syslog collector - client
 syslog_collector_type: Client
