@@ -1,0 +1,101 @@
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    # 1GbE SW Hub
+    # Internet, HMI
+    eth0:
+      optional: true
+      dhcp4: false
+      dhcp6: false
+    # Debug / Internet connection
+    eqos0:
+      optional: true
+      dhcp4: true
+      dhcp6: true
+
+  vlans:
+    # Internet
+    vlan.100:
+      id: 100
+      link: eth0
+      dhcp4: false
+      dhcp6: false
+      addresses: [192.168.251.61/24]
+      nameservers:
+        addresses: [8.8.8.8]
+      routes:
+        - to: 0.0.0.0/0
+          via: 192.168.251.1
+          table: 100
+        - to: 0.0.0.0/0
+          via: 192.168.251.1
+          metric: 80
+      routing-policy:
+        - from: 192.168.251.0/24
+          table: 100
+          priority: 100
+    vlan.200:
+      id: 200
+      link: eth0
+      dhcp4: false
+      dhcp6: false
+      addresses: [192.168.252.61/24]
+      nameservers:
+        addresses: [8.8.8.8]
+      routes:
+        - to: 0.0.0.0/0
+          via: 192.168.252.1
+          table: 200
+        - to: 0.0.0.0/0
+          via: 192.168.252.1
+          metric: 90
+      routing-policy:
+        - from: 192.168.252.0/24
+          table: 200
+          priority: 200
+    vlan.300:
+      id: 300
+      link: eth0
+      dhcp4: false
+      dhcp6: false
+      addresses: [192.168.253.61/24]
+      nameservers:
+        addresses: [8.8.8.8]
+      routes:
+        - to: 0.0.0.0/0
+          via: 192.168.253.1
+          table: 300
+        - to: 0.0.0.0/0
+          via: 192.168.253.1
+          metric: 100
+      routing-policy:
+        - from: 192.168.253.0/24
+          table: 300
+          priority: 300
+    vlan.400:
+      id: 400
+      link: eth0
+      dhcp4: false
+      dhcp6: false
+      addresses: [192.168.254.61/24]
+      nameservers:
+        addresses: [8.8.8.8]
+      routes:
+        - to: 0.0.0.0/0
+          via: 192.168.254.1
+          table: 400
+        - to: 0.0.0.0/0
+          via: 192.168.254.1
+          metric: 110
+      routing-policy:
+        - from: 192.168.254.0/24
+          table: 400
+          priority: 400
+    # HMI + PTPv2
+    vlan.500:
+      id: 500
+      link: eth0
+      dhcp4: false
+      dhcp6: false
+      addresses: [192.168.20.61/24]

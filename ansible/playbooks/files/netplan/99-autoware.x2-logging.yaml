@@ -1,0 +1,24 @@
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    # 10G BASE-T
+    # 10GbE SW Hub
+    enp3s0f0:
+      optional: true
+      dhcp4: false
+      dhcp6: false
+      addresses: [192.168.30.71/24]
+      mtu: 9000
+    # 1G BASE-T
+    # HMI + PTPv2
+    enp11s0f0:
+      optional: true
+      dhcp4: false
+      dhcp6: false
+      addresses: [192.168.20.71/24]
+    # For debugging purpose
+    enp8s0:
+      optional: true
+      dhcp4: true
+      dhcp6: true
