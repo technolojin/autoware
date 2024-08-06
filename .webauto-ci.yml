@@ -115,7 +115,7 @@ artifacts:
       output_installer_image:
         from: ecu-system-setup
         type: iso
-        base_iso: ubuntu-20.04.3-live-server-amd64
+        base_iso: ubuntu-22.04.3-live-server-amd64
         install_disk: /dev/nvme0n1
 
 simulations:
