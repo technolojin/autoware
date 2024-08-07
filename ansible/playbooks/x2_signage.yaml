@@ -27,16 +27,6 @@
         update_cache: true
         cache_valid_time: 86400
       when: skip_upgrade is not defined or skip_upgrade != "true"
-    - name: Use VLAN
-      ansible.builtin.include_vars:
-        file: vars/x2_signage.vlan.yaml
-      when: setup_vlan is defined and setup_vlan
-    - name: Delete {{ netplan_old_file }}
-      ansible.builtin.file:
-        path: /etc/netplan/{{ netplan_old_file }}
-        state: absent
-      become: true
-      when: setup_vlan is defined and setup_vlan
   roles:
     - { role: autoware.ecu_system_setup.additional_fonts }
     - { role: autoware.ecu_system_setup.automatic_login }
