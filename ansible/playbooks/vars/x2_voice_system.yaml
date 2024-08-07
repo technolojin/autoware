@@ -23,7 +23,7 @@ keyboard_layout_file: keyboard.jp
 # cyclonedds
 cyclonedds:
   network_interface_address:
-    - eth0
+    - enp1s0
   minimum_socket_receive_buffer_size: 20MB
   minimum_socket_send_buffer_size: default
   max_message_size: 65500B
@@ -33,7 +33,7 @@ cyclonedds:
   water_mark_whc_low: 1kB # Default value from CycloneDDS documentation
 
 # ptp4l port
-ptp4l_network_port: eth0
+ptp4l_network_port: enp1s0
 
 # ros2-app-build
 ros2_app_repository: git@github.com:tier4/vehicle_voice_alert_system.git
