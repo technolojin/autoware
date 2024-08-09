@@ -1,0 +1,4503 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<switch_config_1>
+    <board_config>./bd_cfg.xml</board_config>
+    <reg_list>
+        <entity_order_no>0x0000</entity_order_no>
+        <entity_enabled>true</entity_enabled>
+        <op_list_name>ADM_AL30</op_list_name>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFE4</offset>
+            <value>0x0007</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0200</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFE3</offset>
+            <value>0x7000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0000</offset>
+            <value>0x0840</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0001</smi_device>
+        </phy_operation>
+        <firmware_operation>
+            <op_name>New Delay Operation Import</op_name>
+            <rmu_code>0xF287</rmu_code>
+            <data>00 01 00 00 F2 87 00 04</data>
+        </firmware_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE07</offset>
+            <value>0x125A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE09</offset>
+            <value>0x1288</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE08</offset>
+            <value>0x2588</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE72</offset>
+            <value>0x042C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFEE4</offset>
+            <value>0x0071</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFEE4</offset>
+            <value>0x0001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0048</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0000</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0001</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0000</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFDB</offset>
+            <value>0xFC10</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0058</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFCAD</offset>
+            <value>0x030C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8032</offset>
+            <value>0x6001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFDFF</offset>
+            <value>0x05A5</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFDEC</offset>
+            <value>0xDBAF</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFCAB</offset>
+            <value>0x1054</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFCAC</offset>
+            <value>0x1483</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8033</offset>
+            <value>0xC801</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8032</offset>
+            <value>0x2020</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0007</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8031</offset>
+            <value>0x0A28</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0007</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8031</offset>
+            <value>0x0C28</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0007</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFBBA</offset>
+            <value>0x0CB2</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFBBB</offset>
+            <value>0x0C4A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE5F</offset>
+            <value>0x00E8</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE05</offset>
+            <value>0x755C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFA20</offset>
+            <value>0x002A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE11</offset>
+            <value>0x1105</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AB</offset>
+            <value>0x0001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AD</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0085</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x1250</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0086</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x9958</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0089</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x1444</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x00CC</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x35FC</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0044</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0xCFC6</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0041</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x190F</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0042</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x144A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0043</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x56AD</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0050</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0xF800</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0051</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x0970</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x818B</offset>
+            <value>0x00C0</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8000</offset>
+            <value>0x3900</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8000</offset>
+            <value>0x3100</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x818B</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8178</offset>
+            <value>0x7540</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8178</offset>
+            <value>0x5540</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>Set speed and mode</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0834</offset>
+            <value>0xC001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0001</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0048</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0900</offset>
+            <value>0x8000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFE4</offset>
+            <value>0x000C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0058</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8000</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0001</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8017</offset>
+            <value>0x0001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFE4</offset>
+            <value>0x0007</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0200</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFE3</offset>
+            <value>0x7000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0000</offset>
+            <value>0x0840</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0001</smi_device>
+        </phy_operation>
+        <firmware_operation>
+            <op_name>New Delay Operation Import</op_name>
+            <rmu_code>0xF287</rmu_code>
+            <data>00 01 00 00 F2 87 00 04</data>
+        </firmware_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE07</offset>
+            <value>0x125A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE09</offset>
+            <value>0x1288</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE08</offset>
+            <value>0x2588</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE72</offset>
+            <value>0x042C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFEE4</offset>
+            <value>0x0071</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFEE4</offset>
+            <value>0x0001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0048</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0000</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0001</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0000</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFDB</offset>
+            <value>0xFC10</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0058</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFCAD</offset>
+            <value>0x030C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8032</offset>
+            <value>0x6001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFDFF</offset>
+            <value>0x05A5</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFDEC</offset>
+            <value>0xDBAF</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFCAB</offset>
+            <value>0x1054</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFCAC</offset>
+            <value>0x1483</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8033</offset>
+            <value>0xC801</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8032</offset>
+            <value>0x2020</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0007</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8031</offset>
+            <value>0x0A28</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0007</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8031</offset>
+            <value>0x0C28</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0007</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFBBA</offset>
+            <value>0x0CB2</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFBBB</offset>
+            <value>0x0C4A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE5F</offset>
+            <value>0x00E8</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE05</offset>
+            <value>0x755C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFA20</offset>
+            <value>0x002A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE11</offset>
+            <value>0x1105</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AB</offset>
+            <value>0x0001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AD</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0085</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x1250</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0086</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x9958</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0089</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x1444</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x00CC</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x35FC</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0044</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0xCFC6</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0041</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x190F</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0042</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x144A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0043</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x56AD</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0050</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0xF800</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0051</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x0970</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x818B</offset>
+            <value>0x00C0</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8000</offset>
+            <value>0x3900</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8000</offset>
+            <value>0x3100</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x818B</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8178</offset>
+            <value>0x7540</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8178</offset>
+            <value>0x5540</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>Set speed and mode</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0834</offset>
+            <value>0xC001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0001</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0048</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0900</offset>
+            <value>0x8000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFE4</offset>
+            <value>0x000C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0058</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8000</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0002</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8017</offset>
+            <value>0x0001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFE4</offset>
+            <value>0x0007</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0200</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFE3</offset>
+            <value>0x7000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0000</offset>
+            <value>0x0840</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0001</smi_device>
+        </phy_operation>
+        <firmware_operation>
+            <op_name>New Delay Operation Import</op_name>
+            <rmu_code>0xF287</rmu_code>
+            <data>00 01 00 00 F2 87 00 04</data>
+        </firmware_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE07</offset>
+            <value>0x125A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE09</offset>
+            <value>0x1288</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE08</offset>
+            <value>0x2588</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE72</offset>
+            <value>0x042C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFEE4</offset>
+            <value>0x0071</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFEE4</offset>
+            <value>0x0001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0048</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0000</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0001</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0000</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFDB</offset>
+            <value>0xFC10</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0058</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFCAD</offset>
+            <value>0x030C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8032</offset>
+            <value>0x6001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFDFF</offset>
+            <value>0x05A5</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFDEC</offset>
+            <value>0xDBAF</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFCAB</offset>
+            <value>0x1054</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFCAC</offset>
+            <value>0x1483</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8033</offset>
+            <value>0xC801</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8032</offset>
+            <value>0x2020</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0007</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8031</offset>
+            <value>0x0A28</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0007</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8031</offset>
+            <value>0x0C28</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0007</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFBBA</offset>
+            <value>0x0CB2</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFBBB</offset>
+            <value>0x0C4A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE5F</offset>
+            <value>0x00E8</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE05</offset>
+            <value>0x755C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFA20</offset>
+            <value>0x002A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE11</offset>
+            <value>0x1105</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AB</offset>
+            <value>0x0001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AD</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0085</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x1250</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0086</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x9958</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0089</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x1444</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x00CC</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x35FC</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0044</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0xCFC6</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0041</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x190F</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0042</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x144A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0043</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x56AD</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0050</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0xF800</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0051</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x0970</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x818B</offset>
+            <value>0x00C0</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8000</offset>
+            <value>0x3900</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8000</offset>
+            <value>0x3100</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x818B</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8178</offset>
+            <value>0x7540</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8178</offset>
+            <value>0x5540</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>Set speed and mode</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0834</offset>
+            <value>0xC001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0001</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0048</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0900</offset>
+            <value>0x8000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFE4</offset>
+            <value>0x000C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0058</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8000</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0003</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8017</offset>
+            <value>0x0001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFE4</offset>
+            <value>0x0007</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0200</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFE3</offset>
+            <value>0x7000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0000</offset>
+            <value>0x0840</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0001</smi_device>
+        </phy_operation>
+        <firmware_operation>
+            <op_name>New Delay Operation Import</op_name>
+            <rmu_code>0xF287</rmu_code>
+            <data>00 01 00 00 F2 87 00 04</data>
+        </firmware_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE07</offset>
+            <value>0x125A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE09</offset>
+            <value>0x1288</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE08</offset>
+            <value>0x2588</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE72</offset>
+            <value>0x042C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFEE4</offset>
+            <value>0x0071</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFEE4</offset>
+            <value>0x0001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0048</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0000</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0001</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0000</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFDB</offset>
+            <value>0xFC10</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0058</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFCAD</offset>
+            <value>0x030C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8032</offset>
+            <value>0x6001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFDFF</offset>
+            <value>0x05A5</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFDEC</offset>
+            <value>0xDBAF</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFCAB</offset>
+            <value>0x1054</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFCAC</offset>
+            <value>0x1483</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8033</offset>
+            <value>0xC801</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8032</offset>
+            <value>0x2020</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0007</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8031</offset>
+            <value>0x0A28</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0007</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8031</offset>
+            <value>0x0C28</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0007</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFBBA</offset>
+            <value>0x0CB2</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFBBB</offset>
+            <value>0x0C4A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE5F</offset>
+            <value>0x00E8</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE05</offset>
+            <value>0x755C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFA20</offset>
+            <value>0x002A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE11</offset>
+            <value>0x1105</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AB</offset>
+            <value>0x0001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AD</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0085</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x1250</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0086</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x9958</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0089</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x1444</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x00CC</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x35FC</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0044</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0xCFC6</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0041</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x190F</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0042</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x144A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0043</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x56AD</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0050</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0xF800</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0051</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x0970</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x818B</offset>
+            <value>0x00C0</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8000</offset>
+            <value>0x3900</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8000</offset>
+            <value>0x3100</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x818B</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8178</offset>
+            <value>0x7540</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8178</offset>
+            <value>0x5540</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>Set speed and mode</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0834</offset>
+            <value>0xC001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0001</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0048</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0900</offset>
+            <value>0x8000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFE4</offset>
+            <value>0x000C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0058</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8000</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0004</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8017</offset>
+            <value>0x0001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFE4</offset>
+            <value>0x0007</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0200</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFE3</offset>
+            <value>0x7000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0000</offset>
+            <value>0x0840</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0001</smi_device>
+        </phy_operation>
+        <firmware_operation>
+            <op_name>New Delay Operation Import</op_name>
+            <rmu_code>0xF287</rmu_code>
+            <data>00 01 00 00 F2 87 00 04</data>
+        </firmware_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE07</offset>
+            <value>0x125A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE09</offset>
+            <value>0x1288</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE08</offset>
+            <value>0x2588</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE72</offset>
+            <value>0x042C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFEE4</offset>
+            <value>0x0071</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFEE4</offset>
+            <value>0x0001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0048</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0000</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0001</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0000</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFDB</offset>
+            <value>0xFC10</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0058</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFCAD</offset>
+            <value>0x030C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8032</offset>
+            <value>0x6001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFDFF</offset>
+            <value>0x05A5</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFDEC</offset>
+            <value>0xDBAF</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFCAB</offset>
+            <value>0x1054</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFCAC</offset>
+            <value>0x1483</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8033</offset>
+            <value>0xC801</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8032</offset>
+            <value>0x2020</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0007</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8031</offset>
+            <value>0x0A28</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0007</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8031</offset>
+            <value>0x0C28</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0007</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFBBA</offset>
+            <value>0x0CB2</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFBBB</offset>
+            <value>0x0C4A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE5F</offset>
+            <value>0x00E8</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE05</offset>
+            <value>0x755C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFA20</offset>
+            <value>0x002A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE11</offset>
+            <value>0x1105</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AB</offset>
+            <value>0x0001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AD</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0085</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x1250</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0086</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x9958</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0089</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x1444</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x00CC</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x35FC</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0044</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0xCFC6</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0041</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x190F</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0042</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x144A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0043</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x56AD</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0050</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0xF800</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0051</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x0970</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x818B</offset>
+            <value>0x00C0</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8000</offset>
+            <value>0x3900</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8000</offset>
+            <value>0x3100</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x818B</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8178</offset>
+            <value>0x7540</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8178</offset>
+            <value>0x5540</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>Set speed and mode</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0834</offset>
+            <value>0xC001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0001</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0048</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0900</offset>
+            <value>0x8000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFE4</offset>
+            <value>0x000C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0058</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8000</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0005</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8017</offset>
+            <value>0x0001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFE4</offset>
+            <value>0x0007</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0200</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFE3</offset>
+            <value>0x7000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0000</offset>
+            <value>0x0840</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0001</smi_device>
+        </phy_operation>
+        <firmware_operation>
+            <op_name>New Delay Operation Import</op_name>
+            <rmu_code>0xF287</rmu_code>
+            <data>00 01 00 00 F2 87 00 04</data>
+        </firmware_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE07</offset>
+            <value>0x125A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE09</offset>
+            <value>0x1288</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE08</offset>
+            <value>0x2588</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE72</offset>
+            <value>0x042C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFEE4</offset>
+            <value>0x0071</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFEE4</offset>
+            <value>0x0001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0048</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0000</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0001</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0000</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFDB</offset>
+            <value>0xFC10</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0058</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFCAD</offset>
+            <value>0x030C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8032</offset>
+            <value>0x6001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFDFF</offset>
+            <value>0x05A5</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFDEC</offset>
+            <value>0xDBAF</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFCAB</offset>
+            <value>0x1054</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFCAC</offset>
+            <value>0x1483</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8033</offset>
+            <value>0xC801</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8032</offset>
+            <value>0x2020</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0007</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8031</offset>
+            <value>0x0A28</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0007</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8031</offset>
+            <value>0x0C28</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0007</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFBBA</offset>
+            <value>0x0CB2</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFBBB</offset>
+            <value>0x0C4A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE5F</offset>
+            <value>0x00E8</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE05</offset>
+            <value>0x755C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFA20</offset>
+            <value>0x002A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE11</offset>
+            <value>0x1105</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AB</offset>
+            <value>0x0001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AD</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0085</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x1250</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0086</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x9958</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0089</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x1444</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x00CC</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x35FC</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0044</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0xCFC6</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0041</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x190F</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0042</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x144A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0043</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x56AD</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0050</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0xF800</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AC</offset>
+            <value>0x0051</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x80AE</offset>
+            <value>0x0970</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x818B</offset>
+            <value>0x00C0</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8000</offset>
+            <value>0x3900</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8000</offset>
+            <value>0x3100</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x818B</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8178</offset>
+            <value>0x7540</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8178</offset>
+            <value>0x5540</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0004</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>Set speed and mode</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0834</offset>
+            <value>0xC001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0001</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0048</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0900</offset>
+            <value>0x8000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFE4</offset>
+            <value>0x000C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0058</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8000</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0006</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8017</offset>
+            <value>0x0001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFE4</offset>
+            <value>0x0007</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0200</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFE3</offset>
+            <value>0x7000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0000</offset>
+            <value>0x0840</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0001</smi_device>
+        </phy_operation>
+        <firmware_operation>
+            <op_name>New Delay Operation Import</op_name>
+            <rmu_code>0xF287</rmu_code>
+            <data>00 01 00 00 F2 87 00 04</data>
+        </firmware_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE07</offset>
+            <value>0x125A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE09</offset>
+            <value>0x1288</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE08</offset>
+            <value>0x2588</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE72</offset>
+            <value>0x042C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFEE4</offset>
+            <value>0x0071</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFEE4</offset>
+            <value>0x0001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0048</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0000</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0001</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0000</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFDB</offset>
+            <value>0xFC10</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0058</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFCAD</offset>
+            <value>0x030C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8032</offset>
+            <value>0x6001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFDFF</offset>
+            <value>0x05A5</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFDEC</offset>
+            <value>0xDBAF</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFCAB</offset>
+            <value>0x1054</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFCAC</offset>
+            <value>0x1483</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8033</offset>
+            <value>0xC801</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8032</offset>
+            <value>0x2020</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0007</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8031</offset>
+            <value>0x0A28</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0007</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8031</offset>
+            <value>0x0C28</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0007</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFBBA</offset>
+            <value>0x0CB2</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFBBB</offset>
+            <value>0x0C4A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE5F</offset>
+            <value>0x00E8</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE05</offset>
+            <value>0x755C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFA20</offset>
+            <value>0x002A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE11</offset>
+            <value>0x1105</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>Set speed and mode</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0834</offset>
+            <value>0xC001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0001</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0048</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0900</offset>
+            <value>0x8000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFE4</offset>
+            <value>0x000C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0058</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8000</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0007</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8017</offset>
+            <value>0x0001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFE4</offset>
+            <value>0x0007</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0200</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFE3</offset>
+            <value>0x7000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0000</offset>
+            <value>0x0840</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0001</smi_device>
+        </phy_operation>
+        <firmware_operation>
+            <op_name>New Delay Operation Import</op_name>
+            <rmu_code>0xF287</rmu_code>
+            <data>00 01 00 00 F2 87 00 04</data>
+        </firmware_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE07</offset>
+            <value>0x125A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE09</offset>
+            <value>0x1288</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE08</offset>
+            <value>0x2588</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE72</offset>
+            <value>0x042C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFEE4</offset>
+            <value>0x0071</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFEE4</offset>
+            <value>0x0001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0048</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0000</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0001</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0000</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFDB</offset>
+            <value>0xFC10</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0058</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFCAD</offset>
+            <value>0x030C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8032</offset>
+            <value>0x6001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFDFF</offset>
+            <value>0x05A5</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFDEC</offset>
+            <value>0xDBAF</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFCAB</offset>
+            <value>0x1054</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFCAC</offset>
+            <value>0x1483</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8033</offset>
+            <value>0xC801</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8032</offset>
+            <value>0x2020</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0007</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8031</offset>
+            <value>0x0A28</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0007</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8031</offset>
+            <value>0x0C28</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0007</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFBBA</offset>
+            <value>0x0CB2</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFBBB</offset>
+            <value>0x0C4A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE5F</offset>
+            <value>0x00E8</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE05</offset>
+            <value>0x755C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFA20</offset>
+            <value>0x002A</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE11</offset>
+            <value>0x1105</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>Set speed and mode</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0834</offset>
+            <value>0xC001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0001</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0048</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0900</offset>
+            <value>0x8000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFFE4</offset>
+            <value>0x000C</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0xFE1B</offset>
+            <value>0x0058</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8000</offset>
+            <value>0x0000</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0000</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x8017</offset>
+            <value>0x0001</value>
+            <clause>0x002D</clause>
+            <smi_device>0x0003</smi_device>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0009</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0016</offset>
+            <value>0x0012</value>
+            <clause>0x0016</clause>
+            <smi_page>0x0000</smi_page>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0009</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0014</offset>
+            <value>0x8001</value>
+            <clause>0x0016</clause>
+            <smi_page>0x0012</smi_page>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0009</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0016</offset>
+            <value>0x0000</value>
+            <clause>0x0016</clause>
+            <smi_page>0x0000</smi_page>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0009</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0016</offset>
+            <value>0x0003</value>
+            <clause>0x0016</clause>
+            <smi_page>0x0000</smi_page>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0009</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0011</offset>
+            <value>0x8815</value>
+            <clause>0x0016</clause>
+            <smi_page>0x0003</smi_page>
+        </phy_operation>
+        <phy_operation>
+            <op_name>New PHY Register Write Operation Import</op_name>
+            <smi_address>0x0009</smi_address>
+            <smi_external>true</smi_external>
+            <offset>0x0016</offset>
+            <value>0x0000</value>
+            <clause>0x0016</clause>
+            <smi_page>0x0000</smi_page>
+        </phy_operation>
+        <register_operation>
+            <op_name>Port1 setFrameType</op_name>
+            <operation>Write16</operation>
+            <smiAddress>0x0001</smiAddress>
+            <offset>0x0011</offset>
+            <data16>0x9100</data16>
+        </register_operation>
+        <register_operation>
+            <op_name>Port1 setFrameType</op_name>
+            <operation>Write16</operation>
+            <smiAddress>0x0001</smiAddress>
+            <offset>0x0010</offset>
+            <data16>0xB002</data16>
+        </register_operation>
+        <register_operation>
+            <op_name>Port1 setFrameType</op_name>
+            <operation>Write16</operation>
+            <smiAddress>0x001B</smiAddress>
+            <offset>0x001C</offset>
+            <data16>0x00CF</data16>
+        </register_operation>
+        <register_operation>
+            <op_name>Port1 setFrameType</op_name>
+            <operation>Write16</operation>
+            <smiAddress>0x0001</smiAddress>
+            <offset>0x0004</offset>
+            <data16>0x037F</data16>
+        </register_operation>
+        <register_operation>
+            <op_name>Port9 setFrameType</op_name>
+            <operation>Write16</operation>
+            <smiAddress>0x0009</smiAddress>
+            <offset>0x0011</offset>
+            <data16>0x9100</data16>
+        </register_operation>
+        <register_operation>
+            <op_name>Port9 setFrameType</op_name>
+            <operation>Write16</operation>
+            <smiAddress>0x0009</smiAddress>
+            <offset>0x0010</offset>
+            <data16>0xB002</data16>
+        </register_operation>
+        <register_operation>
+            <op_name>Port9 setFrameType</op_name>
+            <operation>Write16</operation>
+            <smiAddress>0x0009</smiAddress>
+            <offset>0x0004</offset>
+            <data16>0x037F</data16>
+        </register_operation>
+        <register_operation>
+            <op_name>Set Port1 Link Status</op_name>
+            <operation>Write16</operation>
+            <smiAddress>0x0001</smiAddress>
+            <offset>0x0000</offset>
+            <data16>0x5E0A</data16>
+        </register_operation>
+        <firmware_operation>
+            <op_name>New Delay Operation Import</op_name>
+            <rmu_code>0xF287</rmu_code>
+            <data>00 01 00 00 F2 87 00 64</data>
+        </firmware_operation>
+        <register_operation>
+            <op_name>Set Port2 Link Status</op_name>
+            <operation>Write16</operation>
+            <smiAddress>0x0002</smiAddress>
+            <offset>0x0000</offset>
+            <data16>0x120A</data16>
+        </register_operation>
+        <firmware_operation>
+            <op_name>New Delay Operation Import</op_name>
+            <rmu_code>0xF287</rmu_code>
+            <data>00 01 00 00 F2 87 00 64</data>
+        </firmware_operation>
+        <register_operation>
+            <op_name>Set Port3 Link Status</op_name>
+            <operation>Write16</operation>
+            <smiAddress>0x0003</smiAddress>
+            <offset>0x0000</offset>
+            <data16>0x120A</data16>
+        </register_operation>
+        <firmware_operation>
+            <op_name>New Delay Operation Import</op_name>
+            <rmu_code>0xF287</rmu_code>
+            <data>00 01 00 00 F2 87 00 64</data>
+        </firmware_operation>
+        <register_operation>
+            <op_name>Set Port4 Link Status</op_name>
+            <operation>Write16</operation>
+            <smiAddress>0x0004</smiAddress>
+            <offset>0x0000</offset>
+            <data16>0x120A</data16>
+        </register_operation>
+        <firmware_operation>
+            <op_name>New Delay Operation Import</op_name>
+            <rmu_code>0xF287</rmu_code>
+            <data>00 01 00 00 F2 87 00 64</data>
+        </firmware_operation>
+        <register_operation>
+            <op_name>Set Port5 Link Status</op_name>
+            <operation>Write16</operation>
+            <smiAddress>0x0005</smiAddress>
+            <offset>0x0000</offset>
+            <data16>0x120A</data16>
+        </register_operation>
+        <firmware_operation>
+            <op_name>New Delay Operation Import</op_name>
+            <rmu_code>0xF287</rmu_code>
+            <data>00 01 00 00 F2 87 00 64</data>
+        </firmware_operation>
+        <register_operation>
+            <op_name>Set Port6 Link Status</op_name>
+            <operation>Write16</operation>
+            <smiAddress>0x0006</smiAddress>
+            <offset>0x0000</offset>
+            <data16>0x120A</data16>
+        </register_operation>
+        <firmware_operation>
+            <op_name>New Delay Operation Import</op_name>
+            <rmu_code>0xF287</rmu_code>
+            <data>00 01 00 00 F2 87 00 64</data>
+        </firmware_operation>
+        <register_operation>
+            <op_name>Set Port7 Link Status</op_name>
+            <operation>Write16</operation>
+            <smiAddress>0x0007</smiAddress>
+            <offset>0x0000</offset>
+            <data16>0x1000</data16>
+        </register_operation>
+        <firmware_operation>
+            <op_name>New Delay Operation Import</op_name>
+            <rmu_code>0xF287</rmu_code>
+            <data>00 01 00 00 F2 87 00 64</data>
+        </firmware_operation>
+        <register_operation>
+            <op_name>Set Port8 Link Status</op_name>
+            <operation>Write16</operation>
+            <smiAddress>0x0008</smiAddress>
+            <offset>0x0000</offset>
+            <data16>0x1000</data16>
+        </register_operation>
+        <firmware_operation>
+            <op_name>New Delay Operation Import</op_name>
+            <rmu_code>0xF287</rmu_code>
+            <data>00 01 00 00 F2 87 00 64</data>
+        </firmware_operation>
+        <register_operation>
+            <op_name>Set Port9 Link Status</op_name>
+            <operation>Write16</operation>
+            <smiAddress>0x0009</smiAddress>
+            <offset>0x0000</offset>
+            <data16>0x1F0A</data16>
+        </register_operation>
+    </reg_list>
+</switch_config_1>

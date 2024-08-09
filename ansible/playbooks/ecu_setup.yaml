@@ -1,3 +1,4 @@
+# cspell:ignore fintek
 - name: Include additional playbook for common
   ansible.builtin.import_playbook: pilot_auto.dev_env.ecu_common
 
@@ -24,3 +25,4 @@
     - { role: autoware.ecu_system_setup.marvell_switch_driver }
     - { role: x2_autoware }
     - { role: x2_can_adm }
+    - { role: x2_configure_marvell_switch }

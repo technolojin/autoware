@@ -1,0 +1,2 @@
+x2_configure_marvell_switch_interface: enp4s0
+x2_configure_marvell_switch_file: marvell_switch_configuration_main.xml

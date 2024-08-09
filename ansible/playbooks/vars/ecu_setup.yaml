@@ -83,3 +83,6 @@ rsyslog_queue_maxsize: 1g
 setup_coredump_rsyncd_service: true
 rsyncd_hosts_allow: 192.168.20.21 # x2-sub
 setup_coredump_tmpfiles_service: true
+
+# configure marvell switch
+x2_configure_marvell_switch_file: marvell_switch_configuration_main.xml
