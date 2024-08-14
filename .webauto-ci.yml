@@ -118,6 +118,59 @@ artifacts:
         base_iso: ubuntu-22.04.3-live-server-amd64
         install_disk: /dev/nvme0n1
 
+  # Logging ECU
+  - name: logging
+    build:
+      type: custom
+      runtime:
+        type: standard1/amd64/large
+      source:
+        vcstool:
+          repositories_files:
+            - autoware.repos
+          import_path: src
+      environment_variables:
+        DEBIAN_FRONTEND: noninteractive
+        LANG: C.UTF-8
+      linux_parameters:
+        kernel_version: 5.19.0-50-generic
+      phases:
+        - name: environment-setup
+          exec: ./.webauto-ci/logging/environment-setup/run.sh
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/logging/environment-setup/**/*
+        - name: ecu-system-setup
+          user: autoware
+          exec: ./.webauto-ci/logging/ecu-system-setup/run.sh
+          environment_variables:
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_logging.yaml
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/logging/ecu-system-setup/**/*
+              - src/ecu_system_setup/**/*
+              - ansible/**/*
+              - ansible-galaxy-requirements.yaml
+      base_container_image:
+        from: ubuntu:22.04
+      output_rootfs_image:
+        from: ecu-system-setup
+        persistent_file_path: /etc/ota/persistents.txt
+      output_installer_image:
+        from: ecu-system-setup
+        type: iso
+        base_iso: ubuntu-22.04.3-live-server-amd64
+
 simulations:
   - name: planning_sim_v2
     type: planning_sim_v2
@@ -225,6 +278,13 @@ release:
       alternative_deployments:
         - type: installer
           artifact: main
+    - name: logging
+      deployment:
+        type: rootfs
+        artifact: logging
+      alternative_deployments:
+        - type: installer
+          artifact: logging
 
 scenario_parameter_groups:
   # Necessary to update the parameters for each vehicle type
