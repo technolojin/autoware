@@ -41,9 +41,9 @@ jobs:
       - name: Run vcs import
         run: |
           mkdir src
-          vcs import src < autoware.repos
-          vcs import src < simulator.repos
-          vcs import src < tools.repos
+          vcs import src < autoware.repos --shallow
+          vcs import src < simulator.repos --shallow
+          vcs import src < tools.repos --shallow
 
       - name: Run vcs export
         run: |

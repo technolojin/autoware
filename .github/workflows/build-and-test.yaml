@@ -43,7 +43,7 @@ jobs:
       - name: Run vcs import
         run: |
           mkdir src
-          vcs import src < ci.repos
+          vcs import src < ci.repos --shallow
 
       - name: Show disk space before the tasks
         run: df -h
