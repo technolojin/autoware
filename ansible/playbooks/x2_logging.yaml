@@ -35,7 +35,6 @@
     - { role: autoware.ecu_system_setup.set_autoware_env }
     - { role: autoware.ecu_system_setup.simple_system_launch }
     - { role: autoware.ecu_system_setup.stop_auto_upgrade }
-    - { role: autoware.ecu_system_setup.syslog_collector_client }
     - { role: autoware.ecu_system_setup.timezone }
     - { role: autoware.ecu_system_setup.turn_off_desktop_notification }
     - { role: autoware.ecu_system_setup.mot_env_setup }
