@@ -73,15 +73,13 @@ ptp4l_masters:
 
 # syslog collector - client
 syslog_collector_type: Client
-rsyslog_server_ipaddr: 192.168.10.21 # x2-sub
-# rsyslog_server_port: 514
-# rsyslog_protocol: tcp
+rsyslog_server_ipaddr: 192.168.30.71 # X2 Logging ECU
 rsyslog_queue_maxsize: 1g
 
 # rsyncd - server for logpacker coredump plugin
 # rsyncd - add systemd-tmpfiles configuration for logpacker coredump plugin
 setup_coredump_rsyncd_service: true
-rsyncd_hosts_allow: 192.168.20.21 # x2-sub
+rsyncd_hosts_allow: 192.168.30.71 # X2 Logging ECU
 setup_coredump_tmpfiles_service: true
 
 # configure marvell switch
