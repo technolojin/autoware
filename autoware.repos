@@ -120,6 +120,7 @@ repositories:
     type: git
     url: https://github.com/tier4/spinnaker.git
     version: 4c74d319ef9186a4fb643dbd82e1b5f7918e75ea
+  # Fix the version not to merge https://github.com/MORAI-Autonomous/MORAI-ROS2_morai_msgs/pull/9
   vendor/morai_msgs:
     type: git
     url: https://github.com/MORAI-Autonomous/MORAI-ROS2_morai_msgs.git
