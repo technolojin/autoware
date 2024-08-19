@@ -123,7 +123,7 @@ repositories:
   vendor/morai_msgs:
     type: git
     url: https://github.com/MORAI-Autonomous/MORAI-ROS2_morai_msgs.git
-    version: main
+    version: e2e75fc1603a9798773e467a679edf68b448e705
   vendor/eagleye:
     type: git
     url: https://github.com/MapIV/eagleye.git
