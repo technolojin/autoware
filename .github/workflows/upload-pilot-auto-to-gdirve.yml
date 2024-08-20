@@ -1,0 +1,321 @@
+name: upload-pilot-auto-to-gdrive
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - v*
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    env:
+      REPO_NAME: pilot-auto
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - uses: actions/create-github-app-token@v1
+        id: generate-token
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
+
+      # Measures to be taken due to insufficient disk space
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Check initial disk usage
+        run: df -h
+
+      - name: Clean up unnecessary files
+        run: |
+          sudo apt-get autoremove -y
+          sudo apt-get clean
+          sudo rm -rf /var/lib/apt/lists/*
+
+      - name: Clean up /usr/local/lib
+        run: sudo rm -rf /usr/local/lib/*
+
+      # cspell: ignore ghcup
+      - name: Clean up /usr/local/.ghcup
+        run: sudo rm -rf /usr/local/.ghcup/*
+
+      - name: Check space again
+        run: df -h
+
+      # Installation and setup
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y expect git tar curl jq
+
+      - name: Download WebAutoCLI
+        run: |
+          # Check the latest version
+          RESPONSE=$(curl -s -H "Authorization: token ${{ steps.generate-token.outputs.token }}" https://api.github.com/repos/tier4/WebAutoCLI/releases/latest)
+          LATEST_RELEASE=$(echo "$RESPONSE" | jq -r .tag_name | sed 's/^v//')
+          echo "Latest release version: $LATEST_RELEASE"
+          # Download the latest version
+          ASSET_RESPONSE=$(curl -sL -H "Authorization: token ${{ steps.generate-token.outputs.token }}" https://api.github.com/repos/tier4/WebAutoCLI/releases/tags/v${LATEST_RELEASE})
+          echo "Asset response: $ASSET_RESPONSE"
+          ASSET_ID=$(echo "$ASSET_RESPONSE" | jq -r '.assets[] | select(.name == "WebAutoCLI_'$LATEST_RELEASE'_linux_amd64.tar.gz") | .id')
+          echo "ASSET_ID: $ASSET_ID"
+          curl -sLJO -H "Authorization: token ${{ steps.generate-token.outputs.token }}" -H 'Accept: application/octet-stream' "https://api.github.com/repos/tier4/WebAutoCLI/releases/assets/$ASSET_ID"
+
+          if [ ! -f "WebAutoCLI_${LATEST_RELEASE}_linux_amd64.tar.gz" ]; then
+            echo "Error: File download failed."
+            exit 1
+          fi
+
+          mkdir -p ~/.local/bin
+          tar -xzf WebAutoCLI_${LATEST_RELEASE}_linux_amd64.tar.gz -C ~/.local/bin || file WebAutoCLI_${LATEST_RELEASE}_linux_amd64.tar.gz
+
+      - name: Set up WebAutoCLI
+        run: |
+          mkdir -p ~/.webauto
+          echo "[default]" > ~/.webauto/auth.toml
+          echo "endpoint = \"https://auth.web.auto\"" >> ~/.webauto/auth.toml
+          echo "client_id = \"${{ secrets.WEBAUTO_CLIENT_ID }}\"" >> ~/.webauto/auth.toml
+          echo "subject_id = \"${{ secrets.WEBAUTO_SUBJECT_ID }}\"" >> ~/.webauto/auth.toml
+          echo "private_key = \"${{ secrets.WEBAUTO_PRIVATE_KEY }}\"" >> ~/.webauto/auth.toml
+
+      - name: Create work directory
+        run: |
+          mkdir _InstallTempFolder
+          cd _InstallTempFolder
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      - name: Check for NVIDIA installation
+        id: nvidia-check
+        run: |
+          if command -v nvidia-smi &> /dev/null; then
+            echo "NVIDIA_INSTALL=n" >> $GITHUB_ENV
+          else
+            echo "NVIDIA_INSTALL=y" >> $GITHUB_ENV
+          fi
+
+      # Preparing the source code
+      - name: Clone Autoware repository
+        run: |
+          cd _InstallTempFolder
+          git clone git@github.com:tier4/${{ env.REPO_NAME }}.git
+          cd ${{ env.REPO_NAME }}
+          LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+          git checkout $LATEST_TAG
+          echo "LATEST_TAG=$LATEST_TAG" >> $GITHUB_ENV
+
+      # To make it a little lighter
+      - name: Delete .git
+        run: sudo rm -rf .git
+
+      - name: Setup PilotAuto
+        run: |
+          cd _InstallTempFolder/${{ env.REPO_NAME }}
+           echo "${{ secrets.LOGIN_PASS }}" | sudo -S apt install jq
+           expect -c "
+             set timeout -1
+             spawn ./setup-dev-env.sh
+             expect \"setup?\"
+             send \"y\n\"
+             expect \"MLmodels?\"
+             send \"y\n\"
+             expect \"password:\"
+             send \"${{ secrets.LOGIN_PASS }}\n\"
+             expect \"NVIDIA\"
+             send \"${NVIDIA_INSTALL}\n\"
+             expect \"artifacts?\"
+             send \"y\n\"
+             expect \"$\"
+             exit 0
+           "
+
+      - name: vcs import src
+        run: |
+          cd _InstallTempFolder/${{ env.REPO_NAME }}
+          mkdir src
+          vcs import src < autoware.repos
+
+      - name: rosdep install
+        run: |
+          cd _InstallTempFolder/${{ env.REPO_NAME }}
+          source /opt/ros/humble/setup.bash
+          rosdep update
+          # cspell: ignore libunwind
+          # The installation of libunwind-dev will fail, so install this first
+          sudo apt-get update
+          sudo apt-get install libunwind-dev
+
+          rosdep install -y --from-paths src --ignore-src --rosdistro humble
+
+      - name: Delete .gif
+        run: |
+          cd _InstallTempFolder/${{ env.REPO_NAME }}
+          find . -name '.git' -type d -exec rm -rf {} +
+
+      # Copy the downloaded file with Webauto CLI
+      - name: Copy files to _InstallTempFolder/misc
+        run: |
+          mkdir -p _InstallTempFolder/misc
+          sudo cp -r /opt/autoware/mlmodels _InstallTempFolder/misc/
+          sudo cp -r /home/runner/autoware_data _InstallTempFolder/misc/
+
+      # Create a script file to put the files in the misc folder in the right place
+      - name: Create shell script
+        run: |
+          cd _InstallTempFolder
+          cat << 'EOF' > set_files.sh
+          #!/bin/bash
+
+          # Source directory
+          SOURCE_DIR="./misc"
+
+          # Destination directory
+          DEST_DIR_A="/opt/autoware/"
+          DEST_DIR_B="/home/$(whoami)/autoware_data/"
+
+          # Create the destination directory
+          mkdir -p "$DEST_DIR_A"
+          mkdir -p "$DEST_DIR_B"
+
+          # Copy the misc/mlmodels folder to /opt/autoware/
+          cp -r "$SOURCE_DIR/mlmodels" "$DEST_DIR_A"
+
+          # Copy misc/autoware_data/* folder to /autoware_data/
+          cp -r "$SOURCE_DIR/autoware_data/"* "$DEST_DIR_B"
+
+          echo "Copying completed."
+          EOF
+
+      # README
+      - name: Create README.md file
+        run: |
+          cd _InstallTempFolder
+          echo "# mlmodels, autoware_data copy shell script" > README.md
+          echo "" >> README.md
+          echo "Copy the files required for execution to the appropriate location." >> README.md
+          echo "Give the shell script permission to run and execute it." >> README.md
+          echo "You may need to enter a password to run the shell." >> README.md
+          echo "" >> README.md
+          echo "## Authorization Commands" >> README.md
+          echo '```bash' >> README.md
+          echo "chmod +x set_files.sh" >> README.md
+          echo '```' >> README.md
+          echo "" >> README.md
+          echo "## Execution command" >> README.md
+          echo '```bash' >> README.md
+          echo "sudo ./set_files.sh" >> README.md
+          echo '```' >> README.md
+
+      - name: Compress files
+        id: compress
+        run: |
+          cd _InstallTempFolder
+          tar -czf ${{ env.REPO_NAME }}-${LATEST_TAG}.tar.gz ${{ env.REPO_NAME }} misc set_files.sh README.md
+          echo "COMPRESSED_FILE_PATH=$(pwd)/${{ env.REPO_NAME }}-${LATEST_TAG}.tar.gz" >> $GITHUB_ENV
+          echo "FILE_NAME=${{ env.REPO_NAME }}-${LATEST_TAG}.tar.gz" >> $GITHUB_ENV
+
+      # Upload process starts here
+      # Advance preparation
+      - name: Set up Google Application Credentials
+        run: |
+          echo "${{ secrets.GDRIVE_CREDENTIALS }}" | sed 's/\\n/\
+          /g' > token.json
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      - name: Install googleapis fs
+        run: npm install googleapis fs
+
+      # Upload
+      - name: Upload to Google Drive
+        env:
+          GDRIVE_CREDENTIALS: ${{ secrets.GDRIVE_CREDENTIALS }}
+          FOLDER_ID: ${{ secrets.FOLDER_ID }}
+          COMPRESSED_FILE_PATH: ${{ env.COMPRESSED_FILE_PATH }}
+          FILE_NAME: ${{ env.FILE_NAME }}
+        run: |
+          node <<EOF
+          const fs = require('fs');
+          const { google } = require('googleapis');
+
+          const credentials = JSON.parse(process.env.GDRIVE_CREDENTIALS);
+          const folderId = process.env.FOLDER_ID;
+          const filePath = process.env.COMPRESSED_FILE_PATH;
+
+          const auth = new google.auth.GoogleAuth({
+            credentials: credentials,
+            scopes: ['https://www.googleapis.com/auth/drive'],
+          });
+
+          // Checking if a file exists
+          if (!fs.existsSync(filePath)) {
+              console.error(\`!!!File not found!!!: \${filePath}\`);
+              process.exit(1);
+          }
+
+          const drive = google.drive({ version: 'v3', auth });
+
+          async function uploadToDrive() {
+            try {
+              const fileMetadata = {
+                name: process.env.FILE_NAME,
+                parents: [folderId],
+              };
+              const media = {
+                mimeType: 'application/gzip',
+                body: fs.createReadStream(filePath),
+              };
+
+              const file = await drive.files.create({
+                resource: fileMetadata,
+                media: media,
+                fields: 'id',
+                supportsAllDrives: true,
+              });
+
+              console.log('File Id:', file.data.id);
+
+              const uploadedFile = await drive.files.get({
+                fileId: file.data.id,
+                fields: 'id, name, parents',
+                supportsAllDrives: true,
+              });
+
+              console.log('Uploaded File:', uploadedFile.data);
+
+              const shareableLink = \`https://drive.google.com/file/d/\${uploadedFile.data.id}/view?usp=sharing\`;
+              console.log('Shareable Link:', shareableLink);
+            } catch (error) {
+              console.error('An error occurred:', error);
+            }
+          }
+
+          uploadToDrive();
+          EOF
+
+      - name: Cleanup
+        run: |
+          cd ..
+          sudo rm -rf _InstallTempFolder
