@@ -2,10 +2,22 @@ name: vcs-import
 
 on:
   pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - labeled
   workflow_dispatch:
 
 jobs:
+  make-sure-label-is-present:
+    uses: autowarefoundation/autoware-github-actions/.github/workflows/make-sure-label-is-present.yaml@v1
+    with:
+      label: tag:run-build-test
+
   load-env:
+    needs: make-sure-label-is-present
+    if: ${{ needs.make-sure-label-is-present.outputs.result == 'true' }}
     uses: ./.github/workflows/load-env.yaml
 
   vcs-import:
