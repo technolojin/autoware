@@ -26,7 +26,7 @@ echo "interface: {{ x2_configure_marvell_switch_interface }}"
 echo "MAC address: $MAC_ADDRESS"
 
 # Create board configuration file
-"$FILE_PATH"/configuration_files/AutomotiveSwitchV4 -createboardcfg="$FILE_PATH"/bd_cfg.xml -hostif={{ x2_configure_marvell_switch_interface }} -ethertype=0x9101 -deviceaddr="$MAC_ADDRESS"
+"$FILE_PATH"/configuration_files/AutomotiveSwitchV4 -createboardcfg="$FILE_PATH"/configuration_files/bd_cfg.xml -hostif={{ x2_configure_marvell_switch_interface }} -ethertype=0x9101 -deviceaddr="$MAC_ADDRESS"
 
 # Load the switch configuration file
 # This configuration will be loaded upon boot from the next time
