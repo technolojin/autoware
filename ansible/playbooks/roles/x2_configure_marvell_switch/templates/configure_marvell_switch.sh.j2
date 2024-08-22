@@ -1,7 +1,7 @@
 #!/bin/bash
 # cspell:ignore listdevices hostif ethertype createboardcfg deviceaddr developmentcfg switchcfg
 
-FILE_PATH="/opt/autoware/services/configure_marvell_switch"
+FILE_PATH="/opt/autoware/services/configure_marvell_switch/marvell_switch_configuration"
 
 # Check if the board configuration file exists
 # If the file exists, we don't need to configure
@@ -14,7 +14,7 @@ fi
 echo "The board configuration files was not found. Load the configuration file."
 
 # Get the MAC address of the enp4s0 interface using the ip command and store it in a variable
-MAC_ADDRESS=$("$FILE_PATH"/configuration_files/AutomotiveSwitchV4 -listdevices -hostif=enp4s0 -ethertype=0x9101 | awk '/MAC/ {print $4}')
+MAC_ADDRESS=$("$FILE_PATH"/AutomotiveSwitchV4 -listdevices -hostif=enp4s0 -ethertype=0x9101 | awk '/MAC/ {print $4}')
 
 # Check if MAC address was successfully retrieved
 if [ -z "$MAC_ADDRESS" ]; then
@@ -26,8 +26,8 @@ echo "interface: {{ x2_configure_marvell_switch_interface }}"
 echo "MAC address: $MAC_ADDRESS"
 
 # Create board configuration file
-"$FILE_PATH"/configuration_files/AutomotiveSwitchV4 -createboardcfg="$FILE_PATH"/configuration_files/bd_cfg.xml -hostif={{ x2_configure_marvell_switch_interface }} -ethertype=0x9101 -deviceaddr="$MAC_ADDRESS"
+"$FILE_PATH"/AutomotiveSwitchV4 -createboardcfg="$FILE_PATH"/bd_cfg.xml -hostif={{ x2_configure_marvell_switch_interface }} -ethertype=0x9101 -deviceaddr="$MAC_ADDRESS"
 
 # Load the switch configuration file
 # This configuration will be loaded upon boot from the next time
-"$FILE_PATH"/configuration_files/AutomotiveSwitchV4 -developmentcfg -hostif={{ x2_configure_marvell_switch_interface }} -ethertype=0x9101 -deviceaddr="$MAC_ADDRESS" -switchcfg="$FILE_PATH"/configuration_files/{{ x2_configure_marvell_switch_file }}
+"$FILE_PATH"/AutomotiveSwitchV4 -developmentcfg -hostif={{ x2_configure_marvell_switch_interface }} -ethertype=0x9101 -deviceaddr="$MAC_ADDRESS" -switchcfg="$FILE_PATH"/{{ x2_configure_marvell_switch_file }}

@@ -1,2 +1,3 @@
+x2_configure_marvell_switch_repository: git@github.com:tier4/marvell_switch_configuration.git
 x2_configure_marvell_switch_interface: enp4s0
 x2_configure_marvell_switch_file: marvell_switch_configuration_main.xml
