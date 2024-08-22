@@ -270,6 +270,7 @@ simulations:
         type: standard1/amd64/medium
 
 release:
+  name_template: ${datetime}-${version}
   components:
     - name: autoware
       deployment:
