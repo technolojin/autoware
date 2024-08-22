@@ -12,13 +12,13 @@ network:
       mtu: 9000
     # 1G BASE-T
     # HMI + PTPv2
-    enp11s0f0:
+    enp8s0:
       optional: true
       dhcp4: false
       dhcp6: false
       addresses: [192.168.20.71/24]
     # For debugging purpose
-    enp8s0:
+    enp10s0:
       optional: true
       dhcp4: true
       dhcp6: true
