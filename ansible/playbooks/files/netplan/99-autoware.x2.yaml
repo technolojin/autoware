@@ -29,9 +29,6 @@ network:
       dhcp6: false
       mtu: 9000
       optional: true
-
-  #### "routes" and "routing-policy" configurations below are not reflected to the routing table and the routing policy database.
-  #### Therefore, in this version, they are additionally configured in "policy_routing.service".
   vlans:
     # RADAR
     vlan.19:
@@ -52,12 +49,13 @@ network:
       routes:
         - to: 0.0.0.0/0
           via: 192.168.251.1
+          scope: link
           table: 100
         - to: 0.0.0.0/0
           via: 192.168.251.1
-          metric: 80
+          metric: 90
       routing-policy:
-        - from: 192.168.251.0/24
+        - from: 192.168.251.11
           table: 100
           priority: 100
     vlan.200:
@@ -71,12 +69,13 @@ network:
       routes:
         - to: 0.0.0.0/0
           via: 192.168.252.1
+          scope: link
           table: 200
         - to: 0.0.0.0/0
           via: 192.168.252.1
-          metric: 90
+          metric: 100
       routing-policy:
-        - from: 192.168.252.0/24
+        - from: 192.168.252.11
           table: 200
           priority: 200
     vlan.300:
@@ -90,12 +89,13 @@ network:
       routes:
         - to: 0.0.0.0/0
           via: 192.168.253.1
+          scope: link
           table: 300
         - to: 0.0.0.0/0
           via: 192.168.253.1
-          metric: 100
+          metric: 110
       routing-policy:
-        - from: 192.168.253.0/24
+        - from: 192.168.253.11
           table: 300
           priority: 300
     vlan.400:
@@ -109,15 +109,15 @@ network:
       routes:
         - to: 0.0.0.0/0
           via: 192.168.254.1
+          scope: link
           table: 400
         - to: 0.0.0.0/0
           via: 192.168.254.1
-          metric: 110
+          metric: 120
       routing-policy:
-        - from: 192.168.254.0/24
+        - from: 192.168.254.11
           table: 400
           priority: 400
-    # HMI + PTPv2
     vlan.500:
       id: 500
       link: enp5s0f0
