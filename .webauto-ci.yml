@@ -182,8 +182,8 @@ simulations:
       runtime:
         type: standard1/amd64/medium
       parameters:
-        vehicle_model: j6_gen1
-        sensor_model: aip_x2
+        vehicle_model: j6_gen2
+        sensor_model: aip_x2_gen2
         autoware_launch_package: autoware_launch
         autoware_launch_file: planning_simulator.launch.xml
         architecture_type: awf/universe/20240605
