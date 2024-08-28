@@ -130,6 +130,7 @@ artifacts:
             - autoware.repos
           import_path: src
       environment_variables:
+        AUTOWARE_PATH: /home/autoware/pilot-auto.x2
         DEBIAN_FRONTEND: noninteractive
         LANG: C.UTF-8
       linux_parameters:
@@ -145,6 +146,42 @@ artifacts:
           build_result_reuse:
             key_files:
               - .webauto-ci/logging/environment-setup/**/*
+        - name: autoware-setup
+          user: autoware
+          exec: ./.webauto-ci/logging/autoware-setup/run.sh
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/logging/autoware-setup/**/*
+              - ansible/**/*
+              - ansible-galaxy-requirements.yaml
+              - amd64.env
+          incremental_build:
+            enabled: true
+        - name: autoware-build
+          user: autoware
+          exec: ./.webauto-ci/logging/autoware-build/run.sh
+          environment_variables:
+            PARALLEL_WORKERS: "32"
+            CCACHE_DIR: /tmp/build/cache/ccache
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+            - name: ccache
+              mountpoint: /tmp/build/cache/ccache
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/logging/autoware-build/**/*
+              - src/**/*
+              - "!src/ecu_system_setup/**"
+          incremental_build:
+            enabled: true
         - name: ecu-system-setup
           user: autoware
           exec: ./.webauto-ci/logging/ecu-system-setup/run.sh

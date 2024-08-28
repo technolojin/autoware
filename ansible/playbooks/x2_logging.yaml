@@ -30,7 +30,6 @@
     - { role: autoware.ecu_system_setup.logpacker }
     - { role: autoware.ecu_system_setup.otaclient }
     - { role: autoware.ecu_system_setup.ptp4l }
-    - { role: autoware.ecu_system_setup.ros2_setup }
     - { role: autoware.ecu_system_setup.rsyslog }
     - { role: autoware.ecu_system_setup.set_autoware_env }
     - { role: autoware.ecu_system_setup.simple_system_launch }
