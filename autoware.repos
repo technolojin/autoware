@@ -20,7 +20,7 @@ repositories:
   autoware/autoware_lanelet2_extension:
     type: git
     url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
-    version: 0.5.0
+    version: 0.6.0
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
