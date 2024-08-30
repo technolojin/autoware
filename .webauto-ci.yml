@@ -210,6 +210,76 @@ artifacts:
         base_iso: ubuntu-22.04.3-live-server-amd64
         hostname: logging
 
+  - name: signage
+    build:
+      type: custom
+      runtime:
+        type: standard1/amd64/large
+      source:
+        vcstool:
+          repositories_files:
+            - autoware.repos
+          import_path: src
+      phases:
+        - name: ecu-system-setup
+          user: autoware
+          exec: ./.webauto-ci/signage/ecu-system-setup/run.sh
+          environment_variables:
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_signage.yaml
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/signage/ecu-system-setup/**/*
+              - src/ecu_system_setup/**/*
+              - ansible/**/*
+              - ansible-galaxy-requirements.yaml
+      base_container_image:
+        from: ubuntu:22.04
+      output_rootfs_image:
+        from: ecu-system-setup
+        persistent_file_path: /etc/ota/persistents.txt
+
+  - name: voice-system
+    build:
+      type: custom
+      runtime:
+        type: standard1/amd64/large
+      source:
+        vcstool:
+          repositories_files:
+            - autoware.repos
+          import_path: src
+      phases:
+        - name: ecu-system-setup
+          user: autoware
+          exec: ./.webauto-ci/signage/ecu-system-setup/run.sh
+          environment_variables:
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_voice_system.yaml
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/signage/ecu-system-setup/**/*
+              - src/ecu_system_setup/**/*
+              - ansible/**/*
+              - ansible-galaxy-requirements.yaml
+      base_container_image:
+        from: ubuntu:22.04
+      output_rootfs_image:
+        from: ecu-system-setup
+        type: iso
+        base_iso: ubuntu-22.04.3-live-server-amd64
+        install_disk: /dev/nvme0n1
+        hostname: main
+        persistent_file_path: /etc/ota/persistents.txt
+
 simulations:
   - name: planning_sim_v2
     type: planning_sim_v2
