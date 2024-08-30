@@ -48,7 +48,7 @@ repositories:
   description/sensor/sensor_component_description:
     type: git
     url: https://github.com/tier4/sensor_component_description.git
-    version: cf6acf3c03ed9ae633048e5eec3c6fc1ac660946
+    version: 079820003a1c969df7fa02ca092e532c66ab809e
   description/vehicle/j6_gen2_description:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
