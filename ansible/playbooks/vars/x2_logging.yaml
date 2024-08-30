@@ -84,3 +84,6 @@ sensor_model: aip_x2_gen2
 # mot_env_setup
 mot_install_dir: "{{ ansible_env.HOME }}/OperationMaintenanceTool"
 replace_install_setup_bash: false
+bridge_ip_address: 127.0.0.1
+fms_agent_ip_address: 192.168.30.11
+zoom_level: 1
