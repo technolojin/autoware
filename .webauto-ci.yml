@@ -117,6 +117,7 @@ artifacts:
         type: iso
         base_iso: ubuntu-22.04.3-live-server-amd64
         install_disk: /dev/nvme0n1
+        hostname: main
 
   # Logging ECU
   - name: logging
@@ -207,6 +208,7 @@ artifacts:
         from: ecu-system-setup
         type: iso
         base_iso: ubuntu-22.04.3-live-server-amd64
+        hostname: logging
 
 simulations:
   - name: planning_sim_v2
