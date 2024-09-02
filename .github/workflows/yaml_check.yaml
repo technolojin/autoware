@@ -1,0 +1,71 @@
+name: parameter-check
+
+on:
+  pull_request:
+    types:
+      - labeled
+    paths:
+      - autoware.repos
+
+# cspell: ignore deepdiff
+jobs:
+  make-sure-label-is-present:
+    uses: autowarefoundation/autoware-github-actions/.github/workflows/make-sure-label-is-present.yaml@v1
+    with:
+      label: tag:run-parameter-check
+
+  load-env:
+    needs: make-sure-label-is-present
+    if: ${{ needs.make-sure-label-is-present.outputs.result == 'true' }} && contains(github.event.pull_request.changed_files, 'autoware.repos')
+    uses: ./.github/workflows/load-env.yaml
+
+  yaml-test:
+    needs: load-env
+    if: ${{ needs.make-sure-label-is-present.outputs.result == 'true' }} && contains(github.event.pull_request.changed_files, 'autoware.repos')
+    runs-on: ubuntu-latest
+    container: ros:${{ needs.load-env.outputs.rosdistro }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Generate token
+        id: generate-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Set git config
+        uses: autowarefoundation/autoware-github-actions/set-git-config@v1
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+
+      - name: Run vcs import
+        run: |
+          mkdir src
+          vcs import src < autoware.repos
+
+      - name: Install yaml diff dependencies
+        run: |
+          sudo apt-get -y update
+          sudo apt-get -y install python3-pip
+          pip3 install pyyaml pandas tabulate deepdiff
+
+      - name: Run yaml diff test
+        run: |
+          python3 .github/workflows/scripts/yaml_diff.py
+          cat yaml_diff_report.md
+
+      - name: Run Publish Result to the Pull Request
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ steps.generate-token.outputs.token }}
+          script: |
+            const fs = require('fs');
+            const result = fs.readFileSync('yaml_diff_report.md', 'utf8');  // Read the report file content
+            github.rest.issues.createComment({
+              issue_number: context.payload.pull_request.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: result
+            })
