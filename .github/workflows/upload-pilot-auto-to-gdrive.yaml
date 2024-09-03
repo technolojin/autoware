@@ -19,8 +19,9 @@ jobs:
       - uses: actions/create-github-app-token@v1
         id: generate-token
         with:
-          app_id: ${{ secrets.APP_ID }}
-          private_key: ${{ secrets.PRIVATE_KEY }}
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
 
       # Measures to be taken due to insufficient disk space
       - name: Cache node modules
@@ -96,16 +97,12 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-      - name: Check for NVIDIA installation
-        id: nvidia-check
-        run: |
-          if command -v nvidia-smi &> /dev/null; then
-            echo "NVIDIA_INSTALL=n" >> $GITHUB_ENV
-          else
-            echo "NVIDIA_INSTALL=y" >> $GITHUB_ENV
-          fi
-
       # Preparing the source code
+      - name: Set git config
+        uses: autowarefoundation/autoware-github-actions/set-git-config@v1
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+
       - name: Clone Autoware repository
         run: |
           cd _InstallTempFolder
@@ -119,44 +116,21 @@ jobs:
       - name: Delete .git
         run: sudo rm -rf .git
 
-      - name: Setup PilotAuto
+      - name: Get mlmodels
         run: |
           cd _InstallTempFolder/${{ env.REPO_NAME }}
-           echo "${{ secrets.LOGIN_PASS }}" | sudo -S apt install jq
-           expect -c "
-             set timeout -1
-             spawn ./setup-dev-env.sh
-             expect \"setup?\"
-             send \"y\n\"
-             expect \"MLmodels?\"
-             send \"y\n\"
-             expect \"password:\"
-             send \"${{ secrets.LOGIN_PASS }}\n\"
-             expect \"NVIDIA\"
-             send \"${NVIDIA_INSTALL}\n\"
-             expect \"artifacts?\"
-             send \"y\n\"
-             expect \"$\"
-             exit 0
-           "
+          echo "${{ secrets.LOGIN_PASS }}" | sudo -S apt install jq
+          echo "${{ secrets.LOGIN_PASS }}" | sudo mkdir /opt/autoware/mlmodels -p
+          mkdir /home/runner/autoware_data
+          # ./get_ml_model.sh
 
       - name: vcs import src
         run: |
+          echo "${{ secrets.LOGIN_PASS }}" | sudo apt install python3-pip
+          pip3 install vcstool
           cd _InstallTempFolder/${{ env.REPO_NAME }}
           mkdir src
           vcs import src < autoware.repos
-
-      - name: rosdep install
-        run: |
-          cd _InstallTempFolder/${{ env.REPO_NAME }}
-          source /opt/ros/humble/setup.bash
-          rosdep update
-          # cspell: ignore libunwind
-          # The installation of libunwind-dev will fail, so install this first
-          sudo apt-get update
-          sudo apt-get install libunwind-dev
-
-          rosdep install -y --from-paths src --ignore-src --rosdistro humble
 
       - name: Delete .gif
         run: |
