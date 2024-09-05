@@ -130,6 +130,17 @@ artifacts:
             - autoware.repos
           import_path: src
       phases:
+        - name: environment-setup
+          user: root
+          exec: ./.webauto-ci/signage/environment-setup/run.sh
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/signage/environment-setup/**/*
         - name: ecu-system-setup
           user: autoware
           exec: ./.webauto-ci/signage/ecu-system-setup/run.sh
@@ -163,6 +174,17 @@ artifacts:
             - autoware.repos
           import_path: src
       phases:
+        - name: environment-setup
+          user: root
+          exec: ./.webauto-ci/signage/environment-setup/run.sh
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/signage/environment-setup/**/*
         - name: ecu-system-setup
           user: autoware
           exec: ./.webauto-ci/signage/ecu-system-setup/run.sh
