@@ -43,7 +43,7 @@ ptp4l_network_port: enp1s0
 
 # fms
 fms_url: fms.web.auto
-autoware_pc_ip: 192.168.30.11
+autoware_pc_ip: 192.168.20.11
 
 # x2-call
 x2_call_repo: git@github.com:tier4/x2-call.git
