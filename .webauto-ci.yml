@@ -50,6 +50,10 @@ artifacts:
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
+      output_installer_image:
+        from: ecu-system-setup
+        type: iso
+        base_iso: ubuntu-20.04.3-live-server-amd64
 
   - name: voice-system
     build:
@@ -93,11 +97,11 @@ artifacts:
         from: ubuntu:22.04
       output_rootfs_image:
         from: ecu-system-setup
-        type: iso
-        base_iso: ubuntu-22.04.3-live-server-amd64
-        install_disk: /dev/nvme0n1
-        hostname: main
         persistent_file_path: /etc/ota/persistents.txt
+      output_installer_image:
+        from: ecu-system-setup
+        type: iso
+        base_iso: ubuntu-20.04.3-live-server-amd64
 
 release:
   name_template: ${datetime}-${version}
