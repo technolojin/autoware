@@ -17,6 +17,8 @@ artifacts:
           repositories_files:
             - autoware.repos
           import_path: src
+      linux_parameters:
+        kernel_version: 5.15.0-72-generic
       phases:
         - name: environment-setup
           user: root
@@ -65,6 +67,8 @@ artifacts:
           repositories_files:
             - autoware.repos
           import_path: src
+      linux_parameters:
+        kernel_version: 5.15.0-72-generic
       phases:
         - name: environment-setup
           user: root
