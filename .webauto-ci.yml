@@ -17,6 +17,9 @@ artifacts:
           repositories_files:
             - autoware.repos
           import_path: src
+      environment_variables:
+        DEBIAN_FRONTEND: noninteractive
+        LANG: C.UTF-8
       linux_parameters:
         kernel_version: 5.15.0-72-generic
       phases:
@@ -67,6 +70,9 @@ artifacts:
           repositories_files:
             - autoware.repos
           import_path: src
+      environment_variables:
+        DEBIAN_FRONTEND: noninteractive
+        LANG: C.UTF-8
       linux_parameters:
         kernel_version: 5.15.0-72-generic
       phases:
