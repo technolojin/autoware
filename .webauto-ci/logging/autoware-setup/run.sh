@@ -12,7 +12,7 @@ git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/
 git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "git@github.com:"
 
 ansible_args=()
-ansible_args+=("--extra-vars" "prompt_install_nvidia=n")
+ansible_args+=("--extra-vars" "prompt_install_nvidia=y")
 ansible_args+=("--extra-vars" "prompt_download_artifacts=n")
 ansible_args+=("--extra-vars" "install_devel=n")
 
