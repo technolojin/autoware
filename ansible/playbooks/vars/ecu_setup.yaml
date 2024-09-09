@@ -12,8 +12,6 @@ autoware_env_dir_privileged: false
 cyclonedds:
   network_interface:
     - { address: lo, priority: default }
-  network_interface_address: # for set large txqueue
-    - lo
   minimum_socket_receive_buffer_size: 20MB
   minimum_socket_send_buffer_size: default
   max_message_size: 65500B
