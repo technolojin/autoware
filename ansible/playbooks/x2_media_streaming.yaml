@@ -8,7 +8,7 @@
     - { role: autoware.ecu_system_setup.boot_shutdown_service }
     - { role: autoware.ecu_system_setup.cyclonedds }
     - { role: autoware.ecu_system_setup.docker_groups } # is required before docker build
-    - { role: autoware.ecu_system_setup.iptables }
+    - { role: autoware.ecu_system_setup.nftables }
     - role: autoware.ecu_system_setup.media_streaming
       when: skip_media_streaming is not defined or not skip_media_streaming | bool
     - { role: autoware.ecu_system_setup.netplan }

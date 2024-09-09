@@ -28,11 +28,8 @@ cyclonedds:
   water_mark_whc_high: 500kB # Default value from CycloneDDS documentation
   water_mark_whc_low: 1kB # Default value from CycloneDDS documentation
 
-# iptables
-iptables_ipv4_conf_file: iptables/rules.x2.media-streaming.v4
-iptables_ipv6_conf_file: iptables/rules.x2.media-streaming.v6
-# nftables (media streaming ECU uses iptables)
-# nftables_conf_file: nftables.x2-media-streaming.conf
+# nftables
+nftables_conf_file: nftables/nftables.x2-media-streaming.conf
 
 # netplan
 netplan_files: netplan/99-autoware.x2-media-streaming.yaml
