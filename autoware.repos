@@ -57,7 +57,7 @@ repositories:
   ecu_system_setup:
     type: git
     url: git@github.com:tier4/autoware_ecu_system_setup.git
-    version: feat/signage_gen2
+    version: 2e2133824cf8f661315ed611d36068e19426c7a7
   # vendor
   vendor/j6_interface:
     type: git
