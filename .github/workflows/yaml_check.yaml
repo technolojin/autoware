@@ -30,10 +30,11 @@ jobs:
 
       - name: Generate token
         id: generate-token
-        uses: actions/create-github-app-token@v2
+        uses: actions/create-github-app-token@v1
         with:
           app_id: ${{ secrets.APP_ID }}
           private_key: ${{ secrets.PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
 
       - name: Set git config
         uses: autowarefoundation/autoware-github-actions/set-git-config@v1
