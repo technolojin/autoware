@@ -1,83 +1,77 @@
-# cspell: ignore rexmit nocaps
-# common
+# cSpell:ignore rexmit nocaps ipaddr maxsize
+
+# ========== common ==========
 daemon_reload: "{{ reload_systemd | default('yes') }}"
-rosbridge_host: 192.168.10.11
 ros_domain_id: 1
-rosbag_logging_directory: /mnt/ROSBAG
 autoware_env_dir: "{{ ansible_env.HOME }}"
 autoware_env_dir_privileged: false
+
+# ========== ecu_common.yaml ==========
+
+# cyclonedds
+# NOTE: Only lo is specified because the cyclonedds settings for Sub ECU is not determined yet
+cyclonedds:
+  network_interface_address:
+    - lo
+  minimum_socket_receive_buffer_size: 10MB
+  minimum_socket_send_buffer_size: 10MB
+  max_message_size: 8950B
+  fragment_size: 8850B
+  max_rexmit_message_size: 8950B
+  water_mark_whc_high: 4MB
+  water_mark_whc_low: 10kB
+ipv4_ipfrag_time: 1
+ipv4_ipfrag_high_thresh: 134217728
+netcore_rmem_max: 2147483647
+netcore_wmem_max: 2147483647
+
+# greengrass user/group
+ggc_user_uid: 919
+ggc_group_gid: 929
+
+# netplan
+netplan_files: netplan/99-autoware.x2-sub.yaml
+
+# nftables
+nftables_conf_file: nftables/nftables.conf
+
+# otaclient
+otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-sub
+otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-1gbe.j2
+
+# set-autoware-env
+autoware_install_dir: /home/autoware/pilot-auto.x2
+vehicle_id: default
+vehicle_model: j6_gen2
+sensor_model: aip_x2_gen2
+
+# timezone
+timezone: Asia/Tokyo
+
+# ========== ecu_develop.yaml ==========
 
 # additional-fonts
 additional_font_packages:
   - fonts-noto-cjk
 
-# cyclonedds
-cyclonedds:
-  network_interface_address:
-    - eno1
-    - enp5s0
-    - enp2s0f0
-  minimum_socket_receive_buffer_size: 20MB
-  minimum_socket_send_buffer_size: default
-  max_message_size: 65500B
-  fragment_size: 4000B
-  max_rexmit_message_size: 1456B # Default value from CycloneDDS documentation
-  water_mark_whc_high: 500kB # Default value from CycloneDDS documentation
-  water_mark_whc_low: 1kB # Default value from CycloneDDS documentation
-
-# keyboard
+# keyboard: Select keyboard.jp, keyboard.jp+ctrl_nocaps or keyboard.us+ctrl_nocaps
 keyboard_layout_file: keyboard.jp+ctrl_nocaps
 
-# autoware logging suite
-# - logpacker
-logpacker_config_template: logpacker/logpacker_config_x2.yaml.jinja2
-# - logpacker - syslog plugin
-logpacker_enable_syslog_plugin: true
-# - logpacker - rosbag plugin
-logpacker_enable_rosbag_plugin: true
-qos_profile_overrides_template: logpacker/qos_profile_overrides_x2.yaml
-# - bagtaker
-rosbag_copy_directory: /media/autoware/ROSBAG
-bagtaker_params_template: bagtaker2/bagtaker_params_x2.yaml.jinja2
+# ========== ecu_setup.yaml ==========
 
-# netplan
-netplan_files: netplan/99-autoware.x2-sub.yaml
+# ptp4l slave
+ptp4l_network_port: enp5s0f0
 
-# pcan
-peak_can_mini_pcie:
-  - device: pcan0 # VCU
-    rule: SUBSYSTEMS=="pci", ATTR{dev_id}=="0x0"
-    bitrate: 500000
-  - device: pcan1 # IMU
-    rule: SUBSYSTEMS=="pci", ATTR{dev_id}=="0x1"
-    bitrate: 500000
-  - device: pcan2 # Thermometer
-    rule: SUBSYSTEMS=="usb", DRIVERS=="peak_usb"
-    bitrate: 250000
+# syslog collector - client
+syslog_collector_type: Client
+rsyslog_server_ipaddr: 192.168.30.71 # X2 Logging ECU
+rsyslog_queue_maxsize: 1g
 
-# ptp4l port
-ptp4l_network_port: eno1
-
-# set-autoware-env
-autoware_install_dir: /home/autoware/pilot-auto.x2
-vehicle_id: default
-vehicle_model: j6_gen1
-sensor_model: aip_x2
-
-# timezone
-timezone: Asia/Tokyo
-
-# otaclient
-otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-sub
-otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-sub.j2
-
-# boot_shutdown_interface
-boot_shutdown_interface_param_file: boot_shutdown_interface/boot_shutdown.param.sub.yaml
-
-# godot_based_visualizer
-godot_rviz2_repository_version: j6
-godot_rviz2_autostart: false
-
+# rsyncd - server for logpacker coredump plugin
 # rsyncd - add systemd-tmpfiles configuration for logpacker coredump plugin
-setup_coredump_rsyncd_service: false
+setup_coredump_rsyncd_service: true
+rsyncd_hosts_allow: 192.168.30.71 # X2 Logging ECU
 setup_coredump_tmpfiles_service: true
+
+# configure marvell switch
+x2_configure_marvell_switch_file: marvell_switch_configuration_sub.xml
