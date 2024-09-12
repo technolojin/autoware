@@ -73,7 +73,7 @@ rsyslog_queue_maxsize: 1g
 
 # otaclient
 otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-signage
-otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-signage.j2
+otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-1gbe.j2
 
 # vlan
 setup_vlan: true
