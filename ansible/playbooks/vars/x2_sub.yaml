@@ -11,8 +11,8 @@ autoware_env_dir_privileged: false
 # cyclonedds
 # NOTE: Only lo is specified because the cyclonedds settings for Sub ECU is not determined yet
 cyclonedds:
-  network_interface_address:
-    - lo
+  network_interface:
+    - { address: lo, priority: default }
   minimum_socket_receive_buffer_size: 10MB
   minimum_socket_send_buffer_size: 10MB
   max_message_size: 8950B

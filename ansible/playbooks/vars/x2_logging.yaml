@@ -20,9 +20,9 @@ boot_shutdown_interface_param_file: empty_topic_boot_shutdown.param.yaml
 
 # cyclonedds
 cyclonedds:
-  network_interface_address:
-    - enp3s0f0
-    - enp8s0
+  network_interface:
+    - { address: enp3s0f0, priority: default }
+    - { address: enp8s0, priority: default }
   minimum_socket_receive_buffer_size: 10MB
   minimum_socket_send_buffer_size: 10MB
   max_message_size: 8950B
