@@ -51,7 +51,7 @@ x2_call_workspace: "{{ ansible_env.HOME }}/x2-call"
 x2_call_location: /opt/x2-call
 x2_call_version: 740a74e486530ae067060412e63ede4ae651cdff
 momo_release_tags: 2022.2+tier4-4
-momo_version: 20.04_x86_64.tar.gz
+momo_version: 20.04_x86_64
 
 # simple-system-launch
 simple_system_launch_items:
