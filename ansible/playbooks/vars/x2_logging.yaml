@@ -44,8 +44,9 @@ ptp4l_network_port: enp8s0
 
 # simple-system-launch
 # TODO: The *.*.* will change to the release version in future
-simple_system_launch_command: /opt/mot/build/MaintenanceOperationTool-*.*.*.AppImage
-simple_system_service_file: mot.service
+simple_system_launch_items:
+  - file: mot.service
+    command: /opt/mot/build/MaintenanceOperationTool-*.*.*.AppImage
 
 # netplan
 netplan_files: netplan/99-autoware.x2-logging.yaml
