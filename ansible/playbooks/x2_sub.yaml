@@ -2,7 +2,8 @@
 - name: Include vars
   hosts: localhost
   tasks:
-    - include_vars: ./vars/x2_sub.yaml
+    - name: Include vars for Sub ECU
+      ansible.builtin.include_vars: ./vars/x2_sub.yaml
 
 - name: Include additional playbook for common
   ansible.builtin.import_playbook: pilot_auto.dev_env.ecu_common
