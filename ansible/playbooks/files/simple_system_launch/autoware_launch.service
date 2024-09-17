@@ -3,7 +3,7 @@ Description=autoware
 After=network-online.target peak-can-mini-pcie.service
 
 [Service]
-ExecStart=/opt/autoware/services/autoware/run.sh
+ExecStart=/opt/autoware/services/system_launch/autoware_launch.service/run.sh
 KillSignal=SIGINT
 User=autoware
 
