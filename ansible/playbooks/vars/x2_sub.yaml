@@ -9,10 +9,10 @@ autoware_env_dir_privileged: false
 # ========== ecu_common.yaml ==========
 
 # cyclonedds
-# NOTE: Only lo is specified because the cyclonedds settings for Sub ECU is not determined yet
+# NOTE: Cyclonedds settings for Sub ECU is not determined yet. Only 1GbE interface is used for now.
 cyclonedds:
   network_interface:
-    - { address: lo, priority: default }
+    - { address: enp5s0f0, priority: default }
   minimum_socket_receive_buffer_size: 10MB
   minimum_socket_send_buffer_size: 10MB
   max_message_size: 8950B
@@ -77,3 +77,6 @@ setup_coredump_tmpfiles_service: true
 
 # configure marvell switch
 x2_configure_marvell_switch_file: marvell_switch_configuration_sub.xml
+
+# boot_shutdown_interface
+boot_shutdown_interface_param_file: empty_topic_boot_shutdown.param.yaml
