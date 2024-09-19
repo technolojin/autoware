@@ -25,7 +25,7 @@
     - { role: autoware.ecu_system_setup.syslog_collector_client }
     - { role: autoware.ecu_system_setup.fintek_can_driver }
     - { role: autoware.ecu_system_setup.marvell_switch_driver }
-    - { role: x2_autoware }
+    # - { role: x2_autoware } # Don't launch Autoware in Sub ECU until MRM design is finalized
     - { role: x2_can_adm }
     - { role: x2_configure_marvell_switch }
     - { role: x2_ptp4l }
