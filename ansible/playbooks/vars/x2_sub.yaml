@@ -61,9 +61,6 @@ keyboard_layout_file: keyboard.jp+ctrl_nocaps
 
 # ========== ecu_setup.yaml ==========
 
-# ptp4l slave
-ptp4l_network_port: enp5s0f0
-
 # syslog collector - client
 syslog_collector_type: Client
 rsyslog_server_ipaddr: 192.168.30.71 # X2 Logging ECU
@@ -80,3 +77,6 @@ x2_configure_marvell_switch_file: marvell_switch_configuration_sub.xml
 
 # boot_shutdown_interface
 boot_shutdown_interface_param_file: empty_topic_boot_shutdown.param.yaml
+
+# ptp4l
+x2_ptp4l_ecu: sub

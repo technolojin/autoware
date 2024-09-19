@@ -61,18 +61,6 @@ keyboard_layout_file: keyboard.jp+ctrl_nocaps
 
 # ========== ecu_setup.yaml ==========
 
-# ptp4l
-# TODO: Add ptp for LiDARs
-ptp4l_masters:
-  - name: enp3s0_radar
-    port_name: enp3s0
-    config_name: tier4_radar_gptp.cfg
-    use_phc2sys: true
-  - name: enp5s0f0_ecu
-    port_name: vlan.500
-    config_name: tier4_normal_software_ptp.cfg
-    use_phc2sys: false
-
 # syslog collector - client
 syslog_collector_type: Client
 rsyslog_server_ipaddr: 192.168.30.71 # X2 Logging ECU
@@ -86,3 +74,6 @@ setup_coredump_tmpfiles_service: true
 
 # configure marvell switch
 x2_configure_marvell_switch_file: marvell_switch_configuration_main.xml
+
+# ptp4l
+x2_ptp4l_ecu: main

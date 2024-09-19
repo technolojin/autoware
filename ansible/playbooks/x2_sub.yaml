@@ -20,7 +20,6 @@
     - { role: autoware.ecu_system_setup.boot_shutdown_service }
     - { role: autoware.ecu_system_setup.ip_routing_policy }
     - { role: autoware.ecu_system_setup.lenovo_keyboard }
-    - { role: autoware.ecu_system_setup.ptp4l }
     - { role: autoware.ecu_system_setup.rootfs_encrypt }
     - { role: autoware.ecu_system_setup.rsyslog }
     - { role: autoware.ecu_system_setup.syslog_collector_client }
@@ -29,3 +28,4 @@
     - { role: x2_autoware }
     - { role: x2_can_adm }
     - { role: x2_configure_marvell_switch }
+    - { role: x2_ptp4l }
