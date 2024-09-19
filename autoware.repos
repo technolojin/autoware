@@ -78,7 +78,7 @@ repositories:
   vendor/boost_transport_drivers:
     type: git
     url: https://github.com/autowarefoundation/transport_drivers.git
-    version: 8a93ae022604df8132bd65ab8a599532cf4c0a98
+    version: 3a08555776df12eadd0e91867d338c4270932a44 # mutable-buffer-in-udp-callback
   vendor/ros2_socketcan:
     type: git
     url: https://github.com/autowarefoundation/ros2_socketcan.git
