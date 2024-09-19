@@ -24,19 +24,31 @@ network:
     # Internal 10GbE SW IC
     # LiDAR, Sub ECU
     enp4s0:
-      addresses: [192.168.1.11/24]
+      addresses: [192.168.1.11/24, 10.13.1.166/24]
       dhcp4: false
       dhcp6: false
       mtu: 9000
       optional: true
   vlans:
-    # RADAR
-    vlan.19:
-      id: 19
+    # LiDAR / radar PTP
+    vlan.11:
+      id: 11
       link: enp3s0
-      dhcp4: false
-      dhcp6: false
-      addresses: [10.13.1.166/24]
+    vlan.12:
+      id: 12
+      link: enp3s0
+    vlan.13:
+      id: 13
+      link: enp3s0
+    vlan.14:
+      id: 14
+      link: enp3s0
+    vlan.15:
+      id: 15
+      link: enp3s0
+    vlan.16:
+      id: 16
+      link: enp3s0
     # Internet
     vlan.100:
       id: 100
