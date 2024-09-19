@@ -1,17 +1,14 @@
 #!/bin/bash
 # cspell:ignore listdevices hostif ethertype createboardcfg deviceaddr developmentcfg switchcfg
 
-FILE_PATH="/opt/autoware/services/configure_marvell_switch/marvell_switch_configuration"
-
-# Check if the board configuration file exists
 # If the file exists, we don't need to configure
-if [ -f "$FILE_PATH"/bd_cfg.xml ]; then
-    echo "board configuration file exists at $FILE_PATH."
+if [ -f "/opt/autoware/services/configure_marvell_switch/configure_done" ]; then
+    echo "Configuration has already been done."
     echo "No need to configure the switch."
     exit 0
 fi
 
-echo "The board configuration files was not found. Load the configuration file."
+FILE_PATH="/opt/autoware/services/configure_marvell_switch/marvell_switch_configuration"
 
 # Get the MAC address of the enp4s0 interface using the ip command and store it in a variable
 MAC_ADDRESS=$("$FILE_PATH"/AutomotiveSwitchV4 -listdevices -hostif=enp4s0 -ethertype=0x9101 | awk '/MAC/ {print $4}')
@@ -24,10 +21,37 @@ fi
 
 echo "interface: {{ x2_configure_marvell_switch_interface }}"
 echo "MAC address: $MAC_ADDRESS"
+echo "configuration file: {{ x2_configure_marvell_switch_file }}"
 
-# Create board configuration file
-"$FILE_PATH"/AutomotiveSwitchV4 -createboardcfg="$FILE_PATH"/bd_cfg.xml -hostif={{ x2_configure_marvell_switch_interface }} -ethertype=0x9101 -deviceaddr="$MAC_ADDRESS"
+# Set the maximum number of retries
+MAX_RETRIES="{{ x2_configure_marvell_switch_max_retries }}"
+# Initialize the attempt counter
+attempt=1
 
-# Load the switch configuration file
-# This configuration will be loaded upon boot from the next time
-"$FILE_PATH"/AutomotiveSwitchV4 -developmentcfg -hostif={{ x2_configure_marvell_switch_interface }} -ethertype=0x9101 -deviceaddr="$MAC_ADDRESS" -switchcfg="$FILE_PATH"/{{ x2_configure_marvell_switch_file }}
+# Retry loop: Run the command until it succeeds or the maximum number of attempts is reached
+while [ $attempt -le $MAX_RETRIES ]; do
+    echo "Attempt #$attempt"
+
+    # Load the switch configuration file
+    # This configuration will be saved in the switch
+    "$FILE_PATH"/AutomotiveSwitchV4 -developmentcfg -hostif={{ x2_configure_marvell_switch_interface }} -ethertype=0x9101 -deviceaddr="$MAC_ADDRESS" -switchcfg="$FILE_PATH"/{{ x2_configure_marvell_switch_file }}
+
+    return_code=$?
+
+    # Check if the command succeeded (exit code 0)
+    if [ $return_code -eq 0 ]; then
+        echo "Command succeeded on attempt #$attempt."
+        touch "/opt/autoware/services/configure_marvell_switch/configure_done"
+        exit 0
+    fi
+
+    # Increment the attempt counter
+    attempt=$((attempt + 1))
+
+    # Wait before retrying (adjust the sleep time as needed)
+    sleep 1
+done
+
+# If we reach here, the command failed after MAX_RETRIES attempts
+echo "Command failed after $MAX_RETRIES attempts."
+exit 1
