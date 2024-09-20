@@ -10,7 +10,7 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     env:
-      REPO_NAME: pilot-auto
+      REPO_NAME: pilot-auto.x2
 
     steps:
       - name: Checkout code
