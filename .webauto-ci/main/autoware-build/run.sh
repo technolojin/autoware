@@ -30,7 +30,7 @@ if [ "$WEBAUTO_CI_BUILD_OPTION_CARET_ENABLED" = "ENABLED" ]; then
     # setup CARET
     echo "===== Setup CARET ====="
     mkdir src
-    vcs import src <caret.repos
+    vcs import src --shallow <caret.repos
     # shellcheck disable=SC1090
     source "/opt/ros/${ROS_DISTRO}/setup.bash"
     ./setup_caret.sh -c

@@ -30,20 +30,6 @@
     - source: setup.cfg
 
     # Autoware Workflows
-    - source: .github/workflows/build-main.yaml
-      pre-commands: |
-        sd -s -- \
-        "     - name: Set git config" \
-        "     - name: Generate token
-                id: generate-token
-                uses: tibdex/github-app-token@v1
-                with:
-                  app_id: \${{ secrets.APP_ID }}
-                  private_key: \${{ secrets.PRIVATE_KEY }}
-
-              - name: Set git config" {source}
-        sd "secrets.GITHUB_TOKEN" "steps.generate-token.outputs.token" {source}
-
     - source: .github/workflows/load-env.yaml
 
     - source: .github/workflows/setup-universe.yaml
@@ -62,20 +48,7 @@
 
               - name: Set git config" {source}
         sd "secrets.GITHUB_TOKEN" "steps.generate-token.outputs.token" {source}
-
-    - source: .github/workflows/vcs-import.yaml
-      pre-commands: |
-        sd -s -- \
-        "     - name: Set git config" \
-        "     - name: Generate token
-                id: generate-token
-                uses: tibdex/github-app-token@v1
-                with:
-                  app_id: \${{ secrets.APP_ID }}
-                  private_key: \${{ secrets.PRIVATE_KEY }}
-
-              - name: Set git config" {source}
-        sd "secrets.GITHUB_TOKEN" "steps.generate-token.outputs.token" {source}
+        sd "runs-on: ubuntu-latest" "runs-on: ubuntu-latest-m" {source}
 
     - source: .github/workflows/pre-commit-ansible.yaml
       pre-commands: |
@@ -136,14 +109,14 @@
     - source: docker/build.sh
       pre-commands: |
         sd "autowarefoundation" "tier4" {source}
-        sd "autoware-universe" "pilot-auto" {source}
+        sd "autoware" "pilot-auto" {source}
 
-    - source: docker/autoware-universe/docker-bake.hcl
+    - source: docker/docker-bake.hcl
       dest: docker/pilot-auto/docker-bake.hcl
       pre-commands: |
         sd "autoware-universe" "pilot-auto" {source}
 
-    - source: docker/autoware-universe/Dockerfile
+    - source: docker/Dockerfile
       dest: docker/pilot-auto/Dockerfile
       pre-commands: |
         sd "universe" "local_dev_env" {source}

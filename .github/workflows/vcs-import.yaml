@@ -2,10 +2,22 @@ name: vcs-import
 
 on:
   pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - labeled
   workflow_dispatch:
 
 jobs:
+  make-sure-label-is-present:
+    uses: autowarefoundation/autoware-github-actions/.github/workflows/make-sure-label-is-present.yaml@v1
+    with:
+      label: tag:run-build-test
+
   load-env:
+    needs: make-sure-label-is-present
+    if: ${{ needs.make-sure-label-is-present.outputs.result == 'true' }}
     uses: ./.github/workflows/load-env.yaml
 
   vcs-import:
@@ -41,9 +53,9 @@ jobs:
       - name: Run vcs import
         run: |
           mkdir src
-          vcs import src < autoware.repos
-          vcs import src < simulator.repos
-          vcs import src < tools.repos
+          vcs import src < autoware.repos --shallow
+          vcs import src < simulator.repos --shallow
+          vcs import src < tools.repos --shallow
 
       - name: Run vcs export
         run: |

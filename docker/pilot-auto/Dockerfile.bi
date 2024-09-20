@@ -42,7 +42,7 @@ RUN sed -i "s/git@github\.com:/https:\/\/github\.com\//g" ./autoware.repos \
   && cat ./autoware.repos \
   && mkdir -p src
 
-RUN --mount=type=ssh vcs import src < autoware.repos
+RUN --mount=type=ssh vcs import src < autoware.repos --shallow
 
 RUN rosdep update \
   && DEBIAN_FRONTEND=noninteractive rosdep install -y --ignore-src --from-paths src --rosdistro "$ROS_DISTRO" \

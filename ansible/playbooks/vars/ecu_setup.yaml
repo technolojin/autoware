@@ -47,6 +47,11 @@ vehicle_id: default
 vehicle_model: j6_gen2
 sensor_model: aip_x2_gen2
 
+# simple_system_launch
+simple_system_launch_items:
+  - file: simple_system_launch/autoware_launch.service
+    command: ros2 launch autoware_launch autoware.launch.xml
+
 # timezone
 timezone: Asia/Tokyo
 

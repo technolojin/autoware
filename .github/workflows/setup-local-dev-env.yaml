@@ -2,10 +2,22 @@ name: setup-local-dev-env
 
 on:
   pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - labeled
 
 jobs:
+  make-sure-label-is-present:
+    uses: autowarefoundation/autoware-github-actions/.github/workflows/make-sure-label-is-present.yaml@v1
+    with:
+      label: tag:run-build-test
+
   setup-local-dev-env:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest-m
+    needs: make-sure-label-is-present
+    if: ${{ needs.make-sure-label-is-present.outputs.result == 'true' }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
