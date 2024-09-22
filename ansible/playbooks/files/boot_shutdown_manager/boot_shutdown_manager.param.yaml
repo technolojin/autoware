@@ -1,0 +1,18 @@
+---
+/**:
+  ros__parameters:
+    update_rate: 1.0
+    startup_timeout: 60.0
+    preparation_timeout: 60.0
+    managed_ecu:
+      main:
+        primary: true
+      logging:
+        skip_shutdown: true
+      perception1: default
+      perception2: default
+      media_streaming1: default
+      media_streaming2: default
+      signage: default
+      voice_system: default
+      sub: default
