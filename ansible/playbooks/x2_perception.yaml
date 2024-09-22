@@ -4,37 +4,56 @@
     - ./vars/x2_perception.yaml
 
   vars:
-    perception_type: od # "od" or "tlr"
+    ecu_id: perception1
+    ros_distro: humble
 
   pre_tasks:
-    - name: Check 'perception_type' contents
+    - name: Check 'ecu_id' contents
       ansible.builtin.assert:
         that:
-          - (perception_type == 'od') or (perception_type == 'tlr')
-        fail_msg: perception_type should be one of ['od' or 'tlr']
+          - (ecu_id == 'perception1') or (ecu_id == 'perception2')
+        fail_msg: ecu_id should be one of ['perception1' or 'perception2']
 
-    - name: Determine installed dtb file type according to perception_type
+    - name: Set perception1 params
       ansible.builtin.set_fact:
-        dtb_sensor_type: "{% if perception_type == 'od' %}isx021{% elif perception_type == 'tlr' %}isx021_imx490{% endif %}"
+        jetson_id: 0
+        netplan_files: netplan/99-autoware.x2-perception1.yaml
+        otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-perception1
+        perception_type: od
+        dtb_sensor_type: imx490
+        distortion_correction: 1
+      when: ecu_id == "perception1"
+
+    - name: Set perception2 params
+      ansible.builtin.set_fact:
+        jetson_id: 1
+        netplan_files: netplan/99-autoware.x2-perception2.yaml
+        otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-perception2
+        perception_type: tlr
+        dtb_sensor_type: imx490
+        distortion_correction: 0
+      when: ecu_id == "perception2"
 
   roles:
     - { role: autoware.ecu_system_setup.cyclonedds }
-    - { role: autoware.ecu_system_setup.docker_nvidia }
     - { role: autoware.ecu_system_setup.jetson_clocks }
     - { role: autoware.ecu_system_setup.jetson_perception_service }
     - { role: autoware.ecu_system_setup.netplan }
     - { role: autoware.ecu_system_setup.otaclient }
     - { role: autoware.ecu_system_setup.evaluator_self_hosted_environment }
     - { role: autoware.ecu_system_setup.ptp4l }
-    - { role: autoware.ecu_system_setup.rqx_58g_firmware }
     - { role: autoware.ecu_system_setup.rsyslog }
     - { role: autoware.ecu_system_setup.set_autoware_env }
     - { role: autoware.ecu_system_setup.syslog_collector_client }
-    - { role: autoware.ecu_system_setup.tmp_cpu_off }
     - { role: autoware.ecu_system_setup.timezone }
     - { role: autoware.ecu_system_setup.set_large_txqueue }
     - { role: autoware.ecu_system_setup.rsyncd }
-    - { role: hold_storage }
+    - { role: link_retry_handler }
+    - { role: gpasswd }
+    - { role: autoware.edge_auto_jetson.cuda }
+    - { role: autoware.edge_auto_jetson.vcstool }
+    - { role: autoware.edge_auto_jetson.ros2 }
+    - { role: autoware.edge_auto_jetson.cgroups }
 
   # Any `tasks` defined in the play will be executed after each role listed in `roles`
   # see: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html#using-roles-at-the-play-level
@@ -42,12 +61,6 @@
     - name: Setup ECU for Object Recognition or Traffic Light Recognition
       when: skip_od_tlr_setup is not defined or not skip_od_tlr_setup | bool
       block:
-        - name: ROS 2 base native build
-
-          ansible.builtin.include_role:
-            name: autoware.ecu_system_setup.ros2_native_build_for_perception_ecu
-            tasks_from: base.yaml
-
         - name: ROS 2 application build
           ansible.builtin.include_role:
             name: autoware.ecu_system_setup.ros2_native_build_for_perception_ecu
@@ -64,9 +77,7 @@
                 name: autoware.ecu_system_setup.download_yolox_model
             - name: TIER IV camera driver
               ansible.builtin.include_role:
-                name: autoware.ecu_system_setup.tier4_camera_driver
-              vars:
-                dtb_sensor_type: isx021 # noqa: var-naming[no-role-prefix]
+                name: autoware.ecu_system_setup.tier4_camera_driver_anvil
 
         - name: Setup as traffic light recognition ECU
           when:
@@ -80,9 +91,7 @@
                 name: autoware.ecu_system_setup.download_tlr_model
             - name: TIER IV camera driver
               ansible.builtin.include_role:
-                name: autoware.ecu_system_setup.tier4_camera_driver
-              vars:
-                dtb_sensor_type: isx021_imx490 # noqa: var-naming[no-role-prefix]
+                name: autoware.ecu_system_setup.tier4_camera_driver_anvil
 
     - name: Install boot_shutdown
       when: skip_boot_shutdown is not defined or not skip_boot_shutdown | bool

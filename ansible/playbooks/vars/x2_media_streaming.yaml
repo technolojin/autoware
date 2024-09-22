@@ -11,36 +11,32 @@ xx1_logging_ecu: false
 # syslog collector - client
 syslog_collector_type: Client
 # rsyslog_server_ipaddr: 192.168.30.11 # x2
-rsyslog_server_ipaddr: 192.168.30.21 # x2-sub
+rsyslog_server_ipaddr: 192.168.30.71 # X2 Logging ECU
 # rsyslog_server_port: 514
 # rsyslog_protocol: tcp
 rsyslog_queue_maxsize: 1g
 
-# cyclonedds
-cyclonedds:
-  network_interface_address:
-    - vlan.500
-  minimum_socket_receive_buffer_size: 20MB
-  minimum_socket_send_buffer_size: default
-  max_message_size: 65500B
-  fragment_size: 4000B
-  max_rexmit_message_size: 1456B # Default value from CycloneDDS documentation
-  water_mark_whc_high: 500kB # Default value from CycloneDDS documentation
-  water_mark_whc_low: 1kB # Default value from CycloneDDS documentation
-
-# nftables
-nftables_conf_file: nftables/nftables.x2-media-streaming.conf
-
-# netplan
-netplan_files: netplan/99-autoware.x2-media-streaming.yaml
+# iptables
+iptables_ipv4_conf_file: iptables/rules.x2.media-streaming.v4
+iptables_ipv6_conf_file: iptables/rules.x2.media-streaming.v6
+# nftables (media streaming ECU uses iptables)
+# nftables_conf_file: nftables.x2-media-streaming.conf
 
 # otaclient
-otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-media-streaming
-otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-mot.j2 # x2-mot setting can be used since on the same network
-otaclient_bionic_compat: true
+otaclient_release_version: v3.8.0
+otaclient_package_whl_checksum: sha256:3146c3622ca41628b0a7b6df71a5693bf6a1d76fbae8323e15d061420b52fe26
+# otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-media-streaming
+otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-10gbe.j2
+# otaclient_bionic_compat: true
 
 # boot_shutdown
 boot_shutdown_interface_run_script: run.sh.docker.jinja2
 boot_shutdown_interface_service_file: boot-shutdown-interface.docker.service
 boot_shutdown_service_root: /usr/local
 boot_shutdown_docker_name: "{{ 'ghcr.io/tier4/object-recognition:x2' if is_in_docker else 'dustynv/ros:galactic-ros-base-l4t-r32.6.1' }}"
+
+# media_streaming
+media_streaming:
+  import_docker: false
+  required_python: python3.8
+  required_libpython: libpython3.8

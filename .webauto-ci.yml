@@ -323,6 +323,154 @@ artifacts:
         base_iso: ubuntu-22.04.3-live-server-amd64
         hostname: logging
 
+  # Perception ECU1
+  - name: perception1
+    build:
+      type: custom
+      runtime:
+        type: standard1/arm64/large
+      source:
+        vcstool:
+          repositories_files:
+            - autoware.repos
+          import_path: src
+      linux_parameters:
+        kernel_version: 5.10.120-tegra
+      phases:
+        - name: ecu-system-setup
+          exec: ./.webauto-ci/perception/ecu-system-setup/run.sh
+          environment_variables:
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_perception.yaml
+            ECU_ID: perception1
+            VEHICLE_MODEL: j6_gen2
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/perception/ecu-system-setup/**/*
+              - src/ecu_system_setup/**/*
+              - ansible/**/*
+              - ansible-galaxy-requirements.yaml
+      base_container_image:
+        from: ghcr.io/tier4/ota-base-image/esg620_nvidia-jetpack:r35.4.1-v001-cti_orin-agx_forge_base-nvme0n1
+      output_rootfs_image:
+        from: ecu-system-setup
+        persistent_file_path: /etc/ota/persistents.txt
+
+  # Perception ECU2
+  - name: perception2
+    build:
+      type: custom
+      runtime:
+        type: standard1/arm64/large
+      source:
+        vcstool:
+          repositories_files:
+            - autoware.repos
+          import_path: src
+      linux_parameters:
+        kernel_version: 5.10.120-tegra
+      phases:
+        - name: ecu-system-setup
+          exec: ./.webauto-ci/perception/ecu-system-setup/run.sh
+          environment_variables:
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_perception.yaml
+            ECU_ID: perception2
+            VEHICLE_MODEL: j6_gen2
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/perception/ecu-system-setup/**/*
+              - src/ecu_system_setup/**/*
+              - ansible/**/*
+              - ansible-galaxy-requirements.yaml
+      base_container_image:
+        from: ghcr.io/tier4/ota-base-image/esg620_nvidia-jetpack:r35.4.1-v001-cti_orin-agx_forge_base-nvme0n1
+      output_rootfs_image:
+        from: ecu-system-setup
+        persistent_file_path: /etc/ota/persistents.txt
+
+  # MS ECU1
+  - name: media-streaming1
+    build:
+      type: custom
+      runtime:
+        type: standard1/arm64/large
+      source:
+        vcstool:
+          repositories_files:
+            - autoware.repos
+          import_path: src
+      linux_parameters:
+        kernel_version: 5.10.120-tegra
+      phases:
+        - name: ecu-system-setup
+          exec: ./.webauto-ci/media-streaming/ecu-system-setup/run.sh
+          environment_variables:
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_media_streaming.yaml
+            ECU_ID: media-streaming1
+            VEHICLE_MODEL: j6_gen2
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/media-streaming/ecu-system-setup/**/*
+              - src/ecu_system_setup/**/*
+              - ansible/**/*
+              - ansible-galaxy-requirements.yaml
+      base_container_image:
+        from: ghcr.io/tier4/ota-base-image/esg620_nvidia-jetpack:r35.4.1-v001-cti_orin-agx_forge_base-nvme0n1
+      output_rootfs_image:
+        from: ecu-system-setup
+        persistent_file_path: /etc/ota/persistents.txt
+
+  # MS ECU2
+  - name: media-streaming2
+    build:
+      type: custom
+      runtime:
+        type: standard1/arm64/large
+      source:
+        vcstool:
+          repositories_files:
+            - autoware.repos
+          import_path: src
+      linux_parameters:
+        kernel_version: 5.10.120-tegra
+      phases:
+        - name: ecu-system-setup
+          exec: ./.webauto-ci/media-streaming/ecu-system-setup/run.sh
+          environment_variables:
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_media_streaming.yaml
+            ECU_ID: media-streaming2
+            VEHICLE_MODEL: j6_gen2
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/media-streaming/ecu-system-setup/**/*
+              - src/ecu_system_setup/**/*
+              - ansible/**/*
+              - ansible-galaxy-requirements.yaml
+      base_container_image:
+        from: ghcr.io/tier4/ota-base-image/esg620_nvidia-jetpack:r35.4.1-v001-cti_orin-agx_forge_base-nvme0n1
+      output_rootfs_image:
+        from: ecu-system-setup
+        persistent_file_path: /etc/ota/persistents.txt
+
   # Signage ECU
   - name: signage
     build:
@@ -555,6 +703,34 @@ release:
       alternative_deployments:
         - type: installer
           artifact: logging
+    - name: perception1
+      deployment:
+        type: rootfs
+        artifact: perception1
+      alternative_deployments:
+        - type: installer
+          artifact: perception1
+    - name: perception2
+      deployment:
+        type: rootfs
+        artifact: perception2
+      alternative_deployments:
+        - type: installer
+          artifact: perception2
+    - name: media-streaming1
+      deployment:
+        type: rootfs
+        artifact: media-streaming1
+      alternative_deployments:
+        - type: installer
+          artifact: media-streaming1
+    - name: media-streaming2
+      deployment:
+        type: rootfs
+        artifact: media-streaming2
+      alternative_deployments:
+        - type: installer
+          artifact: media-streaming2
     - name: signage
       deployment:
         type: rootfs

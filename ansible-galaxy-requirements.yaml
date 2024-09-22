@@ -14,4 +14,8 @@ collections:
   #   type: dir
   - name: git@github.com:tier4/autoware_ecu_system_setup.git
     type: git
-    version: 2227a8913f672d52b15c07e6eb4b7dd276453906
+    version: 64566cd83ec7a334fa0987fb41f91d57145d9a5b
+
+  - name: https://github.com/tier4/edge-auto-jetson.git
+    type: git
+    version: feat/anvil-ota-setup
