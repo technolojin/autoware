@@ -22,6 +22,7 @@
   loop:
     - main/ptp4l@enp3s0.service
     - main/ptp4l@enp5s0f0.service
+    - main/ptp4l@vlan.500.service
     - main/phc2sys_sys_to_enp3s0.service
     - main/phc2sys_sys_to_enp5s0f0.service
 
@@ -36,6 +37,7 @@
   loop:
     - ptp4l@enp3s0.service
     - ptp4l@enp5s0f0.service
+    - ptp4l@vlan.500.service
     - phc2sys_sys_to_enp3s0.service
     - phc2sys_sys_to_enp5s0f0.service
 
