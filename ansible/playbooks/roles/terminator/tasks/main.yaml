@@ -1,0 +1,6 @@
+- name: Install terminator
+  ansible.builtin.apt:
+    name:
+      - terminator
+    update_cache: true
+  become: true

@@ -10,3 +10,4 @@
     - { role: autoware.ecu_system_setup.ibus_mozc }
     - { role: autoware.ecu_system_setup.keyboard }
     - { role: autoware.ecu_system_setup.vscode }
+    - { role: terminator }
