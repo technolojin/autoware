@@ -37,9 +37,8 @@ rosbag:
     - "/sensing/lidar/(.*)/pandar_packets$"
     - "/sensing/camera/camera(.*)/camera_info$"
     - "/sensing/camera/camera(.*)/trigger_time$"
-    - "/sensing/camera/camera(.*)/image_rect_color/compressed$"
-    - "/sensing/camera/camera7/image_raw/compressed$"
-    - "/sensing/radar/(.*)/objects_raw$"
+    - "/sensing/camera/camera(.*)/image_raw/compressed$"
+    - "/sensing/radar/(.*)/nebula_packets$"
     - "/sensing/radar/detected_objects$"
     - "/perception/object_recognition/detection/apollo/validation/objects$"
     - "/perception/object_recognition/detection/apollo/objects$"
@@ -212,22 +211,6 @@ coredump:
         - "-auv"
     - host_name: perception2
       ip_addr: 192.168.20.32
-      rsync_module: export
-      # If 'host_name' and 'ip_addr are empty, it means local host.
-      # Local host needs log_dir_path, instead of 'rsync_module'.
-      # log_dir_path: /var/lib/systemd/coredump
-      options:
-        - "-auv"
-    - host_name: perception3
-      ip_addr: 192.168.20.33
-      rsync_module: export
-      # If 'host_name' and 'ip_addr are empty, it means local host.
-      # Local host needs log_dir_path, instead of 'rsync_module'.
-      # log_dir_path: /var/lib/systemd/coredump
-      options:
-        - "-auv"
-    - host_name: perception4
-      ip_addr: 192.168.20.41
       rsync_module: export
       # If 'host_name' and 'ip_addr are empty, it means local host.
       # Local host needs log_dir_path, instead of 'rsync_module'.
