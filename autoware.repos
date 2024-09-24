@@ -91,11 +91,11 @@ repositories:
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
-    version: main
+    version: v0.0.1
   vendor/boost_transport_drivers:
     type: git
-    url: https://github.com/MapIV/transport_drivers.git
-    version: boost
+    url: https://github.com/autowarefoundation/transport_drivers.git
+    version: main
   vendor/ndt_omp:
     type: git
     url: https://github.com/tier4/ndt_omp.git
