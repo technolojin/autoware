@@ -13,7 +13,7 @@ artifacts:
     build:
       type: custom
       runtime:
-        type: standard1/amd64/large
+        type: standard1/amd64/xlarge
       source:
         vcstool:
           repositories_files:
@@ -246,10 +246,10 @@ release:
       deployment:
         type: rootfs
         artifact: main
-      alternative_deployment:
-        - type: rootfs
-          artifact: main
+      alternative_deployments:
         - type: installer
+          artifact: main
+        - type: container
           artifact: main
 
 scenario_parameter_groups:
