@@ -110,7 +110,7 @@ artifacts:
       output_installer_image:
         from: ecu-system-setup
         type: iso
-        base_iso: ubuntu-20.04.3-live-server-amd64
+        base_iso: ubuntu-22.04.3-live-server-amd64
 
 simulations:
   - name: planning_sim_v2
@@ -246,6 +246,11 @@ release:
       deployment:
         type: rootfs
         artifact: main
+      alternative_deployment:
+        - type: rootfs
+          artifact: main
+        - type: installer
+          artifact: main
 
 scenario_parameter_groups:
   # Necessary to update the parameters for each vehicle type
