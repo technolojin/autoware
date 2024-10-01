@@ -52,7 +52,7 @@
     - sub/ptp4l@enp3s0.service
     - sub/ptp4l@enp5s0f0.service
     - sub/phc2sys_enp5s0f0_to_enp3s0.service
-    - sub/phc2sys_enp5s0f1_to_sys.service
+    - sub/phc2sys_enp5s0f0_to_sys.service
 
 - name: Enable services for Sub ECU
   ansible.builtin.systemd:
@@ -66,4 +66,4 @@
     - ptp4l@enp3s0.service
     - ptp4l@enp5s0f0.service
     - phc2sys_enp5s0f0_to_enp3s0.service
-    - phc2sys_enp5s0f1_to_sys.service
+    - phc2sys_enp5s0f0_to_sys.service
