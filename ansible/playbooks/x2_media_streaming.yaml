@@ -17,7 +17,7 @@
     - name: Set media-streaming1 params
       ansible.builtin.set_fact:
         netplan_files: netplan/99-autoware.x2-media-streaming1.yaml
-        otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-perception1
+        otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-media-streaming1
         dtb_sensor_type: isx021
         distortion_correction: 1
       when: ecu_id == "media-streaming1"
@@ -25,7 +25,7 @@
     - name: Set media-streaming2 params
       ansible.builtin.set_fact:
         netplan_files: netplan/99-autoware.x2-media-streaming2.yaml
-        otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-perception2
+        otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-media-streaming2
         dtb_sensor_type: isx021
         distortion_correction: 1
       when: ecu_id == "media-streaming2"
