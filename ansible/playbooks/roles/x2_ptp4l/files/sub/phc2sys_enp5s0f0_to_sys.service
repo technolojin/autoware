@@ -1,10 +1,10 @@
 [Unit]
-Description=Synchronize the system clock to the one of enp5s0f1
+Description=Synchronize the system clock to the one of enp5s0f0
 After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/sbin/phc2sys -s enp5s0f1 -O 0 -m -F 10
+ExecStart=/usr/sbin/phc2sys -s enp5s0f0 -O 0 -m -F 10
 ExecStop=/bin/kill -TERM $MAINPID
 Restart=always
 RestartSec=5

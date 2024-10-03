@@ -25,7 +25,7 @@ available_ecu_ids:
 - sub
 - perception1
 - perception2
-- add-on
+# - add-on # Disable OTA update until the add-on ECU is ready
 - signage
 - voice-system
 - media-streaming1

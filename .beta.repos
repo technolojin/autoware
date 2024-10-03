@@ -11,7 +11,7 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: beta/v3.1.0-gen2
+    version: beta/v4.0.0
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
@@ -62,7 +62,7 @@ repositories:
   vendor/j6_interface:
     type: git
     url: git@github.com:tier4/j6_interface.git
-    version: 863ed06333cc6a25693f5e6d1053b22b5aede3b3
+    version: feat/MJ20_interface
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
@@ -82,7 +82,7 @@ repositories:
   vendor/ros2_socketcan:
     type: git
     url: https://github.com/autowarefoundation/ros2_socketcan.git
-    version: 2bbdba46ce4177e3076892aa99ede557b4f82446
+    version: 85da8c31286cad69de65dc50219e7d901ae9e94b
   vendor/ndt_omp:
     type: git
     url: https://github.com/tier4/ndt_omp.git
