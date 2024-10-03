@@ -37,6 +37,6 @@ boot_shutdown_docker_name: "{{ 'ghcr.io/tier4/object-recognition:x2' if is_in_do
 
 # media_streaming
 media_streaming:
-  import_docker: false
+  install_docker: false
   required_python: python3.8
   required_libpython: libpython3.8
