@@ -1,7 +1,0 @@
-/**:
-  ros__parameters:
-    startup_timeout: 180
-    prepare_shutdown_time: 15
-    execute_shutdown_time: 13
-
-    additional_prepare_shutdown_command: [systemctl stop jetson-container.service]
