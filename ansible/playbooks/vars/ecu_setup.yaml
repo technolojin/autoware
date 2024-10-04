@@ -72,6 +72,9 @@ setup_coredump_rsyncd_service: true
 rsyncd_hosts_allow: 192.168.30.71 # X2 Logging ECU
 setup_coredump_tmpfiles_service: true
 
+# boot_shutown
+boot_shutdown_tools_clone_dir: "{{ autoware_install_dir }}/src/product"
+
 # boot shutdown manager
 # use parameter file in pilot-auto repository
 boot_shutdown_manager_param_file: boot_shutdown_manager/boot_shutdown_manager.param.yaml
