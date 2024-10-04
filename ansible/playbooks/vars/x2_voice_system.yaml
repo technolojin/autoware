@@ -11,9 +11,6 @@ autoware_env_dir_privileged: false
 additional_font_packages:
   - fonts-noto-cjk
 
-# boot_shutdown_interface
-boot_shutdown_interface_param_file: boot_shutdown_interface/empty_topic_boot_shutdown.param.yaml
-
 # timezone
 timezone: Asia/Tokyo
 

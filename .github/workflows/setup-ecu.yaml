@@ -63,14 +63,11 @@ jobs:
       matrix:
         playbook:
           - x2_media_streaming
-          - x2_media_streaming_container
           - x2_perception
           - x2_perception_application
         include:
           - playbook: x2_media_streaming
             additional_args: -y -v -e skip_media_streaming=true -e skip_tier4_camera_driver=true
-          - playbook: x2_media_streaming_container
-            additional_args: -y -v -e skip_docker=true
           - playbook: x2_perception
             additional_args: -y -v -e vehicle_id=1234 -e skip_od_tlr_setup=true -e skip_boot_shutdown=true
           - playbook: x2_perception_application

@@ -15,9 +15,6 @@ additional_font_packages:
   - fonts-noto-cjk
   - fonts-takao-mincho
 
-# boot_shutdown_interface
-boot_shutdown_interface_param_file: empty_topic_boot_shutdown.param.yaml
-
 # cyclonedds
 cyclonedds:
   network_interface:
