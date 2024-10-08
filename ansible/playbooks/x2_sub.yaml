@@ -2,6 +2,8 @@
 - name: Include vars
   hosts: localhost
   tasks:
+    - name: Include common vars
+      ansible.builtin.include_vars: ./vars/x2_common.yaml
     - name: Include vars for Sub ECU
       ansible.builtin.include_vars: ./vars/x2_sub.yaml
 
