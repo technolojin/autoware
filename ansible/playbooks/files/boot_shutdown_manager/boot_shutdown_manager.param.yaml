@@ -7,24 +7,23 @@
     topic_port: 10000
     service_timeout: 1
     managed_ecu:
-      autoware:
+      main:
         primary: true
         service_address: 192.168.20.11
-      mot:
+      logging:
         skip_shutdown: true
       perception1:
         service_address: 192.168.20.31
       perception2:
         service_address: 192.168.20.32
-      perception3:
-        service_address: 192.168.20.33
-      perception4:
-        service_address: 192.168.20.34
-      signage0:
+      media_streaming1:
+        service_address: 192.168.20.61
+      media_streaming2:
+        service_address: 192.168.20.62
+      signage:
+        service_address: 192.168.20.51
+      voice_system:
         service_address: 192.168.20.41
-      signage1:
-        service_address: 192.168.20.42
       sub:
         service_address: 192.168.20.21
-      ms:
-        service_address: 192.168.20.61
+
