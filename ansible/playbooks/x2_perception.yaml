@@ -35,6 +35,7 @@
       when: ecu_id == "perception2"
 
   roles:
+    - { role: autoware.ecu_system_setup.boot_shutdown_service }
     - { role: autoware.ecu_system_setup.cyclonedds }
     - { role: autoware.ecu_system_setup.jetson_clocks }
     - { role: autoware.ecu_system_setup.jetson_perception_service }
