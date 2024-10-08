@@ -4,15 +4,27 @@
     update_rate: 1.0
     startup_timeout: 60.0
     preparation_timeout: 60.0
+    topic_port: 10000
+    service_timeout: 1
     managed_ecu:
-      main:
+      autoware:
         primary: true
-      logging:
+        service_address: 192.168.20.11
+      mot:
         skip_shutdown: true
-      perception1: default
-      perception2: default
-      media_streaming1: default
-      media_streaming2: default
-      signage: default
-      voice_system: default
-      sub: default
+      perception1:
+        service_address: 192.168.20.31
+      perception2:
+        service_address: 192.168.20.32
+      perception3:
+        service_address: 192.168.20.33
+      perception4:
+        service_address: 192.168.20.34
+      signage0:
+        service_address: 192.168.20.41
+      signage1:
+        service_address: 192.168.20.42
+      sub:
+        service_address: 192.168.20.21
+      ms:
+        service_address: 192.168.20.61
