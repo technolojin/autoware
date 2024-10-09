@@ -1,4 +1,3 @@
 # boot shutdown
 boot_shutdown_tools_repository: https://github.com/tier4/boot_shutdown_tools.git
-boot_shutdown_tools_clone_dir: /tmp/boot_shutdown_tools
 boot_shutdown_tools_version: test/non-ros-boot-shutdown
