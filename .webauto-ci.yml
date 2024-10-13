@@ -111,7 +111,7 @@ artifacts:
         user: autoware
       output_rootfs_image:
         from: ecu-system-setup
-        persistent_file_path: /home/autoware/autoware.proj/.webauto-ci/main/ecu-system-setup/persistents.txt
+        persistent_file_path: /etc/ota/persistents.txt
       output_installer_image:
         from: ecu-system-setup
         type: iso
@@ -224,7 +224,7 @@ artifacts:
         user: autoware
       output_rootfs_image:
         from: ecu-system-setup
-        persistent_file_path: /home/autoware/autoware.proj/.webauto-ci/main/ecu-system-setup/persistents.txt
+        persistent_file_path: /etc/ota/persistents.txt
       output_installer_image:
         from: ecu-system-setup
         type: iso
