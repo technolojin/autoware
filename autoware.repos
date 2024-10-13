@@ -15,7 +15,7 @@ repositories:
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: ebd4d86145b250d46de8fc6eecab34146e11ef29
+    version: 9460e1561dedb66b4bf0e99e51f12bb9466d186b
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
@@ -43,7 +43,7 @@ repositories:
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: 36a720eed01e543faf091cc1833239c05233da3b
+    version: 9e39859c5ca6bdef9fb29ca4efc6668e2e98229e
   # description
   description/sensor/sensor_component_description:
     type: git
@@ -52,7 +52,7 @@ repositories:
   description/vehicle/j6_gen2_description:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
-    version: b3be800a5bf878ce04fc3fbce214d81161ed93f6
+    version: 11fc69a5d1d4d4ce8cb98d708b1b86c492597c20
   # ecu_system_setup: When you use your own customized ecu_system_setup, uncomment this.
   ecu_system_setup:
     type: git
@@ -62,7 +62,7 @@ repositories:
   vendor/j6_interface:
     type: git
     url: git@github.com:tier4/j6_interface.git
-    version: b79e396c1aadab97f373262c24d429eae9419d4c
+    version: f05b86b96f2f65bba4013f15ca300de8a0d3f101
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
