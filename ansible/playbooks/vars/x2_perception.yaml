@@ -51,7 +51,6 @@ rsyslog_queue_maxsize: 1g
 
 # boot_shutdown
 boot_shutdown_interface_param_file: boot_shutdown_interface/boot_shutdown.param.perception.yaml
-boot_shutdown_service_root: /usr/local
 
 # set-autoware-env
 autoware_install_dir: /home/autoware/overlay_ws

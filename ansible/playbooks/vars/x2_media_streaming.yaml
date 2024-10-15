@@ -32,7 +32,6 @@ otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-1gbe.j2
 # boot_shutdown
 boot_shutdown_interface_run_script: run.sh.docker.jinja2
 boot_shutdown_interface_service_file: boot-shutdown-interface.docker.service
-boot_shutdown_service_root: /usr/local
 boot_shutdown_docker_name: "{{ 'ghcr.io/tier4/object-recognition:x2' if is_in_docker else 'dustynv/ros:galactic-ros-base-l4t-r32.6.1' }}"
 
 # media_streaming
