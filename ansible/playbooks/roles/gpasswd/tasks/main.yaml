@@ -1,4 +1,5 @@
 - name: Adding User to Group
-  ansible.builtin.command: gpasswd -a {{ gpasswd_user }} {{ gpasswd_group }}
+  ansible.builtin.command: >
+    bash -c "groupadd {{ gpasswd_group }} && gpasswd -a {{ gpasswd_user }} {{ gpasswd_group }}"
   become: true
   changed_when: false

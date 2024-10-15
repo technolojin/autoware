@@ -1,2 +1,2 @@
-gpasswd_user: autoware
+gpasswd_user: $USER
 gpasswd_group: gpio
