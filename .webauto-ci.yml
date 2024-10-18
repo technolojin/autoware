@@ -194,6 +194,44 @@ simulations:
           path: /home/autoware/autoware_data/lidar_centerpoint
           preserve_original_files: true
 
+  - name: annotationless_perception
+    type: annotationless_perception
+    simulator:
+      deployment:
+        type: container
+        artifact: main
+      runtime:
+        type: gpu1/amd64/large
+      parameters:
+        use_traffic_light_recognition: "false"
+      pre_tasks:
+        - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
+          mounts:
+            - volume: model
+      volumes:
+        - name: model
+          path: /home/autoware/autoware_data/lidar_centerpoint
+          preserve_original_files: true
+
+  - name: planning_control
+    type: planning_control
+    simulator:
+      deployment:
+        type: container
+        artifact: main
+      runtime:
+        type: gpu1/amd64/large
+      parameters:
+        use_traffic_light_recognition: "false"
+      pre_tasks:
+        - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
+          mounts:
+            - volume: model
+      volumes:
+        - name: model
+          path: /home/autoware/autoware_data/lidar_centerpoint
+          preserve_original_files: true
+
   - name: traffic_light
     type: traffic_light
     simulator:
@@ -233,6 +271,15 @@ simulations:
 
   - name: eagleye
     type: eagleye
+    simulator:
+      deployment:
+        type: container
+        artifact: main
+      runtime:
+        type: standard1/amd64/medium
+
+  - name: ar_tag_based_localizer
+    type: ar_tag_based_localizer
     simulator:
       deployment:
         type: container
