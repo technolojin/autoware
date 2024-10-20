@@ -27,6 +27,7 @@
     - { role: autoware.ecu_system_setup.foxglove_bridge_service }
     - { role: autoware.ecu_system_setup.install_openssh_server }
     - { role: autoware.ecu_system_setup.lenovo_keyboard }
+    - { role: autoware.ecu_system_setup.localhost_shutdown }
     - { role: autoware.ecu_system_setup.logpacker }
     - { role: autoware.ecu_system_setup.otaclient }
     - { role: autoware.ecu_system_setup.ptp4l }
