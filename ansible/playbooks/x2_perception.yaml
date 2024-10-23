@@ -92,13 +92,3 @@
             - name: TIER IV camera driver
               ansible.builtin.include_role:
                 name: autoware.ecu_system_setup.tier4_camera_driver_anvil
-
-    - name: Install boot_shutdown
-      when: skip_boot_shutdown is not defined or not skip_boot_shutdown | bool
-      block:
-        - name: Install boot_shutdown_interface
-          ansible.builtin.include_role:
-            name: autoware.ecu_system_setup.boot_shutdown_interface
-        - name: Build boot_shutdown_interface
-          ansible.builtin.include_role:
-            name: autoware.ecu_system_setup.boot_shutdown_interface_build
