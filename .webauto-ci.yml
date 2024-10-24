@@ -175,7 +175,7 @@ simulations:
       runtime:
         type: standard1/amd64/medium
 
-  - name: PerformanceTest
+  - name: PerformanceTest_perception
     type: perception
     suite:
       selector:
@@ -198,7 +198,7 @@ simulations:
           path: /home/autoware/autoware_data/lidar_centerpoint
           preserve_original_files: true
 
-  - name: PerformanceTest
+  - name: PerformanceTest_traffic_light
     type: traffic_light
     suite:
       selector:
