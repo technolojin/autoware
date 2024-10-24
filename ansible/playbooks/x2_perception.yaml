@@ -92,3 +92,10 @@
             - name: TIER IV camera driver
               ansible.builtin.include_role:
                 name: autoware.ecu_system_setup.tier4_camera_driver_anvil
+
+    - name: Setup ECU for Perception2 ECU which is connected to Add-On ECU
+      when: ecu_id == 'perception2'
+      block:
+        - name: Install sensor trigger service
+          ansible.builtin.include_role:
+            name: autoware.ecu_system_setup.anvil_sensor_trigger_for_external
