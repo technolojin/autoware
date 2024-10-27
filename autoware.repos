@@ -57,7 +57,7 @@ repositories:
   ecu_system_setup:
     type: git
     url: git@github.com:tier4/autoware_ecu_system_setup.git
-    version: b09b34d671cb7d1d4b4d037593e5746fba4b025c
+    version: 2c13d3f844e15bb3727ca75217251dc027465df2
   # vendor
   vendor/j6_interface:
     type: git

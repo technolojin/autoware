@@ -397,6 +397,78 @@ artifacts:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
 
+  # Addon ECU
+  - name: addon
+    build:
+      type: custom
+      runtime:
+        type: standard1/amd64/large
+      source:
+        vcstool:
+          repositories_files:
+            - autoware.repos
+          import_path: src
+      environment_variables:
+        AUTOWARE_PATH: /home/autoware/pilot-auto.x2
+        DEBIAN_FRONTEND: noninteractive
+        LANG: C.UTF-8
+      linux_parameters:
+        kernel_version: 5.19.0-50-generic
+      phases:
+        - name: environment-setup
+          exec: ./.webauto-ci/addon/environment-setup/run.sh
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/addon/environment-setup/**/*
+        - name: autoware-setup
+          user: autoware
+          exec: ./.webauto-ci/addon/autoware-setup/run.sh
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/addon/autoware-setup/**/*
+              - ansible/**/*
+              - ansible-galaxy-requirements.yaml
+              - amd64.env
+          incremental_build:
+            enabled: true
+        - name: ecu-system-setup
+          user: autoware
+          exec: ./.webauto-ci/addon/ecu-system-setup/run.sh
+          environment_variables:
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_addon.yaml
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/addon/ecu-system-setup/**/*
+              - src/ecu_system_setup/**/*
+              - ansible/**/*
+              - ansible-galaxy-requirements.yaml
+      base_container_image:
+        from: ubuntu:22.04
+      output_rootfs_image:
+        from: ecu-system-setup
+        persistent_file_path: /etc/ota/persistents.txt
+      output_installer_image:
+        from: ecu-system-setup
+        type: iso
+        base_iso: ubuntu-22.04.3-live-server-amd64
+        install_disk: /dev/nvme0n1
+        hostname: addon
+
   # MS ECU1
   - name: media-streaming1
     build:
@@ -717,6 +789,13 @@ release:
       alternative_deployments:
         - type: installer
           artifact: perception2
+    - name: addon
+      deployment:
+        type: rootfs
+        artifact: addon
+      alternative_deployments:
+        - type: installer
+          artifact: addon
     - name: media-streaming1
       deployment:
         type: rootfs

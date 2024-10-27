@@ -8,7 +8,7 @@ secondaries:
   ip_addr: "192.168.30.31"
 - ecu_id: perception2
   ip_addr: "192.168.30.32"
-- ecu_id: add-on
+- ecu_id: addon
   ip_addr: "192.168.30.33"
 - ecu_id: signage
   ip_addr: "192.168.20.41"
@@ -25,7 +25,7 @@ available_ecu_ids:
 - sub
 - perception1
 - perception2
-# - add-on # Disable OTA update until the add-on ECU is ready
+- addon
 - signage
 - voice-system
 - media-streaming1
