@@ -4,7 +4,7 @@ network:
   ethernets:
     # 10G BASE-T #1
     # 10GbE SW Hub
-    enp6s0:
+    enp7s0:
       optional: true
       dhcp4: false
       dhcp6: false
@@ -25,3 +25,14 @@ network:
       dhcp4: false
       dhcp6: false
       addresses: [192.168.20.33/24]
+    # For debugging purpose
+    enp3s0f0:
+      optional: true
+      dhcp4: true
+      dhcp6: true
+
+    # Below, we specify `optional: true`` for unused network interfaces to ensure that network-online.target completes quickly.
+    enp6s0:
+      optional: true
+    enp5s0:
+      optional: true
