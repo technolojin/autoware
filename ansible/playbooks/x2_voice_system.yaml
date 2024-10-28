@@ -1,6 +1,7 @@
 - name: Setup x2 voice system
   hosts: localhost
   vars_files:
+    - ./vars/x2_common.yaml
     - ./vars/x2_voice_system.yaml
   pre_tasks:
     - name: Set galactic rosdistro
