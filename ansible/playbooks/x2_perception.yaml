@@ -94,12 +94,9 @@
               ansible.builtin.include_role:
                 name: autoware.ecu_system_setup.tier4_camera_driver_anvil
 
-    - name: Install boot_shutdown
-      when: skip_boot_shutdown is not defined or not skip_boot_shutdown | bool
+    - name: Setup ECU for Perception2 ECU which is connected to Add-On ECU
+      when: ecu_id == 'perception2'
       block:
-        - name: Install boot_shutdown_interface
+        - name: Install sensor trigger service
           ansible.builtin.include_role:
-            name: autoware.ecu_system_setup.boot_shutdown_interface
-        - name: Build boot_shutdown_interface
-          ansible.builtin.include_role:
-            name: autoware.ecu_system_setup.boot_shutdown_interface_build
+            name: autoware.ecu_system_setup.anvil_sensor_trigger_for_external

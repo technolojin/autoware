@@ -13,7 +13,6 @@
   roles:
     # add your necessary roles
     - { role: autoware.ecu_system_setup.automatic_login }
-    - { role: autoware.ecu_system_setup.boot_shutdown_interface }
     - { role: autoware.ecu_system_setup.boot_shutdown_manager }
     - { role: autoware.ecu_system_setup.boot_shutdown_service }
     - { role: autoware.ecu_system_setup.ip_routing_policy }
