@@ -1,6 +1,7 @@
 - name: Setup x2 signage
   hosts: localhost
   vars_files:
+    - ./vars/x2_common.yaml
     - ./vars/x2_signage.yaml
   vars_prompt:
     # TODO: add github_token to github backend
