@@ -32,6 +32,7 @@
       when: ecu_id == "media-streaming2"
 
   roles:
+    - { role: autoware.ecu_system_setup.boot_shutdown_service }
     - { role: autoware.ecu_system_setup.iptables }
     - role: autoware.ecu_system_setup.media_streaming
       when: skip_media_streaming is not defined or not skip_media_streaming | bool
