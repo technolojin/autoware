@@ -2,6 +2,8 @@
 - name: Include vars
   hosts: localhost
   tasks:
+    - name: Include common vars
+      ansible.builtin.include_vars: ./vars/x2_common.yaml
     - name: Include vars for Sub ECU
       ansible.builtin.include_vars: ./vars/x2_sub.yaml
 
@@ -16,7 +18,6 @@
   roles:
     # add your necessary roles
     - { role: autoware.ecu_system_setup.automatic_login }
-    - { role: autoware.ecu_system_setup.boot_shutdown_interface }
     - { role: autoware.ecu_system_setup.boot_shutdown_service }
     - { role: autoware.ecu_system_setup.ip_routing_policy }
     - { role: autoware.ecu_system_setup.lenovo_keyboard }

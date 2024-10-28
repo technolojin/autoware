@@ -1,6 +1,7 @@
 - name: Setup x2 voice system
   hosts: localhost
   vars_files:
+    - ./vars/x2_common.yaml
     - ./vars/x2_voice_system.yaml
   pre_tasks:
     - name: Set galactic rosdistro
@@ -21,7 +22,6 @@
   roles:
     - { role: autoware.ecu_system_setup.additional_fonts }
     - { role: autoware.ecu_system_setup.automatic_login }
-    - { role: autoware.ecu_system_setup.boot_shutdown_interface }
     - { role: autoware.ecu_system_setup.boot_shutdown_service }
     - { role: autoware.ecu_system_setup.clean_ros_log }
     - { role: autoware.ecu_system_setup.cyclonedds }
