@@ -49,9 +49,6 @@ rsyslog_server_ipaddr: 192.168.30.71 # X2 Logging ECU
 # rsyslog_tcp_prptocol: tcp
 rsyslog_queue_maxsize: 1g
 
-# boot_shutdown
-boot_shutdown_service_root: /usr/local
-
 # set-autoware-env
 autoware_install_dir: /home/autoware/overlay_ws
 
