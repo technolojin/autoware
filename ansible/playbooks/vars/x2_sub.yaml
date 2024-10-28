@@ -76,8 +76,5 @@ setup_coredump_tmpfiles_service: true
 x2_configure_marvell_switch_board_config_file: bd_cfg_sub.xml
 x2_configure_marvell_switch_file: X2_J6_Gen2_Sub_Marvell.xml
 
-# boot_shutdown_interface
-boot_shutdown_interface_param_file: empty_topic_boot_shutdown.param.yaml
-
 # ptp4l
 x2_ptp4l_ecu: sub

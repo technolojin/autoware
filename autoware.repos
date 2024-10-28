@@ -15,7 +15,7 @@ repositories:
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: efb3773402a21da3b0fc488b385fa20fbbf9e524
+    version: b3f41263d4300574a0670f2d760c6862b126a7dc
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
@@ -43,7 +43,7 @@ repositories:
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: 753f6f0a51c431c4a067afe91482c6360a31d6b4
+    version: ff27435967777947916e23d6dec7f87ef1283e37
   # description
   description/sensor/sensor_component_description:
     type: git
@@ -52,17 +52,17 @@ repositories:
   description/vehicle/j6_gen2_description:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
-    version: b3be800a5bf878ce04fc3fbce214d81161ed93f6
+    version: 16fafa1291bd2090defcf862b256405d2549e629
   # ecu_system_setup: When you use your own customized ecu_system_setup, uncomment this.
   ecu_system_setup:
     type: git
     url: git@github.com:tier4/autoware_ecu_system_setup.git
-    version: 64566cd83ec7a334fa0987fb41f91d57145d9a5b
+    version: 7593352d5ebd9549a50e07111deaaa4d0a8cf88d
   # vendor
   vendor/j6_interface:
     type: git
     url: git@github.com:tier4/j6_interface.git
-    version: b79e396c1aadab97f373262c24d429eae9419d4c
+    version: d5490cc16aba95167080ae479f2aae7df291e40a
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
@@ -74,7 +74,7 @@ repositories:
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
-    version: 81afef9ec1cdc1dae9d39e08e916813baab1fd4c
+    version: 2ea66b64caeb90c8d0c11cd7e69d5935dffb56af
   vendor/boost_transport_drivers:
     type: git
     url: https://github.com/autowarefoundation/transport_drivers.git
@@ -148,10 +148,6 @@ repositories:
     url: git@github.com:tier4/emergency_vehicle_detector.git
     version: e39b53a312c05b51876a3ddddb2b987f20ac53dd
   # product
-  product/boot_shutdown_tools:
-    type: git
-    url: https://github.com/tier4/boot_shutdown_tools.git
-    version: 54d77e36b12393949aa6485ad6280b03249cc2cf
   product/autoware_logging_suite:
     type: git
     url: git@github.com:tier4/autoware_logging_suite.git
