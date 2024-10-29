@@ -5,7 +5,7 @@ network:
     # 10G BASE-T #1
     # 10GbE SW Hub
     enp7s0:
-      optional: true
+      optional: false # Linking up of this is essential to avoid cyclonedds errors
       dhcp4: false
       dhcp6: false
       addresses: [192.168.30.33/24]
@@ -21,7 +21,7 @@ network:
     # 1G BASE-T
     # 1GbE SW Hub (HMI + PTPv2)
     enp0s31f6:
-      optional: true
+      optional: false # Linking up of this is essential to avoid PTP instability
       dhcp4: false
       dhcp6: false
       addresses: [192.168.20.33/24]
