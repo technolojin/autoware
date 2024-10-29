@@ -46,9 +46,6 @@ otaclient_package_whl_checksum: sha256:3146c3622ca41628b0a7b6df71a5693bf6a1d76fb
 otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-addon
 otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-10gbe.j2
 
-# boot_shutdown
-boot_shutdown_service_root: /usr/local
-
 # set-autoware-env
 autoware_install_dir: /home/autoware/pilot-auto.x2
 vehicle_id: default
