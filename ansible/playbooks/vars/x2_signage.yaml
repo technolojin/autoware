@@ -54,7 +54,7 @@ signage_sink_gen2: true
 # simple-system-launch
 simple_system_launch_items:
   - file: signage.service
-    command: pactl -- set-sink-volume 1 40%; ros2 launch signage signage.launch.xml
+    command: pactl -- set-sink-volume 2 40%; ros2 launch signage signage.launch.xml
 
 # netplan
 netplan_files: netplan/99-autoware.x2-signage.yaml
