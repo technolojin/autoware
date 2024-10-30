@@ -53,4 +53,4 @@ vehicle_model: j6_gen2
 sensor_model: aip_x2_gen2
 
 # sxpf_ros_driver
-sxpf_ros_driver_version: 48ec2b0ce851285576ae7ed3c4a3220c8e3d019a
+sxpf_ros_driver_version: 6bfb66ababe42ff7c073a68be099bfda34d91f72
