@@ -15,6 +15,5 @@
     state: present
     create: true
     mode: "0664"
-    regexp: "^{{ item.mount_specifier }}[[:space:]]+{{ item.mount_point }}"
   become: true
   loop: "{{ fstab_entries }}"
