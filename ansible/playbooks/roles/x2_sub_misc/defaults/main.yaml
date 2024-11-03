@@ -1,7 +1,17 @@
-temporary_logging_directory: /mnt/LOG # noqa var-naming[no-role-prefix]
-rosbag_logging_directory: /mnt/ROSBAG # noqa var-naming[no-role-prefix]
-rosbag_storage_label: ROSBAG_INTERNAL # noqa var-naming[no-role-prefix]
-
-# X2 specific
-rosbag_external_storage_label: ROSBAG # noqa var-naming[no-role-prefix]
-rosbag_copy_directory: /media/autoware/ROSBAG # noqa var-naming[no-role-prefix]
+fstab_entries:
+  - mount_specifier: "LABEL=ROSBAG_INTERNAL"
+    mount_point: "/mnt/ROSBAG"
+    fs_type: "ext4"
+    options: "nofail"
+  - mount_specifier: "LABEL=TMP"
+    mount_point: "/mnt/TMP"
+    fs_type: "ext4"
+    options: "nofail"
+  - mount_specifier: "/mnt/TMP/tmp"
+    mount_point: "/mnt/LOG"
+    fs_type: "none"
+    options: "bind"
+  - mount_specifier: "LABEL=ROSBAG"
+    mount_point: "/media/autoware/ROSBAG"
+    fs_type: "ext4"
+    options: "nofail"
