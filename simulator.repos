@@ -15,6 +15,10 @@ repositories:
     type: git
     url: https://github.com/tier4/driving_log_replayer.git
     version: main
+  simulator/driving_log_replayer_v2:
+    type: git
+    url: https://github.com/tier4/driving_log_replayer_v2.git
+    version: develop
   simulator/perception_eval:
     type: git
     url: https://github.com/tier4/autoware_perception_evaluation.git
