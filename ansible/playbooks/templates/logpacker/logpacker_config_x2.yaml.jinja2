@@ -48,6 +48,7 @@ logging_mode:
       max_splits_check_cycle: 1
     rotation:
       target_dir: "{{ temporary_logging_directory }}"
+      days_limit: 1
 rosbag:
   # If you use another file for rosbag configuration, define its file path. When not defined, this file will be used.
   # params_file: "{{ logpacker_config_dir }}/rosbag_params.yaml"
