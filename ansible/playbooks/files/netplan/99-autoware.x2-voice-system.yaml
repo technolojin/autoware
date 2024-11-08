@@ -7,7 +7,7 @@ network:
       addresses: [192.168.20.51/24]
       dhcp4: false
       dhcp6: false
-      optional: true
+      optional: false
     # For debugging purpose
     enp2s0:
       dhcp4: true
