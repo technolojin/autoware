@@ -98,8 +98,8 @@ artifacts:
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
-        from: ubuntu:22.04
-        # from: ghcr.io/tier4/pilot-auto/base-image:latest # use base image
+        # from: ubuntu:22.04
+        from: ghcr.io/tier4/pilot-auto/base-image:latest # use base image
       output_container_image:
         from: autoware-build
         workdir: /home/autoware/pilot-auto
