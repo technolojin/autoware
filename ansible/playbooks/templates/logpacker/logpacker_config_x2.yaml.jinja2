@@ -48,7 +48,6 @@ logging_mode:
       max_splits_check_cycle: 1
     rotation:
       target_dir: "{{ temporary_logging_directory }}"
-      days_limit: 1
 rosbag:
   # If you use another file for rosbag configuration, define its file path. When not defined, this file will be used.
   # params_file: "{{ logpacker_config_dir }}/rosbag_params.yaml"
@@ -262,3 +261,9 @@ kdump:
   # params_file: "{{ logpacker_config_dir }}/kdump_params.yaml"
   log_directory_path: "/var/crash"
   output_at: "{{ rosbag_logging_directory }}"
+rotation:
+  count_limit: 0
+  space_limit: 0
+  days_limit: 1
+  target_dir: "{{ temporary_logging_directory }}"
+  check_cycle: 1
