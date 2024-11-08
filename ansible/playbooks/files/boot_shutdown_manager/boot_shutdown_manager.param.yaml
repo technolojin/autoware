@@ -16,7 +16,7 @@
         service_address: 192.168.20.31
       perception2:
         service_address: 192.168.20.32
-      addon:
+      addon-lite:
         service_address: 192.168.20.33
       ms1:
         service_address: 192.168.20.61
