@@ -40,12 +40,6 @@ logging_mode:
       - kdump
     rosbag:
       output_at: "{{ temporary_logging_directory }}"
-      split_type: duration
-      split_size: 1024
-      split_duration: "60"
-      max_cache_size: 104857600
-      max_splits: 150
-      max_splits_check_cycle: 1
     rotation:
       target_dir: "{{ temporary_logging_directory }}"
 rosbag:
@@ -263,7 +257,7 @@ kdump:
   output_at: "{{ rosbag_logging_directory }}"
 rotation:
   count_limit: 0
-  space_limit: 0
-  days_limit: 1
+  space_limit: 10
+  days_limit: 0
   target_dir: "{{ temporary_logging_directory }}"
   check_cycle: 1
