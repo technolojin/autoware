@@ -40,7 +40,7 @@ depends_repos: vehicle_voice_alert_system.repos
 # simple system launch
 simple_system_launch_items:
   - file: vehicle_sound.service
-    command: sleep 10; pactl -- set-sink-volume 0 50%; ros2 launch vehicle_voice_alert_system vehicle_voice_alert_system.launch.xml
+    command: pactl -- set-sink-volume 0 50%; ros2 launch vehicle_voice_alert_system vehicle_voice_alert_system.launch.xml
 
 # netplan
 netplan_files: netplan/99-autoware.x2-voice-system.yaml
