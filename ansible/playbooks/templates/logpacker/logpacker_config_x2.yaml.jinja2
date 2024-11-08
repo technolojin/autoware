@@ -42,10 +42,10 @@ logging_mode:
       output_at: "{{ temporary_logging_directory }}"
       split_type: duration
       split_size: 1024
-      split_duration: "3600"
+      split_duration: "60"
       max_cache_size: 104857600
-      max_splits: 0
-      max_splits_check_cycle: 15
+      max_splits: 150
+      max_splits_check_cycle: 1
     rotation:
       target_dir: "{{ temporary_logging_directory }}"
 rosbag:
