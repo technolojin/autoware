@@ -11,7 +11,7 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: 402ba6001f17597c0499347aff6c2433a76417ed
+    version: 11b9fce1a9a063f8b2a7670cd5cdc03271efc963
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
@@ -52,7 +52,7 @@ repositories:
   description/vehicle/j6_gen2_description:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
-    version: 16fafa1291bd2090defcf862b256405d2549e629
+    version: 9304888e8ac70457ddc48eedb17a117ea9c39749
   # ecu_system_setup: When you use your own customized ecu_system_setup, uncomment this.
   ecu_system_setup:
     type: git
