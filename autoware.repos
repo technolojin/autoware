@@ -53,6 +53,10 @@ repositories:
     type: git
     url: https://github.com/tier4/autoware_individual_params.git
     version: main
+  autoware/integration_document:
+    type: git
+    url: https://github.com/tier4/pilot-auto-integration-document.git
+    version: main
   # description
   description/sensor/sensor_component_description:
     type: git
