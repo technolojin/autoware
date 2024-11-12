@@ -1,0 +1,65 @@
+# cspell: ignore ipaddr prptocol maxsize rexmit compat
+# common
+daemon_reload: "{{ reload_systemd | default('yes') }}"
+autoware_env_dir: /opt/autoware/env
+autoware_env_dir_privileged: true
+
+# cyclonedds
+cyclonedds:
+  network_interface:
+    - { address: mgbe1, priority: default }
+  minimum_socket_receive_buffer_size: 10MB
+  minimum_socket_send_buffer_size: 10MB
+  max_message_size: 8950B
+  fragment_size: 8850B
+  max_rexmit_message_size: 8950B
+  water_mark_whc_high: 4MB
+  water_mark_whc_low: 10kB
+ipv4_ipfrag_time: 3
+ipv4_ipfrag_high_thresh: 134217728
+netcore_rmem_max: 2147483647
+netcore_rmem_default: 212992
+netcore_wmem_max: 2147483647
+
+# jetson-perception-service
+# jetson_id: 2
+ros_domain_id: 1
+vehicle_id: default
+vehicle_model: j6_gen2
+sensor_model: aip_x2_gen2
+
+# timezone
+timezone: Asia/Tokyo
+
+# ptp4l port
+ptp4l_network_port: eth0
+
+# otaclient
+otaclient_release_version: v3.8.0
+otaclient_package_whl_checksum: sha256:3146c3622ca41628b0a7b6df71a5693bf6a1d76fbae8323e15d061420b52fe26
+
+# otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-perception1
+otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-1gbe.j2
+# otaclient_bionic_compat: true
+
+# syslog collector - client
+syslog_collector_type: Client
+rsyslog_server_ipaddr: 192.168.30.71 # X2 Logging ECU
+# rsyslog_server_port: 514
+# rsyslog_tcp_prptocol: tcp
+rsyslog_queue_maxsize: 1g
+
+# set-autoware-env
+autoware_install_dir: /home/autoware/overlay_ws
+
+# rsyncd - server for logpacker coredump plugin
+# rsyncd - add systemd-tmpfiles configuration for logpacker coredump plugin
+setup_coredump_rsyncd_service: true
+rsyncd_hosts_allow: 192.168.30.71 # X2 Logging ECU
+setup_coredump_tmpfiles_service: true
+
+# ros2 native build
+ansible_python_path: /usr/bin/python3.8
+aip_repos_file_name: aip_j6_gen2.repos
+jetson_iv_container_version: x2/v3.1.0-gen2
+jetson_container_install_dir: /home/autoware

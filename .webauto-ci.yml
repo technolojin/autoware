@@ -397,55 +397,26 @@ artifacts:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
 
-  # Addon ECU
-  - name: addon
+  # Addon-lite ECU
+  - name: addon-lite
     build:
       type: custom
       runtime:
-        type: standard1/amd64/large
+        type: standard1/arm64/large
       source:
         vcstool:
           repositories_files:
             - autoware.repos
           import_path: src
-      environment_variables:
-        AUTOWARE_PATH: /home/autoware/pilot-auto.x2
-        DEBIAN_FRONTEND: noninteractive
-        LANG: C.UTF-8
       linux_parameters:
-        kernel_version: 5.19.0-50-generic
+        kernel_version: 5.10.120-tegra
       phases:
-        - name: environment-setup
-          exec: ./.webauto-ci/addon/environment-setup/run.sh
-          caches:
-            - name: apt-lists
-              mountpoint: /var/lib/apt/lists
-            - name: apt-archives
-              mountpoint: /var/cache/apt/archives
-          build_result_reuse:
-            key_files:
-              - .webauto-ci/addon/environment-setup/**/*
-        - name: autoware-setup
-          user: autoware
-          exec: ./.webauto-ci/addon/autoware-setup/run.sh
-          caches:
-            - name: apt-lists
-              mountpoint: /var/lib/apt/lists
-            - name: apt-archives
-              mountpoint: /var/cache/apt/archives
-          build_result_reuse:
-            key_files:
-              - .webauto-ci/addon/autoware-setup/**/*
-              - ansible/**/*
-              - ansible-galaxy-requirements.yaml
-              - amd64.env
-          incremental_build:
-            enabled: true
         - name: ecu-system-setup
-          user: autoware
-          exec: ./.webauto-ci/addon/ecu-system-setup/run.sh
+          exec: ./.webauto-ci/addon-lite/ecu-system-setup/run.sh
           environment_variables:
-            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_addon.yaml
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_addon_lite.yaml
+            ECU_ID: addon-lite
+            VEHICLE_MODEL: j6_gen2
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
@@ -453,21 +424,15 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
-              - .webauto-ci/addon/ecu-system-setup/**/*
+              - .webauto-ci/perception/ecu-system-setup/**/*
               - src/ecu_system_setup/**/*
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
-        from: ubuntu:22.04
+        from: ghcr.io/tier4/ota-base-image/esg620_nvidia-jetpack:r35.4.1-v001-cti_orin-agx_forge_base-nvme0n1
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
-      output_installer_image:
-        from: ecu-system-setup
-        type: iso
-        base_iso: ubuntu-22.04.3-live-server-amd64
-        install_disk: /dev/nvme0n1
-        hostname: addon
 
   # MS ECU1
   - name: media-streaming1
@@ -789,13 +754,13 @@ release:
       alternative_deployments:
         - type: installer
           artifact: perception2
-    - name: addon
+    - name: addon-lite
       deployment:
         type: rootfs
-        artifact: addon
+        artifact: addon-lite
       alternative_deployments:
         - type: installer
-          artifact: addon
+          artifact: addon-lite
     - name: media-streaming1
       deployment:
         type: rootfs
