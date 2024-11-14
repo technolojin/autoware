@@ -18,9 +18,9 @@
         service_address: 192.168.20.32
       addon:
         service_address: 192.168.20.33
-      media_streaming1:
+      ms1:
         service_address: 192.168.20.61
-      media_streaming2:
+      ms2:
         service_address: 192.168.20.62
       signage:
         service_address: 192.168.20.41
