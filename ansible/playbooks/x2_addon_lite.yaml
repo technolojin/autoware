@@ -17,7 +17,7 @@
 
     - name: Set addon-lite params
       ansible.builtin.set_fact:
-        jetson_id: 0
+        jetson_id: 2
         netplan_files: netplan/99-autoware.x2-addon-lite.yaml
         otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-addon-lite
         perception_type: od
