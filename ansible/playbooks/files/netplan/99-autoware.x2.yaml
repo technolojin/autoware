@@ -7,20 +7,20 @@ network:
     enp5s0f0:
       dhcp4: false
       dhcp6: false
-      optional: true
+      optional: false
     # 10GbE SW Hub
     enp5s0f1:
       addresses: [192.168.30.11/24]
       dhcp4: false
       dhcp6: false
-      optional: true
+      optional: false
       mtu: 9000
     # Internal 10GbE SW IC
     # RADAR
     enp3s0:
       dhcp4: false
       dhcp6: false
-      optional: true
+      optional: false
     # Internal 10GbE SW IC
     # LiDAR, Sub ECU
     enp4s0:
@@ -28,7 +28,7 @@ network:
       dhcp4: false
       dhcp6: false
       mtu: 9000
-      optional: true
+      optional: false
   vlans:
     # LiDAR / radar PTP
     vlan.11:

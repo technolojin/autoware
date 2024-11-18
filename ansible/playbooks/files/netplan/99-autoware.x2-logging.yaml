@@ -5,7 +5,7 @@ network:
     # 10G BASE-T
     # 10GbE SW Hub
     enp3s0f0:
-      optional: true
+      optional: false
       dhcp4: false
       dhcp6: false
       addresses: [192.168.30.71/24]
@@ -13,7 +13,7 @@ network:
     # 1G BASE-T
     # HMI + PTPv2
     enp8s0:
-      optional: true
+      optional: false
       dhcp4: false
       dhcp6: false
       addresses: [192.168.20.71/24]
