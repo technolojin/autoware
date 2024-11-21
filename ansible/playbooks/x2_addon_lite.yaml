@@ -23,17 +23,6 @@
         perception_type: od
         dtb_sensor_type: imx490
         distortion_correction: 0
-      when: ecu_id == "addon-lite"
-
-    - name: Set perception2 params
-      ansible.builtin.set_fact:
-        jetson_id: 1
-        netplan_files: netplan/99-autoware.x2-perception2.yaml
-        otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-perception2
-        perception_type: tlr
-        dtb_sensor_type: imx490
-        distortion_correction: 0
-      when: ecu_id == "perception2"
 
   roles:
     - { role: autoware.ecu_system_setup.boot_shutdown_service }
@@ -94,10 +83,3 @@
             - name: TIER IV camera driver
               ansible.builtin.include_role:
                 name: autoware.ecu_system_setup.tier4_camera_driver_anvil
-
-    - name: Setup ECU for Perception2 ECU which is connected to Add-On ECU
-      when: ecu_id == 'perception2'
-      block:
-        - name: Install sensor trigger service
-          ansible.builtin.include_role:
-            name: autoware.ecu_system_setup.anvil_sensor_trigger_for_external
