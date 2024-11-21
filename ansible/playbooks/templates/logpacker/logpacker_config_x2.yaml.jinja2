@@ -31,6 +31,9 @@ logging_mode:
       - kdump
     rosbag:
       output_at: "{{ rosbag_logging_directory }}"
+      recording_type: "manual"
+      recording_mode_values:
+        - ""
   event:
     enable_plugins:
       - rosbag
@@ -40,6 +43,16 @@ logging_mode:
       - kdump
     rosbag:
       output_at: "{{ temporary_logging_directory }}"
+      recording_type: "auto"
+      recording_mode_values:
+        - "InitializingVehicle"
+        - "WaitingForRoute"
+        - "Planning"
+        - "WaitingForEngage"
+        - "Driving"
+        - "ArrivedGoal"
+        - "Emergency"
+        - "Finalizing"
     rotation:
       target_dir: "{{ temporary_logging_directory }}"
 rosbag:
