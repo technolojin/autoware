@@ -3,7 +3,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
-    version: 94c113e372cb1141756ce0d2ee696c5f171e7f91
+    version: 63d3c28c1e820bb3541752e8c778059902ee6932
   autoware/common:
     type: git
     url: https://github.com/autowarefoundation/autoware_common.git
@@ -11,11 +11,11 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: 3d4a5fd5de0eb9d48ccf3766bcda6db1cba6ce90
+    version: eca2fa3931f8fc77864ab3ad920d132fd15a28e1
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 92f7e9c3dc89344368106b484325dac5a271581c
+    version: 0a143d3e4dafc652b63f92b32c1fb74b97304645
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
@@ -43,7 +43,7 @@ repositories:
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: fad03492b151a68d1900e3e213ad3d592da31c38
+    version: 11747526bb0623c8e799ed98f7d48375ddb9023a
   # description
   description/sensor/sensor_component_description:
     type: git
@@ -62,7 +62,7 @@ repositories:
   vendor/j6_interface:
     type: git
     url: git@github.com:tier4/j6_interface.git
-    version: 4652f8616d5ac7fe1f814d98248e783e99822ed2
+    version: 450c73c4b793c3f14a4be8acad1fc019cec68af0
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
