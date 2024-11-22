@@ -21,6 +21,7 @@
     - { role: autoware.ecu_system_setup.bagtaker2 }
     - { role: autoware.ecu_system_setup.boot_shutdown_service }
     - { role: autoware.ecu_system_setup.clean_application_log }
+    - { role: autoware.ecu_system_setup.clean_empty_directory }
     - { role: autoware.ecu_system_setup.clean_ros_log }
     - { role: autoware.ecu_system_setup.cyclonedds }
     - { role: autoware.ecu_system_setup.disable_lock_screen }
