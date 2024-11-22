@@ -11,11 +11,11 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: eca2fa3931f8fc77864ab3ad920d132fd15a28e1
+    version: 1bd807b433b5720ed04490a3548b6b3c73847029
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 0a143d3e4dafc652b63f92b32c1fb74b97304645
+    version: a13c21ef2effd6219ccbf37d78b24a8b828ce9bb
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
