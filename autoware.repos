@@ -145,6 +145,10 @@ repositories:
     type: git
     url: https://github.com/tier4/rclcpp.git
     version: t4-main
+  launch: # Based humble version, the acceleration patched is added
+    type: git
+    url: https://github.com/tier4/launch.git
+    version: humble
 
   ament_cmake: # TODO(mitsudome-r): remove when https://github.com/ament/ament_cmake/pull/448 is merged
     type: git
