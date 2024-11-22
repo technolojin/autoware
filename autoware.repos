@@ -62,7 +62,7 @@ repositories:
   vendor/j6_interface:
     type: git
     url: git@github.com:tier4/j6_interface.git
-    version: 450c73c4b793c3f14a4be8acad1fc019cec68af0
+    version: fdb318fce1333d5b1c4bf6d5fc8d6d2918d2482c
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
