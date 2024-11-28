@@ -43,7 +43,7 @@ repositories:
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: 4a89ea551b55e71df762131283ed043662c720e1
+    version: 12b81e96d2faab734e5d60319e14ace19e889b01
   # description
   description/sensor/sensor_component_description:
     type: git
@@ -130,7 +130,7 @@ repositories:
   launch: # Based humble version, the acceleration patched is added
     type: git
     url: https://github.com/tier4/launch.git
-    version: humble
+    version: f12ed91942fefc2c50d7f6d16c458835fc18396a
   ament_cmake: # TODO(mitsudome-r): remove when https://github.com/ament/ament_cmake/pull/448 is merged
     type: git
     url: https://github.com/autowarefoundation/ament_cmake.git
