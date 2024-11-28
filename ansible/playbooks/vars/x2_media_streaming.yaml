@@ -23,8 +23,8 @@ iptables_ipv6_conf_file: iptables/rules.x2.media-streaming.v6
 # nftables_conf_file: nftables.x2-media-streaming.conf
 
 # otaclient
-otaclient_release_version: v3.8.0
-otaclient_package_whl_checksum: sha256:3146c3622ca41628b0a7b6df71a5693bf6a1d76fbae8323e15d061420b52fe26
+otaclient_release_version: v3.8.2
+otaclient_package_whl_checksum: sha256:046ae95ec76fb375889bd6d78f6120e50a6975e3eb5ef0998e7824fc41a90ee7
 # otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-media-streaming
 otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-1gbe.j2
 # otaclient_bionic_compat: true
