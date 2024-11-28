@@ -25,6 +25,9 @@ iptables_ipv6_conf_file: iptables/rules.x2.media-streaming.v6
 # otaclient
 otaclient_release_version: v3.8.4
 otaclient_package_whl_checksum: sha256:c118f7ce69bce85b7a038dd7829ca8567f665cf8f86772a6e773e77ac3b3e8fe
+otaclient_release_version: v3.8.2
+otaclient_package_whl_checksum: sha256:046ae95ec76fb375889bd6d78f6120e50a6975e3eb5ef0998e7824fc41a90ee7
+
 # otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-media-streaming
 otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-1gbe.j2
 # otaclient_bionic_compat: true
