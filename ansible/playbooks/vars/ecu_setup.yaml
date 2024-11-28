@@ -36,8 +36,8 @@ netplan_files: netplan/99-autoware.x2.yaml
 nftables_conf_file: nftables/nftables.conf
 
 # otaclient
-otaclient_release_version: v3.8.0
-otaclient_package_whl_checksum: sha256:3146c3622ca41628b0a7b6df71a5693bf6a1d76fbae8323e15d061420b52fe26
+otaclient_release_version: v3.8.2
+otaclient_package_whl_checksum: sha256:046ae95ec76fb375889bd6d78f6120e50a6975e3eb5ef0998e7824fc41a90ee7
 otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2
 otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2.j2
 
