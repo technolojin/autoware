@@ -14,7 +14,7 @@ collections:
   #   type: dir
   - name: git@github.com:tier4/autoware_ecu_system_setup.git
     type: git
-    version: f7983f3c4e6988820ef96a7f750e0bed6fe10df1
+    version: fix/cyclonedds-xml-select
 
   - name: https://github.com/tier4/edge-auto-jetson.git
     type: git
