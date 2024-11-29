@@ -15,7 +15,7 @@ repositories:
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 246b79312c6756668e3b392c74a572830f6cf141
+    version: f711c1385a8aa90003ab948b8dc121ca4913becd
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
@@ -43,7 +43,7 @@ repositories:
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: 12b81e96d2faab734e5d60319e14ace19e889b01
+    version: d599d64f3bb30dfd0f8e1da25cfa88b0f229f796
   # description
   description/sensor/sensor_component_description:
     type: git
@@ -52,7 +52,7 @@ repositories:
   description/vehicle/j6_gen2_description:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
-    version: 9304888e8ac70457ddc48eedb17a117ea9c39749
+    version: 530c03078b9deaa915a93c10404656d41b927e0e
   # ecu_system_setup: When you use your own customized ecu_system_setup, uncomment this.
   ecu_system_setup:
     type: git
