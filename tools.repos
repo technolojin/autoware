@@ -3,3 +3,7 @@ repositories:
     type: git
     url: https://github.com/autowarefoundation/autoware_tools.git
     version: e5ddd2b2b31426e09ae9f7e035feded08f94296f
+  autoware/autoware_lanelet2_extension:
+    type: git
+    url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
+    version: 0.6.1
