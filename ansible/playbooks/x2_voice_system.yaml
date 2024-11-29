@@ -3,6 +3,8 @@
   vars_files:
     - ./vars/x2_common.yaml
     - ./vars/x2_voice_system.yaml
+  vars:
+    ros_distro: humble
   pre_tasks:
     - name: Set galactic rosdistro
       ansible.builtin.set_fact:
