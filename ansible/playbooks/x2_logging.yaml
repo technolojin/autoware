@@ -41,4 +41,5 @@
     - { role: autoware.ecu_system_setup.mot_env_setup }
     - { role: autoware.ecu_system_setup.release_rosbag_page_cache }
     - { role: x2_sub_misc }
+    - { role: x2_can_logging }
     - { role: autoware.ecu_system_setup.netplan } # need to be the last, as the internet will lost after this
