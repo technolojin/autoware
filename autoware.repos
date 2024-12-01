@@ -43,7 +43,7 @@ repositories:
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: 5586fa4f6629a9760a366b28a33119eaa0cc8fa2
+    version: 2f9c5152aaf94d897a159807fcab2c8add13f6fb
   # description
   description/sensor/sensor_component_description:
     type: git
@@ -52,7 +52,7 @@ repositories:
   description/vehicle/j6_gen2_description:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
-    version: 530c03078b9deaa915a93c10404656d41b927e0e
+    version: e61019778171b644c716ea46e577d4f7a90c9d1c
   # ecu_system_setup: When you use your own customized ecu_system_setup, uncomment this.
   ecu_system_setup:
     type: git
