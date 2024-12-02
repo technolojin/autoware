@@ -84,3 +84,6 @@ x2_configure_marvell_switch_file: X2_J6_Gen2_Main_Marvell.xml
 
 # ptp4l
 x2_ptp4l_ecu: main
+
+# ros_distro
+ros_distro: humble
