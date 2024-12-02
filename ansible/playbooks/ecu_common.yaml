@@ -3,8 +3,6 @@
   hosts: localhost
   vars_files:
     - ./vars/ecu_setup.yaml
-  vars:
-    ros_distro: humble
   roles:
     - { role: autoware.ecu_system_setup.bash_completion }
     - { role: autoware.ecu_system_setup.clean_ros_log }

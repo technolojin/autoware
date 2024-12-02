@@ -3,8 +3,6 @@
   vars_files:
     - ./vars/x2_common.yaml
     - ./vars/x2_logging.yaml
-  vars:
-    ros_distro: humble
   vars_prompt:
     - name: github_token
       prompt: Please give github_token for npmrc
