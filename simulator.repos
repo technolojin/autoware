@@ -14,7 +14,7 @@ repositories:
   simulator/driving_log_replayer_v2:
     type: git
     url: https://github.com/tier4/driving_log_replayer_v2.git
-    version: d06be8bac368af00c5b4ecae3aade1f32cdab05a
+    version: revert/map-height-fitter
   simulator/perception_eval:
     type: git
     url: https://github.com/tier4/autoware_perception_evaluation.git
