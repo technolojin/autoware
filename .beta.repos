@@ -57,12 +57,12 @@ repositories:
   ecu_system_setup:
     type: git
     url: git@github.com:tier4/autoware_ecu_system_setup.git
-    version: f7983f3c4e6988820ef96a7f750e0bed6fe10df1
+    version: 607287bfc30b14c1b90b75c931f8153e64b48e81
   # vendor
   vendor/j6_interface:
     type: git
     url: git@github.com:tier4/j6_interface.git
-    version: fdb318fce1333d5b1c4bf6d5fc8d6d2918d2482c
+    version: feat/MJ20_interface
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
@@ -74,7 +74,7 @@ repositories:
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
-    version: d04eac5e6e2de7fc9f649f08890ba1d3259d8d01
+    version: 09ba2d4f367fc70f2bcd17850656cc9a1a784629
   vendor/boost_transport_drivers:
     type: git
     url: https://github.com/autowarefoundation/transport_drivers.git

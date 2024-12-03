@@ -11,11 +11,11 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: 474b6a59c84c9dd3ca6d4209fbe1a6f0ccc964fb
+    version: b295be008aec207665e25a58481fa4cb2eac0408
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 246b79312c6756668e3b392c74a572830f6cf141
+    version: f711c1385a8aa90003ab948b8dc121ca4913becd
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
@@ -43,7 +43,7 @@ repositories:
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: 4a89ea551b55e71df762131283ed043662c720e1
+    version: 2f9c5152aaf94d897a159807fcab2c8add13f6fb
   # description
   description/sensor/sensor_component_description:
     type: git
@@ -52,7 +52,7 @@ repositories:
   description/vehicle/j6_gen2_description:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
-    version: 9304888e8ac70457ddc48eedb17a117ea9c39749
+    version: e61019778171b644c716ea46e577d4f7a90c9d1c
   # ecu_system_setup: When you use your own customized ecu_system_setup, uncomment this.
   ecu_system_setup:
     type: git
@@ -74,7 +74,7 @@ repositories:
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
-    version: d04eac5e6e2de7fc9f649f08890ba1d3259d8d01
+    version: 09ba2d4f367fc70f2bcd17850656cc9a1a784629
   vendor/boost_transport_drivers:
     type: git
     url: https://github.com/autowarefoundation/transport_drivers.git
@@ -130,7 +130,7 @@ repositories:
   launch: # Based humble version, the acceleration patched is added
     type: git
     url: https://github.com/tier4/launch.git
-    version: humble
+    version: f12ed91942fefc2c50d7f6d16c458835fc18396a
   ament_cmake: # TODO(mitsudome-r): remove when https://github.com/ament/ament_cmake/pull/448 is merged
     type: git
     url: https://github.com/autowarefoundation/ament_cmake.git
