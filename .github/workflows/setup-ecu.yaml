@@ -45,3 +45,5 @@ jobs:
       - name: Run setup script
         run: |
           ./setup-ecu.sh ${{ matrix.playbook }} ${{ matrix.additional_args }} -e reload_systemd=no
+        env:
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
