@@ -5,35 +5,15 @@
     regexp: "{{ item }}"
     state: absent
     mode: 0664
-  with_items:
-    - "{{ temporary_logging_directory }}"
-    - "{{ rosbag_logging_directory }}"
-    - "{{ rosbag_copy_directory }}"
   become: true
+  loop: "{{ fstab_entries }}"
 
-- name: Add tmpfs entry to fstab
+- name: Add entries to fstab
   ansible.builtin.lineinfile:
     path: /etc/fstab
-    line: tmpfs {{ temporary_logging_directory }} tmpfs rw,nosuid,nodev,noexec,nofail,size=10G,mode=1755 0 0
+    line: "{{ item.mount_specifier }} {{ item.mount_point }} {{ item.fs_type }} {{ item.options }} 0 0"
     state: present
     create: true
-    mode: 0664
+    mode: "0664"
   become: true
-
-- name: Add internal storage entry to fstab
-  ansible.builtin.lineinfile:
-    path: /etc/fstab
-    line: LABEL={{ rosbag_storage_label }} {{ rosbag_logging_directory }} ext4 nofail 0 0
-    state: present
-    create: true
-    mode: 0664
-  become: true
-
-- name: Add external storage entry to fstab
-  ansible.builtin.lineinfile:
-    path: /etc/fstab
-    line: LABEL={{ rosbag_external_storage_label }} {{ rosbag_copy_directory }} ext4 nofail 0 0
-    state: present
-    create: true
-    mode: 0664
-  become: true
+  loop: "{{ fstab_entries }}"
