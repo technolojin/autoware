@@ -54,7 +54,7 @@ signage_sink_gen2: true
 # simple-system-launch
 simple_system_launch_items:
   - file: signage.service
-    command: pactl set-default-sink alsa_output.pci-0000_00_1f.3.analog-stereo; pactl set-default-source alsa_input.usb_Fonglun_USB_Microphone_201801-00.mono-fallback; pactl set-deafult-source ros2 launch signage signage.launch.xml
+    command: pactl set-default-sink alsa_output.pci-0000_00_1f.3.analog-stereo; pactl set-default-source alsa_input.usb_Fonglun_USB_Microphone_201801-00.mono-fallback; ros2 launch signage signage.launch.xml
 
 # netplan
 netplan_files: netplan/99-autoware.x2-signage.yaml
@@ -68,8 +68,8 @@ rsyslog_server_ipaddr: 192.168.20.71
 rsyslog_queue_maxsize: 1g
 
 # otaclient
-otaclient_release_version: v3.8.0
-otaclient_package_whl_checksum: sha256:3146c3622ca41628b0a7b6df71a5693bf6a1d76fbae8323e15d061420b52fe26
+otaclient_release_version: v3.8.4
+otaclient_package_whl_checksum: sha256:c118f7ce69bce85b7a038dd7829ca8567f665cf8f86772a6e773e77ac3b3e8fe
 otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-signage
 otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-1gbe.j2
 

@@ -3,7 +3,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
-    version: 9db907a4dfb71d19c4c005a58a2ed178fd85e4d7
+    version: adfecc2178b5299dba687ad2493305a56ca03a77
   autoware/common:
     type: git
     url: https://github.com/autowarefoundation/autoware_common.git
@@ -11,11 +11,11 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: 11b9fce1a9a063f8b2a7670cd5cdc03271efc963
+    version: 0f2315efc1e5d2d21a717de973b3b75ebb51c3f0
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 20d492db6e328f24cb8188b7ce455c73c5390736
+    version: f711c1385a8aa90003ab948b8dc121ca4913becd
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
@@ -43,7 +43,7 @@ repositories:
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: b46cbf8037f8c9c700fd20e8c306fa1b2149c6dd
+    version: 557c2432da62816711e8201753f893c62489b2bd
   # description
   description/sensor/sensor_component_description:
     type: git
@@ -52,17 +52,17 @@ repositories:
   description/vehicle/j6_gen2_description:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
-    version: 9304888e8ac70457ddc48eedb17a117ea9c39749
+    version: e61019778171b644c716ea46e577d4f7a90c9d1c
   # ecu_system_setup: When you use your own customized ecu_system_setup, uncomment this.
   ecu_system_setup:
     type: git
     url: git@github.com:tier4/autoware_ecu_system_setup.git
-    version: 33a0f0f3c54f014868fdaf7d31c323c6e9779f70
+    version: 607287bfc30b14c1b90b75c931f8153e64b48e81
   # vendor
   vendor/j6_interface:
     type: git
     url: git@github.com:tier4/j6_interface.git
-    version: 7942633da23c0b6acc922c29d777dcecbf3a29de
+    version: fdb318fce1333d5b1c4bf6d5fc8d6d2918d2482c
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
@@ -74,7 +74,7 @@ repositories:
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
-    version: d04eac5e6e2de7fc9f649f08890ba1d3259d8d01
+    version: 31a5dd0c4204cb6c14f190bd0a2ebc2cf119caef
   vendor/boost_transport_drivers:
     type: git
     url: https://github.com/autowarefoundation/transport_drivers.git
@@ -127,6 +127,10 @@ repositories:
     type: git
     url: https://github.com/tier4/rclcpp.git
     version: 0bb2c75b3b3cdcc380f6c21ac9129c54075ba059
+  launch: # Based humble version, the acceleration patched is added
+    type: git
+    url: https://github.com/tier4/launch.git
+    version: f12ed91942fefc2c50d7f6d16c458835fc18396a
   ament_cmake: # TODO(mitsudome-r): remove when https://github.com/ament/ament_cmake/pull/448 is merged
     type: git
     url: https://github.com/autowarefoundation/ament_cmake.git

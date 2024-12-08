@@ -5,7 +5,7 @@ network:
     # 1GbE SW Hub
     # Internet, HMI
     eth0:
-      optional: true
+      optional: false
       dhcp4: false
       dhcp6: false
     # Debug / Internet connection
