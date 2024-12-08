@@ -1,26 +1,18 @@
 #!/bin/bash
 # cspell:ignore listdevices hostif ethertype createboardcfg deviceaddr developmentcfg switchcfg
 
-# If the file exists, we don't need to configure
-if [ -f "/opt/autoware/services/configure_marvell_switch/configure_done" ]; then
-    echo "Configuration has already been done."
-    echo "No need to configure the switch."
-    exit 0
-fi
-
+# Load vehicle.env to get the MAC address of the enp4s0 interface
+source /home/autoware/vehicle.env
 FILE_PATH="/opt/autoware/services/configure_marvell_switch/marvell_switch_configuration"
 
-# Get the MAC address of the enp4s0 interface using the ip command and store it in a variable
-MAC_ADDRESS=$("$FILE_PATH"/AutomotiveSwitchV4 -listdevices -hostif=enp4s0 -ethertype=0x9101 | awk '/MAC/ {print $4}')
-
-# Check if MAC address was successfully retrieved
-if [ -z "$MAC_ADDRESS" ]; then
-    echo "Error: Unable to retrieve MAC address for interface enp4s0."
+# Check if MAC address was successfully loaded
+if [ -z "$MARVELL_SWITCH_MAC_ADDRESS" ]; then
+    echo "Error: Unable to load MAC address for interface enp4s0."
     exit 1
 fi
 
 echo "interface: {{ x2_configure_marvell_switch_interface }}"
-echo "MAC address: $MAC_ADDRESS"
+echo "MAC address: $MARVELL_SWITCH_MAC_ADDRESS"
 echo "configuration file: {{ x2_configure_marvell_switch_file }}"
 
 # Set the maximum number of retries
@@ -34,14 +26,13 @@ while [ $attempt -le $MAX_RETRIES ]; do
 
     # Load the switch configuration file
     # This configuration will be saved in the switch
-    "$FILE_PATH"/AutomotiveSwitchV4 -developmentcfg -hostif={{ x2_configure_marvell_switch_interface }} -ethertype=0x9101 -deviceaddr="$MAC_ADDRESS" -switchcfg="$FILE_PATH"/{{ x2_configure_marvell_switch_file }}
+    "$FILE_PATH"/AutomotiveSwitchV4 -runtimecfg -hostif={{ x2_configure_marvell_switch_interface }} -ethertype=0x9101 -deviceaddr="$MARVELL_SWITCH_MAC_ADDRESS" -switchcfg="$FILE_PATH"/{{ x2_configure_marvell_switch_file }}
 
     return_code=$?
 
     # Check if the command succeeded (exit code 0)
     if [ $return_code -eq 0 ]; then
         echo "Command succeeded on attempt #$attempt."
-        touch "/opt/autoware/services/configure_marvell_switch/configure_done"
         exit 0
     fi
 

@@ -4,14 +4,14 @@ network:
   ethernets:
     # 10GbE switch
     mgbe1:
-      optional: true
+      optional: false
       dhcp4: false
       dhcp6: false
       addresses: [192.168.30.32/24]
       mtu: 9000
     # Direct connection to add-on ECU
     mgbe0:
-      optional: true
+      optional: false
       dhcp4: false
       dhcp6: false
       addresses: [192.168.90.32/24]
@@ -23,7 +23,7 @@ network:
       dhcp6: true
     # PTP connection
     eth0:
-      optional: true
+      optional: false
       dhcp4: false
       dhcp6: false
       addresses: [192.168.20.32/24]

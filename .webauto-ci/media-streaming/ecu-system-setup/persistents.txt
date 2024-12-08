@@ -5,7 +5,6 @@
 '/etc/iptables/rules.v4'
 '/etc/iptables/rules.v6'
 '/etc/resolv.conf'
-'/etc/netplan'
 '/etc/dhcpd.conf'
 '/etc/nftables.conf'
 '/etc/line_switcher/config.yml'

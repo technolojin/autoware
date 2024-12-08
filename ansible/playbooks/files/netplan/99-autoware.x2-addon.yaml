@@ -13,7 +13,7 @@ network:
     # 10G BASE-T #2
     # Perception ECU #2
     enp3s0f1:
-      optional: true
+      optional: false
       dhcp4: false
       dhcp6: false
       addresses: [192.168.90.33/24]
