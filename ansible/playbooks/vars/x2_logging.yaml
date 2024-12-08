@@ -71,6 +71,8 @@ qos_profile_overrides_template: logpacker/qos_profile_overrides_x2.yaml
 # - bagtaker
 rosbag_copy_directory: /media/autoware/ROSBAG
 bagtaker_params_template: bagtaker2/bagtaker_params_x2.yaml.jinja2
+# - bagkeeper
+bagkeeper_params_template: bagkeeper/bagkeeper_params_x2.yaml.jinja2
 
 # set-autoware-env
 autoware_install_dir: /home/autoware/pilot-auto.x2
