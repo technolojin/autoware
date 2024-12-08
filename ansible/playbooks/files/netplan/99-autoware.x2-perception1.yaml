@@ -4,7 +4,7 @@ network:
   ethernets:
     # 10GbE switch
     mgbe1:
-      optional: true
+      optional: false
       dhcp4: false
       dhcp6: false
       addresses: [192.168.30.31/24]
@@ -16,7 +16,7 @@ network:
       dhcp6: true
     # PTP connection
     eth0:
-      optional: true
+      optional: false
       dhcp4: false
       dhcp6: false
       addresses: [192.168.20.31/24]

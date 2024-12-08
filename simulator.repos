@@ -11,10 +11,10 @@ repositories:
     type: git
     url: git@github.com:tier4/ndt_convergence_evaluation.git
     version: ece2a4671012a19858db5f0d2d78eef53e34739e
-  simulator/driving_log_replayer:
+  simulator/driving_log_replayer_v2:
     type: git
-    url: https://github.com/tier4/driving_log_replayer.git
-    version: 322c35f7f2826a63e60167544f2b81ea2027e2a1
+    url: https://github.com/tier4/driving_log_replayer_v2.git
+    version: 48f8c7825d21b9c1cf23d99e206a6266118fb51d
   simulator/perception_eval:
     type: git
     url: https://github.com/tier4/autoware_perception_evaluation.git

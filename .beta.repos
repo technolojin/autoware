@@ -11,7 +11,7 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: beta/v4.0.0
+    version: beta/v4.0.1
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
@@ -57,7 +57,7 @@ repositories:
   ecu_system_setup:
     type: git
     url: git@github.com:tier4/autoware_ecu_system_setup.git
-    version: 91948aa79b6fcd8cfdd0b561e9bad1607be6c59b
+    version: 607287bfc30b14c1b90b75c931f8153e64b48e81
   # vendor
   vendor/j6_interface:
     type: git
@@ -74,7 +74,7 @@ repositories:
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
-    version: 2ea66b64caeb90c8d0c11cd7e69d5935dffb56af
+    version: 31a5dd0c4204cb6c14f190bd0a2ebc2cf119caef
   vendor/boost_transport_drivers:
     type: git
     url: https://github.com/autowarefoundation/transport_drivers.git
@@ -127,6 +127,10 @@ repositories:
     type: git
     url: https://github.com/tier4/rclcpp.git
     version: 0bb2c75b3b3cdcc380f6c21ac9129c54075ba059
+  launch: # Based humble version, the acceleration patched is added
+    type: git
+    url: https://github.com/tier4/launch.git
+    version: humble
   ament_cmake: # TODO(mitsudome-r): remove when https://github.com/ament/ament_cmake/pull/448 is merged
     type: git
     url: https://github.com/autowarefoundation/ament_cmake.git

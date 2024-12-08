@@ -22,6 +22,7 @@
     - { role: autoware.ecu_system_setup.bagtaker2 }
     - { role: autoware.ecu_system_setup.boot_shutdown_service }
     - { role: autoware.ecu_system_setup.clean_application_log }
+    - { role: autoware.ecu_system_setup.clean_empty_directory }
     - { role: autoware.ecu_system_setup.clean_ros_log }
     - { role: autoware.ecu_system_setup.cyclonedds }
     - { role: autoware.ecu_system_setup.disable_lock_screen }
@@ -40,5 +41,7 @@
     - { role: autoware.ecu_system_setup.turn_off_desktop_notification }
     - { role: autoware.ecu_system_setup.mot_env_setup }
     - { role: autoware.ecu_system_setup.release_rosbag_page_cache }
+    - { role: autoware.ecu_system_setup.pyrocan }
     - { role: x2_sub_misc }
+    - { role: x2_can_logging }
     - { role: autoware.ecu_system_setup.netplan } # need to be the last, as the internet will lost after this

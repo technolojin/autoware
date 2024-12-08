@@ -41,8 +41,8 @@ ptp4l_network_port: enp0s31f6
 netplan_files: netplan/99-autoware.x2-addon.yaml
 
 # otaclient
-otaclient_release_version: v3.8.0
-otaclient_package_whl_checksum: sha256:3146c3622ca41628b0a7b6df71a5693bf6a1d76fbae8323e15d061420b52fe26
+otaclient_release_version: v3.8.4
+otaclient_package_whl_checksum: sha256:c118f7ce69bce85b7a038dd7829ca8567f665cf8f86772a6e773e77ac3b3e8fe
 otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-addon
 otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-10gbe.j2
 
@@ -53,4 +53,4 @@ vehicle_model: j6_gen2
 sensor_model: aip_x2_gen2
 
 # sxpf_ros_driver
-sxpf_ros_driver_version: 6bfb66ababe42ff7c073a68be099bfda34d91f72
+sxpf_ros_driver_version: 493f4ddb3d40f828ab7caea4d39e2c6d02928758

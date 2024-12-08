@@ -36,8 +36,8 @@ netplan_files: netplan/99-autoware.x2.yaml
 nftables_conf_file: nftables/nftables.conf
 
 # otaclient
-otaclient_release_version: v3.8.0
-otaclient_package_whl_checksum: sha256:3146c3622ca41628b0a7b6df71a5693bf6a1d76fbae8323e15d061420b52fe26
+otaclient_release_version: v3.8.4
+otaclient_package_whl_checksum: sha256:c118f7ce69bce85b7a038dd7829ca8567f665cf8f86772a6e773e77ac3b3e8fe
 otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2
 otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2.j2
 
@@ -84,3 +84,6 @@ x2_configure_marvell_switch_file: X2_J6_Gen2_Main_Marvell.xml
 
 # ptp4l
 x2_ptp4l_ecu: main
+
+# ros_distro
+ros_distro: humble

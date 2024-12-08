@@ -3,7 +3,7 @@ network:
   renderer: networkd
   ethernets:
     enp1s0:
-      optional: true
+      optional: false
       dhcp4: false
       dhcp6: false
   vlans:
@@ -15,30 +15,9 @@ network:
       addresses: [192.168.251.41/24]
       nameservers:
         addresses: [8.8.8.8]
-    vlan.200:
-      id: 200
-      link: enp1s0
-      dhcp4: false
-      dhcp6: false
-      addresses: [192.168.252.41/24]
-      nameservers:
-        addresses: [8.8.8.8]
-    vlan.300:
-      id: 300
-      link: enp1s0
-      dhcp4: false
-      dhcp6: false
-      addresses: [192.168.253.41/24]
-      nameservers:
-        addresses: [8.8.8.8]
-    vlan.400:
-      id: 400
-      link: enp1s0
-      dhcp4: false
-      dhcp6: false
-      addresses: [192.168.254.41/24]
-      nameservers:
-        addresses: [8.8.8.8]
+      routes:
+        - to: 0.0.0.0/0
+          via: 192.168.251.1
     vlan.500:
       id: 500
       link: enp1s0

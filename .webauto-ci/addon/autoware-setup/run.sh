@@ -14,7 +14,7 @@ git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/
 ansible_args=()
 ansible_args+=("--extra-vars" "prompt_install_nvidia=y")
 ansible_args+=("--extra-vars" "prompt_download_artifacts=n")
-ansible_args+=("--extra-vars" "install_devel=n")
+ansible_args+=("--extra-vars" "install_devel=y")
 
 # read amd64 env file and expand ansible arguments
 source 'amd64.env'
