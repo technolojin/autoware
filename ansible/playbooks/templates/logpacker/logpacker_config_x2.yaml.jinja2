@@ -13,6 +13,62 @@ directories:
     output_mountpoint: "{{ rosbag_logging_directory_mountpoint }}"
     disk_threshold_error: 10
     disk_threshold_warning: 30
+  - output_at: "{{ temporary_logging_directory }}"
+    disk_threshold_error: 10
+    disk_threshold_warning: 30
+logging_mode:
+  mode_list:
+    - always
+    - event
+    - light
+  default_mode: always
+  operation_mode: event
+  current_mode_file: /etc/autoware_logging_suite/logpacker/logging_mode
+  always:
+    enable_plugins:
+      - rosbag
+      - syslog
+      - coredump
+      - kdump
+    rosbag:
+      output_at: "{{ rosbag_logging_directory }}"
+      recording_type: "manual"
+      recording_mode_values:
+        - ""
+  event:
+    enable_plugins:
+      - rosbag
+      - rotation
+      - syslog
+      - coredump
+      - kdump
+    rosbag:
+      output_at: "{{ temporary_logging_directory }}"
+      recording_type: "auto"
+      recording_mode_values:
+        - "InitializingVehicle"
+        - "WaitingForRoute"
+        - "Planning"
+        - "WaitingForEngage"
+        - "Driving"
+        - "ArrivedGoal"
+        - "Emergency"
+        - "Finalizing"
+    rotation:
+      target_dir: "{{ temporary_logging_directory }}"
+  light:
+    enable_plugins:
+      - rosbag
+      - syslog
+      - coredump
+      - kdump
+    rosbag:
+      output_at: "{{ rosbag_logging_directory }}"
+      recording_type: "manual"
+      recording_mode_values:
+        - ""
+      topic_list:
+        - "/autoware/(.*)"
 rosbag:
   # If you use another file for rosbag configuration, define its file path. When not defined, this file will be used.
   # params_file: "{{ logpacker_config_dir }}/rosbag_params.yaml"
@@ -226,3 +282,9 @@ kdump:
   # params_file: "{{ logpacker_config_dir }}/kdump_params.yaml"
   log_directory_path: "/var/crash"
   output_at: "{{ rosbag_logging_directory }}"
+rotation:
+  count_limit: 0
+  space_limit: 10
+  days_limit: 0
+  target_dir: "{{ temporary_logging_directory }}"
+  check_cycle: 1
