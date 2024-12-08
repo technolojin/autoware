@@ -219,6 +219,7 @@ rosbag:
   max_splits_check_cycle: 1
   qos_profile_overrides_path: "{{ logpacker_config_dir }}/qos_profile_overrides.yaml"
   output_at: "{{ rosbag_logging_directory }}"
+  exec_reindex: false
 syslog:
   # If you use another file for syslog configuration, define its file path. When not defined, this file will be used.
   # params_file: "{{ logpacker_config_dir }}/syslog_params.yaml"
