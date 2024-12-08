@@ -1,5 +1,7 @@
 #!/bin/bash
 
+ulimit -c unlimited
+
 # shellcheck disable=SC1091
 source /opt/autoware/services/set-autoware-env/setup.sh
 ros2 launch autoware_launch autoware.launch.xml \
