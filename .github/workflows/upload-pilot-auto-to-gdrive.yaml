@@ -153,6 +153,12 @@ jobs:
           echo "${{ secrets.LOGIN_PASS }}" | sudo mkdir /opt/autoware/mlmodels -p
           mkdir /home/runner/autoware_data
           # ./get_ml_model.sh
+          sudo apt-get purge ansible
+          sudo apt-get -y install pipx
+          python3 -m pipx ensurepath
+          pipx install --include-deps --force "ansible==6.*"
+          ansible-galaxy collection install -f -r "ansible-galaxy-requirements.yaml"
+          ansible-playbook autoware.dev_env.download_artifacts -e "data_dir=$HOME/autoware_data" --ask-become-pass
 
       - name: vcs import src
         run: |
