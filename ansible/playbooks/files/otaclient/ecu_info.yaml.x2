@@ -8,8 +8,12 @@ secondaries:
   ip_addr: "192.168.30.31"
 - ecu_id: perception2
   ip_addr: "192.168.30.32"
-- ecu_id: addon-lite
+# when use addon
+- ecu_id: addon
   ip_addr: "192.168.30.33"
+# # when use addon-lite
+# - ecu_id: addon-lite
+#   ip_addr: "192.168.30.33"
 - ecu_id: signage
   ip_addr: "192.168.20.41"
 - ecu_id: voice-system
