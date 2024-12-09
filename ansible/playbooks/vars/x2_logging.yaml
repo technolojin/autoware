@@ -85,7 +85,7 @@ build_boot_shutdown_api_msgs: true
 boot_shutdown_tools_clone_dir: "{{ autoware_install_dir }}/src/product/boot_shutdown_tools"
 
 # mot_env_setup
-mot_repository_version_humble: 6981a116a6214d211e25db8c99604b921aa1d64f # v4.0.0
+mot_repository_version_humble: c06598a2534457daabedbced1ae59029b23c949a # v4.0.1
 mot_install_dir: "{{ ansible_env.HOME }}/OperationMaintenanceTool"
 replace_install_setup_bash: false
 bridge_ip_address: 127.0.0.1
