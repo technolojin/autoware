@@ -45,4 +45,5 @@
     - { role: autoware.ecu_system_setup.pyrocan }
     - { role: x2_sub_misc }
     - { role: x2_can_logging }
+    - { role: x2_reconnect_touch_display }
     - { role: autoware.ecu_system_setup.netplan } # need to be the last, as the internet will lost after this

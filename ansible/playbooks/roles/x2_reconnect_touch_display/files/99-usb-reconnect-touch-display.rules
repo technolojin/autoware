@@ -1,0 +1,2 @@
+# This rule runs the script to try to reconnect the touch display if it is not recognized.
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0eef", ATTR{idProduct}=="c002", TAG+="systemd", ENV{SYSTEMD_WANTS}="reconnect_touch_display.service"
