@@ -57,7 +57,7 @@ repositories:
   ecu_system_setup:
     type: git
     url: git@github.com:tier4/autoware_ecu_system_setup.git
-    version: 607287bfc30b14c1b90b75c931f8153e64b48e81
+    version: 0ca92230ab219113b18af29cefbbe1f6952563bd
   # vendor
   vendor/j6_interface:
     type: git
@@ -155,7 +155,7 @@ repositories:
   product/autoware_logging_suite:
     type: git
     url: git@github.com:tier4/autoware_logging_suite.git
-    version: v0.6.0
+    version: v0.7.0
   product/l4_toolkit:
     type: git
     url: git@github.com:tier4/l4_toolkit.git
