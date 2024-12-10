@@ -155,7 +155,7 @@ repositories:
   product/autoware_logging_suite:
     type: git
     url: git@github.com:tier4/autoware_logging_suite.git
-    version: 24dd71717f8288bfa41fbfc77fcede4ef1ccda34
+    version: v0.7.0
   product/l4_toolkit:
     type: git
     url: git@github.com:tier4/l4_toolkit.git
