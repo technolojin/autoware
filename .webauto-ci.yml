@@ -826,6 +826,13 @@ release:
       alternative_deployments:
         - type: installer
           artifact: perception2
+    - name: addon
+      deployment:
+        type: rootfs
+        artifact: addon
+      alternative_deployments:
+        - type: installer
+          artifact: addon
     - name: addon-lite
       deployment:
         type: rootfs
