@@ -19,6 +19,7 @@
     - { role: autoware.ecu_system_setup.automatic_login }
     - { role: autoware.ecu_system_setup.additional_fonts }
     - { role: autoware.ecu_system_setup.bagkeeper }
+    - { role: autoware.ecu_system_setup.bagkeeper_launch }
     - { role: autoware.ecu_system_setup.bagrollbacker }
     - { role: autoware.ecu_system_setup.bagtaker2 }
     - { role: autoware.ecu_system_setup.boot_shutdown_service }
