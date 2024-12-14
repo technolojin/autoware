@@ -39,8 +39,8 @@ while [ $attempt -le $MAX_RETRIES ]; do
     # Increment the attempt counter
     attempt=$((attempt + 1))
 
-    # Wait before retrying (adjust the sleep time as needed)
-    sleep 1
+    # Wait before retrying
+    sleep 5
 done
 
 # If we reach here, the command failed after MAX_RETRIES attempts
