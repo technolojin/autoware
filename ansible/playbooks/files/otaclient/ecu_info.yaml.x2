@@ -29,6 +29,7 @@ available_ecu_ids:
 - sub
 - perception1
 - perception2
+- addon
 - addon-lite
 - signage
 - voice-system
