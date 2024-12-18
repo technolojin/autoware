@@ -15,9 +15,45 @@ See [GitHub Pages](https://autowarefoundation.github.io/autoware-documentation/m
 
 ## MLモデルのダウンロード方法
 
-**注意** : OTAイメージを利用しない場合は必ず下記の手順に従ってMLモデルをダウンロードしてください。ダウンロードしないとpointpaintingなどの物体認識ノードが動きません。
+pilot-auto無印では[autoware](https://github.com/autowarefoundation/autoware)で配布されているMLモデルを使用します。そのため`./setup-dev-local.sh`で環境構築を終えている場合、追加のダウンロードの必要はありません。その他ケースについては以下を参考にしてください。
 
-[WebAutoCLI](https://github.com/tier4/WebAutoCLI)を使用するので必要に応じてダウンロードしてください。
+### autowarefoudation/autowareのMLモデルを更新したい場合
+
+以下のコマンドを実行してください。
+
+```sh
+ansible-galaxy collection install -f -r "ansible-galaxy-requirements.yaml"
+```
+
+```sh
+ansible-playbook autoware.dev_env.download_artifacts -e "data_dir=$HOME/autoware_data" --ask-become-pass
+```
+
+### Evaluatorに登録されているMLモデルを使用したい場合
+
+こちらでは[WebAutoCLI](https://github.com/tier4/WebAutoCLI)を使用するので必要に応じてダウンロードしてください。
+
+まず、`webauto-ci.yml`に`asset-deploy`が記述されていない場合、以下を参考に記述してください。こちらで指定されているMLモデルを次節のスクリプトで読み込みます。この記述はEvaluatorで任意のMLモデルを使用する際でも有効です。
+
+例
+
+```yaml
+artifacts:
+  - name: main
+    build:
+      phases:
+        - name: environment-setup
+        - name: autoware-setup
+        - name: autoware-build
+        - name: asset-deploy
+          user: autoware
+          exec: ./.webauto-ci/main/asset-deploy/run.sh
+          ml_packages:  ml_packages:
+            - name: centerpoint
+              release: base/1.0
+            - name: yolox
+              release: common/mlmodel/v0.1.0
+```
 
 以下のコマンドを実行すると、MLモデルがダウンロードされます。
 
@@ -27,12 +63,12 @@ See [GitHub Pages](https://autowarefoundation.github.io/autoware-documentation/m
 
 ## MLモデルを変更する方法
 
-`get_ml_model.sh`の以下の箇所を必要に応じて変更してください。
+`webauto-ci.yml`内の`ml_packages`の部分を必要に応じて変更してください。もし`ml_packages`が存在していない場合、[MLモデルのダウンロード方法](#mlモデルのダウンロード方法)に従って記述してください。
 
-- `--package-name` : centerpoint/pointpaintingなどのパッケージ名
-- `--package-release-name` : xx1/mlmodel/v0.1.0などのパッケージリリース名
+- `name` : centerpoint/pointpaintingなどのパッケージ名
+- `release` : xx1/mlmodel/v0.1.0などのパッケージリリース名
 
-パッケージ名やパッケージリリース名は、Autoware Evaluatorから確認できます。
+`name`名や`release`名は、Autoware Evaluatorから確認できます。
 
 [pointpaintingの例](https://evaluation.tier4.jp/evaluation/mlpackages/5b56c824-de65-406e-b12f-d7271589cc70?project_id=prd_jt)
 

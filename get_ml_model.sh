@@ -14,6 +14,12 @@ sudo rm -rf /opt/autoware/mlmodels/*
 
 # get name and release in ml_packages
 ml_packages=$(awk '/ml_packages:/,/^[^ ]/{if(/name:/){sub(/^[[:space:]]*-?[[:space:]]*name:[[:space:]]*/,""); name=$0} else if(/release:/){sub(/^[[:space:]]*-?[[:space:]]*release:[[:space:]]*/,""); release=$0; printf "%s %s\n", name, release}}' "$file_path")
+
+if [ -z "$ml_packages" ]; then
+    echo -e "\e[31mError: ml_packages is not found in .webauto-ci.yml\e[m"
+    exit 1
+fi
+
 while read -r line; do
     ml_packages_name=$(echo "$line" | awk '{print $1}')
     ml_packages_release=$(echo "$line" | awk '{print $2}')
