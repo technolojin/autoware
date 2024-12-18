@@ -100,10 +100,6 @@ repositories:
     type: git
     url: https://github.com/autowarefoundation/transport_drivers.git
     version: main
-  vendor/ndt_omp:
-    type: git
-    url: https://github.com/tier4/ndt_omp.git
-    version: tier4/main
   vendor/mussp:
     type: git
     url: https://github.com/tier4/muSSP.git
