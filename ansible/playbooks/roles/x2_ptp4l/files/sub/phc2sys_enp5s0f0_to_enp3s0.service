@@ -4,7 +4,7 @@ After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/sbin/phc2sys -s enp5s0f0 -c enp3s0 -O 0 -m -F 10 -S 1
+ExecStart=/usr/sbin/phc2sys -s enp5s0f0 -c enp3s0 -O 0 -m -w
 ExecStop=/bin/kill -TERM $MAINPID
 Restart=always
 RestartSec=5
