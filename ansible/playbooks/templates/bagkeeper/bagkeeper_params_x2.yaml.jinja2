@@ -1,8 +1,5 @@
 /**:
   ros__parameters:
-    hazard_topic: /system/emergency/hazard_status
-    # Please choose "emergency" or "emergency_holding" for emergency_type.
-    emergency_type: emergency_holding
     retry_interval_for_realtime_recording_db_file_in_sec: 3
     keep_duration_before_trigger_in_sec: 60
     keep_duration_after_trigger_in_sec: 15
@@ -10,7 +7,7 @@
     output_directory: "{{ rosbag_logging_directory }}"
     # must_be_mountpoint: please set a path for a mountpoint. No check if ""
     must_be_mountpoint: "{{ rosbag_logging_directory_mountpoint }}"
-    cleanup_input_dir: true
+    cleanup_input_dir: false
     # disable_if_control_mode_is_manual: "true" or "false"
     disable_if_control_mode_is_manual: false
     # stop_bagpacker_record_after_keep_duration: "true" or "false". if "false", "cleanup_input_dir" is ignored.
@@ -25,7 +22,7 @@
         config:
           changed: true
       /system/emergency/hazard_status:
-        emergency_holding: true
+        emergency: true
         config:
           changed: true
     diagnostics:
