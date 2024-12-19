@@ -13,7 +13,7 @@ cyclonedds:
   network_interface:
     - { address: enp5s0f1, priority: 1 } # Prioritize 10Gb interface
     - { address: vlan.500, priority: 0 }
-  minimum_socket_receive_buffer_size: 10MB
+  minimum_socket_receive_buffer_size: 100MB
   minimum_socket_send_buffer_size: 10MB
   max_message_size: 8950B
   fragment_size: 8850B
