@@ -20,7 +20,7 @@ keyboard_layout_file: keyboard.jp
 
 # ros2-app-build
 ros2_app_repository: git@github.com:tier4/AutowareSignage.git
-ros2_app_repository_version: 943bc74da62a455ae1f4de2a803bc8d7e6802d4f
+ros2_app_repository_version: 62005ddf5d43567619c6f74a7b46e5a5d68dc573
 depends_repos: signage.repos
 
 # cyclonedds
