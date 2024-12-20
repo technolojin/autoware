@@ -20,7 +20,7 @@ keyboard_layout_file: keyboard.jp
 
 # ros2-app-build
 ros2_app_repository: git@github.com:tier4/AutowareSignage.git
-ros2_app_repository_version: 943bc74da62a455ae1f4de2a803bc8d7e6802d4f
+ros2_app_repository_version: 62005ddf5d43567619c6f74a7b46e5a5d68dc573
 depends_repos: signage.repos
 
 # cyclonedds
@@ -54,7 +54,7 @@ signage_sink_gen2: true
 # simple-system-launch
 simple_system_launch_items:
   - file: signage.service
-    command: pactl set-default-sink alsa_output.pci-0000_00_1f.3.analog-stereo; pactl set-default-source alsa_input.usb_Fonglun_USB_Microphone_201801-00.mono-fallback; ros2 launch signage signage.launch.xml
+    command: pactl set-default-sink alsa_output.pci-0000_00_1f.3.analog-stereo; pactl set-default-source alsa_input.usb_Fonglun_USB_Microphone_201801-00.mono-fallback; pactl -- set-sink-volume 2 90%; ros2 launch signage signage.launch.xml
 
 # netplan
 netplan_files: netplan/99-autoware.x2-signage.yaml
