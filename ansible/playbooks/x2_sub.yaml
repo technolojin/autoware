@@ -26,6 +26,7 @@
     - { role: autoware.ecu_system_setup.syslog_collector_client }
     - { role: autoware.ecu_system_setup.fintek_can_driver }
     - { role: autoware.ecu_system_setup.marvell_switch_driver }
+    - { role: autoware.ecu_system_setup.build_system_monitor }
     - role: autoware.ecu_system_setup.rviz
       when: skip_rviz is not defined or not skip_rviz | bool
     # - { role: x2_autoware } # Don't launch Autoware in Sub ECU until MRM design is finalized
