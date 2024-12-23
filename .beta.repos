@@ -6,8 +6,8 @@ repositories:
     version: beta/x2_gen2/v0.29.0
   autoware/common:
     type: git
-    url: https://github.com/autowarefoundation/autoware_common.git
-    version: cf44343ae17205a4d684e2b71fbf51041c0bef3e
+    url: https://github.com/tier4/autoware_common.git
+    version: beta/x2/v4.0.1
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
