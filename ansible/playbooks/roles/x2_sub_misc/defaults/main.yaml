@@ -10,7 +10,7 @@ fstab_entries: # noqa var-naming[no-role-prefix]
   - mount_specifier: /mnt/TMP/tmp
     mount_point: /mnt/LOG
     fs_type: none
-    options: bind
+    options: bind,nofail
   - mount_specifier: LABEL=ROSBAG
     mount_point: /media/autoware/ROSBAG
     fs_type: ext4
