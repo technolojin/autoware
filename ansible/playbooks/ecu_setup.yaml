@@ -27,3 +27,4 @@
     - { role: x2_can_adm }
     - { role: x2_configure_marvell_switch }
     - { role: x2_ptp4l }
+    - { role: x2_dev_tools }

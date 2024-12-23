@@ -34,3 +34,4 @@
     - { role: x2_configure_marvell_switch }
     - { role: x2_ptp4l }
     - { role: x2_disable_chrony } # Disable chrony service on Sub ECU to avoid conflicts with ptp4l
+    - { role: x2_dev_tools }

@@ -48,4 +48,5 @@
     - { role: x2_can_logging }
     - { role: x2_reconnect_touch_display }
     - { role: x2_logging_reconfig_10g }
+    - { role: x2_dev_tools }
     - { role: autoware.ecu_system_setup.netplan } # need to be the last, as the internet will lost after this

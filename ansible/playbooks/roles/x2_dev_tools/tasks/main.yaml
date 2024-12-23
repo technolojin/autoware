@@ -1,6 +1,9 @@
-- name: Install terminator
+- name: Install development tools
   ansible.builtin.apt:
     name:
       - terminator
+      - nano
+      - can-utils
+      - htop
     update_cache: true
   become: true
