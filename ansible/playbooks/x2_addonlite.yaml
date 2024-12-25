@@ -2,7 +2,7 @@
   hosts: localhost
   vars_files:
     - ./vars/x2_common.yaml
-    - ./vars/x2_addon_lite.yaml
+    - ./vars/x2_addonlite.yaml
 
   vars:
     ecu_id: addonlite
