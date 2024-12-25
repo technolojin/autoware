@@ -11,8 +11,8 @@ secondaries:
 # when use addon
 - ecu_id: addon
   ip_addr: "192.168.30.33"
-# # when use addon-lite
-# - ecu_id: addon-lite
+# # when use addonlite
+# - ecu_id: addonlite
 #   ip_addr: "192.168.30.33"
 - ecu_id: signage
   ip_addr: "192.168.20.41"
@@ -30,7 +30,7 @@ available_ecu_ids:
 - perception1
 - perception2
 - addon
-- addon-lite
+- addonlite
 - signage
 - voice-system
 - media-streaming1

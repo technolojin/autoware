@@ -5,21 +5,21 @@
     - ./vars/x2_addon_lite.yaml
 
   vars:
-    ecu_id: addon-lite
+    ecu_id: addonlite
     ros_distro: humble
 
   pre_tasks:
     - name: Check 'ecu_id' contents
       ansible.builtin.assert:
         that:
-          - (ecu_id == 'addon-lite') or (ecu_id == 'perception2')
-        fail_msg: ecu_id should be one of ['addon-lite' or 'perception2']
+          - (ecu_id == 'addonlite') or (ecu_id == 'perception2')
+        fail_msg: ecu_id should be one of ['addonlite' or 'perception2']
 
-    - name: Set addon-lite params
+    - name: Set addonlite params
       ansible.builtin.set_fact:
         jetson_id: 2
-        netplan_files: netplan/99-autoware.x2-addon-lite.yaml
-        otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-addon-lite
+        netplan_files: netplan/99-autoware.x2-addonlite.yaml
+        otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-addonlite
         perception_type: od
         dtb_sensor_type: imx490
         distortion_correction: 0

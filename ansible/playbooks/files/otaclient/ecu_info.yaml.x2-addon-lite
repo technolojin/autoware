@@ -1,4 +1,4 @@
 format_version: 1
-ecu_id: addon-lite
+ecu_id: addonlite
 ip_addr: "192.168.30.33"
 bootloader: jetson-uefi

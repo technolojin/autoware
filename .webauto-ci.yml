@@ -469,8 +469,8 @@ artifacts:
         install_disk: /dev/nvme0n1
         hostname: addon
 
-  # Addon-lite ECU
-  - name: addon-lite
+  # AddonLite ECU
+  - name: addonlite
     build:
       type: custom
       runtime:
@@ -484,10 +484,10 @@ artifacts:
         kernel_version: 5.10.120-tegra
       phases:
         - name: ecu-system-setup
-          exec: ./.webauto-ci/addon-lite/ecu-system-setup/run.sh
+          exec: ./.webauto-ci/addonlite/ecu-system-setup/run.sh
           environment_variables:
-            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_addon_lite.yaml
-            ECU_ID: addon-lite
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_addonlite.yaml
+            ECU_ID: addonlite
             VEHICLE_MODEL: j6_gen2
           caches:
             - name: apt-lists
@@ -833,13 +833,13 @@ release:
       alternative_deployments:
         - type: installer
           artifact: addon
-    - name: addon-lite
+    - name: addonlite
       deployment:
         type: rootfs
-        artifact: addon-lite
+        artifact: addonlite
       alternative_deployments:
         - type: installer
-          artifact: addon-lite
+          artifact: addonlite
     - name: media-streaming1
       deployment:
         type: rootfs
