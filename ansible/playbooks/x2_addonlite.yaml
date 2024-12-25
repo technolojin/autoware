@@ -12,8 +12,8 @@
     - name: Check 'ecu_id' contents
       ansible.builtin.assert:
         that:
-          - (ecu_id == 'addonlite') or (ecu_id == 'perception2')
-        fail_msg: ecu_id should be one of ['addonlite' or 'perception2']
+          - ecu_id == 'addonlite'
+        fail_msg: ecu_id should be ['addonlite']
 
     - name: Set addonlite params
       ansible.builtin.set_fact:
