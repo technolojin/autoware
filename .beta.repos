@@ -3,7 +3,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
-    version: beta/x2_gen2/v0.29.0
+    version: beta/x2_gen2/v0.29.1
   autoware/common:
     type: git
     url: https://github.com/tier4/autoware_common.git
@@ -15,7 +15,7 @@ repositories:
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: beta/x2_gen2/v0.29.0
+    version: beta/x2_gen2/v0.29.1
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
