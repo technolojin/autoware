@@ -3,19 +3,19 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
-    version: beta/x2_gen2/v0.29.1
+    version: beta/x2_gen2/v0.29.2
   autoware/common:
     type: git
     url: https://github.com/tier4/autoware_common.git
-    version: beta/x2/v4.0.1
+    version: beta/x2/v4.0.2
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: beta/v4.0.1
+    version: beta/v4.0.2
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: beta/x2_gen2/v0.29.1
+    version: beta/x2_gen2/v0.29.2
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
@@ -23,7 +23,7 @@ repositories:
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: beta/x2/v4.0.1
+    version: beta/x2/v4.0.2
   autoware/auto_msgs:
     type: git
     url: https://github.com/tier4/autoware_auto_msgs.git
