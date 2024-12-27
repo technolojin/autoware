@@ -14,7 +14,7 @@ collections:
   #   type: dir
   - name: git@github.com:tier4/autoware_ecu_system_setup.git
     type: git
-    version: 43c5b43775b7f097d612de1df37282a3ddb9934b
+    version: aa41867c6926a95656c08c5006316372b927418b
 
   - name: https://github.com/tier4/edge-auto-jetson.git
     type: git
