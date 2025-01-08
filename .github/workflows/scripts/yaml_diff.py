@@ -223,6 +223,7 @@ def diff_table_to_markdown(diff_table: list, base_dir2, output_file: str) -> Non
     # Track the current file being processed
     current_file = None
     current_file_table = []
+    detailing = False
 
     for row in diff_table:
         filename, change_type, parameters, file2 = row
@@ -234,7 +235,13 @@ def diff_table_to_markdown(diff_table: list, base_dir2, output_file: str) -> Non
                 markdown_content += "\n\n"
 
             # Start a new section for the current file
-            markdown_content += f"## Differences for {file2.replace(base_dir2, '')} to {filename}\n\n"
+            if detailing:
+                markdown_content += f"</details>\n\n"
+            else:
+                detailing = True
+
+            markdown_content += f"<details>\n\n"
+            markdown_content += f"<summary>Differences for {file2.replace(base_dir2, '')} to {filename}</summary>\n\n"
             current_file = file2
             current_file_table = []
 
@@ -245,6 +252,8 @@ def diff_table_to_markdown(diff_table: list, base_dir2, output_file: str) -> Non
     if current_file_table:
         markdown_content += pd.DataFrame(current_file_table, columns=["Compared to Universe", "Parameters"]).to_markdown(index=False)
         markdown_content += "\n\n"
+    if detailing:
+        markdown_content += f"</details>\n\n"
 
     # Write the markdown content to the file
     with open(output_file, 'w') as md_file:

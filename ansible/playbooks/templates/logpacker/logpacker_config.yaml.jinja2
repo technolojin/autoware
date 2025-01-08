@@ -1,94 +1,84 @@
-# cspell: ignore logfile systemlog kdump
+# cspell: ignore logfile systemlog kdump coredump
 
-# Logpacker configurations ------------------------------------------------------------------------
-# use webauto vehicle info
 use_webauto_agent: true
 vehicle_id: ""
 project_id: ""
 environment_id: ""
 map_version_id: ""
-# env file list
 env_file_paths:
-  - /home/autoware/vehicle.env
-  - /root/vehicle.env
-upload_dist: aws
-diag_ok_state:
-  - initial
-  - wait_webauto
-  - ready
-  - running
-# use old setting json filename (rosbag -> bagpacker)
+  - "/home/autoware/vehicle.env"
+  - "/root/vehicle.env"
+upload_dist: "aws"
 use_old_name: true
-# output directories list
 directories:
   - output_at: "{{ rosbag_logging_directory }}"
-    output_mountpoint: "{{ rosbag_logging_directory_mountpoint }}"
+    output_mountpoint: ""
     disk_threshold_error: 10
     disk_threshold_warning: 30
-
-# -------------------------------------------------------------------------------------------------
-# logging mode configurations
-# -------------------------------------------------------------------------------------------------
-logging_mode:
-  # logging mode list
-  mode_list:
-    - always
-    - event
-  # default logging mode
-  default_mode: always
-  # logging mode for operation mode
-  operation_mode: event
-  # current logging mode file path
-  current_mode_file: "{{ logpacker_config_dir }}/logging_mode"
-  # always mode configurations --------------------------------------------------------------------
-  always:
-    packer:
-      upload_dist: aws
-    # plugin enables
-    enable_plugins:
-      - rosbag
-      # - rotation
-      - syslog
-      - coredump
-      # - kdump
-      # - tcpdump
-
 # -------------------------------------------------------------------------------------------------
 # rosbag plugin configurations
 # -------------------------------------------------------------------------------------------------
 rosbag:
-  # If you use another file for rosbag configuration, define its file path. When not defined, this file will be used.
+  # If you use another file for rosbag configuration, define its file path.
+  # When not defined, this file will be used.
   # params_file: "{{ logpacker_config_dir }}/rosbag_params.yaml"
-  recording_type: manual
+  #####  manual mode setting  #####
+  recording_type: "manual"
   recording_mode_values:
-    - "Planning"
-    - "WaitingForEngage"
-    - "Driving"
-    - "Emergency"
-    - "ArrivedGoal"
-  initial_state: ready
-  topic_list_type: allowlist
+    - ""
+  ###### manual mode setting #####
+  ###### auto mode setting #####
+  #recording_type: "auto"
+  #recording_mode_values:
+  #  - "InitializingVehicle"
+  #  - "WaitingForRoute"
+  #  - "Planning"
+  #  - "WaitingForEngage"
+  #  - "Driving"
+  #  - "Emergency"
+  ##### auto mode setting #####
+  initial_state: "ready"
+  diag_ok_state:
+    - "initial"
+    - "ready"
+    - "recording"
+  topic_list_type: "allowlist"
   topic_list:
-    - "/autoware/(.*)"
-    - "/sensing/imu/tamagawa(.*)"
-    - "/sensing/imu/imu_data$"
-    - "/sensing/imu/gyro_bias$"
-    - "/sensing/gnss/(.*)"
-    - "/sensing/camera/camera(.*)/camera_info$"
-    - "/sensing/camera/camera(.*)/trigger_time$"
-    - "/sensing/camera/camera(.*)/image_rect_color/compressed$"
-    - "/sensing/camera/camera7/image_raw/compressed$"
-    - "/sensing/radar/(.*)/objects_raw$"
-    - "/sensing/radar/(.*)/from_can_bus$"
-    - "/sensing/radar/detected_objects$"
-    - "/sensing/vehicle_velocity_converter/twist_with_covariance$"
+    - "(.*)/velodyne_packets$"
+    - "/api/(.*)"
+    - "/autoware/engage$"
+    - "/awapi/(.*)"
+    - "/bagpacker/condition$"
+    - "/bagpacker/record$"
+    - "/control/(.*)"
+    - "/diagnostics$"
+    - "/diagnostics_agg$"
+    - "/diagnostics_graph/(.*)"
+    - "/foa/operation/log$"
+    - "/foa/log$"
+    - "/service_log$"
+    - "/joy$"
+    - "/lidar_pps/trigger_time$"
+    - "/localization/initialization_state$"
+    - "/localization/acceleration$"
+    - "/localization/kinematic_state$"
+    - "/localization/pose_estimator/exe_time_ms$"
+    - "/localization/pose_estimator/initial_pose_with_covariance$"
+    - "/localization/pose_estimator/iteration_num$"
+    - "/localization/pose_estimator/nearest_voxel_transformation_likelihood$"
+    - "/localization/pose_estimator/pose_with_covariance$"
+    - "/localization/pose_estimator/pose$"
+    - "/localization/pose_estimator/transform_probability$"
+    - "/localization/pose_twist_fusion_filter/biased_pose_with_covariance$"
+    - "/localization/util/downsample/pointcloud$"
+    - "/pacmod/(.*)"
+    - "/perception/object_recognition/detection/apollo/objects$"
     - "/perception/object_recognition/detection/apollo/validation/objects$"
     - "/perception/object_recognition/detection/centerpoint/objects$"
     - "/perception/object_recognition/detection/centerpoint/validation/objects$"
     - "/perception/object_recognition/detection/pointpainting/objects$"
     - "/perception/object_recognition/detection/pointpainting/validation/objects$"
     - "/perception/object_recognition/detection/pointpainting_roi_cluster_fusion/objects$"
-    - "/perception/object_recognition/detection/apollo/objects$"
     - "/perception/object_recognition/detection/clustering/objects$"
     - "/perception/object_recognition/detection/clustering/objects_with_feature$"
     - "/perception/object_recognition/detection/clustering/camera_lidar_fusion/objects$"
@@ -99,6 +89,7 @@ rosbag:
     - "/perception/object_recognition/detection/objects$"
     - "/perception/object_recognition/detection/radar/far_objects$"
     - "/perception/object_recognition/detection/rois(.*)"
+    - "/perception/object_recognition/detection/mask(.*)"
     - "/perception/object_recognition/prediction/maneuver$"
     - "/perception/object_recognition/objects$"
     - "/perception/object_recognition/tracking/radar/far_objects$"
@@ -107,22 +98,10 @@ rosbag:
     - "/perception/(.*)/detection/rois$"
     - "/perception/(.*)/detection/rough/rois$"
     - "/perception/(.*)/detection/expect/rois$"
-    - "/localization/initialization_state$"
-    - "/localization/acceleration$"
-    - "/localization/kinematic_state$"
-    - "/localization/pose_estimator/exe_time_ms$"
-    - "/localization/pose_estimator/initial_pose_with_covariance$"
-    - "/localization/pose_estimator/iteration_num$"
-    - "/localization/pose_estimator/nearest_voxel_transformation_likelihood$"
-    - "/localization/pose_estimator/pose(.*)"
-    - "/localization/pose_estimator/transform_probability$"
-    - "/localization/pose_twist_fusion_filter/biased_pose_with_covariance$"
-    - "/localization/pose_twist_fusion_filter/estimated_yaw_bias$"
-    - "/localization/pose_with_covariance$"
-    - "/localization/twist_estimator/twist_with_covariance$"
     - "/planning/mission_planning/checkpoint$"
     - "/planning/mission_planning/goal$"
     - "/planning/mission_planning/route$"
+    - "/planning/mission_remaining_distance_time$"
     - "/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/bound$"
     - "/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/avoidance_debug_message_array$"
     - "/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/lane_change_debug_message_array$"
@@ -130,7 +109,6 @@ rosbag:
     - "/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/drivable_lanes/(.*)"
     - "/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/info/(.*)"
     - "/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/input/lateral_offset$"
-    - "/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/pull_over/debug/parking_area$"
     - "/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/(.*)"
     - "/planning/scenario_planning/lane_driving/behavior_planning/debug/traffic_signal$"
     - "/planning/scenario_planning/lane_driving/behavior_planning/path_with_lane_id$"
@@ -151,22 +129,18 @@ rosbag:
     - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_stop_planner/debug/marker$"
     - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_stop_planner/obstacle_stop/debug_values$"
     - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_velocity_limiter/trajectory$"
-    - "/planning/scenario_planning/lane_driving/motion_planning/path_smoother/path$"
     - "/planning/scenario_planning/lane_driving/motion_planning/surround_obstacle_checker/debug/marker$"
     - "/planning/scenario_planning/lane_driving/motion_planning/surround_obstacle_checker/trajectory$"
     - "/planning/scenario_planning/lane_driving/trajectory$"
     - "/planning/scenario_planning/max_velocity$"
-    - "/planning/scenario_planning/max_velocity_candidates$"
     - "/planning/scenario_planning/max_velocity_default$"
     - "/planning/scenario_planning/modified_goal$"
     - "/planning/scenario_planning/velocity_smoother/debug/trajectory_lateral_acc_filtered$"
     - "/planning/scenario_planning/velocity_smoother/distance_to_stopline$"
     - "/planning/scenario_planning/parking/trajectory$"
     - "/planning/scenario_planning/scenario_selector/trajectory$"
-    - "/planning/scenario_planning/status/(.*)"
+    - "/planning/scenario_planning/status/stop_reasons$"
     - "/planning/scenario_planning/external_velocity_limit_selector/debug$"
-    - "/planning/scenario_planning/clear_velocity_limit$"
-    - "/planning/scenario_planning/current_max_velocity$"
     - "/planning/steering_factor/(.*)"
     - "/planning/velocity_factors/(.*)"
     - "/planning/scenario_planning/trajectory$"
@@ -174,44 +148,37 @@ rosbag:
     - "/planning/path_reference/(.*)"
     - "/planning/planning_validator/(.*)"
     - "/remote/(.*)"
-    - "(.*)/velodyne_packets$"
-    - "(.*)/pandar_packets$"
-    - "(.*)/virtual_wall/(.*)"
-    - "(.*)/cooperate_status/(.*)"
-    - "/control/(.*)"
+    - "/rosout$"
+    - "/sensing/camera/(.*)/camera_info$"
+    - "/sensing/camera/camera[67]/image_raw/compressed$"
+    - "/sensing/camera/(.*)/image_rect_color/compressed$"
+    - "/sensing/camera/(.*)/trigger_time$"
+    - "/sensing/camera/traffic_light/image_raw/compressed$"
+    - "/sensing/gnss/(.*)"
+    - "/sensing/imu/(.*)"
+    - "/sensing/radar/(.*)/from_can_bus$"
+    - "/sensing/radar/(.*)/objects_raw$"
+    - "/sensing/radar/detected_objects$"
+    - "/sensing/vehicle_velocity_converter/twist_with_covariance$"
     - "/system/(.*)"
-    - "/external/(.*)"
+    - "/tf_static$"
+    - "/tf$"
     - "/vehicle/(.*)"
-    - "/v2x/traffic_signals$"
-    - "/jpn_signal/traffic_light_info$"
     - "/webauto/enable_map_update$"
     - "/webauto/vehicle_info$"
-    - "/tf_static$"
-    - "/tf(.*)"
-    - "/awapi/(.*)"
-    - "/api/(.*)"
-    - "/rosout$"
-    - "/service_log$"
-    - "/diagnostics(.*)"
     - "(.*)/metrics$"
     - "(.*)/cooperate_status/(.*)"
-    - "(.*)/processing_time_ms$"
-    - "(.*)/cyclic_time_ms$"
+    - "(.*)/debug/processing_time_ms$"
+    - "(.*)/debug/cyclic_time_ms$"
     - "(.*)/virtual_wall/(.*)"
-    - "/bagpacker/condition$"
-    - "/bagpacker/record$"
   split_type: "duration"
   split_size: 1024
   split_duration: "60"
-  max_cache_size: 104857600
+  max_cache_size: 0
   max_splits: -1
   max_splits_check_cycle: 1
   qos_profile_overrides_path: "{{ logpacker_config_dir }}/qos_profile_overrides.yaml"
   output_at: "{{ rosbag_logging_directory }}"
-  diag_ok_state:
-    - ready
-    - recording
-
 # -------------------------------------------------------------------------------------------------
 # syslog plugin configurations
 # -------------------------------------------------------------------------------------------------
@@ -234,17 +201,32 @@ syslog:
     udp_enable: false
     allowed_sender:
       - "127.0.0.1"
+      - "192.168.2.100/24"
   output_at: "{{ rosbag_logging_directory }}"
-
 # -------------------------------------------------------------------------------------------------
 # coredump plugin configurations
 # -------------------------------------------------------------------------------------------------
 coredump:
   # If you use the other file for the coredump configuration, define its file path.
   # params_file: /etc/logging_system/logpacker/coredump_params.yaml
-  log_directory_path: "/var/lib/systemd/coredump"
+  hosts:
+    - host_name: ""
+      ip_addr: ""
+      # rsync_module: export
+      # If 'host_name' and 'ip_addr are empty, it means local host.
+      # Local host needs log_dir_path, instead of 'rsync_module'.
+      log_dir_path: /var/lib/systemd/coredump
+      options:
+        - "-auv"
+    - host_name: "autoware-ecu"
+      ip_addr: "192.168.2.100"
+      rsync_module: export
+      # If 'host_name' and 'ip_addr are empty, it means local host.
+      # Local host needs log_dir_path, instead of 'rsync_module'.
+      # log_dir_path: /var/lib/systemd/coredump
+      options:
+        - "-auv"
   output_at: "{{ rosbag_logging_directory }}"
-
 # -------------------------------------------------------------------------------------------------
 # kdump plugin configurations
 # -------------------------------------------------------------------------------------------------
@@ -253,36 +235,308 @@ kdump:
   # params_file: "{{ logpacker_config_dir }}/kdump_params.yaml"
   log_directory_path: "/var/crash"
   output_at: "{{ rosbag_logging_directory }}"
-
 # -------------------------------------------------------------------------------------------------
-# tcpdump plugin configurations (optional)
+# logging mode configurations
 # -------------------------------------------------------------------------------------------------
-# If this configuration is not exist, tcpdump plugin will be disabled.
-tcpdump:
-  # If you use the other file for the tcpdump configuration, define its file path.
-  # params_file: /etc/logging_system/logpacker/tcpdump_params.yaml
-  # output_file: ""             # -> use default
-  interface: eth0
-  # command: /usr/sbin/tcpdump  # -> use default
-  # kill_command: /usr/bin/kill # -> use default
-  cycle: 60
-  output_at: /media/autoware/ROSBAG
-  # diag_ok_state:
-  #   - initial
-  #   - ready
-  #   - recording
-
-# -------------------------------------------------------------------------------------------------
-# rotation plugin configurations (optional)
-# -------------------------------------------------------------------------------------------------
-# If this configuration is not exist, rotation plugin will be disabled.
-rotation:
-  count_limit: 15
-  space_limit: 10
-  days_limit: 3
-  check_cycle: 1
-  target_dir: /media/autoware/ROSBAG
-  # diag_ok_state:
-  #   - initial
-  #   - ready
-  #   - recording
+logging_mode:
+  mode_list:
+    - "always"
+    - "event"
+  default_mode: "always"
+  operation_mode: "event"
+  current_mode_file: "{{ logpacker_config_dir }}/logging_mode"
+  # always mode configurations --------------------------------------------------------------------
+  always:
+    packer:
+      upload_dist: "aws"
+    enable_plugins:
+      - rosbag
+      - syslog
+      - coredump
+      # - kdump
+      # - tcpdump
+      # - rotation
+    rosbag:
+      initial_state: "ready"
+      output_at: "{{ rosbag_logging_directory }}"
+      # qos_profile_overrides_path: "{{ logpacker_config_dir }}/qos_profile_overrides.yaml"
+      topic_list_type: "allowlist"
+      topic_list:
+        - "(.*)/velodyne_packets$"
+        - "/api/(.*)"
+        - "/autoware/engage$"
+        - "/awapi/(.*)"
+        - "/bagpacker/condition$"
+        - "/bagpacker/record$"
+        - "/control/(.*)"
+        - "/diagnostics$"
+        - "/diagnostics_agg$"
+        - "/diagnostics_graph/(.*)"
+        - "/foa/operation/log$"
+        - "/foa/log$"
+        - "/service_log$"
+        - "/joy$"
+        - "/lidar_pps/trigger_time$"
+        - "/localization/initialization_state$"
+        - "/localization/acceleration$"
+        - "/localization/kinematic_state$"
+        - "/localization/pose_estimator/exe_time_ms$"
+        - "/localization/pose_estimator/initial_pose_with_covariance$"
+        - "/localization/pose_estimator/iteration_num$"
+        - "/localization/pose_estimator/nearest_voxel_transformation_likelihood$"
+        - "/localization/pose_estimator/pose_with_covariance$"
+        - "/localization/pose_estimator/pose$"
+        - "/localization/pose_estimator/transform_probability$"
+        - "/localization/pose_twist_fusion_filter/biased_pose_with_covariance$"
+        - "/pacmod/(.*)"
+        - "/perception/object_recognition/detection/apollo/objects$"
+        - "/perception/object_recognition/detection/apollo/validation/objects$"
+        - "/perception/object_recognition/detection/centerpoint/objects$"
+        - "/perception/object_recognition/detection/centerpoint/validation/objects$"
+        - "/perception/object_recognition/detection/pointpainting/objects$"
+        - "/perception/object_recognition/detection/pointpainting/validation/objects$"
+        - "/perception/object_recognition/detection/pointpainting_roi_cluster_fusion/objects$"
+        - "/perception/object_recognition/detection/clustering/objects$"
+        - "/perception/object_recognition/detection/clustering/objects_with_feature$"
+        - "/perception/object_recognition/detection/clustering/camera_lidar_fusion/objects$"
+        - "/perception/object_recognition/detection/clustering/camera_lidar_fusion/objects_with_feature$"
+        - "/perception/object_recognition/detection/detection_by_tracker/debug/(.*)"
+        - "/perception/object_recognition/detection/detection_by_tracker/objects$"
+        - "/perception/object_recognition/detection/objects_before_filter$"
+        - "/perception/object_recognition/detection/objects$"
+        - "/perception/object_recognition/detection/radar/far_objects$"
+        - "/perception/object_recognition/detection/rois(.*)"
+        - "/perception/object_recognition/detection/mask(.*)"
+        - "/perception/object_recognition/prediction/maneuver$"
+        - "/perception/object_recognition/objects$"
+        - "/perception/object_recognition/tracking/radar/far_objects$"
+        - "/perception/object_recognition/tracking/objects$"
+        - "/perception/(.*)/traffic_signals$"
+        - "/perception/(.*)/detection/rois$"
+        - "/perception/(.*)/detection/rough/rois$"
+        - "/perception/(.*)/detection/expect/rois$"
+        - "/planning/mission_planning/checkpoint$"
+        - "/planning/mission_planning/goal$"
+        - "/planning/mission_planning/route$"
+        - "/planning/mission_remaining_distance_time$"
+        - "/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/bound$"
+        - "/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/avoidance_debug_message_array$"
+        - "/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/lane_change_debug_message_array$"
+        - "/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/(.*)"
+        - "/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/drivable_lanes/(.*)"
+        - "/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/info/(.*)"
+        - "/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/input/lateral_offset$"
+        - "/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/(.*)"
+        - "/planning/scenario_planning/lane_driving/behavior_planning/debug/traffic_signal$"
+        - "/planning/scenario_planning/lane_driving/behavior_planning/path_with_lane_id$"
+        - "/planning/scenario_planning/lane_driving/behavior_planning/path$"
+        - "/planning/scenario_planning/lane_driving/force_lane_change$"
+        - "/planning/scenario_planning/lane_driving/lane_change_approval$"
+        - "/planning/scenario_planning/lane_driving/lane_change_candidate_path$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/path_optimizer/trajectory$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/path_optimizer/virtual_wall$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_cruise_planner/virtual_wall$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_cruise_planner/debug/cruise/virtual_wall$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_cruise_planner/debug/slow_down/virtual_wall$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_cruise_planner/debug/marker$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_cruise_planner/debug/stop_planning_info$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_cruise_planner/debug/cruise_planning_info$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_cruise_planner/debug/slow_down_planning_info$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_stop_planner/adaptive_cruise_control/debug_values$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_stop_planner/debug/marker$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_stop_planner/obstacle_stop/debug_values$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_velocity_limiter/trajectory$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/surround_obstacle_checker/debug/marker$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/surround_obstacle_checker/trajectory$"
+        - "/planning/scenario_planning/lane_driving/trajectory$"
+        - "/planning/scenario_planning/max_velocity$"
+        - "/planning/scenario_planning/max_velocity_default$"
+        - "/planning/scenario_planning/modified_goal$"
+        - "/planning/scenario_planning/velocity_smoother/debug/trajectory_lateral_acc_filtered$"
+        - "/planning/scenario_planning/velocity_smoother/distance_to_stopline$"
+        - "/planning/scenario_planning/parking/trajectory$"
+        - "/planning/scenario_planning/scenario_selector/trajectory$"
+        - "/planning/scenario_planning/status/stop_reasons$"
+        - "/planning/scenario_planning/external_velocity_limit_selector/debug$"
+        - "/planning/steering_factor/(.*)"
+        - "/planning/velocity_factors/(.*)"
+        - "/planning/scenario_planning/trajectory$"
+        - "/planning/path_candidate/(.*)"
+        - "/planning/path_reference/(.*)"
+        - "/planning/planning_validator/(.*)"
+        - "/remote/(.*)"
+        - "/rosout$"
+        - "/sensing/camera/(.*)/camera_info$"
+        - "/sensing/camera/camera[67]/image_raw/compressed$"
+        - "/sensing/camera/(.*)/image_rect_color/compressed$"
+        - "/sensing/camera/(.*)/trigger_time$"
+        - "/sensing/camera/traffic_light/image_raw/compressed$"
+        - "/sensing/gnss/(.*)"
+        - "/sensing/imu/(.*)"
+        - "/sensing/radar/(.*)/from_can_bus$"
+        - "/sensing/radar/(.*)/objects_raw$"
+        - "/sensing/radar/detected_objects$"
+        - "/system/(.*)"
+        - "/tf_static$"
+        - "/tf$"
+        - "/vehicle/(.*)"
+        - "/webauto/enable_map_update$"
+        - "/webauto/vehicle_info$"
+        - "(.*)/cooperate_status/(.*)"
+        - "(.*)/debug/processing_time_ms$"
+        - "(.*)/debug/cyclic_time_ms$"
+        - "(.*)/virtual_wall/(.*)"
+        - "(.*)/virtual_walls"
+      # split_type: "duration"
+      # split_size: 256
+      split_duration: "60"
+      max_cache_size: 0
+      max_splits: -1
+      # max_splits_check_cycle: 15
+  # event mode configurations ---------------------------------------------------------------------
+  event:
+    packer:
+      upload_dist: "aws"
+    enable_plugins:
+      - rosbag
+      - syslog
+      - coredump
+      # - kdump
+      # - tcpdump
+      # - rotation
+    rosbag:
+      initial_state: "recording"
+      output_at: "{{ rosbag_logging_directory }}"
+      # qos_profile_overrides_path: "{{ logpacker_config_dir }}/qos_profile_overrides.yaml"
+      topic_list_type: "allowlist"
+      topic_list:
+        # temporary change velodyne_packets to pointcloud_raw_ex because of AWSIM not publishing
+        # velodyne_packets now
+        - "(.*)/pointcloud_raw_ex$"
+        - "/awsim/(.*)"
+        - "/api/(.*)"
+        - "/autoware/engage$"
+        - "/awapi/(.*)"
+        - "/bagpacker/condition$"
+        - "/bagpacker/record$"
+        - "/control/(.*)"
+        - "/diagnostics$"
+        - "/diagnostics_agg$"
+        - "/diagnostics_graph/(.*)"
+        - "/foa/operation/log$"
+        - "/foa/log$"
+        - "/service_log$"
+        - "/joy$"
+        - "/lidar_pps/trigger_time$"
+        - "/localization/acceleration$"
+        - "/localization/kinematic_state$"
+        - "/localization/pose_estimator/exe_time_ms$"
+        - "/localization/pose_estimator/initial_pose_with_covariance$"
+        - "/localization/pose_estimator/iteration_num$"
+        - "/localization/pose_estimator/nearest_voxel_transformation_likelihood$"
+        - "/localization/pose_estimator/pose_with_covariance$"
+        - "/localization/pose_estimator/pose$"
+        - "/localization/pose_estimator/transform_probability$"
+        - "/localization/pose_twist_fusion_filter/biased_pose_with_covariance$"
+        - "/pacmod/(.*)"
+        - "/perception/object_recognition/detection/apollo/objects$"
+        - "/perception/object_recognition/detection/apollo/validation/objects$"
+        - "/perception/object_recognition/detection/centerpoint/objects$"
+        - "/perception/object_recognition/detection/centerpoint/validation/objects$"
+        - "/perception/object_recognition/detection/pointpainting/objects$"
+        - "/perception/object_recognition/detection/pointpainting/validation/objects$"
+        - "/perception/object_recognition/detection/pointpainting_roi_cluster_fusion/objects$"
+        - "/perception/object_recognition/detection/clustering/objects$"
+        - "/perception/object_recognition/detection/clustering/objects_with_feature$"
+        - "/perception/object_recognition/detection/clustering/camera_lidar_fusion/objects$"
+        - "/perception/object_recognition/detection/clustering/camera_lidar_fusion/objects_with_feature$"
+        - "/perception/object_recognition/detection/detection_by_tracker/debug/(.*)"
+        - "/perception/object_recognition/detection/detection_by_tracker/objects$"
+        - "/perception/object_recognition/detection/objects_before_filter$"
+        - "/perception/object_recognition/detection/objects$"
+        - "/perception/object_recognition/detection/rois(.*)"
+        - "/perception/object_recognition/detection/mask(.*)"
+        - "/perception/object_recognition/prediction/maneuver$"
+        - "/perception/object_recognition/objects$"
+        - "/perception/object_recognition/tracking/objects$"
+        - "/perception/traffic_light_recognition/traffic_light_states$"
+        - "/perception/traffic_light_recognition/traffic_signals$"
+        - "/perception/traffic_light_recognition/classified/traffic_signals$"
+        - "/perception/traffic_light_recognition/rois$"
+        - "/perception/traffic_light_recognition/rough/rois$"
+        - "/planning/mission_planning/checkpoint$"
+        - "/planning/mission_planning/goal$"
+        - "/planning/mission_planning/route$"
+        - "/planning/mission_remaining_distance_time$"
+        - "/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/bound$"
+        - "/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/avoidance_debug_message_array$"
+        - "/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/lane_change_debug_message_array$"
+        - "/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/pull_over/debug/parking_area$"
+        - "/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/(.*)"
+        - "/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/drivable_lanes/(.*)"
+        - "/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/info/(.*)"
+        - "/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/input/lateral_offset$"
+        - "/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/(.*)"
+        - "/planning/scenario_planning/lane_driving/behavior_planning/debug/traffic_signal$"
+        - "/planning/scenario_planning/lane_driving/behavior_planning/path_with_lane_id$"
+        - "/planning/scenario_planning/lane_driving/behavior_planning/path$"
+        - "/planning/scenario_planning/lane_driving/force_lane_change$"
+        - "/planning/scenario_planning/lane_driving/lane_change_approval$"
+        - "/planning/scenario_planning/lane_driving/lane_change_candidate_path$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/path_optimizer/trajectory$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/path_optimizer/virtual_wall$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_cruise_planner/virtual_wall$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_cruise_planner/debug/cruise/virtual_wall$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_cruise_planner/debug/slow_down/virtual_wall$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_cruise_planner/debug/marker$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_cruise_planner/debug/stop_planning_info$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_cruise_planner/debug/cruise_planning_info$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_cruise_planner/debug/slow_down_planning_info$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_stop_planner/adaptive_cruise_control/debug_values$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_stop_planner/debug/marker$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_stop_planner/obstacle_stop/debug_values$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_velocity_limiter/trajectory$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/surround_obstacle_checker/debug/marker$"
+        - "/planning/scenario_planning/lane_driving/motion_planning/surround_obstacle_checker/trajectory$"
+        - "/planning/scenario_planning/lane_driving/trajectory$"
+        - "/planning/scenario_planning/max_velocity$"
+        - "/planning/scenario_planning/max_velocity_default$"
+        - "/planning/scenario_planning/modified_goal$"
+        - "/planning/scenario_planning/velocity_smoother/debug/trajectory_lateral_acc_filtered$"
+        - "/planning/scenario_planning/velocity_smoother/distance_to_stopline$"
+        - "/planning/scenario_planning/parking/trajectory$"
+        - "/planning/scenario_planning/scenario_selector/trajectory$"
+        - "/planning/scenario_planning/status/stop_reasons$"
+        - "/planning/scenario_planning/external_velocity_limit_selector/debug$"
+        - "/planning/steering_factor/(.*)"
+        - "/planning/velocity_factors/(.*)"
+        - "/planning/scenario_planning/trajectory$"
+        - "/planning/path_candidate/(.*)"
+        - "/planning/path_reference/(.*)"
+        - "/planning/planning_validator/(.*)"
+        - "/remote/(.*)"
+        - "/rosout$"
+        - "/sensing/camera/(.*)/camera_info$"
+        - "/sensing/camera/camera[67]/image_raw/compressed$"
+        - "/sensing/camera/(.*)/image_rect_color/compressed$"
+        - "/sensing/camera/(.*)/trigger_time$"
+        - "/sensing/camera/traffic_light/image_raw/compressed$"
+        - "/sensing/gnss/(.*)"
+        - "/sensing/imu/(.*)"
+        - "/sensing/radar/(.*)"
+        - "/system/(.*)"
+        - "/tf_static$"
+        - "/tf$"
+        - "/vehicle/(.*)"
+        - "/webauto/enable_map_update$"
+        - "/webauto/vehicle_info$"
+        - "(.*)/cooperate_status/(.*)"
+        - "(.*)/debug/processing_time_ms$"
+        - "(.*)/debug/cyclic_time_ms$"
+        - "(.*)/virtual_wall/(.*)"
+      # split_type: "duration"
+      # split_size: 256
+      split_duration: "15"
+      max_cache_size: 10000
+      max_splits: 6
+      max_splits_check_cycle: 1

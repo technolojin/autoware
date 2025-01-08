@@ -2,6 +2,10 @@ name: upload-pilot-auto-to-gdrive
 
 on:
   workflow_dispatch:
+    inputs:
+      tag:
+        description: アップロードするタグを指定してください 例として v0.0.0 を使用 指定がない場合は最新のタグをアップロードします
+        required: false
   push:
     tags:
       - v*
@@ -15,6 +19,33 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Get the tag to use
+      - name: Set tag
+        id: set-tag
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            TAG_INPUT="${{ github.event.inputs.tag }}"
+            if [ -n "$TAG_INPUT" ]; then
+              # If a tag is provided in the workflow_dispatch event, check if it exists
+              if git rev-parse "$TAG_INPUT" >/dev/null 2>&1; then
+                echo "TAG=$TAG_INPUT" >> $GITHUB_ENV
+              else
+                echo "Error: Specified tag '$TAG_INPUT' does not exist."
+                exit 1
+              fi
+            else
+              # No tag provided, use the latest tag
+              LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+              echo "No tag provided. Using latest tag: $LATEST_TAG"
+              echo "TAG=$LATEST_TAG" >> $GITHUB_ENV
+            fi
+          else
+            # For push events, use the pushed tag
+            echo "TAG=${{ github.ref_name }}" >> $GITHUB_ENV
+          fi
 
       - uses: actions/create-github-app-token@v1
         id: generate-token
@@ -108,9 +139,8 @@ jobs:
           cd _InstallTempFolder
           git clone git@github.com:tier4/${{ env.REPO_NAME }}.git
           cd ${{ env.REPO_NAME }}
-          LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
-          git checkout $LATEST_TAG
-          echo "LATEST_TAG=$LATEST_TAG" >> $GITHUB_ENV
+          git checkout ${{ env.TAG }}
+          echo "Tag: ${{ env.TAG }}"
 
       # To make it a little lighter
       - name: Delete .git
@@ -123,6 +153,12 @@ jobs:
           echo "${{ secrets.LOGIN_PASS }}" | sudo mkdir /opt/autoware/mlmodels -p
           mkdir /home/runner/autoware_data
           # ./get_ml_model.sh
+          sudo apt-get purge ansible
+          sudo apt-get -y install pipx
+          python3 -m pipx ensurepath
+          pipx install --include-deps --force "ansible==6.*"
+          ansible-galaxy collection install -f -r "ansible-galaxy-requirements.yaml"
+          ansible-playbook autoware.dev_env.download_artifacts -e "data_dir=$HOME/autoware_data" --ask-become-pass
 
       - name: vcs import src
         run: |
@@ -195,9 +231,9 @@ jobs:
         id: compress
         run: |
           cd _InstallTempFolder
-          tar -czf ${{ env.REPO_NAME }}-${LATEST_TAG}.tar.gz ${{ env.REPO_NAME }} misc set_files.sh README.md
-          echo "COMPRESSED_FILE_PATH=$(pwd)/${{ env.REPO_NAME }}-${LATEST_TAG}.tar.gz" >> $GITHUB_ENV
-          echo "FILE_NAME=${{ env.REPO_NAME }}-${LATEST_TAG}.tar.gz" >> $GITHUB_ENV
+          tar -czf ${{ env.REPO_NAME }}-${{ env.TAG }}.tar.gz ${{ env.REPO_NAME }} misc set_files.sh README.md
+          echo "COMPRESSED_FILE_PATH=$(pwd)/${{ env.REPO_NAME }}-${{ env.TAG }}.tar.gz" >> $GITHUB_ENV
+          echo "FILE_NAME=${{ env.REPO_NAME }}-${{ env.TAG }}.tar.gz" >> $GITHUB_ENV
 
       # Upload process starts here
       # Advance preparation

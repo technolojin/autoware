@@ -17,7 +17,7 @@ jobs:
   setup-ecu:
     needs: make-sure-label-is-present
     if: ${{ needs.make-sure-label-is-present.outputs.result == 'true' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
       matrix:
@@ -101,3 +101,5 @@ jobs:
       - name: Run setup script
         run: |
           ./setup-ecu.sh ${{ matrix.playbook }} ${{ matrix.additional_args }} -e reload_systemd=no
+        env:
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
