@@ -10,7 +10,7 @@ env:
 
 jobs:
   search-beta-branch:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     outputs:
       beta-branch: ${{ steps.search-beta-branch.outputs.value }}
     steps:
@@ -33,7 +33,7 @@ jobs:
   update-beta-branch:
     needs: search-beta-branch
     if: ${{ needs.search-beta-branch.outputs.beta-branch != '' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
       matrix:

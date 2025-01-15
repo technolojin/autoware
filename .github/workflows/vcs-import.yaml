@@ -22,7 +22,7 @@ jobs:
 
   vcs-import:
     needs: load-env
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     container: ros:${{ needs.load-env.outputs.rosdistro }}
     steps:
       - name: Check out repository
