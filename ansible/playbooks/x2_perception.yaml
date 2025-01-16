@@ -22,7 +22,7 @@
         otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-perception1
         perception_type: od
         dtb_sensor_type: imx490
-        distortion_correction: 0
+        distortion_correction: 1
       when: ecu_id == "perception1"
 
     - name: Set perception2 params
