@@ -30,7 +30,8 @@ available_ecu_ids:
 - perception1
 - perception2
 - addon
-- addonlite
+# # when use addonlite
+# - addonlite
 - signage
 - voice-system
 - media-streaming1
