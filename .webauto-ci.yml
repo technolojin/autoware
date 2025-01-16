@@ -470,14 +470,14 @@ simulations:
       runtime:
         type: standard1/amd64/medium
 
-  - name: ar_tag_based_localizer
-    type: ar_tag_based_localizer
-    simulator:
-      deployment:
-        type: container
-        artifact: main
-      runtime:
-        type: standard1/amd64/medium
+  # - name: ar_tag_based_localizer
+  #   type: ar_tag_based_localizer
+  #   simulator:
+  #     deployment:
+  #       type: container
+  #       artifact: main
+  #     runtime:
+  #       type: standard1/amd64/medium
 
 release:
   components:
