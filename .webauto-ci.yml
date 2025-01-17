@@ -469,6 +469,43 @@ artifacts:
         install_disk: /dev/nvme0n1
         hostname: addon
 
+  # AddonLite ECU
+  - name: addonlite
+    build:
+      type: custom
+      runtime:
+        type: standard1/arm64/large
+      source:
+        vcstool:
+          repositories_files:
+            - autoware.repos
+          import_path: src
+      linux_parameters:
+        kernel_version: 5.10.120-tegra
+      phases:
+        - name: ecu-system-setup
+          exec: ./.webauto-ci/addonlite/ecu-system-setup/run.sh
+          environment_variables:
+            ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_addonlite.yaml
+            ECU_ID: addonlite
+            VEHICLE_MODEL: j6_gen2
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/perception/ecu-system-setup/**/*
+              - src/ecu_system_setup/**/*
+              - ansible/**/*
+              - ansible-galaxy-requirements.yaml
+      base_container_image:
+        from: ghcr.io/tier4/ota-base-image/esg620_nvidia-jetpack:r35.4.1-v001-cti_orin-agx_forge_base-nvme0n1
+      output_rootfs_image:
+        from: ecu-system-setup
+        persistent_file_path: /etc/ota/persistents.txt
+
   # MS ECU1
   - name: media-streaming1
     build:
@@ -796,6 +833,13 @@ release:
       alternative_deployments:
         - type: installer
           artifact: addon
+    - name: addonlite
+      deployment:
+        type: rootfs
+        artifact: addonlite
+      alternative_deployments:
+        - type: installer
+          artifact: addonlite
     - name: media-streaming1
       deployment:
         type: rootfs
