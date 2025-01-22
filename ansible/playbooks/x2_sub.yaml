@@ -34,4 +34,5 @@
     - { role: x2_configure_marvell_switch }
     - { role: x2_ptp4l }
     - { role: x2_disable_chrony } # Disable chrony service on Sub ECU to avoid conflicts with ptp4l
+    - { role: x2_disable_greengrass_setup } # Disable the greengrass-v2-setup service on the Sub ECU to prevent an infinite setup loop.
     - { role: x2_dev_tools }
