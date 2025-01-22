@@ -5,6 +5,7 @@ After=multi-user.target
 [Service]
 User=root
 Type=oneshot
+ExecStartPre=/bin/sleep 10
 ExecStart=/opt/autoware/services/reconnect_touch_display/run.sh
 KillSignal=SIGINT
 

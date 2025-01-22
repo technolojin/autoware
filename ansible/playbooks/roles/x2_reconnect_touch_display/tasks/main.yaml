@@ -14,12 +14,10 @@
     mode: 0755
   become: true
 
-- name: Copy rule file
-  ansible.builtin.copy:
-    src: 99-usb-reconnect-touch-display.rules
-    dest: /etc/udev/rules.d/
-    mode: 0644
+- name: Enable service
+  ansible.builtin.systemd:
+    name: reconnect_touch_display.service
+    daemon_reload: "{{ daemon_reload }}"
+    enabled: true
+    masked: false
   become: true
-# Note:
-# We intentionally do not enable the service. The service should not start at boot,
-# but only be triggered by udev events when the USB device is detected.
