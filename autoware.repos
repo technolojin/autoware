@@ -11,7 +11,7 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: 6636195c56f1da17708d8f08538b6dc3f103aa50
+    version: 5681d1b09a98ce4393019274e3a71819351339c2
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
@@ -43,7 +43,7 @@ repositories:
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: fb741b58896429206831725178c4405b060b8df6
+    version: aa955cc7babb81d81b011b9a30fcafafb175b807
   # description
   description/sensor/sensor_component_description:
     type: git
@@ -159,7 +159,7 @@ repositories:
   product/l4_toolkit:
     type: git
     url: git@github.com:tier4/l4_toolkit.git
-    version: d55ab7247074bbb72c5c0671ad2d53f483c219de
+    version: 2a3c71995558e5ef6a5ffbda23a465bc58542ef2
   # V2X
   v2x/vehicle2infrastructure:
     type: git
