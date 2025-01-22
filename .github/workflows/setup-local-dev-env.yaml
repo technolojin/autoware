@@ -15,7 +15,7 @@ jobs:
       label: tag:run-build-test
 
   setup-local-dev-env:
-    runs-on: ubuntu-latest-m
+    runs-on: ubuntu-22.04-m
     needs: make-sure-label-is-present
     if: ${{ needs.make-sure-label-is-present.outputs.result == 'true' }}
     steps:

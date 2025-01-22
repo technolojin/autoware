@@ -16,7 +16,7 @@ env:
 jobs:
   create-base-image:
     # runs-on: ubuntu-latest # Error: "No space left on device"
-    runs-on: ubuntu-latest-m
+    runs-on: ubuntu-22.04-m
     permissions:
       contents: read
       packages: write
