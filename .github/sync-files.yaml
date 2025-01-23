@@ -45,7 +45,7 @@
 
               - name: Set git config" {source}
         sd "secrets.GITHUB_TOKEN" "steps.generate-token.outputs.token" {source}
-        sd "runs-on: ubuntu-22.04" "runs-on: ubuntu-latest-m" {source}
+        sd "runs-on: ubuntu-22.04" "runs-on: ubuntu-22.04-m" {source}
 
     - source: .github/workflows/pre-commit-ansible.yaml
       pre-commands: |
