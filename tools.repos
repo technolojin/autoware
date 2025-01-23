@@ -1,8 +1,8 @@
 repositories:
   tools:
     type: git
-    url: https://github.com/autowarefoundation/autoware_tools.git
-    version: main
+    url: https://github.com/tier4/autoware_tools.git
+    version: awf-latest
   autoware/document:
     type: git
     url: https://github.com/tier4/pilot-auto-documentation.git
