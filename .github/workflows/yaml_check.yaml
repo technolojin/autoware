@@ -22,7 +22,7 @@ jobs:
   yaml-test:
     needs: load-env
     if: ${{ needs.make-sure-label-is-present.outputs.result == 'true' }} && contains(github.event.pull_request.changed_files, 'autoware.repos')
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     container: ros:${{ needs.load-env.outputs.rosdistro }}
     steps:
       - name: Check out repository

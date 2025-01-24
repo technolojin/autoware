@@ -2,11 +2,40 @@
 
 See [GitHub Pages](https://autowarefoundation.github.io/autoware-documentation/main/).
 
+## Pilot.Auto のリリース
+
+- Pilot.Auto のバージョンは、`vx.y.z` の形式で表現する。
+- Pilot.Auto のリリースは、4週間に一回実施する。このとき、バージョン名の `y` の部分をインクリメントする。
+  - 致命的な不具合が含まれる場合は、hotfixを導入して `z` の部分をインクリメントしたバージョンをリリースする場合がある。
+- [.release_info.yaml](../.release_info.yaml) の `released_repositories` に記載されている子リポジトリは、Pilot.Auto のリリースと同じタイミングでタグを設定する。
+- リリースを行うとき、[リリーステスト評価内容](https://tier4.atlassian.net/wiki/x/xAHqww) に記載された項目を評価する。
+- リリースは、[Release flow for Vanilla product](https://tier4.atlassian.net/wiki/x/zoAbuw) に従って実施する。
+
+## Pilot.Auto のブランチについて
+
+- `main`
+  - autowarefoundation の最新状態を常に取り込んでいるブランチ
+- `beta/vx.y`
+  - `vx.y.z` のリリース評価のためのブランチ
+
+## 使用しているautoware.universe、autoware_launch
+
+- `autoware.universe`: [tier4/のawf-latestブランチ](https://github.com/tier4/autoware.universe/tree/awf-latest) を使用
+  - ※このブランチは [GitHub Workflow](https://github.com/tier4/autoware.universe/blob/tier4/main/.github/workflows/sync-awf-latest.yaml) によって作成される
+- `autoware_launch`: [tier4/のawf-latestブランチ](https://github.com/tier4/autoware_launch/tree/awf-latest) を使用
+  - ※このブランチは [GitHub Workflow](https://github.com/tier4/autoware_launch/blob/tier4/main/.github/workflows/sync-awf-latest.yaml) によって作成される
+
+## autoware.universe のブランチ戦略
+
+[こちら](./docs/universe.md)を参照してください。
+
+[English version](./docs/universe_en.md)
+
 ## MLモデルのダウンロード方法
 
 pilot-auto無印では[autoware](https://github.com/autowarefoundation/autoware)で配布されているMLモデルを使用します。そのため`./setup-dev-local.sh`で環境構築を終えている場合、追加のダウンロードの必要はありません。その他ケースについては以下を参考にしてください。
 
-### autowarefoudation/autowareのMLモデルを更新したい場合
+### autowarefoundation/autowareのMLモデルを更新したい場合
 
 以下のコマンドを実行してください。
 
