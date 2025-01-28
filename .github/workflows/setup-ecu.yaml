@@ -2,10 +2,22 @@ name: setup-ecu
 
 on:
   pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - labeled
 
 jobs:
+  make-sure-label-is-present:
+    uses: autowarefoundation/autoware-github-actions/.github/workflows/make-sure-label-is-present.yaml@v1
+    with:
+      label: tag:run-build-test
+
   setup-ecu:
-    runs-on: ubuntu-latest
+    needs: make-sure-label-is-present
+    if: ${{ needs.make-sure-label-is-present.outputs.result == 'true' }}
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
       matrix:
@@ -89,3 +101,5 @@ jobs:
       - name: Run setup script
         run: |
           ./setup-ecu.sh ${{ matrix.playbook }} ${{ matrix.additional_args }} -e reload_systemd=no
+        env:
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}

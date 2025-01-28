@@ -5,7 +5,7 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest-m
+    runs-on: ubuntu-22.04-m
     container: ${{ matrix.container }}${{ matrix.container-suffix }}
     strategy:
       fail-fast: false
@@ -43,7 +43,7 @@ jobs:
       - name: Run vcs import
         run: |
           mkdir src
-          vcs import src < ci.repos
+          vcs import src < ci.repos --shallow
 
       - name: Show disk space before the tasks
         run: df -h

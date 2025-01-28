@@ -1,5 +1,9 @@
 repositories:
   # autoware
+  autoware/core:
+    type: git
+    url: https://github.com/tier4/autoware.core.git
+    version: awf-latest
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
@@ -31,7 +35,7 @@ repositories:
   autoware/autoware_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_msgs.git
-    version: 1.1.0
+    version: 1.3.0
   autoware/autoware_adapi_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_adapi_msgs.git
@@ -66,7 +70,7 @@ repositories:
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
-    version: 28ad3cd4fb043e5f92353a540c3531cd4cb7bef3
+    version: ros2
   vendor/ublox:
     type: git
     url: https://github.com/tier4/ublox.git
@@ -90,11 +94,11 @@ repositories:
   vendor/mussp:
     type: git
     url: https://github.com/tier4/muSSP.git
-    version: c79e98fd5e658f4f90c06d93472faa977bc873b9
+    version: tier4/main
   vendor/pointcloud_to_laserscan:
     type: git
     url: https://github.com/tier4/pointcloud_to_laserscan.git
-    version: 8057177eeb26a3fd29b6e363e8a9a90d5daf391b
+    version: tier4/main
   vendor/ars408_driver:
     type: git
     url: https://github.com/tier4/ars408_driver.git

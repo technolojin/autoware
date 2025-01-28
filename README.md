@@ -2,11 +2,76 @@
 
 See [GitHub Pages](https://autowarefoundation.github.io/autoware-documentation/main/).
 
+## Pilot.Auto のリリース
+
+- Pilot.Auto のバージョンは、`vx.y.z` の形式で表現する。
+- Pilot.Auto のリリースは、4週間に一回実施する。このとき、バージョン名の `y` の部分をインクリメントする。
+  - 致命的な不具合が含まれる場合は、hotfixを導入して `z` の部分をインクリメントしたバージョンをリリースする場合がある。
+- [.release_info.yaml](../.release_info.yaml) の `released_repositories` に記載されている子リポジトリは、Pilot.Auto のリリースと同じタイミングでタグを設定する。
+- リリースを行うとき、[リリーステスト評価内容](https://tier4.atlassian.net/wiki/x/xAHqww) に記載された項目を評価する。
+- リリースは、[Release flow for Vanilla product](https://tier4.atlassian.net/wiki/x/zoAbuw) に従って実施する。
+
+## Pilot.Auto のブランチについて
+
+- `main`
+  - autowarefoundation の最新状態を常に取り込んでいるブランチ
+- `beta/vx.y`
+  - `vx.y.z` のリリース評価のためのブランチ
+
+## 使用しているautoware.universe、autoware_launch
+
+- `autoware.universe`: [tier4/のawf-latestブランチ](https://github.com/tier4/autoware.universe/tree/awf-latest) を使用
+  - ※このブランチは [GitHub Workflow](https://github.com/tier4/autoware.universe/blob/tier4/main/.github/workflows/sync-awf-latest.yaml) によって作成される
+- `autoware_launch`: [tier4/のawf-latestブランチ](https://github.com/tier4/autoware_launch/tree/awf-latest) を使用
+  - ※このブランチは [GitHub Workflow](https://github.com/tier4/autoware_launch/blob/tier4/main/.github/workflows/sync-awf-latest.yaml) によって作成される
+
+## autoware.universe のブランチ戦略
+
+[こちら](./docs/universe.md)を参照してください。
+
+[English version](./docs/universe_en.md)
+
 ## MLモデルのダウンロード方法
 
-**注意** : OTAイメージを利用しない場合は必ず下記の手順に従ってMLモデルをダウンロードしてください。ダウンロードしないとpointpaintingなどの物体認識ノードが動きません。
+pilot-auto無印では[autoware](https://github.com/autowarefoundation/autoware)で配布されているMLモデルを使用します。そのため`./setup-dev-local.sh`で環境構築を終えている場合、追加のダウンロードの必要はありません。その他ケースについては以下を参考にしてください。
 
-[WebAutoCLI](https://github.com/tier4/WebAutoCLI)を使用するので必要に応じてダウンロードしてください。
+### autowarefoundation/autowareのMLモデルを更新したい場合
+
+以下のコマンドを実行してください。
+
+```sh
+ansible-galaxy collection install -f -r "ansible-galaxy-requirements.yaml"
+```
+
+```sh
+ansible-playbook autoware.dev_env.download_artifacts -e "data_dir=$HOME/autoware_data" --ask-become-pass
+```
+
+### Evaluatorに登録されているMLモデルを使用したい場合
+
+こちらでは[WebAutoCLI](https://github.com/tier4/WebAutoCLI)を使用するので必要に応じてダウンロードしてください。
+
+まず、`webauto-ci.yml`に`asset-deploy`が記述されていない場合、以下を参考に記述してください。こちらで指定されているMLモデルを次節のスクリプトで読み込みます。この記述はEvaluatorで任意のMLモデルを使用する際でも有効です。
+
+例
+
+```yaml
+artifacts:
+  - name: main
+    build:
+      phases:
+        - name: environment-setup
+        - name: autoware-setup
+        - name: autoware-build
+        - name: asset-deploy
+          user: autoware
+          exec: ./.webauto-ci/main/asset-deploy/run.sh
+          ml_packages:  ml_packages:
+            - name: centerpoint
+              release: base/1.0
+            - name: yolox
+              release: common/mlmodel/v0.1.0
+```
 
 以下のコマンドを実行すると、MLモデルがダウンロードされます。
 
@@ -16,12 +81,12 @@ See [GitHub Pages](https://autowarefoundation.github.io/autoware-documentation/m
 
 ## MLモデルを変更する方法
 
-`get_ml_model.sh`の以下の箇所を必要に応じて変更してください。
+`webauto-ci.yml`内の`ml_packages`の部分を必要に応じて変更してください。もし`ml_packages`が存在していない場合、[MLモデルのダウンロード方法](#mlモデルのダウンロード方法)に従って記述してください。
 
-- `--package-name` : centerpoint/pointpaintingなどのパッケージ名
-- `--package-release-name` : xx1/mlmodel/v0.1.0などのパッケージリリース名
+- `name` : centerpoint/pointpaintingなどのパッケージ名
+- `release` : xx1/mlmodel/v0.1.0などのパッケージリリース名
 
-パッケージ名やパッケージリリース名は、Autoware Evaluatorから確認できます。
+`name`名や`release`名は、Autoware Evaluatorから確認できます。
 
 [pointpaintingの例](https://evaluation.tier4.jp/evaluation/mlpackages/5b56c824-de65-406e-b12f-d7271589cc70?project_id=prd_jt)
 
@@ -75,3 +140,20 @@ Autoware Setup、およびECU Setupのために、以下のスクリプトが用
 ./setup-ecu.sh -v -e vehicle_id=1234
 
 ```
+
+## autoware.universeのコードカバレッジ
+
+| Component    | Autoware.Universeでの全体のカバレッジ                                                                                                                                                                                                                                                                           | TIER IV社内のプロダクトで利用されており、かつ自動運転時にリアルタイムで動作するパッケージ                                                                                                                                                                                                                                                                             |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Common       | [![codecov](https://img.shields.io/badge/dynamic/json?url=https://codecov.io/api/v2/github/autowarefoundation/repos/autoware.universe/components&label=Common%20Packages&query=$.[0].coverage)](https://app.codecov.io/gh/autowarefoundation/autoware.universe?components%5B0%5D=Common%20Packages)             | Same                                                                                                                                                                                                                                                                                                                                                                  |
+| Control      | [![codecov](https://img.shields.io/badge/dynamic/json?url=https://codecov.io/api/v2/github/autowarefoundation/repos/autoware.universe/components&label=Control%20Packages&query=$.[1].coverage)](https://app.codecov.io/gh/autowarefoundation/autoware.universe?components%5B0%5D=Control%20Packages)           | [![codecov](https://img.shields.io/badge/dynamic/json?url=https://codecov.io/api/v2/github/autowarefoundation/repos/autoware.universe/components&label=Control%20TIER%20%20IV%20Maintained%20Packages&query=$.[12].coverage)](https://app.codecov.io/gh/autowarefoundation/autoware.universe?components%5B0%5D=Control%20TIER%20IV%20Maintained%20Packages)           |
+| Evaluator    | [![codecov](https://img.shields.io/badge/dynamic/json?url=https://codecov.io/api/v2/github/autowarefoundation/repos/autoware.universe/components&label=Evaluator%20Packages&query=$.[2].coverage)](https://app.codecov.io/gh/autowarefoundation/autoware.universe?components%5B0%5D=Evaluator%20Packages)       | Same                                                                                                                                                                                                                                                                                                                                                                  |
+| Launch       | [![codecov](https://img.shields.io/badge/dynamic/json?url=https://codecov.io/api/v2/github/autowarefoundation/repos/autoware.universe/components&label=Launch%20Packages&query=$.[3].coverage)](https://app.codecov.io/gh/autowarefoundation/autoware.universe?components%5B0%5D=Launch%20Packages)             | Same                                                                                                                                                                                                                                                                                                                                                                  |
+| Localization | [![codecov](https://img.shields.io/badge/dynamic/json?url=https://codecov.io/api/v2/github/autowarefoundation/repos/autoware.universe/components&label=Localization%20Packages&query=$.[4].coverage)](https://app.codecov.io/gh/autowarefoundation/autoware.universe?components%5B0%5D=Localization%20Packages) | [![codecov](https://img.shields.io/badge/dynamic/json?url=https://codecov.io/api/v2/github/autowarefoundation/repos/autoware.universe/components&label=Localization%20TIER%20%20IV%20Maintained%20Packages&query=$.[13].coverage)](https://app.codecov.io/gh/autowarefoundation/autoware.universe?components%5B0%5D=Localization%20TIER%20IV%20Maintained%20Packages) |
+| Map          | [![codecov](https://img.shields.io/badge/dynamic/json?url=https://codecov.io/api/v2/github/autowarefoundation/repos/autoware.universe/components&label=Map%20Packages&query=$.[5].coverage)](https://app.codecov.io/gh/autowarefoundation/autoware.universe?components%5B0%5D=Map%20Packages)                   | [![codecov](https://img.shields.io/badge/dynamic/json?url=https://codecov.io/api/v2/github/autowarefoundation/repos/autoware.universe/components&label=Map%20TIER%20%20IV%20Maintained%20Packages&query=$.[14].coverage)](https://app.codecov.io/gh/autowarefoundation/autoware.universe?components%5B0%5D=Map%20TIER%20IV%20Maintained%20Packages)                   |
+| Perception   | [![codecov](https://img.shields.io/badge/dynamic/json?url=https://codecov.io/api/v2/github/autowarefoundation/repos/autoware.universe/components&label=Perception%20Packages&query=$.[6].coverage)](https://app.codecov.io/gh/autowarefoundation/autoware.universe?components%5B0%5D=Perception%20Packages)     | [![codecov](https://img.shields.io/badge/dynamic/json?url=https://codecov.io/api/v2/github/autowarefoundation/repos/autoware.universe/components&label=Perception%20TIER%20%20IV%20Maintained%20Packages&query=$.[15].coverage)](https://app.codecov.io/gh/autowarefoundation/autoware.universe?components%5B0%5D=Perception%20TIER%20IV%20Maintained%20Packages)     |
+| Planning     | [![codecov](https://img.shields.io/badge/dynamic/json?url=https://codecov.io/api/v2/github/autowarefoundation/repos/autoware.universe/components&label=Planning%20Packages&query=$.[7].coverage)](https://app.codecov.io/gh/autowarefoundation/autoware.universe?components%5B0%5D=Planning%20Packages)         | [![codecov](https://img.shields.io/badge/dynamic/json?url=https://codecov.io/api/v2/github/autowarefoundation/repos/autoware.universe/components&label=Planning%20TIER%20%20IV%20Maintained%20Packages&query=$.[16].coverage)](https://app.codecov.io/gh/autowarefoundation/autoware.universe?components%5B0%5D=Planning%20TIER%20IV%20Maintained%20Packages)         |
+| Sensing      | [![codecov](https://img.shields.io/badge/dynamic/json?url=https://codecov.io/api/v2/github/autowarefoundation/repos/autoware.universe/components&label=Sensing%20Packages&query=$.[8].coverage)](https://app.codecov.io/gh/autowarefoundation/autoware.universe?components%5B0%5D=Sensing%20Packages)           | Same                                                                                                                                                                                                                                                                                                                                                                  |
+| Simulator    | [![codecov](https://img.shields.io/badge/dynamic/json?url=https://codecov.io/api/v2/github/autowarefoundation/repos/autoware.universe/components&label=Simulator%20Packages&query=$.[9].coverage)](https://app.codecov.io/gh/autowarefoundation/autoware.universe?components%5B0%5D=Simulator%20Packages)       | Same                                                                                                                                                                                                                                                                                                                                                                  |
+| System       | [![codecov](https://img.shields.io/badge/dynamic/json?url=https://codecov.io/api/v2/github/autowarefoundation/repos/autoware.universe/components&label=System%20Packages&query=$.[10].coverage)](https://app.codecov.io/gh/autowarefoundation/autoware.universe?components%5B0%5D=System%20Packages)            | Same                                                                                                                                                                                                                                                                                                                                                                  |
+| Vehicle      | [![codecov](https://img.shields.io/badge/dynamic/json?url=https://codecov.io/api/v2/github/autowarefoundation/repos/autoware.universe/components&label=Vehicle%20Packages&query=$.[11].coverage)](https://app.codecov.io/gh/autowarefoundation/autoware.universe?components%5B0%5D=Vehicle%20Packages)          | Same                                                                                                                                                                                                                                                                                                                                                                  |

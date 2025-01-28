@@ -1,0 +1,93 @@
+# This workflow is intended for the use in the repositories created by forking tier4/pilot-auto.
+name: sync-upstream-up-to-branch-root
+
+on:
+  workflow_dispatch:
+    inputs:
+      target-branch:
+        description: target branch like beta/v0.24.0
+        required: true
+        type: string
+        default: ""
+
+jobs:
+  sync--upstream-up-to-branch-root:
+    runs-on: ubuntu-22.04
+    env:
+      BASE_BRANCH: main
+      SYNC_TARGET_REPOSITORY: https://github.com/tier4/pilot-auto.git
+    steps:
+      - name: Generate token
+        id: generate-token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.BASE_BRANCH }}
+          fetch-depth: 0
+
+      - name: Set git config
+        uses: autowarefoundation/autoware-github-actions/set-git-config@v1
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+
+      - name: Sync up to branch root
+        run: |
+          git remote add sync-target ${{ env.SYNC_TARGET_REPOSITORY }}
+          git fetch -pPtf --all
+          branch_root=$(git show-branch --sha1-name sync-target/${{ env.BASE_BRANCH }} sync-target/${{ inputs.target-branch }} | tail -1 | awk -F '[][]' '{print $2}')
+          git reset --hard $branch_root
+          git remote rm sync-target
+        shell: bash
+
+      - name: Generate changelog
+        id: generate-changelog
+        uses: autowarefoundation/autoware-github-actions/generate-changelog@v1
+        with:
+          git-cliff-args: origin/${{ env.BASE_BRANCH }}..HEAD
+
+      - name: Replace PR number to URL
+        id: replace-pr-number-to-url
+        run: |
+          # Output multiline strings: https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#example-of-a-multiline-string
+          changelog=$(echo "$CHANGELOG" | sed -r "s|\(#([0-9]+)\)|("${REPO_URL%.git}"/pull/\1)|g")
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "changelog<<$EOF" >> $GITHUB_OUTPUT
+          echo "$changelog" >> $GITHUB_OUTPUT
+          echo "$EOF" >> $GITHUB_OUTPUT
+        env:
+          CHANGELOG: ${{ steps.generate-changelog.outputs.changelog }}
+          REPO_URL: ${{ env.SYNC_TARGET_REPOSITORY }}
+        shell: bash
+
+      - name: Create PR
+        id: create-pr
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+          base: ${{ env.BASE_BRANCH }}
+          branch: sync-upstream-${{ inputs.target-branch }}
+          title: "chore: sync upstream up to ${{ inputs.target-branch }}"
+          body: ${{ steps.replace-pr-number-to-url.outputs.changelog }}
+          labels: |
+            bot
+            sync-upstream
+          author: github-actions <github-actions@github.com>
+          signoff: true
+          delete-branch: true
+
+      - name: Check outputs
+        run: |
+          echo "Pull Request Number - ${{ steps.create-pr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.create-pr.outputs.pull-request-url }}"
+
+      - name: Enable auto-merge
+        if: ${{ steps.create-pr.outputs.pull-request-operation == 'created' }}
+        run: gh pr merge --merge --auto "${{ steps.create-pr.outputs.pull-request-number }}"
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}

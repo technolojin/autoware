@@ -1,4 +1,4 @@
-name: update-beta-branch
+name: update-beta-branch-asm
 
 on:
   schedule:
@@ -6,23 +6,23 @@ on:
   workflow_dispatch:
 
 env:
-  SYNC_BRANCH_PREFIX: update-beta-branch
+  SYNC_BRANCH_PREFIX: update-beta-branch-asm
 
 jobs:
   search-beta-branch:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     outputs:
       beta-branch: ${{ steps.search-beta-branch.outputs.value }}
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
       - name: Search beta branch
         id: search-beta-branch
         run: |
-          branch_names=$(git branch -a | grep -E 'remotes/origin/beta/v[0-9]+(\.[0-9]+)*$' | sed -E 's|.*(beta/.*)|\1|g')
+          branch_names=$(git branch -a | grep -E 'remotes/origin/beta/v[0-9]+(\.[0-9]+)*-asm$' | sed -E 's|.*(beta/.*)|\1|g')
           if [ -n "$branch_names" ]; then
             branch_names_json=$(printf '"%s", ' $branch_names)
             branch_names_json="[${branch_names_json%, }]"
@@ -33,7 +33,7 @@ jobs:
   update-beta-branch:
     needs: search-beta-branch
     if: ${{ needs.search-beta-branch.outputs.beta-branch != '' }}
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
@@ -44,14 +44,14 @@ jobs:
           echo "BASE_BRANCH=${{ matrix.beta-branch }}" >> $GITHUB_ENV
 
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
         with:
           ref: ${{ env.BASE_BRANCH }}
           fetch-depth: 0
 
       - name: Generate token
         id: generate-token
-        uses: tibdex/github-app-token@v2
+        uses: tibdex/github-app-token@v1
         with:
           app_id: ${{ secrets.APP_ID }}
           private_key: ${{ secrets.PRIVATE_KEY }}
@@ -63,10 +63,16 @@ jobs:
           echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
           sudo apt-get update && sudo apt-get install python3-vcstool
 
+      - name: Set git config for private repositories
+        run: |
+          git config --local --unset-all http.https://github.com/.extraheader || true
+          git config --global url.https://x-access-token:${{ secrets.REPO_TOKEN }}@github.com/.insteadOf 'https://github.com/'
+          git config --global url.https://x-access-token:${{ secrets.REPO_TOKEN }}@github.com/.insteadOf 'git@github.com:'
+
       - name: Set git config
-        uses: autowarefoundation/autoware-github-actions/set-git-config@v1
-        with:
-          token: ${{ steps.generate-token.outputs.token }}
+        run: |
+          git config --local user.email "actions@example.com"
+          git config --local user.name "GitHub Actions"
 
       - name: Run update script
         run: |

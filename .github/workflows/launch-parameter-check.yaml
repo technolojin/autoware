@@ -1,0 +1,64 @@
+name: parameter-check
+
+on:
+  pull_request:
+
+jobs:
+  load-env:
+    uses: ./.github/workflows/load-env.yaml
+
+  launch-parameter-check:
+    needs: load-env
+    runs-on: ubuntu-22.04
+    container: ros:${{ needs.load-env.outputs.rosdistro }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Generate token
+        id: generate-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+
+      - name: Set git config
+        uses: autowarefoundation/autoware-github-actions/set-git-config@v1
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+
+      - name: Install python dependencies
+        run: |
+          sudo apt-get -y update
+          sudo apt-get -y install python3-pip
+          pip3 install pyyaml
+
+      - name: Run vcs import
+        run: |
+          mkdir src
+          vcs import src < autoware.repos --shallow
+          vcs import src < tools.repos --shallow
+
+      # - name: Remove exec_depend
+      #   uses: autowarefoundation/autoware-github-actions/remove-exec-depend@v1
+
+      # - name: Install autoware dependencies
+      #   run: |
+      #     rosdep update
+      #     rosdep install --from-paths src --ignore-src -r -y
+
+      - name: Set Project-Based Variables
+        run: |
+          echo "src_directory=src" >> $GITHUB_ENV
+          echo "launch_directory=src/autoware/launcher/autoware_launch/launch" >> $GITHUB_ENV
+          echo "vehicle_model=lexus" >> $GITHUB_ENV
+          echo "sensor_model=aip_xx1" >> $GITHUB_ENV
+
+      - name: Run launch check for planning simulator
+        run: |
+          python3 .github/workflows/scripts/launch_parameter_test.py --src_dir "${{ env.src_directory }}"  --launch_file "${{ env.launch_directory }}"/planning_simulator.launch.xml --context vehicle_model="${{ env.vehicle_model }}" sensor_model="${{ env.sensor_model }}" map_path=.
+
+      - name: Run launch check for logging simulator
+        run: |
+          python3 .github/workflows/scripts/launch_parameter_test.py --src_dir "${{ env.src_directory }}"  --launch_file "${{ env.launch_directory }}"/logging_simulator.launch.xml --context vehicle_model="${{ env.vehicle_model }}" sensor_model="${{ env.sensor_model }}" map_path=.
