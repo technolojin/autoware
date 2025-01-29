@@ -20,5 +20,3 @@ releases:
         release_version: 0.41
       - repo_name_in_autoware_repos: autoware/universe
         release_version: 0.41
-      - repo_name_in_autoware_repos: tools
-        release_version: 0.41
