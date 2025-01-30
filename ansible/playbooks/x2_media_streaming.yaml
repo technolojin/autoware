@@ -1,0 +1,45 @@
+- name: Setup x2 media streaming
+  hosts: localhost
+  vars_files:
+    - ./vars/x2_common.yaml
+    - ./vars/x2_media_streaming.yaml
+
+  vars:
+    ecu_id: media-streaming1
+    ros_distro: humble
+
+  pre_tasks:
+    - name: Check 'ecu_id' contents
+      ansible.builtin.assert:
+        that:
+          - (ecu_id == 'media-streaming1') or (ecu_id == 'media-streaming2')
+        fail_msg: ecu_id should be one of ['media-streaming1' or 'media-streaming2']
+
+    - name: Set media-streaming1 params
+      ansible.builtin.set_fact:
+        netplan_files: netplan/99-autoware.x2-media-streaming1.yaml
+        otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-media-streaming1
+        dtb_sensor_type: isx021
+        distortion_correction: 1
+      when: ecu_id == "media-streaming1"
+
+    - name: Set media-streaming2 params
+      ansible.builtin.set_fact:
+        netplan_files: netplan/99-autoware.x2-media-streaming2.yaml
+        otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-media-streaming2
+        dtb_sensor_type: isx021
+        distortion_correction: 1
+      when: ecu_id == "media-streaming2"
+
+  roles:
+    - { role: autoware.ecu_system_setup.boot_shutdown_service }
+    - { role: autoware.ecu_system_setup.iptables }
+    - role: autoware.ecu_system_setup.media_streaming
+      when: skip_media_streaming is not defined or not skip_media_streaming | bool
+    - { role: autoware.ecu_system_setup.netplan }
+    - { role: autoware.ecu_system_setup.otaclient }
+    - { role: autoware.ecu_system_setup.rsyslog }
+    - { role: autoware.ecu_system_setup.stop_auto_upgrade }
+    - { role: autoware.ecu_system_setup.syslog_collector_client }
+    - role: autoware.ecu_system_setup.tier4_camera_driver_anvil
+      when: skip_tier4_camera_driver is not defined or not skip_tier4_camera_driver | bool

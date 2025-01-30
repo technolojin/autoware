@@ -1,0 +1,14 @@
+[Unit]
+Description=Automotive PTP Master for synchronizing LiDARs and radars
+After=network-online.target configure_marvell_switch.service
+
+[Service]
+Type=simple
+ExecStartPre=/bin/sleep 60
+ExecStart=/usr/sbin/ptp4l -m -l6 -f /usr/share/doc/linuxptp/configs/automotive-master.cfg -i vlan.11  -i vlan.12  -i vlan.13  -i vlan.14  -i vlan.15  -i vlan.16 --fault_reset_interval 0 --tx_timestamp_timeout 600
+ExecStop=/bin/kill -TERM $MAINPID
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target network-online.target

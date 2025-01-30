@@ -1,0 +1,17 @@
+- name: Create hold storage mount point
+  ansible.builtin.file:
+    path: "{{ item.dest }}"
+    state: directory
+    mode: 0755
+  loop: "{{ hold_storage_list }}"
+  become: true
+
+- name: Write hold storage to /etc/fstab
+  ansible.builtin.lineinfile:
+    path: /etc/fstab
+    line: "{{ item.src }} {{ item.dest }} ext4 ro,nofail 0 2"
+    state: present
+    create: true
+    mode: 0664
+  loop: "{{ hold_storage_list }}"
+  become: true

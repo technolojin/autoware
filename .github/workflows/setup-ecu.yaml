@@ -22,10 +22,66 @@ jobs:
       fail-fast: false
       matrix:
         playbook:
+          - awsim_pc
           - ecu_setup
+          - x2_cert
+          - x2_signage
+          - x2_sub
+          - x2_sub_cert
+          - x2_voice_system
         include:
+          - playbook: awsim_pc
+            additional_args: -y -v -e vehicle_id=1234
           - playbook: ecu_setup
             additional_args: -y -v -e vehicle_id=1234
+          - playbook: x2_cert
+            additional_args: -y -v -e vehicle_id=1234
+          - playbook: x2_signage
+            additional_args: -y -v -e github_token='' -e skip_upgrade=true
+          - playbook: x2_sub
+            additional_args: -y -v -e vehicle_id=1234 -e skip_rviz=true
+          - playbook: x2_sub_cert
+            additional_args: -y -v -e vehicle_id=1234 -e skip_rviz=true
+          - playbook: x2_voice_system
+            additional_args: -y -v -e skip_upgrade=true
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Generate token
+        id: generate-token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Set git config
+        uses: autowarefoundation/autoware-github-actions/set-git-config@v1
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+
+      - name: Run setup script
+        run: |
+          ./setup-ecu.sh ${{ matrix.playbook }} ${{ matrix.additional_args }} -e reload_systemd=no
+
+  setup-ecu-20-04:
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix:
+        playbook:
+          - x2_media_streaming
+          - x2_perception
+          - x2_perception_application
+        include:
+          - playbook: x2_media_streaming
+            additional_args: -y -v -e skip_media_streaming=true -e skip_tier4_camera_driver=true
+          - playbook: x2_perception
+            additional_args: -y -v -e vehicle_id=1234 -e skip_od_tlr_setup=true -e skip_boot_shutdown=true
+          - playbook: x2_perception_application
+            additional_args: -y -v -e skip_docker=true
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v4

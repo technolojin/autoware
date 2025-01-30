@@ -1,0 +1,79 @@
+#!/bin/bash
+
+# Define the target 10GbE network interfaces as an array
+TARGET_INTERFACES=({% for iface in x2_logging_reconfig_10g_interfaces %}"{{ iface }}"{% if not loop.last %} {% endif %}{% endfor %})
+
+# Log a message indicating the interface being checked
+echo "$IFACE is up"
+
+# Check if the current interface ($IFACE) is part of the target interfaces
+if [[ ! " ${TARGET_INTERFACES[@]} " =~ " ${IFACE} " ]]; then
+    # If not, do nothing and exit the script
+    echo "Do nothing for $IFACE"
+    exit 0
+fi
+
+# Retrieve the PCI device number of the given interface using udevadm
+_dev_0=$(udevadm info "/sys/class/net/$IFACE" | grep -oP 'ID_PATH=pci-\K[0-9a-f:.]+')
+
+# Resolve the symbolic link to get the actual PCI device path
+_lnk=$(readlink /sys/bus/pci/devices/$_dev_0)
+if [ -z $_lnk ]; then
+    # If the device path is empty, log an error and exit
+    echo "$0: Device not found"
+    exit 1
+fi
+
+# Extract the parent directory and the PCI bridge number
+_dir=$(dirname $_lnk)
+_br=$(basename $_dir)
+
+# Log the detected PCI device and bridge numbers
+echo "PCI Device Number: $_dev_0"
+echo "PCI Bridge Number: $_br"
+
+# Define the maximum number of retry attempts
+_retry_max=10
+_retry_cnt=0
+
+# Infinite loop to configure the 10GbE module
+while [ true ];
+do
+        # Check the current link status of the PCI device
+        _sta=$(sudo lspci -vv -s $_dev_0 | grep "LnkSta:" | sed 's/[\t]*//g')
+
+        # Check if the link is not downgraded
+        echo $_sta | grep "downgraded"
+        if [ $? -eq 1 ]; then
+                # If no downgrade is detected, the configuration is correct
+                echo "10GbE module is configured as expected: $_sta"
+                exit 0
+        fi
+
+        # Increment the retry counter
+        _retry_cnt=$((_retry_cnt + 1))
+        if [ $_retry_cnt -gt $_retry_max ]; then
+                # If the maximum retry count is exceeded, log an error and exit
+                echo "Failed to configure 10GbE module properly..."
+                exit 2
+        fi
+
+        # Log a message indicating reconfiguration attempt
+        echo "Now try to re-configure 10GbE module ..."
+
+        # Remove the PCI device to reset it
+        echo 1 > /sys/bus/pci/devices/$_dev_0/remove
+        sleep 2
+
+        # Reconfigure the PCI bridge control settings
+        setpci -s "$_br" BRIDGE_CONTROL=0052
+        sleep 0.01
+        setpci -s "$_br" BRIDGE_CONTROL=0012
+        sleep 1
+
+        # Rescan the PCI bridge to reinitialize the device
+        echo 1 > /sys/bus/pci/devices/$_br/rescan
+done
+
+# Exit successfully
+exit 0

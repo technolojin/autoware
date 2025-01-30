@@ -1,0 +1,48 @@
+#!/bin/bash
+# cspell:ignore listdevices hostif ethertype createboardcfg deviceaddr developmentcfg switchcfg
+
+# Load vehicle.env to get the MAC address of the enp4s0 interface
+source /home/autoware/vehicle.env
+FILE_PATH="/opt/autoware/services/configure_marvell_switch/marvell_switch_configuration"
+
+# Check if MAC address was successfully loaded
+if [ -z "$MARVELL_SWITCH_MAC_ADDRESS" ]; then
+    echo "Error: Unable to load MAC address for interface enp4s0."
+    exit 1
+fi
+
+echo "interface: {{ x2_configure_marvell_switch_interface }}"
+echo "MAC address: $MARVELL_SWITCH_MAC_ADDRESS"
+echo "configuration file: {{ x2_configure_marvell_switch_file }}"
+
+# Set the maximum number of retries
+MAX_RETRIES="{{ x2_configure_marvell_switch_max_retries }}"
+# Initialize the attempt counter
+attempt=1
+
+# Retry loop: Run the command until it succeeds or the maximum number of attempts is reached
+while [ $attempt -le $MAX_RETRIES ]; do
+    echo "Attempt #$attempt"
+
+    # Load the switch configuration file
+    # This configuration will be saved in the switch
+    "$FILE_PATH"/AutomotiveSwitchV4 -runtimecfg -hostif={{ x2_configure_marvell_switch_interface }} -ethertype=0x9101 -deviceaddr="$MARVELL_SWITCH_MAC_ADDRESS" -switchcfg="$FILE_PATH"/{{ x2_configure_marvell_switch_file }}
+
+    return_code=$?
+
+    # Check if the command succeeded (exit code 0)
+    if [ $return_code -eq 0 ]; then
+        echo "Command succeeded on attempt #$attempt."
+        exit 0
+    fi
+
+    # Increment the attempt counter
+    attempt=$((attempt + 1))
+
+    # Wait before retrying
+    sleep 5
+done
+
+# If we reach here, the command failed after MAX_RETRIES attempts
+echo "Command failed after $MAX_RETRIES attempts."
+exit 1
