@@ -1,0 +1,4 @@
+# WARN: This configuration file is only applied during initial setup using the USB installer, and not during OTA updates via Web.Auto.
+network:
+  version: 2
+  renderer: NetworkManager

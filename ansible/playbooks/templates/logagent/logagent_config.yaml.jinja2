@@ -1,0 +1,72 @@
+# cspell: ignore kdump coredump logagent Logagent
+# Logagent configurations ------------------------------------------------------------------------
+# use webauto vehicle info
+use_webauto_agent: true
+vehicle_id: ""
+project_id: ""
+diag_ok_state: [running]
+# group_id: ""
+# custom_tags:
+#   event: test
+#   test_no: "1"
+# Mob Proxy ---------------------------------------------------------------------------------------
+mob_proxy:
+  address: ["{{ logagent_mob_proxy_address }}"]
+# Directories -------------------------------------------------------------------------------------
+directories:
+  - output_at: "{{ logagent_rosbag_logging_directory }}"
+    output_mountpoint: "{{ logagent_rosbag_logging_directory_mountpoint }}"
+  - output_at: "{{ logagent_temporary_logging_directory }}"
+    output_mountpoint: {{ logagent_temporary_logging_directory_mountpoint }}"
+# streaming configurations ------------------------------------------------------------------------
+# streaming:
+  # ros topics --------------------------------------
+  # ros_topic:
+    # ros domains
+    # - domain_id: 100
+    #   domain_name: autowareMain
+    #   topics:
+    #     - topic_name: /webauto/vehicle_info
+    #       topic_type: VehicleInfo
+  # syslog streaming --------------------------------
+  # syslog:
+    # syslog priority level [emergency critical alert error warning info debug]
+    # rsyslog_priority: {{ logagent_rsyslog_priority }}
+    # rsyslog_config_template: "{{ logagent_rsyslog_config_template }}"
+    # rsyslog_port: {{ logagent_rsyslog_port }}
+    # rsyslog_pipe_file: {{ logagent_rsyslog_pipe_file }}
+    # hosts:
+      # - host_name: autoware
+# file upload configurations ----------------------------------------------------------------------
+log_upload:
+  upload_logs:
+    # - file_type: rosbag
+    #   extensions: [db3]
+    #   base_path: "{{ logagent_rosbag_logging_directory }}"
+    #   domain_names: []
+    #   except_current: true
+    - file_type: syslog
+      extensions: [log]
+      base_path: "{{ logagent_rosbag_logging_directory }}"
+      hosts: []
+      except_current: true
+    # - file_type: kdump
+    #   base_path: "{{ logagent_rosbag_logging_directory }}"
+    #   extensions: [txt]
+    #   except_current: false
+    # - file_type: coredump
+    #   base_path: "{{ logagent_rosbag_logging_directory }}"
+    #   extensions: [txt]
+    #   except_current: false
+    # - file_type: tcpdump
+    #   base_path: "{{ logagent_rosbag_logging_directory }}"
+    #   extensions: [txt]
+    #   except_current: false
+    # - file_type: audit
+    #   extensions: [log]
+    #  path: /var/log/audit/
+    #   except_current: false
+    # - file_type: user
+    #   extensions: [jpg]
+    #   path: /var/log/
+    #  except_current: false
