@@ -2,7 +2,7 @@ repositories:
   simulator/scenario_simulator:
     type: git
     url: https://github.com/tier4/scenario_simulator_v2.git
-    version: 7.4.7
+    version: 9.0.3
   simulator/logsim:
     type: git
     url: git@github.com:tier4/logsim.git
