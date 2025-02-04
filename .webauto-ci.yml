@@ -2,7 +2,7 @@
 # and remote update (Over The Air update) to real cars.
 # If you have any additional questions, please contact us at #tier4-dev channel.
 
-# cSpell: ignore persistents buildspecs
+# cSpell: ignore annotationless buildspecs
 
 version: 2
 

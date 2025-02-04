@@ -1,5 +1,4 @@
 #!/bin/bash -e
-# cSpell: ignore persistents
 
 : "${WEBAUTO_CI_GITHUB_TOKEN:?is not set}"
 
