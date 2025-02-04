@@ -1074,6 +1074,7 @@ simulations:
       runtime:
         type: standard1/amd64/medium
 
+  # yamllint disable rule:comments-indentation
   # - name: ar_tag_based_localizer
   #   type: ar_tag_based_localizer
   #   simulator:
@@ -1082,6 +1083,7 @@ simulations:
   #       artifact: main
   #     runtime:
   #       type: standard1/amd64/medium
+  # yamllint enable rule:comments-indentation
 
 release:
   name_template: ${datetime}-${version}

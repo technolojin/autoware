@@ -1,9 +1,11 @@
 - name: Clone repository that contain install script
   block:
-    - ansible.builtin.set_fact:
+    - name: Set fact github_token
+      ansible.builtin.set_fact:
         github_token: "{{ lookup('env', 'GITHUB_TOKEN') | default('') }}"
     # If github_token is not set, use ssh url. Otherwise, use https url with token.
-    - ansible.builtin.set_fact:
+    - name: Set fact repo_url and work_dir
+      ansible.builtin.set_fact:
         repo_url: >-
           {{ 'https://' + github_token + '@github.com/tier4/jetson_iv_container.git' if github_token != '' else 'git@github.com:tier4/jetson_iv_container.git' }}
         work_dir: /tmp/jetson_iv_container
@@ -16,7 +18,8 @@
 
 - name: Execute install script
   block:
-    - ansible.builtin.set_fact:
+    - name: Set_fact script_name
+      ansible.builtin.set_fact:
         script_name: addon_build.sh
     - name: Add executable permission to the script
       ansible.builtin.file:
@@ -48,9 +51,11 @@
       ansible.builtin.debug:
         msg: "env_vars: {{ env_vars }}"
     - name: Execute the script
-      ansible.builtin.shell: "{{ work_dir }}/native/{{ script_name }}"
+      ansible.builtin.command: "{{ work_dir }}/native/{{ script_name }}"
       become: true # become: true is required to handle sudo operation in the script
       environment: "{{ env_vars }}"
+      register: execute_script_result
+      changed_when: execute_script_result.rc != 0
     - name: Delete working directory
       ansible.builtin.file:
         path: "{{ work_dir }}"
