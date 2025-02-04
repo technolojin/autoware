@@ -8,6 +8,11 @@ repositories:
     type: git
     url: https://github.com/tier4/autoware.universe.git
     version: v0.40.0
+  # TODO(youtalk): Remove autoware_common when https://github.com/autowarefoundation/autoware/issues/4911 is closed
+  autoware/autoware_common:
+    type: git
+    url: https://github.com/autowarefoundation/autoware_common.git
+    version: 6752ca71a985c3bd39ab9cc23a3695930f0a6e29
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
@@ -19,7 +24,7 @@ repositories:
   autoware/autoware_lanelet2_extension:
     type: git
     url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
-    version: 0.6.2
+    version: 0.6.1
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
@@ -27,7 +32,7 @@ repositories:
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: a03c37d6d07e16f64a01a884f304a9ffb8cf35a3 # will fix to use tier4/universe when v0.41 is released
+    version: a03c37d6d07e16f64a01a884f304a9ffb8cf35a3
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
@@ -43,11 +48,11 @@ repositories:
   autoware/autoware_adapi_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_adapi_msgs.git
-    version: beta/1.7.0
+    version: e62ea6fdb9ee50e49c7642c77e85250cb15b8e80
   autoware/autoware_internal_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_internal_msgs.git
-    version: 1.3.0
+    version: 1.1.0
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
@@ -67,10 +72,12 @@ repositories:
   #   url: git@github.com:tier4/autoware_ecu_system_setup.git
   #   version: main
   # vendor
-  vendor/j6_interface:
-    type: git
-    url: git@github.com:tier4/j6_interface.git
-    version: feat/MJ20_interface
+
+  # comment out temporarily until the fix for the latest version is ready
+  # vendor/j6_interface:
+  #   type: git
+  #   url: git@github.com:tier4/j6_interface.git
+  #   version: feat/MJ20_interface
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
@@ -163,7 +170,7 @@ repositories:
   product/l4_toolkit:
     type: git
     url: git@github.com:tier4/l4_toolkit.git
-    version: main
+    version: temp/v0.40 # TODO: Change this branch to main after the release
   vendor/emergency_vehicle_detector:
     type: git
     url: git@github.com:tier4/emergency_vehicle_detector.git
