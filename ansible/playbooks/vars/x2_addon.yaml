@@ -1,0 +1,56 @@
+# cspell: ignore mincho rexmit ipaddr maxsize nocaps netcore wmem
+# common
+daemon_reload: "{{ reload_systemd | default('yes') }}"
+ros_domain_id: 1
+systemctl_default: multi-user.target
+autoware_env_dir: "{{ ansible_env.HOME }}"
+autoware_env_dir_privileged: false
+
+# timezone
+timezone: Asia/Tokyo
+
+# additional-fonts
+additional_font_packages:
+  - fonts-noto-cjk
+  - fonts-takao-mincho
+
+# cyclonedds
+cyclonedds:
+  network_interface:
+    - { address: enp7s0, priority: default }
+  minimum_socket_receive_buffer_size: 10MB
+  minimum_socket_send_buffer_size: 10MB
+  max_message_size: 8950B
+  fragment_size: 8850B
+  max_rexmit_message_size: 8950B
+  water_mark_whc_high: 4MB
+  water_mark_whc_low: 10kB
+ipv4_ipfrag_time: 1
+ipv4_ipfrag_high_thresh: 134217728
+netcore_rmem_max: 2147483647
+netcore_wmem_max:
+  2147483647
+
+  # keyboard
+keyboard_layout_file: keyboard.jp+ctrl_nocaps
+
+# ptp4l port
+ptp4l_network_port: enp0s31f6
+
+# netplan
+netplan_files: netplan/99-autoware.x2-addon.yaml
+
+# otaclient
+otaclient_release_version: v3.8.4
+otaclient_package_whl_checksum: sha256:c118f7ce69bce85b7a038dd7829ca8567f665cf8f86772a6e773e77ac3b3e8fe
+otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-addon
+otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-10gbe.j2
+
+# set-autoware-env
+autoware_install_dir: /home/autoware/pilot-auto.x2
+vehicle_id: default
+vehicle_model: j6_gen2
+sensor_model: aip_x2_gen2
+
+# sxpf_ros_driver
+sxpf_ros_driver_version: 493f4ddb3d40f828ab7caea4d39e2c6d02928758
