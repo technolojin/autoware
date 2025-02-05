@@ -1,13 +1,14 @@
 repositories:
   tools:
     type: git
-    url: https://github.com/autowarefoundation/autoware_tools.git
-    version: 9d521ac134803ba6d8c09594dfa88594065cb784
-  autoware/auto_msgs:
-    type: git
-    url: https://github.com/tier4/autoware_auto_msgs.git
-    version: 624aae9feb142eb2a4e16069ed06bf4050ccc3ea
+    url: https://github.com/tier4/autoware_tools.git
+    version: 05c682cad73482e111fa55885555efe0682433a4
   autoware/document:
     type: git
     url: https://github.com/tier4/pilot-auto-documentation.git
-    version: 82aeea7aa39f7b890d177c0615730beef25d5682
+    version: da16a92f6756565a7acc05f2a08048fd36911f80
+  # TODO(Murooka): Remove PlotJuggler when the bug that importing the layout does not work will be fixed.
+  external/PlotJuggler:
+    type: git
+    url: https://github.com/facontidavide/PlotJuggler.git
+    version: afa2f5525596ea95894023f1f60d45a97c7aca45
