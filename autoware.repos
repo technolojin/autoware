@@ -158,5 +158,5 @@ repositories:
 
   v2x/vehicle2infrastructure:
     type: git
-    url: https://github.com/tier4/vehicle2infrastructure.git
+    url: git@github.com:tier4/vehicle2infrastructure.git
     version: main
