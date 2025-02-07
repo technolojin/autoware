@@ -27,7 +27,7 @@ repositories:
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: c5dbc573042f8b5e3fffd09ef948c8fb28149904
+    version: 59c0a99d19bb3e4c09b6348242caba53f51ce886
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
@@ -90,7 +90,7 @@ repositories:
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
-    version: v0.2.1
+    version: v0.2.3
   vendor/boost_transport_drivers:
     type: git
     url: https://github.com/autowarefoundation/transport_drivers.git
@@ -148,7 +148,7 @@ repositories:
   awsim/awsim_sensor_kit_launch: # TODO: Integrate into sample_sensor_kit_launch
     type: git
     url: https://github.com/tier4/awsim_sensor_kit_launch.git
-    version: 33ef7eec8951c6466cb2c12209275e59837f3a3e
+    version: 2c57652d1be2165d2dd826007c5321e3e618db71
   # vehicle
   awsim/sample_vehicle_launch:
     type: git
