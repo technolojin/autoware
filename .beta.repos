@@ -155,3 +155,8 @@ repositories:
     type: git
     url: https://github.com/autowarefoundation/sample_vehicle_launch.git
     version: cd852aed85aaf033a0747050cf4300967e89c1ae
+
+  v2x/vehicle2infrastructure:
+    type: git
+    url: git@github.com:tier4/vehicle2infrastructure.git
+    version: main
