@@ -7,7 +7,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
-    version: v0.41.0
+    version: f6dd2bdd0e781d11d56680790b8de3315b209a38
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
@@ -23,7 +23,7 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: beta/v4.1.0
+    version: c8009be4781d3391345b9a169d0db17597a662fc
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
@@ -51,7 +51,7 @@ repositories:
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: main
+    version: 09bb289a2f5ae0db749b3d75a121b91f3e5bb47d
   # description
   description/sensor/sensor_component_description:
     type: git
@@ -60,7 +60,7 @@ repositories:
   description/vehicle/j6_gen2_description:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
-    version: main
+    version: e61019778171b644c716ea46e577d4f7a90c9d1c
   # ecu_system_setup: When you use your own customized ecu_system_setup, uncomment this.
   # ecu_system_setup:
   #   type: git
@@ -147,7 +147,6 @@ repositories:
     type: git
     url: https://github.com/autowarefoundation/sample_vehicle_launch.git
     version: cd852aed85aaf033a0747050cf4300967e89c1ae
-
   vendor/ros2_socketcan:
     type: git
     url: https://github.com/autowarefoundation/ros2_socketcan.git
@@ -164,17 +163,17 @@ repositories:
   product/l4_toolkit:
     type: git
     url: git@github.com:tier4/l4_toolkit.git
-    version: main
+    version: 6d367ad5803fd1ae0a013bf525900364ab505deb
   vendor/emergency_vehicle_detector:
     type: git
     url: git@github.com:tier4/emergency_vehicle_detector.git
-    version: main
+    version: e39b53a312c05b51876a3ddddb2b987f20ac53dd
   vendor/pyrocan:
     type: git
     url: git@github.com:tier4/pyrocan.git
-    version: main
+    version: f1c9abf9309fae8966bb2500707af063a17aef25
   # V2X
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: main
+    version: b4a410fcf60c3a069697a631f2fafb0349535257
