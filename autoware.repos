@@ -68,10 +68,10 @@ repositories:
   #   version: main
   # vendor
   # comment out temporarily until the fix for the latest version is ready
-  # vendor/j6_interface:
-  #   type: git
-  #   url: git@github.com:tier4/j6_interface.git
-  #   version: feat/MJ20_interface
+  vendor/mj20_interface:
+    type: git
+    url: git@github.com:tier4/mj20_interface.git
+    version: cab199ddcfaae42b4e610a58cc5a5afafa2a8da5
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
