@@ -23,7 +23,7 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: e0ae5b649fa9bc791245fcf9d6d513a0d885a25f
+    version: 41eca705b74a69b670c7734df3920594b758b817
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
@@ -51,7 +51,7 @@ repositories:
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: 09bb289a2f5ae0db749b3d75a121b91f3e5bb47d
+    version: 147bd4fe9c0bcd7e0ddb65d46c4a7cdf25d4c516
   # description
   description/sensor/sensor_component_description:
     type: git
@@ -141,7 +141,7 @@ repositories:
   awsim/awsim_sensor_kit_launch: # TODO: Integrate into sample_sensor_kit_launch
     type: git
     url: https://github.com/tier4/awsim_sensor_kit_launch.git
-    version: 2c57652d1be2165d2dd826007c5321e3e618db71
+    version: 33ef7eec8951c6466cb2c12209275e59837f3a3e
   # vehicle
   awsim/sample_vehicle_launch:
     type: git
