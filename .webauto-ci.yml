@@ -129,6 +129,7 @@ simulations:
         autoware_launch_file: planning_simulator.launch.xml
         architecture_type: awf/universe/20250130
         initialize_duration: "90"
+        consider_acceleration_by_road_slope: "true"
 
   - name: obstacle_detection
     type: obstacle_detection
