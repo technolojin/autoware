@@ -172,6 +172,10 @@ repositories:
     type: git
     url: git@github.com:tier4/pyrocan.git
     version: f1c9abf9309fae8966bb2500707af063a17aef25
+  vendor/rosbag2:
+    type: git
+    url: https://github.com/ros2/rosbag2.git
+    version: 0.15.13
   # V2X
   v2x/vehicle2infrastructure:
     type: git
