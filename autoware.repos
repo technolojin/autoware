@@ -3,7 +3,7 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware.core.git
-    version: fa227e6b6e7123a3fe36d42d2c29eb413d520009
+    version: v0.41.0
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
@@ -22,12 +22,12 @@ repositories:
     version: 0.6.2
   autoware/launcher:
     type: git
-    url: https://github.com/tier4/autoware_launch.git
-    version: b8109e378e03e049c2b0e509aedeb7ac8eeb5308
+    url: git@github.com:tier4/autoware_launch.x2.git
+    version: e0ae5b649fa9bc791245fcf9d6d513a0d885a25f
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 59c0a99d19bb3e4c09b6348242caba53f51ce886
+    version: 21efc836df83da27b3fd21e42c9f37de4050ad71
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
@@ -50,31 +50,28 @@ repositories:
     version: 1.5.0
   autoware/individual_params:
     type: git
-    url: https://github.com/tier4/autoware_individual_params.git
-    version: 147bd4fe9c0bcd7e0ddb65d46c4a7cdf25d4c516
+    url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
+    version: 09bb289a2f5ae0db749b3d75a121b91f3e5bb47d
   # description
   description/sensor/sensor_component_description:
     type: git
     url: https://github.com/tier4/sensor_component_description.git
     version: 079820003a1c969df7fa02ca092e532c66ab809e
-  description/vehicle/lexus_description:
+  description/vehicle/j6_gen2_description:
     type: git
-    url: https://github.com/tier4/lexus_description.iv.git
-    version: 366c172a2a7c41ef274b94fd91a295c547f907f7
-  description/vehicle/reference_vehicle_descriptions:
-    type: git
-    url: git@github.com:tier4/reference_vehicle_descriptions.git
-    version: bc51895cf1f2b20faef1aecda68e7b53a29a0631
+    url: git@github.com:tier4/j6_gen2_description.git
+    version: e61019778171b644c716ea46e577d4f7a90c9d1c
   # ecu_system_setup: When you use your own customized ecu_system_setup, uncomment this.
   # ecu_system_setup:
   #   type: git
   #   url: git@github.com:tier4/autoware_ecu_system_setup.git
   #   version: main
   # vendor
-  vendor/pacmod_interface:
+  # comment out temporarily until the fix for the latest version is ready
+  vendor/mj20_interface:
     type: git
-    url: https://github.com/tier4/pacmod_interface.git
-    version: 1c033a21ce0c41cd4fb878b95d3e1620de79e95a
+    url: git@github.com:tier4/mj20_interface.git
+    version: cab199ddcfaae42b4e610a58cc5a5afafa2a8da5
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
@@ -83,10 +80,6 @@ repositories:
     type: git
     url: https://github.com/tier4/ublox.git
     version: dc49c2dcc9384401030c77d7db05fea9161cbcc0
-  vendor/lidar-driver:
-    type: git
-    url: git@github.com:tier4/lidar_driver.git
-    version: v0.1.4
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
@@ -154,6 +147,32 @@ repositories:
     type: git
     url: https://github.com/autowarefoundation/sample_vehicle_launch.git
     version: cd852aed85aaf033a0747050cf4300967e89c1ae
+  vendor/ros2_socketcan:
+    type: git
+    url: https://github.com/autowarefoundation/ros2_socketcan.git
+    version: 85da8c31286cad69de65dc50219e7d901ae9e94b
+  vendor/foxglove_bridge: # TODO: Remove this once .idl format are no longer used
+    type: git
+    url: git@github.com:foxglove/ros-foxglove-bridge.git
+    version: 0.7.6
+  # product
+  product/autoware_logging_suite:
+    type: git
+    url: git@github.com:tier4/autoware_logging_suite.git
+    version: v0.7.1
+  product/l4_toolkit:
+    type: git
+    url: git@github.com:tier4/l4_toolkit.git
+    version: 6d367ad5803fd1ae0a013bf525900364ab505deb
+  vendor/emergency_vehicle_detector:
+    type: git
+    url: git@github.com:tier4/emergency_vehicle_detector.git
+    version: e39b53a312c05b51876a3ddddb2b987f20ac53dd
+  vendor/pyrocan:
+    type: git
+    url: git@github.com:tier4/pyrocan.git
+    version: f1c9abf9309fae8966bb2500707af063a17aef25
+  # V2X
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git

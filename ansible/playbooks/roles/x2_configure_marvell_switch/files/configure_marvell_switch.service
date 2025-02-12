@@ -1,0 +1,12 @@
+[Unit]
+Description=Configure marvell switch by loading board configuration file
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/opt/autoware/services/configure_marvell_switch/configure_marvell_switch.sh
+RemainAfterExit=true
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

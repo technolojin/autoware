@@ -1,0 +1,7 @@
+- name: Add a reconfigure file
+  ansible.builtin.template:
+    src: 99-reconfigure-10g.j2
+    dest: /etc/networkd-dispatcher/routable.d/99-reconfigure-10g
+    owner: root
+    mode: 0755
+  become: true

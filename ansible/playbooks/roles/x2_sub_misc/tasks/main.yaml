@@ -1,0 +1,19 @@
+# cspell: ignore nosuid nodev noexec nofail
+- name: Remove old mount configuration from fstab
+  ansible.builtin.lineinfile:
+    path: /etc/fstab
+    regexp: "{{ item }}"
+    state: absent
+    mode: 0664
+  become: true
+  loop: "{{ fstab_entries }}"
+
+- name: Add entries to fstab
+  ansible.builtin.lineinfile:
+    path: /etc/fstab
+    line: "{{ item.mount_specifier }} {{ item.mount_point }} {{ item.fs_type }} {{ item.options }} 0 0"
+    state: present
+    create: true
+    mode: "0664"
+  become: true
+  loop: "{{ fstab_entries }}"

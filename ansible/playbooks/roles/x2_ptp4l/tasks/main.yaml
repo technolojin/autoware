@@ -1,0 +1,69 @@
+- name: Install ptp4l
+  ansible.builtin.apt:
+    name:
+      - linuxptp
+    update_cache: true
+  become: true
+
+- name: Copy automotive master ptp4l config
+  ansible.builtin.copy:
+    src: automotive-master.cfg
+    dest: /usr/share/doc/linuxptp/configs
+    mode: 0755
+  become: true
+
+- name: Copy services for Main ECU
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: /etc/systemd/system/
+    mode: 0755
+  become: true
+  when: x2_ptp4l_ecu == "main"
+  loop:
+    - main/ptp4l@enp3s0.service
+    - main/ptp4l_hw_timestamp@vlan.500.service
+    - main/ptp4l@vlan.500.service
+    - main/phc2sys_sys_to_enp3s0.service
+    - main/phc2sys_sys_to_enp5s0f0.service
+
+- name: Enable services for Main ECU
+  ansible.builtin.systemd:
+    name: "{{ item }}"
+    daemon_reload: "{{ daemon_reload }}"
+    enabled: true
+    masked: false
+  become: true
+  when: x2_ptp4l_ecu == "main"
+  loop:
+    - ptp4l@enp3s0.service
+    - ptp4l_hw_timestamp@vlan.500.service
+    - ptp4l@vlan.500.service
+    - phc2sys_sys_to_enp3s0.service
+    - phc2sys_sys_to_enp5s0f0.service
+
+- name: Copy services for Sub ECU
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: /etc/systemd/system/
+    mode: 0755
+  become: true
+  when: x2_ptp4l_ecu == "sub"
+  loop:
+    - sub/ptp4l@enp3s0.service
+    - sub/ptp4l@enp5s0f0.service
+    - sub/phc2sys_enp5s0f0_to_enp3s0.service
+    - sub/phc2sys_enp5s0f0_to_sys.service
+
+- name: Enable services for Sub ECU
+  ansible.builtin.systemd:
+    name: "{{ item }}"
+    daemon_reload: "{{ daemon_reload }}"
+    enabled: true
+    masked: false
+  become: true
+  when: x2_ptp4l_ecu == "sub"
+  loop:
+    - ptp4l@enp3s0.service
+    - ptp4l@enp5s0f0.service
+    - phc2sys_enp5s0f0_to_enp3s0.service
+    - phc2sys_enp5s0f0_to_sys.service

@@ -1,0 +1,31 @@
+/**:
+  ros__parameters:
+    retry_interval_for_realtime_recording_db_file_in_sec: 3
+    keep_duration_before_trigger_in_sec: 60
+    keep_duration_after_trigger_in_sec: 15
+    input_directory: "{{ temporary_logging_directory }}"
+    output_directory: "{{ rosbag_logging_directory }}"
+    # must_be_mountpoint: please set a path for a mountpoint. No check if ""
+    must_be_mountpoint: "{{ rosbag_logging_directory_mountpoint }}"
+    cleanup_input_dir: false
+    # disable_if_control_mode_is_manual: "true" or "false"
+    disable_if_control_mode_is_manual: false
+    # stop_bagpacker_record_after_keep_duration: "true" or "false". if "false", "cleanup_input_dir" is ignored.
+    stop_bagpacker_record_after_keep_duration: true
+    rate_in_hz: 2.0
+    # dbg_trigger_datetime format: YYYY_mm_dd-HH_MM_SS
+    dbg_trigger_datetime: ""
+    qos_depth: 1000
+    event:
+      /vehicle/status/control_mode:
+        mode: 4
+        config:
+          changed: true
+      /system/emergency/hazard_status:
+        emergency: true
+        config:
+          changed: true
+    diagnostics:
+      include:
+        "*": default
+      # exclude:

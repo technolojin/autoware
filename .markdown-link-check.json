@@ -7,6 +7,10 @@
     },
     {
       "pattern": "^http://localhost*"
+    },
+    {
+      "pattern": "^#*",
+      "reason": "This is a local link."
     }
   ],
   "retryOn429": true,
