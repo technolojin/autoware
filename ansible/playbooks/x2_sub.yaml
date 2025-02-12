@@ -18,7 +18,8 @@
   roles:
     # add your necessary roles
     - { role: autoware.ecu_system_setup.automatic_login }
-    - { role: autoware.ecu_system_setup.boot_shutdown_service }
+    - role: autoware.ecu_system_setup.boot_shutdown_service
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.ecu_system_setup.ip_routing_policy }
     - { role: autoware.ecu_system_setup.lenovo_keyboard }
     - { role: autoware.ecu_system_setup.rootfs_encrypt }
@@ -26,9 +27,10 @@
     - { role: autoware.ecu_system_setup.syslog_collector_client }
     - { role: autoware.ecu_system_setup.fintek_can_driver }
     - { role: autoware.ecu_system_setup.marvell_switch_driver }
-    - { role: autoware.ecu_system_setup.build_system_monitor }
+    - role: autoware.ecu_system_setup.build_system_monitor
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - role: autoware.ecu_system_setup.rviz
-      when: skip_rviz is not defined or not skip_rviz | bool
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.ecu_system_setup.screen_recorder }
     # - { role: x2_autoware } # Don't launch Autoware in Sub ECU until MRM design is finalized
     - { role: x2_can_adm }
