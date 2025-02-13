@@ -23,7 +23,7 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: 41eca705b74a69b670c7734df3920594b758b817
+    version: 86ec4cdb32fec45db62e6bd415f099b6e277774c
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
@@ -35,7 +35,7 @@ repositories:
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: e6d504b0bf4fc80d994a92fc7a783bdca11ac8d0
+    version: v0.41.0
   autoware/autoware_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_msgs.git
@@ -60,7 +60,7 @@ repositories:
   description/vehicle/j6_gen2_description:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
-    version: e61019778171b644c716ea46e577d4f7a90c9d1c
+    version: 9dd5689cc11306771b9b7b1980804ebd8fad67a1
   # ecu_system_setup: When you use your own customized ecu_system_setup, uncomment this.
   # ecu_system_setup:
   #   type: git
@@ -163,7 +163,7 @@ repositories:
   product/l4_toolkit:
     type: git
     url: git@github.com:tier4/l4_toolkit.git
-    version: 6d367ad5803fd1ae0a013bf525900364ab505deb
+    version: e57847fcc40fe06baf3749ceefa648aacac26cc2
   vendor/emergency_vehicle_detector:
     type: git
     url: git@github.com:tier4/emergency_vehicle_detector.git

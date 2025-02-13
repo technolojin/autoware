@@ -28,7 +28,7 @@ repositories:
   universe/external/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: e6d504b0bf4fc80d994a92fc7a783bdca11ac8d0
+    version: v0.41.0
   universe/external/mussp:
     type: git
     url: https://github.com/tier4/muSSP.git
