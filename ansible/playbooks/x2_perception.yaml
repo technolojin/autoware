@@ -36,7 +36,8 @@
       when: ecu_id == "perception2"
 
   roles:
-    - { role: autoware.ecu_system_setup.boot_shutdown_service }
+    - role: autoware.ecu_system_setup.boot_shutdown_service
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.ecu_system_setup.clean_ros_log }
     - { role: autoware.ecu_system_setup.cyclonedds }
     - { role: autoware.ecu_system_setup.jetson_clocks }
@@ -52,17 +53,20 @@
     - { role: autoware.ecu_system_setup.set_large_txqueue }
     - { role: autoware.ecu_system_setup.rsyncd }
     - { role: link_retry_handler }
-    - { role: gpasswd }
-    - { role: autoware.edge_auto_jetson.cuda }
+    - role: gpasswd
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - role: autoware.edge_auto_jetson.cuda
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.edge_auto_jetson.vcstool }
-    - { role: autoware.edge_auto_jetson.ros2 }
+    - role: autoware.edge_auto_jetson.ros2
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.edge_auto_jetson.cgroups }
 
   # Any `tasks` defined in the play will be executed after each role listed in `roles`
   # see: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html#using-roles-at-the-play-level
   tasks:
     - name: Setup ECU for Object Recognition or Traffic Light Recognition
-      when: skip_od_tlr_setup is not defined or not skip_od_tlr_setup | bool
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
       block:
         - name: ROS 2 application build
           ansible.builtin.include_role:

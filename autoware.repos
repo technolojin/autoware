@@ -28,7 +28,7 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: tier4/main
+    version: 4a33e1db2f04e564a79e282547a32ede261a7944
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
@@ -72,12 +72,10 @@ repositories:
   #   url: git@github.com:tier4/autoware_ecu_system_setup.git
   #   version: main
   # vendor
-
-  # comment out temporarily until the fix for the latest version is ready
-  # vendor/j6_interface:
-  #   type: git
-  #   url: git@github.com:tier4/j6_interface.git
-  #   version: feat/MJ20_interface
+  vendor/mj20_interface:
+    type: git
+    url: git@github.com:tier4/mj20_interface.git
+    version: main
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
@@ -179,6 +177,10 @@ repositories:
     type: git
     url: git@github.com:tier4/pyrocan.git
     version: main
+  vendor/rosbag2:
+    type: git
+    url: https://github.com/ros2/rosbag2.git
+    version: 0.15.13
   # V2X
   v2x/vehicle2infrastructure:
     type: git

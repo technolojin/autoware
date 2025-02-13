@@ -1,3 +1,4 @@
+# cSpell:ignore bagrollbacker reconfig
 - name: Setup x2 logging
   hosts: localhost
   vars_files:
@@ -22,7 +23,8 @@
     - { role: autoware.ecu_system_setup.bagkeeper_launch }
     - { role: autoware.ecu_system_setup.bagrollbacker }
     - { role: autoware.ecu_system_setup.bagtaker2 }
-    - { role: autoware.ecu_system_setup.boot_shutdown_service }
+    - role: autoware.ecu_system_setup.boot_shutdown_service
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.ecu_system_setup.clean_application_log }
     - { role: autoware.ecu_system_setup.clean_empty_directory }
     - { role: autoware.ecu_system_setup.clean_ros_log }
@@ -31,7 +33,8 @@
     - { role: autoware.ecu_system_setup.foxglove_bridge_service }
     - { role: autoware.ecu_system_setup.install_openssh_server }
     - { role: autoware.ecu_system_setup.lenovo_keyboard }
-    - { role: autoware.ecu_system_setup.localhost_shutdown }
+    - role: autoware.ecu_system_setup.localhost_shutdown
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.ecu_system_setup.logpacker }
     - { role: autoware.ecu_system_setup.otaclient }
     - { role: autoware.ecu_system_setup.ptp4l }
