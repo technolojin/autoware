@@ -1,4 +1,5 @@
 #!/bin/sh
+# cSpell: ignore IFACE mgbe
 
 _ping_dst_ip={{ link_retry_handler_ping_dst_ip }}
 
@@ -8,7 +9,7 @@ if [ $IFACE != "{{ link_retry_handler_network_port }}" ]; then
 	exit
 fi
 
-sleep 3
+sleep 10
 
 ping -c 2 $_ping_dst_ip > /dev/null 2>&1
 
