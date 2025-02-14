@@ -33,6 +33,7 @@
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.ecu_system_setup.screen_recorder }
     # - { role: x2_autoware } # Don't launch Autoware in Sub ECU until MRM design is finalized
+    - { role: autoware.ecu_system_setup.domain_bridge }
     - { role: x2_can_adm }
     - { role: x2_configure_marvell_switch }
     - { role: x2_ptp4l }
