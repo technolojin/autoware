@@ -10,9 +10,11 @@
     "sxpf",
     "logagent",
     "Logagent"
+    "kdump",
+    "logfile",
+    "systemlog",
     "netcore",
     "wmem",
-    "rsyncd",
     "tmpfiles",
     "rsyncd"
   ]
