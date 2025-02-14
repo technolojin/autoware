@@ -10,12 +10,17 @@
     "sxpf",
     "logagent",
     "Logagent"
+    "rexmit",
+    "redundancy",
+    "Rexmit",
+    "Dont",
     "kdump",
     "logfile",
     "systemlog",
     "netcore",
     "wmem",
     "tmpfiles",
-    "rsyncd"
+    "rsyncd",
+    "DDSI"
   ]
 }
