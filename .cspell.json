@@ -7,6 +7,10 @@
     "otaclient_logger",
     "otaproxy",
     "persistents",
+    "netcore",
+    "wmem",
+    "rsyncd",
+    "tmpfiles",
     "rsyncd",
     "sxpf"
   ]
