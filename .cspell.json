@@ -9,7 +9,10 @@
     "persistents",
     "sxpf",
     "logagent",
-    "Logagent"
+    "Logagent",
+    "peakcan",
+    "fintekcan",
+    "vcan",
     "rexmit",
     "redundancy",
     "Rexmit",
