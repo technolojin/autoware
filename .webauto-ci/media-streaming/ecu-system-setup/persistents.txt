@@ -19,3 +19,4 @@
 '/opt/mkuvcdev/mkuvcdev.conf'
 '/opt/autoware/env/vehicle.env'
 '/opt/autoware/env/jetson.env'
+'/opt/devtools'
