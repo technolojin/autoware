@@ -7,6 +7,10 @@
     "otaclient_logger",
     "otaproxy",
     "persistents",
+    "rexmit",
+    "redundancy",
+    "Rexmit",
+    "Dont",
     "kdump",
     "logfile",
     "systemlog",
@@ -14,6 +18,7 @@
     "wmem",
     "tmpfiles",
     "rsyncd",
-    "sxpf"
+    "sxpf",
+    "DDSI"
   ]
 }
