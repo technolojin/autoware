@@ -10,5 +10,10 @@
     "sxpf",
     "logagent",
     "Logagent"
+    "netcore",
+    "wmem",
+    "rsyncd",
+    "tmpfiles",
+    "rsyncd"
   ]
 }
