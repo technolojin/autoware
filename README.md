@@ -7,7 +7,7 @@ See [GitHub Pages](https://autowarefoundation.github.io/autoware-documentation/m
 - Pilot.Auto のバージョンは、`vx.y.z` の形式で表現する。
 - Pilot.Auto のリリースは、4週間に一回実施する。このとき、バージョン名の `y` の部分をインクリメントする。
   - 致命的な不具合が含まれる場合は、hotfixを導入して `z` の部分をインクリメントしたバージョンをリリースする場合がある。
-- [.release_info.yaml](../.release_info.yaml) の `released_repositories` に記載されている子リポジトリは、Pilot.Auto のリリースと同じタイミングでタグを設定する。
+- [.release_info.yaml](./.release_info.yaml) の `released_repositories` に記載されている子リポジトリは、Pilot.Auto のリリースと同じタイミングでタグを設定する。
 - リリースを行うとき、[リリーステスト評価内容](https://tier4.atlassian.net/wiki/x/xAHqww) に記載された項目を評価する。
 - リリースは、[Release flow for Vanilla product](https://tier4.atlassian.net/wiki/x/zoAbuw) に従って実施する。
 
