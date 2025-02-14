@@ -7,9 +7,11 @@
     "otaclient_logger",
     "otaproxy",
     "persistents",
+    "kdump",
+    "logfile",
+    "systemlog",
     "netcore",
     "wmem",
-    "rsyncd",
     "tmpfiles",
     "rsyncd",
     "sxpf"
