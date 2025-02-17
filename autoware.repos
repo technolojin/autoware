@@ -7,7 +7,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
-    version: 36209bb233c1d008016f10802670e33a72cb1c77
+    version: 53998a8a5183e7ea837bebadd749929f1b963d74
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
@@ -23,7 +23,7 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: 56450a6cebba45a485f03ed34597f7552768ef32
+    version: e2a7b39120ffc46c706c36e6fd2e31dcaee697cb
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
@@ -51,7 +51,7 @@ repositories:
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: 3b2e93cba4354253587d7be49359a035804b3f55
+    version: 0f9a7f6c320c8c880b317782737cd4e763d0d573
   # description
   description/sensor/sensor_component_description:
     type: git
@@ -132,7 +132,7 @@ repositories:
   vendor/redundancy_switcher_interface:
     type: git
     url: git@github.com:tier4/redundancy_switcher_interface.git
-    version: main
+    version: ad32ad6ed1f016aa57691793d8ad2470b11b7860
   rclcpp: # Based stable version, the fix-patch for service in initialization and the glog feature is added
     type: git
     url: https://github.com/tier4/rclcpp.git
