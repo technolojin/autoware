@@ -3,3 +3,4 @@
 '/etc/resolv.conf'
 '/etc/nftables.conf'
 '/opt/autoware/volume.txt'
+'/opt/devtools'
