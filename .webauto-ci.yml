@@ -734,6 +734,8 @@ simulations:
         artifact: main
       runtime:
         type: standard1/amd64/large
+      parameters:
+        play_rate: "0.125"
 
   - name: obstacle_segmentation
     type: obstacle_segmentation
@@ -752,6 +754,8 @@ simulations:
         artifact: main
       runtime:
         type: standard1/amd64/medium
+      parameters:
+        play_rate: "0.125"
 
   - name: planning_control
     type: planning_control
@@ -763,6 +767,7 @@ simulations:
         type: gpu1/amd64/large
       parameters:
         use_traffic_light_recognition: "false"
+        play_rate: "0.125"
       pre_tasks:
         - exec: source /home/autoware/autoware.proj/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_x2 model_path:=/opt/autoware/mlmodels/centerpoint model_param_path:=$(ros2 pkg prefix autoware_launch --share)/config/perception/object_recognition/detection/lidar_model/centerpoint_x2.param.yaml build_only:=true
           mounts:
@@ -847,213 +852,232 @@ simulations:
           path: /home/autoware/autoware_data/traffic_light_classifier
           preserve_original_files: true
 
-  - name: NodeAliveTest_lidar_centerpoint
+  # - name: NodeAliveTest_lidar_centerpoint
+  #  type: perception
+  #  suite:
+  #    selector:
+  #      match_labels:
+  #        perception_test_type: node_alive
+  #  simulator:
+  #    deployment:
+  #      type: container
+  #      artifact: main
+  #    runtime:
+  #      type: gpu1/amd64/large
+  #    parameters:
+  #      sensing: "false"
+  #      use_traffic_light_recognition: "false"
+  #      perception_mode: lidar
+  #      lidar_detection_model: centerpoint/centerpoint
+  #    pre_tasks:
+  #      - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint.param.yaml build_only:=true
+  #        mounts:
+  #          - volume: model
+  #    volumes:
+  #      - name: model
+  #        path: /home/autoware/autoware_data/lidar_centerpoint
+  #        preserve_original_files: true
+
+  # - name: NodeAliveTest_lidar_centerpoint_tiny
+  #  type: perception
+  #  suite:
+  #    selector:
+  #      match_labels:
+  #        perception_test_type: node_alive
+  #  simulator:
+  #    deployment:
+  #      type: container
+  #      artifact: main
+  #    runtime:
+  #      type: gpu1/amd64/large
+  #    parameters:
+  #      sensing: "false"
+  #      use_traffic_light_recognition: "false"
+  #      perception_mode: lidar
+  #      lidar_detection_model: centerpoint
+  #    pre_tasks:
+  #      - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
+  #        mounts:
+  #          - volume: model
+  #    volumes:
+  #      - name: model
+  #        path: /home/autoware/autoware_data/lidar_centerpoint
+  #        preserve_original_files: true
+
+  # - name: NodeAliveTest_lidar_transfusion
+  #  type: perception
+  #  suite:
+  #    selector:
+  #      match_labels:
+  #        perception_test_type: node_alive
+  #  simulator:
+  #    deployment:
+  #      type: container
+  #      artifact: main
+  #    runtime:
+  #      type: gpu1/amd64/large
+  #    parameters:
+  #      sensing: "false"
+  #      use_traffic_light_recognition: "false"
+  #      perception_mode: lidar
+  #      lidar_detection_model: transfusion
+  #    pre_tasks:
+  #      - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_transfusion lidar_transfusion.launch.xml model_name:=transfusion model_path:=/home/autoware/autoware_data/lidar_transfusion build_only:=true
+  #        mounts:
+  #          - volume: model
+  #    volumes:
+  #      - name: model
+  #        path: /home/autoware/autoware_data/lidar_transfusion
+  #        preserve_original_files: true
+
+  # - name: NodeAliveTest_camera_lidar_fusion_apollo
+  #  type: perception
+  #  suite:
+  #    selector:
+  #      match_labels:
+  #        perception_test_type: node_alive
+  #  simulator:
+  #    deployment:
+  #      type: container
+  #      artifact: main
+  #    runtime:
+  #      type: gpu1/amd64/large
+  #    parameters:
+  #      sensing: "false"
+  #      use_traffic_light_recognition: "false"
+  #      perception_mode: camera_lidar_fusion
+  #      lidar_detection_model: apollo
+  #    pre_tasks:
+  #      - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_apollo_instance_segmentation lidar_apollo_instance_segmentation.launch.xml build_only:=true
+  #        mounts:
+  #          - volume: model
+  #    volumes:
+  #      - name: model
+  #        path: /home/autoware/autoware_data/lidar_apollo_instance_segmentation
+  #        preserve_original_files: true
+
+  # - name: NodeAliveTest_camera_lidar_fusion_centerpoint_tiny
+  #  type: perception
+  #  suite:
+  #    selector:
+  #      match_labels:
+  #        perception_test_type: node_alive
+  #  simulator:
+  #    deployment:
+  #      type: container
+  #      artifact: main
+  #    runtime:
+  #      type: gpu1/amd64/large
+  #    parameters:
+  #      sensing: "false"
+  #      use_traffic_light_recognition: "false"
+  #      perception_mode: camera_lidar_fusion
+  #      lidar_detection_model: centerpoint
+  #    pre_tasks:
+  #      - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
+  #        mounts:
+  #          - volume: model
+  #    volumes:
+  #      - name: model
+  #        path: /home/autoware/autoware_data/lidar_centerpoint
+  #        preserve_original_files: true
+
+  # - name: NodeAliveTest_camera_lidar_fusion_pointpainting
+  #  type: perception
+  #  suite:
+  #    selector:
+  #      match_labels:
+  #        perception_test_type: node_alive
+  #  simulator:
+  #    deployment:
+  #      type: container
+  #      artifact: main
+  #    runtime:
+  #      type: gpu1/amd64/large
+  #    parameters:
+  #      sensing: "false"
+  #      use_traffic_light_recognition: "false"
+  #      perception_mode: camera_lidar_fusion
+  #      lidar_detection_model: pointpainting
+  #    pre_tasks:
+  #      - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_image_projection_based_fusion pointpainting_fusion.launch.xml model_name:=pointpainting model_path:=/home/autoware/autoware_data/image_projection_based_fusion model_param_path:=$(ros2 pkg prefix autoware_image_projection_based_fusion --share)/config/pointpainting.param.yaml build_only:=true
+  #        mounts:
+  #          - volume: model
+  #    volumes:
+  #      - name: model
+  #        path: /home/autoware/autoware_data/image_projection_based_fusion
+  #        preserve_original_files: true
+
+  # - name: NodeAliveTest_camera_lidar_radar_fusion_centerpoint_tiny
+  #  type: perception
+  #  suite:
+  #    selector:
+  #      match_labels:
+  #        perception_test_type: node_alive
+  #  simulator:
+  #    deployment:
+  #      type: container
+  #      artifact: main
+  #    runtime:
+  #      type: gpu1/amd64/large
+  #    parameters:
+  #      sensing: "false"
+  #      use_traffic_light_recognition: "false"
+  #      perception_mode: camera_lidar_radar_fusion
+  #      lidar_detection_model: centerpoint
+  #    pre_tasks:
+  #      - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
+  #        mounts:
+  #          - volume: model
+  #    volumes:
+  #      - name: model
+  #        path: /home/autoware/autoware_data/lidar_centerpoint
+  #        preserve_original_files: true
+
+  # - name: NodeAliveTest_camera_lidar_radar_fusion_pointpainting
+  #  type: perception
+  #  suite:
+  #    selector:
+  #      match_labels:
+  #        perception_test_type: node_alive
+  #  simulator:
+  #    deployment:
+  #      type: container
+  #      artifact: main
+  #    runtime:
+  #      type: gpu1/amd64/large
+  #    parameters:
+  #      sensing: "false"
+  #      use_traffic_light_recognition: "false"
+  #      perception_mode: camera_lidar_radar_fusion
+  #      lidar_detection_model: pointpainting
+  #    pre_tasks:
+  #      - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_image_projection_based_fusion pointpainting_fusion.launch.xml model_name:=pointpainting model_path:=/home/autoware/autoware_data/image_projection_based_fusion model_param_path:=$(ros2 pkg prefix autoware_image_projection_based_fusion --share)/config/pointpainting.param.yaml build_only:=true
+  #        mounts:
+  #          - volume: model
+  #    volumes:
+  #      - name: model
+  #        path: /home/autoware/autoware_data/image_projection_based_fusion
+  #        preserve_original_files: true
+
+  - name: perception
     type: perception
-    suite:
-      selector:
-        match_labels:
-          perception_test_type: node_alive
     simulator:
       deployment:
         type: container
         artifact: main
       runtime:
         type: gpu1/amd64/large
-      parameters:
-        sensing: "false"
-        use_traffic_light_recognition: "false"
-        perception_mode: lidar
-        lidar_detection_model: centerpoint/centerpoint
       pre_tasks:
-        - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint.param.yaml build_only:=true
+        - exec: source /home/autoware/autoware.proj/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_x2 model_path:=/opt/autoware/mlmodels/centerpoint model_param_path:=$(ros2 pkg prefix autoware_launch --share)/config/perception/object_recognition/detection/lidar_model/centerpoint_x2.param.yaml build_only:=true
           mounts:
             - volume: model
-      volumes:
-        - name: model
-          path: /home/autoware/autoware_data/lidar_centerpoint
-          preserve_original_files: true
-
-  - name: NodeAliveTest_lidar_centerpoint_tiny
-    type: perception
-    suite:
-      selector:
-        match_labels:
-          perception_test_type: node_alive
-    simulator:
-      deployment:
-        type: container
-        artifact: main
-      runtime:
-        type: gpu1/amd64/large
       parameters:
-        sensing: "false"
         use_traffic_light_recognition: "false"
-        perception_mode: lidar
-        lidar_detection_model: centerpoint
-      pre_tasks:
-        - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
-          mounts:
-            - volume: model
+        play_rate: "0.125"
       volumes:
         - name: model
-          path: /home/autoware/autoware_data/lidar_centerpoint
-          preserve_original_files: true
-
-  - name: NodeAliveTest_lidar_transfusion
-    type: perception
-    suite:
-      selector:
-        match_labels:
-          perception_test_type: node_alive
-    simulator:
-      deployment:
-        type: container
-        artifact: main
-      runtime:
-        type: gpu1/amd64/large
-      parameters:
-        sensing: "false"
-        use_traffic_light_recognition: "false"
-        perception_mode: lidar
-        lidar_detection_model: transfusion
-      pre_tasks:
-        - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_transfusion lidar_transfusion.launch.xml model_name:=transfusion model_path:=/home/autoware/autoware_data/lidar_transfusion build_only:=true
-          mounts:
-            - volume: model
-      volumes:
-        - name: model
-          path: /home/autoware/autoware_data/lidar_transfusion
-          preserve_original_files: true
-
-  - name: NodeAliveTest_camera_lidar_fusion_apollo
-    type: perception
-    suite:
-      selector:
-        match_labels:
-          perception_test_type: node_alive
-    simulator:
-      deployment:
-        type: container
-        artifact: main
-      runtime:
-        type: gpu1/amd64/large
-      parameters:
-        sensing: "false"
-        use_traffic_light_recognition: "false"
-        perception_mode: camera_lidar_fusion
-        lidar_detection_model: apollo
-      pre_tasks:
-        - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_apollo_instance_segmentation lidar_apollo_instance_segmentation.launch.xml build_only:=true
-
-          mounts:
-            - volume: model
-      volumes:
-        - name: model
-          path: /home/autoware/autoware_data/lidar_apollo_instance_segmentation
-          preserve_original_files: true
-
-  - name: NodeAliveTest_camera_lidar_fusion_centerpoint_tiny
-    type: perception
-    suite:
-      selector:
-        match_labels:
-          perception_test_type: node_alive
-    simulator:
-      deployment:
-        type: container
-        artifact: main
-      runtime:
-        type: gpu1/amd64/large
-      parameters:
-        sensing: "false"
-        use_traffic_light_recognition: "false"
-        perception_mode: camera_lidar_fusion
-        lidar_detection_model: centerpoint
-      pre_tasks:
-        - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
-          mounts:
-            - volume: model
-      volumes:
-        - name: model
-          path: /home/autoware/autoware_data/lidar_centerpoint
-          preserve_original_files: true
-
-  - name: NodeAliveTest_camera_lidar_fusion_pointpainting
-    type: perception
-    suite:
-      selector:
-        match_labels:
-          perception_test_type: node_alive
-    simulator:
-      deployment:
-        type: container
-        artifact: main
-      runtime:
-        type: gpu1/amd64/large
-      parameters:
-        sensing: "false"
-        use_traffic_light_recognition: "false"
-        perception_mode: camera_lidar_fusion
-        lidar_detection_model: pointpainting
-      pre_tasks:
-        - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_image_projection_based_fusion pointpainting_fusion.launch.xml model_name:=pointpainting model_path:=/home/autoware/autoware_data/image_projection_based_fusion model_param_path:=$(ros2 pkg prefix autoware_image_projection_based_fusion --share)/config/pointpainting.param.yaml build_only:=true
-          mounts:
-            - volume: model
-      volumes:
-        - name: model
-          path: /home/autoware/autoware_data/image_projection_based_fusion
-          preserve_original_files: true
-
-  - name: NodeAliveTest_camera_lidar_radar_fusion_centerpoint_tiny
-    type: perception
-    suite:
-      selector:
-        match_labels:
-          perception_test_type: node_alive
-    simulator:
-      deployment:
-        type: container
-        artifact: main
-      runtime:
-        type: gpu1/amd64/large
-      parameters:
-        sensing: "false"
-        use_traffic_light_recognition: "false"
-        perception_mode: camera_lidar_radar_fusion
-        lidar_detection_model: centerpoint
-      pre_tasks:
-        - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
-          mounts:
-            - volume: model
-      volumes:
-        - name: model
-          path: /home/autoware/autoware_data/lidar_centerpoint
-          preserve_original_files: true
-
-  - name: NodeAliveTest_camera_lidar_radar_fusion_pointpainting
-    type: perception
-    suite:
-      selector:
-        match_labels:
-          perception_test_type: node_alive
-    simulator:
-      deployment:
-        type: container
-        artifact: main
-      runtime:
-        type: gpu1/amd64/large
-      parameters:
-        sensing: "false"
-        use_traffic_light_recognition: "false"
-        perception_mode: camera_lidar_radar_fusion
-        lidar_detection_model: pointpainting
-      pre_tasks:
-        - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_image_projection_based_fusion pointpainting_fusion.launch.xml model_name:=pointpainting model_path:=/home/autoware/autoware_data/image_projection_based_fusion model_param_path:=$(ros2 pkg prefix autoware_image_projection_based_fusion --share)/config/pointpainting.param.yaml build_only:=true
-          mounts:
-            - volume: model
-      volumes:
-        - name: model
-          path: /home/autoware/autoware_data/image_projection_based_fusion
+          path: /opt/autoware/mlmodels/centerpoint
           preserve_original_files: true
 
   - name: yabloc
