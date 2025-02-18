@@ -33,6 +33,26 @@ function launch_autoware() {
     ros2 launch autoware_launch autoware.launch.xml map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
 }
 
+# --autoware-main:     Launch autoware main
+function launch_autoware_main() {
+    ros2 launch autoware_launch autoware.main.launch.xml map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
+}
+
+# --psim-main:       Launch autoware main with planning simulator
+function launch_psim_main() {
+    ros2 launch autoware_launch planning_simulator.main.launch.xml map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
+}
+
+# --autoware-sub: Launch autoware sub
+function launch_autoware_sub() {
+    ros2 launch autoware_launch autoware.sub.launch.xml vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
+}
+
+# --psim-sub: Launch autoware sub with planning simulator
+function launch_psim_sub() {
+    ros2 launch autoware_launch planning_simulator.sub.launch.xml vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
+}
+
 # --psim:         Launch simple planning simulator
 function launch_psim() {
     ros2 launch autoware_launch planning_simulator.launch.xml map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
@@ -55,6 +75,10 @@ function help() {
     echo "    --build           :Normal build  {You can add additional build options after the arg}"
     echo "    --build_ccache    :Build with ccache {You can add additional build options after the arg}"
     echo "    --autoware        :Launch autoware"
+    echo "    --autoware-main    :Launch autoware main"
+    echo "    --psim-main     :Launch autoware main with planning simulator"
+    echo "    --autoware-sub    :Launch autoware sub"
+    echo "    --psim-sub     :Launch autoware sub with planning simulator"
     echo "    --psim            :Launch simple planning simulator"
     echo "    --kill            :Kill all ros2 zombie nodes"
     echo "    --clean           :Delete '/install', '/build' and '/log' directories"
@@ -72,6 +96,14 @@ elif [ "${1-}" = "--build_ccache" ]; then
     build_ccache "${@:2}"
 elif [ "${1-}" = "--autoware" ]; then
     launch_autoware "${@:2}"
+elif [ "${1-}" = "--autoware-main" ]; then
+    launch_autoware_main "${@:2}"
+elif [ "${1-}" = "--psim-main" ]; then
+    launch_psim_main "${@:2}"
+elif [ "${1-}" = "--autoware-sub" ]; then
+    launch_autoware_sub "${@:2}"
+elif [ "${1-}" = "--psim-sub" ]; then
+    launch_psim_sub "${@:2}"
 elif [ "${1-}" = "--psim" ]; then
     launch_psim "${@:2}"
 elif [ "${1-}" = "--kill" ]; then

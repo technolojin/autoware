@@ -9,6 +9,21 @@
     "persistents",
     "sxpf",
     "logagent",
-    "Logagent"
+    "Logagent",
+    "peakcan",
+    "fintekcan",
+    "vcan",
+    "rexmit",
+    "redundancy",
+    "Rexmit",
+    "Dont",
+    "kdump",
+    "logfile",
+    "systemlog",
+    "netcore",
+    "wmem",
+    "tmpfiles",
+    "rsyncd",
+    "DDSI"
   ]
 }

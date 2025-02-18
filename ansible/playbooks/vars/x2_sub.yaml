@@ -25,6 +25,19 @@ ipv4_ipfrag_high_thresh: 134217728
 netcore_rmem_max: 2147483647
 netcore_wmem_max: 2147483647
 
+# x2_cyclonedds_for_redundancy
+x2_cyclonedds_for_redundancy:
+  network_interface:
+    - { address: enp5s0f1, priority: 1 } # Prioritize 10Gb interface
+    - { address: enp5s0f0, priority: 0 }
+  minimum_socket_receive_buffer_size: 20MB
+  minimum_socket_send_buffer_size: default
+  max_message_size: 65500B
+  fragment_size: 4000B
+  max_rexmit_message_size: 1456B
+  water_mark_whc_high: 500kB
+  water_mark_whc_low: 1kB
+
 # greengrass user/group
 ggc_user_uid: 919
 ggc_group_gid: 929
@@ -88,3 +101,13 @@ rviz_config_path: /home/autoware/autoware.proj/src/autoware/launcher/autoware_la
 screen_recorder_default_logging_directory: /tmp
 screen_recorder_default_display_variable: :0
 screen_recorder_default_service_enabled: false
+
+# redundancy switcher
+redundancy_switcher_repository_url: git@github.com:tier4/redundancy_switcher.git
+redundancy_switcher_clone_dir: /tmp/redundancy_switcher
+redundancy_switcher_version: main
+redundancy_switcher_install_dir: /opt/redundancy_switcher/bin
+redundancy_switcher_conf_install_dir: /opt/redundancy_switcher/conf
+redundancy_switcher_conf_files: redundancy_switcher/node_info.json
+redundancy_switcher_service_template: redundancy_switcher.service.jinja2
+node_id: 1
