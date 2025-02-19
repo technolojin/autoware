@@ -76,10 +76,6 @@ repositories:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
     version: de4bf6be79aa2968cf2f62e0ebe1ff8a5797e6ad
-  vendor/ublox:
-    type: git
-    url: https://github.com/tier4/ublox.git
-    version: dc49c2dcc9384401030c77d7db05fea9161cbcc0
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
@@ -96,14 +92,6 @@ repositories:
     type: git
     url: https://github.com/tier4/pointcloud_to_laserscan.git
     version: d969ec699f84fad827fbadfa3001c9c657482fbe
-  vendor/ars408_driver:
-    type: git
-    url: https://github.com/tier4/ars408_driver.git
-    version: 60678fc12918f968afed9f519915c16cf76edeae
-  vendor/spinnaker:
-    type: git
-    url: https://github.com/tier4/spinnaker.git
-    version: 4c74d319ef9186a4fb643dbd82e1b5f7918e75ea
   # Fix the version not to merge https://github.com/MORAI-Autonomous/MORAI-ROS2_morai_msgs/pull/9
   vendor/morai_msgs:
     type: git
