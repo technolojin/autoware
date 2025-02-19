@@ -7,7 +7,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
-    version: ba5e6c9540758f0c7f7a9d3f8918c2e21ddc67ca
+    version: 1229329fcc428ae0f88cb24d410c06f11e17a0a4
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
@@ -60,7 +60,7 @@ repositories:
   description/vehicle/j6_gen2_description:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
-    version: 9dd5689cc11306771b9b7b1980804ebd8fad67a1
+    version: f30c5280d05650a3eb1765850138667940818243
   # ecu_system_setup: When you use your own customized ecu_system_setup, uncomment this.
   # ecu_system_setup:
   #   type: git
@@ -71,7 +71,7 @@ repositories:
   vendor/mj20_interface:
     type: git
     url: git@github.com:tier4/mj20_interface.git
-    version: cab199ddcfaae42b4e610a58cc5a5afafa2a8da5
+    version: aeb1b142e2cfabf881dcfb01861a26d29a89608f
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
