@@ -1,3 +1,4 @@
+# cspell: ignore kdump coredump logagent Logagent
 # <Logagent configurations> ----------------------------------------------------------------------
 # <use webauto vehicle info>
 use_webauto_agent: true
@@ -18,12 +19,12 @@ directories:
 # <streaming configurations> ----------------------------------------------------------------------
 streaming:
   # <ros topics> --------------------------------------
-  ros_topic:
+  #ros_topic:
     # ros domains
-    - domain_name: main
-      topics:
-        - topic_name: /system/fail_safe/mrm_state
-          topic_type: autoware_adapi_V1_msgs/msg/MrmState
+    #- domain_name: main
+      #topics:
+        #- topic_name: /system/fail_safe/mrm_state
+          #topic_type: autoware_adapi_V1_msgs/msg/MrmState
   # <syslog streaming> --------------------------------
   syslog:
     # ros severity override syslog priority. (FATAL -> emergency, alert, critical)
