@@ -1,5 +1,5 @@
 #!/bin/sh
-
+# cSpell: ignore usbhid uevent
 _base_id="1-8"
 _sub_id="1.0"
 
@@ -27,8 +27,8 @@ while true; do
     fi
 
     echo "Now try to perform unplug-plug to configure again ..."
-    echo $_base_id >/sys/bus/usb/drivers/usb/unbind
+    echo "1-0:1.0" >/sys/bus/usb/drivers/hub/unbind
     sleep 1
-    echo $_base_id >/sys/bus/usb/drivers/usb/bind
-    sleep 1
+    echo "1-0:1.0" >/sys/bus/usb/drivers/hub/bind
+    sleep 6
 done
