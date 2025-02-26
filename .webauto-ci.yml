@@ -1211,7 +1211,7 @@ scenario_parameter_groups:
       max_steer_angle: 0.646 # [rad]
       stop_line_distance: 0.5 # param name in autoware_launch: stop_margin
       blind_spot_stop_line_distance: 1.0 # param name in autoware_launch: stop_line_margin
-      obstacle_stop_line_distance: 6.0 # param name in autoware_launch: max_longitudinal_margin
+      obstacle_stop_line_distance: 5.0 # param name in autoware_launch: stop_margin (obstacle_stop.param.yaml)
       crosswalk_stop_line_distance: 3.5 # param name in autoware_launch: stop_distance_from_crosswalk
       walkway_stop_line_distance: 1.5 # param name in autoware_launch: stop_distance_from_crosswalk
       intersection_stop_line_distance: 3.0 # param name in autoware_launch: stop_line_margin
