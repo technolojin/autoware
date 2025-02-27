@@ -756,6 +756,7 @@ simulations:
         type: standard1/amd64/medium
       parameters:
         play_rate: "0.125"
+        localization: "false"
 
   - name: planning_control
     type: planning_control
