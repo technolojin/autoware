@@ -85,7 +85,7 @@ build_boot_shutdown_api_msgs: true
 boot_shutdown_tools_clone_dir: "{{ autoware_install_dir }}/src/product/boot_shutdown_tools"
 
 # mot_env_setup
-mot_repository_version_humble: 56578579412f3349608eda7c2d4be3598050a71d # v4.1.0
+mot_repository_version_humble: 0c663106492360f9ea0dd1ac93a78e8fe3462c06 # v4.1.0
 mot_install_dir: "{{ ansible_env.HOME }}/OperationMaintenanceTool"
 depends_node_version: v20.18.1
 replace_install_setup_bash: false
