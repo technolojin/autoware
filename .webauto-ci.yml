@@ -112,6 +112,7 @@ artifacts:
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
+        ignore_file_path: /etc/ota/ignore.txt
       output_installer_image:
         from: ecu-system-setup
         type: iso
@@ -225,6 +226,7 @@ artifacts:
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
+        ignore_file_path: /etc/ota/ignore.txt
       output_installer_image:
         from: ecu-system-setup
         type: iso
@@ -317,6 +319,7 @@ artifacts:
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
+        ignore_file_path: /etc/ota/ignore.txt
       output_installer_image:
         from: ecu-system-setup
         type: iso
@@ -358,6 +361,7 @@ artifacts:
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
+        ignore_file_path: /etc/ota/ignore.txt
 
   # Perception ECU2
   - name: perception2
@@ -394,6 +398,7 @@ artifacts:
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
+        ignore_file_path: /etc/ota/ignore.txt
 
   # Addon ECU
   - name: addon
@@ -460,6 +465,7 @@ artifacts:
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
+        ignore_file_path: /etc/ota/ignore.txt
       output_installer_image:
         from: ecu-system-setup
         type: iso
@@ -502,6 +508,7 @@ artifacts:
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
+        ignore_file_path: /etc/ota/ignore.txt
 
   # MS ECU1
   - name: media-streaming1
@@ -624,6 +631,7 @@ artifacts:
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
+        ignore_file_path: /etc/ota/ignore.txt
       output_installer_image:
         from: ecu-system-setup
         type: iso
@@ -679,6 +687,7 @@ artifacts:
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
+        ignore_file_path: /etc/ota/ignore.txt
       output_installer_image:
         from: ecu-system-setup
         type: iso
