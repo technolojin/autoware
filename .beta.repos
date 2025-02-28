@@ -7,7 +7,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
-    version: beta/v0.41
+    version: 998ad187591853643789ca2c5ccf16aa7a933f39 # change to beta/v0.41 when supporting https://github.com/tier4/autoware.universe/pull/1878 is completed
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
