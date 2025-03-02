@@ -165,7 +165,10 @@ simulations:
         type: container
         artifact: main
       runtime:
-        type: standard1/amd64/medium
+        type: gpu1/amd64/large
+        parameters:
+          use_traffic_light_recognition: "false"
+          lidar_detection_model: clustering
 
   - name: performance_diag
     type: performance_diag
