@@ -23,7 +23,7 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: eae1016babc9805cba6d48f66df350d26803380c
+    version: 2aa76399d1d5c370810177e2390f8fb5753dae03
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
@@ -155,7 +155,7 @@ repositories:
   product/l4_toolkit:
     type: git
     url: git@github.com:tier4/l4_toolkit.git
-    version: e57847fcc40fe06baf3749ceefa648aacac26cc2
+    version: 5e85468d7e4df25e2df034792103efb8b7d910c5
   vendor/emergency_vehicle_detector:
     type: git
     url: git@github.com:tier4/emergency_vehicle_detector.git
@@ -172,4 +172,4 @@ repositories:
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: 17b5c7abe55a6553ce38f3dd989b94db4d0126eb
+    version: 45d60fac2d04aa060520eef75cf80f7747a134f6
