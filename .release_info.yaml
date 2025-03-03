@@ -20,3 +20,13 @@ releases:
         release_version: 0.41
       - repo_name_in_autoware_repos: autoware/universe
         release_version: 0.41
+  - version: 0.42
+    release_managers:
+      - rej55
+    released_repositories:
+      - repo_name_in_autoware_repos: autoware/core
+        release_version: 0.42
+      - repo_name_in_autoware_repos: autoware/launcher
+        release_version: 0.42
+      - repo_name_in_autoware_repos: autoware/universe
+        release_version: 0.42
