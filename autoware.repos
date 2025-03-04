@@ -7,7 +7,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
-    version: 64eaa47ba55e82f9ac8a7772c204313eb9107494
+    version: 63f668e6a487d7b6a4c82b922be31359bb04876a
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
@@ -23,7 +23,7 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: 2e75d011cc6e727d9a5e120e2ff53022eb36ca10
+    version: 33d24b3d7bd89862ba3356b04fb2efa052afe981
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
@@ -120,7 +120,7 @@ repositories:
   vendor/redundancy_switcher_interface:
     type: git
     url: git@github.com:tier4/redundancy_switcher_interface.git
-    version: ad32ad6ed1f016aa57691793d8ad2470b11b7860
+    version: 2cfa5f56277a6bc4b4cc72b8645b328e89bfb9f8
   rclcpp: # Based stable version, the fix-patch for service in initialization and the glog feature is added
     type: git
     url: https://github.com/tier4/rclcpp.git
@@ -155,7 +155,7 @@ repositories:
   product/l4_toolkit:
     type: git
     url: git@github.com:tier4/l4_toolkit.git
-    version: 5e85468d7e4df25e2df034792103efb8b7d910c5
+    version: f79bb4139669c83d06518f3ed80e2de34dcbfa59
   vendor/emergency_vehicle_detector:
     type: git
     url: git@github.com:tier4/emergency_vehicle_detector.git
