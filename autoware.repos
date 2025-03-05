@@ -7,7 +7,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
-    version: 63f668e6a487d7b6a4c82b922be31359bb04876a
+    version: 53dd65bc0312ebed8fd988689a9e3848fcc97184
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
@@ -172,4 +172,4 @@ repositories:
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: 708e369a06ba8624c82257b0276de641fd0ac7c9
+    version: c92116a8b2651c9454d77834800e28e92f6a2512
