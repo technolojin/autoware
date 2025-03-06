@@ -7,6 +7,9 @@
     "otaclient_logger",
     "otaproxy",
     "persistents",
+    "sxpf",
+    "logagent",
+    "Logagent",
     "peakcan",
     "fintekcan",
     "vcan",
@@ -21,7 +24,6 @@
     "wmem",
     "tmpfiles",
     "rsyncd",
-    "sxpf",
     "DDSI"
   ]
 }
