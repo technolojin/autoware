@@ -24,6 +24,9 @@
     "wmem",
     "tmpfiles",
     "rsyncd",
-    "DDSI"
+    "DDSI",
+    "mkuvcdev",
+    "MAINPID",
+    "mgbe"
   ]
 }
