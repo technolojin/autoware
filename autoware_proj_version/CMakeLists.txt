@@ -3,7 +3,14 @@ project(autoware_proj_version)
 
 find_package(ament_cmake_auto REQUIRED)
 ament_auto_find_build_dependencies()
-ament_index_register_resource(autoware_metadata_packages CONTENT_FILE resource/version.json)
+
+# Workaround for files not updating by rebuild.
+# ament_index_register_resource(autoware_metadata_packages CONTENT_FILE resource/version.json)
+install(
+  FILES "resource/version.json"
+  DESTINATION "share/ament_index/resource_index/autoware_metadata_packages"
+  RENAME "${PROJECT_NAME}"
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
