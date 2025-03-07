@@ -61,5 +61,5 @@ setup_coredump_tmpfiles_service: true
 # ros2 native build
 ansible_python_path: /usr/bin/python3.8
 aip_repos_file_name: aip_j6_gen2.repos
-jetson_iv_container_version: x2/v3.1.0-gen2
+jetson_iv_container_version: x2/v4.1.0
 jetson_container_install_dir: /home/autoware

@@ -34,7 +34,7 @@ ptp4l_network_port: enp1s0
 
 # ros2-app-build
 ros2_app_repository: git@github.com:tier4/vehicle_voice_alert_system.git
-ros2_app_repository_version: fdd918312e280a25aeb857e3c7d70dd2ee810a82
+ros2_app_repository_version: 61e59b63ea178568e25e0078011d0e60d2f5af33
 depends_repos: vehicle_voice_alert_system.repos
 
 # simple system launch
