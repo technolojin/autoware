@@ -33,9 +33,9 @@ See [GitHub Pages](https://autowarefoundation.github.io/autoware-documentation/m
 
 ## MLモデルのダウンロード方法
 
-pilot-auto無印では[autoware](https://github.com/autowarefoundation/autoware)で配布されているMLモデルを使用します。そのため`./setup-dev-local.sh`で環境構築を終えている場合、追加のダウンロードの必要はありません。その他ケースについては以下を参考にしてください。
+pilot-auto無印では、基本的に[autoware](https://github.com/autowarefoundation/autoware)で配布されているMLモデルのみを使用します。しかし、`./setup-dev-local.sh`は環境構築のみを行うためダウンロードされません。以下を参考にダウンロードしてください。
 
-### autowarefoundation/autowareのMLモデルを更新したい場合
+### autowarefoundation/autowareのMLモデル使用したい場合
 
 以下のコマンドを実行してください。
 
