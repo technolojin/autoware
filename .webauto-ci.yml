@@ -130,6 +130,7 @@ simulations:
         architecture_type: awf/universe/20250130
         initialize_duration: "90"
         consider_acceleration_by_road_slope: "true"
+        record_storage_id: mcap
 
   - name: obstacle_detection
     type: obstacle_detection
