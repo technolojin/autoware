@@ -257,13 +257,13 @@ simulations:
       parameters:
         use_empty_dynamic_object_publisher: "true"
       pre_tasks:
-        - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_traffic_light_fine_detector traffic_light_fine_detector.launch.xml traffic_light_fine_detector_model_path:=$HOME/autoware_data/traffic_light_fine_detector traffic_light_fine_detector_label_name:=tlr_labels.txt traffic_light_fine_detector_model_name:=tlr_car_ped_yolox_s_batch_6 build_only:=true
+        - exec: TLF=traffic_light_fine_detector && source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_${TLF} ${TLF}.launch.xml model_path:=$HOME/autoware_data/${TLF}/tlr_car_ped_yolox_s_batch_6.onnx label_name:=$HOME/autoware_data/${TLF}/tlr_labels.txt  build_only:=true
           mounts:
             - volume: model_fine_detector
-        - exec: TLC=traffic_light_classifier && source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_${TLC} car_${TLC}.launch.xml ${TLC}_param_path:=$(ros2 pkg prefix autoware_${TLC} --share)/config/car_${TLC}.param.yaml ${TLC}_model_path:=$HOME/autoware_data/${TLC} car_${TLC}_label_name:=lamp_labels.txt car_${TLC}_model_name:=${TLC}_mobilenetv2_batch_6 build_only:=true
+        - exec: TLC=traffic_light_classifier && source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_${TLC} car_${TLC}.launch.xml model_path:=$HOME/autoware_data/${TLC}/${TLC}_mobilenetv2_batch_6.onnx label_path:=$HOME/autoware_data/${TLC}/lamp_labels.txt build_only:=true
           mounts:
             - volume: model_classifier
-        - exec: TLC=traffic_light_classifier && source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_${TLC} pedestrian_${TLC}.launch.xml ${TLC}_param_path:=$(ros2 pkg prefix autoware_${TLC} --share)/config/pedestrian_${TLC}.param.yaml ${TLC}_model_path:=$HOME/autoware_data/${TLC} pedestrian_${TLC}_label_name:=lamp_labels_ped.txt pedestrian_${TLC}_model_name:=ped_${TLC}_mobilenetv2_batch_6 build_only:=true
+        - exec: TLC=traffic_light_classifier && source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_${TLC} pedestrian_${TLC}.launch.xml model_path:=$HOME/autoware_data/${TLC}/ped_${TLC}_mobilenetv2_batch_6.onnx label_name:=$HOME/autoware_data/${TLC}/lamp_labels_ped.txt build_only:=true
           mounts:
             - volume: model_classifier
       volumes:
