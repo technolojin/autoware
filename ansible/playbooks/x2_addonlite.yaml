@@ -6,7 +6,6 @@
 
   vars:
     ecu_id: addonlite
-    ros_distro: humble
 
   pre_tasks:
     - name: Check 'ecu_id' contents
