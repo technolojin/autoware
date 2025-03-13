@@ -549,3 +549,4 @@ scenario_parameter_groups:
       intersection_stop_line_distance: 3.0 # param name in autoware_launch: stop_line_margin
       traffic_light_stop_line_distance: 0.0 # param name in autoware_launch: stop_margin
       run_out_stop_line_distance: 2.5 # param name in autoware_launch: stop_margin
+      turn_signal_search_distance: 30.0 # param name in autoware_launch: turn_signal_intersection_search_distance
