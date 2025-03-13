@@ -342,7 +342,6 @@ artifacts:
           environment_variables:
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_perception.yaml
             ECU_ID: perception1
-            VEHICLE_MODEL: j6_gen2
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
@@ -379,7 +378,6 @@ artifacts:
           environment_variables:
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_perception.yaml
             ECU_ID: perception2
-            VEHICLE_MODEL: j6_gen2
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
@@ -488,7 +486,6 @@ artifacts:
           environment_variables:
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_addonlite.yaml
             ECU_ID: addonlite
-            VEHICLE_MODEL: j6_gen2
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
@@ -525,7 +522,6 @@ artifacts:
           environment_variables:
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_media_streaming.yaml
             ECU_ID: media-streaming1
-            VEHICLE_MODEL: j6_gen2
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
@@ -562,7 +558,6 @@ artifacts:
           environment_variables:
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_media_streaming.yaml
             ECU_ID: media-streaming2
-            VEHICLE_MODEL: j6_gen2
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
