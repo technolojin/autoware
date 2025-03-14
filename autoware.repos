@@ -7,7 +7,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
-    version: 255584fdaee992e8c264c45f61134ebb38bdad7b
+    version: 12ae9e6ffd4b00410295aea10c627386ab8fb499
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
@@ -60,7 +60,7 @@ repositories:
   description/vehicle/j6_gen2_description:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
-    version: f30c5280d05650a3eb1765850138667940818243
+    version: fd745e58795314aec02f2bb51e1fec4e78feb0a1
   # ecu_system_setup: When you use your own customized ecu_system_setup, uncomment this.
   # ecu_system_setup:
   #   type: git
