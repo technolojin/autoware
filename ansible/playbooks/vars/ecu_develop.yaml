@@ -1,0 +1,8 @@
+# cSpell:ignore nocaps
+
+# additional-fonts
+additional_font_packages:
+  - fonts-noto-cjk
+
+# keyboard: Select keyboard.jp, keyboard.jp+ctrl_nocaps or keyboard.us+ctrl_nocaps
+keyboard_layout_file: keyboard.jp+ctrl_nocaps

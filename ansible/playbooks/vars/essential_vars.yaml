@@ -1,0 +1,9 @@
+autoware_env_dir_privileged: false
+autoware_env_dir: "{{ ansible_env.HOME }}"
+autoware_install_dir: "{{ ansible_env.HOME }}/pilot-auto"
+daemon_reload: "{{ reload_systemd | default('yes') }}"
+ros_domain_id: 1
+sensor_model: aip_xx1
+timezone: Asia/Tokyo
+vehicle_id: default
+vehicle_model: lexus

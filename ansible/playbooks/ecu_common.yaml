@@ -2,7 +2,8 @@
 - name: Setup ECU by common roles
   hosts: localhost
   vars_files:
-    - ./vars/ecu_setup.yaml
+    - ./vars/essential_vars.yaml
+    - ./vars/ecu_common.yaml
   roles:
     - { role: autoware.ecu_system_setup.bash_completion }
     - { role: autoware.ecu_system_setup.clean_ros_log }

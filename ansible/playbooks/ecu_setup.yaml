@@ -7,6 +7,7 @@
 - name: Setup ECU by additional roles
   hosts: localhost
   vars_files:
+    - ./vars/essential_vars.yaml
     - ./vars/ecu_setup.yaml
   roles:
     # add your necessary roles
