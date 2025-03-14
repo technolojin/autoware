@@ -1,3 +1,32 @@
 {
-  "words": ["otaclient", "otaclient_logger", "otaproxy", "annotationless", "dkoldaev"]
+  "words": [
+    "addonlite",
+    "logstream",
+    "nofail",
+    "otaclient",
+    "otaclient_logger",
+    "otaproxy",
+    "persistents",
+    "sxpf",
+    "logagent",
+    "Logagent",
+    "peakcan",
+    "fintekcan",
+    "vcan",
+    "rexmit",
+    "redundancy",
+    "Rexmit",
+    "Dont",
+    "kdump",
+    "logfile",
+    "systemlog",
+    "netcore",
+    "wmem",
+    "tmpfiles",
+    "rsyncd",
+    "DDSI",
+    "mkuvcdev",
+    "MAINPID",
+    "mgbe"
+  ]
 }

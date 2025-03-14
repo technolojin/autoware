@@ -1,0 +1,46 @@
+- name: Create configure_marvell_switch directory
+  ansible.builtin.file:
+    path: /opt/autoware/services/configure_marvell_switch/
+    state: directory
+    mode: 0755
+  become: true
+
+- name: Clone marvell switch configuration files
+  ansible.builtin.git:
+    repo: "{{ x2_configure_marvell_switch_repository }}"
+    dest: /tmp/marvell_switch_configuration
+    version: main
+
+- name: Copy configuration files
+  ansible.builtin.copy:
+    src: /tmp/marvell_switch_configuration
+    dest: /opt/autoware/services/configure_marvell_switch
+    mode: 0755
+  become: true
+
+- name: Copy script to configure switch
+  ansible.builtin.template:
+    src: configure_marvell_switch.sh.j2
+    dest: /opt/autoware/services/configure_marvell_switch/configure_marvell_switch.sh
+    mode: 0755
+  become: true
+
+- name: Copy service
+  ansible.builtin.copy:
+    src: configure_marvell_switch.service
+    dest: /etc/systemd/system/
+    mode: 0755
+  become: true
+
+- name: Enable service
+  ansible.builtin.systemd:
+    name: configure_marvell_switch.service
+    daemon_reload: "{{ daemon_reload }}"
+    enabled: true
+    masked: false
+  become: true
+
+- name: Clean up temporary directory
+  ansible.builtin.file:
+    path: /tmp/marvell_switch_configuration
+    state: absent

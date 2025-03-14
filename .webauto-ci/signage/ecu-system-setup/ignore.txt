@@ -1,0 +1,6 @@
+__pycache__/
+.git/
+.ssh/
+/tmp
+/home/autoware/AutowareSignage/log
+/home/autoware/vehicle_voice_alert_system/log

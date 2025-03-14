@@ -1,0 +1,13 @@
+[Unit]
+Description=Synchronize the system clock to the one of enp5s0f0
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/phc2sys -s enp5s0f0 -O 0 -m -w --domainNumber 1 -z /var/run/ptp4l.enp5s0f0
+ExecStop=/bin/kill -TERM $MAINPID
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target network-online.target

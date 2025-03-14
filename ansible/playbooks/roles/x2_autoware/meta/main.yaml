@@ -1,0 +1,3 @@
+dependencies:
+  - role: autoware.ecu_system_setup.set_autoware_env
+  - role: x2_can_adm
