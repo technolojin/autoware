@@ -2,6 +2,9 @@ name: build-and-test
 
 on:
   workflow_dispatch:
+  schedule:
+    # Run at midnight in Japan
+    - cron: 0 15 * * *
 
 jobs:
   build-and-test:
@@ -13,20 +16,52 @@ jobs:
         rosdistro:
           - humble
         container-suffix:
-          - ""
+          - -cuda
         include:
           - rosdistro: humble
-            container: ghcr.io/autowarefoundation/autoware:latest-prebuilt
+            container: ghcr.io/autowarefoundation/autoware:universe-devel
             build-depends-repos: ""
+    env:
+      CCACHE_DIR: /root/.ccache
+      CCACHE_SIZE: 1G
+      CC: /usr/lib/ccache/gcc
+      CXX: /usr/lib/ccache/g++
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Install vcstool
+      - name: Install vcstool and ccache
         run: |
           sudo apt-get -y update
-          sudo apt-get -y install python3-pip
+          sudo apt-get -y install python3-pip ccache
           pip install --no-cache-dir vcstool
+
+      - name: Create ccache directory
+        run: |
+          mkdir -p ${CCACHE_DIR}
+          du -sh ${CCACHE_DIR} && ccache -s
+        shell: bash
+
+      - name: Limit ccache size
+        run: |
+          rm -f "${CCACHE_DIR}/ccache.conf"
+          echo -e "max_size = ${CCACHE_SIZE}" > "${CCACHE_DIR}/ccache.conf"
+        shell: bash
+
+      - name: Attempt to restore ccache
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ env.CCACHE_DIR }}
+          key: ccache-${{ runner.arch }}-${{ matrix.rosdistro }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            ccache-${{ runner.arch }}-${{ matrix.rosdistro }}-
+
+      - name: Show ccache stats before build and reset stats
+        run: |
+          du -sh ${CCACHE_DIR} && ccache -s
+          ccache --zero-stats
+        shell: bash
 
       - name: Generate token
         id: generate-token
@@ -43,7 +78,7 @@ jobs:
       - name: Run vcs import
         run: |
           mkdir src
-          vcs import src < ci.repos --shallow
+          vcs import src < autoware.repos --shallow
 
       - name: Show disk space before the tasks
         run: df -h
@@ -63,6 +98,17 @@ jobs:
           target-packages: ${{ steps.get-self-packages.outputs.self-packages }}
           build-depends-repos: ${{ matrix.build-depends-repos }}
 
+      - name: Show ccache stats after build
+        run: |
+          du -sh ${CCACHE_DIR} && ccache -s
+        shell: bash
+
+      - name: Upload ccache to cache
+        uses: actions/cache/save@v4
+        with:
+          path: ${{ env.CCACHE_DIR }}
+          key: ccache-${{ runner.arch }}-${{ matrix.rosdistro }}-${{ github.run_id }}-${{ github.run_attempt }}
+
       - name: Test
         if: ${{ steps.get-self-packages.outputs.self-packages != '' }}
         id: test
@@ -71,15 +117,48 @@ jobs:
           rosdistro: ${{ matrix.rosdistro }}
           target-packages: ${{ steps.get-self-packages.outputs.self-packages }}
           build-depends-repos: ${{ matrix.build-depends-repos }}
+          packages-skip: |
+            boost_serial_driver
+            boost_tcp_driver
+            boost_udp_driver
+            eagleye_can_velocity_converter
+            eagleye_coordinate
+            eagleye_fix2kml
+            eagleye_geo_pose_converter
+            eagleye_geo_pose_fusion
+            eagleye_gnss_converter
+            eagleye_msgs
+            eagleye_navigation
+            eagleye_rt
+            eagleye_tf
+            jpn_signal_mqtt_interface
+            llh_converter
+            pe_ars408_ros
+            rclcpp
+            rtklib_bridge
+            tamagawa_imu_driver
+            autoware_common_msgs
+            autoware_control_msgs
+            autoware_internal_msgs
+            autoware_localization_msgs
+            autoware_map_msgs
+            autoware_perception_msgs
+            autoware_planning_msgs
+            autoware_sensing_msgs
+            autoware_system_msgs
+            autoware_vehicle_msgs
+            autoware_internal_debug_msgs
+            autoware_internal_perception_msgs
 
-      - name: Upload coverage to CodeCov
+      - name: Save coverage as artifacts
         if: ${{ steps.test.outputs.coverage-report-files != '' }}
-        uses: codecov/codecov-action@v5
+        uses: actions/upload-artifact@v4
         with:
-          files: ${{ steps.test.outputs.coverage-report-files }}
-          fail_ci_if_error: false
-          verbose: true
-          flags: total
+          name: coverage-reports
+          path: |
+            lcov/total_coverage.info
+            coveragepy/.coverage
+          if-no-files-found: warn
 
       - name: Show disk space after the tasks
         run: df -h
