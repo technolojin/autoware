@@ -4,6 +4,7 @@ exclude_paths:
   - build/
   - install/
   - log/
+  - .webauto-ci.yml
 
 skip_list:
   - galaxy # We don't publish to Ansible Galaxy.
