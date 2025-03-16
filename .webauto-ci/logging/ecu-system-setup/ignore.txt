@@ -3,3 +3,4 @@ __pycache__/
 .ssh/
 /tmp
 /home/autoware/pilot-auto.x2/log
+/home/autoware/pilot-auto.x2/build
