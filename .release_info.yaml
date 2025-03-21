@@ -1,32 +1,22 @@
 release_supervisors: # people in charge of all releases
-  - rej55
+  - TomohitoAndo
 
 base_branch_for_release: main
 autoware_repos_file: autoware.repos
 beta_repos_file: .beta.repos
 additional_repos_files:
-  - ci.repos
   - simulator.repos
   - tools.repos
 
 releases:
-  - version: 0.41
+  - version: 4.2
+    parent:
+      - name: vanilla
+      - version: v0.41
     release_managers:
-      - dkoldaev
+      - TomohitoAndo
     released_repositories:
-      - repo_name_in_autoware_repos: autoware/core
-        release_version: 0.41
       - repo_name_in_autoware_repos: autoware/launcher
-        release_version: 0.41
-      - repo_name_in_autoware_repos: autoware/universe
-        release_version: 0.41
-  - version: 0.42
-    release_managers:
-      - rej55
-    released_repositories:
-      - repo_name_in_autoware_repos: autoware/core
-        release_version: 0.42
-      - repo_name_in_autoware_repos: autoware/launcher
-        release_version: 0.42
-      - repo_name_in_autoware_repos: autoware/universe
-        release_version: 0.42
+        release_version: 4.2
+      - repo_name_in_autoware_repos: vendor/mj20_interface
+        release_version: 4.2
