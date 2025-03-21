@@ -133,6 +133,7 @@ jobs:
             eagleye_tf
             jpn_signal_mqtt_interface
             llh_converter
+            negotiated_interfaces
             pe_ars408_ros
             rclcpp
             rtklib_bridge
