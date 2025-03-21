@@ -5,7 +5,6 @@ base_branch_for_release: main
 autoware_repos_file: autoware.repos
 beta_repos_file: .beta.repos
 additional_repos_files:
-  - awsim.repos
   - simulator.repos
   - tools.repos
 
