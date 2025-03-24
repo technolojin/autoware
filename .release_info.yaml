@@ -40,3 +40,5 @@ releases:
         release_version: 0.43
       - repo_name_in_autoware_repos: autoware/universe
         release_version: 0.43
+      - repo_name_in_autoware_repos: autoware/aip_launcher
+        release_version: 0.43
