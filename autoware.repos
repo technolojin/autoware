@@ -7,7 +7,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
-    version: 87c9e799fdbc7bcb8a015d2dc3353dee315bb53b
+    version: 08c8cf0e06506af375f44867cf062dd628c1baa8
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
@@ -27,7 +27,7 @@ repositories:
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 412a268fe9def6e07a8aa2c57f07397868775ef9
+    version: 021f5bfa5f3f28a424b84c5d44538ac22d51aa44
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
@@ -51,7 +51,7 @@ repositories:
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: 1e4495555bff752ad0e6cd542aecc303736dbb26
+    version: 5837fe358ce3e8420788bcf0f12a2bf34ca668a3
   # description
   description/sensor/sensor_component_description:
     type: git
@@ -60,7 +60,7 @@ repositories:
   description/vehicle/j6_gen2_description:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
-    version: fd745e58795314aec02f2bb51e1fec4e78feb0a1
+    version: c148e554dc347c8187bcb6a72af006ee8cc0459e
   # ecu_system_setup: When you use your own customized ecu_system_setup, uncomment this.
   # ecu_system_setup:
   #   type: git
@@ -120,7 +120,7 @@ repositories:
   vendor/redundancy_switcher_interface:
     type: git
     url: git@github.com:tier4/redundancy_switcher_interface.git
-    version: 2cfa5f56277a6bc4b4cc72b8645b328e89bfb9f8
+    version: 6f34658a27d61f565ba2a978b8d8aabc66307017
   rclcpp: # Based stable version, the fix-patch for service in initialization and the glog feature is added
     type: git
     url: https://github.com/tier4/rclcpp.git
