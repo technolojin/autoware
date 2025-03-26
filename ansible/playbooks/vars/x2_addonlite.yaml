@@ -58,6 +58,11 @@ setup_coredump_tmpfiles_service: true
 
 # ros2 native build
 ansible_python_path: /usr/bin/python3.8
-aip_repos_file_name: aip_j6_gen2.repos
-jetson_iv_container_version: x2/v4.1.0
-jetson_container_install_dir: /home/autoware
+
+# perception application/service
+perception_application_edge_auto_version: beta/v4.2
+perception_application_base_path: /home/autoware
+perception_application_edge_auto_repo: git@github.com:tier4/edge-auto-jetson.x2.git
+perception_application_service_run_templates_file: perception_application/run.sh.edge_auto_x2.j2 # we can use different run files if the path is in local
+perception_application_native_built_ros: true # True if we build ROS from source and not using apt
+perception_application_directory_name: overlay_ws

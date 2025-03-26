@@ -38,8 +38,8 @@
     - { role: autoware.ecu_system_setup.timezone }
     - { role: autoware.ecu_system_setup.set_large_txqueue }
     - { role: autoware.ecu_system_setup.rsyncd }
-    - { role: link_retry_handler }
-    - { role: gpasswd }
+    - { role: autoware.edge_auto_jetson.link_retry_handler }
+    - { role: autoware.edge_auto_jetson.sensor_trigger_for_anvil }
     - { role: autoware.edge_auto_jetson.cuda }
     - { role: autoware.edge_auto_jetson.vcstool }
     - { role: autoware.edge_auto_jetson.ros2 }
@@ -53,10 +53,7 @@
       block:
         - name: ROS 2 application build
           ansible.builtin.include_role:
-            name: autoware.ecu_system_setup.ros2_native_build_for_perception_ecu
-            tasks_from: application.yaml
-          vars:
-            aip_repos_file_name: aip_{{ vehicle_model }}.repos # noqa: var-naming[no-role-prefix]
+            name: autoware.edge_auto_jetson.perception_application
 
         - name: Setup as object recognition ECU
           when:

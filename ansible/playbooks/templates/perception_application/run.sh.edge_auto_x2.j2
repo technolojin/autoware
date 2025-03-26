@@ -1,0 +1,34 @@
+#!/bin/bash
+
+source {{ autoware_env_dir }}/autoware.env && true
+source {{ autoware_env_dir }}/vehicle.env
+source {{ autoware_env_dir }}/jetson.env
+
+source /opt/ros/humble/install/setup.bash
+source {{ jetson_container_install_dir }}/{{ perception_application_directory_name }}/install/setup.bash
+
+if [ "$VEHICLE_MODEL" == "j6_gen2" ]; then
+    while [[ ! -e /var/run/mgbe1-ready ]]; do
+        sleep 1
+    done
+fi
+
+{% if perception_type == "tlr" %}
+ros2 launch edge_auto_jetson_launch edge_auto_multi_launch_engine.launch.py \
+        build_engine_only:=true camera_driver_camera_ids:="[]" container_name:="none" \
+        traffic_light_camera_ids:="[0]" object_recognition_camera_ids:="[0]"  \
+        yolox_precision:=int8 live_sensor:=false use_multithread:=true
+{% else %}
+ros2 launch edge_auto_jetson_launch edge_auto_multi_launch_engine.launch.py \
+        build_engine_only:=true camera_driver_camera_ids:="[]" container_name:="none" \
+        traffic_light_camera_ids:="[]" object_recognition_camera_ids:="[0]"  \
+        yolox_precision:=int8 live_sensor:=false use_multithread:=true
+{% endif %}
+
+{% for i in range(video_num) %}
+while [[ ! -e /dev/video{{ i }} ]]; do
+    sleep 1
+done
+{%endfor%}
+
+ros2 launch edge_auto_jetson_launch edge_auto_jetson.launch.xml
