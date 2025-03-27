@@ -9,6 +9,14 @@ additional_repos_files:
   - tools.repos
 
 releases:
+  - version: 0.36
+    release_managers:
+      - dkoldaev
+    released_repositories:
+      - repo_name_in_autoware_repos: autoware/launcher
+        release_version: 0.36
+      - repo_name_in_autoware_repos: autoware/universe
+        release_version: 0.36
   - version: 0.41
     release_managers:
       - dkoldaev
