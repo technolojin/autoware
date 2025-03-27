@@ -1,5 +1,7 @@
 # Pilot.Auto
 
+[![build-and-test](https://github.com/tier4/pilot-auto/actions/workflows/build-and-test.yaml/badge.svg)](https://github.com/tier4/pilot-auto/actions/workflows/build-and-test.yaml)
+
 See [GitHub Pages](https://autowarefoundation.github.io/autoware-documentation/main/).
 
 ## Pilot.Auto のリリース

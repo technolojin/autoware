@@ -78,7 +78,7 @@ jobs:
       - name: Run vcs import
         run: |
           mkdir src
-          vcs import src < autoware.repos --shallow
+          vcs import src < .autoware_resolved.repos --shallow
 
       - name: Show disk space before the tasks
         run: df -h
