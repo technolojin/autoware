@@ -39,7 +39,6 @@
     - { role: autoware.ecu_system_setup.clean_ros_log }
     - { role: autoware.ecu_system_setup.cyclonedds }
     - { role: autoware.ecu_system_setup.jetson_clocks }
-    - { role: autoware.ecu_system_setup.jetson_perception_service }
     - { role: autoware.ecu_system_setup.netplan }
     - { role: autoware.ecu_system_setup.otaclient }
     - { role: autoware.ecu_system_setup.evaluator_self_hosted_environment }
