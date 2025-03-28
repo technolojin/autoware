@@ -7,7 +7,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
-    version: ababd5707519dcb34769862303155d906d602c3c
+    version: 66262f8feb84fe172d624fb2787e1e2ac17e27fb
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
@@ -51,7 +51,7 @@ repositories:
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: 5837fe358ce3e8420788bcf0f12a2bf34ca668a3
+    version: ebc2a810f0d73902adbf06613b505ae23c685a09
   # description
   description/sensor/sensor_component_description:
     type: git
