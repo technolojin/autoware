@@ -22,6 +22,7 @@
         perception_type: od
         dtb_sensor_type: imx490
         distortion_correction: 1
+        video_num: 4
       when: ecu_id == "perception1"
 
     - name: Set perception2 params
@@ -32,6 +33,7 @@
         perception_type: tlr
         dtb_sensor_type: imx490
         distortion_correction: 0
+        video_num: 4
       when: ecu_id == "perception2"
 
   roles:
