@@ -139,7 +139,7 @@ repositories:
   vendor/cuda_blackboard:
     type: git
     url: https://github.com/autowarefoundation/cuda_blackboard.git
-    version: v0.1.1
+    version: v0.2.0
   vendor/negotiated:
     type: git
     url: https://github.com/osrf/negotiated.git
