@@ -3,11 +3,11 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware.core.git
-    version: 4039d5d3b31bca19cfbd316f080a5622b3543cb4
+    version: 832e96d6a1b954633335b2ab88458d658ae4bcb2
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
-    version: 2b8abce1aa2e6365c445d2afe2cfce42ba558c23
+    version: 186c718864f3c9e26f8cfa6829461649d9d29f82
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
@@ -139,7 +139,7 @@ repositories:
   vendor/cuda_blackboard:
     type: git
     url: https://github.com/autowarefoundation/cuda_blackboard.git
-    version: v0.1.1
+    version: v0.2.0
   vendor/negotiated:
     type: git
     url: https://github.com/osrf/negotiated.git
