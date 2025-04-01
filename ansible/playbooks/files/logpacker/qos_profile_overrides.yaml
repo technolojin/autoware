@@ -1,0 +1,1776 @@
+/api/autoware/get/emergency:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/autoware/get/engage:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/autoware/get/localization_scores:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/autoware/get/map/info/hash:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/autoware/get/observer:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/autoware/get/operator:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/autoware/get/route:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/autoware/get/velocity_limit:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/autoware/set/crosswalk_states:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/autoware/set/intersection_states:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/autoware/set/traffic_signals:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/external/get/command/selected/control:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/external/get/command/selected/vehicle:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/external/get/diagnostics:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/external/get/emergency:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/external/get/engage:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/external/get/fail_safe/state:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/external/get/map/info/hash:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/external/get/observer:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/external/get/operator:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/external/get/route:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/external/get/service:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/external/get/vehicle/status:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/external/set/command/local/heartbeat:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/external/set/command/local/shift:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/external/set/command/local/turn_signal:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/external/set/command/remote/control:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/external/set/command/remote/heartbeat:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/external/set/command/remote/shift:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/external/set/command/remote/turn_signal:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/iv_msgs/autoware/state:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/iv_msgs/perception/object_recognition/tracking/objects:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/iv_msgs/planning/scenario_planning/trajectory:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/iv_msgs/vehicle/status/control_mode:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/api/localization/initialization_state:
+  depth: 3
+  durability: transient_local
+  history: keep_last
+  reliability: reliable
+/api/motion/state:
+  depth: 1
+  durability: transient_local
+  history: keep_last
+  reliability: reliable
+/api/operation_mode/state:
+  depth: 1
+  durability: transient_local
+  history: keep_last
+  reliability: reliable
+/api/routing/route:
+  depth: 1
+  durability: transient_local
+  history: keep_last
+  reliability: reliable
+/api/routing/state:
+  depth: 3
+  durability: transient_local
+  history: keep_last
+  reliability: reliable
+/autoware/engage:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/autoware/get/route:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/autoware/get/status:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/autoware/get/stop_speed_exceeded:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/autoware/put/crosswalk_states:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/autoware/put/engage:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/autoware/put/expand_stop_range:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/autoware/put/goal:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/autoware/put/intersection_states:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/autoware/put/pose_initialization_request:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/autoware/put/route:
+  depth: 10
+  durability: transient_local
+  history: keep_last
+  reliability: reliable
+/awapi/lane_change/get/status:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/lane_change/put/approval:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/lane_change/put/force:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/object_avoidance/get/status:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/object_avoidance/put/approval:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/path_change/get/force_available:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/path_change/get/ready_module:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/path_change/get/running_modules:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/path_change/put/approval:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/path_change/put/force:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/prediction/get/objects:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/tmp/infrastructure_commands:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/tmp/virtual_traffic_light_states:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/traffic_light/get/nearest_traffic_signal:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/traffic_light/get/traffic_signals:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/traffic_light/put/traffic_signals:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/vehicle/get/door:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/vehicle/get/status:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/vehicle/put/door:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/vehicle/put/stop:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/awapi/vehicle/put/velocity:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/bagpacker/condition:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/bagpacker/record:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/control/command/actuation_cmd:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/control/command/control_cmd:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/control/command/emergency_cmd:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/control/command/gear_cmd:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/control/command/hazard_lights_cmd:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/control/command/turn_indicators_cmd:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/control/current_gate_mode:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/control/external_cmd_selector/current_selector_mode:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/control/gate_mode_cmd:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/control/shift_decider/gear_cmd:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/control/trajectory_follower/control_cmd:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/control/trajectory_follower/lane_departure_checker_node/debug/processing_time_ms:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/control/trajectory_follower/lateral/control_cmd:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/control/trajectory_follower/lateral/diagnostic:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/control/trajectory_follower/lateral/predicted_trajectory:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/control/trajectory_follower/longitudinal/control_cmd:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/control/trajectory_follower/longitudinal/diagnostic:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/control/trajectory_follower/longitudinal/slope_angle:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/diagnostics:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/diagnostics_agg:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/foa/operation/log:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/service_log:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: reliable
+/foa/log:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/foa/traffic_light_recognition/traffic_light_type:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/joy:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/localization/kinematic_state:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/external/debug/object_recognition/detection/objects:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/external/debug/object_recognition/detection/objects/visualization:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/external/intersection_states:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/external/object_recognition/detection/objects:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/external/selected/control_cmd:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/external/selected/external_control_cmd:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/external/selected/heartbeat:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/external/selected/shift_cmd:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/external/selected/turn_signal_cmd:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/external/traffic_light_recognition/traffic_light_states:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/jpn_signal/danger_info:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/jpn_signal/jpn_signal_mqtt_receiver/transition_event:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/jpn_signal/jpn_signal_sender/transition_event:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/jpn_signal/jpn_signal_udp_receiver/transition_event:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/jpn_signal/jpn_signal_v2i_wrapper/transition_event:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/jpn_signal/traffic_light_info:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/jpn_signal/trajectory_info:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/localization/acceleration:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/localization/diagnostics:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/localization/pose_estimator/exe_time_ms:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/localization/pose_estimator/initial_pose_with_covariance:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/localization/pose_estimator/iteration_num:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/localization/pose_estimator/nearest_voxel_transformation_likelihood:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/localization/pose_estimator/pose:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/localization/pose_estimator/pose_with_covariance:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/localization/pose_estimator/transform_probability:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/localization/pose_twist_fusion_filter/biased_pose_with_covariance:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/localization/util/downsample/pointcloud:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/accel_aux_rpt:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/accel_cmd:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/accel_rpt:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/all_system_statuses:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/brake_aux_rpt:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/brake_cmd:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/brake_rpt:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/can_rx:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/can_tx:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: reliable
+/pacmod/component_rpt:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/debug:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/enabled:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/global_rpt:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/kvaser_reader_node/transition_event:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/kvaser_writer_node/transition_event:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: reliable
+/pacmod/kvaser_reader/transition_event:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/pacmod/transition_event:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/raw_steer_cmd:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/rear_pass_door_cmd:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/rear_pass_door_rpt:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/shift_aux_rpt:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/shift_cmd:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/shift_rpt:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/steering_aux_rpt:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/steering_cmd:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/steering_rpt:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/turn_aux_rpt:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/turn_cmd:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/turn_rpt:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/vehicle_speed:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/vehicle_speed_rpt:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/vin_rpt:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/wheel_speed_rpt:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/parameter_events:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/euclidean/camera_lidar_fusion/clusters:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/apollo/objects:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/apollo/validation/objects:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/centerpoint/objects:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/centerpoint/validation/objects:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/pointpainting/objects:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/pointpainting/validation/objects:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/transfusion/objects:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/clustering/objects:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/clustering/camera_lidar_fusion/objects:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/detection_by_tracker/objects:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/objects:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/euclidean/camera_lidar_fusion/objects:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/parsed_tx/vin_rpt:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/parsed_tx/wheel_speed_rpt:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/pacmod/parsed_tx/yaw_rate_rpt:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/rois0:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/rois1:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/rois2:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/rois3:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/rois4:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/rois5:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/mask0:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/mask1:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/mask2:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/mask3:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/mask4:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/mask5:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/objects:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/tracking/objects:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/traffic_light_recognition/traffic_signals:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/traffic_light_recognition/classified/traffic_signals:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/traffic_light_recognition/rois:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/traffic_light_recognition/rough/rois:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/prediction/maneuver:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/mission_planning/checkpoint:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/mission_planning/goal:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/mission_planning/route:
+  depth: 10
+  durability: transient_local
+  history: keep_last
+  reliability: reliable
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/avoidance_debug_message_array:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/lane_change_debug_message_array:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/avoidance:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/lanechange:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/lanefollowing:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/pullout:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/pullover:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/sideshift:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/input/lateral_offset:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/pull_over/debug/parking_area:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/cooperate_status/avoidance_left:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/cooperate_status/avoidance_right:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/cooperate_status/lane_change_left:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/cooperate_status/lane_change_right:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/cooperate_status/pull_out:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/cooperate_status/pull_over:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/cooperate_status/blind_spot:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/cooperate_status/crosswalk:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/cooperate_status/detection_area:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/cooperate_status/intersection:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/cooperate_status/no_stopping_area:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/cooperate_status/traffic_light:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/path_candidate/avoidance:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/path_candidate/lane_change:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/path_candidate/pull_over:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/path_candidate/pull_out:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/blind_spot:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/crosswalk:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/detection_area:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/intersection:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/occlusion_spot:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/path:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/stop_line:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/traffic_light:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/blind_spot:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/crosswalk:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/detection_area:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/intersection:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/merge_from_private:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/no_stopping_area:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/occlusion_spot:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/run_out:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/stop_line:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/traffic_light:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/virtual_traffic_light:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/obstacle_stop_planner/virtual_wall:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/surround_obstacle_checker/virtual_wall:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/debug/traffic_signal:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/debug/traffic_light_state:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/path:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/behavior_planning/path_with_lane_id:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/force_lane_change:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/lane_change_approval:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/lane_change_candidate_path:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/trajectory:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/debug/wall_marker:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/obstacle_cruise_planner/debug/cruise_wall_marker:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/obstacle_cruise_planner/debug/marker:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/obstacle_cruise_planner/debug/values:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/obstacle_cruise_planner/debug/virtual_wall:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/obstacle_stop_planner/adaptive_cruise_control/debug_values:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/obstacle_stop_planner/debug/marker:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/obstacle_stop_planner/obstacle_stop/debug_values:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/obstacle_velocity_limiter/trajectory:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/surround_obstacle_checker/debug/marker:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/surround_obstacle_checker/trajectory:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/trajectory:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/max_velocity:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/max_velocity_default:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/modified_goal:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/motion_velocity_smoother/debug/trajectory_lateral_acc_filtered:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/motion_velocity_smoother/distance_to_stopline:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/parking/trajectory:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/scenario_selector/trajectory:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/status/stop_reasons:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/trajectory:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/rosout:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/camera/camera0/camera_info:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/camera/camera0/image_raw/compressed:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/camera/camera0/image_rect_color/compressed:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/camera/camera1/camera_info:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/camera/camera1/image_raw/compressed:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/camera/camera1/image_rect_color/compressed:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/camera/camera2/camera_info:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/camera/camera2/image_raw/compressed:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/camera/camera2/image_rect_color/compressed:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/camera/camera3/camera_info:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/camera/camera3/image_raw/compressed:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/camera/camera3/image_rect_color/compressed:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/camera/camera4/camera_info:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/camera/camera4/image_raw/compressed:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/camera/camera4/image_rect_color/compressed:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/camera/camera5/camera_info:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/camera/camera5/image_raw/compressed:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/camera/camera5/image_rect_color/compressed:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/camera/camera6/camera_info:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/camera/camera6/image_raw/compressed:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/camera/camera7/camera_info:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/camera/camera7/image_raw/compressed:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/camera/traffic_light/camera_info:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/camera/traffic_light/image_raw/compressed:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/gnss/fixed:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/gnss/pose:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/gnss/pose_with_covariance:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/gnss/ublox/fix_velocity:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/gnss/ublox/nav_sat_fix:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/gnss/ublox/navpvt:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+# cspell: ignore atteuler
+/sensing/gnss/septentrio/atteuler:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/gnss/septentrio/nav_sat_fix:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/gnss/septentrio/pvtgeodetic:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/gnss/septentrio/orientation:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/imu/imu_data:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/imu/tamagawa/imu_raw:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/imu/tamagawa/receive_heading_reset_req:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/imu/tamagawa/receive_offset_cancel_req:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/imu/tamagawa/receive_ver_req:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/lidar/left/velodyne_packets:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/lidar/rear/velodyne_packets:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/lidar/right/velodyne_packets:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/lidar/top/velodyne_packets:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/lidar/top/pandar_packets:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/lidar/front_left/pandar_packets:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/lidar/front_right/pandar_packets:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/lidar/side_left/pandar_packets:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/lidar/side_right/pandar_packets:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/radar/front_center/objects_raw:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/radar/front_center/pandar_packets:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/radar/front_right/pandar_packets:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/radar/front_left/pandar_packets:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/radar/rear_center/pandar_packets:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/radar/rear_right/pandar_packets:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/radar/rear_left/pandar_packets:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/sensing/vehicle_velocity_converter/twist_with_covariance:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/system/emergency/control_cmd:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/system/emergency/emergency_state:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/system/emergency/gear_cmd:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/system/emergency/hazard_lights_cmd:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/system/emergency/hazard_status:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/system/v2x/virtual_traffic_light_states:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/tf:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/tf_static:
+  depth: 10
+  durability: transient_local
+  history: keep_last
+  reliability: reliable
+/vehicle/calibration/accel_brake_map_calibrator/output/update_suggest:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/vehicle/engage:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/vehicle/raw_vehicle_cmd_converter/debug/steer_pid:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/vehicle/status/actuation_status:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/vehicle/status/battery_charge:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/vehicle/status/control_mode:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/vehicle/status/gear_status:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/vehicle/status/hazard_lights_status:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/vehicle/status/steering_status:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/vehicle/status/steering_wheel_status:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/vehicle/status/turn_indicators_status:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/vehicle/status/velocity_status:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/webauto/enable_map_update:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+/webauto/vehicle_info:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
+(.*)/debug/cyclic_time_ms:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
