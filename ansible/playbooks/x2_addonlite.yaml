@@ -22,6 +22,7 @@
         perception_type: od
         dtb_sensor_type: imx490
         distortion_correction: 0
+        video_num: 3
 
   roles:
     - { role: autoware.ecu_system_setup.boot_shutdown_service }
