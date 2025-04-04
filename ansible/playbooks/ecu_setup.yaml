@@ -28,7 +28,8 @@
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.ecu_system_setup.emergency_vehicle_detector }
     - { role: autoware.ecu_system_setup.redundancy_switcher }
-    - { role: autoware.ecu_system_setup.domain_bridge }
+    - role: autoware.ecu_system_setup.domain_bridge
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: x2_autoware }
     - { role: x2_can_adm }
     - { role: x2_configure_marvell_switch }
