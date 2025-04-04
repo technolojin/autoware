@@ -1,0 +1,24 @@
+name: Check Base Tags
+
+on:
+  pull_request:
+    paths:
+      - autoware.repos
+
+jobs:
+  check-base-tags:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install yq
+        run: |
+          sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+          sudo chmod a+x /usr/local/bin/yq
+
+      - name: Make script executable
+        run: chmod +x .github/scripts/check-base-tag.sh
+
+      - name: Check base tags
+        run: .github/scripts/check-base-tag.sh
