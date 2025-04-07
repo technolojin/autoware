@@ -1,4 +1,12 @@
 {
-  "words": ["otaclient", "otaclient_logger", "otaproxy", "annotationless", "Agnocast", "agnocast"],
+  "words": [
+    "otaclient",
+    "otaclient_logger",
+    "otaproxy",
+    "annotationless",
+    "Agnocast",
+    "agnocast",
+    "dkoldaev"
+  ],
   "ignorePaths": [".release_info.yaml"]
 }

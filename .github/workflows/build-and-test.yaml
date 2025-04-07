@@ -2,6 +2,16 @@ name: build-and-test
 
 on:
   workflow_dispatch:
+    inputs:
+      branch:
+        description: Branch to checkout
+        required: true
+        default: update-resolved-repos-main
+      create-pr:
+        description: Create PR after build and test
+        required: false
+        default: false
+        type: boolean
   schedule:
     # Run at midnight in Japan
     - cron: 0 15 * * *
@@ -26,15 +36,18 @@ jobs:
       CCACHE_SIZE: 1G
       CC: /usr/lib/ccache/gcc
       CXX: /usr/lib/ccache/g++
+      CREATE_PR: ${{ github.event_name == 'schedule' || github.event.inputs.create-pr == 'true' }}
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'schedule' && 'update-resolved-repos-main' || github.event.inputs.branch }}
 
       - name: Install vcstool and ccache
         run: |
           sudo apt-get -y update
-          sudo apt-get -y install python3-pip ccache
+          sudo apt-get -y install python3-pip ccache gh
           pip install --no-cache-dir vcstool
 
       - name: Create ccache directory
@@ -163,3 +176,30 @@ jobs:
 
       - name: Show disk space after the tasks
         run: df -h
+
+      - name: Mark repo as safe
+        run: |
+          git config --global --add safe.directory "${GITHUB_WORKSPACE}"
+
+      - name: Create Pull Request
+        if: ${{ env.CREATE_PR == 'true' }}
+        run: |
+          gh pr create \
+            --base ${{ github.event.repository.default_branch }} \
+            --head update-resolved-repos-main \
+            --title "chore: update default branch commits in .autoware_resolved.repos" \
+            --body "This PR updates the .autoware_resolved.repos file with the latest commit hashes from the default branch. This PR is automatically created by the nightly workflow and has been verified with build and test." \
+            --label "tag:run-build-test" \
+            --reviewer dkoldaev
+        env:
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+
+      - name: Enable auto-merge for PR
+        if: ${{ env.CREATE_PR == 'true' }}
+        run: |
+          PR_NUMBER=$(gh pr list --head update-resolved-repos-main --json number --jq '.[0].number')
+          if [ -n "$PR_NUMBER" ]; then
+            gh pr merge --auto --squash "$PR_NUMBER" --delete-branch
+          fi
+        env:
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
