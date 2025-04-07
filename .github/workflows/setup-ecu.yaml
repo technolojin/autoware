@@ -25,9 +25,17 @@ jobs:
           - awsim_pc
           - ecu_setup
           - x2_cert
-          - x2_signage
           - x2_sub
           - x2_sub_cert
+          - x2_logging
+          - x2_perception
+          - x2_perception
+          - x2_perception_application
+          - x2_addon
+          - x2_addonlite
+          - x2_media_streaming
+          - x2_media_streaming
+          - x2_signage
           - x2_voice_system
         include:
           - playbook: awsim_pc
@@ -36,52 +44,30 @@ jobs:
             additional_args: -y -v -e vehicle_id=1234
           - playbook: x2_cert
             additional_args: -y -v -e vehicle_id=1234
-          - playbook: x2_signage
-            additional_args: -y -v -e github_token='' -e skip_upgrade=true
           - playbook: x2_sub
-            additional_args: -y -v -e vehicle_id=1234 -e skip_rviz=true
+            additional_args: -y -v -e vehicle_id=1234
           - playbook: x2_sub_cert
-            additional_args: -y -v -e vehicle_id=1234 -e skip_rviz=true
-          - playbook: x2_voice_system
-            additional_args: -y -v -e skip_upgrade=true
-
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-
-      - name: Generate token
-        id: generate-token
-        uses: tibdex/github-app-token@v1
-        with:
-          app_id: ${{ secrets.APP_ID }}
-          private_key: ${{ secrets.PRIVATE_KEY }}
-
-      - name: Set git config
-        uses: autowarefoundation/autoware-github-actions/set-git-config@v1
-        with:
-          token: ${{ steps.generate-token.outputs.token }}
-
-      - name: Run setup script
-        run: |
-          ./setup-ecu.sh ${{ matrix.playbook }} ${{ matrix.additional_args }} -e reload_systemd=no
-
-  setup-ecu-20-04:
-    runs-on: ubuntu-20.04
-    strategy:
-      fail-fast: false
-      matrix:
-        playbook:
-          - x2_media_streaming
-          - x2_perception
-          - x2_perception_application
-        include:
-          - playbook: x2_media_streaming
-            additional_args: -y -v -e skip_media_streaming=true -e skip_tier4_camera_driver=true
+            additional_args: -y -v -e vehicle_id=1234
+          - playbook: x2_logging
+            additional_args: -y -v -e vehicle_id=1234 -e github_token=''
           - playbook: x2_perception
-            additional_args: -y -v -e vehicle_id=1234 -e skip_od_tlr_setup=true -e skip_boot_shutdown=true
+            additional_args: -y -v -e ecu_id=perception1
+          - playbook: x2_perception
+            additional_args: -y -v -e ecu_id=perception2
           - playbook: x2_perception_application
-            additional_args: -y -v -e skip_docker=true
-
+            additional_args: -y -v -e ecu_id=perception1
+          - playbook: x2_addon
+            additional_args: -y -v -e github_token=''
+          - playbook: x2_addonlite
+            additional_args: -y -v -e ecu_id=addonlite
+          - playbook: x2_media_streaming
+            additional_args: -y -v -e ecu_id=media-streaming1
+          - playbook: x2_media_streaming
+            additional_args: -y -v -e ecu_id=media-streaming2
+          - playbook: x2_signage
+            additional_args: -y -v -e github_token=''
+          - playbook: x2_voice_system
+            additional_args: -y -v
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -100,6 +86,6 @@ jobs:
 
       - name: Run setup script
         run: |
-          ./setup-ecu.sh ${{ matrix.playbook }} ${{ matrix.additional_args }} -e reload_systemd=no
+          ./setup-ecu.sh ${{ matrix.playbook }} ${{ matrix.additional_args }} -e reload_systemd=no -e skip_for_github_actions=true
         env:
           GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}

@@ -30,7 +30,6 @@
     - { role: autoware.ecu_system_setup.stop_auto_upgrade }
     # - { role: autoware.ecu_system_setup.swap_setting } # 一から環境構築する場合はコメントアウトを外す
     - { role: autoware.ecu_system_setup.syslog_collector }
-    - { role: autoware.ecu_system_setup.bagpacker }
     - { role: autoware.ecu_system_setup.logging_system_launch }
 
   tasks:

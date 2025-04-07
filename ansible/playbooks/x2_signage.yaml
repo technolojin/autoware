@@ -27,12 +27,13 @@
         upgrade: true
         update_cache: true
         cache_valid_time: 86400
-      when: skip_upgrade is not defined or skip_upgrade != "true"
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
   roles:
     - { role: autoware.ecu_system_setup.additional_fonts }
     - { role: autoware.ecu_system_setup.automatic_login }
     - { role: autoware.ecu_system_setup.hide_cursor }
-    - { role: autoware.ecu_system_setup.boot_shutdown_service }
+    - role: autoware.ecu_system_setup.boot_shutdown_service
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.ecu_system_setup.clean_ros_log }
     - { role: autoware.ecu_system_setup.cyclonedds }
     - { role: autoware.ecu_system_setup.disable_lock_screen }
