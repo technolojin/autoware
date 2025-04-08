@@ -1,14 +1,7 @@
 # cspell: ignore mincho rexmit ipaddr maxsize nocaps netcore wmem
 # common
-daemon_reload: "{{ reload_systemd | default('yes') }}"
-ros_domain_id: 1
 rosbag_logging_directory: /mnt/ROSBAG
 systemctl_default: multi-user.target
-autoware_env_dir: "{{ ansible_env.HOME }}"
-autoware_env_dir_privileged: false
-
-# timezone
-timezone: Asia/Tokyo
 
 # additional-fonts
 additional_font_packages:
@@ -73,12 +66,6 @@ rosbag_copy_directory: /media/autoware/ROSBAG
 bagtaker_params_template: bagtaker2/bagtaker_params_x2.yaml.jinja2
 # - bagkeeper
 bagkeeper_params_template: bagkeeper/bagkeeper_params_x2.yaml.jinja2
-
-# set-autoware-env
-autoware_install_dir: /home/autoware/pilot-auto.x2
-vehicle_id: default
-vehicle_model: j6_gen2
-sensor_model: aip_x2_gen2
 
 # boot_shutdown
 build_boot_shutdown_api_msgs: true

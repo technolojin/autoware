@@ -1,7 +1,7 @@
 - name: Setup x2 media streaming
   hosts: localhost
   vars_files:
-    - ./vars/x2_common.yaml
+    - ./vars/essential_vars.yaml
     - ./vars/x2_media_streaming.yaml
 
   vars:

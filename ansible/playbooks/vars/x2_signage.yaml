@@ -1,19 +1,12 @@
-# cspell: ignore ipaddr maxsize mincho momo pactl rexmit
+# cspell: ignore Fonglun ipaddr maxsize mincho momo pactl rexmit
 # common
-daemon_reload: "{{ reload_systemd | default('yes') }}"
-ros_domain_id: 1
 autoware_install_dir: "{{ ansible_env.HOME }}/AutowareSignage"
 systemctl_default: multi-user.target
-autoware_env_dir: "{{ ansible_env.HOME }}"
-autoware_env_dir_privileged: false
 
 # additional-fonts
 additional_font_packages:
   - fonts-noto-cjk
   - fonts-takao-mincho
-
-# timezone
-timezone: Asia/Tokyo
 
 # keyboard
 keyboard_layout_file: keyboard.jp

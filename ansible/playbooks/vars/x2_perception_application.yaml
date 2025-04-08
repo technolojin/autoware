@@ -1,3 +1,2 @@
 # common
-daemon_reload: "{{ reload_systemd | default('yes') }}"
 autoware_env_dir: /opt/autoware/env

@@ -1,9 +1,7 @@
-# cspell: ignore dustynv ipaddr maxsize rexmit compat
+# cspell: ignore dustynv ipaddr libpython maxsize rexmit compat
 # common
-daemon_reload: "{{ reload_systemd | default('yes') }}"
 is_in_docker: "{{ daemon_reload == 'no' }}"
 
-ros_domain_id: 1
 autoware_env_dir: /opt/autoware/env
 autoware_env_dir_privileged: true
 xx1_logging_ecu: false

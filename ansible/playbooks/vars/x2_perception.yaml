@@ -1,6 +1,5 @@
 # cspell: ignore ipaddr prptocol maxsize rexmit compat
 # common
-daemon_reload: "{{ reload_systemd | default('yes') }}"
 autoware_env_dir: /opt/autoware/env
 autoware_env_dir_privileged: true
 
@@ -23,13 +22,6 @@ netcore_wmem_max: 2147483647
 
 # jetson-perception-service
 # jetson_id: 0
-ros_domain_id: 1
-vehicle_id: default
-vehicle_model: j6_gen2
-sensor_model: aip_x2_gen2
-
-# timezone
-timezone: Asia/Tokyo
 
 # ptp4l port
 ptp4l_network_port: eth0
