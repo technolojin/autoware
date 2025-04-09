@@ -32,12 +32,6 @@ keyboard_layout_file: keyboard.jp+ctrl_nocaps
 # ptp4l port
 ptp4l_network_port: enp8s0
 
-# simple-system-launch
-# TODO: The *.*.* will change to the release version in future
-simple_system_launch_items:
-  - file: mot.service
-    command: /opt/mot/build/MaintenanceOperationTool-*.*.*.AppImage
-
 # netplan
 netplan_files: netplan/99-autoware.x2-logging.yaml
 
