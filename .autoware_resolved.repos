@@ -3,17 +3,17 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware.core.git
-    version: 0567c0f5e1a26e6dbef918cc6075ffc703d25c05
+    version: 7829ae57a8ce718ee273a7857aabaff683350e1d
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
-    version: b5835f823ee581364ee4b1f1fd3bf6cc5a75bbcf
+    version: b850c6e614e293faa4675b03d1693c35d637c4e2
     base: true
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
-    version: 1.0.1
+    version: 1.0.2
     base: true
   autoware/autoware_utils:
     type: git
@@ -23,12 +23,12 @@ repositories:
   autoware/autoware_lanelet2_extension:
     type: git
     url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
-    version: 0.6.4
+    version: 0.7.0
     base: true
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: c264f653f5392e6ff8aa9f70fc4fdfc4aea2f039
+    version: b4407cbdc0805941c8e4d95971416bbb0ee48a3f
     base: false
   autoware/aip_launcher:
     type: git
