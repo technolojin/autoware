@@ -48,6 +48,15 @@ target_remove_log_dirs:
   - /home/autoware/.config/MaintenanceOperationTool/logs/*
 
 # autoware logging suite
+autoware_logging_suite_version: v0.8.0
+autoware_logging_suite_modules:
+  - autoware_logging_msgs
+  - logpacker
+  - bagkeeper
+  - bagkeeper_interfaces
+  - bagrollbacker
+  - bagtaker
+  - dssad_packer
 # - logpacker
 logpacker_config_template: logpacker/logpacker_config_x2.yaml.jinja2
 # - logpacker - syslog plugin
@@ -88,7 +97,7 @@ pyrocan_after_this_service: can-logging.service
 logagent_mob_proxy_address: 192.168.20.11:18090
 # autoware_logging_suite/logagent
 logagent_config_template: logagent/logagent_config_x2.yaml.jinja2
-logagent_logging_suite_version: v0.7.0a1
+logagent_logging_suite_version: v0.8.0
 # logging directory
 logagent_rosbag_logging_directory: "{{ rosbag_logging_directory }}"
 logagent_rosbag_logging_directory_mountpoint: "{{ logagent_rosbag_logging_directory }}"
