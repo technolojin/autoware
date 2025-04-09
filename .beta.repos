@@ -174,3 +174,8 @@ repositories:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
     version: main
+  # middleware
+  middleware/external/agnocast:
+    type: git
+    url: https://github.com/tier4/agnocast.git
+    version: main # will be fixed to v2.1.0
