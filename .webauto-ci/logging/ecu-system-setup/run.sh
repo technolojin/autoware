@@ -28,4 +28,7 @@ sudo mkdir -p /etc/ota
 sudo cp "$(dirname "$0")/persistents.txt" /etc/ota/
 sudo cp "$(dirname "$0")/ignore.txt" /etc/ota/
 
+# clean up ecu firmware
+. .webauto-ci/common/ecu-clean-up/run.sh
+
 sudo sed -i '/^autoware\sALL=(ALL)\sNOPASSWD:ALL/d' /etc/sudoers
