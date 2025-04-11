@@ -7,7 +7,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
-    version: bd8e22781949234e8af01eff6ad0c2fbc1b93353
+    version: 43480ef7942ac08a852ff3a985f5614500f31acb
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
@@ -23,11 +23,11 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: 0dd8d88394832585bff0b4d7260a8a26e4cc58a2
+    version: 18a1beaabbf86690ec07af136ebb81e3cee82e56
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 7d44100c1876c800e3b10dfb076cefab67fe6df4
+    version: b98c2419e6e72bbc47003b78f5f602a2a63ea27d
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
@@ -51,7 +51,7 @@ repositories:
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: 12b49247a44e69f5e18179a93a60d7c684e0c074
+    version: 641ebf220e37ac4deab59e1516361486e09b166e
   # description
   description/sensor/sensor_component_description:
     type: git
@@ -155,7 +155,7 @@ repositories:
   vendor/emergency_vehicle_detector:
     type: git
     url: git@github.com:tier4/emergency_vehicle_detector.git
-    version: cd69f157dbcdf06e6657bd9652b8ff1a25f71d4c
+    version: 6bae3edc87d0d949f1d8e4f1bb1223054c198973
   vendor/pyrocan:
     type: git
     url: git@github.com:tier4/pyrocan.git
@@ -173,4 +173,4 @@ repositories:
   middleware/external/agnocast:
     type: git
     url: https://github.com/tier4/agnocast.git
-    version: 36179a8a6a68f9876281cffb9139d12625859805
+    version: 8f22decbcf4a14e95924c63ae23293921f89caf7
