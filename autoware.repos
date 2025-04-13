@@ -65,6 +65,11 @@ repositories:
     url: https://github.com/tier4/autoware_individual_params.git
     version: main
     base: false
+  autoware/managed_transform_buffer:
+    type: git
+    url: https://github.com/autowarefoundation/managed_transform_buffer.git
+    version: main
+    base: true
   # description
   description/sensor/sensor_component_description:
     type: git
