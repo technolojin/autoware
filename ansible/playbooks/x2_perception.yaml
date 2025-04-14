@@ -72,30 +72,9 @@
           ansible.builtin.include_role:
             name: autoware.edge_auto_jetson.perception_application
 
-        - name: Setup as object recognition ECU
-          when:
-            - perception_type == 'od'
-          block:
-            - name: Download yolox model
-              ansible.builtin.include_role:
-                name: autoware.ecu_system_setup.download_yolox_model
-            - name: TIER IV camera driver
-              ansible.builtin.include_role:
-                name: autoware.ecu_system_setup.tier4_camera_driver_anvil
-
-        - name: Setup as traffic light recognition ECU
-          when:
-            - perception_type == 'tlr'
-          block:
-            - name: Download yolox model
-              ansible.builtin.include_role:
-                name: autoware.ecu_system_setup.download_yolox_model
-            - name: Download tlr model
-              ansible.builtin.include_role:
-                name: autoware.ecu_system_setup.download_tlr_model
-            - name: TIER IV camera driver
-              ansible.builtin.include_role:
-                name: autoware.ecu_system_setup.tier4_camera_driver_anvil
+        - name: TIER IV camera driver
+          ansible.builtin.include_role:
+            name: autoware.ecu_system_setup.tier4_camera_driver_anvil
 
     - name: Setup ECU for Perception2 ECU which is connected to Add-On ECU
       when: ecu_id == 'perception2'

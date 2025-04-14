@@ -82,7 +82,7 @@ artifacts:
             enabled: true
         - name: asset-deploy
           user: autoware
-          exec: ./.webauto-ci/main/asset-deploy/run.sh
+          exec: ./.webauto-ci/common/asset-deploy/run.sh
           ml_packages:
             - name: centerpoint
               release: x2/1.4.0
@@ -196,7 +196,7 @@ artifacts:
             enabled: true
         - name: asset-deploy
           user: autoware
-          exec: ./.webauto-ci/main/asset-deploy/run.sh
+          exec: ./.webauto-ci/common/asset-deploy/run.sh
           ml_packages:
             - name: centerpoint
               release: x2/1.4.0
@@ -337,9 +337,29 @@ artifacts:
           repositories_files:
             - autoware.repos
           import_path: src
+      environment_variables:
+        DEBIAN_FRONTEND: noninteractive
+        ML_MODELS_PATH: /opt/autoware/mlmodels
       linux_parameters:
         kernel_version: 5.10.120-tegra
       phases:
+        - name: environment-setup
+          user: root
+          exec: ./.webauto-ci/perception/environment-setup/run.sh
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/perception/environment-setup/**/*
+        - name: asset-deploy
+          user: autoware
+          exec: ./.webauto-ci/common/asset-deploy/run.sh
+          ml_packages:
+            - name: yolox
+              release: with_unknown/mlmodel/v1.0.0
         - name: ecu-system-setup
           exec: ./.webauto-ci/perception/ecu-system-setup/run.sh
           environment_variables:
@@ -374,9 +394,35 @@ artifacts:
           repositories_files:
             - autoware.repos
           import_path: src
+      environment_variables:
+        DEBIAN_FRONTEND: noninteractive
+        ML_MODELS_PATH: /opt/autoware/mlmodels
       linux_parameters:
         kernel_version: 5.10.120-tegra
       phases:
+        - name: environment-setup
+          user: root
+          exec: ./.webauto-ci/perception/environment-setup/run.sh
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/perception/environment-setup/**/*
+        - name: asset-deploy
+          user: autoware
+          exec: ./.webauto-ci/common/asset-deploy/run.sh
+          ml_packages:
+            - name: yolox
+              release: with_unknown/mlmodel/v1.0.0
+            - name: traffic_light_classifier
+              release: awf/1.0
+            - name: traffic_light_fine_detector
+              release: awf/1.0
+            - name: traffic_light_detector
+              release: common/mlmodel/v0.1.2
         - name: ecu-system-setup
           exec: ./.webauto-ci/perception/ecu-system-setup/run.sh
           environment_variables:
@@ -484,9 +530,34 @@ artifacts:
           repositories_files:
             - autoware.repos
           import_path: src
+      environment_variables:
+        ML_MODELS_PATH: /opt/autoware/mlmodels
       linux_parameters:
         kernel_version: 5.10.120-tegra
       phases:
+        - name: environment-setup
+          user: root
+          exec: ./.webauto-ci/addonlite/environment-setup/run.sh
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/addonlite/environment-setup/**/*
+        - name: asset-deploy
+          user: autoware
+          exec: ./.webauto-ci/common/asset-deploy/run.sh
+          ml_packages:
+            - name: yolox
+              release: with_unknown/mlmodel/v1.0.0
+            - name: traffic_light_classifier
+              release: awf/1.0
+            - name: traffic_light_fine_detector
+              release: awf/1.0
+            - name: traffic_light_detector
+              release: common/mlmodel/v0.1.2
         - name: ecu-system-setup
           exec: ./.webauto-ci/addonlite/ecu-system-setup/run.sh
           environment_variables:
