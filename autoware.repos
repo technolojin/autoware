@@ -2,12 +2,12 @@ repositories:
   # autoware
   autoware/core:
     type: git
-    url: https://github.com/tier4/autoware.core.git
+    url: https://github.com/tier4/autoware_core.git
     version: awf-latest
     base: true
   autoware/universe:
     type: git
-    url: https://github.com/tier4/autoware.universe.git
+    url: https://github.com/tier4/autoware_universe.git
     version: awf-latest
     base: true
   autoware/autoware_cmake:
