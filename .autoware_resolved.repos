@@ -2,13 +2,13 @@ repositories:
   # autoware
   autoware/core:
     type: git
-    url: https://github.com/tier4/autoware.core.git
-    version: 68f9297e8c203d9db2a8312950c651d04d01bbda
+    url: https://github.com/tier4/autoware_core.git
+    version: c6ae9429352554df5fd369e4897199d776663c3b
     base: true
   autoware/universe:
     type: git
-    url: https://github.com/tier4/autoware.universe.git
-    version: eac369a5e825b0e18614f018ad8e4743e3804a41
+    url: https://github.com/tier4/autoware_universe.git
+    version: f7a6d5189ac5c17a720db5263a7eae568033b51f
     base: true
   autoware/autoware_cmake:
     type: git
@@ -28,7 +28,7 @@ repositories:
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: b6d3030ab7e1aada4424e17ecee8d91c3cffb179
+    version: febc6e76d9ab2ca943a8b927f053a1f6e3b03355
     base: false
   autoware/aip_launcher:
     type: git
@@ -208,5 +208,5 @@ repositories:
   middleware/external/agnocast:
     type: git
     url: https://github.com/tier4/agnocast.git
-    version: 899139ee5a4bc79c3cec217b2d66fb67821cee01 # TODO(TIER IV): to be updated to v1.1.0
+    version: a9d3e177979af7cdb0eeebbc877f8f794eae0e7b # TODO(TIER IV): to be updated to v1.1.0
     base: true
