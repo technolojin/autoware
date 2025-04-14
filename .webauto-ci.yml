@@ -180,8 +180,12 @@ simulations:
       runtime:
         type: standard1/amd64/medium
 
-  - name: planning_control
+  - name: dlr_aeb
     type: planning_control
+    suite:
+      selector:
+        match_labels:
+          pc_dlr_type: dlr_aeb
     simulator:
       deployment:
         type: container
@@ -528,6 +532,25 @@ simulations:
         - name: model
           path: /home/autoware/autoware_data/lidar_centerpoint
           preserve_original_files: true
+
+  - name: dlr_control_validator
+    type: diagnostics
+    suite:
+      selector:
+        match_labels:
+          pc_dlr_type: dlr_control_validator
+    simulator:
+      deployment:
+        type: container
+        artifact: main
+      runtime:
+        type: standard1/amd64/medium
+      parameters:
+        sensing: "false"
+        perception: "false"
+        localization: "false"
+        planning: "false"
+        control_module_preset: dlr_control_validator
 
 release:
   components:
