@@ -51,11 +51,6 @@ momo_release_tags: 2022.2+tier4-4
 momo_version: 20.04_x86_64
 signage_sink_gen2: true
 
-# simple-system-launch
-simple_system_launch_items:
-  - file: signage.service
-    command: pactl set-default-sink alsa_output.pci-0000_00_1f.3.analog-stereo; pactl set-default-source alsa_input.usb_Fonglun_USB_Microphone_201801-00.mono-fallback; pactl -- set-sink-volume 2 90%; ros2 launch signage signage.launch.xml
-
 # netplan
 netplan_files: netplan/99-autoware.x2-signage.yaml
 
