@@ -23,7 +23,7 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: 2b2dd288c5f4e904f981d3a88643f6b6a47f772d
+    version: be01291518374cd13f111e6999c9205afb2aaa82
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
@@ -173,4 +173,4 @@ repositories:
   middleware/external/agnocast:
     type: git
     url: https://github.com/tier4/agnocast.git
-    version: 899139ee5a4bc79c3cec217b2d66fb67821cee01
+    version: a9d3e177979af7cdb0eeebbc877f8f794eae0e7b
