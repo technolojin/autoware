@@ -35,7 +35,7 @@ repositories:
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: e6d504b0bf4fc80d994a92fc7a783bdca11ac8d0
+    version: beta/v0.41
   autoware/autoware_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_msgs.git
@@ -169,7 +169,7 @@ repositories:
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: main
+    version: beta/v0.41
   # middleware
   middleware/external/agnocast:
     type: git
