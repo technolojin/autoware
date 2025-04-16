@@ -3,12 +3,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: c6ae9429352554df5fd369e4897199d776663c3b
+    version: d1d135ff44eaea931a3e2007fee7c38971eb38d1
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: f7a6d5189ac5c17a720db5263a7eae568033b51f
+    version: b5e9bddfbc1e949a3a0479b574da1c2ef5da55ab
     base: true
   autoware/autoware_cmake:
     type: git
@@ -18,7 +18,7 @@ repositories:
   autoware/autoware_utils:
     type: git
     url: https://github.com/autowarefoundation/autoware_utils.git
-    version: 76e6306e31d8aa8886950cc92d653909e882cecb
+    version: e3c371be7d277a7f24026a3e9cd735a05e4085cb
     base: true
   autoware/autoware_lanelet2_extension:
     type: git
@@ -28,17 +28,17 @@ repositories:
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: febc6e76d9ab2ca943a8b927f053a1f6e3b03355
+    version: e85b17d44205011d6600a0ff949d2588cd5891f3
     base: false
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: c969886383bf7a86923b85642a75220d1727fa27
+    version: fc2781a75a105159b5421ccd71682dab4e12f609
     base: true
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: b74119430fd22e7556b54c053488fa18659be96f
+    version: 39b896060890814340ae1efc41fbad7f5b5cd19f
     base: true
   autoware/tier4_autoware_msgs:
     type: git
@@ -208,5 +208,5 @@ repositories:
   middleware/external/agnocast:
     type: git
     url: https://github.com/tier4/agnocast.git
-    version: a9d3e177979af7cdb0eeebbc877f8f794eae0e7b # TODO(TIER IV): to be updated to v1.1.0
+    version: 5eb916088bba5b9db05d8b2d4b65d8f19ebf738e # TODO(TIER IV): to be updated to v1.1.0
     base: true
