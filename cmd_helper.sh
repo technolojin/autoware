@@ -38,6 +38,41 @@ function launch_autoware_main() {
     ros2 launch autoware_launch autoware.main.launch.xml map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
 }
 
+# --start-autoware:     Start autoware services
+function start_autoware_service() {
+    echo "Starting Autoware services."
+    sudo systemctl start autoware_launch.service
+    sudo systemctl start autoware_system_launch.service
+    sudo systemctl start autoware_api_launch.service
+    sudo systemctl start autoware_localization_launch.service
+    sudo systemctl start autoware_map_launch.service
+    sudo systemctl start pointcloud_container.service
+    sudo systemctl start autoware_sensing_launch.service
+    sudo systemctl start autoware_vehicle_launch.service
+}
+
+# --stop-autoware:     Stop autoware services
+function stop_autoware_service() {
+    sudo systemctl stop autoware_launch.service
+    sudo systemctl stop autoware_system_launch.service
+    sudo systemctl stop autoware_api_launch.service
+    sudo systemctl stop autoware_localization_launch.service
+    sudo systemctl stop autoware_map_launch.service
+    sudo systemctl stop pointcloud_container.service
+    sudo systemctl stop autoware_sensing_launch.service
+    sudo systemctl stop autoware_vehicle_launch.service
+
+    echo "Stopped Autoware services."
+}
+
+# --restart-autoware:     Restart autoware services
+function restart_autoware_service() {
+    stop_autoware_service
+    sleep 5
+    start_autoware_service
+    echo "Autoware services restarted."
+}
+
 # --psim-main:       Launch autoware main with planning simulator
 function launch_psim_main() {
     ros2 launch autoware_launch planning_simulator.main.launch.xml map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
@@ -86,6 +121,9 @@ function help() {
     echo "    --build_ccache    :Build with ccache {You can add additional build options after the arg}"
     echo "    --autoware        :Launch autoware"
     echo "    --autoware-main    :Launch autoware main"
+    echo "    --autoware-start : start autoware all service"
+    echo "    --autoware-stop : stop autoware all service"
+    echo "    --autoware-restart : restart autoware all service"
     echo "    --psim-main     :Launch autoware main with planning simulator"
     echo "    --autoware-sub    :Launch autoware sub"
     echo "    --psim-sub     :Launch autoware sub with planning simulator"
@@ -108,6 +146,12 @@ elif [ "${1-}" = "--build_ccache" ]; then
     build_ccache "${@:2}"
 elif [ "${1-}" = "--autoware" ]; then
     launch_autoware "${@:2}"
+elif [ "${1-}" = "--autoware-start" ]; then
+    start_autoware_service "${@:2}"
+elif [ "${1-}" = "--autoware-stop" ]; then
+    stop_autoware_service "${@:2}"
+elif [ "${1-}" = "--autoware-restart" ]; then
+    restart_autoware_service "${@:2}"
 elif [ "${1-}" = "--autoware-main" ]; then
     launch_autoware_main "${@:2}"
 elif [ "${1-}" = "--psim-main" ]; then
