@@ -152,6 +152,10 @@ repositories:
     type: git
     url: git@github.com:tier4/l4_toolkit.git
     version: f79bb4139669c83d06518f3ed80e2de34dcbfa59
+  product/autoware_diag_bridge:
+    type: git
+    url: git@github.com:tier4/autoware_diagnostics_bridge.git
+    version: 96281eab064c55a66b2e04d16de3fc51e61b3c83
   vendor/emergency_vehicle_detector:
     type: git
     url: git@github.com:tier4/emergency_vehicle_detector.git

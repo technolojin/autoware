@@ -101,3 +101,8 @@ logagent_logging_suite_version: v0.8.0
 # logging directory
 logagent_rosbag_logging_directory: "{{ rosbag_logging_directory }}"
 logagent_rosbag_logging_directory_mountpoint: "{{ logagent_rosbag_logging_directory }}"
+
+# fool proof check service
+fool_proof_check: true
+check_target_service: logpacker.service
+ecu_type: logging

@@ -7,10 +7,29 @@ source {{ autoware_env_dir }}/jetson.env
 source /opt/ros/humble/install/setup.bash
 source {{ perception_application_base_path }}/{{ perception_application_directory_name }}/install/setup.bash
 
+{% if fool_proof_check | bool %}
+pass_call_diag=true
+{% endif %}
+
 if [ "$VEHICLE_MODEL" == "j6_gen2" ]; then
     while [[ ! -e /var/run/mgbe1-ready ]]; do
+        {% if fool_proof_check | bool %}
+        if [ "$pass_call_diag" = true ]; then
+            call_diag --status "Error" \
+                    --mrm_name_suffix mgbe1-ready \
+                    --event_id "Network Interface Error" \
+                    --message "/var/run/mgbe1-ready is not found" \
+                    --impact "Ethernet communication unavailable"
+            pass_call_diag=false
+        fi
+        {% endif %}
         sleep 1
     done
+    call_diag --status "Ok" \
+            --mrm_name_suffix mgbe1-ready \
+            --event_id "none" \
+            --message "none" \
+            --impact "none"
 fi
 
 {% if perception_type == "tlr" %}
@@ -27,8 +46,28 @@ ros2 launch edge_auto_jetson_launch edge_auto_multi_launch_engine.launch.py \
 
 {% for i in range(video_num) %}
 while [[ ! -e /dev/video{{ i }} ]]; do
+    {% if fool_proof_check | bool %}
+    if [ "$pass_call_diag" = true ]; then
+        call_diag --status "Error" \
+                --mrm_name_suffix camera \
+                --event_id "device not found" \
+                --message "/dev/video{{ i }} is not found" \
+                --impact "camera functionality unavailable"
+        pass_call_diag=false
+    fi
+    {% endif %}
     sleep 1
 done
-{%endfor%}
+
+{% if fool_proof_check | bool %}
+call_diag --status "Ok" \
+        --mrm_name_suffix camera \
+        --event_id "none" \
+        --message "none" \
+        --impact "none"
+pass_call_diag=true
+{% endif %}
+
+{% endfor %}
 
 ros2 launch edge_auto_jetson_launch edge_auto_jetson.launch.xml

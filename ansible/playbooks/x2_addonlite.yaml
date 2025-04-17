@@ -48,6 +48,7 @@
     - role: autoware.edge_auto_jetson.ros2
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.edge_auto_jetson.cgroups }
+    - { role: autoware.ecu_system_setup.fool_proof_check } # fool proof check for autoware function
 
   # Any `tasks` defined in the play will be executed after each role listed in `roles`
   # see: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html#using-roles-at-the-play-level

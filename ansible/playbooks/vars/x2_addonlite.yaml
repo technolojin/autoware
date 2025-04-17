@@ -58,3 +58,8 @@ perception_application_edge_auto_repo: git@github.com:tier4/edge-auto-jetson.x2.
 perception_application_service_run_templates_file: perception_application/run.sh.edge_auto_x2.j2 # we can use different run files if the path is in local
 perception_application_native_built_ros: true # True if we build ROS from source and not using apt
 perception_application_directory_name: overlay_ws
+
+# fool proof check service
+fool_proof_check: true
+check_target_service: perception-startup.service
+ecu_type: perception
