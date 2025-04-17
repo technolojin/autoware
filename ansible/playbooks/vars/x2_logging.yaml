@@ -102,6 +102,9 @@ logagent_logging_suite_version: v0.8.0
 logagent_rosbag_logging_directory: "{{ rosbag_logging_directory }}"
 logagent_rosbag_logging_directory_mountpoint: "{{ logagent_rosbag_logging_directory }}"
 
+# rviz
+rviz_config_path: /home/autoware/pilot-auto.x2/src/autoware/launcher/autoware_launch/rviz/autoware_x2.rviz
+
 # fool proof check service
 fool_proof_check: true
 check_target_service: logpacker.service
