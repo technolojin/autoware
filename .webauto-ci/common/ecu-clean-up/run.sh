@@ -34,4 +34,27 @@ done
 
 echo "Stat to call 'apt autoremove' now:"
 sudo -E apt autoremove -y
-echo "------ Start to Remove Jetson development packages ..."
+echo "----- Finished Removing Jetson development packages ..."
+
+echo "----- Start to Remove nsight-system packages ..."
+nsight_system_packages=(
+    "nvidia-nsight-sys"
+    "nsight-system"
+)
+
+sudo rm -rf /var/lib/dpkg/info/nsight-system*.prerm
+
+for package_prefix in "${nsight_system_packages[@]}"; do
+    full_name=$(dpkg -l | grep "${package_prefix}" | awk '{print $2}')
+    if [ -n "$full_name" ]; then
+        echo "Found installed package: $full_name, start to remove it:" 
+        sudo -E apt purge -y --allow-change-held-packages "$full_name"
+    else
+        echo "No installed packages found matching '$package_prefix'."
+    fi
+done
+
+echo "Stat to call 'apt autoremove' now:"
+sudo -E apt autoremove -y
+
+echo "----- Finished Removing nsight-system packages ..."
