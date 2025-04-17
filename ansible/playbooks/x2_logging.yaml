@@ -1,4 +1,7 @@
 # cSpell:ignore bagrollbacker reconfig
+- name: Include playbook for development
+  ansible.builtin.import_playbook: pilot_auto.dev_env.ecu_develop
+
 - name: Setup x2 logging
   hosts: localhost
   vars_files:
@@ -27,6 +30,7 @@
     - { role: autoware.ecu_system_setup.bagtaker2 }
     - role: autoware.ecu_system_setup.boot_shutdown_service
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - { role: autoware.ecu_system_setup.bash_completion }
     - { role: autoware.ecu_system_setup.clean_application_log }
     - { role: autoware.ecu_system_setup.clean_empty_directory }
     - { role: autoware.ecu_system_setup.clean_ros_log }
@@ -56,7 +60,9 @@
     - { role: x2_sub_misc }
     - { role: x2_can_logging }
     - { role: x2_reconnect_touch_display }
+    - { role: x2_remap_touch_display }
     - { role: x2_logging_reconfig_10g }
+    - { role: x2_logging_hide_cursor }
     - { role: x2_dev_tools }
     - { role: autoware.ecu_system_setup.netplan } # need to be the last, as the internet will lost after this
     - { role: autoware.ecu_system_setup.fool_proof_check } # fool proof check for autoware function
