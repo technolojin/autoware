@@ -1,0 +1,11 @@
+[Unit]
+Description=autoware_sensing_launch
+After=network-online.target autoware_vehicle_launch.service pointcloud_container.service
+
+[Service]
+ExecStart=/opt/autoware/services/system_launch/autoware_sensing_launch.service/run.sh
+KillSignal=SIGINT
+User=autoware
+
+[Install]
+WantedBy=multi-user.target
