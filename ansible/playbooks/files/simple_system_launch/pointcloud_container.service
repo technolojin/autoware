@@ -1,0 +1,11 @@
+[Unit]
+Description=pointcloud_container
+After=network-online.target
+
+[Service]
+ExecStart=/opt/autoware/services/system_launch/pointcloud_container.service/run.sh
+KillSignal=SIGINT
+User=autoware
+
+[Install]
+WantedBy=multi-user.target
