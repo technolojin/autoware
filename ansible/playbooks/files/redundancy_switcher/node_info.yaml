@@ -1,0 +1,69 @@
+nodes:
+  - node_id: MainECU # MainECU, MainVCU, SubVCU, or SubECU
+    num_nodes: 4 # Number of ECUs
+    leader_id: MainECU # MainECU, MainVCU, SubVCU, or SubECU
+    path_info: MainECUtoMainVCU # MainECUtoMainVCU, MainECUtoSubVCU, MainVCUtoMainECU, MainVCUtoSubVCU, or SubVCUtoMainECU, or SubVCUtoMainVCU
+    period: 10 # Period of sending message [ms]
+    msg_timeout: 50 # Timeout of message [ms]
+    election_timeout: 150 # Timeout of election [ms]
+    peers:
+      - node_id: SubECU # MainECU, MainVCU, SubVCU, or SubECU
+        connection_type: UDP # Connection type (UDP/CAN)
+        dest_ip: 192.168.20.21 # Destination IP address (required if connection_type is UDP)
+        dest_port: 53004 # Destination port number (required if connection_type is UDP)
+        src_ip: 192.168.20.11 # Source IP address (required if connection_type is UDP)
+        src_port: 53003 # Source port number (required if connection_type is UDP)
+      - node_id: MainVCU
+        connection_type: CAN
+        channel_for_send: fintekcan0
+        can_id_for_send: 0x100
+        channel_for_receive: fintekcan0
+        can_id_for_receive: 0x101
+      - node_id: SubVCU
+        connection_type: CAN
+        channel_for_send: peakcan0
+        can_id_for_send: 0x102
+        channel_for_receive: peakcan0
+        can_id_for_receive: 0x103
+    autoware:
+      autoware_state:
+        uds_path: /tmp/autoware_state_main_ecu # Path of Unix Domain Socket for autoware state
+        period: 100 # Period of receiving autoware state [ms]
+        timeout: 1000 # Timeout of receiving autoware state [ms]
+      election_status:
+        uds_path: /tmp/election_status_main_ecu # Path of Unix Domain Socket for election status
+        period: 100 # Period of sending election status [ms]
+  - node_id: SubECU
+    num_nodes: 4
+    leader_id: MainECU
+    path_info: MainECUtoMainVCU
+    period: 10
+    msg_timeout: 50
+    election_timeout: 150
+    peers:
+      - node_id: MainECU
+        connection_type: UDP
+        dest_ip: 192.168.20.11
+        dest_port: 53003
+        src_ip: 192.168.20.21
+        src_port: 53004
+      - node_id: MainVCU
+        connection_type: CAN
+        channel_for_send: peakcan0
+        can_id_for_send: 0x104
+        channel_for_receive: peakcan0
+        can_id_for_receive: 0x105
+      - node_id: SubVCU
+        connection_type: CAN
+        channel_for_send: fintekcan0
+        can_id_for_send: 0x106
+        channel_for_receive: fintekcan0
+        can_id_for_receive: 0x107
+    autoware:
+      autoware_state:
+        uds_path: /tmp/autoware_state_sub_ecu
+        period: 100
+        timeout: 1000
+      election_status:
+        uds_path: /tmp/election_status_sub_ecu
+        period: 100
