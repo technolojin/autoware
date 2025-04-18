@@ -31,7 +31,7 @@ repositories:
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: 4dbe2eda72c637215c38ec1c1562d2a979b37565
+    version: 08e9863571f6e6629f70bb99feb58edbe40ed967
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
@@ -43,7 +43,7 @@ repositories:
   autoware/autoware_adapi_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_adapi_msgs.git
-    version: e62ea6fdb9ee50e49c7642c77e85250cb15b8e80
+    version: 9f5a09f17db2026b6f560bcdd77ab1a398b033a3
   autoware/autoware_internal_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_internal_msgs.git
