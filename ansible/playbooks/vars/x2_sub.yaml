@@ -18,7 +18,7 @@ netcore_rmem_max: 2147483647
 netcore_wmem_max: 2147483647
 
 # x2_cyclonedds_for_redundancy
-x2_cyclonedds_for_redundancy:
+x2_cyclonedds_for_redundancy_cyclonedds:
   network_interface:
     - { address: enp5s0f1, priority: 1 } # Prioritize 10Gb interface
     - { address: enp5s0f0, priority: 0 }
