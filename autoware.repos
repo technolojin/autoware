@@ -7,7 +7,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
-    version: 0c3dc18d8ef8e97aa3ef0ab32f9a120c6e3223fb
+    version: a5d028ebec3e71b34911ed10c5b4d0771819e50e
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
@@ -23,7 +23,7 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: 7ae085b8295c2d25d4d69621ba2ffa1bb08766f9
+    version: 0919255cdb84a775978e7b3fa7488b3c24832d1e
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
@@ -31,11 +31,11 @@ repositories:
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: 4dbe2eda72c637215c38ec1c1562d2a979b37565
+    version: 08e9863571f6e6629f70bb99feb58edbe40ed967
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: 2af60e642b233cc55b3a86f5869e34014b47321a
+    version: bd9c0cde56350503048417f9237b1f8ae172aef7
   autoware/autoware_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_msgs.git
@@ -43,7 +43,7 @@ repositories:
   autoware/autoware_adapi_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_adapi_msgs.git
-    version: e62ea6fdb9ee50e49c7642c77e85250cb15b8e80
+    version: 9f5a09f17db2026b6f560bcdd77ab1a398b033a3
   autoware/autoware_internal_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_internal_msgs.git
@@ -51,7 +51,7 @@ repositories:
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: 723421124c29bd1cdd3b5232c847bc82b4a9737b
+    version: 0e9d73003061ed0dfa266ca486ec4a37cc7126e6
   # description
   description/sensor/sensor_component_description:
     type: git
@@ -71,7 +71,7 @@ repositories:
   vendor/mj20_interface:
     type: git
     url: git@github.com:tier4/mj20_interface.git
-    version: c9757c46b85802b5e69caf7a220aaf8f99593149
+    version: 90cc3dd6077aa004f75330261355c3074fb58c69
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
@@ -120,7 +120,7 @@ repositories:
   vendor/redundancy_switcher_interface:
     type: git
     url: git@github.com:tier4/redundancy_switcher_interface.git
-    version: 6f34658a27d61f565ba2a978b8d8aabc66307017
+    version: d1e6eb59c3404d23fe207b653d149885465d2ca6
   rclcpp: # Based stable version, the fix-patch for service in initialization and the glog feature is added
     type: git
     url: https://github.com/tier4/rclcpp.git
@@ -177,4 +177,4 @@ repositories:
   middleware/external/agnocast:
     type: git
     url: https://github.com/tier4/agnocast.git
-    version: 5eb916088bba5b9db05d8b2d4b65d8f19ebf738e
+    version: 2aa0f6e271b697faa2cabda250f379c63f4d4b3b
