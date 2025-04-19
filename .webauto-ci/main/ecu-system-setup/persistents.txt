@@ -10,6 +10,7 @@
 '/greengrass/config/config.json'
 '/greengrass/certs'
 '/greengrass/v2/init_config'
+'/opt/auth'
 '/opt/autoware/maps'
 '/opt/autoware/area_map'
 '/opt/devtools'
