@@ -60,7 +60,7 @@ repositories:
   description/vehicle/j6_gen2_description:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
-    version: fd745e58795314aec02f2bb51e1fec4e78feb0a1
+    version: dbb6409c926b05bb2eb57404cb4fa0497e798a9b
   # ecu_system_setup: When you use your own customized ecu_system_setup, uncomment this.
   # ecu_system_setup:
   #   type: git
