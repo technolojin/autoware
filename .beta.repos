@@ -31,7 +31,7 @@ repositories:
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: 08e9863571f6e6629f70bb99feb58edbe40ed967
+    version: 3b25d0f31f5c80c4590e0e874e51ea23961c6a4e
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
