@@ -3,23 +3,23 @@
   <Domain id="any">
     <General>
       <Interfaces>
-{% for item in x2_cyclonedds_for_redundancy.network_interface %}
+{% for item in x2_cyclonedds_for_redundancy_cyclonedds.network_interface %}
         <NetworkInterface name="{{ item.address }}" priority="{{ item.priority }}" multicast="default" />
 {%endfor%}
       </Interfaces>
       <AllowMulticast>spdp</AllowMulticast>
-      <MaxMessageSize>{{ x2_cyclonedds_for_redundancy.max_message_size }}</MaxMessageSize>
-      <FragmentSize>{{ x2_cyclonedds_for_redundancy.fragment_size }}</FragmentSize>
-      <MaxRexmitMessageSize>{{ x2_cyclonedds_for_redundancy.max_rexmit_message_size }}</MaxRexmitMessageSize>
+      <MaxMessageSize>{{ x2_cyclonedds_for_redundancy_cyclonedds.max_message_size }}</MaxMessageSize>
+      <FragmentSize>{{ x2_cyclonedds_for_redundancy_cyclonedds.fragment_size }}</FragmentSize>
+      <MaxRexmitMessageSize>{{ x2_cyclonedds_for_redundancy_cyclonedds.max_rexmit_message_size }}</MaxRexmitMessageSize>
       <DontRoute>true</DontRoute>
     </General>
     <Internal>
       <Watermarks>
-        <WhcHigh>{{ x2_cyclonedds_for_redundancy.water_mark_whc_high }}</WhcHigh>
-        <WhcLow>{{ x2_cyclonedds_for_redundancy.water_mark_whc_low }}</WhcLow>
+        <WhcHigh>{{ x2_cyclonedds_for_redundancy_cyclonedds.water_mark_whc_high }}</WhcHigh>
+        <WhcLow>{{ x2_cyclonedds_for_redundancy_cyclonedds.water_mark_whc_low }}</WhcLow>
       </Watermarks>
-      <SocketReceiveBufferSize min="{{ x2_cyclonedds_for_redundancy.minimum_socket_receive_buffer_size }}"/>
-      <SocketSendBufferSize min="{{ x2_cyclonedds_for_redundancy.minimum_socket_send_buffer_size }}"/>
+      <SocketReceiveBufferSize min="{{ x2_cyclonedds_for_redundancy_cyclonedds.minimum_socket_receive_buffer_size }}"/>
+      <SocketSendBufferSize min="{{ x2_cyclonedds_for_redundancy_cyclonedds.minimum_socket_send_buffer_size }}"/>
     </Internal>
     <Tracing>
        <Verbosity>config</Verbosity>
