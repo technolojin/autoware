@@ -17,7 +17,36 @@ on:
     - cron: 0 15 * * *
 
 jobs:
+  check-branch:
+    runs-on: ubuntu-latest
+    outputs:
+      branch-exists: ${{ steps.check-branch.outputs.exists }}
+    steps:
+      - name: Generate token
+        id: generate-token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Check if branch exists
+        id: check-branch
+        run: |
+          BRANCH="${{ github.event_name == 'schedule' && 'update-resolved-repos-main' || github.event.inputs.branch }}"
+          EXISTS=$(gh api repos/${{ github.repository }}/branches/$BRANCH --silent || echo "false")
+          if [ "$EXISTS" = "false" ]; then
+            echo "Branch $BRANCH does not exist, skipping workflow"
+            echo "exists=false" >> $GITHUB_OUTPUT
+          else
+            echo "Branch $BRANCH exists, continuing workflow"
+            echo "exists=true" >> $GITHUB_OUTPUT
+          fi
+        env:
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+
   build-and-test:
+    needs: check-branch
+    if: ${{ needs.check-branch.outputs.branch-exists == 'true' }}
     runs-on: ubuntu-22.04-m
     container: ${{ matrix.container }}${{ matrix.container-suffix }}
     strategy:
@@ -178,9 +207,9 @@ jobs:
         run: df -h
 
   create-pr:
-    needs: build-and-test
+    needs: [check-branch, build-and-test]
     runs-on: ubuntu-22.04
-    if: ${{ github.event_name == 'schedule' || github.event.inputs.create-pr == 'true' }}
+    if: ${{ (github.event_name == 'schedule' || github.event.inputs.create-pr == 'true') && needs.check-branch.outputs.branch-exists == 'true' }}
 
     steps:
       - name: Check out repository
