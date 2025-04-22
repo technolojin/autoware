@@ -1508,6 +1508,11 @@
   durability: volatile
   history: keep_last
   reliability: best_effort
+/planning/scenario_planning/velocity_smoother/trajectory:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
 /planning/scenario_planning/status/infrastructure_commands:
   depth: 1
   durability: volatile
