@@ -31,7 +31,7 @@ repositories:
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: beta/x2/v0.41
+    version: 3b25d0f31f5c80c4590e0e874e51ea23961c6a4e
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
@@ -177,4 +177,4 @@ repositories:
   middleware/external/agnocast:
     type: git
     url: https://github.com/tier4/agnocast.git
-    version: 2aa0f6e271b697faa2cabda250f379c63f4d4b3b
+    version: e9a263ca9805df65f69b4669f6c06bb948a03528
