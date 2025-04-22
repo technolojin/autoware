@@ -177,4 +177,4 @@ repositories:
   middleware/external/agnocast:
     type: git
     url: https://github.com/tier4/agnocast.git
-    version: e9a263ca9805df65f69b4669f6c06bb948a03528
+    version: 7e3355b5b580ec86c5131cfe45e39345d1a4066d
