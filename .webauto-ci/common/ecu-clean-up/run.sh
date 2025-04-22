@@ -22,7 +22,7 @@ dev_packages=(
 for package_prefix in "${dev_packages[@]}"; do
     full_name=$(dpkg -l | grep "${package_prefix}" | awk '{print $2}')
     if [ -n "$full_name" ]; then
-        echo "Found installed package: $package_prefix, package full name is: $full_name" 
+        echo "Found installed package: $package_prefix, package full name is: $full_name"
         sudo -E apt-mark unhold "$full_name"
 
         echo "Start to remove $full_name"
@@ -47,7 +47,7 @@ sudo rm -rf /var/lib/dpkg/info/nsight-system*.prerm
 for package_prefix in "${nsight_system_packages[@]}"; do
     full_name=$(dpkg -l | grep "${package_prefix}" | awk '{print $2}')
     if [ -n "$full_name" ]; then
-        echo "Found installed package: $full_name, start to remove it:" 
+        echo "Found installed package: $full_name, start to remove it:"
         sudo -E apt purge -y --allow-change-held-packages "$full_name"
     else
         echo "No installed packages found matching '$package_prefix'."
