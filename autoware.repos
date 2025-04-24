@@ -7,7 +7,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
-    version: 73645f225d3849ea1293f11a2c06091965976943
+    version: 2232342a911b84be855f22c34d77157db98e7eaf
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
@@ -23,7 +23,7 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: 24a0a1153c5cec1184047486ae8220d8b97fda59
+    version: f79d941045d7ad2c86eb97b69da00acc24375b2d
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
@@ -51,7 +51,7 @@ repositories:
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: 43f394d05aaf11f6791b0deae5e885774e86d303
+    version: 1f1d7bdc31e5bbd2060c21e3aa15412398ec1ac5
   # description
   description/sensor/sensor_component_description:
     type: git
@@ -60,7 +60,7 @@ repositories:
   description/vehicle/j6_gen2_description:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
-    version: dbb6409c926b05bb2eb57404cb4fa0497e798a9b
+    version: fb1864309dbbf0cf6fd29b759cfe6eb31d59609b
   # ecu_system_setup: When you use your own customized ecu_system_setup, uncomment this.
   # ecu_system_setup:
   #   type: git
@@ -71,7 +71,7 @@ repositories:
   vendor/mj20_interface:
     type: git
     url: git@github.com:tier4/mj20_interface.git
-    version: 90cc3dd6077aa004f75330261355c3074fb58c69
+    version: 9a8c542ddc7874835dc1a0fddce940e31e3192a0
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
@@ -159,7 +159,7 @@ repositories:
   vendor/emergency_vehicle_detector:
     type: git
     url: git@github.com:tier4/emergency_vehicle_detector.git
-    version: 6bae3edc87d0d949f1d8e4f1bb1223054c198973
+    version: 8bfa686436afdde8d5ffed50f78e7b88a4c61363
   vendor/pyrocan:
     type: git
     url: git@github.com:tier4/pyrocan.git
