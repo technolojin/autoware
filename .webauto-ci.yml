@@ -251,7 +251,7 @@ simulations:
           path: /home/autoware/autoware_data/lidar_centerpoint
           preserve_original_files: true
 
-  - name: PerformanceTest_traffic_light
+  - name: PerformanceTest_traffic_light_fine_detection
     type: traffic_light
     suite:
       selector:
@@ -278,6 +278,39 @@ simulations:
       volumes:
         - name: model_fine_detector
           path: /home/autoware/autoware_data/traffic_light_fine_detector
+          preserve_original_files: true
+        - name: model_classifier
+          path: /home/autoware/autoware_data/traffic_light_classifier
+          preserve_original_files: true
+
+  - name: PerformanceTest_traffic_light_whole_image_detection
+    type: traffic_light
+    suite:
+      selector:
+        match_labels:
+          perception_test_type: performance
+    simulator:
+      deployment:
+        type: container
+        artifact: main
+      runtime:
+        type: gpu1/amd64/large
+      parameters:
+        use_empty_dynamic_object_publisher: "true"
+        traffic_light_recognition/high_accuracy_detection_type: whole_image_detection
+      pre_tasks:
+        - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_tensorrt_yolox yolox_traffic_light_detector.launch.xml model_path:=$HOME/autoware_data/tensorrt_yolox/yolox_s_car_ped_tl_detector_960_960_batch_1.onnx label_path:=$HOME/autoware_data/tensorrt_yolox/car_ped_tl_detector_labels.txt yolox_param_path:=$(ros2 pkg prefix autoware_tensorrt_yolox --share)/config/yolox_traffic_light_detector.param.yaml use_decompress:=false build_only:=true
+          mounts:
+            - volume: model_tensorrt_yolox
+        - exec: TLC=traffic_light_classifier && source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_${TLC} car_${TLC}.launch.xml model_path:=$HOME/autoware_data/${TLC}/${TLC}_mobilenetv2_batch_6.onnx label_path:=$HOME/autoware_data/${TLC}/lamp_labels.txt build_only:=true
+          mounts:
+            - volume: model_classifier
+        - exec: TLC=traffic_light_classifier && source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_${TLC} pedestrian_${TLC}.launch.xml model_path:=$HOME/autoware_data/${TLC}/ped_${TLC}_mobilenetv2_batch_6.onnx label_name:=$HOME/autoware_data/${TLC}/lamp_labels_ped.txt build_only:=true
+          mounts:
+            - volume: model_classifier
+      volumes:
+        - name: model_tensorrt_yolox
+          path: /home/autoware/autoware_data/tensorrt_yolox
           preserve_original_files: true
         - name: model_classifier
           path: /home/autoware/autoware_data/traffic_light_classifier
