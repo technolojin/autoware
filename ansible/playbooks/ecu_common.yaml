@@ -26,7 +26,6 @@
     - { role: autoware.ecu_system_setup.otaclient_logger }
     - { role: autoware.ecu_system_setup.prevent_ros2_bag_play }
     - { role: autoware.ecu_system_setup.set_autoware_env }
-    - { role: autoware.ecu_system_setup.simple_system_launch } # if you launch autoware as a service, delete comment out
     - { role: autoware.ecu_system_setup.stop_auto_upgrade }
     - { role: autoware.ecu_system_setup.timezone }
     - { role: autoware.ecu_system_setup.touch_enablehighlevelapi }

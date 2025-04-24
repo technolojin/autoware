@@ -32,8 +32,3 @@ otaclient_release_version: v3.8.4
 otaclient_package_whl_checksum: sha256:c118f7ce69bce85b7a038dd7829ca8567f665cf8f86772a6e773e77ac3b3e8fe
 otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2
 otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2.j2
-
-# simple_system_launch
-simple_system_launch_items:
-  - file: simple_system_launch/autoware_launch.service
-    command: ros2 launch autoware_launch autoware.launch.xml

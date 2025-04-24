@@ -40,50 +40,14 @@ simple_system_launch_items:
   - file: simple_system_launch/autoware_launch.service
     command: |
       ros2 launch autoware_launch autoware.launch.xml \
-            vehicle_model:="$VEHICLE_MODEL" \
-            sensor_model:="$SENSOR_MODEL" \
-            vehicle_id:="$VEHICLE_ID" \
-            map_path:="/opt/autoware/maps" \
-            launch_api:=false \
-            launch_localization:=false \
-            launch_map:=false \
-            launch_sensing:=false \
-            launch_vehicle:=false \
-            launch_pointcloud_container:=false \
-            launch_system:=false \
-            rviz:=false
-  # api
-  - file: simple_system_launch/autoware_api_launch.service
-    command: |
-      ros2 launch autoware_launch tier4_autoware_api_component.launch.xml \
-            vehicle_model:="$VEHICLE_MODEL"
-  # localization
-  - file: simple_system_launch/autoware_localization_launch.service
-    command: |
-      ros2 launch autoware_launch tier4_localization_component.launch.xml \
-            system_run_mode:=online
-  # map
-  - file: simple_system_launch/autoware_map_launch.service
-    command: |
-      ros2 launch autoware_launch tier4_map_component.launch.xml \
-            map_path:=/opt/autoware/maps \
-            pointcloud_map_file:=pcd \
-            lanelet2_map_file:=lanelet2_map.osm
-  # pointcloud_container
-  - file: simple_system_launch/pointcloud_container.service
-    command: |
-      ros2 launch autoware_launch pointcloud_container.launch.py \
-            use_multithread:=true \
-            pointcloud_container_name:=pointcloud_container
-  # sensing
-  - file: simple_system_launch/autoware_sensing_launch.service
-    command: |
-      ros2 launch autoware_launch tier4_sensing_component.launch.xml \
-            sensor_model:="$SENSOR_MODEL" \
-            vehicle_model:="$VEHICLE_MODEL" \
-            vehicle_id:="$VEHICLE_ID" \
-            launch_sensing_driver:=true \
-            pointcloud_container_name:=pointcloud_container
+              map_path:=/opt/autoware/maps \
+              lanelet2_map_file:=lanelet2_map.osm \
+              pointcloud_map_file:=pcd \
+              vehicle_model:="$VEHICLE_MODEL" \
+              sensor_model:="$SENSOR_MODEL" \
+              launch_system:=false \
+              rviz:=false
+
   # system
   - file: simple_system_launch/autoware_system_launch.service
     command: |
@@ -92,12 +56,3 @@ simple_system_launch_items:
             launch_system_monitor:=true \
             launch_dummy_diag_publisher:=false \
             sensor_model:="$SENSOR_MODEL"
-  # vehicle
-  - file: simple_system_launch/autoware_vehicle_launch.service
-    command: |
-      ros2 launch tier4_vehicle_launch vehicle.launch.xml \
-            sensor_model:="$SENSOR_MODEL" \
-            vehicle_model:="$VEHICLE_MODEL" \
-            vehicle_id:="$VEHICLE_ID" \
-            launch_vehicle_interface:=true \
-            config_dir:={{ autoware_install_dir }}/install/individual_params/share/individual_params/config/$VEHICLE_ID/$SENSOR_MODEL
