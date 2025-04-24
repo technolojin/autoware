@@ -3,12 +3,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: c7beb42503a0e1ad472458dfe477bed6ca08bf84
+    version: 77dd5c00ab9b4887dc6756899f830bb1906f06f8
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: 42a3b3e3f566d5401971039fcc177fac16499b09
+    version: 249baff22de41c1aef575a695e5a9812f50848aa
     base: true
   autoware/autoware_cmake:
     type: git
@@ -18,7 +18,7 @@ repositories:
   autoware/autoware_utils:
     type: git
     url: https://github.com/autowarefoundation/autoware_utils.git
-    version: d2a5e1b777a8bf6cd1bd788f9f535cfeb16d2c3b
+    version: 6783a161a9f05790e93a651cb37a49f2e6e237ea
     base: true
   autoware/autoware_lanelet2_extension:
     type: git
@@ -28,7 +28,7 @@ repositories:
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: e2dc45a0eb860cf69955c74ec0aa1304014bb0bd
+    version: 487b3e0498253512d83b1f492ee242515aa1fc7d
     base: false
   autoware/aip_launcher:
     type: git
@@ -48,12 +48,12 @@ repositories:
   autoware/autoware_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_msgs.git
-    version: 1.6.0
+    version: 1.7.0
     base: true
   autoware/autoware_adapi_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_adapi_msgs.git
-    version: be10e00e8841331fd454e136e4057e8e2b2a12cb
+    version: 12287684e096a02d279299a7e6cb44740fc34467
     base: true
   autoware/autoware_internal_msgs:
     type: git
@@ -191,7 +191,7 @@ repositories:
   launch: # Based humble version, the acceleration patched is added
     type: git
     url: https://github.com/tier4/launch.git
-    version: cba32a19691485b3cbc325af5e9ff565d58a2a41
+    version: 30f333df786809bba16876a77c8dbb5e25a9419b
     base: true
 
   v2x/vehicle2infrastructure:
@@ -208,5 +208,5 @@ repositories:
   middleware/external/agnocast:
     type: git
     url: https://github.com/tier4/agnocast.git
-    version: e9a263ca9805df65f69b4669f6c06bb948a03528 # TODO(TIER IV): to be updated to v1.1.0
+    version: 8bbc18c3f67e28af68ed38da569cfd3cc632d57e # TODO(TIER IV): to be updated to v1.1.0
     base: true
