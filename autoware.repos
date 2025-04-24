@@ -71,7 +71,7 @@ repositories:
   vendor/mj20_interface:
     type: git
     url: git@github.com:tier4/mj20_interface.git
-    version: 9a8c542ddc7874835dc1a0fddce940e31e3192a0
+    version: 797454731d359fae1f92db19808e91dcc75df100
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
