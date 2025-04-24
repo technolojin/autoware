@@ -42,6 +42,9 @@ otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-10gbe.j2
 # sxpf_ros_driver
 sxpf_ros_driver_version: 493f4ddb3d40f828ab7caea4d39e2c6d02928758
 
+# set-autoware-env
+autoware_install_dir: /home/autoware/overlay_ws
+
 # perception application/service
 perception_application_edge_auto_version: beta/v4.2
 perception_application_base_path: /home/autoware

@@ -24,7 +24,6 @@
     - { role: autoware.ecu_system_setup.clean_ros_log }
     - { role: autoware.ecu_system_setup.cyclonedds }
     - { role: autoware.ecu_system_setup.disable_lock_screen }
-    - { role: autoware.ecu_system_setup.download_yolox_model }
     - { role: autoware.ecu_system_setup.install_openssh_server }
     - { role: autoware.ecu_system_setup.otaclient }
     - { role: autoware.ecu_system_setup.evaluator_self_hosted_environment }
