@@ -27,9 +27,6 @@
     "systemlog",
     "tmpfiles",
     "vcan",
-    "wmem",
-    "xfixes",
-    "wmctrl",
-    "xrandr"
+    "wmem"
   ]
 }
