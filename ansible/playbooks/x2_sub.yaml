@@ -29,6 +29,8 @@
     - { role: autoware.ecu_system_setup.marvell_switch_driver }
     - role: autoware.ecu_system_setup.build_system_monitor
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - role: autoware.ecu_system_setup.rviz
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.ecu_system_setup.screen_recorder }
     # - { role: autoware.ecu_system_setup.emergency_vehicle_detector }
     # - { role: x2_autoware } # Don't launch Autoware in Sub ECU until MRM design is finalized

@@ -57,8 +57,6 @@
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - role: autoware.ecu_system_setup.logagent
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
-    - role: autoware.ecu_system_setup.rviz
-      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: x2_sub_misc }
     - { role: x2_can_logging }
     - { role: x2_reconnect_touch_display }
