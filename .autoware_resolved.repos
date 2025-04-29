@@ -191,7 +191,7 @@ repositories:
   launch: # Based humble version, the acceleration patched is added
     type: git
     url: https://github.com/tier4/launch.git
-    version: 30f333df786809bba16876a77c8dbb5e25a9419b
+    version: fda72b36c958db3ba4702da692cfc11f195d09f7
     base: true
 
   v2x/vehicle2infrastructure:
