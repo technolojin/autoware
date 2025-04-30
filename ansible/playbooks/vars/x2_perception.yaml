@@ -65,3 +65,4 @@ perception_application_directory_name: overlay_ws
 fool_proof_check: true
 check_target_service: perception-startup.service
 ecu_type: perception
+fool_proof_check_network_interface: mgbe1
