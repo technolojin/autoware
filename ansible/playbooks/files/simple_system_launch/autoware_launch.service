@@ -1,6 +1,6 @@
 [Unit]
 Description=autoware
-After=network-online.target autoware_api_launch.service autoware_localization_launch.service autoware_system_launch.service
+After=network-online.target autoware_system_launch.service
 
 [Service]
 Environment=ENABLE_AGNOCAST=1
