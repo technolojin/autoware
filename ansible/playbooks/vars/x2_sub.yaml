@@ -62,7 +62,7 @@ x2_configure_marvell_switch_file: X2_J6_Gen2_Sub_Marvell.xml
 x2_ptp4l_ecu: sub
 
 # rviz
-rviz_config_path: /home/autoware/autoware.proj/src/autoware/launcher/autoware_launch/rviz/autoware_x2.rviz
+rviz_config_path: /home/autoware/autoware.proj/src/autoware/launcher/autoware_launch/rviz/autoware_debug.rviz
 
 # screen_recorder
 screen_recorder_default_logging_directory: /tmp
