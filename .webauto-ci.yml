@@ -361,6 +361,7 @@ artifacts:
             - name: yolox
               release: with_unknown/mlmodel/v1.0.0
         - name: ecu-system-setup
+          user: root
           exec: ./.webauto-ci/perception/ecu-system-setup/run.sh
           environment_variables:
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_perception.yaml
@@ -377,7 +378,7 @@ artifacts:
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
-        from: ghcr.io/tier4/ota-base-image/esg620_nvidia-jetpack:r35.4.1-v001-cti_orin-agx_forge_base-nvme0n1
+        from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.40.0
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
@@ -424,6 +425,7 @@ artifacts:
             - name: traffic_light_detector
               release: common/mlmodel/v0.1.2
         - name: ecu-system-setup
+          user: root
           exec: ./.webauto-ci/perception/ecu-system-setup/run.sh
           environment_variables:
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_perception.yaml
@@ -440,7 +442,7 @@ artifacts:
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
-        from: ghcr.io/tier4/ota-base-image/esg620_nvidia-jetpack:r35.4.1-v001-cti_orin-agx_forge_base-nvme0n1
+        from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.40.0
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
@@ -566,6 +568,7 @@ artifacts:
             - name: traffic_light_detector
               release: common/mlmodel/v0.1.2
         - name: ecu-system-setup
+          user: root
           exec: ./.webauto-ci/addonlite/ecu-system-setup/run.sh
           environment_variables:
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_addonlite.yaml
@@ -582,7 +585,7 @@ artifacts:
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
-        from: ghcr.io/tier4/ota-base-image/esg620_nvidia-jetpack:r35.4.1-v001-cti_orin-agx_forge_base-nvme0n1
+        from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.40.0
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt

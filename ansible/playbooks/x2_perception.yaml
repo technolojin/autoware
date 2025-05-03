@@ -53,13 +53,9 @@
     - { role: autoware.ecu_system_setup.set_large_txqueue }
     - { role: autoware.ecu_system_setup.rsyncd }
     - { role: autoware.edge_auto_jetson.link_retry_handler }
-    - role: autoware.edge_auto_jetson.cuda
-      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - role: autoware.edge_auto_jetson.sensor_trigger_for_anvil
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.edge_auto_jetson.vcstool }
-    - role: autoware.edge_auto_jetson.ros2
-      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.edge_auto_jetson.cgroups }
     - { role: autoware.ecu_system_setup.fool_proof_check } # fool proof check for autoware function
 
