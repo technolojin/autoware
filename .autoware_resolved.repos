@@ -3,7 +3,7 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: d99ec032efb39b39d50f694e6fcb85ce98765fc2
+    version: 3f31663c7abb23ba61ea5659cc941aa35b692471
     base: true
   autoware/universe:
     type: git
@@ -28,7 +28,7 @@ repositories:
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: 4e3a167ab4197f496e731435dc0ad1084dc30b45
+    version: be6f10434b07f90bebffea0bc05befc75b31baf6
     base: false
   autoware/aip_launcher:
     type: git
@@ -191,7 +191,7 @@ repositories:
   launch: # Based humble version, the acceleration patched is added
     type: git
     url: https://github.com/tier4/launch.git
-    version: fda72b36c958db3ba4702da692cfc11f195d09f7
+    version: c2f6c7b2255f9ba238af6f76ccf3fa66160b9079
     base: true
 
   v2x/vehicle2infrastructure:
