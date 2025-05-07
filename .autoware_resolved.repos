@@ -3,12 +3,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: 3f31663c7abb23ba61ea5659cc941aa35b692471
+    version: 58e50802848fad217b0d2f97e732b165cb64eef1
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: d036c1c0a04b06b9ca7e74485215244c85bcb4d4
+    version: 32fb2a862f2d088889185c9dcd3ab8ae648deb02
     base: true
   autoware/autoware_cmake:
     type: git
@@ -58,7 +58,7 @@ repositories:
   autoware/autoware_internal_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_internal_msgs.git
-    version: 5a0a7c386bdf14d420ddc8a081c29bc689176c44
+    version: 6d2cadcded5e7948c8b125acc2c09dea64468daf
     base: true
   autoware/individual_params:
     type: git
@@ -191,7 +191,7 @@ repositories:
   launch: # Based humble version, the acceleration patched is added
     type: git
     url: https://github.com/tier4/launch.git
-    version: c2f6c7b2255f9ba238af6f76ccf3fa66160b9079
+    version: 1500f3bef3eebca8a76f654b7071d4bd82d101fb
     base: true
 
   v2x/vehicle2infrastructure:
@@ -208,5 +208,5 @@ repositories:
   middleware/external/agnocast:
     type: git
     url: https://github.com/tier4/agnocast.git
-    version: a574fd33a1d0290b28d49b45c359594c13d14ace # TODO(TIER IV): to be updated to v1.1.0
+    version: cb6310e60b4ea0a9820ff09aefeb8a4286bf3689 # TODO(TIER IV): to be updated to v1.1.0
     base: true
