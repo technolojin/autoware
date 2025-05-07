@@ -38,34 +38,22 @@ function launch_autoware_main() {
     ros2 launch autoware_launch autoware.main.launch.xml map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
 }
 
-# --start-autoware:     Start autoware services
+# --autoware-start:     Start autoware services
 function start_autoware_service() {
     echo "Starting Autoware services."
     sudo systemctl start autoware_launch.service
     sudo systemctl start autoware_system_launch.service
-    sudo systemctl start autoware_api_launch.service
-    sudo systemctl start autoware_localization_launch.service
-    sudo systemctl start autoware_map_launch.service
-    sudo systemctl start pointcloud_container.service
-    sudo systemctl start autoware_sensing_launch.service
-    sudo systemctl start autoware_vehicle_launch.service
 }
 
-# --stop-autoware:     Stop autoware services
+# --autoware-stop:     Stop autoware services
 function stop_autoware_service() {
     sudo systemctl stop autoware_launch.service
     sudo systemctl stop autoware_system_launch.service
-    sudo systemctl stop autoware_api_launch.service
-    sudo systemctl stop autoware_localization_launch.service
-    sudo systemctl stop autoware_map_launch.service
-    sudo systemctl stop pointcloud_container.service
-    sudo systemctl stop autoware_sensing_launch.service
-    sudo systemctl stop autoware_vehicle_launch.service
 
     echo "Stopped Autoware services."
 }
 
-# --restart-autoware:     Restart autoware services
+# --autoware-restart:     Restart autoware services
 function restart_autoware_service() {
     stop_autoware_service
     sleep 5

@@ -24,13 +24,13 @@
     - { role: autoware.ecu_system_setup.clean_ros_log }
     - { role: autoware.ecu_system_setup.cyclonedds }
     - { role: autoware.ecu_system_setup.disable_lock_screen }
-    - { role: autoware.ecu_system_setup.download_yolox_model }
     - { role: autoware.ecu_system_setup.install_openssh_server }
     - { role: autoware.ecu_system_setup.otaclient }
     - { role: autoware.ecu_system_setup.evaluator_self_hosted_environment }
     - { role: autoware.ecu_system_setup.ptp4l }
     - { role: autoware.ecu_system_setup.rsyslog }
     - { role: autoware.ecu_system_setup.set_autoware_env }
+    - { role: autoware.ecu_system_setup.syslog_collector_client }
     - { role: autoware.ecu_system_setup.stop_auto_upgrade }
     - { role: autoware.ecu_system_setup.timezone }
     - { role: autoware.ecu_system_setup.turn_off_desktop_notification }

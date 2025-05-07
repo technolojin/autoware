@@ -85,7 +85,7 @@ artifacts:
           exec: ./.webauto-ci/common/asset-deploy/run.sh
           ml_packages:
             - name: centerpoint
-              release: x2/1.4.0
+              release: x2/1.5.0
         - name: ecu-system-setup
           user: autoware
           exec: ./.webauto-ci/main/ecu-system-setup/run.sh
@@ -199,7 +199,7 @@ artifacts:
           exec: ./.webauto-ci/common/asset-deploy/run.sh
           ml_packages:
             - name: centerpoint
-              release: x2/1.4.0
+              release: x2/1.5.0
         - name: ecu-system-setup
           user: autoware
           exec: ./.webauto-ci/main/ecu-system-setup/run.sh
@@ -361,6 +361,7 @@ artifacts:
             - name: yolox
               release: with_unknown/mlmodel/v1.0.0
         - name: ecu-system-setup
+          user: root
           exec: ./.webauto-ci/perception/ecu-system-setup/run.sh
           environment_variables:
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_perception.yaml
@@ -377,7 +378,7 @@ artifacts:
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
-        from: ghcr.io/tier4/ota-base-image/esg620_nvidia-jetpack:r35.4.1-v001-cti_orin-agx_forge_base-nvme0n1
+        from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.40.0
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
@@ -424,6 +425,7 @@ artifacts:
             - name: traffic_light_detector
               release: common/mlmodel/v0.1.2
         - name: ecu-system-setup
+          user: root
           exec: ./.webauto-ci/perception/ecu-system-setup/run.sh
           environment_variables:
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_perception.yaml
@@ -440,7 +442,7 @@ artifacts:
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
-        from: ghcr.io/tier4/ota-base-image/esg620_nvidia-jetpack:r35.4.1-v001-cti_orin-agx_forge_base-nvme0n1
+        from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.40.0
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
@@ -458,7 +460,8 @@ artifacts:
             - autoware.repos
           import_path: src
       environment_variables:
-        AUTOWARE_PATH: /home/autoware/pilot-auto.x2
+        AUTOWARE_PATH: /home/autoware/overlay_ws
+        ML_MODELS_PATH: /opt/autoware/mlmodels
         DEBIAN_FRONTEND: noninteractive
         LANG: C.UTF-8
       linux_parameters:
@@ -490,6 +493,12 @@ artifacts:
               - amd64.env
           incremental_build:
             enabled: true
+        - name: asset-deploy
+          user: autoware
+          exec: ./.webauto-ci/common/asset-deploy/run.sh
+          ml_packages:
+            - name: yolox
+              release: with_unknown/mlmodel/v1.0.0
         - name: ecu-system-setup
           user: autoware
           exec: ./.webauto-ci/addon/ecu-system-setup/run.sh
@@ -559,6 +568,7 @@ artifacts:
             - name: traffic_light_detector
               release: common/mlmodel/v0.1.2
         - name: ecu-system-setup
+          user: root
           exec: ./.webauto-ci/addonlite/ecu-system-setup/run.sh
           environment_variables:
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_addonlite.yaml
@@ -575,7 +585,7 @@ artifacts:
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
-        from: ghcr.io/tier4/ota-base-image/esg620_nvidia-jetpack:r35.4.1-v001-cti_orin-agx_forge_base-nvme0n1
+        from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.40.0
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt

@@ -7,7 +7,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
-    version: a5d028ebec3e71b34911ed10c5b4d0771819e50e
+    version: 324ff83db22e644f255776a80b0bb74efcd595a6
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
@@ -23,11 +23,11 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: 0919255cdb84a775978e7b3fa7488b3c24832d1e
+    version: e3804ddc36686d8316e6b5a76a53107fa73d6cd9
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 2de2a4434dda88df3f233c72aebc3a6cc90cecab
+    version: 590b863a8137220e6417999b1e1ae21a5a21a970
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
@@ -51,7 +51,7 @@ repositories:
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: 0e9d73003061ed0dfa266ca486ec4a37cc7126e6
+    version: 1f1d7bdc31e5bbd2060c21e3aa15412398ec1ac5
   # description
   description/sensor/sensor_component_description:
     type: git
@@ -60,7 +60,7 @@ repositories:
   description/vehicle/j6_gen2_description:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
-    version: dbb6409c926b05bb2eb57404cb4fa0497e798a9b
+    version: fb1864309dbbf0cf6fd29b759cfe6eb31d59609b
   # ecu_system_setup: When you use your own customized ecu_system_setup, uncomment this.
   # ecu_system_setup:
   #   type: git
@@ -71,7 +71,7 @@ repositories:
   vendor/mj20_interface:
     type: git
     url: git@github.com:tier4/mj20_interface.git
-    version: 90cc3dd6077aa004f75330261355c3074fb58c69
+    version: 797454731d359fae1f92db19808e91dcc75df100
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
@@ -159,7 +159,7 @@ repositories:
   vendor/emergency_vehicle_detector:
     type: git
     url: git@github.com:tier4/emergency_vehicle_detector.git
-    version: 6bae3edc87d0d949f1d8e4f1bb1223054c198973
+    version: 8bfa686436afdde8d5ffed50f78e7b88a4c61363
   vendor/pyrocan:
     type: git
     url: git@github.com:tier4/pyrocan.git
@@ -177,4 +177,4 @@ repositories:
   middleware/external/agnocast:
     type: git
     url: https://github.com/tier4/agnocast.git
-    version: 7e3355b5b580ec86c5131cfe45e39345d1a4066d
+    version: 2.1.0
