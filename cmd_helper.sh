@@ -41,15 +41,14 @@ function launch_autoware_main() {
 # --autoware-start:     Start autoware services
 function start_autoware_service() {
     echo "Starting Autoware services."
-    sudo systemctl start autoware_launch.service
     sudo systemctl start autoware_system_launch.service
+    sudo systemctl start autoware_launch.service
 }
 
 # --autoware-stop:     Stop autoware services
 function stop_autoware_service() {
-    sudo systemctl stop autoware_launch.service
     sudo systemctl stop autoware_system_launch.service
-
+    sudo systemctl stop autoware_launch.service
     echo "Stopped Autoware services."
 }
 
