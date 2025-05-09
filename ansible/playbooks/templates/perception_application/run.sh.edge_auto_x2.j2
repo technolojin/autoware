@@ -8,6 +8,7 @@ source /opt/ros/humble/install/setup.bash
 source {{ perception_application_base_path }}/{{ perception_application_directory_name }}/install/setup.bash
 
 {% if fool_proof_check | bool %}
+source /opt/autoware/services/fool-proof-check/activate_call_diag.sh
 {% endif %}
 
 if [ "$VEHICLE_MODEL" == "j6_gen2" ]; then
