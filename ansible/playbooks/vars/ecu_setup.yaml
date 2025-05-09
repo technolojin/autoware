@@ -46,7 +46,7 @@ simple_system_launch_items:
               vehicle_model:="$VEHICLE_MODEL" \
               sensor_model:="$SENSOR_MODEL" \
               launch_system:=false \
-              rviz:=false
+              rviz:=false 2>&1 | tee "$HOME"/autoware.log
 
   # system
   - file: simple_system_launch/autoware_system_launch.service
@@ -55,4 +55,4 @@ simple_system_launch_items:
             system_run_mode:=online \
             launch_system_monitor:=true \
             launch_dummy_diag_publisher:=false \
-            sensor_model:="$SENSOR_MODEL"
+            sensor_model:="$SENSOR_MODEL" 2>&1 | tee "$HOME"/autoware_system.log
