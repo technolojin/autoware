@@ -2,7 +2,7 @@ repositories:
   simulator/scenario_simulator:
     type: git
     url: https://github.com/tier4/scenario_simulator_v2.git
-    version: feature/v2i_remain_time_updated
+    version: 8817a23a94aebcf70004ab25fe342936e9e8bdca
   simulator/logsim:
     type: git
     url: git@github.com:tier4/logsim.git
