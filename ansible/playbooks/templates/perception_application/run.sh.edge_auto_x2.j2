@@ -63,4 +63,8 @@ call_diag_polling --status "Ok" \
 
 {% endfor %}
 
+# for letterbox_monitor
+mkdir -p {{ perception_application_base_path }}/.ros/recognition_log
+export ROS_LOG_DIR={{ perception_application_base_path }}/.ros/recognition_log
+
 ros2 launch edge_auto_jetson_launch edge_auto_jetson.launch.xml

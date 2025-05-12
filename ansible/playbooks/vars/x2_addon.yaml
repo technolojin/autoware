@@ -61,3 +61,20 @@ rsyslog_server_ipaddr: 192.168.30.71 # X2 Logging ECU
 # rsyslog_server_port: 514
 # rsyslog_protocol: tcp
 rsyslog_queue_maxsize: 1g
+
+# # letterbox_monitor
+# letterbox_monitor:
+#   - service_name: default
+#     ros_log_dir: "{{ perception_application_base_path }}/.ros/log"
+#     user_name: autoware
+#     group_name: autoware
+#     use_call_diag: false
+#     use_letterbox: false
+#     ignore_node_names: []
+#   - service_name: recognition
+#     ros_log_dir: "{{ perception_application_base_path }}/.ros/recognition_log"
+#     user_name: autoware
+#     group_name: autoware
+#     use_call_diag: true
+#     use_letterbox: false
+#     ignore_node_names: []

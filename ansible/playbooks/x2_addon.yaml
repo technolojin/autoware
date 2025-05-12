@@ -41,3 +41,4 @@
     - role: autoware.edge_auto_jetson.perception_application
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.ecu_system_setup.netplan } # need to be the last, as the internet will lost after this
+    # - { role: autoware.ecu_system_setup.letterbox_monitor }
