@@ -86,3 +86,8 @@ simple_system_launch_items:
             launch_system_monitor:=true \
             launch_dummy_diag_publisher:=false \
             sensor_model:="$SENSOR_MODEL" 2>&1 | tee "$HOME"/autoware_system.log
+
+# fool proof check service
+check_target_service: autoware_system_launch.service
+ecu_type: main
+fool_proof_check_network_interface: enp5s0f1 # TODO: check vlan.500
