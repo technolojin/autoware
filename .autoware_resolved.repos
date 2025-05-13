@@ -3,12 +3,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: cbcb9f24ba4ba8a0bc2828ed3f4d23f5d4bd9916
+    version: 2624e05decbbd9ab9658e5526d8a2c4cbf04e6e7
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: dc8185e11c419e1e35009ecfd5486ba006818b18
+    version: cd44d9485cb200417248b3d28f7216d66b9dcc85
     base: true
   autoware/autoware_cmake:
     type: git
@@ -28,12 +28,12 @@ repositories:
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: 47ca93c3db14618a44e27f490bfd55fbd57102ab
+    version: 9feb232b9e401b4ac3f8c25b6fb904712c05c675
     base: false
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 7b8dca2407bb26d805dec2140567946be86913f0
+    version: c02f3d255991d707f79ff77533bb805fbfe48f3f
     base: true
   autoware/ad_api_adaptor:
     type: git
@@ -115,7 +115,7 @@ repositories:
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
-    version: v0.2.4
+    version: v0.2.6
     base: true
   vendor/boost_transport_drivers:
     type: git
@@ -197,7 +197,7 @@ repositories:
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: 6db0d788017e6739546adeee5ebc683ab395aeee
+    version: f3bad977e8199912819c5a93201319f4dea6ca9b
     base: true
 
   # middleware
@@ -208,5 +208,5 @@ repositories:
   middleware/external/agnocast:
     type: git
     url: https://github.com/tier4/agnocast.git
-    version: a4bc2f0f38019bc2ff7ce01e8bfa150b079ea5a1 # TODO(TIER IV): to be updated to v1.1.0
+    version: 73273877be2855f8d8a7f0b8e2e9c1be46121eeb # TODO(TIER IV): to be updated to v1.1.0
     base: true
