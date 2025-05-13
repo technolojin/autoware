@@ -71,15 +71,15 @@ fool_proof_check_network_interface: mgbe1
 letterbox_monitor:
   - service_name: default
     ros_log_dir: "{{ perception_application_base_path }}/.ros/log"
-    user_name: autoware
-    group_name: autoware
+    user_name: root
+    group_name: root
     use_call_diag: false
     use_letterbox: false
     ignore_node_names: []
   - service_name: recognition
     ros_log_dir: "{{ perception_application_base_path }}/.ros/recognition_log"
-    user_name: autoware
-    group_name: autoware
+    user_name: root
+    group_name: root
     use_call_diag: true
     use_letterbox: false
     ignore_node_names: []
