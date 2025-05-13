@@ -1,7 +1,5 @@
 # cSpell:ignore ipaddr maxsize
 
-autoware_env_dir: /home/autoware
-
 # syslog collector - client
 syslog_collector_type: Client
 rsyslog_server_ipaddr: 192.168.30.71 # X2 Logging ECU
