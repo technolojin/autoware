@@ -115,7 +115,7 @@ repositories:
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
-    version: v0.2.4
+    version: v0.2.6
     base: true
   vendor/boost_transport_drivers:
     type: git
