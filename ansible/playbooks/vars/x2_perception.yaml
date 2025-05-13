@@ -67,7 +67,7 @@ check_target_service: perception-startup.service
 ecu_type: perception
 fool_proof_check_network_interface: mgbe1
 
-#letterbox_monitor
+# letterbox_monitor
 letterbox_monitor:
   - service_name: default
     ros_log_dir: "{{ perception_application_base_path }}/.ros/log"
