@@ -803,6 +803,31 @@
   durability: volatile
   history: keep_last
   reliability: best_effort
+/perception/object_recognition/detection/irregular_object/objects:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/centerpoint_irregular_object_merger/objects:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/transfusion_irregular_object_merger/objects:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/pointpainting_irregular_object_merger/objects:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/apollo_irregular_object_merger/objects:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
 /perception/object_recognition/objects:
   depth: 1
   durability: volatile
