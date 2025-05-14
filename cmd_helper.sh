@@ -109,6 +109,11 @@ function clean() {
     rm -rf "${SCRIPT_DIR}"/install "${SCRIPT_DIR}"/build "${SCRIPT_DIR}"/log
 }
 
+# --shutdown:     Shutdown all ECU
+function exec_shutdown() {
+     ros2 service call /pilot_auto/api/ecu/shutdown boot_shutdown_api_msgs/srv/Shutdown {}
+}
+
 function help() {
     echo "Usage: ${0##\*/} [arg]"
     echo
@@ -130,6 +135,7 @@ function help() {
     echo "    --stop_record     :Stop recording rosbag with logpacker"
     echo "    --kill            :Kill all ros2 zombie nodes"
     echo "    --clean           :Delete '/install', '/build' and '/log' directories"
+    echo "    --shutdown        :Shutdown all ECU"
     echo "    --help or -h      :Display this help message"
     exit 0 #default exit code
 }
@@ -170,6 +176,8 @@ elif [ "${1-}" = "--stop_record" ]; then
     stop_record
 elif [ "${1-}" = "--kill" ]; then
     kill_zombie
+elif [ "${1-}" = "--shutdown" ]; then
+    exec_shutdown
 elif [ "${1-}" = "--clean" ]; then
     clean
 else
