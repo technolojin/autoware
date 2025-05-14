@@ -111,7 +111,7 @@ function clean() {
 
 # --shutdown:     Shutdown all ECU
 function exec_shutdown() {
-     ros2 service call /pilot_auto/api/ecu/shutdown boot_shutdown_api_msgs/srv/Shutdown {}
+    ros2 service call /pilot_auto/api/ecu/shutdown boot_shutdown_api_msgs/srv/Shutdown {}
 }
 
 function help() {
