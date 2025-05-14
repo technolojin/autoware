@@ -113,7 +113,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          file: build-context/docker/pilot-auto/Dockerfile
+          file: docker/pilot-auto/Dockerfile
           set: |
             *.context=${{ env.WORKSPACE_ROOT }}/build-context
             *.secrets=id=github_token,src=github_token
