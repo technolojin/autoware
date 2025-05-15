@@ -3,6 +3,7 @@ Description=autoware
 After=network-online.target autoware_system_launch.service
 
 [Service]
+Environment=ENABLE_AGNOCAST=1
 ExecStart=/opt/autoware/services/system_launch/autoware_launch.service/run.sh
 KillSignal=SIGINT
 User=autoware

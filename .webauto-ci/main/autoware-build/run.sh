@@ -12,6 +12,9 @@
 # shellcheck disable=SC2012
 ROS_DISTRO=$(ls -1 /opt/ros | head -1)
 
+# enable Agnocast during the build
+export ENABLE_AGNOCAST=1
+
 # CARET build
 if [ "$WEBAUTO_CI_BUILD_OPTION_CARET_ENABLED" = "ENABLED" ]; then
     echo "CARET ENABLED"
