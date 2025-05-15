@@ -109,7 +109,7 @@ function clean() {
     rm -rf "${SCRIPT_DIR}"/install "${SCRIPT_DIR}"/build "${SCRIPT_DIR}"/log
 }
 
-# --shutdown:     Shutdown all ECU
+# --shutdown:     Shutdown all ECU (except logging ECU)
 function exec_shutdown() {
     ros2 service call /pilot_auto/api/ecu/shutdown boot_shutdown_api_msgs/srv/Shutdown {}
 }
