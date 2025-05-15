@@ -109,3 +109,12 @@ fool_proof_check: true
 check_target_service: logpacker.service
 ecu_type: logging
 fool_proof_check_network_interface: enp3s0f0
+# # letterbox_monitor
+# letterbox_monitor:
+#   - service_name: default
+#     ros_log_dir: /home/autoware/.ros/log
+#     user_name: autoware
+#     group_name: autoware
+#     use_call_diag: false
+#     use_letterbox: false
+#     ignore_node_names: []

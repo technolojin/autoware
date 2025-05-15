@@ -78,3 +78,13 @@ redundancy_switcher_conf_install_dir: /opt/redundancy_switcher/conf
 redundancy_switcher_conf_files: redundancy_switcher/node_info.yaml
 redundancy_switcher_service_template: redundancy_switcher.service.jinja2
 node_id: 1
+
+# letterbox_monitor
+letterbox_monitor:
+  - service_name: default
+    ros_log_dir: /home/autoware/.ros/log
+    user_name: autoware
+    group_name: autoware
+    use_call_diag: false
+    use_letterbox: false
+    ignore_node_names: []

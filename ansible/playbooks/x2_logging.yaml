@@ -60,4 +60,5 @@
     - { role: x2_dev_tools }
     - { role: autoware.ecu_system_setup.netplan } # need to be the last, as the internet will lost after this
     - { role: autoware.ecu_system_setup.fool_proof_check } # fool proof check for autoware function
+    # - { role: autoware.ecu_system_setup.letterbox_monitor }
     - { role: autoware.ecu_system_setup.rosbag_data_checker }

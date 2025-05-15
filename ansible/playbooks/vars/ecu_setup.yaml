@@ -34,11 +34,37 @@ redundancy_switcher_conf_files: redundancy_switcher/node_info.yaml
 redundancy_switcher_service_template: redundancy_switcher.service.jinja2
 node_id: 0
 
+# letterbox_monitor
+letterbox_monitor:
+  - service_name: default
+    ros_log_dir: /home/autoware/.ros/log
+    user_name: autoware
+    group_name: autoware
+    use_call_diag: false
+    use_letterbox: true
+    ignore_node_names: []
+  - service_name: autoware
+    ros_log_dir: /home/autoware/.ros/autoware_log
+    user_name: autoware
+    group_name: autoware
+    use_call_diag: true
+    use_letterbox: true
+    ignore_node_names: []
+  - service_name: autoware_system
+    ros_log_dir: /home/autoware/.ros/autoware_system_log
+    user_name: autoware
+    group_name: autoware
+    use_call_diag: true
+    use_letterbox: true
+    ignore_node_names: []
+
 # simple_system_launch
 simple_system_launch_items:
   # autoware_launch
   - file: simple_system_launch/autoware_launch.service
     command: |
+      mkdir -p /home/autoware/.ros/autoware_log
+      export ROS_LOG_DIR=/home/autoware/.ros/autoware_log
       ros2 launch autoware_launch autoware.launch.xml \
               map_path:=/opt/autoware/maps \
               lanelet2_map_file:=lanelet2_map.osm \
@@ -51,8 +77,15 @@ simple_system_launch_items:
   # system
   - file: simple_system_launch/autoware_system_launch.service
     command: |
+      mkdir -p /home/autoware/.ros/autoware_system_log
+      export ROS_LOG_DIR=/home/autoware/.ros/autoware_system_log
       ros2 launch autoware_launch tier4_system_component.launch.xml \
             system_run_mode:=online \
             launch_system_monitor:=true \
             launch_dummy_diag_publisher:=false \
             sensor_model:="$SENSOR_MODEL" 2>&1 | tee "$HOME"/autoware_system.log
+
+# fool proof check service
+check_target_service: autoware_system_launch.service
+ecu_type: main
+fool_proof_check_network_interface: enp5s0f1 # TODO: check vlan.500
