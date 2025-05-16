@@ -10,14 +10,19 @@ additional_repos_files:
   - tools.repos
 
 releases:
-  - version: 4.2
+  - version: 4.3
     parent:
       - name: vanilla
-      - version: v0.41
+      - version: v0.48
+      - full_sync: true
     release_managers:
       - TomohitoAndo
-    released_repositories:
+    released_repositories: # repos you want to release alongside
       - repo_name_in_autoware_repos: autoware/launcher
-        release_version: 4.2
+        release_version: 4.3
+      - repo_name_in_autoware_repos: description/vehicle/j6_gen2_description
+        release_version: 4.3
       - repo_name_in_autoware_repos: vendor/mj20_interface
-        release_version: 4.2
+        release_version: 4.3
+      - repo_name_in_autoware_repos: vendor/redundancy_switcher_interface
+        release_version: 4.3
