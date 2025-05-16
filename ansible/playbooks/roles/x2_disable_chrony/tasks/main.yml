@@ -1,0 +1,8 @@
+- name: Disable chrony service
+  ansible.builtin.systemd:
+    name: chrony.service
+    daemon_reload: "{{ daemon_reload }}"
+    enabled: false
+    masked: true
+    state: stopped
+  become: true

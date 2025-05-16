@@ -5,10 +5,10 @@ repositories:
     version: awf-latest
   autoware/document:
     type: git
-    url: git@github.com:tier4/pilot-auto-documentation.git
-    version: release
+    url: https://github.com/tier4/pilot-auto-documentation.git
+    version: da16a92f6756565a7acc05f2a08048fd36911f80
   # TODO(Murooka): Remove PlotJuggler when the bug that importing the layout does not work will be fixed.
   external/PlotJuggler:
     type: git
     url: https://github.com/facontidavide/PlotJuggler.git
-    version: main
+    version: afa2f5525596ea95894023f1f60d45a97c7aca45

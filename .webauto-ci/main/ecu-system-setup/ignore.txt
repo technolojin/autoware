@@ -1,0 +1,6 @@
+__pycache__/
+.git/
+.ssh/
+/tmp
+/home/autoware/autoware.proj/log
+/home/autoware/autoware.proj/build

@@ -3,12 +3,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: awf-latest
+    version: v0.45.0
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: awf-latest
+    version: tier4/main
     base: true
   autoware/autoware_cmake:
     type: git
@@ -27,8 +27,8 @@ repositories:
     base: true
   autoware/launcher:
     type: git
-    url: https://github.com/tier4/autoware_launch.git
-    version: awf-latest
+    url: https://github.com/tier4/autoware_launch.x2.git
+    version: tier4/main
     base: false
   autoware/aip_launcher:
     type: git
@@ -62,7 +62,7 @@ repositories:
     base: true
   autoware/individual_params:
     type: git
-    url: https://github.com/tier4/autoware_individual_params.git
+    url: https://github.com/tier4/autoware_individual_params.j6_gen2.git
     version: main
     base: false
   autoware/managed_transform_buffer:
@@ -75,26 +75,19 @@ repositories:
     type: git
     url: https://github.com/tier4/sensor_component_description.git
     version: main
-    base: true
-  description/vehicle/lexus_description:
+  description/vehicle/j6_gen2_description:
     type: git
-    url: https://github.com/tier4/lexus_description.iv.git
-    version: tier4/universe
-    base: false
-  description/vehicle/reference_vehicle_descriptions:
-    type: git
-    url: git@github.com:tier4/reference_vehicle_descriptions.git
-    version: main
-    base: false
+    url: git@github.com:tier4/j6_gen2_description.git
+    version: f30c5280d05650a3eb1765850138667940818243
   # ecu_system_setup: When you use your own customized ecu_system_setup, uncomment this.
   # ecu_system_setup:
   #   type: git
   #   url: git@github.com:tier4/autoware_ecu_system_setup.git
   #   version: main
   # vendor
-  vendor/pacmod_interface:
+  vendor/mj20_interface:
     type: git
-    url: https://github.com/tier4/pacmod_interface.git
+    url: git@github.com:tier4/mj20_interface.git
     version: main
     base: false
   vendor/tamagawa_imu_driver:
@@ -102,16 +95,6 @@ repositories:
     url: https://github.com/tier4/tamagawa_imu_driver.git
     version: ros2
     base: true
-  vendor/ublox:
-    type: git
-    url: https://github.com/tier4/ublox.git
-    version: tier4/rolling
-    base: true
-  vendor/lidar-driver:
-    type: git
-    url: git@github.com:tier4/lidar_driver.git
-    version: v0.1.4
-    base: false
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
@@ -132,16 +115,6 @@ repositories:
     url: https://github.com/tier4/pointcloud_to_laserscan.git
     version: tier4/main
     base: true
-  vendor/ars408_driver:
-    type: git
-    url: https://github.com/tier4/ars408_driver.git
-    version: main
-    base: false
-  vendor/spinnaker:
-    type: git
-    url: https://github.com/tier4/spinnaker.git
-    version: 4c74d319ef9186a4fb643dbd82e1b5f7918e75ea
-    base: false
   # Fix the version not to merge https://github.com/MORAI-Autonomous/MORAI-ROS2_morai_msgs/pull/9
   vendor/morai_msgs:
     type: git
@@ -183,6 +156,11 @@ repositories:
     url: https://github.com/osrf/negotiated.git
     version: eac198b55dcd052af5988f0f174902913c5f20e7
     base: true
+  vendor/redundancy_switcher_interface:
+    type: git
+    url: git@github.com:tier4/redundancy_switcher_interface.git
+    version: 5b750ee32a22e32a6f0402eb8a4233d69470f41b
+    base: false
   rclcpp:  # Based stable version, the fix-patch for service in initialization and the glog feature is added
     type: git
     url: https://github.com/tier4/rclcpp.git
@@ -210,3 +188,33 @@ repositories:
     url: https://github.com/tier4/agnocast.git
     version: main # TODO(TIER IV): to be updated to v1.1.0
     base: true
+
+  # product
+  product/autoware_logging_suite:
+    type: git
+    url: git@github.com:tier4/autoware_logging_suite.git
+    version: v0.7.1
+  product/l4_toolkit:
+    type: git
+    url: git@github.com:tier4/l4_toolkit.git
+    version: f79bb4139669c83d06518f3ed80e2de34dcbfa59
+  vendor/ros2_socketcan:
+    type: git
+    url: https://github.com/autowarefoundation/ros2_socketcan.git
+    version: 85da8c31286cad69de65dc50219e7d901ae9e94b
+  vendor/foxglove_bridge: # TODO: Remove this once .idl format are no longer used
+    type: git
+    url: git@github.com:foxglove/ros-foxglove-bridge.git
+    version: 0.7.6
+  vendor/emergency_vehicle_detector:
+    type: git
+    url: git@github.com:tier4/emergency_vehicle_detector.git
+    version: cd69f157dbcdf06e6657bd9652b8ff1a25f71d4c
+  vendor/pyrocan:
+    type: git
+    url: git@github.com:tier4/pyrocan.git
+    version: main
+  vendor/rosbag2:
+    type: git
+    url: https://github.com/ros2/rosbag2.git
+    version: 0.15.13

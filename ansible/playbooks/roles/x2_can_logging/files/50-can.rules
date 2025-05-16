@@ -1,0 +1,2 @@
+KERNELS=="0000:09:00.0", DRIVERS=="peak_pciefd", ATTR{dev_id}=="0x0", NAME="pcan0"
+KERNELS=="0000:09:00.0", DRIVERS=="peak_pciefd", ATTR{dev_id}=="0x1", NAME="pcan1"

@@ -1,0 +1,16 @@
+[Unit]
+Description=Auto-activation of CAN communication in ADM AL30 with systemd
+After=network.target
+Requires=network.target
+Before=autoware-launch.service
+
+[Service]
+User=root
+ExecStart=/opt/autoware/services/can-adm/can-up.sh
+ExecStop=/opt/autoware/services/can-adm/can-down.sh
+Type=oneshot
+RemainAfterExit=yes
+RestartSec=1s
+
+[Install]
+WantedBy=multi-user.target
