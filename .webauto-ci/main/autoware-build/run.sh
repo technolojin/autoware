@@ -21,7 +21,7 @@ if [ "$WEBAUTO_CI_BUILD_OPTION_CARET_ENABLED" = "ENABLED" ]; then
 
     # download CARET
     echo "===== GET CARET ====="
-    CARET_VERSION="rc/v0.5.11-for-evaluator"
+    CARET_VERSION="rc/v0.5.11-for-evaluator-agnocast-support"
     export GITHUB_TOKEN="$WEBAUTO_CI_GITHUB_TOKEN"
     git clone https://github.com/tier4/caret.git ros2_caret_ws
     cd ros2_caret_ws

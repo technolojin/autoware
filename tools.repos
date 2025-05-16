@@ -2,7 +2,7 @@ repositories:
   tools:
     type: git
     url: https://github.com/tier4/autoware_tools.git
-    version: f3bf74172dd30b97424bafebaa95cf4120a16d5a
+    version: awf-latest
   autoware/document:
     type: git
     url: https://github.com/tier4/pilot-auto-documentation.git
