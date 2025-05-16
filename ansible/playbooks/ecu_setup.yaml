@@ -8,12 +8,8 @@
 - name: Setup ECU by additional roles
   hosts: localhost
   vars_files:
-<<<<<<< HEAD
     - ./vars/essential_vars.yaml
-=======
     - ./vars/x2_common.yaml
->>>>>>> origin/main
-    - ./vars/ecu_setup.yaml
   roles:
     # add your necessary roles
     - { role: autoware.ecu_system_setup.automatic_login }

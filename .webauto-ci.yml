@@ -736,6 +736,23 @@ simulations:
   #       architecture_type: awf/universe/20240605
   #       initialize_duration: "90"
 
+  # - name: planning_sim_v2_robobus_gen2
+  #   type: planning_sim_v2
+  #   scenario_parameter_group: robobus_gen2 # Necessary to define the name for each vehicle type
+  #   simulator:
+  #     deployment:
+  #       type: container
+  #       artifact: main
+  #     runtime:
+  #       type: standard1/amd64/medium
+  #     parameters:
+  #       vehicle_model: robobus_gen2
+  #       sensor_model: robobus_gen2_sensor_kit
+  #       autoware_launch_package: autoware_launch
+  #       autoware_launch_file: planning_simulator.launch.xml
+  #       architecture_type: awf/universe/20240605
+  #       initialize_duration: "90"
+
   - name: obstacle_detection
     type: obstacle_detection
     simulator:

@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# sample_role
-sample_role_msg: This is sample role world!
-=======
 # cSpell:ignore rexmit nocaps ipaddr maxsize
 
 # ========== common ==========
@@ -103,4 +99,3 @@ redundancy_switcher_conf_install_dir: /opt/redundancy_switcher/conf
 redundancy_switcher_conf_files: redundancy_switcher/node_info.json
 redundancy_switcher_service_template: redundancy_switcher.service.jinja2
 node_id: 0
->>>>>>> origin/main
