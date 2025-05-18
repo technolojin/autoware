@@ -1,6 +1,4 @@
 __pycache__/
-.git/
-.ssh/
 /tmp
-/home/autoware/pilot-auto.x2/log
-/home/autoware/pilot-auto.x2/build
+/home/autoware/*/log
+/home/autoware/*/build
