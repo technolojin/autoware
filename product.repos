@@ -3,47 +3,59 @@ repositories:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
     version: tier4/main
+    base:false
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
     version: main
+    base:false
   description/vehicle/j6_gen2_description:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
     version: f30c5280d05650a3eb1765850138667940818243
+    base:false
   vendor/mj20_interface:
     type: git
     url: git@github.com:tier4/mj20_interface.git
     version: main
+    base:false
   vendor/redundancy_switcher_interface:
     type: git
     url: git@github.com:tier4/redundancy_switcher_interface.git
     version: 5b750ee32a22e32a6f0402eb8a4233d69470f41b
+    base:false
   vendor/ros2_socketcan:
     type: git
     url: https://github.com/autowarefoundation/ros2_socketcan.git
     version: 85da8c31286cad69de65dc50219e7d901ae9e94b
+    base:false
   vendor/foxglove_bridge:
     type: git
     url: git@github.com:foxglove/ros-foxglove-bridge.git
     version: 0.7.6
+    base:false
   product/autoware_logging_suite:
     type: git
     url: git@github.com:tier4/autoware_logging_suite.git
     version: v0.7.1
+    base:false
   product/l4_toolkit:
     type: git
     url: git@github.com:tier4/l4_toolkit.git
     version: f79bb4139669c83d06518f3ed80e2de34dcbfa59
+    base:false
   vendor/emergency_vehicle_detector:
     type: git
     url: git@github.com:tier4/emergency_vehicle_detector.git
     version: cd69f157dbcdf06e6657bd9652b8ff1a25f71d4c
+    base:false
   vendor/pyrocan:
     type: git
     url: git@github.com:tier4/pyrocan.git
     version: main
+    base:false
   vendor/rosbag2:
     type: git
     url: https://github.com/ros2/rosbag2.git
     version: 0.15.13
+    base:false
