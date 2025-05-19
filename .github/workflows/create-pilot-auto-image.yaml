@@ -1,4 +1,4 @@
-name: create-base-image
+name: create-pilot-auto-image
 
 on:
   workflow_dispatch:
@@ -15,11 +15,10 @@ on:
 
 env:
   ROS_DISTRO: humble
-  BASE_IMAGE: ubuntu:22.04
-  SETUP_ARGS: local_dev_env --no-cuda-drivers --no-nvidia
+  BASE_IMAGE: ghcr.io/tier4/pilot-auto/base-image
 
 jobs:
-  create-base-image:
+  create-pilot-auto-image:
     # runs-on: ubuntu-latest # Error: "No space left on device"
     runs-on: ubuntu-22.04-m
     permissions:
@@ -107,25 +106,21 @@ jobs:
 
       - name: Create build context
         run: |
-          mkdir -p build-context/docker/base-image
-          cp -r docker/base-image/* build-context/docker/base-image/
-          cp autoware.repos setup-dev-env.sh ansible-galaxy-requirements.yaml amd64.env arm64.env build-context/
-          cp -r ansible build-context/
+          mkdir -p build-context/docker/pilot-auto
+          cp -r docker/pilot-auto/* build-context/docker/pilot-auto/
 
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
           push: true
-          file: docker/base-image/Dockerfile.bi
+          file: docker/pilot-auto/Dockerfile
           set: |
             *.context=${{ env.WORKSPACE_ROOT }}/build-context
             *.secrets=id=github_token,src=github_token
           tags: |
-            ${{ github.event.inputs.update-latest == 'true' && format('ghcr.io/{0}/base-image:latest', github.repository) || '' }}
-            ghcr.io/${{ github.repository }}/base-image:${{ steps.set-tag-name.outputs.tag-name }}
+            ${{ github.event.inputs.update-latest == 'true' && format('ghcr.io/{0}/pilot-auto:latest', github.repository) || '' }}
+            ghcr.io/${{ github.repository }}:${{ steps.set-tag-name.outputs.tag-name }}
           build-args: |
             DESCRIPTION=${{ steps.set-description.outputs.img-description }}
-            GITHUB_TOKEN=${{ steps.generate-token.outputs.token }}
-            BASE_IMAGE=${{ env.BASE_IMAGE }}
             ROS_DISTRO=${{ env.ROS_DISTRO }}
-            SETUP_ARGS=${{ env.SETUP_ARGS }}
+            BASE_IMAGE=${{ env.BASE_IMAGE }}:${{ steps.set-tag-name.outputs.tag-name }}

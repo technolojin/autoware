@@ -1,0 +1,35 @@
+# cSpell:ignore rexmit
+
+# cyclonedds
+cyclonedds:
+  network_interface:
+    - { address: lo, priority: default }
+  minimum_socket_receive_buffer_size: 20MB
+  minimum_socket_send_buffer_size: default
+  max_message_size: 65500B
+  fragment_size: 4000B
+  max_rexmit_message_size: 1456B # Default value from CycloneDDS documentation # cspell:disable-line
+  water_mark_whc_high: 500kB # Default value from CycloneDDS documentation
+  water_mark_whc_low: 1kB # Default value from CycloneDDS documentation
+ipv4_ipfrag_high_thresh: 268435456
+
+# greengrass user/group
+ggc_user_uid: 919
+ggc_group_gid: 929
+
+# netplan
+netplan_files: netplan/99-autoware.yaml
+
+# nftables
+nftables_conf_file: nftables/nftables.conf
+
+# otaclient: sample setup for single ECU
+otaclient_ecu_info_yaml: otaclient/ecu_info.yaml
+otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.j2
+# otaclient_logger, for single ECU
+otaclient_logger_listen_address: 127.0.0.1
+
+# simple_system_launch
+simple_system_launch_items:
+  - file: simple_system_launch/autoware_launch.service
+    command: ros2 launch autoware_launch autoware.launch.xml

@@ -1,7 +1,8 @@
 - name: Setup ECU by development roles
   hosts: localhost
   vars_files:
-    - ./vars/ecu_setup.yaml
+    - ./vars/essential_vars.yaml
+    - ./vars/ecu_develop.yaml
   roles:
     - { role: autoware.ecu_system_setup.additional_fonts }
     - { role: autoware.ecu_system_setup.disable_lock_screen }
