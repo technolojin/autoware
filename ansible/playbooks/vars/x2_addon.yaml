@@ -46,7 +46,7 @@ sxpf_ros_driver_version: 493f4ddb3d40f828ab7caea4d39e2c6d02928758
 autoware_install_dir: /home/autoware/overlay_ws
 
 # perception application/service
-perception_application_edge_auto_version: beta/v4.2
+perception_application_edge_auto_version: be6a62a0dae878eff870877bfd2595582c54f668 # release/v4.2.0
 perception_application_base_path: /home/autoware
 perception_application_edge_auto_repo: git@github.com:tier4/edge-auto-jetson.x2.git
 perception_application_service_run_templates_file: perception_application/run.sh.addon.j2 # we can use different run files if the path is in local
