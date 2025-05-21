@@ -3,12 +3,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: 05d55cfb2a94c0d531afd8a24b9c58791490a710
+    version: 66944b85129023e4610ae454e3f7447665f1bb77
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: f88f1c800439dec50d3364e741f51ce8fad02241
+    version: 89d4b5a80cb07519aeade4f78c015d3f1feba26e
     base: true
   autoware/autoware_cmake:
     type: git
@@ -18,7 +18,7 @@ repositories:
   autoware/autoware_utils:
     type: git
     url: https://github.com/autowarefoundation/autoware_utils.git
-    version: f5f945ee16cce0d3bd9e4a689ae02b411801887f
+    version: 10d45b89b9902382c56306cf2677b7db9c0846aa
     base: true
   autoware/autoware_lanelet2_extension:
     type: git
@@ -28,7 +28,7 @@ repositories:
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: 4fd2297de58e22533a301e4a28c0cfa127845c9c
+    version: 09c15dbc5454492c08e39e70710699454aff13d4
     base: false
   autoware/aip_launcher:
     type: git
@@ -48,7 +48,7 @@ repositories:
   autoware/autoware_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_msgs.git
-    version: 84d2bec1acd1cb558c59424b0e7d1e6cba5014bf
+    version: cb0ca5b8ea6a01b2e2b254903ba467295773881e
     base: true
   autoware/autoware_adapi_msgs:
     type: git
@@ -58,7 +58,7 @@ repositories:
   autoware/autoware_internal_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_internal_msgs.git
-    version: fb81b602b9c931fd0930ad4786f3c304d974ec58
+    version: 18dfbaf03f237604d6b732af80c5989d8ca3563c
     base: true
   autoware/individual_params:
     type: git
@@ -68,7 +68,7 @@ repositories:
   autoware/managed_transform_buffer:
     type: git
     url: https://github.com/autowarefoundation/managed_transform_buffer.git
-    version: 0cc1cf84aee611ff2e8009dfddf6ba1eac633730
+    version: 7de93a00769de0b0e3fd1b80aa5ec4e146115fe1
     base: true
   # description
   description/sensor/sensor_component_description:
@@ -208,5 +208,5 @@ repositories:
   middleware/external/agnocast:
     type: git
     url: https://github.com/tier4/agnocast.git
-    version: d8ed60d8ee473f984508d81151e85908bc3b0e0b # TODO(TIER IV): to be updated to v1.1.0
+    version: b757498284a8eab08d6f9a3fcff055484133538b # TODO(TIER IV): to be updated to v1.1.0
     base: true
