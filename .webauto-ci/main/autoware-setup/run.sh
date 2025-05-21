@@ -30,3 +30,10 @@ ansible-playbook "ansible/playbooks/local_dev_env.yaml" \
     --skip-tags vcs
 
 git config --global --unset-all url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf
+
+agnocast_version="2.1.1"
+agnocast_heaphook_package="agnocast-heaphook-v${agnocast_version}"
+
+sudo add-apt-repository -y ppa:t4-system-software/agnocast
+sudo apt update
+sudo apt install -y "${agnocast_heaphook_package}"
