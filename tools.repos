@@ -12,3 +12,10 @@ repositories:
     type: git
     url: https://github.com/facontidavide/PlotJuggler.git
     version: main
+
+  # TODO: Remove when autoware support for renaming the plotjuggler package. (plotjuggler_ros -> plotjuggler)
+  external/plotjuggler_ros:
+    type: git
+    url: https://github.com/PlotJuggler/plotjuggler-ros-plugins.git
+    version: 2.1.2-humble
+    base: true
