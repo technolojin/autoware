@@ -45,15 +45,9 @@ logging_mode:
     rosbag:
       output_at: "{{ temporary_logging_directory }}"
       recording_type: "auto"
+      initial_state: "recording"
       recording_mode_values:
-        - "InitializingVehicle"
-        - "WaitingForRoute"
-        - "Planning"
-        - "WaitingForEngage"
-        - "Driving"
-        - "ArrivedGoal"
-        - "Emergency"
-        - "Finalizing"
+        - ""
     rotation:
       target_dir: "{{ temporary_logging_directory }}"
   light:
