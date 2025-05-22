@@ -1,5 +1,5 @@
 __pycache__/
-.git/
+.ssh/
 /tmp
 /home/autoware/*/log
 /home/autoware/*/build
