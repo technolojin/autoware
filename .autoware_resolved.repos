@@ -8,7 +8,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: 89d4b5a80cb07519aeade4f78c015d3f1feba26e
+    version: 70edf488b541b757ff3a926b56829fd73df391e9
     base: true
   autoware/autoware_cmake:
     type: git
@@ -18,7 +18,7 @@ repositories:
   autoware/autoware_utils:
     type: git
     url: https://github.com/autowarefoundation/autoware_utils.git
-    version: 10d45b89b9902382c56306cf2677b7db9c0846aa
+    version: a47850e1530cde207d50da35dd6918bb75c7281b
     base: true
   autoware/autoware_lanelet2_extension:
     type: git
@@ -69,6 +69,11 @@ repositories:
     type: git
     url: https://github.com/autowarefoundation/managed_transform_buffer.git
     version: 7de93a00769de0b0e3fd1b80aa5ec4e146115fe1
+    base: true
+  autoware/autoware_rviz_plugins:
+    type: git
+    url: https://github.com/autowarefoundation/autoware_rviz_plugins.git
+    version: 59ae963889897bc05b5685236cbfa4b4449c91fa
     base: true
   # description
   description/sensor/sensor_component_description:
