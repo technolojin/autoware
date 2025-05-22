@@ -3,15 +3,19 @@ ARG BASE_IMAGE
 
 # hadolint ignore=DL3006
 FROM $BASE_IMAGE
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 ARG ROS_DISTRO
 ARG DESCRIPTION
 
 LABEL org.opencontainers.image.description=$DESCRIPTION
 
+COPY src/ /autoware/src/
+WORKDIR /autoware
+
 # build autoware
 # hadolint ignore=SC3046
-RUN source /opt/ros/"$ROS_DISTRO"/setup.bash && colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-w" --continue-on-error
+RUN source /opt/ros/"$ROS_DISTRO"/setup.bash && colcon build --merge-install --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-w" --continue-on-error
 
 # Install openbox, VNC, and simulator dependencies
 # hadolint ignore=DL3008,DL3013,DL3015
