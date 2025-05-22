@@ -84,3 +84,19 @@ releases:
         release_version: 0.45
       - repo_name_in_autoware_repos: v2x/vehicle2infrastructure
         release_version: 0.45
+  - version: 0.46
+    release_managers:
+      - TaikiYamada4
+    released_repositories:
+      - repo_name_in_autoware_repos: autoware/core
+        release_version: 0.46
+      - repo_name_in_autoware_repos: autoware/launcher
+        release_version: 0.46
+      - repo_name_in_autoware_repos: autoware/universe
+        release_version: 0.46
+      - repo_name_in_autoware_repos: autoware/aip_launcher
+        release_version: 0.46
+      - repo_name_in_autoware_repos: autoware/tier4_autoware_msgs
+        release_version: 0.46
+      - repo_name_in_autoware_repos: v2x/vehicle2infrastructure
+        release_version: 0.46
