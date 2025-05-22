@@ -11,11 +11,11 @@ use_old_name: true
 directories:
   - output_at: "{{ rosbag_logging_directory }}"
     output_mountpoint: "{{ rosbag_logging_directory_mountpoint }}"
-    disk_threshold_error: 10
-    disk_threshold_warning: 30
+    disk_threshold_error: 1
+    disk_threshold_warning: 5
   - output_at: "{{ temporary_logging_directory }}"
-    disk_threshold_error: 10
-    disk_threshold_warning: 30
+    disk_threshold_error: 1
+    disk_threshold_warning: 5
 logging_mode:
   mode_list:
     - always
