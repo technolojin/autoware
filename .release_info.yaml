@@ -12,9 +12,9 @@ additional_repos_files:
 releases:
   - version: v4.3
     parent:
-      - name: vanilla
-      - version: v0.48
-      - full_sync: true
+      name: vanilla
+      version: v0.48
+      full_sync: true
     release_managers:
       - TomohitoAndo
     released_repositories: # repos you want to release alongside
