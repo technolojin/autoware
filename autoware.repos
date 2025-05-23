@@ -7,7 +7,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
-    version: 96c5b960f4f69a69ee72533da7a8efd1e647af0d
+    version: fb1dee93ec32c97e2fa823edc6c281fc2aea4ef5
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
@@ -23,7 +23,7 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: d128f04dc5e006a8a2fbddc469b2ff97979eb77e
+    version: 745461642f658366cde656611f1d234ffd1cdf90
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
@@ -172,7 +172,7 @@ repositories:
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: 4d97f6bff72541357cbe490f5731036c0ed85286
+    version: 900ab75a18750b594e7e137c1ad803283820a529
   # middleware
   middleware/external/agnocast:
     type: git
