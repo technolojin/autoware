@@ -3,12 +3,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: 66944b85129023e4610ae454e3f7447665f1bb77
+    version: bdb90f4222311911ed6632d5c2e0e52a83e34148
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: c527374f6529a92f2293a076dca9ef203719fbb1
+    version: 671b8605a5c3f1cf2e4b525225044de6544b119f
     base: true
   autoware/autoware_cmake:
     type: git
@@ -58,7 +58,7 @@ repositories:
   autoware/autoware_internal_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_internal_msgs.git
-    version: 18dfbaf03f237604d6b732af80c5989d8ca3563c
+    version: 99322650999b81c42515c0618ffb5d28ef945b6d
     base: true
   autoware/individual_params:
     type: git
@@ -73,7 +73,7 @@ repositories:
   autoware/autoware_rviz_plugins:
     type: git
     url: https://github.com/autowarefoundation/autoware_rviz_plugins.git
-    version: 59ae963889897bc05b5685236cbfa4b4449c91fa
+    version: cf6457b9eea649f8990a926cad1463c9f76aa8c9
     base: true
   # description
   description/sensor/sensor_component_description:
