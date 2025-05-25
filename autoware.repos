@@ -11,7 +11,7 @@ repositories:
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
-    version: 1.0.0
+    version: 1.0.2
   autoware/autoware_utils:
     type: git
     url: https://github.com/autowarefoundation/autoware_utils.git
@@ -19,7 +19,7 @@ repositories:
   autoware/autoware_lanelet2_extension:
     type: git
     url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
-    version: 0.6.2
+    version: 0.7.2
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
