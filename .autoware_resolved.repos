@@ -3,7 +3,7 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: bdb90f4222311911ed6632d5c2e0e52a83e34148
+    version: be9abd8828d405dfda1a37589d0922ba6814580b
     base: true
   autoware/universe:
     type: git
