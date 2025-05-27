@@ -7,11 +7,6 @@ repositories:
     type: git
     url: git@github.com:tier4/pilot-auto-documentation.git
     version: release
-  # TODO(Murooka): Remove PlotJuggler when the bug that importing the layout does not work will be fixed.
-  external/PlotJuggler:
-    type: git
-    url: https://github.com/facontidavide/PlotJuggler.git
-    version: main
 
   # TODO: Remove when autoware support for renaming the plotjuggler package. (plotjuggler_ros -> plotjuggler)
   external/plotjuggler_ros:
