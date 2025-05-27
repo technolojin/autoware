@@ -26,6 +26,7 @@ artifacts:
         ML_MODELS_PATH: /opt/autoware/mlmodels
         DEBIAN_FRONTEND: noninteractive
         LANG: C.UTF-8
+        ENABLE_AGNOCAST: "1"
       developer_options:
         - name: webauto:ci:caret_enabled
           environment_variables:
@@ -140,6 +141,7 @@ artifacts:
         ML_MODELS_PATH: /opt/autoware/mlmodels
         DEBIAN_FRONTEND: noninteractive
         LANG: C.UTF-8
+        ENABLE_AGNOCAST: "1"
       developer_options:
         - name: webauto:ci:caret_enabled
           environment_variables:
@@ -785,8 +787,6 @@ simulations:
         artifact: main
       runtime:
         type: standard1/amd64/medium
-      environment_variables:
-        ENABLE_AGNOCAST: "1"
       parameters:
         vehicle_model: j6_gen2
         sensor_model: aip_x2_gen2
@@ -820,8 +820,6 @@ simulations:
         artifact: main
       runtime:
         type: standard1/amd64/medium
-      environment_variables:
-        ENABLE_AGNOCAST: "1"
 
   - name: ndt_convergence
     type: ndt_convergence
@@ -831,8 +829,6 @@ simulations:
         artifact: main
       runtime:
         type: standard1/amd64/large
-      environment_variables:
-        ENABLE_AGNOCAST: "1"
 
   - name: localization
     type: localization
@@ -844,8 +840,6 @@ simulations:
         type: standard1/amd64/large
       parameters:
         play_rate: "0.125"
-      environment_variables:
-        ENABLE_AGNOCAST: "1"
 
   - name: obstacle_segmentation
     type: obstacle_segmentation
@@ -855,8 +849,6 @@ simulations:
         artifact: main
       runtime:
         type: standard1/amd64/medium
-      environment_variables:
-        ENABLE_AGNOCAST: "1"
 
   - name: performance_diag
     type: performance_diag
@@ -869,8 +861,6 @@ simulations:
       parameters:
         play_rate: "0.125"
         localization: "false"
-      environment_variables:
-        ENABLE_AGNOCAST: "1"
 
   - name: traffic_light
     type: traffic_light
@@ -927,8 +917,6 @@ simulations:
         - name: model
           path: /opt/autoware/mlmodels/centerpoint
           preserve_original_files: true
-      environment_variables:
-        ENABLE_AGNOCAST: "1"
 
   - name: annotationless_perception
     type: annotationless_perception
@@ -948,8 +936,6 @@ simulations:
         - name: model
           path: /home/autoware/autoware_data/lidar_centerpoint
           preserve_original_files: true
-      environment_variables:
-        ENABLE_AGNOCAST: "1"
 
   - name: PerformanceTest_perception
     type: perception
@@ -974,8 +960,6 @@ simulations:
         - name: model
           path: /home/autoware/autoware_data/lidar_centerpoint
           preserve_original_files: true
-      environment_variables:
-        ENABLE_AGNOCAST: "1"
 
   - name: PerformanceTest_traffic_light
     type: traffic_light
@@ -1008,8 +992,6 @@ simulations:
         - name: model_classifier
           path: /home/autoware/autoware_data/traffic_light_classifier
           preserve_original_files: true
-      environment_variables:
-        ENABLE_AGNOCAST: "1"
 
   # - name: NodeAliveTest_lidar_centerpoint
   #  type: perception
@@ -1238,8 +1220,6 @@ simulations:
         - name: model
           path: /opt/autoware/mlmodels/centerpoint
           preserve_original_files: true
-      environment_variables:
-        ENABLE_AGNOCAST: "1"
 
   - name: yabloc
     type: yabloc
@@ -1249,8 +1229,6 @@ simulations:
         artifact: main
       runtime:
         type: standard1/amd64/medium
-      environment_variables:
-        ENABLE_AGNOCAST: "1"
 
   - name: eagleye
     type: eagleye
@@ -1260,8 +1238,6 @@ simulations:
         artifact: main
       runtime:
         type: standard1/amd64/medium
-      environment_variables:
-        ENABLE_AGNOCAST: "1"
 
   # yamllint disable rule:comments-indentation
   # - name: ar_tag_based_localizer
