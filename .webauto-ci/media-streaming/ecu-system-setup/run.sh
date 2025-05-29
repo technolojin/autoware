@@ -20,6 +20,3 @@ git config --global --unset-all url."https://${GITHUB_TOKEN}:x-oauth-basic@githu
 
 sudo mkdir -p /etc/ota
 sudo cp "$(dirname "$0")/persistents.txt" /etc/ota/
-
-# clean up ecu firmware (reverted because of https://tier4.atlassian.net/browse/RT4-16981)
-#. .webauto-ci/common/ecu-clean-up/run.sh
