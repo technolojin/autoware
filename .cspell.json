@@ -13,6 +13,7 @@
     "newkey",
     "keyout",
     "novnc",
+    "subshell",
     "xstartup"
   ],
   "ignorePaths": [".release_info.yaml"]
