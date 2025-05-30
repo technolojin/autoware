@@ -3,12 +3,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: 0e0045ed712e08f1eca9ff21046dfccf17bb5943
+    version: 1fce0ac466bd78df0060c6469a5a10313c90776a
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: 7dcdb3b105deecc62f4ecdd2fe2889ccade45512
+    version: 492a78b17050ca7f9838e6ae1be147240a10e0d3
     base: true
   autoware/autoware_cmake:
     type: git
@@ -105,7 +105,7 @@ repositories:
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
-    version: de4bf6be79aa2968cf2f62e0ebe1ff8a5797e6ad
+    version: df03c0676fdf1e34ace3ad6ee22ca29653b7c2ae
     base: true
   vendor/ublox:
     type: git
@@ -196,7 +196,7 @@ repositories:
   launch: # Based humble version, the acceleration patched is added
     type: git
     url: https://github.com/tier4/launch.git
-    version: 5c257d83e5bdb786ae0fdb8f040f2f6ef320e993
+    version: 9122128dc931211e42116b055f150199285496e1
     base: true
 
   v2x/vehicle2infrastructure:
@@ -213,5 +213,5 @@ repositories:
   middleware/external/agnocast:
     type: git
     url: https://github.com/tier4/agnocast.git
-    version: a9a32c22876f9e606db092356c0361fda4647fca # TODO(TIER IV): to be updated to v1.1.0
+    version: 10a28bdeda0c7b230d5ed02b2d1e592d3d59dc2a # TODO(TIER IV): to be updated to v1.1.0
     base: true
