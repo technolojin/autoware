@@ -3,32 +3,32 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: e7b46db9cf30de9496b602cda492c67522a09ca8
+    version: 646f43dbca5c3a9313c19df002f21582e5acb3b5
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: ba99ca8b39686975bb6b2de9b0d80d5ab8a1eea6
+    version: a38afb91a2ceab31f10d0372c4fc7917f0eabf9e
     base: true
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
-    version: 597d43801f5991a6ba23589b88d544fbfe20e961
+    version: 086dbe1e4c0c6230eb92a12b166b112236d07b32
     base: true
   autoware/autoware_utils:
     type: git
     url: https://github.com/autowarefoundation/autoware_utils.git
-    version: a47850e1530cde207d50da35dd6918bb75c7281b
+    version: 260bc9dc62a898fde162e0b9a65fcd78fae070d8
     base: true
   autoware/autoware_lanelet2_extension:
     type: git
     url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
-    version: 66fe887cadd8a2f65c01ede8352a1f75bcf534a1
+    version: 82ea5f0ddf98681070da99bdfcde510ffcbf0416
     base: true
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: 98b6218f05b1e585dde26f4fbc706c8690c0c173
+    version: cbe41347c444dbae6895fda962d850e61ad4b3ad
     base: false
   autoware/aip_launcher:
     type: git
@@ -38,7 +38,7 @@ repositories:
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: 856d4ce6b90a5f774c33ecef86fc4560f86c65db
+    version: 5fccc7cd2f9fe7f91661d899fcd696ba0ebf43d2
     base: true
   autoware/tier4_autoware_msgs:
     type: git
@@ -53,12 +53,12 @@ repositories:
   autoware/autoware_adapi_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_adapi_msgs.git
-    version: 12287684e096a02d279299a7e6cb44740fc34467
+    version: 6085825c26f765fbde8094e95f01958d0f8a4681
     base: true
   autoware/autoware_internal_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_internal_msgs.git
-    version: 99322650999b81c42515c0618ffb5d28ef945b6d
+    version: 290efb7b0c51d150389dc75b18248d16a52729b1
     base: true
   autoware/individual_params:
     type: git
