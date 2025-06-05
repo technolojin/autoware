@@ -92,6 +92,10 @@ repositories:
     type: git
     url: https://github.com/tier4/pointcloud_to_laserscan.git
     version: d969ec699f84fad827fbadfa3001c9c657482fbe
+  vendor/kistler_driver:
+    type: git
+    url: git@github.com:tier4/kistler_driver.git
+    version: 4fdb74a5f7c632322171f0447654c707b6033e08
   # Fix the version not to merge https://github.com/MORAI-Autonomous/MORAI-ROS2_morai_msgs/pull/9
   vendor/morai_msgs:
     type: git

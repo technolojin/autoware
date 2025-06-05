@@ -121,6 +121,10 @@ repositories:
     type: git
     url: git@github.com:tier4/redundancy_switcher_interface.git
     version: beta/v4.2
+  vendor/kistler_driver:
+    type: git
+    url: git@github.com:tier4/kistler_driver.git
+    version: main
   rclcpp:  # Based stable version, the fix-patch for service in initialization and the glog feature is added
     type: git
     url: https://github.com/tier4/rclcpp.git
