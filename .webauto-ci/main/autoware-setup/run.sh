@@ -2,8 +2,6 @@
 
 : "${WEBAUTO_CI_GITHUB_TOKEN:?is not set}"
 
-sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(source /etc/os-release && echo "$UBUNTU_CODENAME") main" | sudo tee /etc/apt/sources.list.d/ros2.list >/dev/null
 sudo -E apt-get -y update
 sudo -E apt-get -y install usbutils # For kvaser
 
@@ -21,6 +19,8 @@ source 'amd64.env'
 while read -r env_name; do
     ansible_args+=("--extra-vars" "${env_name}=${!env_name}")
 done < <(sed "s/=.*//" <amd64.env)
+
+sudo chmod 777 /tmp
 
 ansible-galaxy collection install -f -r "ansible-galaxy-requirements.yaml"
 ansible-playbook "ansible/playbooks/local_dev_env.yaml" \
