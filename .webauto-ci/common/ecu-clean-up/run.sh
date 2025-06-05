@@ -128,3 +128,43 @@ sudo -E apt update
 sudo -E apt --fix-broken install -y
 
 echo "----- Finished removing Jetson *-dev and nsight packages ..."
+
+# These are Ubuntu pre-installed packages.
+# Their dependency structure are simply.
+# We use "apt remove <package name>" to remove them.
+echo "----- Start to remove Ubuntu Desktop Packages ..."
+ubuntu_desktop_packages=(
+    "firefox"
+    "gnome-accessibility-themes"
+    "gnome-calculator"
+    "gnome-calendar"
+    "gnome-getting-started-docs"
+    "gnome-mahjongg"
+    "gnome-sudoku"
+    "gnome-todo"
+    "gnome-todo-common"
+    "gnome-user-docs"
+    "gnome-user-guide"
+    "gnome-weather"
+)
+
+for package_name in "${ubuntu_desktop_packages[@]}"; do
+    search_results=$(dpkg -l | grep -E "^ii\\s+${package_name}\\b" | awk '{print $2}')
+    if [ -n "$search_results" ]; then
+        echo ""
+        echo "---------  processing : $package_name --------"
+        echo "Start to remove $package_name"
+        sudo -E apt remove "$package_name" -y
+    else
+        echo "No installed packages found matching '$package_name'."
+    fi
+done
+echo "----- Finished removing Ubuntu Desktop Packages ..."
+
+echo "----- Start to remove /root/pcl folder ..."
+sudo rm -rf /root/pcl
+echo "----- Finished removing /root/pcl folder ..."
+
+echo "----- Start to remove /root/range-v3 folder ..."
+sudo rm -rf /root/range-v3
+echo "----- Finished removing /root/range-v3 folder ..."
