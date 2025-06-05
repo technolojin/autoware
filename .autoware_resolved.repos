@@ -8,7 +8,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: 305cf14ceea79a6a01c3fd6a18145e0d93f01e52
+    version: d5bf357801b75928e0b64aef50f94e4687807bd1
     base: true
   autoware/autoware_cmake:
     type: git
@@ -28,7 +28,7 @@ repositories:
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: cbe41347c444dbae6895fda962d850e61ad4b3ad
+    version: 8defbadf1c596b9dbc97f1c65a1e3ba0261a23ea
     base: false
   autoware/aip_launcher:
     type: git
@@ -38,7 +38,7 @@ repositories:
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: d6521dd36035e5721a182c0ed705f2f65d9ae656
+    version: 54542842b186dbe060596ed727e2745a2ef262d5
     base: true
   autoware/tier4_autoware_msgs:
     type: git
@@ -105,7 +105,7 @@ repositories:
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
-    version: df03c0676fdf1e34ace3ad6ee22ca29653b7c2ae
+    version: 049081857b2c5d39daf24bb9f6f5bcf44b338314
     base: true
   vendor/ublox:
     type: git
