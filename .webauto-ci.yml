@@ -265,6 +265,8 @@ simulations:
       runtime:
         type: gpu1/amd64/large
       parameters:
+        # if `sensing: false` need to delete below.
+        remap_arg: /sensing/lidar/concatenated/pointcloud
         use_empty_dynamic_object_publisher: "true"
         evaluation_prediction_topic_regex: None
       pre_tasks:
@@ -298,6 +300,8 @@ simulations:
       runtime:
         type: gpu1/amd64/large
       parameters:
+        # if `sensing: false` need to delete below.
+        remap_arg: /sensing/lidar/concatenated/pointcloud
         use_empty_dynamic_object_publisher: "true"
         traffic_light_recognition/high_accuracy_detection_type: whole_image_detection
       pre_tasks:
@@ -419,7 +423,6 @@ simulations:
         evaluation_prediction_topic_regex: None
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_apollo_instance_segmentation lidar_apollo_instance_segmentation.launch.xml build_only:=true
-
           mounts:
             - volume: model
       volumes:
