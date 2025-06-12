@@ -39,5 +39,3 @@
     - { role: x2_ptp4l }
     - { role: x2_dev_tools }
     - { role: x2_cmd_helper_completion }
-    # temporary in v4.2 to fix the version of ansible in awf autoware
-    - { role: agnocast }
