@@ -1,13 +1,5 @@
 # cSpell:ignore rexmit nocaps ipaddr maxsize
 
-# ========== common ==========
-daemon_reload: "{{ reload_systemd | default('yes') }}"
-ros_domain_id: 1
-autoware_env_dir: "{{ ansible_env.HOME }}"
-autoware_env_dir_privileged: false
-
-# ========== ecu_common.yaml ==========
-
 # cyclonedds
 # NOTE: Cyclonedds settings for Sub ECU is not determined yet. Only 1GbE interface is used for now.
 cyclonedds:
@@ -26,7 +18,7 @@ netcore_rmem_max: 2147483647
 netcore_wmem_max: 2147483647
 
 # x2_cyclonedds_for_redundancy
-x2_cyclonedds_for_redundancy:
+x2_cyclonedds_for_redundancy_cyclonedds:
   network_interface:
     - { address: enp5s0f1, priority: 1 } # Prioritize 10Gb interface
     - { address: enp5s0f0, priority: 0 }
@@ -38,39 +30,14 @@ x2_cyclonedds_for_redundancy:
   water_mark_whc_high: 500kB
   water_mark_whc_low: 1kB
 
-# greengrass user/group
-ggc_user_uid: 919
-ggc_group_gid: 929
-
 # netplan
 netplan_files: netplan/99-autoware.x2-sub.yaml
-
-# nftables
-nftables_conf_file: nftables/nftables.conf
 
 # otaclient
 otaclient_release_version: v3.8.4
 otaclient_package_whl_checksum: sha256:c118f7ce69bce85b7a038dd7829ca8567f665cf8f86772a6e773e77ac3b3e8fe
 otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-sub
 otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-1gbe.j2
-
-# set-autoware-env
-autoware_install_dir: /home/autoware/pilot-auto.x2
-vehicle_id: default
-vehicle_model: j6_gen2
-sensor_model: aip_x2_gen2
-
-# timezone
-timezone: Asia/Tokyo
-
-# ========== ecu_develop.yaml ==========
-
-# additional-fonts
-additional_font_packages:
-  - fonts-noto-cjk
-
-# keyboard: Select keyboard.jp, keyboard.jp+ctrl_nocaps or keyboard.us+ctrl_nocaps
-keyboard_layout_file: keyboard.jp+ctrl_nocaps
 
 # ========== ecu_setup.yaml ==========
 
@@ -95,7 +62,7 @@ x2_configure_marvell_switch_file: X2_J6_Gen2_Sub_Marvell.xml
 x2_ptp4l_ecu: sub
 
 # rviz
-rviz_config_path: /home/autoware/autoware.proj/src/autoware/launcher/autoware_launch/rviz/autoware_x2.rviz
+rviz_config_path: /home/autoware/autoware.proj/src/autoware/launcher/autoware_launch/rviz/autoware_debug.rviz
 
 # screen_recorder
 screen_recorder_default_logging_directory: /tmp
@@ -105,9 +72,19 @@ screen_recorder_default_service_enabled: false
 # redundancy switcher
 redundancy_switcher_repository_url: git@github.com:tier4/redundancy_switcher.git
 redundancy_switcher_clone_dir: /tmp/redundancy_switcher
-redundancy_switcher_version: main
+redundancy_switcher_version: beta/v4.2
 redundancy_switcher_install_dir: /opt/redundancy_switcher/bin
 redundancy_switcher_conf_install_dir: /opt/redundancy_switcher/conf
-redundancy_switcher_conf_files: redundancy_switcher/node_info.json
+redundancy_switcher_conf_files: redundancy_switcher/node_info.yaml
 redundancy_switcher_service_template: redundancy_switcher.service.jinja2
 node_id: 1
+
+# letterbox_monitor
+letterbox_monitor:
+  - service_name: default
+    ros_log_dir: /home/autoware/.ros/log
+    user_name: autoware
+    group_name: autoware
+    use_call_diag: false
+    use_letterbox: false
+    ignore_node_names: []

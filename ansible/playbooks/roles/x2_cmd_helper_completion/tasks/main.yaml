@@ -1,0 +1,11 @@
+- name: Ensure bash completion directory exists
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.local/share/bash-completion/completions"
+    state: directory
+    mode: "0755"
+
+- name: Install cmd_helper completion script
+  ansible.builtin.copy:
+    src: cmd_helper_completion.sh
+    dest: "{{ ansible_env.HOME }}/.local/share/bash-completion/completions/cmd_helper.sh"
+    mode: "0644"

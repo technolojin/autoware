@@ -1,18 +1,11 @@
 # cspell: ignore ipaddr maxsize pactl rexmit
 # common
-daemon_reload: "{{ reload_systemd | default('yes') }}"
-ros_domain_id: 1
 autoware_install_dir: "{{ ansible_env.HOME }}/vehicle_voice_alert_system"
 systemctl_default: multi-user.target
-autoware_env_dir: "{{ ansible_env.HOME }}"
-autoware_env_dir_privileged: false
 
 # additional-fonts
 additional_font_packages:
   - fonts-noto-cjk
-
-# timezone
-timezone: Asia/Tokyo
 
 # keyboard
 keyboard_layout_file: keyboard.jp
@@ -34,7 +27,7 @@ ptp4l_network_port: enp1s0
 
 # ros2-app-build
 ros2_app_repository: git@github.com:tier4/vehicle_voice_alert_system.git
-ros2_app_repository_version: 61e59b63ea178568e25e0078011d0e60d2f5af33
+ros2_app_repository_version: ad30d68ca584db1a6ab1d0c6869326fab72213db
 depends_repos: vehicle_voice_alert_system.repos
 
 # simple system launch

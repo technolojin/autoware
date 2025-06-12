@@ -1,9 +1,17 @@
 autoware_env_dir_privileged: false
 autoware_env_dir: "{{ ansible_env.HOME }}"
-autoware_install_dir: "{{ ansible_env.HOME }}/pilot-auto"
+autoware_install_dir: "{{ ansible_env.HOME }}/pilot-auto.x2"
 daemon_reload: "{{ reload_systemd | default('yes') }}"
 ros_domain_id: 1
-sensor_model: aip_xx1
+sensor_model: aip_x2_gen2
 timezone: Asia/Tokyo
 vehicle_id: default
-vehicle_model: lexus
+vehicle_model: j6_gen2
+
+# boot shutdown
+boot_shutdown_tools_repository: https://github.com/tier4/boot_shutdown_tools.git
+boot_shutdown_tools_version: v0.2.1
+
+# ros_distro
+ros_distro: humble
+rosdistro: "{{ ros_distro }}"

@@ -803,6 +803,31 @@
   durability: volatile
   history: keep_last
   reliability: best_effort
+/perception/object_recognition/detection/irregular_object/objects:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/centerpoint_irregular_object_merger/objects:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/transfusion_irregular_object_merger/objects:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/pointpainting_irregular_object_merger/objects:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/apollo_irregular_object_merger/objects:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
 /perception/object_recognition/objects:
   depth: 1
   durability: volatile
@@ -1218,6 +1243,141 @@
   durability: volatile
   history: keep_last
   reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/cruise/metrics:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/debug/cruise_planning_info:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/debug/markers:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/debug/obstacle_cruise/processing_time_ms:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/debug/obstacle_slow_down/processing_time_ms:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/debug/obstacle_stop/processing_time_ms:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/debug/out_of_lane/processing_time_ms:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/debug/out_of_lane/processing_time_ms_diag:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/debug/processing_time_detail_ms/obstacle_cruise:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/debug/processing_time_detail_ms/obstacle_slow_down:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/debug/processing_time_detail_ms/obstacle_stop:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/debug/processing_time_ms:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/debug/processing_time_ms_diag:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/debug/slow_down_planning_info:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/debug/stop_planning_info:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/metrics:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/obstacle_cruise/debug_markers:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/obstacle_cruise/virtual_walls:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/obstacle_slow_down/debug_markers:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/obstacle_slow_down/virtual_walls:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/obstacle_stop/debug_markers:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/obstacle_stop/virtual_walls:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/out_of_lane/debug_markers:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/out_of_lane/virtual_walls:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/slow_down/metrics:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/stop/metrics:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/trajectory:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
 /planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/debug/area_with_objects:
   depth: 1
   durability: transient_local
@@ -1371,6 +1531,11 @@
 /planning/scenario_planning/scenario_selector/trajectory:
   depth: 1
   durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/velocity_smoother/trajectory:
+  depth: 10
+  durability: system_default
   history: keep_last
   reliability: best_effort
 /planning/scenario_planning/status/infrastructure_commands:

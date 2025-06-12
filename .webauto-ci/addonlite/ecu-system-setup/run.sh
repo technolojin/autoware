@@ -9,6 +9,9 @@ export GITHUB_TOKEN="$WEBAUTO_CI_GITHUB_TOKEN"
 git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
 git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "git@github.com:"
 
+rm -f /etc/apt/sources.list.d/ros2.list
+rm -f /usr/share/keyrings/ros-archive-keyring.gpg
+
 ansible-galaxy collection install -f -r "ansible-galaxy-requirements.yaml"
 eval ansible-playbook "'${ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK}'" \
     -e ecu_id="${ECU_ID}" \
@@ -21,6 +24,3 @@ git config --global --unset-all url."https://${GITHUB_TOKEN}:x-oauth-basic@githu
 sudo mkdir -p /etc/ota
 sudo cp "$(dirname "$0")/persistents.txt" /etc/ota/
 sudo cp "$(dirname "$0")/ignore.txt" /etc/ota/
-
-# clean up ecu firmware
-. .webauto-ci/common/ecu-clean-up/run.sh

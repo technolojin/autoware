@@ -1,26 +1,19 @@
-# cspell: ignore ipaddr maxsize mincho momo pactl rexmit Fonglun
+# cspell: ignore Fonglun ipaddr maxsize mincho momo pactl rexmit
 # common
-daemon_reload: "{{ reload_systemd | default('yes') }}"
-ros_domain_id: 1
 autoware_install_dir: "{{ ansible_env.HOME }}/AutowareSignage"
 systemctl_default: multi-user.target
-autoware_env_dir: "{{ ansible_env.HOME }}"
-autoware_env_dir_privileged: false
 
 # additional-fonts
 additional_font_packages:
   - fonts-noto-cjk
   - fonts-takao-mincho
 
-# timezone
-timezone: Asia/Tokyo
-
 # keyboard
 keyboard_layout_file: keyboard.jp
 
 # ros2-app-build
 ros2_app_repository: git@github.com:tier4/AutowareSignage.git
-ros2_app_repository_version: 9b4252d1781fcc7bdb793a0b57f63d578ed364f9
+ros2_app_repository_version: b276f9238fc6d50ba04c65ae803e48044e73e117
 depends_repos: signage.repos
 
 # cyclonedds
