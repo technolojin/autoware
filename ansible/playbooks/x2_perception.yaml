@@ -1,7 +1,7 @@
 - name: Setup x2 perception
   hosts: localhost
   vars_files:
-    - ./vars/x2_common.yaml
+    - ./vars/essential_vars.yaml
     - ./vars/x2_perception.yaml
 
   vars:
@@ -22,6 +22,7 @@
         perception_type: od
         dtb_sensor_type: imx490
         distortion_correction: 1
+        video_num: 4
       when: ecu_id == "perception1"
 
     - name: Set perception2 params
@@ -32,6 +33,7 @@
         perception_type: tlr
         dtb_sensor_type: imx490
         distortion_correction: 0
+        video_num: 4
       when: ecu_id == "perception2"
 
   roles:
@@ -40,7 +42,6 @@
     - { role: autoware.ecu_system_setup.clean_ros_log }
     - { role: autoware.ecu_system_setup.cyclonedds }
     - { role: autoware.ecu_system_setup.jetson_clocks }
-    - { role: autoware.ecu_system_setup.jetson_perception_service }
     - { role: autoware.ecu_system_setup.netplan }
     - { role: autoware.ecu_system_setup.otaclient }
     - { role: autoware.ecu_system_setup.evaluator_self_hosted_environment }
@@ -51,15 +52,13 @@
     - { role: autoware.ecu_system_setup.timezone }
     - { role: autoware.ecu_system_setup.set_large_txqueue }
     - { role: autoware.ecu_system_setup.rsyncd }
-    - { role: link_retry_handler }
-    - role: gpasswd
-      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
-    - role: autoware.edge_auto_jetson.cuda
+    - { role: autoware.edge_auto_jetson.link_retry_handler }
+    - role: autoware.edge_auto_jetson.sensor_trigger_for_anvil
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.edge_auto_jetson.vcstool }
-    - role: autoware.edge_auto_jetson.ros2
-      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.edge_auto_jetson.cgroups }
+    - { role: autoware.ecu_system_setup.fool_proof_check } # fool proof check for autoware function
+    - { role: autoware.ecu_system_setup.letterbox_monitor }
 
   # Any `tasks` defined in the play will be executed after each role listed in `roles`
   # see: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html#using-roles-at-the-play-level
@@ -69,35 +68,11 @@
       block:
         - name: ROS 2 application build
           ansible.builtin.include_role:
-            name: autoware.ecu_system_setup.ros2_native_build_for_perception_ecu
-            tasks_from: application.yaml
-          vars:
-            aip_repos_file_name: aip_{{ vehicle_model }}.repos # noqa: var-naming[no-role-prefix]
+            name: autoware.edge_auto_jetson.perception_application
 
-        - name: Setup as object recognition ECU
-          when:
-            - perception_type == 'od'
-          block:
-            - name: Download yolox model
-              ansible.builtin.include_role:
-                name: autoware.ecu_system_setup.download_yolox_model
-            - name: TIER IV camera driver
-              ansible.builtin.include_role:
-                name: autoware.ecu_system_setup.tier4_camera_driver_anvil
-
-        - name: Setup as traffic light recognition ECU
-          when:
-            - perception_type == 'tlr'
-          block:
-            - name: Download yolox model
-              ansible.builtin.include_role:
-                name: autoware.ecu_system_setup.download_yolox_model
-            - name: Download tlr model
-              ansible.builtin.include_role:
-                name: autoware.ecu_system_setup.download_tlr_model
-            - name: TIER IV camera driver
-              ansible.builtin.include_role:
-                name: autoware.ecu_system_setup.tier4_camera_driver_anvil
+        - name: TIER IV camera driver
+          ansible.builtin.include_role:
+            name: autoware.ecu_system_setup.tier4_camera_driver_anvil
 
     - name: Setup ECU for Perception2 ECU which is connected to Add-On ECU
       when: ecu_id == 'perception2'

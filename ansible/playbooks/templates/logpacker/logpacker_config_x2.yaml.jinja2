@@ -11,11 +11,11 @@ use_old_name: true
 directories:
   - output_at: "{{ rosbag_logging_directory }}"
     output_mountpoint: "{{ rosbag_logging_directory_mountpoint }}"
-    disk_threshold_error: 10
-    disk_threshold_warning: 30
+    disk_threshold_error: 1
+    disk_threshold_warning: 5
   - output_at: "{{ temporary_logging_directory }}"
-    disk_threshold_error: 10
-    disk_threshold_warning: 30
+    disk_threshold_error: 1
+    disk_threshold_warning: 5
 logging_mode:
   mode_list:
     - always
@@ -45,15 +45,9 @@ logging_mode:
     rosbag:
       output_at: "{{ temporary_logging_directory }}"
       recording_type: "auto"
+      initial_state: "recording"
       recording_mode_values:
-        - "InitializingVehicle"
-        - "WaitingForRoute"
-        - "Planning"
-        - "WaitingForEngage"
-        - "Driving"
-        - "ArrivedGoal"
-        - "Emergency"
-        - "Finalizing"
+        - ""
     rotation:
       target_dir: "{{ temporary_logging_directory }}"
   light:
@@ -115,6 +109,7 @@ rosbag:
     - "/localization/twist_estimator/twist_with_covariance$"
     - "/localization/util/downsample/pointcloud$"
     - "/logging_diag_graph/debug/error_graph_text$"
+    - "/mrm/(.*)"
     - "/perception/(.*)/detection/expect/rois$"
     - "/perception/(.*)/detection/rois$"
     - "/perception/(.*)/detection/rough/rois$"
@@ -123,10 +118,13 @@ rosbag:
     - "/perception/object_recognition/detection/apollo/validation/objects$"
     - "/perception/object_recognition/detection/centerpoint/objects$"
     - "/perception/object_recognition/detection/centerpoint/validation/objects$"
-    - "/perception/object_recognition/detection/clustering/camera_lidar_fusion/objects_with_feature$"
     - "/perception/object_recognition/detection/clustering/camera_lidar_fusion/objects$"
-    - "/perception/object_recognition/detection/clustering/objects_with_feature$"
     - "/perception/object_recognition/detection/clustering/objects$"
+    - "/perception/object_recognition/detection/irregular_object/objects$"
+    - "/perception/object_recognition/detection/centerpoint_irregular_object_merger/objects$"
+    - "/perception/object_recognition/detection/transfusion_irregular_object_merger/objects$"
+    - "/perception/object_recognition/detection/pointpainting_irregular_object_merger/objects$"
+    - "/perception/object_recognition/detection/apollo_irregular_object_merger/objects$"
     - "/perception/object_recognition/detection/detection_by_tracker/debug/(.*)"
     - "/perception/object_recognition/detection/detection_by_tracker/objects$"
     - "/perception/object_recognition/detection/mask(.*)"
@@ -141,6 +139,7 @@ rosbag:
     - "/perception/object_recognition/prediction/maneuver$"
     - "/perception/object_recognition/tracking/objects$"
     - "/perception/object_recognition/tracking/radar/far_objects$"
+    - "/perception/object_recognition/tracking/multi_object_tracker/debug/(.*)$"
     - "/planning/mission_planning/checkpoint$"
     - "/planning/mission_planning/goal$"
     - "/planning/mission_planning/route$"
@@ -167,6 +166,19 @@ rosbag:
     - "/planning/scenario_planning/lane_driving/force_lane_change$"
     - "/planning/scenario_planning/lane_driving/lane_change_approval$"
     - "/planning/scenario_planning/lane_driving/lane_change_candidate_path$"
+    - "/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/debug/(.*)"
+    - "/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/dynamic_obstacle_stop/virtual_walls$"
+    - "/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/obstacle_cruise/debug_markers$"
+    - "/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/obstacle_cruise/virtual_walls$"
+    - "/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/obstacle_slow_down/debug_markers$"
+    - "/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/obstacle_slow_down/virtual_walls$"
+    - "/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/obstacle_stop/debug_markers$"
+    - "/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/obstacle_stop/virtual_walls$"
+    - "/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/obstacle_velocity_limiter/virtual_walls$"
+    - "/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/out_of_lane/debug_markers$"
+    - "/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/out_of_lane/virtual_walls$"
+    - "/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/trajectory$"
+    - "/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/trajectory/debug/published_time$"
     - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/trajectory$"
     - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/virtual_wall$"
     - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_cruise_planner/debug/cruise_planning_info$"
@@ -195,6 +207,7 @@ rosbag:
     - "/planning/scenario_planning/trajectory$"
     - "/planning/scenario_planning/velocity_smoother/debug/trajectory_lateral_acc_filtered$"
     - "/planning/scenario_planning/velocity_smoother/distance_to_stopline$"
+    - "/planning/scenario_planning/velocity_smoother/trajectory$"
     - "/rosout$"
     - "/sensing/camera/(.*)/camera_info$"
     - "/sensing/camera/(.*)/image_raw/compressed$"

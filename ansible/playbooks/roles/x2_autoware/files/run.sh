@@ -2,6 +2,10 @@
 
 ulimit -c unlimited
 
+# for letterbox_monitor
+mkdir -p /home/autoware/.ros/autoware_log
+export ROS_LOG_DIR=/home/autoware/.ros/autoware_log
+
 # shellcheck disable=SC1091
 source /opt/autoware/services/set-autoware-env/setup.sh
 ros2 launch autoware_launch autoware.launch.xml \

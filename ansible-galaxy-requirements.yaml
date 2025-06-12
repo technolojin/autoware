@@ -18,4 +18,4 @@ collections:
 
   - name: https://github.com/tier4/edge-auto-jetson.git
     type: git
-    version: feat/anvil-ota-setup
+    version: beta/anvil/v0.40.0

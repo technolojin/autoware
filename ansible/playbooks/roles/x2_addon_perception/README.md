@@ -2,6 +2,10 @@
 
 This role setup the perception node in Add-On ECU.
 
+## Deprecated
+
+This role is deprecated. Please use [edge_auto_jetson](https://github.com/tier4/edge-auto-jetson/tree/beta/anvil/v0.40.0/ansible/roles/perception_application)
+
 ## Role in system design
 
 The role has two functions:
@@ -27,6 +31,6 @@ Add the following line to the Ansible playbook:
 
 ## Related links
 
-- [JIRA ticket](https://tier4.atlassian.net/browse/RT0-34412)
+- [ticket](https://tier4.atlassian.net/browse/RT0-34412)
 
 ### Remarks

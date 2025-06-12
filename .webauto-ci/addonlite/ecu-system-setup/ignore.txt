@@ -1,6 +1,4 @@
 __pycache__/
-.git/
 .ssh/
 /tmp
-/home/autoware/overlay_ws/log
-/home/autoware/overlay_ws/build
+/home/autoware/*/log

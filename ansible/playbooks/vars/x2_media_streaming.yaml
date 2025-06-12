@@ -1,9 +1,7 @@
-# cspell: ignore dustynv ipaddr maxsize rexmit compat
+# cspell: ignore dustynv ipaddr libpython maxsize rexmit compat
 # common
-daemon_reload: "{{ reload_systemd | default('yes') }}"
 is_in_docker: "{{ daemon_reload == 'no' }}"
 
-ros_domain_id: 1
 autoware_env_dir: /opt/autoware/env
 autoware_env_dir_privileged: true
 xx1_logging_ecu: false
@@ -11,7 +9,7 @@ xx1_logging_ecu: false
 # syslog collector - client
 syslog_collector_type: Client
 # rsyslog_server_ipaddr: 192.168.30.11 # x2
-rsyslog_server_ipaddr: 192.168.30.71 # X2 Logging ECU
+rsyslog_server_ipaddr: 192.168.20.71 # X2 Logging ECU 1Gb eth
 # rsyslog_server_port: 514
 # rsyslog_protocol: tcp
 rsyslog_queue_maxsize: 1g
