@@ -64,11 +64,6 @@ repositories:
     url: https://github.com/autowarefoundation/autoware_rviz_plugins.git
     version: 69878ef0f4f3694a83ad838df1ca3054bb5c08db
     base: true
-  autoware/autoware_rviz_plugins:
-    type: git
-    url: https://github.com/autowarefoundation/autoware_rviz_plugins.git
-    version: main
-    base: true
   # description
   description/sensor/sensor_component_description:
     type: git
