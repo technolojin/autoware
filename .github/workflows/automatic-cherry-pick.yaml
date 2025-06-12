@@ -3,6 +3,8 @@ on:
   pull_request:
     branches:
       - main # Branches where the original PRs will be merged
+      - beta/v4.0.2
+      - beta/v4.1.0
     types:
       - closed
       - labeled
@@ -23,12 +25,15 @@ jobs:
       matrix:
         following-branch:
           - main
+          - beta/v4.0.2
+          - beta/v4.1.0
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          submodules: recursive # If you need to operate on submodules
 
       - name: Generate token
         id: generate-token

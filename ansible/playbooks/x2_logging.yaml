@@ -1,0 +1,59 @@
+# cSpell:ignore bagrollbacker reconfig
+- name: Setup x2 logging
+  hosts: localhost
+  vars_files:
+    - ./vars/x2_common.yaml
+    - ./vars/x2_logging.yaml
+  vars_prompt:
+    - name: github_token
+      prompt: Please give github_token for npmrc
+  pre_tasks:
+    - name: Set galactic rosdistro
+      ansible.builtin.set_fact:
+        rosdistro: galactic
+      when: ansible_distribution_version == "20.04"
+    - name: Set humble rosdistro
+      ansible.builtin.set_fact:
+        rosdistro: humble
+      when: ansible_distribution_version == "22.04"
+  roles:
+    - { role: autoware.ecu_system_setup.automatic_login }
+    - { role: autoware.ecu_system_setup.additional_fonts }
+    - { role: autoware.ecu_system_setup.bagkeeper }
+    - { role: autoware.ecu_system_setup.bagkeeper_launch }
+    - { role: autoware.ecu_system_setup.bagrollbacker }
+    - { role: autoware.ecu_system_setup.bagtaker2 }
+    - role: autoware.ecu_system_setup.boot_shutdown_service
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - { role: autoware.ecu_system_setup.clean_application_log }
+    - { role: autoware.ecu_system_setup.clean_empty_directory }
+    - { role: autoware.ecu_system_setup.clean_ros_log }
+    - { role: autoware.ecu_system_setup.cyclonedds }
+    - { role: autoware.ecu_system_setup.disable_lock_screen }
+    - { role: autoware.ecu_system_setup.foxglove_bridge_service }
+    - { role: autoware.ecu_system_setup.install_openssh_server }
+    - { role: autoware.ecu_system_setup.lenovo_keyboard }
+    - role: autoware.ecu_system_setup.localhost_shutdown
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - { role: autoware.ecu_system_setup.logpacker }
+    - { role: autoware.ecu_system_setup.otaclient }
+    - { role: autoware.ecu_system_setup.evaluator_self_hosted_environment }
+    - { role: autoware.ecu_system_setup.ptp4l }
+    - { role: autoware.ecu_system_setup.rsyslog }
+    - { role: autoware.ecu_system_setup.set_autoware_env }
+    - { role: autoware.ecu_system_setup.stop_auto_upgrade }
+    - { role: autoware.ecu_system_setup.timezone }
+    - { role: autoware.ecu_system_setup.turn_off_desktop_notification }
+    - { role: autoware.ecu_system_setup.mot_env_setup }
+    - { role: autoware.ecu_system_setup.release_rosbag_page_cache }
+    - { role: autoware.ecu_system_setup.pyrocan }
+    - role: autoware.ecu_system_setup.grpc_cpp
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - role: autoware.ecu_system_setup.logagent
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - { role: x2_sub_misc }
+    - { role: x2_can_logging }
+    - { role: x2_reconnect_touch_display }
+    - { role: x2_logging_reconfig_10g }
+    - { role: x2_dev_tools }
+    - { role: autoware.ecu_system_setup.netplan } # need to be the last, as the internet will lost after this

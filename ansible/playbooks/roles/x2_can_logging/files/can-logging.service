@@ -1,0 +1,15 @@
+[Unit]
+Description=Auto-activation of CAN communication in Logging ECU
+After=network.target
+Requires=network.target
+
+[Service]
+User=root
+ExecStart=/opt/autoware/services/can-logging/can-up.sh
+ExecStop=/opt/autoware/services/can-logging/can-down.sh
+Type=oneshot
+RemainAfterExit=yes
+RestartSec=1s
+
+[Install]
+WantedBy=multi-user.target

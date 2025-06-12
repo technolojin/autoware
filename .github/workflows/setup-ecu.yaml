@@ -21,11 +21,68 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        playbook:
+        job:
+          - awsim_pc
           - ecu_setup
+          - x2_cert
+          - x2_sub
+          - x2_sub_cert
+          - x2_logging
+          - x2_perception_1
+          - x2_perception_2
+          - x2_perception_application
+          - x2_addon
+          - x2_addonlite
+          - x2_media_streaming_1
+          - x2_media_streaming_2
+          - x2_signage
+          - x2_voice_system
         include:
-          - playbook: ecu_setup
+          - job: awsim_pc
+            playbook: awsim_pc
             additional_args: -y -v -e vehicle_id=1234
+          - job: ecu_setup
+            playbook: ecu_setup
+            additional_args: -y -v -e vehicle_id=1234
+          - job: x2_cert
+            playbook: x2_cert
+            additional_args: -y -v -e vehicle_id=1234
+          - job: x2_sub
+            playbook: x2_sub
+            additional_args: -y -v -e vehicle_id=1234
+          - job: x2_sub_cert
+            playbook: x2_sub_cert
+            additional_args: -y -v -e vehicle_id=1234
+          - job: x2_logging
+            playbook: x2_logging
+            additional_args: -y -v -e vehicle_id=1234 -e github_token=''
+          - job: x2_perception_1
+            playbook: x2_perception
+            additional_args: -y -v -e ecu_id=perception1
+          - job: x2_perception_2
+            playbook: x2_perception
+            additional_args: -y -v -e ecu_id=perception2
+          - job: x2_perception_application
+            playbook: x2_perception_application
+            additional_args: -y -v -e ecu_id=perception1
+          - job: x2_addon
+            playbook: x2_addon
+            additional_args: -y -v -e github_token=''
+          - job: x2_addonlite
+            playbook: x2_addonlite
+            additional_args: -y -v -e ecu_id=addonlite
+          - job: x2_media_streaming_1
+            playbook: x2_media_streaming
+            additional_args: -y -v -e ecu_id=media-streaming1
+          - job: x2_media_streaming_2
+            playbook: x2_media_streaming
+            additional_args: -y -v -e ecu_id=media-streaming2
+          - job: x2_signage
+            playbook: x2_signage
+            additional_args: -y -v -e github_token=''
+          - job: x2_voice_system
+            playbook: x2_voice_system
+            additional_args: -y -v
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -44,6 +101,6 @@ jobs:
 
       - name: Run setup script
         run: |
-          ./setup-ecu.sh ${{ matrix.playbook }} ${{ matrix.additional_args }} -e reload_systemd=no
+          ./setup-ecu.sh ${{ matrix.playbook }} ${{ matrix.additional_args }} -e reload_systemd=no -e skip_for_github_actions=true
         env:
           GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}

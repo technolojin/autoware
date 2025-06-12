@@ -1,2 +1,101 @@
-# sample_role
-sample_role_msg: This is sample role world!
+# cSpell:ignore rexmit nocaps ipaddr maxsize
+
+# ========== common ==========
+daemon_reload: "{{ reload_systemd | default('yes') }}"
+ros_domain_id: 1
+autoware_env_dir: "{{ ansible_env.HOME }}"
+autoware_env_dir_privileged: false
+
+# ========== ecu_common.yaml ==========
+
+# cyclonedds
+cyclonedds:
+  network_interface:
+    - { address: enp5s0f1, priority: 1 } # Prioritize 10Gb interface
+    - { address: vlan.500, priority: 0 }
+  minimum_socket_receive_buffer_size: 100MB
+  minimum_socket_send_buffer_size: 10MB
+  max_message_size: 8950B
+  fragment_size: 8850B
+  max_rexmit_message_size: 8950B
+  water_mark_whc_high: 4MB
+  water_mark_whc_low: 10kB
+ipv4_ipfrag_time: 1
+ipv4_ipfrag_high_thresh: 134217728
+netcore_rmem_max: 2147483647
+netcore_wmem_max: 2147483647
+
+# greengrass user/group
+ggc_user_uid: 919
+ggc_group_gid: 929
+
+# netplan
+netplan_files: netplan/99-autoware.x2.yaml
+
+# nftables
+nftables_conf_file: nftables/nftables.conf
+
+# otaclient
+otaclient_release_version: v3.8.4
+otaclient_package_whl_checksum: sha256:c118f7ce69bce85b7a038dd7829ca8567f665cf8f86772a6e773e77ac3b3e8fe
+otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2
+otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2.j2
+
+# set-autoware-env
+autoware_install_dir: /home/autoware/pilot-auto.x2
+vehicle_id: default
+vehicle_model: j6_gen2
+sensor_model: aip_x2_gen2
+
+# simple_system_launch
+simple_system_launch_items:
+  - file: simple_system_launch/autoware_launch.service
+    command: ros2 launch autoware_launch autoware.launch.xml
+
+# timezone
+timezone: Asia/Tokyo
+
+# ========== ecu_develop.yaml ==========
+
+# additional-fonts
+additional_font_packages:
+  - fonts-noto-cjk
+
+# keyboard: Select keyboard.jp, keyboard.jp+ctrl_nocaps or keyboard.us+ctrl_nocaps
+keyboard_layout_file: keyboard.jp+ctrl_nocaps
+
+# ========== ecu_setup.yaml ==========
+
+# syslog collector - client
+syslog_collector_type: Client
+rsyslog_server_ipaddr: 192.168.30.71 # X2 Logging ECU
+rsyslog_queue_maxsize: 1g
+
+# rsyncd - server for logpacker coredump plugin
+# rsyncd - add systemd-tmpfiles configuration for logpacker coredump plugin
+setup_coredump_rsyncd_service: true
+rsyncd_hosts_allow: 192.168.30.71 # X2 Logging ECU
+setup_coredump_tmpfiles_service: true
+
+# boot shutdown
+boot_shutdown_tools_clone_dir: "{{ autoware_install_dir }}/src/product/boot_shutdown_tools"
+# boot shutdown manager
+# use parameter file in pilot-auto repository
+boot_shutdown_manager_param_file: boot_shutdown_manager/boot_shutdown_manager.param.yaml
+
+# configure marvell switch
+x2_configure_marvell_switch_board_config_file: bd_cfg_main.xml
+x2_configure_marvell_switch_file: X2_J6_Gen2_Main_Marvell.xml
+
+# ptp4l
+x2_ptp4l_ecu: main
+
+# redundancy switcher
+redundancy_switcher_repository_url: git@github.com:tier4/redundancy_switcher.git
+redundancy_switcher_clone_dir: /tmp/redundancy_switcher
+redundancy_switcher_version: main
+redundancy_switcher_install_dir: /opt/redundancy_switcher/bin
+redundancy_switcher_conf_install_dir: /opt/redundancy_switcher/conf
+redundancy_switcher_conf_files: redundancy_switcher/node_info.json
+redundancy_switcher_service_template: redundancy_switcher.service.jinja2
+node_id: 0

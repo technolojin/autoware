@@ -1,0 +1,57 @@
+# cspell: ignore ipaddr maxsize pactl rexmit
+# common
+daemon_reload: "{{ reload_systemd | default('yes') }}"
+ros_domain_id: 1
+autoware_install_dir: "{{ ansible_env.HOME }}/vehicle_voice_alert_system"
+systemctl_default: multi-user.target
+autoware_env_dir: "{{ ansible_env.HOME }}"
+autoware_env_dir_privileged: false
+
+# additional-fonts
+additional_font_packages:
+  - fonts-noto-cjk
+
+# timezone
+timezone: Asia/Tokyo
+
+# keyboard
+keyboard_layout_file: keyboard.jp
+
+# cyclonedds
+cyclonedds:
+  network_interface:
+    - { address: enp1s0, priority: default }
+  minimum_socket_receive_buffer_size: 20MB
+  minimum_socket_send_buffer_size: default
+  max_message_size: 65500B
+  fragment_size: 4000B
+  max_rexmit_message_size: 1456B # Default value from CycloneDDS documentation
+  water_mark_whc_high: 500kB # Default value from CycloneDDS documentation
+  water_mark_whc_low: 1kB # Default value from CycloneDDS documentation
+
+# ptp4l port
+ptp4l_network_port: enp1s0
+
+# ros2-app-build
+ros2_app_repository: git@github.com:tier4/vehicle_voice_alert_system.git
+ros2_app_repository_version: 61e59b63ea178568e25e0078011d0e60d2f5af33
+depends_repos: vehicle_voice_alert_system.repos
+
+# simple system launch
+simple_system_launch_items:
+  - file: vehicle_sound.service
+    command: pactl -- set-sink-volume 0 90%; ros2 launch vehicle_voice_alert_system vehicle_voice_alert_system.launch.xml
+
+# netplan
+netplan_files: netplan/99-autoware.x2-voice-system.yaml
+
+# syslog collector
+syslog_collector_type: Client
+rsyslog_server_ipaddr: 192.168.20.71
+rsyslog_queue_maxsize: 1g
+
+# otaclient
+otaclient_release_version: v3.8.4
+otaclient_package_whl_checksum: sha256:c118f7ce69bce85b7a038dd7829ca8567f665cf8f86772a6e773e77ac3b3e8fe
+otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-voice-system
+otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-1gbe.j2

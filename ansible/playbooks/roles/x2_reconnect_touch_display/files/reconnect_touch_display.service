@@ -1,0 +1,13 @@
+[Unit]
+Description=Reconnect Touch Display on Logging ECU when it is not recognized
+After=multi-user.target
+
+[Service]
+User=root
+Type=oneshot
+ExecStartPre=/bin/sleep 10
+ExecStart=/opt/autoware/services/reconnect_touch_display/run.sh
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target
