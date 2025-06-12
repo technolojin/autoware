@@ -5,7 +5,7 @@
 # cSpell: ignore annotationless buildspecs
 
 version: 2
-  
+
 artifacts:
   - name: main
     metadata:
