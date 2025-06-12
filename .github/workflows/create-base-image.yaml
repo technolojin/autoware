@@ -12,11 +12,20 @@ on:
         type: boolean
         required: true
         default: true
+      include-cuda-drivers:
+        description: Include CUDA drivers
+        type: boolean
+        required: true
+        default: false
+      include-nvidia:
+        description: Include NVIDIA packages
+        type: boolean
+        required: true
+        default: false
 
 env:
   ROS_DISTRO: humble
   BASE_IMAGE: ubuntu:22.04
-  SETUP_ARGS: local_dev_env --no-cuda-drivers --no-nvidia
 
 jobs:
   create-base-image:
@@ -30,6 +39,16 @@ jobs:
         run: |
           echo "WORKSPACE_ROOT=$(pwd)" >> $GITHUB_ENV
           echo "CREATE_DATE=$(date +'%Y%m%d_%H%M(%Z)')" >> $GITHUB_ENV
+
+          # Set SETUP_ARGS based on workflow_dispatch inputs
+          SETUP_ARGS="local_dev_env"
+          if [ "${{ github.event.inputs.include-cuda-drivers }}" = "false" ]; then
+            SETUP_ARGS="$SETUP_ARGS --no-cuda-drivers"
+          fi
+          if [ "${{ github.event.inputs.include-nvidia }}" = "false" ]; then
+            SETUP_ARGS="$SETUP_ARGS --no-nvidia"
+          fi
+          echo "SETUP_ARGS=$SETUP_ARGS" >> $GITHUB_ENV
 
       - name: Generate token
         id: generate-token
@@ -56,16 +75,24 @@ jobs:
 
       - name: Check ROS 2 Package Versions
         run: |
-          sudo apt update && sudo apt install curl gnupg lsb-release
-          sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
-          echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(source /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+          sudo apt update && sudo apt install curl
+          export ROS_APT_SOURCE_VERSION=$(curl -s https://api.github.com/repos/ros-infrastructure/ros-apt-source/releases/latest | grep -F "tag_name" | awk -F\" '{print $4}')
+          curl -L -o /tmp/ros2-apt-source.deb "https://github.com/ros-infrastructure/ros-apt-source/releases/download/${ROS_APT_SOURCE_VERSION}/ros2-apt-source_${ROS_APT_SOURCE_VERSION}.$(. /etc/os-release && echo $VERSION_CODENAME)_all.deb"
+          sudo apt install /tmp/ros2-apt-source.deb
           sudo apt update
-          echo "ROS_DESKTOP_VER=$( apt-cache madison ros-${ROS_DISTRO}-desktop | cut -d \| -f 2 | cut -c 2- )" >> $GITHUB_ENV
+          echo "ROS_DESKTOP_VER=$(apt-cache madison ros-${ROS_DISTRO}-desktop | grep -v Sources | cut -d \| -f 2 | cut -c 2-)" >> $GITHUB_ENV
 
       - name: set description
         id: set-description
         run: |
-          echo "img-description=${{ env.CREATE_DATE }}, ros-${{ env.ROS_DISTRO }}-desktop:${{ env.ROS_DESKTOP_VER }}" >> $GITHUB_OUTPUT
+          DESCRIPTION="${{ env.CREATE_DATE }}, ros-${{ env.ROS_DISTRO }}-desktop:${{ env.ROS_DESKTOP_VER }}"
+          if [ "${{ github.event.inputs.include-cuda-drivers }}" = "true" ]; then
+            DESCRIPTION="$DESCRIPTION, with-cuda-drivers"
+          fi
+          if [ "${{ github.event.inputs.include-nvidia }}" = "true" ]; then
+            DESCRIPTION="$DESCRIPTION, with-nvidia"
+          fi
+          echo "img-description=$DESCRIPTION" >> $GITHUB_OUTPUT
 
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -112,6 +139,18 @@ jobs:
           cp autoware.repos setup-dev-env.sh ansible-galaxy-requirements.yaml amd64.env arm64.env build-context/
           cp -r ansible build-context/
 
+      - name: Set image tag suffix
+        id: set-tag-suffix
+        run: |
+          TAG_SUFFIX=""
+          if [ "${{ github.event.inputs.include-cuda-drivers }}" = "true" ]; then
+            TAG_SUFFIX="${TAG_SUFFIX}-cuda"
+          fi
+          if [ "${{ github.event.inputs.include-nvidia }}" = "true" ]; then
+            TAG_SUFFIX="${TAG_SUFFIX}-nvidia"
+          fi
+          echo "tag-suffix=$TAG_SUFFIX" >> $GITHUB_OUTPUT
+
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
@@ -121,8 +160,8 @@ jobs:
             *.context=${{ env.WORKSPACE_ROOT }}/build-context
             *.secrets=id=github_token,src=github_token
           tags: |
-            ${{ github.event.inputs.update-latest == 'true' && format('ghcr.io/{0}/base-image:latest', github.repository) || '' }}
-            ghcr.io/${{ github.repository }}/base-image:${{ steps.set-tag-name.outputs.tag-name }}
+            ${{ github.event.inputs.update-latest == 'true' && format('ghcr.io/{0}/base-image:latest{1}', github.repository, steps.set-tag-suffix.outputs.tag-suffix) || '' }}
+            ghcr.io/${{ github.repository }}/base-image:${{ steps.set-tag-name.outputs.tag-name }}${{ steps.set-tag-suffix.outputs.tag-suffix }}
           build-args: |
             DESCRIPTION=${{ steps.set-description.outputs.img-description }}
             GITHUB_TOKEN=${{ steps.generate-token.outputs.token }}

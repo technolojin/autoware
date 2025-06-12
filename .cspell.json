@@ -35,10 +35,12 @@
     "newkey",
     "keyout",
     "novnc",
+    "subshell",
     "xstartup",
     "Ando",
     "Tomohito",
     "cumm",
     "spconv"
-  ]
+  ],
+  "ignorePaths": [".release_info.yaml"]
 }

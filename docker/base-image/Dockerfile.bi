@@ -74,3 +74,7 @@ RUN rm -rf \
   /etc/apt/sources.list.d/docker.list \
   /etc/apt/sources.list.d/nvidia-docker.list \
   ~/.ssh/known_hosts \
+  ~/.ros/ \
+  ~/autoware_data \
+  ~/.ansible \
+  /autoware/

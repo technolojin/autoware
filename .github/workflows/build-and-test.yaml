@@ -7,11 +7,6 @@ on:
         description: Branch to checkout
         required: true
         default: update-resolved-repos-main
-      create-pr:
-        description: Create PR after build and test
-        required: false
-        default: false
-        type: boolean
   schedule:
     # Run at midnight in Japan
     - cron: 0 15 * * *
@@ -209,7 +204,7 @@ jobs:
   create-pr:
     needs: [check-branch, build-and-test]
     runs-on: ubuntu-22.04
-    if: ${{ (github.event_name == 'schedule' || github.event.inputs.create-pr == 'true') && needs.check-branch.outputs.branch-exists == 'true' }}
+    if: ${{ github.event_name == 'schedule' && needs.check-branch.outputs.branch-exists == 'true' }}
 
     steps:
       - name: Check out repository
@@ -233,15 +228,20 @@ jobs:
         run: |
           git config --global --add safe.directory "${GITHUB_WORKSPACE}"
 
-      - name: Create Pull Request
+      - name: Create Pull Request if not exists
         run: |
-          gh pr create \
-            --base ${{ github.event.repository.default_branch }} \
-            --head update-resolved-repos-main \
-            --title "chore: update default branch commits in .autoware_resolved.repos" \
-            --body "This PR updates the .autoware_resolved.repos file with the latest commit hashes from the default branch. This PR is automatically created by the nightly workflow and has been verified with build and test." \
-            --label "tag:run-build-test" \
-            --reviewer dkoldaev
+          existing_pr=$(gh pr list --head update-resolved-repos-main --json number --jq '.[0].number')
+          if [ -n "$existing_pr" ]; then
+            echo "Pull request already exists (#$existing_pr). Skipping creation."
+          else
+            gh pr create \
+              --base ${{ github.event.repository.default_branch }} \
+              --head update-resolved-repos-main \
+              --title "chore: update default branch commits in .autoware_resolved.repos" \
+              --body "This PR updates the .autoware_resolved.repos file with the latest commit hashes from the default branch. This PR is automatically created by the nightly workflow and has been verified with build and test." \
+              --label "tag:run-build-test" \
+              --reviewer dkoldaev
+          fi
         env:
           GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
 
