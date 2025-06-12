@@ -4,10 +4,6 @@
 
 : "${ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK:?is not set}"
 
-# Remove the existing ROS 2 APT source list file
-sudo rm -f /etc/apt/sources.list.d/ros2.list
-sudo rm -f /usr/share/keyrings/ros-archive-keyring.gpg
-
 sudo -E apt-get -y update
 sudo -E apt-get -y install "linux-image-$(uname -r)" "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
 sudo -E apt-get -y install ubuntu-minimal openssh-server fonts-ubuntu systemd-coredump vim grub-efi-amd64
