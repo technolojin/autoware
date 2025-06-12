@@ -317,7 +317,7 @@ artifacts:
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
-        from: ubuntu:22.04
+        from: ghcr.io/tier4/pilot-auto.x2/base-image:v4.2
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
@@ -518,7 +518,7 @@ artifacts:
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
-        from: ubuntu:22.04
+        from: ghcr.io/tier4/pilot-auto.x2/base-image:v4.2
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
