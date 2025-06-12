@@ -2,42 +2,42 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: v0.46.0
+    version: v0.47.0
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: v0.46.0
+    version: v0.47.0
     base: true
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
-    version: 597d43801f5991a6ba23589b88d544fbfe20e961
+    version: 086dbe1e4c0c6230eb92a12b166b112236d07b32
     base: true
   autoware/autoware_utils:
     type: git
     url: https://github.com/autowarefoundation/autoware_utils.git
-    version: a47850e1530cde207d50da35dd6918bb75c7281b
+    version: 260bc9dc62a898fde162e0b9a65fcd78fae070d8
     base: true
   autoware/autoware_lanelet2_extension:
     type: git
     url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
-    version: 66fe887cadd8a2f65c01ede8352a1f75bcf534a1
+    version: 82ea5f0ddf98681070da99bdfcde510ffcbf0416
     base: true
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: v0.46.0
+    version: v0.47.0
     base: true
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: 856d4ce6b90a5f774c33ecef86fc4560f86c65db
+    version: d6521dd36035e5721a182c0ed705f2f65d9ae656
     base: true
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: v0.46.0
+    version: v0.47.0
     base: true
   autoware/autoware_msgs:
     type: git
@@ -47,12 +47,12 @@ repositories:
   autoware/autoware_adapi_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_adapi_msgs.git
-    version: 12287684e096a02d279299a7e6cb44740fc34467
+    version: 6085825c26f765fbde8094e95f01958d0f8a4681
     base: true
   autoware/autoware_internal_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_internal_msgs.git
-    version: 18dfbaf03f237604d6b732af80c5989d8ca3563c
+    version: 290efb7b0c51d150389dc75b18248d16a52729b1
     base: true
   autoware/managed_transform_buffer:
     type: git
@@ -62,7 +62,7 @@ repositories:
   autoware/autoware_rviz_plugins:
     type: git
     url: https://github.com/autowarefoundation/autoware_rviz_plugins.git
-    version: 59ae963889897bc05b5685236cbfa4b4449c91fa
+    version: 69878ef0f4f3694a83ad838df1ca3054bb5c08db
     base: true
   # description
   description/sensor/sensor_component_description:
@@ -73,7 +73,7 @@ repositories:
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
-    version: de4bf6be79aa2968cf2f62e0ebe1ff8a5797e6ad
+    version: df03c0676fdf1e34ace3ad6ee22ca29653b7c2ae
     base: true
   vendor/ublox:
     type: git
@@ -149,12 +149,12 @@ repositories:
   launch: # Based humble version, the acceleration patched is added
     type: git
     url: https://github.com/tier4/launch.git
-    version: 5c257d83e5bdb786ae0fdb8f040f2f6ef320e993
+    version: 9122128dc931211e42116b055f150199285496e1
     base: true
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: v0.46.0
+    version: v0.47.0
     base: true
   # middleware
   # TODO(TIER IV): During the transition period of Agnocast introduction,
@@ -164,7 +164,7 @@ repositories:
   middleware/external/agnocast:
     type: git
     url: https://github.com/tier4/agnocast.git
-    version: b757498284a8eab08d6f9a3fcff055484133538b # TODO(TIER IV): to be updated to v1.1.0
+    version: 10a28bdeda0c7b230d5ed02b2d1e592d3d59dc2a # TODO(TIER IV): to be updated to v1.1.0
     base: true
   autoware/launcher:
     type: git
