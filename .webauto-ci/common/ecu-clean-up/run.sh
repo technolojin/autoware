@@ -36,9 +36,24 @@ nsight_packages=(
     "nsight-system"
 )
 
+example_packages=(
+    "cuda-samples"
+    "libcudnn8-samples"
+    "libnvinfer-samples"
+    "nvidia-l4t-vulkan-sc-samples"
+    "vpi2-samples"
+)
+
+demo_packages=(
+    "nvidia-l4t-graphics-demos"
+    "vpi2-demos"
+)
+
 packages_to_remove=()
 packages_to_remove+=("${dev_packages[@]}")
 packages_to_remove+=("${nsight_packages[@]}")
+packages_to_remove+=("${example_packages[@]}")
+packages_to_remove+=("${demo_packages[@]}")
 
 for package_prefix in "${packages_to_remove[@]}"; do
     full_name=$(dpkg -l | grep "^ii  ${package_prefix}" | awk '{print $2}')
