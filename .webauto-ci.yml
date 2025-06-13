@@ -105,7 +105,7 @@ artifacts:
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
-        from: ghcr.io/tier4/pilot-auto.x2/base-image:v4.2
+        from: ghcr.io/tier4/pilot-auto/base-image:latest
       output_container_image:
         from: asset-deploy
         workdir: /home/autoware/autoware.proj
