@@ -7,6 +7,11 @@ on:
         description: The name of the beta branch or tag to release
         type: string
         required: true
+      tag-suffix:
+        description: Optional suffix for the tag name (e.g. "pilot-auto/base-image:v0.47-dev" will be pushed with "dev" as the suffix)
+        type: string
+        required: false
+        default: ""
       update-latest:
         description: Update the latest tag
         type: boolean
@@ -143,6 +148,9 @@ jobs:
         id: set-tag-suffix
         run: |
           TAG_SUFFIX=""
+          if [ "${{ github.event.inputs.tag-suffix }}" != "" ]; then
+            TAG_SUFFIX="${TAG_SUFFIX}-${{ github.event.inputs.tag-suffix }}"
+          fi
           if [ "${{ github.event.inputs.include-cuda-drivers }}" = "true" ]; then
             TAG_SUFFIX="${TAG_SUFFIX}-cuda"
           fi
