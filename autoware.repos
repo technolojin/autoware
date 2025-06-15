@@ -51,7 +51,7 @@ repositories:
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: 8e0083ad388b26a0b1d949544d086249aaa16ec2
+    version: 6e4f7f68e6a497b0f4ee4fb70ccfd59ab90bfc62
   # description
   description/sensor/sensor_component_description:
     type: git
