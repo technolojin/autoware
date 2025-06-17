@@ -6,7 +6,7 @@ collections:
 
   - name: https://github.com/autowarefoundation/autoware.git#/ansible
     type: git
-    version: HEAD
+    version: 97fcaa270595b3ce64a642aed8f011b3883805f1
 
   # When you use your own customized ./src/ecu_system_setup,
   # comment out git settings, uncomment source settings and in autoware.repos
@@ -14,7 +14,7 @@ collections:
   #   type: dir
   - name: git@github.com:tier4/autoware_ecu_system_setup.git
     type: git
-    version: HEAD
+    version: 51401b2e2a0e9d894002eebbcd19589624d55c1d
 
   - name: https://github.com/tier4/edge-auto-jetson.git
     type: git
