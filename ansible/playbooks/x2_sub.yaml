@@ -1,0 +1,47 @@
+# cspell:ignore fintek
+- name: Include vars
+  hosts: localhost
+  tasks:
+    - name: Include vars for essential vars
+      ansible.builtin.include_vars: ./vars/essential_vars.yaml
+    - name: Include vars for Sub ECU
+      ansible.builtin.include_vars: ./vars/x2_sub.yaml
+
+- name: Include additional playbook for common
+  ansible.builtin.import_playbook: pilot_auto.dev_env.ecu_common
+
+- name: Include playbook for development
+  ansible.builtin.import_playbook: pilot_auto.dev_env.ecu_develop
+
+- name: Setup ECU by additional roles
+  hosts: localhost
+  roles:
+    # add your necessary roles
+    - { role: autoware.ecu_system_setup.automatic_login }
+    - role: autoware.ecu_system_setup.boot_shutdown_service
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - { role: autoware.ecu_system_setup.ip_routing_policy }
+    - { role: autoware.ecu_system_setup.lenovo_keyboard }
+    - { role: autoware.ecu_system_setup.rootfs_encrypt }
+    - { role: autoware.ecu_system_setup.rsyslog }
+    - { role: autoware.ecu_system_setup.syslog_collector_client }
+    - { role: autoware.ecu_system_setup.fintek_can_driver }
+    - { role: autoware.ecu_system_setup.marvell_switch_driver }
+    - role: autoware.ecu_system_setup.build_system_monitor
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - role: autoware.ecu_system_setup.rviz
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - { role: autoware.ecu_system_setup.screen_recorder }
+    # - { role: autoware.ecu_system_setup.emergency_vehicle_detector }
+    # - { role: x2_autoware } # Don't launch Autoware in Sub ECU until MRM design is finalized
+    - { role: autoware.ecu_system_setup.redundancy_switcher }
+    - role: autoware.ecu_system_setup.domain_bridge
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - { role: x2_cyclonedds_for_redundancy }
+    - { role: x2_can_adm }
+    - { role: x2_configure_marvell_switch }
+    - { role: x2_ptp4l }
+    - { role: x2_disable_chrony } # Disable chrony service on Sub ECU to avoid conflicts with ptp4l
+    - { role: x2_disable_greengrass_setup } # Disable the greengrass-v2-setup service on the Sub ECU to prevent an infinite setup loop.
+    - { role: x2_dev_tools }
+    - { role: x2_cmd_helper_completion }

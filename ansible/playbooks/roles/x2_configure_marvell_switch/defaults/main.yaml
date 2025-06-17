@@ -1,0 +1,5 @@
+x2_configure_marvell_switch_repository: git@github.com:tier4/marvell_switch_configuration.git
+x2_configure_marvell_switch_interface: enp4s0
+x2_configure_marvell_switch_board_config_file: bd_cfg_main.xml
+x2_configure_marvell_switch_file: X2_J6_Gen2_Main_Marvell.xml
+x2_configure_marvell_switch_max_retries: 10

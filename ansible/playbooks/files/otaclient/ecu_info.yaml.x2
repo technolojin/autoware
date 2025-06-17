@@ -1,0 +1,39 @@
+format_version: 1
+ecu_id: autoware
+bootloader: grub
+secondaries:
+- ecu_id: sub
+  ip_addr: "192.168.20.21"
+- ecu_id: perception1
+  ip_addr: "192.168.30.31"
+- ecu_id: perception2
+  ip_addr: "192.168.30.32"
+# when use addon
+- ecu_id: addon
+  ip_addr: "192.168.30.33"
+# # when use addonlite
+# - ecu_id: addonlite
+#   ip_addr: "192.168.30.33"
+- ecu_id: signage
+  ip_addr: "192.168.20.41"
+- ecu_id: voice-system
+  ip_addr: "192.168.20.51"
+- ecu_id: media-streaming1
+  ip_addr: "192.168.20.61"
+- ecu_id: media-streaming2
+  ip_addr: "192.168.20.62"
+- ecu_id: logging
+  ip_addr: "192.168.30.71"
+available_ecu_ids:
+- autoware
+- sub
+- perception1
+- perception2
+- addon
+# # when use addonlite
+# - addonlite
+- signage
+- voice-system
+- media-streaming1
+- media-streaming2
+- logging

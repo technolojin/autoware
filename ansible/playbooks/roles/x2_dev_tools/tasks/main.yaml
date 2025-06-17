@@ -1,0 +1,10 @@
+- name: Install development tools
+  ansible.builtin.apt:
+    name:
+      - terminator
+      - nano
+      - can-utils
+      - htop
+      - nlohmann-json3-dev
+    update_cache: true
+  become: true

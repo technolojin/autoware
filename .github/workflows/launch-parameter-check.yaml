@@ -52,8 +52,8 @@ jobs:
         run: |
           echo "src_directory=src" >> $GITHUB_ENV
           echo "launch_directory=src/autoware/launcher/autoware_launch/launch" >> $GITHUB_ENV
-          echo "vehicle_model=lexus" >> $GITHUB_ENV
-          echo "sensor_model=aip_xx1" >> $GITHUB_ENV
+          echo "vehicle_model=j6_gen2" >> $GITHUB_ENV
+          echo "sensor_model=aip_x2_gen2" >> $GITHUB_ENV
 
       - name: Run launch check for planning simulator
         run: |

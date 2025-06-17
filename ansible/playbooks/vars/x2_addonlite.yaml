@@ -1,0 +1,81 @@
+# cspell: ignore ipaddr prptocol maxsize rexmit compat
+# common
+autoware_env_dir: /opt/autoware/env
+autoware_env_dir_privileged: true
+
+# cyclonedds
+cyclonedds:
+  network_interface:
+    - { address: mgbe1, priority: default }
+  minimum_socket_receive_buffer_size: 10MB
+  minimum_socket_send_buffer_size: 10MB
+  max_message_size: 8950B
+  fragment_size: 8850B
+  max_rexmit_message_size: 8950B
+  water_mark_whc_high: 4MB
+  water_mark_whc_low: 10kB
+ipv4_ipfrag_time: 3
+ipv4_ipfrag_high_thresh: 134217728
+netcore_rmem_max: 2147483647
+netcore_rmem_default: 212992
+netcore_wmem_max: 2147483647
+
+# jetson-perception-service
+# jetson_id: 2
+
+# ptp4l port
+ptp4l_network_port: eth0
+
+# otaclient
+otaclient_release_version: v3.8.4
+otaclient_package_whl_checksum: sha256:c118f7ce69bce85b7a038dd7829ca8567f665cf8f86772a6e773e77ac3b3e8fe
+otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-1gbe.j2
+# otaclient_bionic_compat: true
+
+# syslog collector - client
+syslog_collector_type: Client
+rsyslog_server_ipaddr: 192.168.30.71 # X2 Logging ECU
+# rsyslog_server_port: 514
+# rsyslog_tcp_prptocol: tcp
+rsyslog_queue_maxsize: 1g
+
+# set-autoware-env
+autoware_install_dir: /home/autoware/overlay_ws
+
+# rsyncd - server for logpacker coredump plugin
+# rsyncd - add systemd-tmpfiles configuration for logpacker coredump plugin
+setup_coredump_rsyncd_service: true
+rsyncd_hosts_allow: 192.168.30.71 # X2 Logging ECU
+setup_coredump_tmpfiles_service: true
+
+# ros2 native build
+ansible_python_path: /usr/bin/python3.8
+
+# perception application/service
+perception_application_edge_auto_version: beta/v4.2
+perception_application_base_path: /home/autoware
+perception_application_edge_auto_repo: git@github.com:tier4/edge-auto-jetson.x2.git
+perception_application_service_run_templates_file: perception_application/run.sh.edge_auto_x2.j2 # we can use different run files if the path is in local
+perception_application_native_built_ros: true # True if we build ROS from source and not using apt
+perception_application_directory_name: overlay_ws
+
+# fool proof check service
+fool_proof_check: true
+check_target_service: perception-startup.service
+ecu_type: perception
+# # letterbox_monitor
+# letterbox_monitor:
+#   - service_name: default
+#     ros_log_dir: "{{ perception_application_base_path }}/.ros/log"
+#     user_name: autoware
+#     group_name: autoware
+#     use_call_diag: false
+#     use_letterbox: false
+#     ignore_node_names: []
+#   - service_name: recognition
+#     ros_log_dir: "{{ perception_application_base_path }}/.ros/recognition_log"
+#     user_name: autoware
+#     group_name: autoware
+#     use_call_diag: true
+#     use_letterbox: false
+#     ignore_node_names: []

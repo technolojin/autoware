@@ -1,0 +1,14 @@
+/**:
+  ros__parameters:
+    use_webauto_agent: true
+    vehicle_id: ""
+    project_id: ""
+    copy_from: "{{ rosbag_logging_directory }}"
+    copy_to: "{{ rosbag_copy_directory }}"
+    copy_to_mountpoint: "{{ rosbag_copy_directory }}"
+    kill_command: "systemctl stop"
+    kill_process_list:
+      - "logpacker.service"
+    restart_process: true
+    restart_command: "systemctl start"
+    bagtaker_rate_in_hz: {{ bagtaker_rate_in_hz }}

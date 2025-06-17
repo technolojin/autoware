@@ -1,0 +1,55 @@
+- name: Setup awsim pc
+  hosts: localhost
+  vars_files:
+    - ./vars/awsim_pc.yaml
+  roles:
+    - { role: autoware.ecu_system_setup.fzf }
+    - { role: autoware.ecu_system_setup.additional_fonts }
+    - { role: autoware.ecu_system_setup.ibus_mozc }
+    # - { role: autoware.ecu_system_setup.rename_home_folder }
+    # - { role: autoware.ecu_system_setup.install_openssh_server }
+    # - { role: autoware.ecu_system_setup.xx1_developer_tools }
+    # - { role: autoware.ecu_system_setup.caps2ctrl }
+    - { role: autoware.ecu_system_setup.vscode }
+    - { role: autoware.ecu_system_setup.google_chrome }
+    # - { role: autoware.ecu_system_setup.greengrass_v2, when: ansible_distribution_version == "22.04" }
+    - { role: autoware.ecu_system_setup.cyclonedds }
+    # - { role: autoware.ecu_system_setup.udev_tamagawa }
+    # - { role: autoware.ecu_system_setup.udev_ublox }
+    # - { role: autoware.ecu_system_setup.udev_can_vehicle }
+    # - { role:autoware.ecu_system_setup. udev_can_radar }
+    - { role: autoware.ecu_system_setup.set_autoware_env }
+    # - { role: autoware.ecu_system_setup.chrony }
+    # - { role: autoware.ecu_system_setup.hdd_reader }
+    # - { role: autoware.ecu_system_setup.msr_reader }
+    # - { role: autoware.ecu_system_setup.traffic_reader }
+    # - { role: autoware.ecu_system_setup.peak_can_pci_interface }
+    # - { role: autoware.ecu_system_setup.syslog_collector_client }
+    # - { role: autoware.ecu_system_setup.netplan_xx1 }
+    # - { role: autoware.ecu_system_setup.routing_for_xx1 }
+    - { role: autoware.ecu_system_setup.stop_auto_upgrade }
+    # - { role: autoware.ecu_system_setup.swap_setting } # 一から環境構築する場合はコメントアウトを外す
+    - { role: autoware.ecu_system_setup.syslog_collector }
+    - { role: autoware.ecu_system_setup.logging_system_launch }
+
+  tasks:
+    - name: Delete lo interface in cyclonedds.xml
+      ansible.builtin.lineinfile:
+        path: /opt/autoware/cyclonedds/cyclonedds.xml
+        state: absent
+        regexp: <NetworkInterface name="lo" priority="default" multicast="default" />
+      become: true
+
+    #    - name: Delete ROS_DOMAIN_ID in autoware.env
+    #      ansible.builtin.lineinfile:
+    #        path: "{{ autoware_env_dir }}/autoware.env"
+    #        state: absent
+    #        regexp: 'export ROS_DOMAIN_ID=1'
+    #      become: true
+
+    - name: ADD ROS_LOCALHOST_ONLY=1 in autoware.env
+      ansible.builtin.lineinfile:
+        path: "{{ autoware_env_dir }}/autoware.env"
+        line: export ROS_LOCALHOST_ONLY=1
+        state: present
+      become: true

@@ -1,0 +1,22 @@
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    # 10GbE switch
+    mgbe1:
+      optional: false
+      dhcp4: false
+      dhcp6: false
+      addresses: [192.168.30.31/24]
+      mtu: 9000
+    # For debugging purpose
+    eqos0:
+      optional: true
+      dhcp4: true
+      dhcp6: true
+    # PTP connection
+    eth0:
+      optional: false
+      dhcp4: false
+      dhcp6: false
+      addresses: [192.168.20.31/24]

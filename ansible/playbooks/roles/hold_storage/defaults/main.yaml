@@ -1,0 +1,5 @@
+hold_storage_list:
+  - src: /dev/mmcblk0p1
+    dest: /media/autoware/mmcblk0p1
+  - src: /dev/mmcblk0p2
+    dest: /media/autoware/mmcblk0p2

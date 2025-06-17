@@ -1,0 +1,82 @@
+- name: Setup x2 perception
+  hosts: localhost
+  vars_files:
+    - ./vars/essential_vars.yaml
+    - ./vars/x2_perception.yaml
+
+  vars:
+    ecu_id: perception1
+
+  pre_tasks:
+    - name: Check 'ecu_id' contents
+      ansible.builtin.assert:
+        that:
+          - (ecu_id == 'perception1') or (ecu_id == 'perception2')
+        fail_msg: ecu_id should be one of ['perception1' or 'perception2']
+
+    - name: Set perception1 params
+      ansible.builtin.set_fact:
+        jetson_id: 0
+        netplan_files: netplan/99-autoware.x2-perception1.yaml
+        otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-perception1
+        perception_type: od
+        dtb_sensor_type: imx490
+        distortion_correction: 1
+        video_num: 4
+      when: ecu_id == "perception1"
+
+    - name: Set perception2 params
+      ansible.builtin.set_fact:
+        jetson_id: 1
+        netplan_files: netplan/99-autoware.x2-perception2.yaml
+        otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-perception2
+        perception_type: tlr
+        dtb_sensor_type: imx490
+        distortion_correction: 0
+        video_num: 4
+      when: ecu_id == "perception2"
+
+  roles:
+    - role: autoware.ecu_system_setup.boot_shutdown_service
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - { role: autoware.ecu_system_setup.clean_ros_log }
+    - { role: autoware.ecu_system_setup.cyclonedds }
+    - { role: autoware.ecu_system_setup.jetson_clocks }
+    - { role: autoware.ecu_system_setup.netplan }
+    - { role: autoware.ecu_system_setup.otaclient }
+    - { role: autoware.ecu_system_setup.evaluator_self_hosted_environment }
+    - { role: autoware.ecu_system_setup.ptp4l }
+    - { role: autoware.ecu_system_setup.rsyslog }
+    - { role: autoware.ecu_system_setup.set_autoware_env }
+    - { role: autoware.ecu_system_setup.syslog_collector_client }
+    - { role: autoware.ecu_system_setup.timezone }
+    - { role: autoware.ecu_system_setup.set_large_txqueue }
+    - { role: autoware.ecu_system_setup.rsyncd }
+    - { role: autoware.edge_auto_jetson.link_retry_handler }
+    - role: autoware.edge_auto_jetson.sensor_trigger_for_anvil
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - { role: autoware.edge_auto_jetson.vcstool }
+    - { role: autoware.edge_auto_jetson.cgroups }
+    - { role: autoware.ecu_system_setup.fool_proof_check } # fool proof check for autoware function
+    - { role: autoware.ecu_system_setup.letterbox_monitor }
+
+  # Any `tasks` defined in the play will be executed after each role listed in `roles`
+  # see: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html#using-roles-at-the-play-level
+  tasks:
+    - name: Setup ECU for Object Recognition or Traffic Light Recognition
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+      block:
+        - name: ROS 2 application build
+          ansible.builtin.include_role:
+            name: autoware.edge_auto_jetson.perception_application
+
+        - name: TIER IV camera driver
+          ansible.builtin.include_role:
+            name: autoware.ecu_system_setup.tier4_camera_driver_anvil
+
+    - name: Setup ECU for Perception2 ECU which is connected to Add-On ECU
+      when: ecu_id == 'perception2'
+      block:
+        - name: Install sensor trigger service
+          ansible.builtin.include_role:
+            name: autoware.ecu_system_setup.anvil_sensor_trigger_for_external

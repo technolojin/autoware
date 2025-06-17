@@ -1,0 +1,11 @@
+- name: Setup x2 sub cert
+  hosts: localhost
+  vars_files:
+    - ./vars/essential_vars.yaml
+    - ./vars/x2_sub.yaml
+    - ./vars/x2_sub_cert.yaml
+  roles:
+    - { role: autoware.ecu_system_setup.dssad_packer }
+    - { role: autoware.ecu_system_setup.usbguard }
+- name: Execute x2-sub master playbook
+  ansible.builtin.import_playbook: pilot_auto.dev_env.x2_sub
