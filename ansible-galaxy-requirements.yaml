@@ -16,6 +16,7 @@ collections:
     type: git
     version: 51401b2e2a0e9d894002eebbcd19589624d55c1d
 
-  - name: https://github.com/tier4/edge-auto-jetson.git
+  # edge-auto-jetson contains some ansible scripts intended for the perception ECU.
+  - name: git@github.com:tier4/edge-auto-jetson.git
     type: git
     version: beta/anvil/v0.40.0
