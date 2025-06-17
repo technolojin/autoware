@@ -3,12 +3,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: 19350bff551181812026f570cb4a4bfad5178907
+    version: c1579cfd95e2a1392ef4d45dd91f8c6fe4a985d3
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: 6cb3ed2d3b7933bf7fd27f9f5d1da7a0471d386f
+    version: 1aae1ffd4eb7a9d889dc291bd8bf4272adf2f622
     base: true
   autoware/autoware_cmake:
     type: git
@@ -28,7 +28,7 @@ repositories:
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: 289517cfa200ecbd993571777be5ff0fc006ca75
+    version: 8e505ddcebcd562c75279401c90f1cd9ecc13a59
     base: false
   autoware/aip_launcher:
     type: git
@@ -53,7 +53,7 @@ repositories:
   autoware/autoware_adapi_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_adapi_msgs.git
-    version: 6085825c26f765fbde8094e95f01958d0f8a4681
+    version: 9d0bfd5dba617ecad65e110df549051f37b91775
     base: true
   autoware/autoware_internal_msgs:
     type: git
@@ -213,5 +213,5 @@ repositories:
   middleware/external/agnocast:
     type: git
     url: https://github.com/tier4/agnocast.git
-    version: d04b92553fedefe46ebcae819add89821f3d6c6a # TODO(TIER IV): to be updated to v1.1.0
+    version: 8aeb311bd905854a09569fd6ec173441d352c268 # TODO(TIER IV): to be updated to v1.1.0
     base: true
