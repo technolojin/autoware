@@ -28,6 +28,7 @@
     "systemlog",
     "tmpfiles",
     "vcan",
-    "wmem"
+    "wmem",
+    "xcarbon"
   ]
 }

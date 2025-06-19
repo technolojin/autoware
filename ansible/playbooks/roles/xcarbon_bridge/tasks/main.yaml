@@ -1,0 +1,54 @@
+- name: Remove directory
+  ansible.builtin.file:
+    path: "{{ xcarbon_bridge_clone_dir }}"
+    state: absent
+  become: true
+
+- name: Clone xcarbon_bridge
+  ansible.builtin.git:
+    repo: "{{ xcarbon_bridge_repository }}"
+    dest: "{{ xcarbon_bridge_clone_dir }}"
+    version: "{{ xcarbon_bridge_version }}"
+
+- name: Install ros dependencies
+  ansible.builtin.shell: rosdep update --include-eol-distros && rosdep install -y --from-paths {{ autoware_install_dir }}/src --ignore-src --rosdistro {{ ros_distro }}
+  args:
+    executable: /bin/bash
+  changed_when: false
+
+- name: Build package
+  ansible.builtin.shell: source /opt/ros/{{ ros_distro }}/setup.bash && colcon build {{ xcarbon_bridge_install_option }} --cmake-args -DCMAKE_BUILD_TYPE=Release --packages-up-to xcarbon_bridge
+  args:
+    chdir: "{{ autoware_install_dir }}"
+    executable: /bin/bash
+  changed_when: false
+  become: false
+
+- name: Create xcarbon-bridge directory
+  ansible.builtin.file:
+    path: /opt/autoware/services/xcarbon-bridge/
+    state: directory
+    mode: 0755
+  become: true
+
+- name: Copy script
+  ansible.builtin.copy:
+    src: run.sh
+    dest: /opt/autoware/services/xcarbon-bridge/run.sh
+    mode: 0755
+  become: true
+
+- name: Copy service
+  ansible.builtin.copy:
+    src: xcarbon-bridge.service
+    dest: /etc/systemd/system/xcarbon-bridge.service
+    mode: 0755
+  become: true
+
+- name: Enable service
+  ansible.builtin.systemd:
+    name: xcarbon-bridge.service
+    daemon_reload: "{{ daemon_reload }}"
+    enabled: true
+    masked: false
+  become: true

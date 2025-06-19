@@ -46,7 +46,7 @@ jobs:
             additional_args: -y -v -e vehicle_id=1234
           - job: x2_cert
             playbook: x2_cert
-            additional_args: -y -v -e vehicle_id=1234
+            additional_args: -y -v -e vehicle_id=1234 -e skip_xcarbon=true
           - job: x2_sub
             playbook: x2_sub
             additional_args: -y -v -e vehicle_id=1234
