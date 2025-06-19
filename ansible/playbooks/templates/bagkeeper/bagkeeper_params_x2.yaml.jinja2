@@ -11,11 +11,14 @@
     # disable_if_control_mode_is_manual: "true" or "false"
     disable_if_control_mode_is_manual: false
     # stop_bagpacker_record_after_keep_duration: "true" or "false". if "false", "cleanup_input_dir" is ignored.
-    stop_bagpacker_record_after_keep_duration: true
+    stop_bagpacker_record_after_keep_duration: false
     rate_in_hz: 2.0
     # dbg_trigger_datetime format: YYYY_mm_dd-HH_MM_SS
     dbg_trigger_datetime: ""
     qos_depth: 1000
+    max_wait_until_db_closed_in_sec: 60
+    max_trigger_extend_duration_in_sec: 0
+    max_trigger_extend_count: 0
     event:
       /vehicle/status/control_mode:
         mode: 4
