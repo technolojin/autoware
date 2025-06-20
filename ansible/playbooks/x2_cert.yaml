@@ -9,6 +9,7 @@
   roles:
     - { role: autoware.ecu_system_setup.usbguard }
     - { role: autoware.ecu_system_setup.third_party_kernel_module_sign }
+    - { role: autoware.ecu_system_setup.nftables }
     - role: x2_xcarbon
       when: skip_xcarbon is not defined or not skip_xcarbon | bool
     - role: xcarbon_bridge
