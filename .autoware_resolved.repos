@@ -3,12 +3,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: c1579cfd95e2a1392ef4d45dd91f8c6fe4a985d3
+    version: 1d5bd4358cdad8c8a7a6abd3f2df7aff41c9e1ac
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: 1aae1ffd4eb7a9d889dc291bd8bf4272adf2f622
+    version: 3245fc7f7f8b4391fb5b5ee1863c207a488a2ac1
     base: true
   autoware/autoware_cmake:
     type: git
@@ -28,32 +28,32 @@ repositories:
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: 8e505ddcebcd562c75279401c90f1cd9ecc13a59
+    version: 32cfbc4cb27a07ccda6555d6eae255d57e000951
     base: false
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 3600e94ed66bee86e6fde26f4ece934a6f79cbcc
+    version: e990dd10095f17ce5edd83b92f4f1e45986da431
     base: true
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: d58fa39cb911c7ef7bd2e518e4b8c6a171cd32a4
+    version: 31ab434e5b6f0ca402483a7b221624bbccec011e
     base: true
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: 9b25c598a714bb2c66f447d2a75ca074d6583071
+    version: 5ec622a7790e9cc7f9bf35ec08bac2837d8ed16d
     base: true
   autoware/autoware_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_msgs.git
-    version: cb0ca5b8ea6a01b2e2b254903ba467295773881e
+    version: 3fad6405f5eb3e5fa18cfff3565c7b2c02291a85
     base: true
   autoware/autoware_adapi_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_adapi_msgs.git
-    version: 9d0bfd5dba617ecad65e110df549051f37b91775
+    version: 87fc41f07bc7054978ebedbfd30d5f88d18eddce
     base: true
   autoware/autoware_internal_msgs:
     type: git
@@ -202,7 +202,7 @@ repositories:
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: 72cb1f664546f5068b72aeaff2e520895c59c138
+    version: 85b3c741573b9b52aad149b8fe9333cead937a0c
     base: true
 
   # middleware
