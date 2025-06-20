@@ -47,9 +47,6 @@ signage_sink_gen2: true
 # netplan
 netplan_files: netplan/99-autoware.x2-signage.yaml
 
-# nftables
-nftables_conf_file: nftables/nftables.x2-signage.conf
-
 # syslog collector - client
 syslog_collector_type: Client
 rsyslog_server_ipaddr: 192.168.20.71
