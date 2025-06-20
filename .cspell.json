@@ -12,6 +12,7 @@
     "logfile",
     "logstream",
     "mgbe",
+    "mkuvcdev",
     "netcore",
     "nofail",
     "otaclient_logger",
