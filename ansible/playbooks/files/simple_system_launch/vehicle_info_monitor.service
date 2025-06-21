@@ -1,0 +1,15 @@
+[Unit]
+Description=vehicle_info monitor service
+After=network-online.target
+StartLimitBurst=10
+
+[Service]
+ExecStart=/opt/autoware/services/system_launch/vehicle_info_monitor.service/run.sh
+KillSignal=SIGINT
+User=root
+Group=root
+Restart=always
+RestartSec=1000msec
+
+[Install]
+WantedBy=multi-user.target
