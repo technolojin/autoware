@@ -201,11 +201,6 @@ repositories:
     url: git@github.com:foxglove/ros-foxglove-bridge.git
     version: 0.7.6
     base: false
-  product/autoware_logging_suite:
-    type: git
-    url: git@github.com:tier4/autoware_logging_suite.git
-    version: v0.7.1
-    base: false
   product/l4_toolkit:
     type: git
     url: git@github.com:tier4/l4_toolkit.git
