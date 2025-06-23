@@ -603,6 +603,41 @@ simulations:
         planning: "false"
         control_module_preset: dlr_control_validator
 
+  - name: dlr_pc_w_loc_track_pred
+    type: planning_control
+    suite:
+      selector:
+        match_labels:
+          pc_dlr_type: dlr_pc_w_loc_track_pred
+    simulator:
+      deployment:
+        type: container
+        artifact: main
+      runtime:
+        type: standard1/amd64/medium
+      parameters:
+        pose_source: ndt
+        sensing: "false"
+        perception: "true"
+        localization: "true"
+
+  - name: dlr_pc_only
+    type: planning_control
+    suite:
+      selector:
+        match_labels:
+          pc_dlr_type: dlr_pc_only
+    simulator:
+      deployment:
+        type: container
+        artifact: main
+      runtime:
+        type: standard1/amd64/medium
+      parameters:
+        sensing: "false"
+        perception: "false"
+        localization: "false"
+
 release:
   components:
     - name: autoware
