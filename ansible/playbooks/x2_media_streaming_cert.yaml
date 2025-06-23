@@ -1,10 +1,10 @@
 - name: Execute x2-media-streaming master playbook
   ansible.builtin.import_playbook: pilot_auto.dev_env.x2_media_streaming
+
 - name: Setup x2-media-streaming cert
   hosts: localhost
   vars_files:
     - ./vars/essential_vars.yaml
-    - ./vars/x2_media_streaming.yaml
     - ./vars/x2_media_streaming_cert.yaml
   roles:
     - { role: autoware.ecu_system_setup.iptables }

@@ -13,4 +13,3 @@
 '/opt/autoware/maps'
 '/opt/autoware/area_map'
 '/opt/devtools'
-'/opt/dssad/'
