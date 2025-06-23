@@ -4,6 +4,7 @@
 - name: Setup x2 x2-signage-cert
   hosts: localhost
   vars_files:
+    - ./vars/essential_vars.yaml
     - ./vars/x2_signage.yaml
     - ./vars/x2_signage_cert.yaml
   roles:
