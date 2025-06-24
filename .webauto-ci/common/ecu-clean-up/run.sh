@@ -3,10 +3,12 @@
 # reference
 # https://nvidia-ai-iot.github.io/jetson-min-disk/step3.html
 
-# cspell: ignore nsight prerm cupti nvgraph nvrtc libcudla libcufft libcusolver
+# cspell: ignore nsight prerm cupti nvgraph nvrtc libcudla libcufft libcusolver yaru
 
 # Important: Don't run "apt autoremove" in this script
 # See details in https://tier4.atlassian.net/browse/RT4-16721
+
+: "${ECU_ID:?is not set}"
 
 echo "----- Start to remove Jetson *-dev and nsight packages ..."
 dev_packages=(
@@ -31,6 +33,7 @@ dev_packages=(
     "python3-libnvinfer-dev"
     "vpi1-dev"
     "vpi2-dev"
+    "nvidia-l4t-kernel-headers"
 )
 
 nsight_packages=(
@@ -162,6 +165,7 @@ ubuntu_desktop_packages=(
     "gnome-user-docs"
     "gnome-user-guide"
     "gnome-weather"
+    "yaru-theme-icon"
 )
 
 for package_name in "${ubuntu_desktop_packages[@]}"; do
@@ -219,3 +223,9 @@ done
 
 cd "$INITIAL_DIR"
 echo "----- finished reduce .git folder size ..."
+
+if [[ ${ECU_ID} == "perception"* ]]; then
+    echo "----- Start to uninstall ansible ..."
+    sudo pip3 uninstall ansible -y
+    echo "----- finished uninstalling ansible ..."
+fi
