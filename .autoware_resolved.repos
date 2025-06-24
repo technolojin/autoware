@@ -8,7 +8,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: 331f6d62d6d15e638112593e5b21e1d24f5c5db6
+    version: ca60a0e3ba03df9f91f9e4a02df1dd70c2276ae3
     base: true
   autoware/autoware_cmake:
     type: git
@@ -28,7 +28,7 @@ repositories:
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: 7c083cffb218c3396d0c6743b46ed3941b79d2be
+    version: ff38d02b80fee191add79ddb2b8a69dfbc1646cf
     base: false
   autoware/aip_launcher:
     type: git
@@ -38,7 +38,7 @@ repositories:
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: 29fabf498ad197367dbccc134d36c89ce8be446a
+    version: e3585b221df80387617e321509aa00953d0e496f
     base: true
   autoware/tier4_autoware_msgs:
     type: git
@@ -48,7 +48,7 @@ repositories:
   autoware/autoware_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_msgs.git
-    version: 3fad6405f5eb3e5fa18cfff3565c7b2c02291a85
+    version: 692c084078c1d5ad641a1b600e3bcf36cc24d291
     base: true
   autoware/autoware_adapi_msgs:
     type: git
@@ -120,7 +120,7 @@ repositories:
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
-    version: v0.2.6
+    version: v0.2.6.2
     base: true
   vendor/boost_transport_drivers:
     type: git
