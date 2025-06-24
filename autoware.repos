@@ -2,12 +2,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: v0.47.0
+    version: v0.48.0
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: v0.47.0
+    version: v0.48.0
     base: true
   autoware/autoware_cmake:
     type: git
@@ -17,7 +17,7 @@ repositories:
   autoware/autoware_utils:
     type: git
     url: https://github.com/autowarefoundation/autoware_utils.git
-    version: 260bc9dc62a898fde162e0b9a65fcd78fae070d8
+    version: 021ac0af7a065a00303f4fea991fe7b141e0e1a6
     base: true
   autoware/autoware_lanelet2_extension:
     type: git
@@ -27,27 +27,27 @@ repositories:
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: v0.47.0
+    version: v0.48.0
     base: true
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: d6521dd36035e5721a182c0ed705f2f65d9ae656
+    version: 31ab434e5b6f0ca402483a7b221624bbccec011e
     base: true
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: v0.47.0
+    version: v0.48.0
     base: true
   autoware/autoware_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_msgs.git
-    version: cb0ca5b8ea6a01b2e2b254903ba467295773881e
+    version: 3fad6405f5eb3e5fa18cfff3565c7b2c02291a85
     base: true
   autoware/autoware_adapi_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_adapi_msgs.git
-    version: 6085825c26f765fbde8094e95f01958d0f8a4681
+    version: 87fc41f07bc7054978ebedbfd30d5f88d18eddce
     base: true
   autoware/autoware_internal_msgs:
     type: git
@@ -73,7 +73,7 @@ repositories:
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
-    version: df03c0676fdf1e34ace3ad6ee22ca29653b7c2ae
+    version: 049081857b2c5d39daf24bb9f6f5bcf44b338314
     base: true
   vendor/ublox:
     type: git
@@ -154,7 +154,7 @@ repositories:
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: v0.47.0
+    version: v0.48.0
     base: true
   # middleware
   # TODO(TIER IV): During the transition period of Agnocast introduction,
@@ -164,7 +164,7 @@ repositories:
   middleware/external/agnocast:
     type: git
     url: https://github.com/tier4/agnocast.git
-    version: 10a28bdeda0c7b230d5ed02b2d1e592d3d59dc2a # TODO(TIER IV): to be updated to v1.1.0
+    version: 8aeb311bd905854a09569fd6ec173441d352c268 # TODO(TIER IV): to be updated to v1.1.0
     base: true
   autoware/launcher:
     type: git
