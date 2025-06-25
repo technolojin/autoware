@@ -1,0 +1,99 @@
+# cspell: ignore cgid deploykey destdir filt preconf sdkkey thold
+
+- name: Clone x2_key
+  ansible.builtin.git:
+    repo: "{{ x2_xcarbon_key_repo }}"
+    dest: "{{ x2_xcarbon_x2_key_clone_dir }}"
+    version: "{{ x2_xcarbon_key_version }}"
+
+- name: Install packages
+  ansible.builtin.apt:
+    name:
+      - iptables
+    update_cache: true
+  become: true
+
+- name: Extract xCarbon package
+  ansible.builtin.unarchive:
+    src: "{{ x2_xcarbon_x2_key_clone_dir }}/{{ x2_xcarbon_package_path }}"
+    dest: /tmp
+    remote_src: true
+  become: true
+
+# yamllint disable rule:quoted-strings
+- name: Set extracted xCarbon directory name
+  ansible.builtin.set_fact:
+    x2_xcarbon_package_dir: "/tmp/{{ x2_xcarbon_package_name | basename | regex_replace('\\.tar\\.gz$', '') }}"
+# yamllint enable rule:quoted-strings
+
+- name: Update install configuration
+  ansible.builtin.copy:
+    src: .install.conf
+    dest: "{{ x2_xcarbon_package_dir }}/.preconf/.install.conf"
+    mode: 0664
+  become: true
+
+- name: Run install.sh with parameters
+  ansible.builtin.command: >
+    ./install.sh
+    --agent-key "{{ x2_xcarbon_x2_key_clone_dir }}/{{ x2_xcarbon_sdkkey_path }}"
+    --deploy-key "{{ x2_xcarbon_x2_key_clone_dir }}/{{ x2_xcarbon_deploykey_path }}"
+    --ecu-model "{{ x2_xcarbon_ecu_model }}"
+    --ecu-id "{{ x2_xcarbon_ecu_id }}"
+    --vehicle-model "{{ x2_xcarbon_vehicle_model }}"
+    -cgid "{{ x2_xcarbon_custom_group_id }}"
+    --aal-script
+    --kernel-rel "{{ x2_xcarbon_ker_rel }}"
+    -filt nfq
+    --security-event-enable-types syslog
+    -y
+    --destdir /
+  args:
+    chdir: "{{ x2_xcarbon_package_dir }}"
+  become: true
+  register: install_result
+  changed_when: install_result.rc == 0
+  failed_when: install_result.rc != 0
+
+- name: Update configurations
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: /etc/opt/atom/
+    mode: 0664
+  with_items:
+    - aal.conf
+    - aal_script.conf
+    - bm.conf
+  become: true
+
+- name: Replace all selected *_thold values with 50000
+  ansible.builtin.replace:
+    path: "{{ x2_xcarbon_atom_json_path }}"
+    regexp: '"{{ item }}"\s*:\s*\d+'
+    replace: '"{{ item }}": 50000'
+  loop: "{{ x2_xcarbon_thold_keys }}"
+  become: true
+
+- name: Copy service
+  ansible.builtin.copy:
+    src: atom.service
+    dest: /etc/systemd/system/atom.service
+    mode: 0755
+  become: true
+
+- name: Enable service
+  ansible.builtin.systemd:
+    name: atom.service
+    daemon_reload: "{{ daemon_reload }}"
+    enabled: false
+    masked: false
+  become: true
+
+- name: Cleanup directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - "{{ x2_xcarbon_x2_key_clone_dir }}"
+    - "{{ x2_xcarbon_package_dir }}"
+  become: true

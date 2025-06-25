@@ -21,7 +21,6 @@
     - { role: autoware.ecu_system_setup.hdd_reader }
     - { role: autoware.ecu_system_setup.msr_reader }
     - { role: autoware.ecu_system_setup.netplan }
-    - { role: autoware.ecu_system_setup.nftables }
     - { role: autoware.ecu_system_setup.otaclient }
     - { role: autoware.ecu_system_setup.otaclient_logger }
     - { role: autoware.ecu_system_setup.prevent_ros2_bag_play }

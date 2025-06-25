@@ -14,12 +14,6 @@ rsyslog_server_ipaddr: 192.168.20.71 # X2 Logging ECU 1Gb eth
 # rsyslog_protocol: tcp
 rsyslog_queue_maxsize: 1g
 
-# iptables
-iptables_ipv4_conf_file: iptables/rules.x2.media-streaming.v4
-iptables_ipv6_conf_file: iptables/rules.x2.media-streaming.v6
-# nftables (media streaming ECU uses iptables)
-# nftables_conf_file: nftables.x2-media-streaming.conf
-
 # otaclient
 otaclient_release_version: v3.8.4
 otaclient_package_whl_checksum: sha256:c118f7ce69bce85b7a038dd7829ca8567f665cf8f86772a6e773e77ac3b3e8fe

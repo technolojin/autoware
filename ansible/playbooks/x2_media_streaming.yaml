@@ -33,7 +33,6 @@
   roles:
     - role: autoware.ecu_system_setup.boot_shutdown_service
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
-    - { role: autoware.ecu_system_setup.iptables }
     - role: autoware.ecu_system_setup.media_streaming
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.ecu_system_setup.netplan }

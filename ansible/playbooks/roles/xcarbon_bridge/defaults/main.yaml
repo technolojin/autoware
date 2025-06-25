@@ -1,0 +1,4 @@
+xcarbon_bridge_clone_dir: "{{ autoware_install_dir }}/src/product/xcarbon_bridge"
+xcarbon_bridge_repository: git@github.com:tier4/xcarbon_bridge.git
+xcarbon_bridge_version: v0.1.0
+xcarbon_bridge_install_option: --symlink-install

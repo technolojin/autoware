@@ -3,7 +3,6 @@
 '/etc/resolv.conf'
 '/etc/udev/rules.d/70-persistent-disk.rules'
 '/etc/dhcpd.conf'
-'/etc/nftables.conf'
 '/etc/tpm2_pkcs11/tpm2_pkcs11.sqlite3'
 '/etc/usbguard/rules.conf'
 '/home/autoware/vehicle.env'
@@ -14,4 +13,3 @@
 '/opt/autoware/maps'
 '/opt/autoware/area_map'
 '/opt/devtools'
-'/opt/dssad/'

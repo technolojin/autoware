@@ -4,7 +4,14 @@
 - name: Setup x2 cert
   hosts: localhost
   vars_files:
+    - ./vars/essential_vars.yaml
     - ./vars/x2_cert.yaml
   roles:
+    - { role: autoware.ecu_system_setup.nftables }
+    - { role: autoware.ecu_system_setup.tpm2 }
     - { role: autoware.ecu_system_setup.usbguard }
+    - role: x2_xcarbon
+      when: skip_xcarbon is not defined or not skip_xcarbon | bool
+    - role: xcarbon_bridge
+      when: skip_xcarbon is not defined or not skip_xcarbon | bool
     - { role: autoware.ecu_system_setup.third_party_kernel_module_sign }

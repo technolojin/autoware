@@ -43,6 +43,7 @@
     "vcan",
     "websockify",
     "wmem",
+    "xcarbon",
     "xstartup"
   ],
   "ignorePaths": [".release_info.yaml"]

@@ -1,3 +1,5 @@
+# cspell: ignore bmhook tmhook
+
 # usbguard
 usbguard_rules_file: usbguard/rules.x2-main.conf
 
@@ -5,3 +7,21 @@ usbguard_rules_file: usbguard/rules.x2-main.conf
 kernel_module_sign_key_repository: git@github.com:tier4/x2-key
 kernel_module_sign_private_key_file: third_party_kernel_module_sign/x2_private_key.pem
 kernel_module_sign_cert_file: third_party_kernel_module_sign/x2_cert.der
+kernel_module_sign_target_list:
+  - /lib/modules/{{ ansible_kernel }}/updates/f81604.ko
+  - /lib/modules/{{ ansible_kernel }}/updates/oak_pci.ko
+  - /lib/modules/{{ ansible_kernel }}/updates/dkms/agnocast.ko
+  - /lib/modules/{{ ansible_kernel }}/updates/dkms/nvidia.ko
+  - /lib/modules/{{ ansible_kernel }}/updates/dkms/nvidia-drm.ko
+  - /lib/modules/{{ ansible_kernel }}/updates/dkms/nvidia-modeset.ko
+  - /lib/modules/{{ ansible_kernel }}/updates/dkms/nvidia-uvm.ko
+  - /opt/atom/kmod/{{ ansible_kernel }}/barium.ko
+  - /opt/atom/kmod/{{ ansible_kernel }}/bmhook.ko
+  - /opt/atom/kmod/{{ ansible_kernel }}/hafnium.ko
+  - /opt/atom/kmod/{{ ansible_kernel }}/lithium.ko
+  - /opt/atom/kmod/{{ ansible_kernel }}/selenium.ko
+  - /opt/atom/kmod/{{ ansible_kernel }}/stibium.ko
+  - /opt/atom/kmod/{{ ansible_kernel }}/tmhook.ko
+
+# nftables
+nftables_conf_file: nftables/nftables.conf

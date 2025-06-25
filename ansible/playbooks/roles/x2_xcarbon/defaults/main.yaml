@@ -1,0 +1,40 @@
+# cspell: ignore deploykey dstext dstsyn igmp sdkkey srcext srcsyn thold unreach vicone
+
+x2_xcarbon_ecu_model: Autoware-test
+x2_xcarbon_ecu_id: Autoware-test-01
+x2_xcarbon_vehicle_model: X2 J6 Gen2
+x2_xcarbon_custom_group_id: Autoware-x2
+x2_xcarbon_package_name: vicone_xcarbon_5.6.3_ubuntu_22_04_x86_64.tar.gz
+x2_xcarbon_package_path: xcarbon_packages_and_keys/{{ x2_xcarbon_package_name }}
+x2_xcarbon_sdkkey_name: customer_key
+x2_xcarbon_sdkkey_path: xcarbon_packages_and_keys/{{ x2_xcarbon_sdkkey_name }}
+x2_xcarbon_deploykey_name: deployment_key
+x2_xcarbon_deploykey_path: xcarbon_packages_and_keys/{{ x2_xcarbon_deploykey_name }}
+x2_xcarbon_key_repo: git@github.com:tier4/x2-key.git
+x2_xcarbon_key_version: v0.0.1
+x2_xcarbon_ker_rel: 5.19.0-50-generic
+x2_xcarbon_x2_key_clone_dir: /tmp/x2_key
+x2_xcarbon_atom_json_path: /etc/opt/atom/atom.json
+x2_xcarbon_thold_keys:
+  - ip_thold
+  - tcp_thold
+  - udp_thold
+  - icmp_thold
+  - igmp_thold
+  - mac_thold
+  - tcp_srcsyn_thold
+  - tcp_dstsyn_thold
+  - udp_srcext_thold
+  - udp_dstext_thold
+  - udp_unreach_thold
+  - icmp_srcext_thold
+  - icmp_dstext_thold
+  - igmp_srcext_thold
+  - igmp_dstext_thold
+  - thold
+  - syn_thold
+  - null_thold
+  - fin_thold
+  - xmas_thold
+  - unknown_thold
+  - udp_thold

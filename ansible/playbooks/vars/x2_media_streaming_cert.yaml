@@ -1,0 +1,3 @@
+# iptables
+iptables_ipv4_conf_file: iptables/rules.x2.media-streaming.v4
+iptables_ipv6_conf_file: iptables/rules.x2.media-streaming.v6
