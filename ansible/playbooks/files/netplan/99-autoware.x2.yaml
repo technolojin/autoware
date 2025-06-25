@@ -57,6 +57,7 @@ network:
       dhcp4: false
       dhcp6: false
       addresses: [192.168.251.11/24]
+      optional: true
       nameservers:
         addresses: [8.8.8.8]
       routes:
@@ -77,6 +78,7 @@ network:
       dhcp4: false
       dhcp6: false
       addresses: [192.168.252.11/24]
+      optional: true
       nameservers:
         addresses: [8.8.8.8]
       routes:
@@ -97,6 +99,7 @@ network:
       dhcp4: false
       dhcp6: false
       addresses: [192.168.253.11/24]
+      optional: true
       nameservers:
         addresses: [8.8.8.8]
       routes:
@@ -117,6 +120,7 @@ network:
       dhcp4: false
       dhcp6: false
       addresses: [192.168.254.11/24]
+      optional: true
       nameservers:
         addresses: [8.8.8.8]
       routes:
