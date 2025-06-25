@@ -7,8 +7,9 @@
     - ./vars/essential_vars.yaml
     - ./vars/x2_cert.yaml
   roles:
-    - { role: autoware.ecu_system_setup.usbguard }
     - { role: autoware.ecu_system_setup.nftables }
+    - { role: autoware.ecu_system_setup.tpm2 }
+    - { role: autoware.ecu_system_setup.usbguard }
     - role: x2_xcarbon
       when: skip_xcarbon is not defined or not skip_xcarbon | bool
     - role: xcarbon_bridge
