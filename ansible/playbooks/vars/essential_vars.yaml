@@ -14,4 +14,3 @@ boot_shutdown_tools_version: v0.3.0
 
 # ros_distro
 ros_distro: humble
-rosdistro: "{{ ros_distro }}"

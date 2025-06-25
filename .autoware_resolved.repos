@@ -2,184 +2,216 @@ repositories:
   # autoware
   autoware/core:
     type: git
-    url: https://github.com/tier4/autoware.core.git
-    version: fa227e6b6e7123a3fe36d42d2c29eb413d520009
+    url: https://github.com/tier4/autoware_core.git
+    version: 19350bff551181812026f570cb4a4bfad5178907
+    base: true
   autoware/universe:
     type: git
-    url: https://github.com/tier4/autoware.universe.git
-    version: beta/v0.41
+    url: https://github.com/tier4/autoware_universe.git
+    version: 6cb3ed2d3b7933bf7fd27f9f5d1da7a0471d386f
+    base: true
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
-    version: 1.0.2
+    version: 086dbe1e4c0c6230eb92a12b166b112236d07b32
+    base: true
   autoware/autoware_utils:
     type: git
     url: https://github.com/autowarefoundation/autoware_utils.git
-    version: 1.2.0
+    version: 021ac0af7a065a00303f4fea991fe7b141e0e1a6
+    base: true
   autoware/autoware_lanelet2_extension:
     type: git
     url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
-    version: 0.7.2
+    version: 82ea5f0ddf98681070da99bdfcde510ffcbf0416
+    base: true
   autoware/launcher:
     type: git
-    url: git@github.com:tier4/autoware_launch.x2.git
-    version: beta/v4.2
+    url: https://github.com/tier4/autoware_launch.git
+    version: 289517cfa200ecbd993571777be5ff0fc006ca75
+    base: false
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: beta/v0.41
+    version: 3600e94ed66bee86e6fde26f4ece934a6f79cbcc
+    base: true
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: 3b25d0f31f5c80c4590e0e874e51ea23961c6a4e
+    version: d58fa39cb911c7ef7bd2e518e4b8c6a171cd32a4
+    base: true
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: beta/v0.41
+    version: 9b25c598a714bb2c66f447d2a75ca074d6583071
+    base: true
   autoware/autoware_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_msgs.git
-    version: 1.3.0
+    version: cb0ca5b8ea6a01b2e2b254903ba467295773881e
+    base: true
   autoware/autoware_adapi_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_adapi_msgs.git
-    version: 9f5a09f17db2026b6f560bcdd77ab1a398b033a3
+    version: 6085825c26f765fbde8094e95f01958d0f8a4681
+    base: true
   autoware/autoware_internal_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_internal_msgs.git
-    version: 1.6.0
+    version: 290efb7b0c51d150389dc75b18248d16a52729b1
+    base: true
   autoware/individual_params:
     type: git
-    url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: main
+    url: https://github.com/tier4/autoware_individual_params.git
+    version: 91cd0f803ee08cf0d52722324f352dbaab615168
+    base: false
+  autoware/managed_transform_buffer:
+    type: git
+    url: https://github.com/autowarefoundation/managed_transform_buffer.git
+    version: 7de93a00769de0b0e3fd1b80aa5ec4e146115fe1
+    base: true
+  autoware/autoware_rviz_plugins:
+    type: git
+    url: https://github.com/autowarefoundation/autoware_rviz_plugins.git
+    version: 69878ef0f4f3694a83ad838df1ca3054bb5c08db
+    base: true
   # description
   description/sensor/sensor_component_description:
     type: git
     url: https://github.com/tier4/sensor_component_description.git
-    version: 079820003a1c969df7fa02ca092e532c66ab809e
-  description/vehicle/j6_gen2_description:
+    version: 03ba094851ec90febfcfc0adb20b64b0e19df7a8
+    base: true
+  description/vehicle/lexus_description:
     type: git
-    url: git@github.com:tier4/j6_gen2_description.git
-    version: beta/v4.2
+    url: https://github.com/tier4/lexus_description.iv.git
+    version: db058bb3241c68d8023f1060253a06408d3e69bf
+    base: false
+  description/vehicle/reference_vehicle_descriptions:
+    type: git
+    url: git@github.com:tier4/reference_vehicle_descriptions.git
+    version: 6ab873a7aa8e94c513149b9d0b26a7be1ff75836
+    base: false
   # ecu_system_setup: When you use your own customized ecu_system_setup, uncomment this.
   # ecu_system_setup:
   #   type: git
   #   url: git@github.com:tier4/autoware_ecu_system_setup.git
   #   version: main
   # vendor
-  # comment out temporarily until the fix for the latest version is ready
-  vendor/mj20_interface:
+  vendor/pacmod_interface:
     type: git
-    url: git@github.com:tier4/mj20_interface.git
-    version: beta/v4.2
+    url: https://github.com/tier4/pacmod_interface.git
+    version: 7da80108c801fb090e8f86df02c433f8f286fcb8
+    base: false
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
-    version: de4bf6be79aa2968cf2f62e0ebe1ff8a5797e6ad
+    version: 049081857b2c5d39daf24bb9f6f5bcf44b338314
+    base: true
+  vendor/ublox:
+    type: git
+    url: https://github.com/tier4/ublox.git
+    version: dc49c2dcc9384401030c77d7db05fea9161cbcc0
+    base: true
+  vendor/lidar-driver:
+    type: git
+    url: git@github.com:tier4/lidar_driver.git
+    version: v0.1.4
+    base: false
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
-    version: v0.2.5.2
+    version: v0.2.6
+    base: true
   vendor/boost_transport_drivers:
     type: git
     url: https://github.com/autowarefoundation/transport_drivers.git
     version: 39ebd8afe1bb9760a6cd6272e428468480f6de90
+    base: true
   vendor/mussp:
     type: git
     url: https://github.com/tier4/muSSP.git
     version: c79e98fd5e658f4f90c06d93472faa977bc873b9
+    base: true
   vendor/pointcloud_to_laserscan:
     type: git
     url: https://github.com/tier4/pointcloud_to_laserscan.git
     version: d969ec699f84fad827fbadfa3001c9c657482fbe
+    base: true
+  vendor/ars408_driver:
+    type: git
+    url: https://github.com/tier4/ars408_driver.git
+    version: 60678fc12918f968afed9f519915c16cf76edeae
+    base: false
+  vendor/spinnaker:
+    type: git
+    url: https://github.com/tier4/spinnaker.git
+    version: 4c74d319ef9186a4fb643dbd82e1b5f7918e75ea
+    base: false
   # Fix the version not to merge https://github.com/MORAI-Autonomous/MORAI-ROS2_morai_msgs/pull/9
   vendor/morai_msgs:
     type: git
     url: https://github.com/MORAI-Autonomous/MORAI-ROS2_morai_msgs.git
     version: e2e75fc1603a9798773e467a679edf68b448e705
+    base: true
   vendor/eagleye:
     type: git
     url: https://github.com/MapIV/eagleye.git
     version: c1919448336e86a8dd9c94a337032c05fcf6c381
+    base: true
   vendor/rtklib_ros_bridge:
     type: git
     url: https://github.com/MapIV/rtklib_ros_bridge.git
     version: ef094407bba4f475a8032972e0c60cbb939b51b8
+    base: true
   vendor/llh_converter:
     type: git
     url: https://github.com/MapIV/llh_converter.git
     version: 07ad112b4f6b83eccd3a5f777bbe40ff01c67382
+    base: true
   vendor/dynamic_message_introspection:
     type: git
     url: https://github.com/osrf/dynamic_message_introspection.git
     version: 50277e341f61455c42a6015b5718804a4f8588f6
+    base: true
   vendor/glog:  # TODO: to use isGoogleInitialized() API in v0.6.0. Remove when the rosdep glog version is updated to v0.6.0 (already updated in Ubuntu 24.04)
     type: git
     url: https://github.com/tier4/glog.git
     version: ea36766fdc2ac8e8c8e3ac988ae69acd6d09bb30
-  vendor/redundancy_switcher_interface:
+    base: true
+  vendor/cuda_blackboard:
     type: git
-    url: git@github.com:tier4/redundancy_switcher_interface.git
-    version: beta/v4.2
-  vendor/kistler_driver:
+    url: https://github.com/autowarefoundation/cuda_blackboard.git
+    version: v0.2.0
+    base: true
+  vendor/negotiated:
     type: git
-    url: git@github.com:tier4/kistler_driver.git
-    version: main
+    url: https://github.com/osrf/negotiated.git
+    version: eac198b55dcd052af5988f0f174902913c5f20e7
+    base: true
   rclcpp:  # Based stable version, the fix-patch for service in initialization and the glog feature is added
     type: git
     url: https://github.com/tier4/rclcpp.git
     version: 0bb2c75b3b3cdcc380f6c21ac9129c54075ba059
+    base: true
   launch: # Based humble version, the acceleration patched is added
     type: git
     url: https://github.com/tier4/launch.git
-    version: f12ed91942fefc2c50d7f6d16c458835fc18396a
-  # awsim
-  awsim/awsim_sensor_kit_launch: # TODO: Integrate into sample_sensor_kit_launch
-    type: git
-    url: https://github.com/tier4/awsim_sensor_kit_launch.git
-    version: 33ef7eec8951c6466cb2c12209275e59837f3a3e
-  # vehicle
-  awsim/sample_vehicle_launch:
-    type: git
-    url: https://github.com/autowarefoundation/sample_vehicle_launch.git
-    version: cd852aed85aaf033a0747050cf4300967e89c1ae
+    version: 9122128dc931211e42116b055f150199285496e1
+    base: true
 
-  vendor/ros2_socketcan:
-    type: git
-    url: https://github.com/autowarefoundation/ros2_socketcan.git
-    version: 85da8c31286cad69de65dc50219e7d901ae9e94b
-  vendor/foxglove_bridge: # TODO: Remove this once .idl format are no longer used
-    type: git
-    url: git@github.com:foxglove/ros-foxglove-bridge.git
-    version: 0.7.6
-  # product
-  product/l4_toolkit:
-    type: git
-    url: git@github.com:tier4/l4_toolkit.git
-    version: main
-  product/autoware_diag_bridge:
-    type: git
-    url: git@github.com:tier4/autoware_diagnostics_bridge.git
-    version: 96281eab064c55a66b2e04d16de3fc51e61b3c83
-  vendor/emergency_vehicle_detector:
-    type: git
-    url: git@github.com:tier4/emergency_vehicle_detector.git
-    version: main
-  vendor/pyrocan:
-    type: git
-    url: git@github.com:tier4/pyrocan.git
-    version: main
-  vendor/rosbag2:
-    type: git
-    url: https://github.com/ros2/rosbag2.git
-    version: 0.15.13
-  # V2X
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: beta/v0.41
+    version: 72cb1f664546f5068b72aeaff2e520895c59c138
+    base: true
+
   # middleware
+  # TODO(TIER IV): During the transition period of Agnocast introduction,
+  # the Agnocast ROS packages are provided as a source build.
+  # Once the transition stabilizes, use the packages released from the official ROS repository.
+  # Issue: https://github.com/autowarefoundation/autoware/issues/5968
   middleware/external/agnocast:
     type: git
     url: https://github.com/tier4/agnocast.git
-    version: 2.1.1
+    version: d04b92553fedefe46ebcae819add89821f3d6c6a # TODO(TIER IV): to be updated to v1.1.0
+    base: true

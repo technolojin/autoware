@@ -1,5 +1,5 @@
 - name: Import Autoware Universe Dev Environment
-  ansible.builtin.import_playbook: universe.yaml
+  ansible.builtin.import_playbook: autoware.dev_env.universe
 
 - name: Configure Local Development Environment
   hosts: localhost

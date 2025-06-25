@@ -1,4 +1,4 @@
-name: create-base-image
+name: create-pilot-auto-image
 
 on:
   workflow_dispatch:
@@ -7,33 +7,18 @@ on:
         description: The name of the beta branch or tag to release
         type: string
         required: true
-      tag-suffix:
-        description: Optional suffix for the tag name (e.g. "pilot-auto/base-image:v0.47-dev" will be pushed with "dev" as the suffix)
-        type: string
-        required: false
-        default: ""
       update-latest:
         description: Update the latest tag
         type: boolean
         required: true
         default: true
-      include-cuda-drivers:
-        description: Include CUDA drivers
-        type: boolean
-        required: true
-        default: false
-      include-nvidia:
-        description: Include NVIDIA packages
-        type: boolean
-        required: true
-        default: false
 
 env:
   ROS_DISTRO: humble
-  BASE_IMAGE: ubuntu:22.04
+  BASE_IMAGE: ghcr.io/tier4/pilot-auto/base-image
 
 jobs:
-  create-base-image:
+  create-pilot-auto-image:
     # runs-on: ubuntu-latest # Error: "No space left on device"
     runs-on: ubuntu-22.04-m
     permissions:
@@ -44,16 +29,6 @@ jobs:
         run: |
           echo "WORKSPACE_ROOT=$(pwd)" >> $GITHUB_ENV
           echo "CREATE_DATE=$(date +'%Y%m%d_%H%M(%Z)')" >> $GITHUB_ENV
-
-          # Set SETUP_ARGS based on workflow_dispatch inputs
-          SETUP_ARGS="local_dev_env"
-          if [ "${{ github.event.inputs.include-cuda-drivers }}" = "false" ]; then
-            SETUP_ARGS="$SETUP_ARGS --no-cuda-drivers"
-          fi
-          if [ "${{ github.event.inputs.include-nvidia }}" = "false" ]; then
-            SETUP_ARGS="$SETUP_ARGS --no-nvidia"
-          fi
-          echo "SETUP_ARGS=$SETUP_ARGS" >> $GITHUB_ENV
 
       - name: Generate token
         id: generate-token
@@ -87,23 +62,34 @@ jobs:
           sudo apt update
           echo "ROS_DESKTOP_VER=$(apt-cache madison ros-${ROS_DISTRO}-desktop | grep -v Sources | cut -d \| -f 2 | cut -c 2-)" >> $GITHUB_ENV
 
+      - name: Install vcstool
+        run: |
+          sudo apt-get -y update
+          sudo apt-get -y install python3-pip
+          pip install --no-cache-dir vcstool
+
       - name: set description
         id: set-description
         run: |
-          DESCRIPTION="${{ env.CREATE_DATE }}, ros-${{ env.ROS_DISTRO }}-desktop:${{ env.ROS_DESKTOP_VER }}"
-          if [ "${{ github.event.inputs.include-cuda-drivers }}" = "true" ]; then
-            DESCRIPTION="$DESCRIPTION, with-cuda-drivers"
-          fi
-          if [ "${{ github.event.inputs.include-nvidia }}" = "true" ]; then
-            DESCRIPTION="$DESCRIPTION, with-nvidia"
-          fi
-          echo "img-description=$DESCRIPTION" >> $GITHUB_OUTPUT
+          echo "img-description=${{ env.CREATE_DATE }}, ros-${{ env.ROS_DISTRO }}-desktop:${{ env.ROS_DESKTOP_VER }}" >> $GITHUB_OUTPUT
 
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
+          ref: ${{ github.ref_name }}
+
+      - name: Create build context
+        run: |
+          mkdir -p build-context/docker/pilot-auto
+          cp -r docker/pilot-auto/* build-context/docker/pilot-auto/
+
+      - name: Checkout repository to reference version
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
           ref: ${{ steps.set-tag-name.outputs.ref-name }}
+          clean: false
 
       - name: Set target name for beta branches
         id: set-target-name
@@ -137,42 +123,27 @@ jobs:
           echo "${{ steps.generate-token.outputs.token }}" >> github_token
         shell: bash
 
-      - name: Create build context
+      - name: Fetch source files
         run: |
-          mkdir -p build-context/docker/base-image
-          cp -r docker/base-image/* build-context/docker/base-image/
-          cp autoware.repos setup-dev-env.sh ansible-galaxy-requirements.yaml amd64.env arm64.env build-context/
-          cp -r ansible build-context/
-
-      - name: Set image tag suffix
-        id: set-tag-suffix
-        run: |
-          TAG_SUFFIX=""
-          if [ "${{ github.event.inputs.tag-suffix }}" != "" ]; then
-            TAG_SUFFIX="${TAG_SUFFIX}-${{ github.event.inputs.tag-suffix }}"
-          fi
-          if [ "${{ github.event.inputs.include-cuda-drivers }}" = "true" ]; then
-            TAG_SUFFIX="${TAG_SUFFIX}-cuda"
-          fi
-          if [ "${{ github.event.inputs.include-nvidia }}" = "true" ]; then
-            TAG_SUFFIX="${TAG_SUFFIX}-nvidia"
-          fi
-          echo "tag-suffix=$TAG_SUFFIX" >> $GITHUB_OUTPUT
+          mkdir -p build-context/src
+          vcs import --shallow build-context/src < autoware.repos
 
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
           push: true
-          file: docker/base-image/Dockerfile.bi
-          set: |
-            *.context=${{ env.WORKSPACE_ROOT }}/build-context
-            *.secrets=id=github_token,src=github_token
+          file: ${{ env.WORKSPACE_ROOT }}/build-context/docker/pilot-auto/Dockerfile
+          context: ${{ env.WORKSPACE_ROOT }}/build-context
+          secrets: id=github_token,src=github_token
           tags: |
-            ${{ github.event.inputs.update-latest == 'true' && format('ghcr.io/{0}/base-image:latest{1}', github.repository, steps.set-tag-suffix.outputs.tag-suffix) || '' }}
-            ghcr.io/${{ github.repository }}/base-image:${{ steps.set-tag-name.outputs.tag-name }}${{ steps.set-tag-suffix.outputs.tag-suffix }}
+            ${{ github.event.inputs.update-latest == 'true' && format('ghcr.io/{0}/pilot-auto:latest', github.repository) || '' }}
+            ghcr.io/${{ github.repository }}:${{ steps.set-tag-name.outputs.tag-name }}
           build-args: |
             DESCRIPTION=${{ steps.set-description.outputs.img-description }}
-            GITHUB_TOKEN=${{ steps.generate-token.outputs.token }}
-            BASE_IMAGE=${{ env.BASE_IMAGE }}
             ROS_DISTRO=${{ env.ROS_DISTRO }}
-            SETUP_ARGS=${{ env.SETUP_ARGS }}
+            BASE_IMAGE=${{ env.BASE_IMAGE }}:${{ steps.set-tag-name.outputs.tag-name }}
+          cache-from: type=registry,ref=ghcr.io/${{ github.repository }}-buildcache:${{ steps.set-tag-name.outputs.tag-name }}
+          cache-to: type=registry,ref=ghcr.io/${{ github.repository }}-buildcache:${{ steps.set-tag-name.outputs.tag-name }},mode=max
+          outputs: type=registry
+          provenance: false
+          sbom: false
