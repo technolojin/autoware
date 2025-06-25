@@ -186,11 +186,12 @@ repositories:
     url: git@github.com:tier4/mj20_interface.git
     version: main
     base: false
-  vendor/redundancy_switcher_interface:
-    type: git
-    url: git@github.com:tier4/redundancy_switcher_interface.git
-    version: 5b750ee32a22e32a6f0402eb8a4233d69470f41b
-    base: false
+  # TODO: Uncomment when the dependent package is added
+  # vendor/redundancy_switcher_interface:
+  #   type: git
+  #   url: git@github.com:tier4/redundancy_switcher_interface.git
+  #   version: 5b750ee32a22e32a6f0402eb8a4233d69470f41b
+  #   base: false
   vendor/ros2_socketcan:
     type: git
     url: https://github.com/autowarefoundation/ros2_socketcan.git
