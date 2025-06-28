@@ -8,7 +8,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: b8a0b301a6dfa440064a72c0ca1ae257843a73a1
+    version: e457ce05fd017379c3616d84a17b6cddb9a2a05d
     base: true
   autoware/autoware_cmake:
     type: git
@@ -28,7 +28,7 @@ repositories:
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: 37a4d5782861334d7aa660845560af56be959ab3
+    version: 587fa7f82330c2c738a7458a45ba385c513c6e3b
     base: false
   autoware/aip_launcher:
     type: git
@@ -73,7 +73,7 @@ repositories:
   autoware/autoware_rviz_plugins:
     type: git
     url: https://github.com/autowarefoundation/autoware_rviz_plugins.git
-    version: 69878ef0f4f3694a83ad838df1ca3054bb5c08db
+    version: c5f0baa6439849fa3733f09948242769e1c75b3f
     base: true
   # description
   description/sensor/sensor_component_description:
@@ -105,7 +105,7 @@ repositories:
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
-    version: 049081857b2c5d39daf24bb9f6f5bcf44b338314
+    version: cb1918a08f3a3fe7216686a5633ae69dad354f88
     base: true
   vendor/ublox:
     type: git
