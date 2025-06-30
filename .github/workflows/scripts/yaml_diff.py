@@ -23,16 +23,16 @@ def create_file_mapping()->Dict[str, List[str]]:
             "src/autoware/launcher/autoware_launch/config/control/trajectory_follower/{index}/lateral/mpc.param.yaml",
         "src/autoware/universe/control/autoware_pid_longitudinal_controller/param/longitudinal_controller_defaults.param.yaml":
             "src/autoware/launcher/autoware_launch/config/control/trajectory_follower/{index}/longitudinal/pid.param.yaml",
-        "src/autoware/universe/perception/autoware_lidar_centerpoint/config/centerpoint.param.yaml":
-            "src/autoware/launcher/autoware_launch/config/perception/object_recognition/detection/lidar_model/centerpoint_xx1.param.yaml"
+        "src/autoware/universe/perception/autoware_image_projection_based_fusion/config/roi_pointcloud_fusion.param.yaml":
+            "src/autoware/launcher/autoware_launch/config/perception/object_recognition/detection/irregular_object_detection/irregular_object_detector.param.yaml"
     }
     FILE_MAPPING_X2_template = {
         "src/autoware/universe/control/autoware_mpc_lateral_controller/param/lateral_controller_defaults.param.yaml":
             "src/autoware/launcher/autoware_launch/config/control/trajectory_follower/lateral/mpc.param.yaml",
         "src/autoware/universe/control/autoware_pid_longitudinal_controller/param/longitudinal_controller_defaults.param.yaml":
             "src/autoware/launcher/autoware_launch/config/control/trajectory_follower/longitudinal/pid.param.yaml",
-        "src/autoware/universe/perception/autoware_lidar_centerpoint/config/centerpoint.param.yaml":
-            "src/autoware/launcher/autoware_launch/config/perception/object_recognition/detection/lidar_model/centerpoint_x2.param.yaml"
+        "src/autoware/universe/perception/autoware_image_projection_based_fusion/config/roi_pointcloud_fusion.param.yaml":
+            "src/autoware/launcher/autoware_launch/config/perception/object_recognition/detection/irregular_object_detection/irregular_object_detector.param.yaml"
     }
     FILE_MAPPING = {}
     for key, value in list(FILE_MAPPING_XX1_template.items()) + list(FILE_MAPPING_X2_template.items()):
