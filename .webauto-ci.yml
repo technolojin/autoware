@@ -361,7 +361,7 @@ artifacts:
           exec: ./.webauto-ci/common/asset-deploy/run.sh
           ml_packages:
             - name: yolox
-              release: with_unknown/mlmodel/v1.0.0_Anvil_ESG620-133-r35.5.0
+              release: with_unknown/mlmodel/v1.0.1
         - name: ecu-system-setup
           user: root
           exec: ./.webauto-ci/perception/ecu-system-setup/run.sh
@@ -419,7 +419,7 @@ artifacts:
           exec: ./.webauto-ci/common/asset-deploy/run.sh
           ml_packages:
             - name: yolox
-              release: with_unknown/mlmodel/v1.0.0_Anvil_ESG620-133-r35.5.0
+              release: with_unknown/mlmodel/v1.0.1
             - name: traffic_light_classifier
               release: awf/1.0_Anvil_ESG620-133-r35.5.0
             - name: traffic_light_fine_detector
@@ -500,7 +500,7 @@ artifacts:
           exec: ./.webauto-ci/common/asset-deploy/run.sh
           ml_packages:
             - name: yolox
-              release: with_unknown/mlmodel/v1.0.0
+              release: with_unknown/mlmodel/v1.0.1
         - name: ecu-system-setup
           user: autoware
           exec: ./.webauto-ci/addon/ecu-system-setup/run.sh
@@ -562,7 +562,7 @@ artifacts:
           exec: ./.webauto-ci/common/asset-deploy/run.sh
           ml_packages:
             - name: yolox
-              release: with_unknown/mlmodel/v1.0.0
+              release: with_unknown/mlmodel/v1.0.1
             - name: traffic_light_classifier
               release: awf/1.0
             - name: traffic_light_fine_detector
