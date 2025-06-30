@@ -169,12 +169,12 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: tier4/main
+    version: d75d324360d52d88530f3c83046f5e6d23ef7548
     base: false
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: main
+    version: 657345bfe2cd78eecb31deb006ab7cbae8f4bc0d
     base: false
   description/vehicle/j6_gen2_description:
     type: git
@@ -184,7 +184,7 @@ repositories:
   vendor/mj20_interface:
     type: git
     url: git@github.com:tier4/mj20_interface.git
-    version: main
+    version: 9ed4c9bc64bd212a62cf94f30ad24982a59cf9f6
     base: false
   vendor/ros2_socketcan:
     type: git
@@ -209,7 +209,7 @@ repositories:
   vendor/pyrocan:
     type: git
     url: git@github.com:tier4/pyrocan.git
-    version: main
+    version: f1c9abf9309fae8966bb2500707af063a17aef25
     base: false
   vendor/rosbag2:
     type: git
