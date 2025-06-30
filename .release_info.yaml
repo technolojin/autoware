@@ -23,5 +23,3 @@ releases:
         release_version: v4.3
       - repo_name_in_autoware_repos: vendor/mj20_interface
         release_version: v4.3
-      - repo_name_in_autoware_repos: vendor/redundancy_switcher_interface
-        release_version: v4.3
