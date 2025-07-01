@@ -198,6 +198,13 @@ repositories:
     url: https://github.com/tier4/launch.git
     version: humble
     base: true
+  # Include many-nodes-in-container launch fix that ensures no LoadComposableNode call hangs
+  # See https://github.com/ros2/launch_ros/compare/humble...tier4:launch_ros:/humble/fix/load_composable_node
+  launch_ros:
+    type: git
+    url: https://github.com/tier4/launch_ros.git
+    version: humble/fix/load_composable_node
+    base: true
 
   v2x/vehicle2infrastructure:
     type: git
