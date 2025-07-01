@@ -7,7 +7,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware.universe.git
-    version: 2e2a3f7735a686ac12a5d3e5575acaf3ce14a9d1
+    version: 62761cea2e81ed21bc13e11753fdf401055480e4
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
@@ -23,11 +23,11 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: ea2d55ab8408dfd8ab82de8135f3ada7ce865d2b
+    version: 818641be38ab5e39ca67759782cb79f9e7751d0e
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 4773f835bfad7098bab6248d68261d08199a081b
+    version: d10f025f2466c7ca850378cbb4e89edf4e0317aa
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
@@ -51,7 +51,7 @@ repositories:
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: 39de44f558527a07406a035a99fb4e553cdbb11c
+    version: 657345bfe2cd78eecb31deb006ab7cbae8f4bc0d
   # description
   description/sensor/sensor_component_description:
     type: git
