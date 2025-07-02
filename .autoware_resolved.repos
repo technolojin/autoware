@@ -8,7 +8,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: 33649e9a84e2facc70c3fc156a8dc4f774bd9108
+    version: 17e2588f502fe09dd810a2d2e42a2086f4c83bcc
     base: true
   autoware/autoware_cmake:
     type: git
@@ -28,7 +28,7 @@ repositories:
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: 91c819e017b326002ead4ba3b36a88dbb2f7bbbe
+    version: 6dc019cdce6e60e810ddc42af29d192ab87e780f
     base: false
   autoware/aip_launcher:
     type: git
@@ -197,6 +197,13 @@ repositories:
     type: git
     url: https://github.com/tier4/launch.git
     version: 9122128dc931211e42116b055f150199285496e1
+    base: true
+  # Include many-nodes-in-container launch fix that ensures no LoadComposableNode call hangs
+  # See https://github.com/ros2/launch_ros/compare/humble...tier4:launch_ros:/humble/fix/load_composable_node
+  launch_ros:
+    type: git
+    url: https://github.com/tier4/launch_ros.git
+    version: 2759f8ae5dca9d4ab517a9b5d6b5f2c66556337f
     base: true
 
   v2x/vehicle2infrastructure:
