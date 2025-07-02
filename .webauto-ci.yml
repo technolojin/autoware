@@ -343,7 +343,7 @@ artifacts:
         DEBIAN_FRONTEND: noninteractive
         ML_MODELS_PATH: /opt/autoware/mlmodels
       linux_parameters:
-        kernel_version: 5.10.120-tegra
+        kernel_version: 5.15.148-tegra
       phases:
         - name: environment-setup
           user: root
@@ -380,7 +380,7 @@ artifacts:
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
-        from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.40.0
+        from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.48.0
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
@@ -401,7 +401,7 @@ artifacts:
         DEBIAN_FRONTEND: noninteractive
         ML_MODELS_PATH: /opt/autoware/mlmodels
       linux_parameters:
-        kernel_version: 5.10.120-tegra
+        kernel_version: 5.15.148-tegra
       phases:
         - name: environment-setup
           user: root
@@ -421,9 +421,9 @@ artifacts:
             - name: yolox
               release: with_unknown/mlmodel/v1.0.1
             - name: traffic_light_classifier
-              release: awf/1.0_Anvil_ESG620-133-r35.5.0
+              release: awf/1.0_Anvil_ESG620-133-r36.4.0
             - name: traffic_light_fine_detector
-              release: awf/1.0_Anvil_ESG620-133-r35.5.0
+              release: awf/1.0_Anvil_ESG620-133-r36.4.0
             - name: traffic_light_detector
               release: common/mlmodel/v0.1.2
         - name: ecu-system-setup
@@ -444,7 +444,7 @@ artifacts:
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
-        from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.40.0
+        from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.48.0
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
@@ -544,7 +544,7 @@ artifacts:
       environment_variables:
         ML_MODELS_PATH: /opt/autoware/mlmodels
       linux_parameters:
-        kernel_version: 5.10.120-tegra
+        kernel_version: 5.15.148-tegra
       phases:
         - name: environment-setup
           user: root
@@ -587,7 +587,7 @@ artifacts:
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
-        from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.40.0
+        from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.48.0
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt

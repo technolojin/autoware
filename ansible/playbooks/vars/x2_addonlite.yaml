@@ -24,7 +24,7 @@ netcore_wmem_max: 2147483647
 # jetson_id: 2
 
 # ptp4l port
-ptp4l_network_port: eth0
+ptp4l_network_port: enP1p1s0
 
 # otaclient
 otaclient_release_version: v3.8.4
@@ -49,14 +49,14 @@ rsyncd_hosts_allow: 192.168.30.71 # X2 Logging ECU
 setup_coredump_tmpfiles_service: true
 
 # ros2 native build
-ansible_python_path: /usr/bin/python3.8
+ansible_python_path: /usr/bin/python3.10
 
 # perception application/service
-perception_application_edge_auto_version: beta/v4.2
+perception_application_edge_auto_version: beta/v4.3
 perception_application_base_path: /home/autoware
 perception_application_edge_auto_repo: git@github.com:tier4/edge-auto-jetson.x2.git
 perception_application_service_run_templates_file: perception_application/run.sh.edge_auto_x2.j2 # we can use different run files if the path is in local
-perception_application_native_built_ros: true # True if we build ROS from source and not using apt
+perception_application_native_built_ros: false # True if we build ROS from source and not using apt
 perception_application_directory_name: overlay_ws
 
 # fool proof check service

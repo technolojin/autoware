@@ -72,7 +72,7 @@
 
         - name: TIER IV camera driver
           ansible.builtin.include_role:
-            name: autoware.ecu_system_setup.tier4_camera_driver_anvil
+            name: autoware.edge_auto_jetson.tier4_hdr_camera_driver
 
     - name: Setup ECU for Perception2 ECU which is connected to Add-On ECU
       when: ecu_id == 'perception2'
