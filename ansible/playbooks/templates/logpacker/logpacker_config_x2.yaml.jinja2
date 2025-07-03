@@ -47,7 +47,14 @@ logging_mode:
       recording_type: "auto"
       initial_state: "recording"
       recording_mode_values:
-        - ""
+        - "InitializingVehicle"
+        - "WaitingForRoute"
+        - "Planning"
+        - "WaitingForEngage"
+        - "Driving"
+        - "ArrivedGoal"
+        - "Emergency"
+        - "Finalizing"
     rotation:
       target_dir: "{{ temporary_logging_directory }}"
   light:
