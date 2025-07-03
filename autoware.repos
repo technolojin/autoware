@@ -73,7 +73,7 @@ repositories:
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
-    version: 049081857b2c5d39daf24bb9f6f5bcf44b338314
+    version: cb1918a08f3a3fe7216686a5633ae69dad354f88
     base: true
   vendor/ublox:
     type: git
