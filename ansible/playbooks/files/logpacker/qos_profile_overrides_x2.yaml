@@ -1363,6 +1363,16 @@
   durability: volatile
   history: keep_last
   reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/run_out/debug_markers:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/run_out/virtual_walls:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
 /planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/slow_down/metrics:
   depth: 10
   durability: volatile

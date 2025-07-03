@@ -9,3 +9,4 @@
   roles:
     - { role: autoware.ecu_system_setup.dssad_packer }
     - { role: autoware.ecu_system_setup.opal_disk }
+    - { role: autoware.ecu_system_setup.rootfs_encrypt }

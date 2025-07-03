@@ -9,7 +9,4 @@ opal_disk:
 
 # cspell: ignore luks
 # DSSAD_packer
-dssad_logging_directory: /mnt/DSSAD
-dssad_mapping_name: DSSAD_crypt
-dssad_keyfile_path: /opt/dssad/dssad_luks_key
-dssad_uuid: d251ebbb-efad-4f32-af25-ae21c9b1430f
+dssad_encryption_type: opal

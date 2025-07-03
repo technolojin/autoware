@@ -47,7 +47,14 @@ logging_mode:
       recording_type: "auto"
       initial_state: "recording"
       recording_mode_values:
-        - ""
+        - "InitializingVehicle"
+        - "WaitingForRoute"
+        - "Planning"
+        - "WaitingForEngage"
+        - "Driving"
+        - "ArrivedGoal"
+        - "Emergency"
+        - "Finalizing"
     rotation:
       target_dir: "{{ temporary_logging_directory }}"
   light:
@@ -177,6 +184,8 @@ rosbag:
     - "/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/obstacle_velocity_limiter/virtual_walls$"
     - "/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/out_of_lane/debug_markers$"
     - "/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/out_of_lane/virtual_walls$"
+    - "/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/run_out/debug_markers$"
+    - "/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/run_out/virtual_walls$"
     - "/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/trajectory$"
     - "/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/trajectory/debug/published_time$"
     - "/planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/trajectory$"
