@@ -2,31 +2,23 @@ repositories:
   simulator/scenario_simulator:
     type: git
     url: https://github.com/tier4/scenario_simulator_v2.git
-    version: c15bec6596422de70216030c73524f806c9c4f83
-  simulator/logsim:
-    type: git
-    url: git@github.com:tier4/logsim.git
-    version: 4.0.2
+    version: fed2c73d64643a4a0a00112fc0ea9c29758f4004
   simulator/ndt_convergence_evaluation:
     type: git
     url: git@github.com:tier4/ndt_convergence_evaluation.git
-    version: 3.0.0
-  simulator/driving_log_replayer:
-    type: git
-    url: https://github.com/tier4/driving_log_replayer.git
-    version: 2.7.0
+    version: b041fcac83bf582be11ca17e9c4840b199d27f60
   simulator/driving_log_replayer_v2:
     type: git
     url: https://github.com/tier4/driving_log_replayer_v2.git
-    version: 3.3.0
+    version: 69bc337a9114cafe098091ea45bcf25ab86dd4ce
   simulator/perception_eval:
     type: git
     url: https://github.com/tier4/autoware_perception_evaluation.git
-    version: v1.2.11
+    version: 418c95a7e9119f4324c38fd81432e672d64201fb
   simulator/vendor/ros2_numpy:
     type: git
     url: https://github.com/Box-Robotics/ros2_numpy.git
-    version: v2.0.12-humble
+    version: d665add22e6a9070e88d9514bbf0dcbcb122a3dc
   simulator/vendor/operational-design-domains:
     type: git
     url: https://gitlab.com/autowarefoundation/operational-design-domains

@@ -9,9 +9,6 @@ export GITHUB_TOKEN="$WEBAUTO_CI_GITHUB_TOKEN"
 git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
 git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "git@github.com:"
 
-rm -f /etc/apt/sources.list.d/ros2.list
-rm -f /usr/share/keyrings/ros-archive-keyring.gpg
-
 ansible-galaxy collection install -f -r "ansible-galaxy-requirements.yaml"
 eval ansible-playbook "'${ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK}'" \
     -e ecu_id="${ECU_ID}" \

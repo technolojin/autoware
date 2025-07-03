@@ -3,6 +3,9 @@
 # path to .webauto-ci.yml
 file_path="./.webauto-ci.yml"
 
+# select the target ECU for downloading the corresponding ml model
+ecu_for_ml_packages=main
+
 if ! (type "webauto" >/dev/null 2>&1); then
     echo -e "\e[31mPlease Install webauto cli.\e[m"
     echo -e "\e[31mhttps://github.com/tier4/WebAutoCLI\e[m"
@@ -10,22 +13,38 @@ if ! (type "webauto" >/dev/null 2>&1); then
 fi
 
 sudo mkdir -p /opt/autoware/mlmodels/
-sudo rm -rf /opt/autoware/mlmodels/*
 
-# get name and release in ml_packages
-ml_packages=$(awk '/ml_packages:/,/^[^ ]/{if(/name:/){sub(/^[[:space:]]*-?[[:space:]]*name:[[:space:]]*/,""); name=$0} else if(/release:/){sub(/^[[:space:]]*-?[[:space:]]*release:[[:space:]]*/,""); release=$0; printf "%s %s\n", name, release}}' "$file_path")
+# cspell: ignore RLENGTH
+ml_packages=$(awk -v ecu="$ecu_for_ml_packages" '
+# check scope
+match($0, "^  - name: "ecu"$")                { in_each_ecu = 1 }
+/- name: asset-deploy/         && in_each_ecu { in_asset = 1}
+/ml_packages:/                 && in_asset    { in_ml_packages = 1; match($0, /^ */); ml_packages_indent = RLENGTH; next }
 
-if [ -z "$ml_packages" ]; then
-    echo -e "\e[31mError: ml_packages is not found in .webauto-ci.yml\e[m"
-    exit 1
-fi
+# main
+in_ml_packages {
+    # check if out of scope
+    match($0, /^ */); indent = RLENGTH;
+    if (indent <= ml_packages_indent) {
+        in_each_ecu = 0; in_asset = 0; in_ml_packages = 0; next
+    }
+
+    # get name and release in ml_packages
+    if (/name:/) {
+        sub(/^ *- name: /, ""); name=$0
+    }
+    else if (/release:/) {
+        sub(/^ *release: /, ""); release=$0
+        printf "%s %s\n", name, release
+    }
+}
+' "$file_path")
 
 while read -r line; do
     ml_packages_name=$(echo "$line" | awk '{print $1}')
     ml_packages_release=$(echo "$line" | awk '{print $2}')
-    echo "ml_packages_name: $ml_packages_name"
 
-    # search release
+    # search release of ml packages
     res=$(webauto ml package-release search \
         --project-id prd_jt \
         --package-name "$ml_packages_name" \
@@ -33,25 +52,34 @@ while read -r line; do
         --output json --quiet)
 
     release=$(echo "$res" | jq -c '.releases[0]')
-
     package_id=$(echo "$release" | jq -r '.package_id')
     release_id=$(echo "$release" | jq -r '.id')
 
-    # download release
-    echo "start downloading the release $ml_packages_name [$release_id]"
+    echo "ml packages name: $ml_packages_name"
+    echo "ml packages id  : $package_id"
+    echo "release         : $ml_packages_release"
+    echo "release id      : $release_id"
+
+    # download ml packages
     res=$(webauto ml package-release pull \
         --project-id prd_jt \
         --package-id "$package_id" \
         --package-release-id "$release_id" \
         --target-dir ./tmp \
         --output json--quiet 2>&1)
-    # Check if the command output contains the error message
     if echo "$res" | grep -q "Error:" || echo "$res" | grep -q "\[403\]"; then
-        echo -e "\e[31mError in downloading release. Please check network connection and try again.\e[0m"
-        echo "$release_id: $res"
+        echo -e "\e[31m$res\e[0m"
+        echo -e "\e[31mFailed to download ml model. [$ml_packages_name]\e[0m"
         exit 1
     fi
+    echo "Successfully downloaded ml package. [./tmp/$release_id/$ml_packages_name]"
 
-    echo "finished downloading the release $ml_packages_name [$release_id]"
-    sudo mv ./tmp/"$release_id"/* /opt/autoware/mlmodels/
+    # delete existing ml packages and move new ml packages
+    sudo rm -rf /opt/autoware/mlmodels/"$ml_packages_name"
+    if ! res=$(sudo mv ./tmp/"$release_id"/"$ml_packages_name" /opt/autoware/mlmodels/ 2>&1); then
+        echo -e "\e[31m$res\e[0m"
+        exit 1
+    fi
+    echo "Successfully move ml packages. [/opt/autoware/mlmodels/$ml_packages_name]"
+    echo ""
 done <<<"$ml_packages"

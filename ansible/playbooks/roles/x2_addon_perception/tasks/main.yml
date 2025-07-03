@@ -47,9 +47,9 @@
       when: github_token is defined and github_token != ''
       ansible.builtin.set_fact:
         env_vars: "{{ env_vars | combine({'GITHUB_TOKEN': github_token}) }}"
-    - name: Print current env_vars
-      ansible.builtin.debug:
-        msg: "env_vars: {{ env_vars }}"
+    # - name: Print current env_vars
+    #   ansible.builtin.debug:
+    #     msg: "env_vars: {{ env_vars }}"
     - name: Execute the script
       ansible.builtin.command: "{{ work_dir }}/native/{{ script_name }}"
       become: true # become: true is required to handle sudo operation in the script

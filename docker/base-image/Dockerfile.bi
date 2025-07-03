@@ -61,6 +61,11 @@ RUN package_list=$(dpkg -l | grep "  ros-humble" | awk '{print $2","$3}') && \
 
 RUN pip3 freeze > ~/dependencies_record/requirements.txt
 
+## Create entrypoint
+# hadolint ignore=DL3059
+RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" > /etc/bash.bashrc
+CMD ["/bin/bash"]
+
 ## Clean up unnecessary files
 # hadolint ignore=DL3059
 RUN rm -rf \
@@ -68,13 +73,8 @@ RUN rm -rf \
   /etc/apt/sources.list.d/cuda*.list \
   /etc/apt/sources.list.d/docker.list \
   /etc/apt/sources.list.d/nvidia-docker.list \
-  ~/.ros/ \
-  ~/autoware_data/ \
   ~/.ssh/known_hosts \
+  ~/.ros/ \
+  ~/autoware_data \
   ~/.ansible \
   /autoware/
-
-## Create entrypoint
-# hadolint ignore=DL3059
-RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" > /etc/bash.bashrc
-CMD ["/bin/bash"]
