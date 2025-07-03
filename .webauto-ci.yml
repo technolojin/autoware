@@ -425,7 +425,7 @@ artifacts:
             - name: traffic_light_fine_detector
               release: awf/1.0_Anvil_ESG620-133-r36.4.0
             - name: traffic_light_detector
-              release: common/mlmodel/v0.1.2
+              release: common/mlmodel/v0.1.2_Anvil_ESG620-133-r36.4.0
         - name: ecu-system-setup
           user: root
           exec: ./.webauto-ci/perception/ecu-system-setup/run.sh
@@ -564,11 +564,11 @@ artifacts:
             - name: yolox
               release: with_unknown/mlmodel/v1.0.1_Anvil_ESG620-133-r36.4.0
             - name: traffic_light_classifier
-              release: awf/1.0
+              release: awf/1.0_Anvil_ESG620-133-r36.4.0
             - name: traffic_light_fine_detector
-              release: awf/1.0
+              release: awf/1.0_Anvil_ESG620-133-r36.4.0
             - name: traffic_light_detector
-              release: common/mlmodel/v0.1.2
+              release: common/mlmodel/v0.1.2_Anvil_ESG620-133-r36.4.0
         - name: ecu-system-setup
           user: root
           exec: ./.webauto-ci/addonlite/ecu-system-setup/run.sh
