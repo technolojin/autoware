@@ -1,4 +1,4 @@
-# cspell: ignore cgid deploykey destdir filt preconf sdkkey thold
+# cspell: ignore cgid deploykey destdir filt preconf sdkkey
 
 - name: Clone x2_key
   ansible.builtin.git:
@@ -64,14 +64,6 @@
     - aal.conf
     - aal_script.conf
     - bm.conf
-  become: true
-
-- name: Replace all selected *_thold values with 50000
-  ansible.builtin.replace:
-    path: "{{ x2_xcarbon_atom_json_path }}"
-    regexp: '"{{ item }}"\s*:\s*\d+'
-    replace: '"{{ item }}": 50000'
-  loop: "{{ x2_xcarbon_thold_keys }}"
   become: true
 
 - name: Copy service
