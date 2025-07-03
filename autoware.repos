@@ -7,7 +7,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: bb1715a76e5fba176e2c7932d13276b3afce9b62
+    version: 0f38cf7ece52f96fd0dd17659363f8796154fdda
     base: true
   autoware/autoware_cmake:
     type: git
@@ -70,15 +70,10 @@ repositories:
     url: https://github.com/tier4/sensor_component_description.git
     version: 03ba094851ec90febfcfc0adb20b64b0e19df7a8
     base: true
-  vendor/septentrio_gnss_driver:
-    type: git
-    url: https://github.com/tier4/septentrio_gnss_driver.git
-    version: a5790bbed2705f330cefe0c9963ef2ba953d79a1
-    base: false
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
-    version: cb1918a08f3a3fe7216686a5633ae69dad354f88
+    version: 049081857b2c5d39daf24bb9f6f5bcf44b338314
     base: true
   vendor/ublox:
     type: git
@@ -178,6 +173,11 @@ repositories:
     url: https://github.com/tier4/agnocast.git
     version: 8aeb311bd905854a09569fd6ec173441d352c268 # TODO(TIER IV): to be updated to v1.1.0
     base: true
+  vendor/septentrio_gnss_driver:
+    type: git
+    url: https://github.com/tier4/septentrio_gnss_driver.git
+    version: a5790bbed2705f330cefe0c9963ef2ba953d79a1
+    base: false
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
