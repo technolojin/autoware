@@ -70,6 +70,11 @@ repositories:
     url: https://github.com/tier4/sensor_component_description.git
     version: 03ba094851ec90febfcfc0adb20b64b0e19df7a8
     base: true
+  vendor/septentrio_gnss_driver:
+    type: git
+    url: https://github.com/tier4/septentrio_gnss_driver.git
+    version: a5790bbed2705f330cefe0c9963ef2ba953d79a1
+    base: false
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
