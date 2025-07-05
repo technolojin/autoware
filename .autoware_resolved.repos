@@ -8,7 +8,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: 4407e035397de4d8a6ea860fd7189b0634dd90ae
+    version: c83807fc8177cc7364f4250be601eaf99449d735
     base: true
   autoware/autoware_cmake:
     type: git
@@ -28,7 +28,7 @@ repositories:
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: 9c3c31d1c548bcdeea5d942db5188ab1e0ae5032
+    version: 766261f50b248a8257079853ea7f54037c56423a
     base: false
   autoware/aip_launcher:
     type: git
@@ -220,5 +220,5 @@ repositories:
   middleware/external/agnocast:
     type: git
     url: https://github.com/tier4/agnocast.git
-    version: 6e1aecd05a8c5846b195bca9bcfe0e993eb6d785 # TODO(TIER IV): to be updated to v1.1.0
+    version: 72fd426d5cbb41a867b5be981cd483680b56e9ae # TODO(TIER IV): to be updated to v1.1.0
     base: true
