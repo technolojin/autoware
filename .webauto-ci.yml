@@ -671,7 +671,26 @@ scenario_parameter_groups:
       rear_overhang: 1.1 # between rear wheel center and vehicle rear
       left_overhang: 0.128 # between left wheel center and vehicle left
       right_overhang: 0.128 # between right wheel center and vehicle right
-      max_steer_angle: 0.70 # [rad]
+      # --- metrics condition parameter from here ---
+      max_processing_time: 1000.0 # [ms] `/system/processing_time_checker/metrics/processing_time/{module}`
+      max_stand_still: 100.0 # [s] stand still condition
+      max_deceleration: 10.0 # [m/ss] (1.02G) acceleration condition
+      max_lateral_deviation_abs: 15.0 # [m] `/control/control_evaluator/metrics/lateral_deviation`
+      max_lateral_trajectory_displacement_local: 15.0 # [m] `/planning/planning_evaluator/metrics/lateral_trajectory_displacement_local/max`
+      max_resampled_relative_angle: 5.0 # [rad] `/planning/planning_evaluator/metrics/resampled_relative_angle/max`
+      max_steer_rate_fast: 15.0 # [rad/s] `/control/control_evaluator/metrics/steering_rate` when ego_speed is fast
+      max_steer_rate_slow: 13.0 # [rad/s] `/control/control_evaluator/metrics/steering_rate` when ego_speed is slow
+      min_npc_longitudinal_distance_euclidian: 0.0 # [m] relative distance condition
+      min_npc_longitudinal_distance_lateral: 0.0 # [m] relative distance condition
+      min_npc_distance_euclidian: 0.0 # [m] relative distance condition
+      max_goal_lateral_deviation_abs: 1000.0 # [m] `/control/control_evaluator/metrics/goal_lateral_deviation`
+      max_goal_longitudinal_deviation: 1000.0 # [m] `/control/control_evaluator/metrics/goal_longitudinal_deviation`
+      max_goal_yaw_deviation_abs: 5.0 # [rad] `/control/control_evaluator/metrics/goal_yaw_deviation`
+      max_stop_deviation_abs: 100 # [m] `/control/control_evaluator/metrics/stop_deviation/{module}`
+      max_blinker_change_count: 5.0 # [times] `/planning/planning_evaluator/metrics/blinker_change_count/count_in_duration`
+      max_steer_change_count: 20.0 # [times] `/planning/planning_evaluator/metrics/steer_change_count/count_in_duration`
+      max_steer_angle: 0.70 # [rad] `/control/control_evaluator/metrics/steering_angle`
+      # --- metrics condition parameter to here ---
       stop_line_distance: 0.0 # param name in autoware_launch: stop_margin
       blind_spot_stop_line_distance: 1.0 # param name in autoware_launch: stop_line_margin
       obstacle_stop_line_distance: 5.0 # param name in autoware_launch: stop_margin
