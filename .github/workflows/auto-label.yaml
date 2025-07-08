@@ -1,0 +1,29 @@
+name: auto-label-pr
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  label:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate token
+        id: generate-token
+        uses: tibdex/github-app-token@v2
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Set git config
+        uses: autowarefoundation/autoware-github-actions/set-git-config@v1
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+
+      - name: Add label to PR
+        run: gh pr edit ${{ github.event.pull_request.number }} --add-label "tag:run-build-test"
+        env:
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
