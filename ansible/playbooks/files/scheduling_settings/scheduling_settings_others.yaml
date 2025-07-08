@@ -1,0 +1,11 @@
+scheduling_settings:
+  # processes to run on E core
+  - process:
+      name: .*
+      args: .*greengrass.*
+    settings:
+      cpu: 16-23
+  - process:
+      name: .*greengrass.*
+    settings:
+      cpu: 16-23
