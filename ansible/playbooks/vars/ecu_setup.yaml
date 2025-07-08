@@ -93,3 +93,6 @@ fool_proof_check_network_interface: enp5s0f1 # TODO: check vlan.500
 # scheduling settings
 scheduling_settings_autoware_yaml_file: scheduling_settings/scheduling_settings_autoware.yaml
 scheduling_settings_others_yaml_file: scheduling_settings/scheduling_settings_others.yaml
+
+# tc_bandwidth_limit
+tc_interface: enp5s0f1

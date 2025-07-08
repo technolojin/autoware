@@ -32,6 +32,9 @@
     - { role: autoware.ecu_system_setup.redundancy_switcher }
     - role: autoware.ecu_system_setup.domain_bridge
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - role: autoware.ecu_system_setup.tc_bandwidth_limit
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - { role: autoware.ecu_system_setup.imu_offset_estimator }
     - { role: autoware.ecu_system_setup.emergency_vehicle_detector }
     - { role: autoware.ecu_system_setup.scheduling_settings_script }
     # - { role: x2_autoware }
