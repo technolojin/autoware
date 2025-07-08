@@ -12,5 +12,3 @@
 '/opt/autoware/area_map'
 '/opt/devtools'
 '/opt/pilotauto'
-'/swapfile'
-'/swap.img'

@@ -15,5 +15,3 @@
 '/opt/dssad/'
 '/opt/opal-disk/pass_enc/'
 '/opt/pilotauto'
-'/swapfile'
-'/swap.img'
