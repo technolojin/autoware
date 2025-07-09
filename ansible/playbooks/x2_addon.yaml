@@ -38,6 +38,8 @@
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - role: autoware.ecu_system_setup.sxpf_ros_driver # This must be executed after `sxpf_driver`
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - role: autoware.ecu_system_setup.c2_fw_autoupdate # This must be executed after `sxpf_driver`
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - role: autoware.edge_auto_jetson.perception_application
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.ecu_system_setup.netplan } # need to be the last, as the internet will lost after this

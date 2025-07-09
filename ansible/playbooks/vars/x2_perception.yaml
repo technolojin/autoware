@@ -83,3 +83,7 @@ letterbox_monitor:
     use_call_diag: true
     use_letterbox: false
     ignore_node_names: []
+
+# c2_fw_autoupdate
+c2_ecu_type: anvil
+fw_rom_version: 20240927

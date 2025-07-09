@@ -77,3 +77,7 @@ rsyslog_queue_maxsize: 1g
 #     use_call_diag: true
 #     use_letterbox: false
 #     ignore_node_names: []
+
+# c2_fw_autoupdate
+c2_ecu_type: addon
+fw_rom_version: 20240927
