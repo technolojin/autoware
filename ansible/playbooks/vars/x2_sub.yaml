@@ -88,3 +88,12 @@ letterbox_monitor:
     use_call_diag: false
     use_letterbox: false
     ignore_node_names: []
+
+# tier4_service_standby_wait
+service_list_for_tier4_system: |
+  ptp4l@enp3s0.service \
+  ptp4l@enp5s0f0.service
+service_list_for_tier4_autoware: |
+  boot-shutdown.service \
+  tier4_system_standby_wait.target
+ecu_type: sub

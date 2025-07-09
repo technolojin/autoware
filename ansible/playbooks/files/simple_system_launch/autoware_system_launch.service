@@ -1,6 +1,6 @@
 [Unit]
 Description=autoware_system_launch
-After=network-online.target
+After=tier4-ros2-standby-wait.target
 
 [Service]
 Environment=ENABLE_AGNOCAST=1

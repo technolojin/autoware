@@ -90,6 +90,36 @@ check_target_service: autoware_system_launch.service
 ecu_type: main
 fool_proof_check_network_interface: enp5s0f1 # TODO: check vlan.500
 
+# tier4_service_standby_wait
+service_list_for_tier4_system: |
+  ptp4l@enp3s0.service \
+  ptp4l@vlan.500.service \
+  ptp4l_hw_timestamp@vlan.500.service
+service_list_for_tier4_autoware: |
+  fool_proof_check.service \
+  emergency-vehicle-detector.service \
+  boot_shutdown.service \
+  boot-shutdown-manager.service \
+  letterbox_monitor@autoware.service \
+  letterbox_monitor@autoware_system.service \
+  letterbox_monitor@default.service \
+  tier4_system_standby_wait.target
+
+# disable services
+# cspell:ignore runlevel utmp
+disable_service_list:
+  - snapd.apparmor.service
+  - snapd.socket
+  - snapd.service
+  - snapd.seeded.service
+  - systemd-update-utmp-runlevel.service
+  - update-notifier-download.timer
+  - update-notifier-motd.timer
+  - motd-news.timer
+  - dpkg-db-backup.timer
+  - apt-daily-upgrade.timer
+  - apt-daily.timer
+
 # scheduling settings
 scheduling_settings_autoware_yaml_file: scheduling_settings/scheduling_settings_autoware.yaml
 scheduling_settings_others_yaml_file: scheduling_settings/scheduling_settings_others.yaml

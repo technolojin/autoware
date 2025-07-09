@@ -158,3 +158,10 @@ simple_system_launch_items:
           fi
         fi
       done
+
+# tier4_service_standby_wait
+service_list_for_tier4_system: ptp4l.service
+service_list_for_tier4_autoware: |
+  fool_proof_check.service \
+  boot-shutdown.service \
+  tier4_system_standby_wait.target

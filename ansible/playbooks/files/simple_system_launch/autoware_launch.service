@@ -1,6 +1,6 @@
 [Unit]
 Description=autoware
-After=network-online.target autoware_system_launch.service
+After=autoware_system_launch.service tier4_autoware_standby_wait.target tier4_system_standby_wait.target
 
 [Service]
 Environment=ENABLE_AGNOCAST=1
