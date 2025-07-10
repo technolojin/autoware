@@ -83,7 +83,7 @@ repositories:
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
-    version: v0.2.6
+    version: v0.2.6.2
     base: true
   vendor/boost_transport_drivers:
     type: git
@@ -151,6 +151,14 @@ repositories:
     url: https://github.com/tier4/launch.git
     version: 9122128dc931211e42116b055f150199285496e1
     base: true
+  # Include many-nodes-in-container launch fix that ensures no LoadComposableNode call hangs
+  # See https://github.com/ros2/launch_ros/compare/humble...tier4:launch_ros:/humble/fix/load_composable_node
+  launch_ros:
+    type: git
+    url: https://github.com/tier4/launch_ros.git
+    version: humble/fix/load_composable_node
+    base: true
+
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git

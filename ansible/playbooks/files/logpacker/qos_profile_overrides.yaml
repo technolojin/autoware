@@ -1794,37 +1794,42 @@
   durability: system_default
   history: keep_last
   reliability: best_effort
+/sensing/lidar/rear/pandar_packets:
+  depth: 10
+  durability: system_default
+  history: keep_last
+  reliability: best_effort
 /sensing/radar/front_center/objects_raw:
   depth: 10
   durability: system_default
   history: keep_last
   reliability: best_effort
-/sensing/radar/front_center/pandar_packets:
+/sensing/radar/front_center/nebula_packets:
   depth: 10
   durability: system_default
   history: keep_last
   reliability: best_effort
-/sensing/radar/front_right/pandar_packets:
+/sensing/radar/front_right/nebula_packets:
   depth: 10
   durability: system_default
   history: keep_last
   reliability: best_effort
-/sensing/radar/front_left/pandar_packets:
+/sensing/radar/front_left/nebula_packets:
   depth: 10
   durability: system_default
   history: keep_last
   reliability: best_effort
-/sensing/radar/rear_center/pandar_packets:
+/sensing/radar/rear_center/nebula_packets:
   depth: 10
   durability: system_default
   history: keep_last
   reliability: best_effort
-/sensing/radar/rear_right/pandar_packets:
+/sensing/radar/rear_right/nebula_packets:
   depth: 10
   durability: system_default
   history: keep_last
   reliability: best_effort
-/sensing/radar/rear_left/pandar_packets:
+/sensing/radar/rear_left/nebula_packets:
   depth: 10
   durability: system_default
   history: keep_last
