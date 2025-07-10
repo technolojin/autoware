@@ -1,0 +1,59 @@
+- name: Setup x2 signage
+  hosts: localhost
+  vars_files:
+    - ./vars/essential_vars.yaml
+    - ./vars/x2_signage.yaml
+  vars_prompt:
+    # TODO: add github_token to github backend
+    - name: github_token
+      prompt: Please give github_token for x2-call
+  pre_tasks:
+    - name: Show warning
+      ansible.builtin.pause:
+        seconds: 5
+        prompt: "[Warning]: There is no github_token, skipping installation of x2-call modules. Please manually install the modules"
+      when: github_token == ''
+    - name: Set galactic rosdistro
+      ansible.builtin.set_fact:
+        rosdistro: galactic
+      when: ansible_distribution_version == "20.04"
+    - name: Set humble rosdistro
+      ansible.builtin.set_fact:
+        rosdistro: humble
+      when: ansible_distribution_version == "22.04"
+    - name: Update and upgrade apt packages
+      become: true
+      ansible.builtin.apt:
+        upgrade: true
+        update_cache: true
+        cache_valid_time: 86400
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+  roles:
+    - { role: autoware.ecu_system_setup.additional_fonts }
+    - { role: autoware.ecu_system_setup.automatic_login }
+    - { role: autoware.ecu_system_setup.hide_cursor }
+    - role: autoware.ecu_system_setup.boot_shutdown_service
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - { role: autoware.ecu_system_setup.clean_ros_log }
+    - { role: autoware.ecu_system_setup.cyclonedds }
+    - { role: autoware.ecu_system_setup.disable_lock_screen }
+    - { role: autoware.ecu_system_setup.install_openssh_server }
+    - { role: autoware.ecu_system_setup.keyboard }
+    - { role: autoware.ecu_system_setup.login_user }
+    - { role: autoware.ecu_system_setup.otaclient }
+    - { role: autoware.ecu_system_setup.evaluator_self_hosted_environment }
+    - { role: autoware.ecu_system_setup.ptp4l }
+    - { role: autoware.ecu_system_setup.ros2_app_build }
+    - { role: autoware.ecu_system_setup.ros2_setup }
+    - { role: autoware.ecu_system_setup.rsyslog }
+    - { role: autoware.ecu_system_setup.set_autoware_env }
+    - { role: autoware.ecu_system_setup.sound_library }
+    - { role: autoware.ecu_system_setup.stop_auto_upgrade }
+    - { role: autoware.ecu_system_setup.syslog_collector_client }
+    - { role: autoware.ecu_system_setup.timezone }
+    - { role: autoware.ecu_system_setup.x2_signage_env_setup }
+    - { role: autoware.ecu_system_setup.turn_off_desktop_notification }
+  post_tasks:
+    - name: Setup netplan
+      ansible.builtin.include_role:
+        name: autoware.ecu_system_setup.netplan

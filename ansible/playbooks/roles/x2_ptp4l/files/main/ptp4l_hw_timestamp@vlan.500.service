@@ -1,0 +1,13 @@
+[Unit]
+Description=PTPv2 for synchronizing main and sub ECU
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/ptp4l -i vlan.500 -4 -H -m -E --domainNumber 1 --fault_reset_interval -4 --tx_timestamp_timeout 100 --uds_address=/var/run/ptp4l_hw_timestamp@vlan.500
+ExecStop=/bin/kill -TERM $MAINPID
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target network-online.target

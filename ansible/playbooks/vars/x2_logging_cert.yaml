@@ -1,0 +1,12 @@
+# cspell: ignore btrfs
+
+# opal_disk
+opal_disk:
+  device: /dev/sda
+  partition_label: DSSAD
+  filesystem: btrfs
+  mountpoint: /mnt/DSSAD
+
+# cspell: ignore luks
+# DSSAD_packer
+dssad_encryption_type: opal

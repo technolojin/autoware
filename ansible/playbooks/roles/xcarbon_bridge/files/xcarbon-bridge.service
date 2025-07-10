@@ -1,0 +1,13 @@
+[Unit]
+Description=xCarbon bridge
+After=network.target
+StartLimitBurst=10
+
+[Service]
+ExecStart=/opt/autoware/services/xcarbon-bridge/run.sh
+Restart=always
+RestartSec=1000msec
+User=root
+
+[Install]
+WantedBy=multi-user.target

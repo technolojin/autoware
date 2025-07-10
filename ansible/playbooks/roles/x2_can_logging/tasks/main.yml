@@ -1,0 +1,31 @@
+- name: Copy rule file
+  ansible.builtin.copy:
+    src: 50-can.rules
+    dest: /etc/udev/rules.d/
+    mode: 0644
+  become: true
+
+- name: Copy script
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: /opt/autoware/services/can-logging/
+    mode: 0755
+  with_items:
+    - can-up.sh
+    - can-down.sh
+  become: true
+
+- name: Copy service
+  ansible.builtin.copy:
+    src: can-logging.service
+    dest: /etc/systemd/system/
+    mode: 0755
+  become: true
+
+- name: Enable service
+  ansible.builtin.systemd:
+    name: can-logging.service
+    daemon_reload: "{{ daemon_reload }}"
+    enabled: true
+    masked: false
+  become: true

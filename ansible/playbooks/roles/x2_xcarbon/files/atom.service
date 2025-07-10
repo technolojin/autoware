@@ -1,0 +1,15 @@
+# cspell: ignore atomwd
+
+[Unit]
+Description=xCarbon Service
+After=syslog.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/atomwd.pid
+ExecStart=/opt/atom/bin/atom start --connect --auto
+ExecStop=/opt/atom/bin/atom stop
+StandardOutput=syslog
+
+[Install]
+WantedBy=multi-user.target

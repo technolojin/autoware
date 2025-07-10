@@ -1,0 +1,7 @@
+- name: Setup x2 perception application
+  hosts: localhost
+  vars_files:
+    - ./vars/essential_vars.yaml
+    - ./vars/x2_perception_application.yaml
+  roles:
+    - role: autoware.ecu_system_setup.x2_perception_application

@@ -1,0 +1,4 @@
+format_version: 1
+ecu_id: media-streaming2
+ip_addr: "192.168.20.62"
+bootloader: jetson-uefi

@@ -1,0 +1,2 @@
+# nftables
+nftables_conf_file: nftables/nftables.x2-signage.conf

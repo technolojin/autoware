@@ -1,0 +1,12 @@
+# refs. https://docs.ros.org/en/rolling/How-To-Guides/DDS-tuning.html
+# Also some default parameters are taken from https://github.com/eclipse-cyclonedds/cyclonedds/blob/master/docs/manual/options.md
+x2_cyclonedds_for_redundancy_cyclonedds:
+  network_interface:
+    - { address: lo, priority: default }
+  minimum_socket_receive_buffer_size: 20MB
+  minimum_socket_send_buffer_size: default # Default value from CycloneDDS documentation
+  max_message_size: 65500B
+  fragment_size: 4000B
+  max_rexmit_message_size: 1456B # Default value from CycloneDDS documentation
+  water_mark_whc_high: 500kB # Default value from CycloneDDS documentation
+  water_mark_whc_low: 1kB # Default value from CycloneDDS documentation

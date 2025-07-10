@@ -1,0 +1,4 @@
+format_version: 1
+ecu_id: perception2
+ip_addr: "192.168.30.32"
+bootloader: jetson-uefi

@@ -1,0 +1,12 @@
+- name: Execute x2-logging master playbook
+  ansible.builtin.import_playbook: pilot_auto.dev_env.x2_logging
+
+- name: Setup x2 x2-logging-cert
+  hosts: localhost
+  vars_files:
+    - ./vars/essential_vars.yaml
+    - ./vars/x2_logging_cert.yaml
+  roles:
+    - { role: autoware.ecu_system_setup.dssad_packer }
+    - { role: autoware.ecu_system_setup.opal_disk }
+    - { role: autoware.ecu_system_setup.rootfs_encrypt }
