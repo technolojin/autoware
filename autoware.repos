@@ -224,3 +224,8 @@ repositories:
     url: https://github.com/ros2/rosbag2.git
     version: 0.15.13
     base: false
+  product/autoware_diag_bridge:
+    type: git
+    url: git@github.com:tier4/autoware_diagnostics_bridge.git
+    version: 96281eab064c55a66b2e04d16de3fc51e61b3c83
+    base: false
