@@ -131,6 +131,7 @@ simulations:
         initialize_duration: "90"
         consider_acceleration_by_road_slope: "true"
         record_storage_id: mcap
+        record_option: "'-x /map/pointcloud_map|/.*occupancy_grid_map.*/|/.*iv_msgs.*/'"
         autoware.output_metrics: "true"
       logging:
         additional_log_archive:
