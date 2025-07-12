@@ -178,10 +178,11 @@ repositories:
     url: git@github.com:tier4/autoware_launch.x2.git
     version: tier4/main
     base: false
+  # TODO(TomohitoAndo): use main branch in the next release
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: main
+    version: 785807886cf5c1672668a13995a160fd32f91b4f
     base: false
   description/vehicle/j6_gen2_description:
     type: git
