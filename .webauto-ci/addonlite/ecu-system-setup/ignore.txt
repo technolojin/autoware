@@ -1,4 +1,3 @@
 __pycache__/
 .ssh/
-/tmp
 /home/autoware/*/log
