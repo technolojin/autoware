@@ -14,8 +14,26 @@ jobs:
     with:
       label: tag:run-build-test
 
+  check-changed-files:
+    runs-on: ubuntu-22.04
+    outputs:
+      any-changed: ${{ steps.changed-files.outputs.any_changed }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get changed files
+        id: changed-files
+        uses: step-security/changed-files@v45
+        with:
+          files: |
+            ansible-galaxy-requirements.yaml
+            ansible/**
+
   setup-ecu:
-    needs: make-sure-label-is-present
+    needs: [make-sure-label-is-present, check-changed-files]
     if: ${{ needs.make-sure-label-is-present.outputs.result == 'true' }}
     runs-on: ubuntu-22.04
     strategy:
@@ -85,9 +103,11 @@ jobs:
             additional_args: -y -v
     steps:
       - name: Check out repository
+        if: ${{ needs.check-changed-files.outputs.any-changed == 'true' }}
         uses: actions/checkout@v4
 
       - name: Generate token
+        if: ${{ needs.check-changed-files.outputs.any-changed == 'true' }}
         id: generate-token
         uses: tibdex/github-app-token@v2
         with:
@@ -95,12 +115,21 @@ jobs:
           private_key: ${{ secrets.PRIVATE_KEY }}
 
       - name: Set git config
+        if: ${{ needs.check-changed-files.outputs.any-changed == 'true' }}
         uses: autowarefoundation/autoware-github-actions/set-git-config@v1
         with:
           token: ${{ steps.generate-token.outputs.token }}
 
       - name: Run setup script
+        if: ${{ needs.check-changed-files.outputs.any-changed == 'true' }}
         run: |
           ./setup-ecu.sh ${{ matrix.playbook }} ${{ matrix.additional_args }} -e reload_systemd=no -e skip_for_github_actions=true
         env:
           GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+
+      - name: Skip ECU setup (no changes detected)
+        if: ${{ needs.check-changed-files.outputs.any-changed != 'true' }}
+        run: |
+          echo "ansible-galaxy-requirements.yaml has not changed"
+          echo "ECU setup skipped for this job"
+          echo "Job completed successfully"
