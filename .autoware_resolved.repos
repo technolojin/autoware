@@ -3,12 +3,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: 23c5a9970be25c81b8f9a9b20a69e64940d9f436
+    version: 0e7f855c90d9a92a1bcda4ca3f5bdf2cb7a2b947
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: 381bb0f4e76d17d18e5401bb87021fe6dd6e5e8b
+    version: 7375927b02ec01bcad39800c79fb7d665a30eb4d
     base: true
   autoware/autoware_cmake:
     type: git
@@ -28,12 +28,12 @@ repositories:
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: 1046703d043782f98e101f9e4772df223c6f8758
+    version: d23b35898b1d618d555220f6eae1d22c0b9a4e43
     base: false
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: f21cc4b8e3eb7273a670d907be58f8953ccfb745
+    version: 9403212bbff4bb13841792d229a5635e2334fbc5
     base: true
   autoware/ad_api_adaptor:
     type: git
@@ -209,7 +209,7 @@ repositories:
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: 830a96060ca0471bcb54597af864bbcfaadd73ec
+    version: 702abaeda40222efe5fbcaa5cd17ecee399aa198
     base: true
 
   # middleware
