@@ -27,7 +27,7 @@ repositories:
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 60ded4f2dd05cf1c82590c9fc1a756e1621a5528
+    version: 8f1e8038a41aa91f87f44615c24371883ced5ad3
     base: true
   autoware/ad_api_adaptor:
     type: git
