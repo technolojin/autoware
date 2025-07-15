@@ -1302,6 +1302,7 @@ simulations:
       parameters:
         use_traffic_light_recognition: "false"
         play_rate: "0.125"
+        remap_profile: x2_perception
       volumes:
         - name: model
           path: /opt/autoware/mlmodels/centerpoint
