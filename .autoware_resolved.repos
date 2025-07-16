@@ -3,12 +3,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: 0e7f855c90d9a92a1bcda4ca3f5bdf2cb7a2b947
+    version: 07402f153d6dd9ec8d73758a80b19ba75aaf9abf
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: 7375927b02ec01bcad39800c79fb7d665a30eb4d
+    version: bbd61434961ac593b1cb5ffaef2a5132921619db
     base: true
   autoware/autoware_cmake:
     type: git
@@ -28,12 +28,12 @@ repositories:
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: d23b35898b1d618d555220f6eae1d22c0b9a4e43
+    version: c51121afab18dc48825f978270a083806ba9acb2
     base: false
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 9403212bbff4bb13841792d229a5635e2334fbc5
+    version: 6f6e9388c421aa523d13225080e1999dafe998cb
     base: true
   autoware/ad_api_adaptor:
     type: git
@@ -48,7 +48,7 @@ repositories:
   autoware/autoware_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_msgs.git
-    version: 692c084078c1d5ad641a1b600e3bcf36cc24d291
+    version: eba481b2de08fba8f5fb420dd5f54aac75bce8ea
     base: true
   autoware/autoware_adapi_msgs:
     type: git
@@ -188,6 +188,11 @@ repositories:
     url: https://github.com/osrf/negotiated.git
     version: eac198b55dcd052af5988f0f174902913c5f20e7
     base: true
+  vendor/bevdet_vendor: # TODO: wrap the original bevdet-tensorrt-cpp source code as a vendor package and provide it to autoware_tensorrt_bevdet package
+    type: git
+    url: https://github.com/autowarefoundation/bevdet_vendor.git
+    version: 0cda477b09ed27cfc8484c792b4f5f3063cf425f
+    base: true
   rclcpp:  # Based stable version, the fix-patch for service in initialization and the glog feature is added
     type: git
     url: https://github.com/tier4/rclcpp.git
@@ -220,5 +225,5 @@ repositories:
   middleware/external/agnocast:
     type: git
     url: https://github.com/tier4/agnocast.git
-    version: 9f063dd8c5eadff201b8513269087fd66968f1fc # TODO(TIER IV): to be updated to v1.1.0
+    version: 223e483cbc7c08b7743ca33eb6f1190eccfe4949 # TODO(TIER IV): to be updated to v1.1.0
     base: true
