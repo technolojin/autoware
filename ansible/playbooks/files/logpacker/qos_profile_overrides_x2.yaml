@@ -2788,11 +2788,6 @@
   durability: volatile
   history: keep_last
   reliability: best_effort
-/omron/traffic_light_info:
-  depth: 1
-  durability: volatile
-  history: keep_last
-  reliability: best_effort
 /v2i/external/v2i_traffic_light_info:
   depth: 1
   durability: volatile
@@ -2855,6 +2850,16 @@
   reliability: best_effort
 /sensing/radar/rear_right/nebula_packets:
   depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/jpn_signal/traffic_light_info:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/omron/traffic_light_info:
+  depth: 1
   durability: volatile
   history: keep_last
   reliability: best_effort
