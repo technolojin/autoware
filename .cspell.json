@@ -15,7 +15,8 @@
     "keyout",
     "novnc",
     "subshell",
-    "xstartup"
+    "xstartup",
+    "bevdet"
   ],
   "ignorePaths": [".release_info.yaml"]
 }
