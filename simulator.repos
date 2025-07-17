@@ -10,7 +10,7 @@ repositories:
   simulator/driving_log_replayer_v2:
     type: git
     url: https://github.com/tier4/driving_log_replayer_v2.git
-    version: 08b14a62f6307f150fae1f9930ebae6413a0cb87
+    version: 69bc337a9114cafe098091ea45bcf25ab86dd4ce
   simulator/perception_eval:
     type: git
     url: https://github.com/tier4/autoware_perception_evaluation.git
