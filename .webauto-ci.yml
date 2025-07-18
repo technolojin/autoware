@@ -200,6 +200,11 @@ simulations:
         type: gpu1/amd64/large
       parameters:
         use_traffic_light_recognition: "false"
+        output_metrics: "true"
+      logging:
+        additional_log_archive:
+          paths:
+            - /home/autoware/.ros/log/autoware_metrics
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
           mounts:
@@ -594,6 +599,11 @@ simulations:
         planning: "false"
         control_module_preset: dlr_control_validator
         override_topics_regex: '"^/(?!localization/[^ ]*/pointcloud$)(?!perception/object_recognition/detection/(?!objects$)).*"'
+        output_metrics: "true"
+      logging:
+        additional_log_archive:
+          paths:
+            - /home/autoware/.ros/log/autoware_metrics
 
   - name: dlr_pc_w_loc_track_pred
     type: planning_control
@@ -615,6 +625,11 @@ simulations:
         localization: "true"
         play_delay: "20.0"
         override_topics_regex: '"^/(?!localization/[^ ]*/pointcloud$)(?!perception/object_recognition/detection/(?!objects$)).*"'
+        output_metrics: "true"
+      logging:
+        additional_log_archive:
+          paths:
+            - /home/autoware/.ros/log/autoware_metrics
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
           mounts:
@@ -641,6 +656,11 @@ simulations:
         perception: "false"
         localization: "false"
         override_topics_regex: '"^/(?!localization/[^ ]*/pointcloud$)(?!perception/object_recognition/detection/(?!objects$)).*"'
+        output_metrics: "true"
+      logging:
+        additional_log_archive:
+          paths:
+            - /home/autoware/.ros/log/autoware_metrics
 
 release:
   components:
