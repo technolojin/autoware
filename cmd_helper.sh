@@ -30,12 +30,12 @@ function build_ccache() {
 
 # --autoware:     Launch autoware
 function launch_autoware() {
-    ros2 launch autoware_launch autoware.launch.xml map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
+    ros2 launch autoware_launch autoware.main.launch.xml is_redundant:="false" map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware_main.log
 }
 
 # --autoware-main:     Launch autoware main
 function launch_autoware_main() {
-    ros2 launch autoware_launch autoware.main.launch.xml map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
+    ROS_DOMAIN_ID=1 ros2 launch autoware_launch autoware.main.launch.xml is_redundant:="true" map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware_main.log
 }
 
 # --autoware-start:     Start autoware services
@@ -60,33 +60,34 @@ function restart_autoware_service() {
     echo "Autoware services restarted."
 }
 
+# --autoware-main-mrm:     Launch autoware main
 function launch_autoware_main_mrm() {
-    ROS_DOMAIN_ID=3 ros2 launch autoware_launch autoware.main.mrm.launch.xml vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
+    ROS_DOMAIN_ID=3 ros2 launch autoware_launch autoware.main.mrm.launch.xml vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware_main_mrm.log
 }
 
 # --psim-main-mrm:     Launch autoware main mrm with planning simulator
 function launch_psim_main_mrm() {
-    ROS_DOMAIN_ID=3 ros2 launch autoware_launch autoware.main.mrm.launch.xml is_simulation:="true" vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
+    ROS_DOMAIN_ID=3 ros2 launch autoware_launch autoware.main.mrm.launch.xml is_simulation:="true" vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware_main_mrm.log
 }
 
 # --psim-main:       Launch autoware main with planning simulator
 function launch_psim_main() {
-    ros2 launch autoware_launch planning_simulator.main.launch.xml map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
+    ROS_DOMAIN_ID=1 ros2 launch autoware_launch planning_simulator.launch.xml is_redundant:="true" is_simulation:="true" map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware_main.log
 }
 
 # --autoware-sub: Launch autoware sub
 function launch_autoware_sub() {
-    ros2 launch autoware_launch autoware.sub.launch.xml vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
+    ROS_DOMAIN_ID=2 ros2 launch autoware_launch autoware.sub.launch.xml vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware_sub.log
 }
 
 # --psim-sub: Launch autoware sub with planning simulator
 function launch_psim_sub() {
-    ros2 launch autoware_launch planning_simulator.sub.launch.xml vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
+    ROS_DOMAIN_ID=2 ros2 launch autoware_launch planning_simulator.sub.launch.xml vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware_sub.log
 }
 
 # --psim:         Launch simple planning simulator
 function launch_psim() {
-    ros2 launch autoware_launch planning_simulator.launch.xml map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
+    ros2 launch autoware_launch planning_simulator.launch.xml is_redundant:="false" is_simulation:="true" map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
 }
 
 # --start_record
