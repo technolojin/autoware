@@ -4,7 +4,8 @@
 # NOTE: Cyclonedds settings for Sub ECU is not determined yet. Only 1GbE interface is used for now.
 cyclonedds:
   network_interface:
-    - { address: enp5s0f0, priority: default }
+    - { address: enp5s0f1, priority: 1 } # Prioritize 10Gb interface
+    - { address: enp5s0f0, priority: 0 }
   minimum_socket_receive_buffer_size: 20MB
   minimum_socket_send_buffer_size: default
   max_message_size: 65500B
@@ -16,19 +17,6 @@ ipv4_ipfrag_time: 1
 ipv4_ipfrag_high_thresh: 134217728
 netcore_rmem_max: 2147483647
 netcore_wmem_max: 2147483647
-
-# x2_cyclonedds_for_redundancy
-x2_cyclonedds_for_redundancy_cyclonedds:
-  network_interface:
-    - { address: enp5s0f1, priority: 1 } # Prioritize 10Gb interface
-    - { address: enp5s0f0, priority: 0 }
-  minimum_socket_receive_buffer_size: 20MB
-  minimum_socket_send_buffer_size: default
-  max_message_size: 65500B
-  fragment_size: 4000B
-  max_rexmit_message_size: 1456B
-  water_mark_whc_high: 500kB
-  water_mark_whc_low: 1kB
 
 # netplan
 netplan_files: netplan/99-autoware.x2-sub.yaml
