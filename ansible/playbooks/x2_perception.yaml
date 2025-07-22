@@ -23,6 +23,7 @@
         dtb_sensor_type: imx490
         distortion_correction: 1
         video_num: 4
+        c2_angle_params: "{{ per1_angle_params }}"
       when: ecu_id == "perception1"
 
     - name: Set perception2 params
@@ -34,6 +35,7 @@
         dtb_sensor_type: imx490
         distortion_correction: 0
         video_num: 4
+        c2_angle_params: "{{ per2_angle_params }}"
       when: ecu_id == "perception2"
 
   roles:

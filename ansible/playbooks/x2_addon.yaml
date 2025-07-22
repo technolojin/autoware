@@ -15,6 +15,9 @@
       ansible.builtin.set_fact:
         rosdistro: humble
       when: ansible_distribution_version == "22.04"
+    - name: Set addonlite params
+      ansible.builtin.set_fact:
+        c2_angle_params: "{{ addon_angle_params }}"
   roles:
     - { role: autoware.ecu_system_setup.automatic_login }
     - { role: autoware.ecu_system_setup.additional_fonts }

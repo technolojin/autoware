@@ -81,3 +81,4 @@ rsyslog_queue_maxsize: 1g
 # c2_fw_autoupdate
 c2_ecu_type: addon
 fw_rom_version: 20240927
+addon_angle_params: (120 120 120)
