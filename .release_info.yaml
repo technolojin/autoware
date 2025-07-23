@@ -10,7 +10,7 @@ additional_repos_files:
 releases:
   - version: v0.36
     release_managers:
-      - dkoldaev
+      - rej55
     released_repositories:
       - repo_name_in_autoware_repos: autoware/launcher
         release_version: v0.36
@@ -18,7 +18,7 @@ releases:
         release_version: v0.36
   - version: v0.41
     release_managers:
-      - dkoldaev
+      - rej55
     released_repositories:
       - repo_name_in_autoware_repos: autoware/core
         release_version: v0.41

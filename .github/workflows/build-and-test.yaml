@@ -240,7 +240,7 @@ jobs:
               --title "chore: update default branch commits in .autoware_resolved.repos" \
               --body "This PR updates the .autoware_resolved.repos file with the latest commit hashes from the default branch. This PR is automatically created by the nightly workflow and has been verified with build and test." \
               --label "tag:run-build-test" \
-              --reviewer dkoldaev
+              --reviewer rej55
           fi
         env:
           GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
