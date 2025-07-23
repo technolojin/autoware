@@ -72,8 +72,8 @@ bagtaker_params_template: bagtaker2/bagtaker_params_x2.yaml.jinja2
 bagkeeper_params_template: bagkeeper/bagkeeper_params_x2.yaml.jinja2
 
 # boot_shutdown
-build_boot_shutdown_api_msgs: true
 boot_shutdown_tools_clone_dir: "{{ autoware_install_dir }}/src/product/boot_shutdown_tools"
+boot_shutdown_manager_param_file: boot_shutdown_manager/boot_shutdown_manager.param.yaml
 boot_shutdown_service_config_file: boot_shutdown_service/boot_shutdown.param.logging.yaml
 boot_shutdown_service_script_src_path: boot_shutdown_service/shutdown.logging.sh
 

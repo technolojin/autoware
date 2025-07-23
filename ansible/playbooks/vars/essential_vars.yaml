@@ -10,7 +10,7 @@ vehicle_model: j6_gen2
 
 # boot shutdown
 boot_shutdown_tools_repository: https://github.com/tier4/boot_shutdown_tools.git
-boot_shutdown_tools_version: v0.3.0
+boot_shutdown_tools_version: v0.3.1
 
 # ros_distro
 ros_distro: humble

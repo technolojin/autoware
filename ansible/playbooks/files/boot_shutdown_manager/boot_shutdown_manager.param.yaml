@@ -8,7 +8,6 @@
     service_timeout: 1
     managed_ecu:
       main:
-        primary: true
         service_address: 192.168.20.11
       logging:
         skip_shutdown: true
@@ -32,3 +31,14 @@
         service_address: 192.168.20.51
       sub:
         service_address: 192.168.20.21
+    qos_profile_path: /etc/autoware_logging_suite/logpacker/qos_profile_overrides.yaml
+    shutdown_config:
+      logic: AND
+      /vehicle/status/velocity_status:
+        logic: AND
+        longitudinal_velocity: { le: 0.0 }
+        lateral_velocity: { le: 0.0 }
+      #/api/operation_mode/state:
+      #  is_autoware_control_enabled: { eq: false }
+      /webauto/vehicle_info:
+        data: { not_contains: in_progress }
