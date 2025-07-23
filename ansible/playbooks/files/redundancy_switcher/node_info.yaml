@@ -5,13 +5,14 @@ nodes:
     path_info: MainECUtoMainVCU # MainECUtoMainVCU, MainECUtoSubVCU, MainVCUtoMainECU, MainVCUtoSubVCU, or SubVCUtoMainECU, or SubVCUtoMainVCU
     period: 10 # Period of sending message [ms]
     msg_timeout: 50 # Timeout of message [ms]
+    max_consecutive_invalid_checksums: 5 # Maximum number of invalid checksums
     election_timeout: 150 # Timeout of election [ms]
     peers:
       - node_id: SubECU # MainECU, MainVCU, SubVCU, or SubECU
         connection_type: UDP # Connection type (UDP/CAN)
-        dest_ip: 192.168.20.21 # Destination IP address (required if connection_type is UDP)
+        dest_ip: 192.168.30.21 # Destination IP address (required if connection_type is UDP)
         dest_port: 53004 # Destination port number (required if connection_type is UDP)
-        src_ip: 192.168.20.11 # Source IP address (required if connection_type is UDP)
+        src_ip: 192.168.30.11 # Source IP address (required if connection_type is UDP)
         src_port: 53003 # Source port number (required if connection_type is UDP)
       - node_id: MainVCU
         connection_type: CAN
@@ -39,13 +40,14 @@ nodes:
     path_info: MainECUtoMainVCU
     period: 10
     msg_timeout: 50
+    max_consecutive_invalid_checksums: 5 # Maximum number of invalid checksums
     election_timeout: 150
     peers:
       - node_id: MainECU
         connection_type: UDP
-        dest_ip: 192.168.20.11
+        dest_ip: 192.168.30.11
         dest_port: 53003
-        src_ip: 192.168.20.21
+        src_ip: 192.168.30.21
         src_port: 53004
       - node_id: MainVCU
         connection_type: CAN
