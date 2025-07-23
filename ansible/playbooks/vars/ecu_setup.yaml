@@ -44,7 +44,7 @@ letterbox_monitor:
     use_letterbox: true
     ignore_node_names: []
   - service_name: autoware
-    ros_log_dir: /home/autoware/.ros/autoware_log
+    ros_log_dir: /home/autoware/.ros/autoware_main_log
     user_name: autoware
     group_name: autoware
     use_call_diag: true
@@ -60,19 +60,20 @@ letterbox_monitor:
 
 # simple_system_launch
 simple_system_launch_items:
-  # autoware_launch
-  - file: simple_system_launch/autoware_launch.service
+  # autoware_main_launch
+  - file: simple_system_launch/autoware_main_launch.service
     command: |
-      mkdir -p /home/autoware/.ros/autoware_log
-      export ROS_LOG_DIR=/home/autoware/.ros/autoware_log
-      ros2 launch autoware_launch autoware.launch.xml \
+      mkdir -p /home/autoware/.ros/autoware_main_log
+      export ROS_LOG_DIR=/home/autoware/.ros/autoware_main_log
+      ros2 launch autoware_launch autoware.main.launch.xml \
+              is_redundant:="true" \
               map_path:=/opt/autoware/maps \
               lanelet2_map_file:=lanelet2_map.osm \
               pointcloud_map_file:=pcd \
               vehicle_model:="$VEHICLE_MODEL" \
               sensor_model:="$SENSOR_MODEL" \
               launch_system:=false \
-              rviz:=false 2>&1 | tee "$HOME"/autoware.log
+              rviz:=false 2>&1 | tee "$HOME"/autoware_main.log
 
   # system
   - file: simple_system_launch/autoware_system_launch.service
@@ -80,10 +81,22 @@ simple_system_launch_items:
       mkdir -p /home/autoware/.ros/autoware_system_log
       export ROS_LOG_DIR=/home/autoware/.ros/autoware_system_log
       ros2 launch autoware_launch tier4_system_component.launch.xml \
+            is_redundant:="true" \
+            use_control_command_gate:="true" \
             system_run_mode:=online \
             launch_system_monitor:=true \
             launch_dummy_diag_publisher:=false \
             sensor_model:="$SENSOR_MODEL" 2>&1 | tee "$HOME"/autoware_system.log
+
+  # autoware_main_mrm_launch
+  - file: simple_system_launch/autoware_main_mrm_launch.service
+    command: |
+      mkdir -p /home/autoware/.ros/autoware_main_mrm_log
+      export ROS_LOG_DIR=/home/autoware/.ros/autoware_main_mrm_log
+      export ROS_DOMAIN_ID=3
+      ros2 launch autoware_launch autoware.main.mrm.launch.xml \
+            vehicle_model:="$VEHICLE_MODEL" \
+            sensor_model:="$SENSOR_MODEL" 2>&1 | tee "$HOME"/autoware_main_mrm.log
 
 # fool proof check service
 check_target_service: autoware_system_launch.service

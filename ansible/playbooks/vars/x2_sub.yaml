@@ -76,6 +76,13 @@ letterbox_monitor:
     use_call_diag: false
     use_letterbox: false
     ignore_node_names: []
+  - service_name: autoware
+    ros_log_dir: /home/autoware/.ros/autoware_sub_log
+    user_name: autoware
+    group_name: autoware
+    use_call_diag: true
+    use_letterbox: true
+    ignore_node_names: []
 
 # tier4_service_standby_wait
 service_list_for_tier4_system: |
@@ -85,3 +92,14 @@ service_list_for_tier4_autoware: |
   boot-shutdown.service \
   tier4_system_standby_wait.target
 ecu_type: sub
+# simple_system_launch
+simple_system_launch_items:
+  # autoware_sub_launch
+  - file: simple_system_launch/autoware_sub_launch.service
+    command: |
+      mkdir -p /home/autoware/.ros/autoware_sub_log
+      export ROS_LOG_DIR=/home/autoware/.ros/autoware_sub_log
+      export ROS_DOMAIN_ID=2
+      ros2 launch autoware_launch autoware.sub.launch.xml \
+              vehicle_model:="$VEHICLE_MODEL" \
+              sensor_model:="$SENSOR_MODEL" 2>&1 | tee "$HOME"/autoware_sub.log

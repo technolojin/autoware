@@ -7,7 +7,7 @@ Environment=ENABLE_AGNOCAST=1
 ExecStart=/opt/autoware/services/system_launch/autoware_system_launch.service/run.sh
 KillSignal=SIGINT
 User=autoware
-SyslogIdentifier=autoware_system_launch
+SyslogIdentifier=autoware_sub_launch
 
 [Install]
 WantedBy=multi-user.target

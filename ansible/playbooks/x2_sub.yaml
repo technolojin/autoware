@@ -28,6 +28,7 @@
     - { role: autoware.ecu_system_setup.tier4_service_standby_wait }
     - { role: autoware.ecu_system_setup.fintek_can_driver }
     - { role: autoware.ecu_system_setup.marvell_switch_driver }
+    - { role: autoware.ecu_system_setup.simple_system_launch }
     - role: autoware.ecu_system_setup.build_system_monitor
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - role: autoware.ecu_system_setup.rviz

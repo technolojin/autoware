@@ -42,13 +42,15 @@ function launch_autoware_main() {
 function start_autoware_service() {
     echo "Starting Autoware services."
     sudo systemctl start autoware_system_launch.service
-    sudo systemctl start autoware_launch.service
+    sudo systemctl start autoware_main_launch.service
+    sudo systemctl start autoware_main_mrm_launch.service
 }
 
 # --autoware-stop:     Stop autoware services
 function stop_autoware_service() {
     sudo systemctl stop autoware_system_launch.service
-    sudo systemctl stop autoware_launch.service
+    sudo systemctl stop autoware_main_launch.service
+    sudo systemctl stop autoware_main_mrm_launch.service
     echo "Stopped Autoware services."
 }
 
@@ -58,6 +60,26 @@ function restart_autoware_service() {
     sleep 5
     start_autoware_service
     echo "Autoware services restarted."
+}
+
+# --autoware-sub-start:     Start autoware sub services
+function start_autoware_sub_service() {
+    echo "Starting Autoware sub services."
+    sudo systemctl start autoware_sub_launch.service
+}
+
+# --autoware-sub-stop:     Stop autoware sub services
+function stop_autoware_sub_service() {
+    sudo systemctl stop autoware_sub_launch.service
+    echo "Stopped Autoware sub services."
+}
+
+# --autoware-sub-restart:     Restart autoware sub services
+function restart_autoware_sub_service() {
+    stop_autoware_sub_service
+    sleep 5
+    start_autoware_sub_service
+    echo "Autoware sub services restarted."
 }
 
 # --autoware-main-mrm:     Launch autoware main
@@ -157,6 +179,12 @@ elif [ "${1-}" = "--autoware-stop" ]; then
     stop_autoware_service "${@:2}"
 elif [ "${1-}" = "--autoware-restart" ]; then
     restart_autoware_service "${@:2}"
+elif [ "${1-}" = "--autoware-sub-start" ]; then
+    start_autoware_sub_service "${@:2}"
+elif [ "${1-}" = "--autoware-sub-stop" ]; then
+    stop_autoware_sub_service "${@:2}"
+elif [ "${1-}" = "--autoware-sub-restart" ]; then
+    restart_autoware_sub_service "${@:2}"
 elif [ "${1-}" = "--autoware-main" ]; then
     launch_autoware_main "${@:2}"
 elif [ "${1-}" = "--psim-main" ]; then

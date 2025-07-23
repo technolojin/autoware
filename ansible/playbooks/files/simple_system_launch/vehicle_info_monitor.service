@@ -10,6 +10,7 @@ User=root
 Group=root
 Restart=always
 RestartSec=1000msec
+SyslogIdentifier=vehicle_info_monitor
 
 [Install]
 WantedBy=multi-user.target
