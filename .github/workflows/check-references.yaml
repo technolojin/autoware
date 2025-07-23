@@ -1,0 +1,29 @@
+name: Check references
+
+on:
+  pull_request_target:
+    branches:
+      - beta/v*
+      - main
+
+jobs:
+  decide-fail-flag:
+    runs-on: ubuntu-latest
+    outputs:
+      fail_on_mutable: ${{ steps.set-flag.outputs.fail_on_mutable }}
+    steps:
+      - id: set-flag
+        run: |
+          BRANCH="${{ github.head_ref }}"
+          if [[ "$BRANCH" =~ ^beta/v[0-9]+\.[0-9]+$ ]]; then
+            echo "fail_on_mutable=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "fail_on_mutable=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  call-check-references:
+    needs: decide-fail-flag
+    uses: tier4/autoware-release-scripts/.github/workflows/reusable-check-references.yaml@main
+    with:
+      fail_on_mutable: ${{ needs.decide-fail-flag.outputs.fail_on_mutable }}
+    secrets: inherit
