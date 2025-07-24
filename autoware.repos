@@ -7,7 +7,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: 6bf582b15d9083af9ab63cd259d972d6574d3e7a
+    version: 309c47b497d56acfe755763f2aad8e6b31150592
     base: true
   autoware/autoware_cmake:
     type: git
@@ -64,11 +64,6 @@ repositories:
     url: https://github.com/autowarefoundation/autoware_rviz_plugins.git
     version: 69878ef0f4f3694a83ad838df1ca3054bb5c08db
     base: true
-  autoware/mrm_plugin:
-    type: git
-    url: git@github.com:tier4/mrm_plugin.x2.git
-    version: 1fe24c17289f1631caadfd65e4f6ba946d47a3ba
-    base: false
   # description
   description/sensor/sensor_component_description:
     type: git
@@ -146,11 +141,6 @@ repositories:
     url: https://github.com/osrf/negotiated.git
     version: eac198b55dcd052af5988f0f174902913c5f20e7
     base: true
-  vendor/redundancy_switcher_interface:
-    type: git
-    url: git@github.com:tier4/redundancy_switcher_interface.git
-    version: f1130f9407b7e39a6811e395ccce304287d51a83
-    base: false
   rclcpp: # Based stable version, the fix-patch for service in initialization and the glog feature is added
     type: git
     url: https://github.com/tier4/rclcpp.git
@@ -183,6 +173,16 @@ repositories:
     url: https://github.com/tier4/agnocast.git
     version: 8aeb311bd905854a09569fd6ec173441d352c268 # TODO(TIER IV): to be updated to v1.1.0
     base: true
+  autoware/mrm_plugin:
+    type: git
+    url: git@github.com:tier4/mrm_plugin.x2.git
+    version: 1fe24c17289f1631caadfd65e4f6ba946d47a3ba
+    base: false
+  vendor/redundancy_switcher_interface:
+    type: git
+    url: git@github.com:tier4/redundancy_switcher_interface.git
+    version: f1130f9407b7e39a6811e395ccce304287d51a83
+    base: false
   vendor/septentrio_gnss_driver:
     type: git
     url: https://github.com/tier4/septentrio_gnss_driver.git
