@@ -41,5 +41,6 @@
     - { role: autoware.ecu_system_setup.rsyslog }
     - { role: autoware.ecu_system_setup.stop_auto_upgrade }
     - { role: autoware.ecu_system_setup.syslog_collector_client }
+    - { role: autoware.ecu_system_setup.reload_camera_driver }
     - role: autoware.ecu_system_setup.tier4_camera_driver_anvil
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
