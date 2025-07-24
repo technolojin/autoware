@@ -4,7 +4,7 @@ After=tier4-ros2-standby-wait.target
 
 [Service]
 Environment=ENABLE_AGNOCAST=1
-ExecStart=/opt/autoware/services/system_launch/autoware_system_launch.service/run.sh
+ExecStart=/opt/autoware/services/system_launch/autoware_sub_launch.service/run.sh
 KillSignal=SIGINT
 User=autoware
 SyslogIdentifier=autoware_sub_launch
