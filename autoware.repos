@@ -120,7 +120,12 @@ repositories:
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
-    version: v0.2.6.2
+    version: v0.2.9
+    base: true
+  vendor/sync_tooling_msgs:  # For Nebula SYNC.TOOLING support
+    type: git
+    url: https://github.com/tier4/sync_tooling_msgs.git
+    version: v0.2.3
     base: true
   vendor/boost_transport_drivers:
     type: git
