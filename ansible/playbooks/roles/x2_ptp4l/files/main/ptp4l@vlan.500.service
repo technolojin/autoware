@@ -4,7 +4,7 @@ After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/sbin/ptp4l -i vlan.500 -m -S -A --uds_address=/var/run/ptp4l@vlan.500
+ExecStart=/usr/sbin/ptp4l -i vlan.500 -4 -H -m -E --fault_reset_interval -4 --tx_timestamp_timeout 100 --uds_address=/var/run/ptp4l@vlan.500
 ExecStop=/bin/kill -TERM $MAINPID
 Restart=always
 RestartSec=5
