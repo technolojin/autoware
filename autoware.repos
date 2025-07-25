@@ -176,7 +176,7 @@ repositories:
   middleware/external/agnocast:
     type: git
     url: https://github.com/tier4/agnocast.git
-    version: 8aeb311bd905854a09569fd6ec173441d352c268 # TODO(TIER IV): to be updated to v1.1.0
+    version: 2.1.1
     base: true
   autoware/mrm_plugin:
     type: git
