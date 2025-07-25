@@ -114,7 +114,7 @@ service_list_for_tier4_autoware: |
 
 # disable services
 # cspell:ignore runlevel utmp
-disable_service_list:
+disable_system_service_list:
   - snapd.apparmor.service
   - snapd.socket
   - snapd.service
@@ -126,6 +126,14 @@ disable_service_list:
   - dpkg-db-backup.timer
   - apt-daily-upgrade.timer
   - apt-daily.timer
+
+mask_user_service_list:
+  - tracker-extract-3.service
+  - tracker-miner-fs-3.service
+  - tracker-miner-rss-3.service
+  - tracker-writeback-3.service
+  - tracker-xdg-portal-3.service
+  - tracker-miner-fs-control-3.service
 
 # scheduling settings
 scheduling_settings_autoware_yaml_file: scheduling_settings/scheduling_settings_autoware.yaml
