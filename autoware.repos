@@ -2,12 +2,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: c862582e35b2be13a361f122207623d47bc79e90
+    version: 6942549afd47a78a70df69638563fda349c122ba
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: caa617f8ae506ad2f243fc66a2ad9aea546bb2d9
+    version: af79191b27af2ee5bc6f6883eaceb8d96c00ba54
     base: true
   autoware/autoware_cmake:
     type: git
@@ -62,7 +62,7 @@ repositories:
   autoware/autoware_rviz_plugins:
     type: git
     url: https://github.com/autowarefoundation/autoware_rviz_plugins.git
-    version: 69878ef0f4f3694a83ad838df1ca3054bb5c08db
+    version: acfa505df082613e027a8d3d2d61e73e0c4ffb99
     base: true
   # description
   description/sensor/sensor_component_description:
@@ -83,7 +83,12 @@ repositories:
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
-    version: v0.2.6.2
+    version: v0.2.9
+    base: true
+  vendor/sync_tooling_msgs: # For Nebula SYNC.TOOLING support
+    type: git
+    url: https://github.com/tier4/sync_tooling_msgs.git
+    version: v0.2.3
     base: true
   vendor/boost_transport_drivers:
     type: git
