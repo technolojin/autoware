@@ -32,6 +32,7 @@ readonly dummy_vehicle_id=default # Reconfigure during OTA update
 ansible-galaxy collection install -f -r "ansible-galaxy-requirements.yaml"
 ansible-playbook "${ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK}" \
     -e autoware_install_dir="$(pwd)" \
+    -e github_token="${GITHUB_TOKEN}" \
     -e vehicle_id="${dummy_vehicle_id}" \
     -e reload_systemd=no
 

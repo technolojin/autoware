@@ -18,6 +18,19 @@ x2_configure_marvell_switch_file: X2_J6_Gen2_Main_Marvell.xml
 # ptp4l
 x2_ptp4l_ecu: main
 
+# SYNC.TOOLING
+sync_tooling:
+  worker:
+    ptp4l_units:
+      - ptp4l@enp3s0
+      - ptp4l@vlan.500
+    phc2sys_units:
+      - phc2sys_sys_to_enp3s0
+      - phc2sys_sys_to_enp5s0f0
+  master:
+    reference: sync_tooling/config.yaml
+    update_expiry_s: 5
+
 # redundancy switcher
 redundancy_switcher_repository_url: git@github.com:tier4/redundancy_switcher.git
 redundancy_switcher_clone_dir: /tmp/redundancy_switcher

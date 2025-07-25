@@ -50,6 +50,16 @@ x2_configure_marvell_switch_file: X2_J6_Gen2_Sub_Marvell.xml
 # ptp4l
 x2_ptp4l_ecu: sub
 
+# SYNC.TOOLING
+sync_tooling:
+  worker:
+    ptp4l_units:
+      - ptp4l@enp3s0
+      - ptp4l@enp5s0f0
+    phc2sys_units:
+      - phc2sys_enp5s0f0_to_sys
+      - phc2sys_enp5s0f0_to_enp3s0
+
 # rviz
 rviz_config_path: /home/autoware/autoware.proj/src/autoware/launcher/autoware_launch/rviz/autoware_debug.rviz
 

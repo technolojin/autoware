@@ -1,0 +1,44 @@
+clock_tree:
+  main.sys:
+    main.ptp0:
+      sensor@rear_upper/lidar:
+      sensor@left_upper/lidar:
+      sensor@rear_lower/lidar:
+      sensor@left_lower/lidar:
+      TE-2000.sys:
+        sensor@front_center/radar_link:
+        sensor@front_left/radar_link:
+        sensor@front_right/radar_link:
+        sensor@rear_center/radar_link:
+        sensor@rear_left/radar_link:
+        sensor@rear_right/radar_link:
+    main.ptp1:
+      sub.ptp1:
+        sub.sys:
+        sub.ptp0:
+          sensor@front_upper/lidar:
+          sensor@right_upper/lidar:
+          sensor@front_lower/lidar:
+          sensor@right_lower/lidar:
+      perception1.sys:
+      perception2.sys:
+      addon.sys:
+      logging.sys:
+      ms1.sys:
+      ms2.sys:
+      signage.sys:
+      voice-system.sys:
+diagnostics:
+  diff_thresholds:
+    ptp_master:
+      warn: 100
+      error: 1000
+      unit: us
+    phc2sys:
+      warn: 100
+      error: 1000
+      unit: us
+    measurement:
+      warn: 1
+      error: 20
+      unit: ms
