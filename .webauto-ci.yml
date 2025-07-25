@@ -86,7 +86,7 @@ artifacts:
           exec: ./.webauto-ci/common/asset-deploy/run.sh
           ml_packages:
             - name: centerpoint
-              release: x2/2.0.1
+              release: x2/2.1.1
         - name: ecu-system-setup
           user: autoware
           exec: ./.webauto-ci/main/ecu-system-setup/run.sh
@@ -201,7 +201,7 @@ artifacts:
           exec: ./.webauto-ci/common/asset-deploy/run.sh
           ml_packages:
             - name: centerpoint
-              release: x2/2.0.1
+              release: x2/2.1.1
         - name: ecu-system-setup
           user: autoware
           exec: ./.webauto-ci/main/ecu-system-setup/run.sh
