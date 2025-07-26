@@ -206,7 +206,7 @@ repositories:
   description/vehicle/j6_gen2_description:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
-    version: f30c5280d05650a3eb1765850138667940818243
+    version: 09ec4dcc160effb8894d00db2aac2b2575c58a25
     base: false
   vendor/mj20_interface:
     type: git
