@@ -86,7 +86,7 @@ boot_shutdown_service_config_file: boot_shutdown_service/boot_shutdown.param.log
 boot_shutdown_service_script_src_path: boot_shutdown_service/shutdown.logging.sh
 
 # mot_env_setup
-mot_repository_version_humble: b7d40b6a9ec62de58cf46f029d33b3e4ea956702 # experiment/mrm_v0.7
+mot_repository_version_humble: fc63622c051599b42e3133fb24ff4f0b0617f5b8 # beta/v4.3
 mot_install_dir: "{{ ansible_env.HOME }}/OperationMaintenanceTool"
 depends_node_version: v20.18.1
 replace_install_setup_bash: false
