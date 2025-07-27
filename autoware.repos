@@ -233,3 +233,13 @@ repositories:
     url: git@github.com:tier4/autoware_diagnostics_bridge.git
     version: 96281eab064c55a66b2e04d16de3fc51e61b3c83
     base: false
+  vendor/redundancy_switcher_interface:
+    type: git
+    url: git@github.com:tier4/redundancy_switcher_interface.git
+    version: main
+    base: false
+  autoware/mrm_plugin:
+    type: git
+    url: git@github.com:tier4/mrm_plugin.x2.git
+    version: main
+    base: false
