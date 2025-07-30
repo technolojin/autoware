@@ -3,12 +3,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: d3d3c91b029102a4b2af710f4f0de7f3a7ce21a2
+    version: c3fc02ef2118a5c4ed1c7ba02667d811c897d2c3
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: 0ca8716e896280bb3076b40601f0a6254177ba9c
+    version: f4c2a52781006e3549a311834dbccd2c0dd91de2
     base: true
   autoware/autoware_cmake:
     type: git
@@ -28,22 +28,22 @@ repositories:
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: 3d118e48a34f4bf813253856d37bfac619436073
+    version: 1cc3f5402c274e5491ad40c4c1b30dcad82e4fc5
     base: false
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: a8a75e91faa26769dfbcb80d19d9ef960633a3c0
+    version: 668c3f0a50991c48b81631d0d40b60f3e7ff7897
     base: true
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: bfcc144b678599a325c555880d7cbbe07c360279
+    version: 367d988dbded19a8af7256b06bc07ab285f99421
     base: true
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: 5ec622a7790e9cc7f9bf35ec08bac2837d8ed16d
+    version: 73c642f3b96e112df94675ad0e7dc4a66e797e2e
     base: true
   autoware/autoware_msgs:
     type: git
@@ -58,7 +58,7 @@ repositories:
   autoware/autoware_internal_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_internal_msgs.git
-    version: c5e08c71795acc0468453114a139f38b63faf32f
+    version: f5524e501775463f508cdb93fe6aec45e1fb4836
     base: true
   autoware/individual_params:
     type: git
@@ -73,7 +73,7 @@ repositories:
   autoware/autoware_rviz_plugins:
     type: git
     url: https://github.com/autowarefoundation/autoware_rviz_plugins.git
-    version: c5f0baa6439849fa3733f09948242769e1c75b3f
+    version: 7050ea03eabcac82d45199aed34f6d6505070bf4
     base: true
   # description
   description/sensor/sensor_component_description:
@@ -120,7 +120,12 @@ repositories:
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
-    version: v0.2.6.2
+    version: v0.2.9
+    base: true
+  vendor/sync_tooling_msgs:  # For Nebula SYNC.TOOLING support
+    type: git
+    url: https://github.com/tier4/sync_tooling_msgs.git
+    version: v0.2.3
     base: true
   vendor/boost_transport_drivers:
     type: git
@@ -225,5 +230,5 @@ repositories:
   middleware/external/agnocast:
     type: git
     url: https://github.com/tier4/agnocast.git
-    version: 71cb5f2f8c9cd5d9cf16e68ccb8588a790e8119a # TODO(TIER IV): to be updated to v1.1.0
+    version: 2.1.1
     base: true
