@@ -1,0 +1,25 @@
+# x2_product_metric_list.yaml
+# ## Example for std_msgs
+# - metric_name: standard_number # Unique name for the metric (required).
+#   topic_name: /test/number # ROS 2 topic to subscribe to (required).
+#   metric_description: test float64 # Brief description of the metric (required).
+#   message_type: std_msgs/msg/Float64 # ROS 2 message type of the subscribed topic (required).
+#   output_type: gauge # Type of metric (e.g., gauge, etc.) (required).
+#   output_cycle: 1  # Output cycle (required).
+#   aggregate: true  # Optional: use aggregate date
+#   aggregate_type: [min, max, abs_min, abs_max] # Optional: List of aggregation types if `aggregate_data` is used.
+#   aggregate_reset_count: -1 # Optional: Number of data points before resetting aggregation. Set to -1 for no reset.
+#   custom_key: float64_test_key # Optional: Custom key for the metric. Defaults to `metric_name` if not specified.
+#   custom_tag: float64_test_tag # Optional: Custom tag for the metric. Defaults to a tag derived from `message_type` if not specified.
+# ## Example for tier4_debug_msgs
+# - metric_name: stamped_number
+#   topic_name: /test/number_stamped
+#   metric_description: test float32_stamped
+#   message_type: tier4_debug_msgs/msg/Float32Stamped
+#   output_type: gauge
+#   output_cycle: 1
+#   aggregate: true
+#   aggregate_type: [min, max, abs_min, abs_max]
+#   aggregate_reset_count: -1
+#   custom_key: float64_stamped_key
+#   custom_tag: float64_stamped_tag

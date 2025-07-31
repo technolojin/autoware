@@ -173,3 +173,21 @@ service_list_for_tier4_autoware: |
   fool_proof_check.service \
   boot-shutdown.service \
   tier4_system_standby_wait.target
+
+### metric_agent
+# metric_agent node parameters
+metric_agent_rate_in_hertz: 10
+metric_agent_pubs_rate_in_hertz: 10
+metric_agent_subs_rate_in_hertz: 10
+
+# metric_agent config
+metric_agent_version: develop # Future references will be by tags or SHAs.
+metric_agent_params_template: metric_agent/metric_agent_params_x2.yaml.jinja2
+metric_agent_config_template: metric_agent/metric_agent_config_uds_x2.yaml.jinja2
+metric_agent_product_config_template: metric_agent/product_metric_config_x2.yaml.jinja2 # If you want to manage all metrics derived from specific topic-type topics
+# metric_agent_product_metric_list: /vars/x2_product_metric_list.yaml # If you only want to product common metrics
+
+# telegraf config for metric_agent
+metric_agent_telegraf_service_config_template: metric_agent/telegraf.socket_listener_uds_x2.conf.jinja2
+metric_agent_telegraf_hostname: logging_ecu
+metric_agent_telegraf_otel_hostname: ${AGENT_HOSTNAME}

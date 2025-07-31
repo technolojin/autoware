@@ -1,0 +1,38 @@
+# metric agent configurations ------------------------------------------------------------------------
+diag_ok_state:
+  - initial
+  - ready
+  - running
+telegraf:
+  unix_domain_socket: {{ metric_agent_telegraf_unix_domain_socket }}
+  socket_type: {{ metric_agent_telegraf_socket_type }}
+metrics:  # available metrics < vehicle_geo_point >
+  - name: vehicle_geo_point
+    output_cycle: 10
+    output_type: gauge
+    aggregate: false
+
+  - name: nearest_voxel_transformation_likelihood
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+
+  - name: operation_mode
+    output_cycle: 10
+    aggregate: false
+    output_type: gauge
+
+  - name: longitudinal_speed
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+
+  - name: acceleration
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+
+  - name: vehicle_status
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
