@@ -15,7 +15,7 @@ network:
       dhcp4: false
       dhcp6: false
       mtu: 9000
-      optional: true
+      optional: false
     # For PTP of LiDAR and RADAR
     enp3s0:
       dhcp4: false
