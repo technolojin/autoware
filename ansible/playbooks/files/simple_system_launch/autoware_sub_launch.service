@@ -1,5 +1,5 @@
 [Unit]
-Description=autoware_system_launch
+Description=autoware_sub_launch
 After=network-online.target
 
 [Service]

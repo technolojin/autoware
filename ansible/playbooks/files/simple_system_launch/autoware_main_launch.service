@@ -1,5 +1,5 @@
 [Unit]
-Description=autoware
+Description=autoware_main_mrm
 After=autoware_system_launch.service tier4_autoware_standby_wait.target tier4_system_standby_wait.target
 
 [Service]
