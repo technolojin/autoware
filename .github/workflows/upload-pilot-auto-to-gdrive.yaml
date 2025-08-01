@@ -152,7 +152,7 @@ jobs:
           echo "${{ secrets.LOGIN_PASS }}" | sudo -S apt install jq
           echo "${{ secrets.LOGIN_PASS }}" | sudo mkdir /opt/autoware/mlmodels -p
           mkdir /home/runner/autoware_data
-          # ./get_ml_model.sh
+          ./get_ml_model.sh
           sudo apt-get purge ansible
           sudo apt-get -y install pipx
           python3 -m pipx ensurepath
@@ -189,13 +189,15 @@ jobs:
 
           # Source directory
           SOURCE_DIR="./misc"
+          sudo chown -R $(logname):$(logname) "$SOURCE_DIR"
 
           # Destination directory
           DEST_DIR_A="/opt/autoware/"
-          DEST_DIR_B="/home/$(whoami)/autoware_data/"
+          DEST_DIR_B="/home/$(logname)/autoware_data/"
 
           # Create the destination directory
-          mkdir -p "$DEST_DIR_A"
+          sudo mkdir -p "$DEST_DIR_A"
+          sudo chown -R $(logname):$(logname)  "$DEST_DIR_A"
           mkdir -p "$DEST_DIR_B"
 
           # Copy the misc/mlmodels folder to /opt/autoware/
@@ -219,12 +221,12 @@ jobs:
           echo "" >> README.md
           echo "## Authorization Commands" >> README.md
           echo '```bash' >> README.md
-          echo "chmod +x set_files.sh" >> README.md
+          echo "sudo chmod +x set_files.sh" >> README.md
           echo '```' >> README.md
           echo "" >> README.md
           echo "## Execution command" >> README.md
           echo '```bash' >> README.md
-          echo "sudo ./set_files.sh" >> README.md
+          echo "./set_files.sh" >> README.md
           echo '```' >> README.md
 
       - name: Compress files

@@ -15,7 +15,8 @@
     "novnc",
     "subshell",
     "xstartup",
-    "bevdet"
+    "bevdet",
+    "logname"
   ],
   "ignorePaths": [".release_info.yaml"]
 }

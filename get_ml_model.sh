@@ -44,6 +44,12 @@ while read -r line; do
     ml_packages_name=$(echo "$line" | awk '{print $1}')
     ml_packages_release=$(echo "$line" | awk '{print $2}')
 
+    # Skip if the package name is empty
+    if [[ -z $ml_packages_name ]]; then
+        echo "No downloadable ML packages found."
+        continue
+    fi
+
     # search release of ml packages
     res=$(webauto ml package-release search \
         --project-id prd_jt \
