@@ -67,7 +67,7 @@ autoware_logging_suite_modules:
   - dssad_packer
   - rosbag_data_checker
 # - logpacker
-logpacker_config_template: logpacker/logpacker_config_x2.yaml.jinja2
+logpacker_config_template: logpacker/logpacker_config.yaml.jinja2
 # - logpacker - syslog plugin
 logpacker_enable_syslog_plugin: true
 # - logpacker - rosbag plugin
