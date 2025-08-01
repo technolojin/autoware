@@ -573,6 +573,16 @@
   durability: system_default
   history: keep_last
   reliability: best_effort
+/level4_mode_manager/is_level4_available:
+  depth: 1
+  durability: transient_local
+  history: keep_last
+  reliability: reliable
+/level4_mode_manager/is_level4_driving:
+  depth: 1
+  durability: transient_local
+  history: keep_last
+  reliability: reliable
 /localization/acceleration:
   depth: 10
   durability: system_default

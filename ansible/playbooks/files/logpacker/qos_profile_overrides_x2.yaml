@@ -508,6 +508,16 @@
   durability: volatile
   history: keep_last
   reliability: best_effort
+/level4_mode_manager/is_level4_available:
+  depth: 1
+  durability: transient_local
+  history: keep_last
+  reliability: reliable
+/level4_mode_manager/is_level4_driving:
+  depth: 1
+  durability: transient_local
+  history: keep_last
+  reliability: reliable
 /localization/acceleration:
   depth: 1
   durability: volatile
