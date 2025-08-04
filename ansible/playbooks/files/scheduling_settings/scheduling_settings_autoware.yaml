@@ -2,12 +2,14 @@ scheduling_settings:
   # processes to run on P core
   - process:
       name: .*component_container.*
-      node: nebula_node_container
+      node: pointcloud_container
+      ns: /sensing/lidar.*
     settings:
       cpu: 0-15
   - process:
       name: .*component_container.*
       node: pointcloud_container
+      ns: /
     settings:
       cpu: 0-15
   - process:
