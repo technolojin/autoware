@@ -216,7 +216,7 @@ repositories:
   vendor/ros2_socketcan:
     type: git
     url: https://github.com/autowarefoundation/ros2_socketcan.git
-    version: 85da8c31286cad69de65dc50219e7d901ae9e94b
+    version: 822ca033c8ce934dc5a622d7bb80adb575522b33
     base: false
   vendor/foxglove_bridge:
     type: git
