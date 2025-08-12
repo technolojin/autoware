@@ -14,3 +14,29 @@
       qos_reliability: best_effort # Optional: QoS reliability
       custom_key: steering_wheel_torque
       custom_tag: steering_wheel_torque
+
+    - metric_name: ndt_scan_matcher_execution_time
+      topic_name: /localization/pose_estimator/exe_time_ms
+      metric_description: execution time of ndt_scan_matcher node (ms)
+      message_type: autoware_internal_debug_msgs/msg/Float32Stamped
+      output_type: gauge
+      output_cycle: 10
+      aggregate: true
+      aggregate_type: [max]
+      aggregate_reset_count: 0
+      qos_size: 10
+      custom_key: ndt_scan_matcher_execution_time
+      custom_tag: ndt_scan_matcher_execution_time
+
+    - metric_name: ndt_scan_matcher_iteration_num
+      topic_name: /localization/pose_estimator/iteration_num
+      metric_description: Counts of iterative calculations in the ndt_scan_matcher node
+      message_type: autoware_internal_debug_msgs/msg/Int32Stamped
+      output_type: gauge
+      output_cycle: 10
+      aggregate: true
+      aggregate_type: [max]
+      aggregate_reset_count: 0
+      qos_size: 10
+      custom_key: ndt_scan_matcher_iteration_num
+      custom_tag: ndt_scan_matcher_iteration_num
