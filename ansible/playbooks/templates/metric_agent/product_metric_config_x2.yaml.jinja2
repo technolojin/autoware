@@ -40,3 +40,51 @@
       qos_size: 10
       custom_key: ndt_scan_matcher_iteration_num
       custom_tag: ndt_scan_matcher_iteration_num
+
+    - metric_name: whole_pipeline_latency
+      topic_name: /system/pipeline_latency_monitor/output/total_latency_ms
+      metric_description: whole pipeline latency (ms)
+      message_type: autoware_internal_debug_msgs/msg/Float64Stamped
+      output_type: gauge
+      output_cycle: 10
+      aggregate: true
+      aggregate_type: [min, max, mean]
+      aggregate_reset_count: -1
+      qos_size: 10 # Optional: QoS size
+      qos_reliability: best_effort # Optional: QoS reliability
+
+    - metric_name: planning_pipeline_latency
+      topic_name: /system/pipeline_latency_monitor/debug/planning_latency_ms
+      metric_description: planning pipeline latency (ms)
+      message_type: autoware_internal_debug_msgs/msg/Float64Stamped
+      output_type: gauge
+      output_cycle: 10
+      aggregate: true
+      aggregate_type: [min, max, mean]
+      aggregate_reset_count: -1
+      qos_size: 10 # Optional: QoS size
+      qos_reliability: best_effort # Optional: QoS reliability
+
+    - metric_name: control_pipeline_latency
+      topic_name: /system/pipeline_latency_monitor/debug/control_latency_ms
+      metric_description: control pipeline latency (ms)
+      message_type: autoware_internal_debug_msgs/msg/Float64Stamped
+      output_type: gauge
+      output_cycle: 10
+      aggregate: true
+      aggregate_type: [min, max, mean]
+      aggregate_reset_count: -1
+      qos_size: 10 # Optional: QoS size
+      qos_reliability: best_effort # Optional: QoS reliability
+
+    - metric_name: accel_brake_map_error
+      topic_name: /accel_brake_map_calibrator/output/current_map_error
+      metric_description: pipeline latency (ms)
+      message_type: autoware_internal_debug_msgs/msg/Float32Stamped
+      output_type: gauge
+      output_cycle: 10
+      aggregate: true
+      aggregate_type: [min, max, abs_min, abs_max, mean]
+      aggregate_reset_count: -1
+      qos_size: 10 # Optional: QoS size
+      qos_reliability: best_effort # Optional: QoS reliability
