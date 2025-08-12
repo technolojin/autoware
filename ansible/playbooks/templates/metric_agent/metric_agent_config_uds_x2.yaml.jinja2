@@ -12,7 +12,17 @@ metrics:  # available metrics < vehicle_geo_point >
     output_type: gauge
     aggregate: false
 
-  - name: nearest_voxel_transformation_likelihood
+  - name: localization_scores
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+
+  - name: ekf_pose_error_ellipse
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+
+  - name: pose_instability
     output_cycle: 10
     aggregate: true
     output_type: gauge
@@ -33,6 +43,36 @@ metrics:  # available metrics < vehicle_geo_point >
     output_type: gauge
 
   - name: vehicle_status
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+
+  - name: system_monitor_metrics
+    output_cycle: 10
+    aggregate: false
+    output_type: gauge
+
+  - name: system_monitor_cpu_usage
+    output_cycle: 10
+    aggregate: false
+    output_type: gauge
+
+  - name: control_evaluation
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+
+  - name: planning_evaluation
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+
+  - name: accel_brake_map_calibration_status
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+
+  - name: perception_analytics
     output_cycle: 10
     aggregate: true
     output_type: gauge
