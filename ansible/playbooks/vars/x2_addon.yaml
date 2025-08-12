@@ -34,9 +34,9 @@ ptp4l_network_port: enp0s31f6
 netplan_files: netplan/99-autoware.x2-addon.yaml
 
 # otaclient
-otaclient_release_version: v3.10.0
-otaclient_package_whl_checksum: sha256:beded3e5f9aadf1150c1a6dda7929692c66670eec733f1399bdfd537dc24f1b4
-otaclient_manifest_checksum: sha256:2c0277559f61e191c6ae8c79a6c72c9a29da68dfb80d312684352807daaad7d6
+otaclient_release_version: v3.10.1
+otaclient_package_whl_checksum: sha256:6ffa42a92cb964f5bbe57dd7498e9b7994e7598ed7872351a8372a0c9c0a8689
+otaclient_manifest_checksum: sha256:41c02224951b1d0cb04c1538a149c45458db1dc39179eb26931bb67288049028
 otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-addon
 otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-10gbe.j2
 
