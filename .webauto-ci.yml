@@ -133,6 +133,7 @@ simulations:
         record_storage_id: mcap
         record_option: "'-x /map/pointcloud_map|/.*occupancy_grid_map.*/|/.*iv_msgs.*/'"
         autoware.output_metrics: "true"
+        use_custom_centerline: "false"
       logging:
         additional_log_archive:
           paths:
