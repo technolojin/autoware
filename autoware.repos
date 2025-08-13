@@ -52,7 +52,7 @@ repositories:
   autoware/autoware_internal_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_internal_msgs.git
-    version: 290efb7b0c51d150389dc75b18248d16a52729b1
+    version: 1.12.0
     base: true
   autoware/managed_transform_buffer:
     type: git
