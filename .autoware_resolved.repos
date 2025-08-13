@@ -8,7 +8,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: af6cef4999f5eedf4f1ccf363297dacc6c4c4d77
+    version: 04910c0c2d6ec8ba5d52cee375b9464c8180275d
     base: true
   autoware/autoware_cmake:
     type: git
@@ -28,7 +28,7 @@ repositories:
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: a6cd3fd653e98a05196fd36ba9bee16e5eeb20bb
+    version: 39dc498ee81eb3f466c0b2f2f99e1a5c0aadbabc
     base: false
   autoware/aip_launcher:
     type: git
