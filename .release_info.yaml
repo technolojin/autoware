@@ -132,6 +132,8 @@ releases:
         release_version: v0.48
       - repo_name_in_autoware_repos: v2x/vehicle2infrastructure
         release_version: v0.48
+      - repo_name_in_autoware_repos: autoware/ad_api_adaptor
+        release_version: v0.48
     released_ansible_repos: # from ansible-galaxy-requirements.yaml file
       - repo_full_name: tier4/autoware_ecu_system_setup # github repo full name (owner/repo) derived from name field in collections
         release_version: v0.48
