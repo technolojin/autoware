@@ -7,7 +7,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: ca89d7b34bd76fe96f1a314622f0a06e4a425688
+    version: f20dd3463373175ba1cdc7f453ca2d168f29a37e
     base: true
   autoware/autoware_cmake:
     type: git
@@ -62,7 +62,7 @@ repositories:
   autoware/autoware_rviz_plugins:
     type: git
     url: https://github.com/autowarefoundation/autoware_rviz_plugins.git
-    version: f3cd63903b50ba084b7850c03a55271f24149883
+    version: 331eae6b013215ebe0c333dbb0387b49f738a2e0
     base: true
   # description
   description/sensor/sensor_component_description:
