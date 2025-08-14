@@ -28,7 +28,7 @@ sync_tooling:
       - phc2sys_sys_to_enp3s0
       - phc2sys_sys_to_enp5s0f0
   master:
-    reference: sync_tooling/config.yaml
+    config: sync_tooling/config.yaml
     update_expiry_s: 5
 
 # redundancy switcher
