@@ -1,12 +1,11 @@
-# cspell: ignore btrfs
+# cspell: ignore btrfs luks
 
-# opal_disk
+# dssad_packer
+dssad_packer_param_template: dssad_packer/dssad_packer_params_x2.yaml.jinja2
+dssad_encryption_type: opal
+# - opal
 opal_disk:
   device: /dev/sda
   partition_label: DSSAD
   filesystem: btrfs
   mountpoint: /mnt/DSSAD
-
-# cspell: ignore luks
-# DSSAD_packer
-dssad_encryption_type: opal

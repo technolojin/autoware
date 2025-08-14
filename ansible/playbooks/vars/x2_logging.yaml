@@ -78,6 +78,8 @@ rosbag_copy_directory: /media/autoware/ROSBAG
 bagtaker_params_template: bagtaker2/bagtaker_params_x2.yaml.jinja2
 # - bagkeeper
 bagkeeper_params_template: bagkeeper/bagkeeper_params_x2.yaml.jinja2
+# - bagrollbacker
+bagrollbacker_param_template: bagrollbacker/bagrollbacker_params_x2.yaml.jinja2
 
 # boot_shutdown
 boot_shutdown_tools_clone_dir: "{{ autoware_install_dir }}/src/product/boot_shutdown_tools"
