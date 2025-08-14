@@ -72,7 +72,7 @@ logpacker_config_template: logpacker/logpacker_config.yaml.jinja2
 logpacker_enable_syslog_plugin: true
 # - logpacker - rosbag plugin
 logpacker_enable_rosbag_plugin: true
-qos_profile_overrides_template: logpacker/qos_profile_overrides_x2.yaml
+qos_profile_overrides_template: logpacker/qos_profile_overrides.yaml
 # - bagtaker
 rosbag_copy_directory: /media/autoware/ROSBAG
 bagtaker_params_template: bagtaker2/bagtaker_params_x2.yaml.jinja2
