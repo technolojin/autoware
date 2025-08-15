@@ -25,6 +25,8 @@ netcore_wmem_max: 2147483647
 
 # ptp4l port
 ptp4l_network_port: enP1p1s0
+ptp4l_use_software_stamp: false
+ptp4l_synchronize_system_clock: true
 
 # otaclient
 otaclient_release_version: v3.10.1

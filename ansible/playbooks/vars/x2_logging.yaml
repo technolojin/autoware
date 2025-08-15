@@ -31,6 +31,8 @@ keyboard_layout_file: keyboard.jp+ctrl_nocaps
 
 # ptp4l port
 ptp4l_network_port: enp8s0
+ptp4l_use_software_stamp: false
+ptp4l_synchronize_system_clock: true
 
 # SYNC.TOOLING
 sync_tooling:

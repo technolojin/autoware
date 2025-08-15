@@ -30,6 +30,8 @@ cyclonedds:
 
 # ptp4l port
 ptp4l_network_port: vlan.500
+ptp4l_use_software_stamp: false
+ptp4l_synchronize_system_clock: true
 
 # SYNC.TOOLING
 sync_tooling:

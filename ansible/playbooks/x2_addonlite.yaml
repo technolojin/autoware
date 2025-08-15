@@ -46,6 +46,7 @@
     - { role: autoware.edge_auto_jetson.vcstool }
     - { role: autoware.edge_auto_jetson.cgroups }
     - { role: autoware.ecu_system_setup.fool_proof_check } # fool proof check for autoware function
+    - { role: x2_disable_timesyncd }
     # - { role: autoware.ecu_system_setup.letterbox_monitor }
     - role: autoware.ecu_system_setup.c2_fw_autoupdate # This must be executed after `sxpf_driver`
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
