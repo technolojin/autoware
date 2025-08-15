@@ -15,3 +15,6 @@ boot_shutdown_service_config_file: boot_shutdown_service/boot_shutdown.param.yam
 
 # ros_distro
 ros_distro: humble
+
+# SYNC.TOOLING
+sync_tooling_version: v0.2.4
