@@ -20,14 +20,14 @@ clock_tree:
           sensor@right_upper/lidar:
           sensor@front_lower/lidar:
           sensor@right_lower/lidar:
-      perception1.sys:
-      perception2.sys:
-      addon.sys:
-      logging.sys:
-      ms1.sys:
-      ms2.sys:
-      signage.sys:
-      voice-system.sys:
+      perception1.ptp0:
+        perception1.sys:
+      perception2.ptp0:
+        perception2.sys:
+      addon.ptp0:
+        addon.sys:
+      logging.ptp0:
+        logging.sys:
 diagnostics:
   diff_thresholds:
     ptp_master:
