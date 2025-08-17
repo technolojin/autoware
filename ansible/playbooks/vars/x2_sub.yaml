@@ -61,7 +61,7 @@ sync_tooling:
       - phc2sys_enp5s0f0_to_enp3s0
 
 # rviz
-rviz_config_path: /home/autoware/autoware.proj/src/autoware/launcher/autoware_launch/rviz/autoware_debug.rviz
+rviz_config_path: /home/autoware/autoware.proj/src/autoware/launcher/autoware_launch/rviz/autoware_x2.rviz
 
 # screen_recorder
 screen_recorder_default_logging_directory: /tmp
