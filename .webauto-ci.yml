@@ -249,6 +249,8 @@ simulations:
       parameters:
         sensing: "false"
         use_traffic_light_recognition: "false"
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/objects$
+        evaluation_prediction_topic_regex: None
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
           mounts:
@@ -342,6 +344,8 @@ simulations:
       parameters:
         sensing: "false"
         use_traffic_light_recognition: "false"
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/objects$
+        evaluation_prediction_topic_regex: None
         perception_mode: lidar
         lidar_detection_model: centerpoint/centerpoint
       pre_tasks:
@@ -368,6 +372,8 @@ simulations:
       parameters:
         sensing: "false"
         use_traffic_light_recognition: "false"
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/objects$
+        evaluation_prediction_topic_regex: None
         perception_mode: lidar
         lidar_detection_model: centerpoint
       pre_tasks:
@@ -394,6 +400,8 @@ simulations:
       parameters:
         sensing: "false"
         use_traffic_light_recognition: "false"
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/objects$
+        evaluation_prediction_topic_regex: None
         perception_mode: lidar
         lidar_detection_model: transfusion
       pre_tasks:
@@ -420,6 +428,8 @@ simulations:
       parameters:
         sensing: "false"
         use_traffic_light_recognition: "false"
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/objects$
+        evaluation_prediction_topic_regex: None
         perception_mode: camera_lidar_fusion
         lidar_detection_model: apollo
       pre_tasks:
@@ -446,6 +456,8 @@ simulations:
       parameters:
         sensing: "false"
         use_traffic_light_recognition: "false"
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/objects$
+        evaluation_prediction_topic_regex: None
         perception_mode: camera_lidar_fusion
         lidar_detection_model: centerpoint
       pre_tasks:
@@ -472,6 +484,8 @@ simulations:
       parameters:
         sensing: "false"
         use_traffic_light_recognition: "false"
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/objects$
+        evaluation_prediction_topic_regex: None
         perception_mode: camera_lidar_fusion
         lidar_detection_model: pointpainting
       pre_tasks:
@@ -498,6 +512,8 @@ simulations:
       parameters:
         sensing: "false"
         use_traffic_light_recognition: "false"
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/objects$
+        evaluation_prediction_topic_regex: None
         perception_mode: camera_lidar_radar_fusion
         lidar_detection_model: centerpoint
       pre_tasks:
@@ -524,6 +540,8 @@ simulations:
       parameters:
         sensing: "false"
         use_traffic_light_recognition: "false"
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/objects$
+        evaluation_prediction_topic_regex: None
         perception_mode: camera_lidar_radar_fusion
         lidar_detection_model: pointpainting
       pre_tasks:
