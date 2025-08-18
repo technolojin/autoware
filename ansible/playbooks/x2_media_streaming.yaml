@@ -44,3 +44,8 @@
     - { role: autoware.ecu_system_setup.reload_camera_driver }
     - role: autoware.ecu_system_setup.tier4_camera_driver_anvil
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+
+    # for Driver View Monitor
+    - { role: autoware.ecu_system_setup.automatic_login }
+    - { role: autoware.ecu_system_setup.disable_lock_screen }
+    - { role: autoware.ecu_system_setup.cabin_sight_monitor }
