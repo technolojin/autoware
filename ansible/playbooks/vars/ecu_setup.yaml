@@ -124,7 +124,7 @@ service_list_for_tier4_autoware: |
   letterbox_monitor@autoware_system.service \
   letterbox_monitor@default.service \
   tier4_system_standby_wait.target
-
+network_interface_for_tier4_service_standby_wait: enp5s0f1
 # disable services
 # cspell:ignore runlevel utmp
 disable_system_service_list:
