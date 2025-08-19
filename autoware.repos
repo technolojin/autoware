@@ -2,12 +2,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: v0.51.0
+    version: v0.52.0
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: v0.51.0
+    version: v0.52.0
     base: true
   autoware/autoware_cmake:
     type: git
@@ -22,22 +22,22 @@ repositories:
   autoware/autoware_lanelet2_extension:
     type: git
     url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
-    version: 8ee015cdc3a4009703b4b781a5d3971f9fd07da1
+    version: 0a4fb3a9baf7f3a8d8ce3b04c0f9979b8fb53b76
     base: true
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: v0.51.0
+    version: v0.52.0
     base: true
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: 367d988dbded19a8af7256b06bc07ab285f99421
+    version: f13dc6e62b465aa0cb6b2186daed50b69f19caa5
     base: true
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: v0.51.0
+    version: v0.52.0
     base: true
   autoware/autoware_msgs:
     type: git
@@ -62,7 +62,7 @@ repositories:
   autoware/autoware_rviz_plugins:
     type: git
     url: https://github.com/autowarefoundation/autoware_rviz_plugins.git
-    version: 7050ea03eabcac82d45199aed34f6d6505070bf4
+    version: 5f02b1bee49f21194a7dbeebe8b4e387ea66d3d0
     base: true
   # description
   description/sensor/sensor_component_description:
@@ -83,7 +83,7 @@ repositories:
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
-    version: v0.2.10
+    version: v0.2.9
     base: true
   vendor/sync_tooling_msgs: # For Nebula SYNC.TOOLING support
     type: git
@@ -159,7 +159,7 @@ repositories:
   launch: # Based humble version, the acceleration patched is added
     type: git
     url: https://github.com/tier4/launch.git
-    version: 9122128dc931211e42116b055f150199285496e1
+    version: 9597d2bc050c408ffc1e6797cc45527bd7ce4232
     base: true
   # Include many-nodes-in-container launch fix that ensures no LoadComposableNode call hangs
   # See https://github.com/ros2/launch_ros/compare/humble...tier4:launch_ros:/humble/fix/load_composable_node
@@ -171,7 +171,7 @@ repositories:
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: v0.51.0
+    version: v0.52.0
     base: true
   # middleware
   # TODO(TIER IV): During the transition period of Agnocast introduction,
