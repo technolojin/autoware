@@ -146,7 +146,7 @@ metrics:  # available metrics < vehicle_geo_point >
   {% set lidar_name = lidar_direction + "_" + lidar_height %}
   {% set lidar_frame = "sensor@" + lidar_direction + "_" + lidar_height + "/lidar" %}
 
-  - name: sync_diag_offset_main.sys_to_{{ lidar_name }}
+  - name: sync_diag_offset_main_sys_to_{{ lidar_name }}
     output_cycle: 10
     aggregate: true
     output_type: gauge
@@ -167,7 +167,7 @@ metrics:  # available metrics < vehicle_geo_point >
   {% set radar_name = radar_position + "_" + radar_direction %}
   {% set radar_frame = "sensor@" + radar_position + "_" + radar_direction + "/radar_link" %}
 
-  - name: sync_diag_offset_main.sys_to_{{ radar_name }}
+  - name: sync_diag_offset_main_sys_to_{{ radar_name }}
     output_cycle: 10
     aggregate: true
     output_type: gauge
