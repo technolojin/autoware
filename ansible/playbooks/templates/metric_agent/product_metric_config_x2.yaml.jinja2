@@ -88,3 +88,27 @@
       aggregate_reset_count: -1
       qos_size: 10 # Optional: QoS size
       qos_reliability: best_effort # Optional: QoS reliability
+
+    - metric_name: steer_offset_error
+      topic_name: /vehicle/calibration/steer_offset_estimator/steer_offset_error
+      metric_description: steer offset error (rad)
+      message_type: autoware_internal_debug_msgs/msg/Float32Stamped
+      output_type: gauge
+      output_cycle: 10
+      aggregate: true
+      aggregate_type: [min, max, abs_min, abs_max, mean]
+      aggregate_reset_count: -1
+      qos_size: 10 # Optional: QoS size
+      qos_reliability: best_effort # Optional: QoS reliability
+
+    - metric_name: speed_scale_factor_error
+      topic_name: /sensing/calibration/speed_scale_factor_estimator/speed_scale_factor_error
+      metric_description: speed scale factor error
+      message_type: autoware_internal_debug_msgs/msg/Float32Stamped
+      output_type: gauge
+      output_cycle: 10
+      aggregate: true
+      aggregate_type: [min, max, abs_min, abs_max, mean]
+      aggregate_reset_count: -1
+      qos_size: 10 # Optional: QoS size
+      qos_reliability: best_effort # Optional: QoS reliability
