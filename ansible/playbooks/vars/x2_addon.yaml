@@ -85,3 +85,6 @@ rsyslog_queue_maxsize: 1g
 c2_ecu_type: addon
 fw_rom_version: 20240927
 addon_angle_params: (120 120 120)
+
+# systemd_analyze_collector
+rsync_target_host_ip: 192.168.20.71

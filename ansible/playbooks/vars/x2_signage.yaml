@@ -70,3 +70,6 @@ otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-1gbe.j2
 
 # vlan
 setup_vlan: true
+
+# systemd_analyze_collector
+rsync_target_host_ip: 192.168.20.71

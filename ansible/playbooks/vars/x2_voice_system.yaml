@@ -45,6 +45,9 @@ syslog_collector_type: Client
 rsyslog_server_ipaddr: 192.168.20.71
 rsyslog_queue_maxsize: 1g
 
+# systemd_analyze_collector
+rsync_target_host_ip: 192.168.20.71
+
 # otaclient
 otaclient_release_version: v3.10.1
 otaclient_package_whl_checksum: sha256:6ffa42a92cb964f5bbe57dd7498e9b7994e7598ed7872351a8372a0c9c0a8689

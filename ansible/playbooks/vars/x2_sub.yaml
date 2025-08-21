@@ -116,3 +116,6 @@ simple_system_launch_items:
       ros2 launch autoware_launch autoware.sub.launch.xml \
               vehicle_model:="$VEHICLE_MODEL" \
               sensor_model:="$SENSOR_MODEL" 2>&1 | tee "$HOME"/autoware_sub.log
+
+# systemd_analyze_collector
+rsync_target_host_ip: 192.168.20.71

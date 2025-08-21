@@ -41,6 +41,11 @@ sync_tooling:
       - ptp4l
     phc2sys_units: []
 
+# rsyncd
+setup_systemd_analyze_collector: true
+# systemd_analyze_collector
+use_rsyncd: false # logging ECU does not need rsync to send data
+
 # netplan
 netplan_files: netplan/99-autoware.x2-logging.yaml
 

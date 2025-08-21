@@ -30,3 +30,6 @@ media_streaming:
 # reload_camera_driver
 camera_num: 4
 target_service_before_reload_camera_driver: media.service
+
+# systemd_analyze_collector
+rsync_target_host_ip: 192.168.20.71

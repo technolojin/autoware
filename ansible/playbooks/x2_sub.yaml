@@ -49,3 +49,4 @@
     - { role: x2_dev_tools }
     - { role: x2_cmd_helper_completion }
     - { role: agnocast_module_loader }
+    - { role: autoware.ecu_system_setup.systemd_analyze_collector }
