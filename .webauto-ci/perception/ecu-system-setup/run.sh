@@ -5,6 +5,9 @@
 : "${ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK:?is not set}"
 : "${ECU_ID:?is not set}"
 
+# clean up base image before ecu setup
+. .webauto-ci/common/ota-clean-up/base-image-clean-up.sh
+
 export GITHUB_TOKEN="$WEBAUTO_CI_GITHUB_TOKEN"
 git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
 git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "git@github.com:"
@@ -21,3 +24,6 @@ git config --global --unset-all url."https://${GITHUB_TOKEN}:x-oauth-basic@githu
 sudo mkdir -p /etc/ota
 sudo cp "$(dirname "$0")/persistents.txt" /etc/ota/
 sudo cp "$(dirname "$0")/ignore.txt" /etc/ota/
+
+# clean up ecu after the build is finished
+. .webauto-ci/common/ota-clean-up/ecu-clean-up.sh
