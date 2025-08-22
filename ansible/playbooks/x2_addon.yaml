@@ -38,6 +38,7 @@
     - { role: autoware.ecu_system_setup.timezone }
     - { role: autoware.ecu_system_setup.turn_off_desktop_notification }
     - { role: x2_disable_timesyncd }
+    - { role: x2_disable_chrony }
     - role: autoware.ecu_system_setup.sxpf_driver
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - role: autoware.ecu_system_setup.sxpf_ros_driver # This must be executed after `sxpf_driver`
