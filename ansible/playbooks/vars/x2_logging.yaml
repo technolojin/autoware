@@ -58,6 +58,8 @@ autoware_logging_suite_modules:
   - bagtaker
   - dssad_packer
   - rosbag_data_checker
+  - tier4_logging_event_trigger_panel
+  - tier4_logging_dummy_hazard_panel
 # - logpacker
 logpacker_config_template: logpacker/logpacker_config_x2.yaml.jinja2
 # - logpacker - syslog plugin
