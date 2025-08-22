@@ -196,7 +196,7 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: 60ced3a0a981a96ab33ede89878dea128bd1ecab
+    version: c4909a29ebc8d6a7221b4d50b4803a7231c5f9b8
     base: false
   autoware/individual_params:
     type: git
@@ -211,7 +211,7 @@ repositories:
   vendor/mj20_interface:
     type: git
     url: git@github.com:tier4/mj20_interface.git
-    version: 47b475565ce3950a5a4da5c6ef25464f2b711ee1
+    version: 2a8a29effb0c0d86cc0ea12a525e99e24cffe035
     base: false
   vendor/ros2_socketcan:
     type: git
