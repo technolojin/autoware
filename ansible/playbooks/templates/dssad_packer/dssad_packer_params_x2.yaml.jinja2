@@ -1,0 +1,41 @@
+/**:
+  ros__parameters:
+    database:
+      path: {{ dssad_logging_directory }}
+      name: {{ dssad_file_name }}
+    qos_depth: 1000
+    topics:
+      /autoware/state:
+        name: state
+      /api/localization/initialization_state:
+        name: state
+      /api/routing/state:
+        name: state
+      /api/operation_mode/state:
+        name: mode
+      /vehicle/status/control_mode:
+        name: mode
+      /api/external/get/emergency:
+        name: emergency
+      /api/fail_safe/mrm_state:
+        name: [state, behavior]
+      /system/emergency/hazard_status:
+        name: [status.diag_safe_fault, status.diag_latent_fault, status.diag_single_point_fault]
+        count: 300000
+      /planning/steering_factor/lane_change_left:
+        name: factors.status
+      /planning/steering_factor/lane_change_right:
+        name: factors.status
+      /planning/steering_factor/avoidance:
+        name: factors.status
+      /vehicle/status/turn_indicators_status:
+        name: report
+      /level4_mode_manager/is_level4_available:
+        name: is_level4_available
+      /level4_mode_manager/is_level4_driving:
+        name: is_level4_driving
+    diagnostics:
+      collision_checker:
+        name: [level, message]
+      sudden_deceleration_monitor:
+        name: [level, message]
