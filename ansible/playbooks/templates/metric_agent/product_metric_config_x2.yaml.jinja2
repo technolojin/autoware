@@ -78,7 +78,7 @@
       qos_reliability: best_effort # Optional: QoS reliability
 
     - metric_name: accel_brake_map_error
-      topic_name: /accel_brake_map_calibrator/output/current_map_error
+      topic_name: /vehicle/calibration/accel_brake_map_calibrator/current_map_error
       metric_description: pipeline latency (ms)
       message_type: autoware_internal_debug_msgs/msg/Float32Stamped
       output_type: gauge
@@ -89,9 +89,9 @@
       qos_size: 10 # Optional: QoS size
       qos_reliability: best_effort # Optional: QoS reliability
 
-    - metric_name: steer_offset_error
-      topic_name: /vehicle/calibration/steer_offset_estimator/steer_offset_error
-      metric_description: steer offset error (rad)
+    - metric_name: steering_offset_error
+      topic_name: /vehicle/calibration/steer_offset_estimator/steering_offset_error
+      metric_description: steering offset error (rad)
       message_type: autoware_internal_debug_msgs/msg/Float32Stamped
       output_type: gauge
       output_cycle: 10
@@ -102,7 +102,7 @@
       qos_reliability: best_effort # Optional: QoS reliability
 
     - metric_name: speed_scale_factor_error
-      topic_name: /sensing/calibration/speed_scale_factor_estimator/speed_scale_factor_error
+      topic_name: /sensing/calibration/deviation_estimator/speed_scale_factor_error
       metric_description: speed scale factor error
       message_type: autoware_internal_debug_msgs/msg/Float32Stamped
       output_type: gauge
