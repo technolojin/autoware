@@ -2,12 +2,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: 2ef7d647ed6a59ad67347caeed819fddf29588e9
+    version: b2809ff9daa44e5a3f31dd1323b615ee9128e8ee
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: 855dd5d6a22a63789035cfdf00e3b5fe8b222520
+    version: c5441e5877f76a406352f152ad2d687a29d4251a
     base: true
   autoware/autoware_cmake:
     type: git
@@ -22,7 +22,7 @@ repositories:
   autoware/autoware_lanelet2_extension:
     type: git
     url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
-    version: 82ea5f0ddf98681070da99bdfcde510ffcbf0416
+    version: 786685a93b1cc8c6c0f97c4e25b73d873712dbce
     base: true
   autoware/aip_launcher:
     type: git
@@ -83,7 +83,7 @@ repositories:
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
-    version: v0.2.10
+    version: v0.2.11
     base: true
   vendor/sync_tooling_msgs: # For Nebula SYNC.TOOLING support
     type: git
