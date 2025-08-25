@@ -166,7 +166,7 @@ repositories:
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: a5bc2a3b3f706ee27ea308262c595b5333595b03
+    version: b138191388066a1536a8ba0ef6538a5281457722
     base: true
   # middleware
   # TODO(TIER IV): During the transition period of Agnocast introduction,
