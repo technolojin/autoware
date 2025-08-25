@@ -33,13 +33,6 @@ ptp4l_network_port: vlan.500
 ptp4l_use_software_stamp: false
 ptp4l_synchronize_system_clock: true
 
-# SYNC.TOOLING
-sync_tooling:
-  worker:
-    ptp4l_units:
-      - ptp4l
-    phc2sys_units: []
-
 # fms
 fms_url: fms.web.auto
 autoware_pc_ip: 192.168.20.11

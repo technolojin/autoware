@@ -39,7 +39,8 @@ sync_tooling:
   worker:
     ptp4l_units:
       - ptp4l
-    phc2sys_units: []
+    phc2sys_units:
+      - phc2sys
 
 # rsyncd
 setup_systemd_analyze_collector: true
