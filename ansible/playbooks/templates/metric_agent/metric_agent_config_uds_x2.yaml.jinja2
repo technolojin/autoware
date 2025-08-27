@@ -179,3 +179,34 @@ metrics:  # available metrics < vehicle_geo_point >
 
   {% endfor %}{# radar_position #}
   {% endfor %}{# radar_direction #}
+
+  {# Only the upper right lidar has visibility diag enabled #}
+  {% set lidar_directions = ["right"] %}
+  {% set lidar_heights = ["upper"] %}
+
+  {% for lidar_direction in lidar_directions %}
+  {% for lidar_height in lidar_heights %}
+  {% set lidar_name = lidar_direction + "_" + lidar_height %}
+
+  - name: lidar_visibility_{{ lidar_name }}
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+    input:
+      type: diagnostics
+      diagnostic_name: "polar_voxel_outlier_filter: /sensing/lidar/{{ lidar_name }}: visibility_validation"
+      diagnostic_key: Visibility
+      diagnostic_value_pattern: "(\\d+(?:\\.\\d+)?)"
+
+  - name: lidar_filter_ratio_{{ lidar_name }}
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+    input:
+      type: diagnostics
+      diagnostic_name: "polar_voxel_outlier_filter: /sensing/lidar/{{ lidar_name }}: filter_ratio_validation"
+      diagnostic_key: Filter Ratio
+      diagnostic_value_pattern: "(\\d+(?:\\.\\d+)?)"
+
+  {% endfor %}{# lidar_height #}
+  {% endfor %}{# lidar_direction #}
