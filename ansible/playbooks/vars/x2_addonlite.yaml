@@ -59,21 +59,29 @@ setup_coredump_rsyncd_service: true
 rsyncd_hosts_allow: 192.168.30.71 # X2 Logging ECU
 setup_coredump_tmpfiles_service: true
 
+# systemd_analyze_collector
+rsync_target_host_ip: 192.168.20.71
+
 # ros2 native build
 ansible_python_path: /usr/bin/python3.10
+
+# camera driver
+camera_driver_repo: https://api.github.com/repos/tier4/tier4_automotive_hdr_camera/releases/tags/v2.1.0
 
 # perception application/service
 perception_application_edge_auto_version: beta/v4.3
 perception_application_base_path: /home/autoware
 perception_application_edge_auto_repo: git@github.com:tier4/edge-auto-jetson.x2.git
-perception_application_service_run_templates_file: perception_application/run.sh.edge_auto_x2.j2 # we can use different run files if the path is in local
 perception_application_native_built_ros: false # True if we build ROS from source and not using apt
+perception_application_service_run_templates_file: perception_application/run.sh.edge_auto_x2.j2 # we can use different run files if the path is in local
 perception_application_directory_name: overlay_ws
 
 # fool proof check service
 fool_proof_check: true
 check_target_service: perception-startup.service
 ecu_type: perception
+fool_proof_check_network_interface: mgbe1
+
 # # letterbox_monitor
 # letterbox_monitor:
 #   - service_name: default
@@ -96,5 +104,6 @@ c2_ecu_type: anvil
 fw_rom_version: 20240927
 addonlite_angle_params: (120 120 120)
 
-# systemd_analyze_collector
-rsync_target_host_ip: 192.168.20.71
+# reload_camera_driver
+camera_num: 3
+target_service_before_reload_camera_driver: perception-startup.service
