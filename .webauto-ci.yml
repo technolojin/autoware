@@ -1303,6 +1303,7 @@ simulations:
         use_traffic_light_recognition: "false"
         play_rate: "0.125"
         remap_profile: x2_perception
+        publish_topic_from_rosbag: /sensing/camera/camera0/camera_info,/sensing/camera/camera1/camera_info,/sensing/camera/camera2/camera_info,/sensing/camera/camera3/camera_info,/sensing/camera/camera4/camera_info,/sensing/camera/camera5/camera_info,/sensing/camera/camera6/camera_info,/sensing/camera/camera7/camera_info,/sensing/camera/camera8/camera_info,/sensing/camera/camera9/camera_info,/sensing/camera/camera10/camera_info
       volumes:
         - name: model
           path: /opt/autoware/mlmodels/centerpoint
