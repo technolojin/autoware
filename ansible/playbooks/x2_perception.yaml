@@ -59,7 +59,6 @@
     - role: autoware.edge_auto_jetson.sensor_trigger_for_anvil
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.edge_auto_jetson.vcstool }
-    - { role: autoware.edge_auto_jetson.cgroups }
     - { role: autoware.ecu_system_setup.fool_proof_check } # fool proof check for autoware function
     - { role: autoware.ecu_system_setup.letterbox_monitor }
     - { role: x2_disable_timesyncd }
@@ -82,6 +81,17 @@
         - name: TIER IV camera driver
           ansible.builtin.include_role:
             name: autoware.edge_auto_jetson.tier4_hdr_camera_driver
+
+        # Because actual executable path will be searched during the `cgroups` role,
+        # it must be executed after `perception_application` role to set proper capability
+        # for sensor_trigger
+        - name: Cgroup setting for sensor trigger
+          ansible.builtin.include_role:
+            name: autoware.edge_auto_jetson.cgroups
+          vars:
+            cgroup:
+              executable_find_path: "{{ perception_application_base_path }}/{{ perception_application_directory_name }}/install"
+              executable_name: sensor_trigger_exe
 
     - name: Setup ECU for Perception2 ECU which is connected to Add-On ECU
       when: ecu_id == 'perception2'
