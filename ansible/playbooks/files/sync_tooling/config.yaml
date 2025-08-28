@@ -24,8 +24,7 @@ clock_tree:
         perception1.sys:
       perception2.ptp0:
         perception2.sys:
-      addon.ptp0:
-        addon.sys:
+      addon.sys:
       logging.ptp0:
         logging.sys:
 diagnostics:

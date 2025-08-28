@@ -32,6 +32,7 @@ cyclonedds:
 ptp4l_network_port: vlan.500
 ptp4l_use_software_stamp: false
 ptp4l_synchronize_system_clock: true
+ptp4l_phc2sys_offset: -37
 
 # fms
 fms_url: fms.web.auto

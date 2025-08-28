@@ -33,6 +33,7 @@ keyboard_layout_file: keyboard.jp+ctrl_nocaps
 ptp4l_network_port: enp8s0
 ptp4l_use_software_stamp: false
 ptp4l_synchronize_system_clock: true
+ptp4l_phc2sys_offset: -37
 
 # SYNC.TOOLING
 sync_tooling:

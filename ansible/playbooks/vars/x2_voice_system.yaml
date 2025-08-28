@@ -26,6 +26,7 @@ cyclonedds:
 ptp4l_network_port: enp1s0
 ptp4l_use_software_stamp: false
 ptp4l_synchronize_system_clock: true
+ptp4l_phc2sys_offset: -37
 
 # ros2-app-build
 ros2_app_repository: git@github.com:tier4/vehicle_voice_alert_system.git
