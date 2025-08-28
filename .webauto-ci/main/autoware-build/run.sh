@@ -37,7 +37,7 @@ if [ "$WEBAUTO_CI_BUILD_OPTION_CARET_ENABLED" = "ENABLED" ]; then
 
     # build caret
     echo "===== Build CARET ====="
-    colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF
+    colcon build --merge-install --cmake-args -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF
 
 fi
 
@@ -120,7 +120,7 @@ cd "$AUTOWARE_PATH"
 
 # shellcheck disable=SC2086
 colcon build \
-    --symlink-install \
+    --merge-install \
     --cmake-args -DCMAKE_BUILD_TYPE="$build_type" -DCMAKE_CXX_FLAGS="-w" -DBUILD_TESTING=off \
     --catkin-skip-building-tests \
     --executor parallel \

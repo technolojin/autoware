@@ -111,6 +111,6 @@ cd "$PILOT_AUTO_VERSION_REPO"
 mkdir -p src
 vcs import src <base.repos
 
-colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
+colcon build --merge-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 
 printf "\n\n\nInstallation completed successfully. Base from %s/base.repos are installed. To use them, source the setup.bash file in the %s directory.\n" "$PILOT_AUTO_VERSION_REPO" "$PILOT_AUTO_VERSION_REPO"

@@ -7,3 +7,4 @@ sensor_model: aip_xx1
 timezone: Asia/Tokyo
 vehicle_id: default
 vehicle_model: lexus
+autoware_install_option: --merge-install

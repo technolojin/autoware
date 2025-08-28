@@ -108,7 +108,7 @@ build_workspace() {
         rosdep install -y --from-paths src --ignore-src --rosdistro "$ROS_DISTRO"
     fi
     echo "Building packages..."
-    colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
+    colcon build --merge-install --cmake-args -DCMAKE_BUILD_TYPE=Release
     source install/setup.bash
     echo "Build completed."
 }
