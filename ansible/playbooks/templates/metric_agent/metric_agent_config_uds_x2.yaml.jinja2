@@ -210,3 +210,20 @@ metrics:  # available metrics < vehicle_geo_point >
 
   {% endfor %}{# lidar_height #}
   {% endfor %}{# lidar_direction #}
+
+  {% set gyro_correction_types = ["bias_x", "bias_y", "bias_z", "scale_z"] %}
+
+  {% for gyro_correction_type in gyro_correction_types %}
+  {% set estimated_gyro_axis = gyro_correction_type %}
+
+  - name: imu_gyro_{{ estimated_gyro_axis }}
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+    input:
+      type: diagnostics
+      diagnostic_name: "gyro_bias_scale_validator: gyro_bias_scale_validator"
+      diagnostic_key: estimated_gyro_{{ estimated_gyro_axis }}
+      diagnostic_value_pattern: "(\\d+(?:\\.\\d+)?)"
+
+  {% endfor %}{# gyro_correction_type #}
