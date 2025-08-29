@@ -195,7 +195,7 @@ metric_agent_pubs_rate_in_hertz: 10
 metric_agent_subs_rate_in_hertz: 10
 
 # metric_agent config
-metric_agent_version: develop # Future references will be by tags or SHAs.
+metric_agent_version: 57da5b6a8ad0da2de30ba8f28a3db4c3199f6d10 # develop # Future references will be by tags or SHAs.
 metric_agent_params_template: metric_agent/metric_agent_params_x2.yaml.jinja2
 metric_agent_config_template: metric_agent/metric_agent_config_uds_x2.yaml.jinja2
 metric_agent_product_config_template: metric_agent/product_metric_config_x2.yaml.jinja2 # If you want to manage all metrics derived from specific topic-type topics
