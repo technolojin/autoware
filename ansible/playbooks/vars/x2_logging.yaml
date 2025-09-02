@@ -108,6 +108,7 @@ bridge_ip_address: 127.0.0.1
 fms_agent_ip_address: 192.168.30.11
 zoom_level: 1
 mot_vehicle_model: j6-gen2
+mot_error_messages: mrm_messages/mrm_messages.json
 
 # release_rosbag_page_cache
 release_page_cache_threshold_second_from: 65
