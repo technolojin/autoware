@@ -89,7 +89,7 @@ function launch_autoware_main_mrm() {
 
 # --psim-main-mrm:     Launch autoware main mrm with planning simulator
 function launch_psim_main_mrm() {
-    ROS_DOMAIN_ID=3 ros2 launch autoware_launch autoware.main.mrm.launch.xml is_simulation:="true" vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware_main_mrm.log
+    ROS_DOMAIN_ID=3 ros2 launch autoware_launch planning_simulator.main.mrm.launch.xml is_simulation:="true" vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware_main_mrm.log
 }
 
 # --psim-main:       Launch autoware main with planning simulator
