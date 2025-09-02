@@ -56,9 +56,9 @@ rsyslog_server_ipaddr: 192.168.20.71
 rsyslog_queue_maxsize: 1g
 
 # otaclient
-otaclient_release_version: v3.10.1
-otaclient_package_whl_checksum: sha256:6ffa42a92cb964f5bbe57dd7498e9b7994e7598ed7872351a8372a0c9c0a8689
-otaclient_manifest_checksum: sha256:41c02224951b1d0cb04c1538a149c45458db1dc39179eb26931bb67288049028
+otaclient_release_version: v3.11.0
+otaclient_package_whl_checksum: sha256:17e210f3dc99cfc0ec30cd450222632cdbe4c802b35dad20168bcf0144e8472b
+otaclient_manifest_checksum: sha256:197d236a37137afc43ee693ea6e7a907725f28526dca7794b9b27d17a6d612ea
 otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-signage
 otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-1gbe.j2
 
