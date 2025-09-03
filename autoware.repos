@@ -181,12 +181,12 @@ repositories:
   autoware/mrm_plugin:
     type: git
     url: git@github.com:tier4/mrm_plugin.x2.git
-    version: f37aec781d86bdbaf5b6d3c478caff5a21d8b5c8
+    version: ca8a4e0bdfb8f07234f886c9c69bc3439a654709
     base: false
   vendor/redundancy_switcher_interface:
     type: git
     url: git@github.com:tier4/redundancy_switcher_interface.git
-    version: e5958511c6501282e40fc3db12accf7ab171ee61
+    version: 178deacf249573173e0842630f675c5662e6e223
     base: false
   vendor/septentrio_gnss_driver:
     type: git
@@ -196,7 +196,7 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: aeb1611b2b814e331823530f0e1cb12367b1a1cc
+    version: a07c74777773d0b8cd31a2207babb47fc348e060
     base: false
   autoware/individual_params:
     type: git
