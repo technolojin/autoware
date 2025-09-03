@@ -89,12 +89,12 @@ function launch_autoware_main_mrm() {
 
 # --psim-main-mrm:     Launch autoware main mrm with planning simulator
 function launch_psim_main_mrm() {
-    ROS_DOMAIN_ID=3 ros2 launch autoware_launch planning_simulator.main.mrm.launch.xml is_simulation:="true" vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware_main_mrm.log
+    ROS_DOMAIN_ID=3 ROS_LOG_DIR=/home/autoware/.ros/autoware_main_mrm_log ros2 launch autoware_launch planning_simulator.main.mrm.launch.xml is_simulation:="true" vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware_main_mrm.log
 }
 
 # --psim-main:       Launch autoware main with planning simulator
 function launch_psim_main() {
-    ROS_DOMAIN_ID=1 ros2 launch autoware_launch planning_simulator.launch.xml is_redundant:="true" is_simulation:="true" map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware_main.log
+    ROS_DOMAIN_ID=1 ROS_LOG_DIR=/home/autoware/.ros/autoware_main_log ros2 launch autoware_launch planning_simulator.launch.xml is_redundant:="true" is_simulation:="true" map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware_main.log
 }
 
 # --autoware-sub: Launch autoware sub
@@ -104,7 +104,7 @@ function launch_autoware_sub() {
 
 # --psim-sub: Launch autoware sub with planning simulator
 function launch_psim_sub() {
-    ROS_DOMAIN_ID=2 ros2 launch autoware_launch planning_simulator.sub.launch.xml vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware_sub.log
+    ROS_DOMAIN_ID=2 ROS_LOG_DIR=/home/autoware/.ros/autoware_sub_log ros2 launch autoware_launch planning_simulator.sub.launch.xml vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware_sub.log
 }
 
 # --psim:         Launch simple planning simulator
