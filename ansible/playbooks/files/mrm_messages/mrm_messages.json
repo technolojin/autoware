@@ -1963,5 +1963,104 @@
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
+  },
+  "/control/control_command_gate/timeout_stop": {
+    "ERROR": {
+      "situation": "停止モードに必要な制御信号が確認できません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "3",
+      "routing_state_condition": "2"
+    }
+  },
+  "/control/control_command_gate/timeout_main": {
+    "ERROR": {
+      "situation": "自動走行モードに必要な制御信号が確認できません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "3",
+      "routing_state_condition": "2"
+    }
+  },
+  "/control/control_command_gate/timeout_in_lane_stop": {
+    "ERROR": {
+      "situation": "経路内停止モードに必要な制御信号が確認できません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "3",
+      "routing_state_condition": "2"
+    }
+  },
+  "/control/control_command_gate/timeout_output": {
+    "ERROR": {
+      "situation": "制御信号が適切に出力されていません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "3",
+      "routing_state_condition": "2"
+    }
+  },
+  "/system/command_mode_decider/ready": {
+    "ERROR": {
+      "situation": "モード切替機能に必要な信号が受信できていません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "3",
+      "routing_state_condition": "2"
+    }
+  },
+  "/redundancy/redundancy_switcher_status": {
+    "ERROR": {
+      "situation": "冗長機能が適切に動作していません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "3",
+      "routing_state_condition": "2"
+    }
+  },
+  "/redundancy/topic_status/election_status": {
+    "ERROR": {
+      "situation": "冗長機能の現在状態が確認できません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "3",
+      "routing_state_condition": "2"
+    }
+  },
+  "/vehicle/t4_vcu_version_check": {
+    "ERROR": {
+      "situation": "ADKと車両ECUのバージョンが合っていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。ADKと車両ECUのバージョンを合わせて自動運転システムを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "3",
+      "routing_state_condition": "2"
+    }
+  },
+  "/mrm_domain/localization/topic_status/pose": {
+    "ERROR": {
+      "situation": "経路内停止MRMのための自己位置情報が受信できていません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "3",
+      "routing_state_condition": "2"
+    }
+  },
+  "/mrm_domain/localization/topic_status/twist": {
+    "ERROR": {
+      "situation": "経路内停止MRMのための速度と操舵情報が受信できていません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "3",
+      "routing_state_condition": "2"
+    }
+  },
+  "/mrm_domain/planning/topic_status/trajectory": {
+    "ERROR": {
+      "situation": "経路内停止MRMのための経路情報が受信できていません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "3",
+      "routing_state_condition": "2"
+    }
   }
 }
