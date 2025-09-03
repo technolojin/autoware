@@ -7,7 +7,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: b358909e3b74fd03e399047a84e8abc20e1e8b15
+    version: 5bfa48d1e60793f51022f991a2ef5149bf06ac9f
     base: true
   autoware/autoware_cmake:
     type: git
@@ -27,7 +27,7 @@ repositories:
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 9476f2e219736a2444b803590d799a463a8c201c
+    version: 56efe9327e56a63b2143d77bd5fbc5db102d1141
     base: true
   autoware/ad_api_adaptor:
     type: git
@@ -146,10 +146,10 @@ repositories:
     url: https://github.com/osrf/negotiated.git
     version: eac198b55dcd052af5988f0f174902913c5f20e7
     base: true
-  rclcpp: # Based stable version, the fix-patch for service in initialization and the glog feature is added
+  rclcpp: # Based stable version, the fix-patch for service in initialization, glog feature and the fix-patch for loading node in container is added
     type: git
     url: https://github.com/tier4/rclcpp.git
-    version: 0bb2c75b3b3cdcc380f6c21ac9129c54075ba059
+    version: ef50da230a0c4a1320dc52b5a16dd0cc13018cec
     base: true
   launch: # Based humble version, the acceleration patched is added
     type: git
@@ -157,11 +157,11 @@ repositories:
     version: 9122128dc931211e42116b055f150199285496e1
     base: true
   # Include many-nodes-in-container launch fix that ensures no LoadComposableNode call hangs
-  # See https://github.com/ros2/launch_ros/compare/humble...tier4:launch_ros:/humble/fix/load_composable_node
+  # See https://github.com/ros2/launch_ros/compare/humble...tier4:launch_ros:/t4-main
   launch_ros:
     type: git
     url: https://github.com/tier4/launch_ros.git
-    version: 2759f8ae5dca9d4ab517a9b5d6b5f2c66556337f
+    version: 3bf6abf86eefd1629d2499f8f666998311fa831b
     base: true
   v2x/vehicle2infrastructure:
     type: git
