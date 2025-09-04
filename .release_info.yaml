@@ -16,6 +16,8 @@ releases:
       full_sync: true
     release_managers:
       - TomohitoAndo
+      - kotaro-hihara
+      - Tomohiro-Murohashi
     released_repositories: # repos you want to release alongside
       - repo_name_in_autoware_repos: autoware/launcher
         release_version: v4.3
