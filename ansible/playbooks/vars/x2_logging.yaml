@@ -1,4 +1,4 @@
-# cspell: ignore mincho rexmit ipaddr maxsize nocaps netcore wmem
+# cspell: ignore mincho rexmit ipaddr maxsize nocaps netcore wmem pactl
 # common
 rosbag_logging_directory: /mnt/ROSBAG
 systemctl_default: multi-user.target
@@ -91,6 +91,9 @@ bagtaker_params_template: bagtaker2/bagtaker_params_x2.yaml.jinja2
 bagkeeper_params_template: bagkeeper/bagkeeper_params_x2.yaml.jinja2
 # - bagrollbacker
 bagrollbacker_param_template: bagrollbacker/bagrollbacker_params_x2.yaml.jinja2
+# rsyncd - add systemd-tmpfiles configuration for logpacker coredump plugin
+setup_coredump_rsyncd_service: false
+setup_coredump_tmpfiles_service: true
 
 # boot_shutdown
 boot_shutdown_tools_clone_dir: "{{ autoware_install_dir }}/src/product/boot_shutdown_tools"

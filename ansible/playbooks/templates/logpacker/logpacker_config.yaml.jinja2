@@ -259,7 +259,16 @@ coredump:
   # params_file: /etc/logging_system/logpacker/coredump_params.yaml
   hosts:
     - host_name: autoware
-      ip_addr: 192.168.20.11
+      ip_addr: 192.168.30.11
+      rsync_module: export
+      # If 'host_name' and 'ip_addr are empty, it means local host.
+      # Local host needs log_dir_path, instead of 'rsync_module'.
+      # log_dir_path: /var/lib/systemd/coredump
+      options:
+        - "-auv"
+    # TODO(TomohitoAndo): Use 192.168.20.21 because sub is connected only to the 1G bps network currently
+    - host_name: sub
+      ip_addr: 192.168.20.21
       rsync_module: export
       # If 'host_name' and 'ip_addr are empty, it means local host.
       # Local host needs log_dir_path, instead of 'rsync_module'.
@@ -267,7 +276,7 @@ coredump:
       options:
         - "-auv"
     - host_name: perception1
-      ip_addr: 192.168.20.31
+      ip_addr: 192.168.30.31
       rsync_module: export
       # If 'host_name' and 'ip_addr are empty, it means local host.
       # Local host needs log_dir_path, instead of 'rsync_module'.
@@ -275,7 +284,16 @@ coredump:
       options:
         - "-auv"
     - host_name: perception2
-      ip_addr: 192.168.20.32
+      ip_addr: 192.168.30.32
+      rsync_module: export
+      # If 'host_name' and 'ip_addr are empty, it means local host.
+      # Local host needs log_dir_path, instead of 'rsync_module'.
+      # log_dir_path: /var/lib/systemd/coredump
+      options:
+        - "-auv"
+    # Addon or Addon Lite
+    - host_name: perception3
+      ip_addr: 192.168.30.33
       rsync_module: export
       # If 'host_name' and 'ip_addr are empty, it means local host.
       # Local host needs log_dir_path, instead of 'rsync_module'.
