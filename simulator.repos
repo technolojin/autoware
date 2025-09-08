@@ -10,11 +10,11 @@ repositories:
   simulator/driving_log_replayer_v2:
     type: git
     url: https://github.com/tier4/driving_log_replayer_v2.git
-    version: 916d0334a7ff066e91a9c8711feecfa6309102e1
+    version: 26fd9b2fd27f8fb6d7f55e5e484087da45aca9bc
   simulator/perception_eval:
     type: git
     url: https://github.com/tier4/autoware_perception_evaluation.git
-    version: e1f02416c4ad7f0a4a029fac05651192526c1ca3
+    version: ee9b8613ebef33ad770f40f5dd66a0c39a11c294
   simulator/vendor/ros2_numpy:
     type: git
     url: https://github.com/Box-Robotics/ros2_numpy.git
