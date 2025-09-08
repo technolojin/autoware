@@ -181,12 +181,12 @@ repositories:
   autoware/mrm_plugin:
     type: git
     url: git@github.com:tier4/mrm_plugin.x2.git
-    version: v4.3.0
+    version: ca8a4e0bdfb8f07234f886c9c69bc3439a654709
     base: false
   vendor/redundancy_switcher_interface:
     type: git
     url: git@github.com:tier4/redundancy_switcher_interface.git
-    version: v4.3.0
+    version: 1fbf047d6f0d8d03831db5d01dc500ba43878523
     base: false
   vendor/septentrio_gnss_driver:
     type: git
@@ -196,7 +196,7 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: v4.3.0
+    version: ab78257c833a1df49450cd42cc732ab2d9c9c7ff
     base: false
   autoware/individual_params:
     type: git
@@ -206,12 +206,12 @@ repositories:
   description/vehicle/j6_gen2_description:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
-    version: v4.3.0
+    version: 7323ed43429656c161286a61d4d44af90a2a6c99
     base: false
   vendor/mj20_interface:
     type: git
     url: git@github.com:tier4/mj20_interface.git
-    version: v4.3.0
+    version: 3bf15ef2cce9a130f11e672fde54304d178b0ecf
     base: false
   vendor/ros2_socketcan:
     type: git
