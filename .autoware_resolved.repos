@@ -3,12 +3,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: dda5048980f43b5129feb922164e01e6e91628a8
+    version: 3f04e0cb5e1aebd7b9933688d13f000147d80106
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: 0035987d9d4a62cfd31ebde6989a4b3f0bee0530
+    version: 322b6185ce3387685fc78855241c5806cfac2386
     base: true
   autoware/autoware_cmake:
     type: git
@@ -28,22 +28,22 @@ repositories:
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: 8ff2bc8fa9575bc3d29f96861a7433449f790551
+    version: cc8ff557747e6e16b65d75dd1778673774b4e9f9
     base: false
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 5036f3d575385b44259d4f26c9c5ceaeb23a1cc1
+    version: 85008c48efa090e36568d758a3bfc88ee211a4ff
     base: true
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: f13dc6e62b465aa0cb6b2186daed50b69f19caa5
+    version: 6a34285581c8961104517cc1363a73dda8497d78
     base: true
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: 753b183d7a4f2320e64db47e8a9c9887a50bdf95
+    version: 0d9ad1f5bc784d5e210801b2e5e8111e284252f2
     base: true
   autoware/autoware_msgs:
     type: git
@@ -53,7 +53,7 @@ repositories:
   autoware/autoware_adapi_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_adapi_msgs.git
-    version: 87fc41f07bc7054978ebedbfd30d5f88d18eddce
+    version: a961390a6b9373757481cb6be25353b0ccd5d273
     base: true
   autoware/autoware_internal_msgs:
     type: git
@@ -105,7 +105,7 @@ repositories:
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
-    version: cb1918a08f3a3fe7216686a5633ae69dad354f88
+    version: fc939e9bfbf171986d2d558400a4a4fee97332c6
     base: true
   vendor/ublox:
     type: git
@@ -201,7 +201,7 @@ repositories:
   rclcpp:  # Based stable version, the fix-patch for service in initialization and the glog feature is added
     type: git
     url: https://github.com/tier4/rclcpp.git
-    version: 0bb2c75b3b3cdcc380f6c21ac9129c54075ba059
+    version: ef50da230a0c4a1320dc52b5a16dd0cc13018cec
     base: true
   launch: # Based humble version, the acceleration patched is added
     type: git
