@@ -1,0 +1,17 @@
+[Unit]
+Description=Configure RADAR after OTA update
+After=network-online.target autoware_launch.service ptp4l@enp3s0.service
+Before=rc-local-latest.service
+
+[Service]
+Type=notify
+NotifyAccess=all
+ExecStartPre=/bin/sleep 60
+ExecStart=/opt/autoware/services/configure_radar/configure_radar.sh
+Restart=no
+User=autoware
+TimeoutStartSec=0
+TimeoutStopSec=0
+
+[Install]
+WantedBy=multi-user.target

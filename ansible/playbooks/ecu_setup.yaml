@@ -18,6 +18,7 @@
     - { role: autoware.ecu_system_setup.disable_services }
     - { role: autoware.ecu_system_setup.ip_routing_policy }
     - { role: autoware.ecu_system_setup.lenovo_keyboard }
+    - { role: autoware.ecu_system_setup.ota_first_boot_flag }
     - { role: autoware.ecu_system_setup.rootfs_encrypt }
     - { role: autoware.ecu_system_setup.rsyslog }
     - { role: autoware.ecu_system_setup.syslog_collector_client }
@@ -41,6 +42,7 @@
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     # - { role: x2_autoware }
     - { role: x2_can_adm }
+    - { role: x2_configure_radar }
     - { role: x2_configure_marvell_switch }
     - { role: x2_ptp4l }
     - { role: x2_dev_tools }
