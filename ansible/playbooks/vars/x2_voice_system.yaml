@@ -55,3 +55,6 @@ otaclient_package_whl_checksum: sha256:17e210f3dc99cfc0ec30cd450222632cdbe4c802b
 otaclient_manifest_checksum: sha256:197d236a37137afc43ee693ea6e7a907725f28526dca7794b9b27d17a6d612ea
 otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-voice-system
 otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-1gbe.j2
+
+# Passenger App
+passenger_app_version: v0.0.1

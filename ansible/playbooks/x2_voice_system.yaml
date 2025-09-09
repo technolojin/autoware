@@ -26,6 +26,7 @@
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.ecu_system_setup.clean_ros_log }
     - { role: autoware.ecu_system_setup.cyclonedds }
+    - { role: autoware.ecu_system_setup.disable_lock_screen }
     - { role: autoware.ecu_system_setup.install_openssh_server }
     - { role: autoware.ecu_system_setup.keyboard }
     - { role: autoware.ecu_system_setup.login_user }
@@ -42,6 +43,7 @@
     - { role: autoware.ecu_system_setup.syslog_collector_client }
     - { role: autoware.ecu_system_setup.timezone }
     - { role: autoware.ecu_system_setup.systemd_analyze_collector }
+    - { role: autoware.ecu_system_setup.passenger_app }
   post_tasks:
     - name: Setup netplan
       ansible.builtin.include_role:
