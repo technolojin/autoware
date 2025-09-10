@@ -45,3 +45,4 @@
     - { role: x2_disable_greengrass_setup } # Disable the greengrass-v2-setup service on the Sub ECU to prevent an infinite setup loop.
     - { role: x2_dev_tools }
     - { role: x2_cmd_helper_completion }
+    - { role: divert_jetpack_static_lib }
