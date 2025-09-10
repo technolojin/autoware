@@ -1,0 +1,140 @@
+# ============================================================================
+# Jetpack Static Library Cleanup Role
+#
+# This role safely removes large NVIDIA static libraries using dpkg-divert
+# to prevent package management conflicts while saving disk space.
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# Variables: Library configurations
+# ----------------------------------------------------------------------------
+# cspell:ignore libcufft nocallback libcusolver libnppif
+- name: Set library configuration variables
+  ansible.builtin.set_fact:
+    # System libraries from /usr/lib/<arch>/
+    system_libraries:
+      - libcudnn_adv_infer_static.a
+      - libcudnn_adv_train_static.a
+      - libcudnn_cnn_infer_static.a
+      - libcudnn_cnn_train_static.a
+      - libcudnn_ops_infer_static.a
+      - libnvinfer_lean_static.a
+      - libnvinfer_static.a
+
+    # System library architectures
+    system_architectures:
+      - x86_64-linux-gnu
+      - aarch64-linux-gnu
+
+    # CUDA libraries from /usr/local/cuda-*/targets/<arch>/lib/
+    cuda_libraries:
+      - libcublas_static.a
+      - libcublasLt_static.a
+      - libcufft_static.a
+      - libcufft_static_nocallback.a
+      - libcurand_static.a
+      - libcusolver_static.a
+      - libcusparse_static.a
+      - libnppif_static.a
+
+    # CUDA target architectures
+    cuda_architectures:
+      - x86_64-linux
+      - aarch64-linux
+
+# ============================================================================
+# PHASE 1: Process System Libraries (/usr/lib/<arch>/)
+# ============================================================================
+
+- name: Check if system libraries exist
+  ansible.builtin.stat:
+    path: /usr/lib/{{ item.1 }}/{{ item.0 }}
+  register: system_lib_stats
+  loop: "{{ system_libraries | product(system_architectures) | list }}"
+
+- name: Divert system libraries
+  ansible.builtin.command:
+    cmd: dpkg-divert --add --rename --divert {{ item.stat.path }}.diverted {{ item.stat.path }}
+  become: true
+  loop: "{{ system_lib_stats.results }}"
+  when: item.stat.exists
+  failed_when: false
+  changed_when: false
+  register: divert_result
+
+- name: Remove original system library files
+  ansible.builtin.file:
+    path: "{{ item.stat.path }}"
+    state: absent
+  become: true
+  loop: "{{ system_lib_stats.results }}"
+  when: item.stat.exists
+
+- name: Remove diverted system library files
+  ansible.builtin.file:
+    path: "{{ item.stat.path }}.diverted"
+    state: absent
+  become: true
+  loop: "{{ system_lib_stats.results }}"
+  when: item.stat.exists
+
+# ============================================================================
+# PHASE 2: Process CUDA Libraries (/usr/local/cuda-*/targets/<arch>/lib/)
+# ============================================================================
+
+- name: Find CUDA installations
+  ansible.builtin.find:
+    paths: /usr/local
+    patterns: cuda-*
+    file_type: directory
+  register: cuda_dirs
+
+- name: Initialize CUDA library paths list
+  ansible.builtin.set_fact:
+    cuda_library_paths: []
+    cacheable: false
+
+- name: Generate CUDA library paths
+  ansible.builtin.set_fact:
+    # Build full paths for each CUDA library file across all installations and architectures
+    # Example: /usr/local/cuda-11.8/targets/x86_64-linux/lib/libcublas_static.a
+    cuda_library_paths: "{{ cuda_library_paths + [cuda_dir + '/targets/' + arch + '/lib/' + lib] }}"
+    cacheable: false
+  loop: "{{ cuda_dirs.files | map(attribute='path') | product(cuda_architectures, cuda_libraries) | list }}"
+  vars:
+    cuda_dir: "{{ item.0 }}" # CUDA installation directory (e.g., /usr/local/cuda-11.8)
+    arch: "{{ item.1 }}" # Target architecture (x86_64-linux or aarch64-linux)
+    lib: "{{ item.2 }}" # Library filename (e.g., libcublas_static.a)
+  when: cuda_dirs.files | length > 0
+
+- name: Check if CUDA libraries exist
+  ansible.builtin.stat:
+    path: "{{ item }}"
+  register: cuda_lib_stats
+  loop: "{{ cuda_library_paths | default([]) }}"
+
+- name: Divert CUDA libraries
+  ansible.builtin.command:
+    cmd: dpkg-divert --add --rename --divert {{ item.stat.path }}.diverted {{ item.stat.path }}
+  become: true
+  loop: "{{ cuda_lib_stats.results | default([]) }}"
+  when: item.stat.exists | default(false)
+  failed_when: false
+  changed_when: false
+  register: cuda_divert_result
+
+- name: Remove original CUDA library files
+  ansible.builtin.file:
+    path: "{{ item.stat.path }}"
+    state: absent
+  become: true
+  loop: "{{ cuda_lib_stats.results | default([]) }}"
+  when: item.stat.exists | default(false)
+
+- name: Remove diverted CUDA library files
+  ansible.builtin.file:
+    path: "{{ item.stat.path }}.diverted"
+    state: absent
+  become: true
+  loop: "{{ cuda_lib_stats.results | default([]) }}"
+  when: item.stat.exists | default(false)
