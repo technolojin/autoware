@@ -4,6 +4,8 @@
 syslog_collector_type: Client
 rsyslog_server_ipaddr: 192.168.30.71 # X2 Logging ECU
 rsyslog_queue_maxsize: 1g
+rsyslog_replace_enable: true # for 5G router syslog
+rsyslog_template_file: rsyslog.conf.j2 # for 5G router syslog, enable UDP
 
 # rsyncd - server for logpacker coredump plugin
 # rsyncd - add systemd-tmpfiles configuration for logpacker coredump plugin
