@@ -37,7 +37,7 @@ if [ "$WEBAUTO_CI_BUILD_OPTION_CARET_ENABLED" = "ENABLED" ]; then
 
     # build caret
     echo "===== Build CARET ====="
-    colcon build --merge-install --cmake-args -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF
+    colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF
 
 fi
 
@@ -81,38 +81,50 @@ rosdep update
 rosdep install -y --from-paths src --ignore-src --rosdistro "$ROS_DISTRO"
 
 # CARET setup
-ADDITIONAL_OPTIONS=""
+ADDITIONAL_OPTIONS=() # Additional CMake options to pass to colcon build (initialized as a Bash array)
 if [ "$WEBAUTO_CI_BUILD_OPTION_CARET_ENABLED" = "ENABLED" ]; then
-    echo "===== Modify ament_cmake_auto as workaround ====="
-    backup_date="$(date +"%Y%m%d_%H%M%S")"
+    echo "===== Modify cmake files as workaround ====="
     cd /opt/ros/humble/share/ament_cmake_auto/cmake &&
-        sudo cp ament_auto_add_executable.cmake ament_auto_add_executable.cmake_"$backup_date" &&
-        sudo cp ament_auto_add_library.cmake ament_auto_add_library.cmake_"$backup_date" &&
+        sudo cp ament_auto_add_executable.cmake ament_auto_add_executable.cmake.bak &&
+        sudo cp ament_auto_add_library.cmake ament_auto_add_library.cmake.bak &&
         sudo sed -i -e 's/SYSTEM//g' ament_auto_add_executable.cmake &&
         sudo sed -i -e 's/SYSTEM//g' ament_auto_add_library.cmake
 
-    # cspell: ignore libtracetools
-    echo "===== Modify pcl_ros (libtracetools.so) as workaround ====="
-    cd /opt/ros/humble/share/pcl_ros/cmake &&
-        sudo cp export_pcl_rosExport.cmake export_pcl_rosExport.cmake_"$backup_date" &&
-        sudo sed -i -e 's/\/opt\/ros\/humble\/lib\/libtracetools.so;//g' export_pcl_rosExport.cmake
+    sudo grep -rl '/opt/ros/humble/lib/libtracetools.so;' /opt/ros/humble/share --include="*.cmake" |
+        while read -r f; do
+            echo "Delete reference to libtracetools from $f"
+            sudo cp "$f" "$f.bak"
+            sudo sed -i 's|/opt/ros/humble/lib/libtracetools.so;||g' "$f"
+        done
 
-    echo "===== Modify pcl_ros (rclcpp) as workaround ====="
-    cd /opt/ros/humble/share/pcl_ros/cmake &&
-        sudo cp export_pcl_rosExport.cmake export_pcl_rosExport.cmake_"$backup_date"_2 &&
-        sudo sed -i -e 's/\/opt\/ros\/humble\/include\/rclcpp;//g' export_pcl_rosExport.cmake
+    sudo grep -rl '/opt/ros/humble/include/rclcpp;' /opt/ros/humble/share --include="*.cmake" |
+        while read -r f; do
+            echo "Delete reference to rclcpp from $f"
+            sudo cp "$f" "$f.bak"
+            sudo sed -i 's|/opt/ros/humble/include/rclcpp;||g' "$f"
+        done
 
     cd "$AUTOWARE_PATH"
     rm -f caret_topic_filter.bash
     wget https://raw.githubusercontent.com/tier4/caret_report/main/sample_autoware/caret_topic_filter.bash
+
+    rm -rf "$AUTOWARE_PATH"/src/rclcpp                                              # to prevent conflicts with rclcpp in CARET
+    rm -rf "$AUTOWARE_PATH"/src/tools/planning/autoware_static_centerline_generator # to avoid duplication of utils.h
+    # cspell: ignore Drclcpp Dtracetools
+    ADDITIONAL_OPTIONS=(
+        --cmake-args
+        -DCMAKE_BUILD_TYPE=Release
+        -DCMAKE_CXX_FLAGS="-w"
+        -DBUILD_TESTING=off
+        -Drclcpp_DIR="$HOME/ros2_caret_ws/install/rclcpp/share/rclcpp/cmake"
+        -Dtracetools_DIR="$HOME/ros2_caret_ws/install/tracetools/share/tracetools/cmake"
+    )
 
     # shellcheck disable=SC1090
     source "/opt/ros/${ROS_DISTRO}/setup.bash"
     # shellcheck disable=SC1091
     source "$HOME/ros2_caret_ws/install/local_setup.sh"
     echo "===== Finish CARET SETUP ====="
-
-    ADDITIONAL_OPTIONS="--packages-skip rclcpp rclcpp_action rclcpp_components rclcpp_lifecycle"
 fi
 cd "$AUTOWARE_PATH"
 
@@ -125,7 +137,7 @@ colcon build \
     --catkin-skip-building-tests \
     --executor parallel \
     --parallel-workers "$PARALLEL_WORKERS" \
-    $ADDITIONAL_OPTIONS
+    "${ADDITIONAL_OPTIONS[@]}"
 
 if [ "$WEBAUTO_CI_BUILD_OPTION_CARET_ENABLED" = "ENABLED" ]; then
     echo "===== Check CARET SETUP ====="
