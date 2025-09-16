@@ -2,7 +2,7 @@ repositories:
   simulator/scenario_simulator:
     type: git
     url: https://github.com/tier4/scenario_simulator_v2.git
-    version: 3c6d680a42bd3f475f0139010d510c11053d64d5
+    version: b68d508ff25e6bf9d89170ab142553b51ad92962
   simulator/ndt_convergence_evaluation:
     type: git
     url: git@github.com:tier4/ndt_convergence_evaluation.git
@@ -10,11 +10,11 @@ repositories:
   simulator/driving_log_replayer_v2:
     type: git
     url: https://github.com/tier4/driving_log_replayer_v2.git
-    version: 59d6d2e54c3ec052e0629a396ff7d5b51beb5cf9
+    version: 26fd9b2fd27f8fb6d7f55e5e484087da45aca9bc
   simulator/perception_eval:
     type: git
     url: https://github.com/tier4/autoware_perception_evaluation.git
-    version: da5acc4136f4fa5602fcacaca94f5e3f0a59d722
+    version: ee9b8613ebef33ad770f40f5dd66a0c39a11c294
   simulator/vendor/ros2_numpy:
     type: git
     url: https://github.com/Box-Robotics/ros2_numpy.git
