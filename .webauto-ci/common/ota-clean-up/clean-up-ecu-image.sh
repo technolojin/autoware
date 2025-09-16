@@ -1,7 +1,5 @@
 #!/bin/bash -e
 
-: "${ECU_ID:?is not set}"
-
 echo "----- Start to remove unnecessary folders and files ..."
 items_to_remove=(
     "/boot/Image.backup"
@@ -22,10 +20,14 @@ for item in "${items_to_remove[@]}"; do
 done
 echo "----- Finished removing  unnecessary folders and files  ..."
 
-# Handle /var/cache/apt/archives separately using apt clean
+# Handle /var/cache/apt/archives separately
+# "sudo apt clean" should be used to clean this folder.
+# However, this folder is mounted as "caches" to be re-used between CI/CD build phases.
+# "sudo apt clean" does not work.
 if [ -d "/var/cache/apt/archives" ]; then
     echo "----- Cleaning APT cache: /var/cache/apt/archives"
-    sudo apt clean
+    # sudo apt clean
+    sudo rm -rf /var/cache/apt/archives/*
 else
     echo "----- Did not find APT cache directory: /var/cache/apt/archives"
 fi
