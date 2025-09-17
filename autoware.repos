@@ -196,7 +196,7 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: 655261df1da862dfd1feb81208943ee163804f2a
+    version: 24eaf98818b9524ba5d3572f31b1c56dddf53e2c
     base: false
   autoware/individual_params:
     type: git
