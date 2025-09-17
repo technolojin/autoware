@@ -77,6 +77,11 @@ simple_system_launch_items:
     command: |
       mkdir -p /home/autoware/.ros/autoware_main_log
       export ROS_LOG_DIR=/home/autoware/.ros/autoware_main_log
+      ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml \
+              model_name:=centerpoint_x2 \
+              model_path:=/opt/autoware/mlmodels/centerpoint \
+              model_param_path:=$(ros2 pkg prefix autoware_launch --share)/config/perception/object_recognition/detection/lidar_model/centerpoint_x2.param.yaml \
+              build_only:=true 2>&1 | tee "$HOME"/autoware_main.log
       ros2 launch autoware_launch autoware.main.launch.xml \
               is_redundant:="true" \
               map_path:=/opt/autoware/maps \
@@ -85,7 +90,7 @@ simple_system_launch_items:
               vehicle_model:="$VEHICLE_MODEL" \
               sensor_model:="$SENSOR_MODEL" \
               launch_system:=false \
-              rviz:=false 2>&1 | tee "$HOME"/autoware_main.log
+              rviz:=false 2>&1 | tee -a "$HOME"/autoware_main.log
 
   # system
   - file: simple_system_launch/autoware_system_launch.service
