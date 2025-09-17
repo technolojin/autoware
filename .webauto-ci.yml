@@ -618,7 +618,6 @@ simulations:
         localization: "false"
         planning: "false"
         control_module_preset: dlr_control_validator
-        override_topics_regex: '"^/(?!localization/[^ ]*/pointcloud$)(?!perception/object_recognition/detection/(?!objects$)).*"'
         output_metrics: "true"
       logging:
         additional_log_archive:
@@ -643,7 +642,6 @@ simulations:
         perception: "false"
         localization: "true"
         play_delay: "20.0"
-        override_topics_regex: '"^/(?!localization/[^ ]*/pointcloud$)(?!perception/object_recognition/detection/(?!objects$)).*"'
         output_metrics: "true"
       logging:
         additional_log_archive:
@@ -669,7 +667,6 @@ simulations:
         perception: "true"
         localization: "true"
         play_delay: "20.0"
-        override_topics_regex: '"^/(?!localization/[^ ]*/pointcloud$)(?!perception/object_recognition/detection/(?!objects$)).*"'
         output_metrics: "true"
       logging:
         additional_log_archive:
@@ -700,7 +697,6 @@ simulations:
         sensing: "false"
         perception: "false"
         localization: "false"
-        override_topics_regex: '"^/(?!localization/[^ ]*/pointcloud$)(?!perception/object_recognition/detection/(?!objects$)).*"'
         output_metrics: "true"
       logging:
         additional_log_archive:
