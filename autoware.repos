@@ -186,7 +186,7 @@ repositories:
   vendor/redundancy_switcher_interface:
     type: git
     url: git@github.com:tier4/redundancy_switcher_interface.git
-    version: 08e7616a88029b11deb58c8d4739f62f09b1f472
+    version: e459adc5821336b3cb80dccc6e599f3512eec4d8
     base: false
   vendor/septentrio_gnss_driver:
     type: git
@@ -196,7 +196,7 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: 24eaf98818b9524ba5d3572f31b1c56dddf53e2c
+    version: ece6aca17d313c5e58ce1424d5bd51911e8bb77e
     base: false
   autoware/individual_params:
     type: git
