@@ -198,7 +198,7 @@ repositories:
     url: https://github.com/autowarefoundation/bevdet_vendor.git
     version: bevdet_vendor-ros2
     base: true
-  rclcpp:  # Based stable version, the fix-patch for service in initialization and the glog feature is added
+  rclcpp:  # Based stable version, the fix-patch for service in initialization and the glog feature and the fix-patch for loading node in container is added
     type: git
     url: https://github.com/tier4/rclcpp.git
     version: t4-main
@@ -209,11 +209,11 @@ repositories:
     version: humble
     base: true
   # Include many-nodes-in-container launch fix that ensures no LoadComposableNode call hangs
-  # See https://github.com/ros2/launch_ros/compare/humble...tier4:launch_ros:/humble/fix/load_composable_node
+  # See https://github.com/ros2/launch_ros/compare/humble...tier4:launch_ros:/t4-main
   launch_ros:
     type: git
     url: https://github.com/tier4/launch_ros.git
-    version: humble/fix/load_composable_node
+    version: t4-main
     base: true
 
   v2x/vehicle2infrastructure:
