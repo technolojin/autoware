@@ -69,4 +69,4 @@ done
 echo "/tf topic discovered. Launching RViz."
 
 # Rviz起動
-rviz2 -d "$script_dir/../src/autoware/launcher/autoware_launch/rviz/autoware_x2.rviz"
+ros2 launch autoware_launch autoware_sub_rviz.launch.xml rviz_config:="$script_dir/../src/autoware/launcher/autoware_launch/rviz/autoware_x2.rviz" vehicle_model:=j6_gen2 rviz_respawn:=true
