@@ -2113,6 +2113,11 @@
   durability: volatile
   history: keep_last
   reliability: best_effort
+/planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/debug/processed_pointcloud:
+  depth: 5
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
 /planning/scenario_planning/lane_driving/motion_planning/motion_velocity_planner/debug/processing_time_detail_ms/obstacle_cruise:
   depth: 1
   durability: volatile
