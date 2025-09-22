@@ -5,6 +5,9 @@
 : "${ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK:?is not set}"
 : "${ECU_ID:?is not set}"
 
+sudo -E apt-get -y update
+sudo -E apt-get -y install systemd-coredump
+
 export GITHUB_TOKEN="$WEBAUTO_CI_GITHUB_TOKEN"
 git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
 git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "git@github.com:"

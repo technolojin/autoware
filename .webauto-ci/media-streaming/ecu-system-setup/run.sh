@@ -9,6 +9,9 @@
 # cleanup base image first
 . .webauto-ci/common/ota-clean-up/clean-up-base-image.sh
 
+sudo -E apt-get -y update
+sudo -E apt-get -y install systemd-coredump
+
 export GITHUB_TOKEN="$WEBAUTO_CI_GITHUB_TOKEN"
 git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
 git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "git@github.com:"
