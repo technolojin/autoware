@@ -201,7 +201,7 @@ repositories:
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: aba28df4810ee3a357b23f6676ed8835c6893bc4
+    version: 18358f680d01ba91bdfbc5115cf3e420d9e5b255
     base: false
   description/vehicle/j6_gen2_description:
     type: git
