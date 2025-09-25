@@ -79,6 +79,10 @@ redundancy_switcher_conf_files: redundancy_switcher/node_info.yaml
 redundancy_switcher_service_template: redundancy_switcher.service.jinja2
 node_id: 1
 
+# fool proof check service
+check_target_service: autoware_sub_launch.service
+fool_proof_check_network_interface: enp5s0f0 # TODO: check vlan.500
+
 # letterbox_monitor
 letterbox_monitor:
   - service_name: default
@@ -106,6 +110,7 @@ service_list_for_tier4_autoware: |
 ## In the L2 version, enp5s0f1 of the Sub ECU is not connected, so it needs to be changed to enp5s0f0.
 network_interface_for_tier4_service_standby_wait: enp5s0f1
 ecu_type: sub
+
 # simple_system_launch
 simple_system_launch_items:
   # autoware_sub_launch

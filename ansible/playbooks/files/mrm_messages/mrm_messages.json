@@ -1769,6 +1769,15 @@
       "routing_state_condition": "all"
     }
   },
+  "/foolproof/sub/autoware_node_alive": {
+    "ERROR": {
+      "situation": "Sub ECUでプロセス異常が発生しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "FPR02001E",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
   "/foolproof/perception1/recognition_node_alive": {
     "ERROR": {
       "situation": "Perception1 ECUでプロセス異常が発生しています",
