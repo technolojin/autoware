@@ -235,3 +235,19 @@ releases:
         release_version: v0.54
       - repo_name_in_autoware_repos: v2x/vehicle2infrastructure
         release_version: v0.54
+  - version: v0.55
+    release_managers:
+      - masaharuTakano
+    released_repositories:
+      - repo_name_in_autoware_repos: autoware/core
+        release_version: v0.55
+      - repo_name_in_autoware_repos: autoware/launcher
+        release_version: v0.55
+      - repo_name_in_autoware_repos: autoware/universe
+        release_version: v0.55
+      - repo_name_in_autoware_repos: autoware/aip_launcher
+        release_version: v0.55
+      - repo_name_in_autoware_repos: autoware/tier4_autoware_msgs
+        release_version: v0.55
+      - repo_name_in_autoware_repos: v2x/vehicle2infrastructure
+        release_version: v0.55
