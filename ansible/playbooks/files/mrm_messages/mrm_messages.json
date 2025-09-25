@@ -31,13 +31,6 @@
       "error_code": "no error code",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
-    },
-    "WARN": {
-      "situation": "スリップを検知しました",
-      "solution": "安全を確認して再発進してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
     }
   },
   "/control/collision_detector": {
@@ -56,13 +49,6 @@
       "error_code": "no error code",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
-    },
-    "WARN": {
-      "situation": "ずり下がりを検知しました",
-      "solution": "ORして安全な場所へ移動してください。その後自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
     }
   },
   "/hardware/hdd/003-connection": {
@@ -289,13 +275,6 @@
       "error_code": "no error code",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
-    },
-    "WARN": {
-      "situation": "指示速度より速い速度になっています",
-      "solution": "制動系の故障の可能性があるためORして安全な場所に移動してください。その後制動系に異常がないか確認してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
     }
   },
   "/control/overrun_stop_point": {
@@ -378,13 +357,6 @@
       "error_code": "no error code",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
-    },
-    "WARN": {
-      "situation": "CPU負荷が逼迫しています",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "HRD01001W",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
     }
   },
   "/hardware/cpu/004-throttling": {
@@ -410,13 +382,6 @@
       "error_code": "no error code",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
-    },
-    "WARN": {
-      "situation": "GPU温度が最高動作温度付近まで上昇しています",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "HRD01004W",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
     }
   },
   "/hardware/gpu/002-usage": {
@@ -426,13 +391,6 @@
       "error_code": "no error code",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
-    },
-    "WARN": {
-      "situation": "GPU負荷が逼迫しています",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "HRD01005W",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
     }
   },
   "/hardware/gpu/003-memory": {
@@ -442,13 +400,6 @@
       "error_code": "no error code",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
-    },
-    "WARN": {
-      "situation": "GPUメモリの使用率が逼迫しています",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "HRD01004W",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
     }
   },
   "/hardware/gpu/004-throttling": {
@@ -458,13 +409,6 @@
       "error_code": "no error code",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
-    },
-    "WARN": {
-      "situation": "GPU温度が最高動作温度付近まで上昇し、GPU周波数が低下しています",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "HRD01005W",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
     }
   },
   "/hardware/gpu/005-frequency": {
@@ -474,13 +418,6 @@
       "error_code": "no error code",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
-    },
-    "WARN": {
-      "situation": "GPU入力クロックが異常な状態である",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "HRD01004W",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
     }
   },
   "/hardware/hdd/001-temperature": {
@@ -506,13 +443,6 @@
       "error_code": "no error code",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
-    },
-    "WARN": {
-      "situation": "HDDの帯域が逼迫しています",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "HRD01005W",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
     }
   },
   "/hardware/hdd/007-load/read_rate": {
@@ -522,13 +452,6 @@
       "error_code": "no error code",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
-    },
-    "WARN": {
-      "situation": "HDDの帯域が逼迫しています",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "HRD01004W",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
     }
   },
   "/hardware/hdd/007-load/write_iops": {
@@ -538,13 +461,6 @@
       "error_code": "no error code",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
-    },
-    "WARN": {
-      "situation": "HDDの帯域が逼迫しています",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "HRD01005W",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
     }
   },
   "/hardware/hdd/007-load/write_rate": {
@@ -554,13 +470,6 @@
       "error_code": "no error code",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
-    },
-    "WARN": {
-      "situation": "HDDの帯域が逼迫しています",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "HRD01004W",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
     }
   },
   "/hardware/memory/001-usage": {
@@ -570,13 +479,6 @@
       "error_code": "no error code",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
-    },
-    "WARN": {
-      "situation": "メモリの使用率が逼迫しています",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "HRD01004W",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
     }
   },
   "/hardware/network/004-packet_reassembles": {
@@ -586,13 +488,6 @@
       "error_code": "no error code",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
-    },
-    "WARN": {
-      "situation": "ROSトピックが欠損している可能性があります",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "HRD01005W",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
     }
   },
   "/localization/001-topic_status/pose_twist_fusion_filter": {
