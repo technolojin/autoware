@@ -226,7 +226,7 @@ repositories:
   product/l4_toolkit:
     type: git
     url: git@github.com:tier4/l4_toolkit.git
-    version: 12748a50285fe6030b1f593c33d62d8d815171a3
+    version: 38a6b9cd5003139cf85f2d586c192b2e3e5276d6
     base: false
   vendor/emergency_vehicle_detector:
     type: git
