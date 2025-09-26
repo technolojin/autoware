@@ -35,3 +35,5 @@ sudo cp "$(dirname "$0")/ignore.txt" /etc/ota/
 . .webauto-ci/common/ota-clean-up/clean-up-nsight.sh
 # reduce "git" folder size, and other folders
 . .webauto-ci/common/ota-clean-up/clean-up-ecu-image.sh
+# remove "ansible" related packages
+. .webauto-ci/common/ota-clean-up/clean-up-ansible.sh

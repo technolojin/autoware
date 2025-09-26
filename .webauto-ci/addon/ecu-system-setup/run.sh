@@ -1,8 +1,12 @@
 #!/bin/bash -e
+# cspell: ignore nsight
 
 : "${WEBAUTO_CI_GITHUB_TOKEN:?is not set}"
 
 : "${ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK:?is not set}"
+
+# cleanup base image first
+. .webauto-ci/common/ota-clean-up/clean-up-base-image.sh
 
 sudo -E apt-get -y update
 sudo -E apt-get -y install "linux-image-$(uname -r)" "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
@@ -27,5 +31,14 @@ git config --global --unset-all url."https://${GITHUB_TOKEN}:x-oauth-basic@githu
 sudo mkdir -p /etc/ota
 sudo cp "$(dirname "$0")/persistents.txt" /etc/ota/
 sudo cp "$(dirname "$0")/ignore.txt" /etc/ota/
+
+# remove "jetpack" dev packages
+. .webauto-ci/common/ota-clean-up/clean-up-jetpack-dev.sh
+# remove "nsight" related packages
+. .webauto-ci/common/ota-clean-up/clean-up-nsight.sh
+# reduce "git" folder size, and other folders
+. .webauto-ci/common/ota-clean-up/clean-up-ecu-image.sh
+# remove "ansible" related packages
+. .webauto-ci/common/ota-clean-up/clean-up-ansible.sh
 
 sudo sed -i '/^autoware\sALL=(ALL)\sNOPASSWD:ALL/d' /etc/sudoers

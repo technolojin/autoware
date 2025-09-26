@@ -2,11 +2,27 @@
 # cspell: ignore unhold nsight prerm
 
 for package_prefix in "$@"; do
-    dpkg_output=$(dpkg -l | grep "^ii  ${package_prefix}" | awk '{print $2}')
+    dpkg_output1=$(dpkg -l | grep "^ii  ${package_prefix}" | awk '{print $2}')
+    dpkg_output2=$(dpkg -l | grep "^hi  ${package_prefix}" | awk '{print $2}')
+    # Merge the two variables, sort, and remove duplicates
+    dpkg_output=$(echo "$dpkg_output1" "$dpkg_output2" | tr ' ' '\n' | sort -u)
 
     if [ -n "$dpkg_output" ]; then
         echo "$dpkg_output" | while IFS= read -r full_name; do
-            version_name=$(dpkg -l | grep "^ii  ${full_name}\s" | awk '{print $3}')
+            version_name1=$(dpkg -l | grep "^ii  ${full_name}\s" | awk '{print $3}')
+            version_name2=$(dpkg -l | grep "^hi  ${full_name}\s" | awk '{print $3}')
+
+            if [ -n "$version_name1" ]; then
+                version_name="$version_name1"
+            elif [ -n "$version_name2" ]; then
+                version_name="$version_name2"
+            else
+                continue
+            fi
+
+            # You can now use the version_name variable
+            echo "The version is: $version_name"
+
             echo ""
             echo "---------  processing : ${full_name}  ${version_name} --------"
             echo "Found installed package: $package_prefix, package full name is: $full_name"
@@ -34,9 +50,9 @@ for package_prefix in "$@"; do
             # Create a temporary directory for the dummy package build
             # Using mktemp is safer to avoid conflicts if the script is run multiple times concurrently
 
-            base_dir=/home/autoware/deb_temp
-            sudo mkdir "$base_dir"
-            temp_build_dir=$(sudo mktemp -d "${base_dir}/${dummy_foldername}.XXXXXX")
+            base_dir=/home/autoware/deb-temp
+            mkdir -p "$base_dir"
+            temp_build_dir=$(mktemp -d "${base_dir}/${dummy_foldername}.XXXXXX")
 
             output_dir="${base_dir}/output"
             sudo mkdir -p "${output_dir}"
@@ -61,7 +77,7 @@ for package_prefix in "$@"; do
                 # Correctly format the Provides line:
                 printf "Provides: %s (= %s)\n" "${full_name}" "${version_name}"
                 printf "Installed-Size: 1\n"
-            } >>DEBIAN/control
+            } | sudo tee DEBIAN/control >/dev/null
 
             # step 3: build the Dummy .deb Package
             # Pop back to the original directory before building
