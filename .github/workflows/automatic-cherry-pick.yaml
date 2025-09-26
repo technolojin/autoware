@@ -5,6 +5,8 @@ on:
       - main # Branches where the original PRs will be merged
       - beta/v4.0.2
       - beta/v4.1.0
+      - beta/v4.2
+      - beta/v4.3
     types:
       - closed
       - labeled
@@ -27,6 +29,8 @@ jobs:
           - main
           - beta/v4.0.2
           - beta/v4.1.0
+          - beta/v4.2
+          - beta/v4.3
 
     steps:
       - name: Checkout
