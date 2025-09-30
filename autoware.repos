@@ -2,17 +2,17 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: v0.54.0
+    version: v0.55.0
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: v0.54.0
+    version: v0.55.0
     base: true
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
-    version: 6829fde0b7f8ef6b0155f1902022b7f6d89b068b
+    version: 99d799247aebc0ef95f4a1fab9ce13752f11ae5a
     base: true
   autoware/autoware_utils:
     type: git
@@ -27,17 +27,17 @@ repositories:
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: v0.54.0
+    version: v0.55.0
     base: true
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: 6a34285581c8961104517cc1363a73dda8497d78
+    version: eb2e3c21c44feac98d440ac9b04e3bad021a81ce
     base: true
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: v0.54.0
+    version: v0.55.0
     base: true
   autoware/autoware_msgs:
     type: git
@@ -151,7 +151,7 @@ repositories:
     url: https://github.com/autowarefoundation/bevdet_vendor.git
     version: 0cda477b09ed27cfc8484c792b4f5f3063cf425f
     base: true
-  rclcpp: # Based stable version, the fix-patch for service in initialization and the glog feature is added
+  rclcpp: # Based stable version, the fix-patch for service in initialization and the glog feature and the fix-patch for loading node in container is added
     type: git
     url: https://github.com/tier4/rclcpp.git
     version: ef50da230a0c4a1320dc52b5a16dd0cc13018cec
@@ -162,16 +162,16 @@ repositories:
     version: 9597d2bc050c408ffc1e6797cc45527bd7ce4232
     base: true
   # Include many-nodes-in-container launch fix that ensures no LoadComposableNode call hangs
-  # See https://github.com/ros2/launch_ros/compare/humble...tier4:launch_ros:/humble/fix/load_composable_node
+  # See https://github.com/ros2/launch_ros/compare/humble...tier4:launch_ros:/t4-main
   launch_ros:
     type: git
     url: https://github.com/tier4/launch_ros.git
-    version: 2759f8ae5dca9d4ab517a9b5d6b5f2c66556337f
+    version: 3bf6abf86eefd1629d2499f8f666998311fa831b
     base: true
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: v0.54.0
+    version: v0.55.0
     base: true
   # middleware
   # TODO(TIER IV): During the transition period of Agnocast introduction,
