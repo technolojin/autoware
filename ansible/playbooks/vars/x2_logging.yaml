@@ -11,8 +11,8 @@ additional_font_packages:
 # cyclonedds
 cyclonedds:
   network_interface:
-    - { address: enp3s0f0, priority: default }
-    - { address: enp8s0, priority: default }
+    - { address: enp3s0f0, priority: 1 } # Prioritize 10Gb interface
+    - { address: enp8s0, priority: 0 }
   minimum_socket_receive_buffer_size: 10MB
   minimum_socket_send_buffer_size: 10MB
   max_message_size: 8950B
