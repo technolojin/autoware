@@ -69,6 +69,13 @@ letterbox_monitor:
     use_call_diag: true
     use_letterbox: true
     ignore_node_names: []
+  - service_name: autoware_main_mrm
+    ros_log_dir: /home/autoware/.ros/autoware_main_mrm_log
+    user_name: autoware
+    group_name: autoware
+    use_call_diag: true
+    use_letterbox: true
+    ignore_node_names: []
 
 # simple_system_launch
 simple_system_launch_items:
