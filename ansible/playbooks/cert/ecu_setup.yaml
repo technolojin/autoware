@@ -1,0 +1,14 @@
+- name: Run ecu_setup cert
+  ansible.builtin.include_role:
+    name: "{{ cert_item.name }}"
+  loop:
+    - { name: autoware.ecu_system_setup.nftables }
+    - { name: autoware.ecu_system_setup.tpm2 }
+    - { name: autoware.ecu_system_setup.usbguard }
+    - { name: x2_xcarbon, when: skip_xcarbon is not defined or not skip_xcarbon | bool }
+    - { name: xcarbon_bridge, when: skip_xcarbon is not defined or not skip_xcarbon | bool }
+    - { name: autoware.ecu_system_setup.third_party_kernel_module_sign }
+  loop_control:
+    label: "{{ cert_item.name }}"
+    loop_var: cert_item
+  when: cert_item.when | default(true)

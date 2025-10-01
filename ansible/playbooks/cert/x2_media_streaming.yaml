@@ -1,0 +1,8 @@
+- name: Run media_streaming cert
+  ansible.builtin.include_role:
+    name: "{{ cert_item.name }}"
+  loop:
+    - { name: autoware.ecu_system_setup.iptables }
+  loop_control:
+    label: "{{ cert_item.name }}"
+    loop_var: cert_item

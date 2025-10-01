@@ -49,3 +49,13 @@
     - { role: autoware.ecu_system_setup.disable_lock_screen }
     - { role: autoware.ecu_system_setup.cabin_sight_monitor }
     - { role: autoware.ecu_system_setup.systemd_analyze_collector }
+
+- name: Conditionally run cert setup
+  hosts: localhost
+  vars_files:
+    - ./vars/essential_vars.yaml
+    - ./cert/vars/x2_media_streaming.yaml
+  tasks:
+    - name: Run cert setup tasks
+      ansible.builtin.include_tasks: cert/x2_media_streaming.yaml
+      when: run_cert_setup | default(false)

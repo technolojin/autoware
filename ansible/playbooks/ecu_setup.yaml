@@ -51,3 +51,13 @@
     - { role: autoware.ecu_system_setup.systemd_analyze_collector }
     - { role: autoware.ecu_system_setup.passenger_app_agent }
     - { role: divert_jetpack_static_lib }
+
+- name: Conditionally run cert setup
+  hosts: localhost
+  vars_files:
+    - ./vars/essential_vars.yaml
+    - ./cert/vars/ecu_setup.yaml
+  tasks:
+    - name: Run cert setup tasks
+      ansible.builtin.include_tasks: cert/ecu_setup.yaml
+      when: run_cert_setup | default(false)

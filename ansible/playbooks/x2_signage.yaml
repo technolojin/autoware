@@ -59,3 +59,13 @@
     - name: Setup netplan
       ansible.builtin.include_role:
         name: autoware.ecu_system_setup.netplan
+
+- name: Conditionally run cert setup
+  hosts: localhost
+  vars_files:
+    - ./vars/essential_vars.yaml
+    - ./cert/vars/x2_signage.yaml
+  tasks:
+    - name: Run cert setup tasks
+      ansible.builtin.include_tasks: cert/x2_signage.yaml
+      when: run_cert_setup | default(false)

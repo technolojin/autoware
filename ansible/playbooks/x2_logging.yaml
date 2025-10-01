@@ -73,3 +73,13 @@
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.ecu_system_setup.rsyncd }
     - { role: autoware.ecu_system_setup.systemd_analyze_collector }
+
+- name: Conditionally run cert setup
+  hosts: localhost
+  vars_files:
+    - ./vars/essential_vars.yaml
+    - ./cert/vars/x2_logging.yaml
+  tasks:
+    - name: Run cert setup tasks
+      ansible.builtin.include_tasks: cert/x2_logging.yaml
+      when: run_cert_setup | default(false)
