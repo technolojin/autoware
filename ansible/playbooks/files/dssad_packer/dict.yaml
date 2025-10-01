@@ -1,0 +1,118 @@
+# yamllint disable rule:truthy
+# ================================================================
+# Topic Field Dictionary
+#
+# This file defines human-readable labels for specific field values
+# in messages, organized by topic name.
+#
+# Format:
+# topics:
+#   <topic name>:
+#     <field name>:
+#       <raw value>: <label>
+#
+# - <topic name> : ROS topic name or diagnostic category
+# - <field name> : Field name inside the message
+# - <raw value>  : Actual value present in the message (string or number)
+# - <label>      : Human-readable explanation shown in output
+#
+# Example output:
+#   level: 0 (OK)
+#   emergency: true (ACTIVE)
+# ================================================================
+
+topics:
+  /api/localization/initialization_state:
+    state:
+      0: UNKNOWN
+      1: UNINITIALIZED
+      2: INITIALIZING
+      3: INITIALIZED
+  /api/routing/state:
+    state:
+      0: UNKNOWN
+      1: UNSET
+      2: SET
+      3: ARRIVED
+      4: CHANGING
+  /api/operation_mode/state:
+    mode:
+      0: UNKNOWN
+      1: STOP
+      2: AUTONOMOUS
+      3: LOCAL
+      4: REMOTE
+  /pilot_auto/api/ecu/state:
+    state:
+      0: UNKNOWN
+      1: STARTUP
+      2: RUNNING
+      3: SHUTDOWN_PREPARING
+      4: SHUTDOWN_READY
+      1001: STARTUP_TIMEOUT
+      1002: SHUTDOWN_TIMEOUT
+  /vehicle/status/control_mode:
+    mode:
+      0: NO_COMMAND
+      1: AUTONOMOUS
+      2: AUTONOMOUS_STEER_ONLY
+      3: AUTONOMOUS_VELOCITY_ONLY
+      4: MANUAL
+      5: DISENGAGED
+      6: NOT_READY
+  /j6/can/status/m3_status:
+    steering_over_ride_status:
+      0: OFF
+      1: ON
+    accel_over_ride_status:
+      0: OFF
+      1: ON
+  /api/fail_safe/mrm_state:
+    state:
+      0: UNKNOWN
+      1: NORMAL
+      2: MRM_OPERATING
+      3: MRM_SUCCEEDED
+      4: MRM_FAILED
+    behavior:
+      0: UNKNOWN
+      1: NONE
+      2: EMERGENCY_STOP
+      3: COMFORTABLE_STOP
+      4: PULL_OVER
+  /planning/planning_factors/lane_change_left:
+    behavior:
+      0: UNKNOWN
+      1: NONE
+      2: SLOW_DOWN
+      3: STOP
+      4: SHIFT_LEFT
+      5: SHIFT_RIGHT
+      6: TURN_LEFT
+      7: TURN_RIGHT
+  /planning/planning_factors/lane_change_right:
+    behavior:
+      0: UNKNOWN
+      1: NONE
+      2: SLOW_DOWN
+      3: STOP
+      4: SHIFT_LEFT
+      5: SHIFT_RIGHT
+      6: TURN_LEFT
+      7: TURN_RIGHT
+  /vehicle/status/turn_indicators_status:
+    report:
+      1: DISABLE
+      2: ENABLE_LEFT
+      3: ENABLE_RIGHT
+  /planning/planning_factors/static_obstacle_avoidance:
+    behavior:
+      0: UNKNOWN
+      1: NONE
+      2: SLOW_DOWN
+      3: STOP
+      4: SHIFT_LEFT
+      5: SHIFT_RIGHT
+      6: TURN_LEFT
+      7: TURN_RIGHT
+# yamllint enable rule:truthy

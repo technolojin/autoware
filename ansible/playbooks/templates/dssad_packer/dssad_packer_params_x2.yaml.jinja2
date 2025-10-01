@@ -1,41 +1,211 @@
+# =================================================================================================
+# dssad_packer configuration
+# =================================================================================================
+#
+# database:
+#   path: <string>
+#     REQUIRED. Filesystem path where the DSSAD database will be stored.
+#     Example: /mnt/DSSAD
+#
+#   name: <string>
+#     REQUIRED. Database filename.
+#     Example: dssad.db3
+#
+# qos_depth: <N>
+#   OPTIONAL. QoS history depth (ROS 2 subscription queue size).
+#   DEFAULT: 1000
+#   Larger values allow more messages to be buffered, but use more memory.
+#
+# topic_dictionary: <string>
+#   OPTIONAL. Path to the topic dictionary YAML file.
+#   DEFAULT: /etc/autoware_logging_suite/dssad/dict.yaml
+#   Example: /etc/dssad/dictionary.yaml
+# debug: <bool>
+#   OPTIONAL. Enable verbose debug logging (RCLCPP_DEBUG).
+#   DEFAULT: false
+#   Set to true to output detailed internal state and processing flow.
+# -------------------------------------------------------------------------------------------------
+# topics:
+#   <topic name>:              # Topic name
+#     ... (associated fields)
+# -------------------------------------------------------------------------------------------------
+# diagnostics_graph:
+#   status:
+#     <diagnostic path>:       # Diagnostic path (full name, e.g. "/autoware/modes/autonomous")
+#                              # or Logical name (e.g. "j6_interface: vehicle_errors")
+#                              # Can be a full logical name, or just one that includes the diagnostic name
+#       ... (associated fields)
+#
+#   unknowns:
+#     <diagnostic name>:       # Logical name not present in the diagnostic graph
+#                              # Can be a full logical name, or just one that includes the diagnostic name
+#                              # (e.g. "collision_checker")
+#       ... (associated fields)
+# -------------------------------------------------------------------------------------------------
+# associated fields:
+#   name: <string | list>
+#     REQUIRED. Target variable(s) to monitor from this topic message.
+#     Can also be "*" — treat any field as changed (unconditional).
+#     NOTE: MUST be quoted in YAML, e.g. "*"
+#
+#   format: <map>
+#     OPTIONAL. Format settings for specific fields.
+#     DEFAULT: none
+#     Example usages:
+#       data: json     # Treat the "data" field as JSON (pretty-print if valid JSON)
+#       data: tabbed   # Treat the "data" field as tab-separated text
+#     Behavior:
+#       - "json": parse if valid JSON and pretty-print; otherwise JSON-escape.
+#       - "tabbed": split contents by tab and format as structured output.
+#     NOTE: Applies only under 'topics:' entries.
+#
+#   dump_mode: <full | diff>
+#     OPTIONAL. Controls how information is dumped.
+#     full : Always dump all fields, regardless of changes.
+#     diff : Dump only the parts that have changed.
+#     DEFAULT: full
+#   NOTE: This option is effective only when dumping diagnostics_graph.status.
+#
+#   <Retention Policy>:
+#     OPTIONAL. Controls how many records are kept before older ones are purged.
+#     DEFAULT: count = 2500
+#
+#   count: <N>
+#     OPTIONAL. Max number of records to retain.
+#     Oldest entries are dropped when exceeded.
+#
+#   day: <N>
+#     OPTIONAL. Retention period in days.
+#     Records older than this will be purged.
+#
+#   <Marking rules>:
+#     OPTIONAL. Rules for marking conditions of interest.
+#     DEFAULT: no marking applied.
+#
+#   mark_rules:
+#     - {field_name}: A condition [eq, ne, le, lt, ge, gt, contains, not_contains]: {value} applied to the message field
+#       <field>: { eq: <value> } # equals
+#       <field>: { ne: <value> } # not equals
+#       function: <string>       # Function name for complex checks (pre-defined in code).
+#       mark: "⚠️"               # OPTIONAL. Mark symbol/text.
+#                                # DEFAULT: 🚩
+# =================================================================================================
+
 /**:
   ros__parameters:
     database:
       path: {{ dssad_logging_directory }}
       name: {{ dssad_file_name }}
     qos_depth: 1000
+    topic_dictionary: {{ dssad_packer_config_dir }}/dict.yaml
+    debug: true
     topics:
-      /autoware/state:
-        name: state
       /api/localization/initialization_state:
         name: state
       /api/routing/state:
         name: state
       /api/operation_mode/state:
         name: mode
+        mark_rules:
+          mode: { eq: 2 }
+      /pilot_auto/api/ecu/state:
+        name: state
       /vehicle/status/control_mode:
         name: mode
+        mark_rules:
+          mode: { ne: 2 }
+      /in_vehicle_tool/log/mot:
+        name: data
+        format:
+          data: tabbed
+      /vehicle/status/emergency_button_status:
+        name: emergency
+        mark_rules:
+          emergency: { eq: true, mark: "🆘" }
       /api/external/get/emergency:
         name: emergency
+        mark_rules:
+          emergency: { eq: true, mark: "⛔" }
+      /j6/can/status/m3_status:
+        name: [steering_over_ride_status, accel_over_ride_status]
+        mark_rules:
+          steering_over_ride_status: { eq: 1, mark: "🛞" }
+          accel_over_ride_status: { eq: 1, mark: "⏩" }
       /api/fail_safe/mrm_state:
         name: [state, behavior]
-      /system/emergency/hazard_status:
-        name: [status.diag_safe_fault, status.diag_latent_fault, status.diag_single_point_fault]
-        count: 300000
-      /planning/steering_factor/lane_change_left:
-        name: factors.status
-      /planning/steering_factor/lane_change_right:
-        name: factors.status
-      /planning/steering_factor/avoidance:
-        name: factors.status
+        mark_rules:
+          state: { ne: 1, mark: "🛟"}
+      /planning/planning_factors/lane_change_left:
+        name: factors
+        mark_rules:
+          function:
+            lane_change_left:
+              start: "⬅️ 車線変更手順を開始"
+              end: "🏁 車線変更手順を終了"
+              abort: "⛔ 車線変更動作を中断"
+      /planning/planning_factors/lane_change_right:
+        name: factors
+        mark_rules:
+          function:
+            lane_change_right:
+              start: "➡️ 車線変更手順を開始"
+              end: "🏁 車線変更手順を終了"
+              abort: "⛔ 車線変更動作を中断"
       /vehicle/status/turn_indicators_status:
         name: report
+        mark_rules:
+          report:
+            left: { eq: 2, mark: "◀️" }
+            right: { eq: 3, mark: "▶️" }
+      /planning/planning_factors/static_obstacle_avoidance:
+        name: factors
+        mark_rules:
+          function:
+            static_obstacle_avoidance:
+              left_start: "⏪ 意図的な車線横断を開始"
+              left_end: "⏩ 意図的な車線横断を終了"
+              right_start: "⏩ 意図的な車線横断を開始"
+              right_end: "⏪ 意図的な車線横断を終了"
+      /webauto/vehicle_info:
+        name: data
+        format:
+          data: json
       /level4_mode_manager/is_level4_available:
         name: is_level4_available
+        mark_rules:
+          is_level4_available:
+            l4: { eq: true, mark: "④" }
+            l2: { eq: false, mark: "②" }
       /level4_mode_manager/is_level4_driving:
         name: is_level4_driving
-    diagnostics:
-      collision_checker:
-        name: [level, message]
-      sudden_deceleration_monitor:
-        name: [level, message]
+        mark_rules:
+          is_level4_driving:
+            l4: { eq: true, mark: "4️⃣" }
+            l2: { eq: false, mark: "2️⃣" }
+
+    diagnostics_graph:
+      status:
+        /autoware/modes/autonomous:
+          name: level
+          count: 300000
+          dump_mode: diff
+          mark_rules:
+            level: { ge: 2, mark: "❌"}
+        "j6_interface: vehicle_errors":
+          name: level
+          mark_rules:
+            level: { ge: 2, mark: "❌"}
+        "collision_detector: collision_detect":
+          name: level
+          mark_rules:
+            level: { ge: 2, mark: "❌"}
+        "ntp_monitor: NTP Offset":
+          name: level
+          mark_rules:
+            level: { ge: 2, mark: "❌"}
+
+      unknowns:
+        "sudden_deceleration_monitor: sudden_deceleration_monitor":
+          name: level
+          mark_rules:
+            level: { ge: 2, mark: "❌"}
