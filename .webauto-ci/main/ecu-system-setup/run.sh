@@ -1,4 +1,5 @@
 #!/bin/bash -e
+# cspell: ignore nsight
 
 : "${WEBAUTO_CI_SOURCE_PATH:?is not set}"
 : "${WEBAUTO_CI_GITHUB_TOKEN:?is not set}"
@@ -6,6 +7,10 @@
 : "${AUTOWARE_PATH:?is not set}"
 : "${ECU_SYSTEM_SETUP_SOURCE_PATH:?is not set}"
 : "${ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK:?is not set}"
+: "${ECU_ID:?is not set}"
+
+# cleanup base image first
+. .webauto-ci/common/ota-clean-up/clean-up-base-image.sh
 
 cd "$AUTOWARE_PATH"
 # Delete files for incremental builds created in the autoware-build phase.
@@ -32,6 +37,7 @@ readonly dummy_vehicle_id=default # Reconfigure during OTA update
 ansible-galaxy collection install -f -r "ansible-galaxy-requirements.yaml"
 ansible-playbook "${ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK}" \
     -e autoware_install_dir="$(pwd)" \
+    -e github_token="${GITHUB_TOKEN}" \
     -e vehicle_id="${dummy_vehicle_id}" \
     -e reload_systemd=no
 
@@ -40,5 +46,17 @@ git config --global --unset-all url."https://${GITHUB_TOKEN}:x-oauth-basic@githu
 sudo mkdir -p /etc/ota
 sudo cp "$(dirname "$0")/persistents.txt" /etc/ota/
 sudo cp "$(dirname "$0")/ignore.txt" /etc/ota/
+
+# Check the value of ECU_ID
+if [[ $ECU_ID == "sub" ]]; then
+    # remove "jetpack" dev packages
+    . .webauto-ci/common/ota-clean-up/clean-up-jetpack-dev.sh
+    # remove "nsight" related packages
+    . .webauto-ci/common/ota-clean-up/clean-up-nsight.sh
+    # remove "ansible" related packages
+    . .webauto-ci/common/ota-clean-up/clean-up-ansible.sh
+fi
+# reduce "git" folder size, and other folders
+. .webauto-ci/common/ota-clean-up/clean-up-ecu-image.sh
 
 sudo sed -i '/^autoware\sALL=(ALL)\sNOPASSWD:ALL/d' /etc/sudoers

@@ -24,10 +24,13 @@ cyclonedds:
 
 # ptp4l port
 ptp4l_network_port: enp1s0
+ptp4l_use_software_stamp: false
+ptp4l_synchronize_system_clock: true
+ptp4l_phc2sys_offset: -37
 
 # ros2-app-build
 ros2_app_repository: git@github.com:tier4/vehicle_voice_alert_system.git
-ros2_app_repository_version: ad30d68ca584db1a6ab1d0c6869326fab72213db
+ros2_app_repository_version: f85571c0d104053f752946ccd1c242255601ba2a # beta/v4.3
 depends_repos: vehicle_voice_alert_system.repos
 
 # simple system launch
@@ -43,9 +46,15 @@ syslog_collector_type: Client
 rsyslog_server_ipaddr: 192.168.20.71
 rsyslog_queue_maxsize: 1g
 
+# systemd_analyze_collector
+rsync_target_host_ip: 192.168.20.71
+
 # otaclient
 otaclient_release_version: v3.11.0
 otaclient_package_whl_checksum: sha256:17e210f3dc99cfc0ec30cd450222632cdbe4c802b35dad20168bcf0144e8472b
 otaclient_manifest_checksum: sha256:197d236a37137afc43ee693ea6e7a907725f28526dca7794b9b27d17a6d612ea
 otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-voice-system
 otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-1gbe.j2
+
+# Passenger App
+passenger_app_version: v0.0.1

@@ -29,6 +29,14 @@ keyboard_layout_file: keyboard.jp+ctrl_nocaps
 
 # ptp4l port
 ptp4l_network_port: enp0s31f6
+ptp4l_use_software_stamp: true
+
+# SYNC.TOOLING
+sync_tooling:
+  worker:
+    ptp4l_units:
+      - ptp4l
+    phc2sys_units: []
 
 # netplan
 netplan_files: netplan/99-autoware.x2-addon.yaml
@@ -47,7 +55,7 @@ sxpf_ros_driver_version: 493f4ddb3d40f828ab7caea4d39e2c6d02928758
 autoware_install_dir: /home/autoware/overlay_ws
 
 # perception application/service
-perception_application_edge_auto_version: beta/v4.2
+perception_application_edge_auto_version: beta/v4.3
 perception_application_base_path: /home/autoware
 perception_application_edge_auto_repo: git@github.com:tier4/edge-auto-jetson.x2.git
 perception_application_service_run_templates_file: perception_application/run.sh.addon.j2 # we can use different run files if the path is in local
@@ -78,3 +86,17 @@ rsyslog_queue_maxsize: 1g
 #     use_call_diag: true
 #     use_letterbox: false
 #     ignore_node_names: []
+
+# c2_fw_autoupdate
+c2_ecu_type: addon
+fw_rom_version: 20240927
+addon_angle_params: (120 120 120)
+
+# systemd_analyze_collector
+rsync_target_host_ip: 192.168.20.71
+
+# rsyncd - server for logpacker coredump plugin
+# rsyncd - add systemd-tmpfiles configuration for logpacker coredump plugin
+setup_coredump_rsyncd_service: true
+rsyncd_hosts_allow: 192.168.30.71 # X2 Logging ECU
+setup_coredump_tmpfiles_service: true

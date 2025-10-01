@@ -35,6 +35,14 @@
       include:
         "*": default
       exclude:
+        "blockage_return_diag: /sensing/lidar/front_lower: blockage_validation": warn
+        "blockage_return_diag: /sensing/lidar/front_upper: blockage_validation": warn
+        "blockage_return_diag: /sensing/lidar/rear_lower: blockage_validation": warn
+        "blockage_return_diag: /sensing/lidar/rear_upper: blockage_validation": warn
+        "blockage_return_diag: /sensing/lidar/right_lower: blockage_validation": warn
+        "blockage_return_diag: /sensing/lidar/right_upper: blockage_validation": warn
+        "blockage_return_diag: /sensing/lidar/left_lower: blockage_validation": warn
+        "blockage_return_diag: /sensing/lidar/left_upper: blockage_validation": warn
         "topic_state_monitor_radar_front_right: radar_front_right_topic_status": default
         "topic_state_monitor_radar_front_left: radar_front_left_topic_status": default
         "topic_state_monitor_radar_rear_right: radar_rear_right_topic_status": default
@@ -57,3 +65,4 @@
         # The route will be set as unset after the vehicle arrives at its goal.
         "component_state_diagnostics: route_state": default
         "rosbag_data_checker_db3: RosbagDataChecker": default
+        "ndt_scan_matcher: scan_matching_status": warn

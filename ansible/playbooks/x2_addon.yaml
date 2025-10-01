@@ -15,6 +15,9 @@
       ansible.builtin.set_fact:
         rosdistro: humble
       when: ansible_distribution_version == "22.04"
+    - name: Set addonlite params
+      ansible.builtin.set_fact:
+        c2_angle_params: "{{ addon_angle_params }}"
   roles:
     - { role: autoware.ecu_system_setup.automatic_login }
     - { role: autoware.ecu_system_setup.additional_fonts }
@@ -28,17 +31,25 @@
     - { role: autoware.ecu_system_setup.otaclient }
     - { role: autoware.ecu_system_setup.evaluator_self_hosted_environment }
     - { role: autoware.ecu_system_setup.ptp4l }
+    - { role: autoware.ecu_system_setup.rsyncd }
     - { role: autoware.ecu_system_setup.rsyslog }
     - { role: autoware.ecu_system_setup.set_autoware_env }
     - { role: autoware.ecu_system_setup.syslog_collector_client }
     - { role: autoware.ecu_system_setup.stop_auto_upgrade }
     - { role: autoware.ecu_system_setup.timezone }
     - { role: autoware.ecu_system_setup.turn_off_desktop_notification }
+    - { role: x2_disable_timesyncd }
+    - { role: x2_disable_chrony }
+    - role: autoware.ecu_system_setup.sync_tooling
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - role: autoware.ecu_system_setup.sxpf_driver
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - role: autoware.ecu_system_setup.sxpf_ros_driver # This must be executed after `sxpf_driver`
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - role: autoware.ecu_system_setup.c2_fw_autoupdate # This must be executed after `sxpf_driver`
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - role: autoware.edge_auto_jetson.perception_application
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.ecu_system_setup.netplan } # need to be the last, as the internet will lost after this
     # - { role: autoware.ecu_system_setup.letterbox_monitor }
+    - { role: autoware.ecu_system_setup.systemd_analyze_collector }

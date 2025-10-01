@@ -1,0 +1,13 @@
+[Unit]
+Description=autoware_main_mrm
+After=autoware_system_launch.service tier4_autoware_standby_wait.target tier4_system_standby_wait.target
+
+[Service]
+Environment=ENABLE_AGNOCAST=1
+ExecStart=/opt/autoware/services/system_launch/autoware_main_launch.service/run.sh
+KillSignal=SIGINT
+User=autoware
+SyslogIdentifier=autoware_main_launch
+
+[Install]
+WantedBy=multi-user.target

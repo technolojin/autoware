@@ -196,7 +196,7 @@ repositories:
   description/vehicle/j6_gen2_description:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
-    version: f30c5280d05650a3eb1765850138667940818243
+    version: main
     base: false
   vendor/mj20_interface:
     type: git
@@ -206,7 +206,7 @@ repositories:
   vendor/ros2_socketcan:
     type: git
     url: https://github.com/autowarefoundation/ros2_socketcan.git
-    version: 85da8c31286cad69de65dc50219e7d901ae9e94b
+    version: 822ca033c8ce934dc5a622d7bb80adb575522b33
     base: false
   vendor/foxglove_bridge:
     type: git
@@ -221,12 +221,12 @@ repositories:
   vendor/emergency_vehicle_detector:
     type: git
     url: git@github.com:tier4/emergency_vehicle_detector.git
-    version: cd69f157dbcdf06e6657bd9652b8ff1a25f71d4c
+    version: vendor
     base: false
   vendor/pyrocan:
     type: git
     url: git@github.com:tier4/pyrocan.git
-    version: main
+    version: f1c9abf9309fae8966bb2500707af063a17aef25
     base: false
   vendor/rosbag2:
     type: git

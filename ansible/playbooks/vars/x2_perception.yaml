@@ -24,7 +24,19 @@ netcore_wmem_max: 2147483647
 # jetson_id: 0
 
 # ptp4l port
-ptp4l_network_port: eth0
+ptp4l_network_port: enP1p1s0
+ptp4l_use_software_stamp: false
+ptp4l_synchronize_system_clock: true
+ptp4l_phc2sys_offset: -37
+ptp4l_extra_args: --tx_timestamp_timeout=100
+
+# SYNC.TOOLING
+sync_tooling:
+  worker:
+    ptp4l_units:
+      - ptp4l
+    phc2sys_units:
+      - phc2sys
 
 # otaclient
 otaclient_release_version: v3.11.0
@@ -51,15 +63,21 @@ setup_coredump_rsyncd_service: true
 rsyncd_hosts_allow: 192.168.30.71 # X2 Logging ECU
 setup_coredump_tmpfiles_service: true
 
+# systemd_analyze_collector
+rsync_target_host_ip: 192.168.20.71
+
 # ros2 native build
-ansible_python_path: /usr/bin/python3.8
+ansible_python_path: /usr/bin/python3.10
+
+# camera driver
+camera_driver_repo: https://api.github.com/repos/tier4/tier4_automotive_hdr_camera/releases/tags/v2.1.0
 
 # perception application/service
-perception_application_edge_auto_version: beta/v4.2
+perception_application_edge_auto_version: beta/v4.3
 perception_application_base_path: /home/autoware
 perception_application_edge_auto_repo: git@github.com:tier4/edge-auto-jetson.x2.git
+perception_application_native_built_ros: false # True if we build ROS from source and not using apt
 perception_application_service_run_templates_file: perception_application/run.sh.edge_auto_x2.j2 # we can use different run files if the path is in local
-perception_application_native_built_ros: true # True if we build ROS from source and not using apt
 perception_application_directory_name: overlay_ws
 
 # fool proof check service
@@ -84,3 +102,13 @@ letterbox_monitor:
     use_call_diag: true
     use_letterbox: false
     ignore_node_names: []
+
+# c2_fw_autoupdate
+c2_ecu_type: anvil
+fw_rom_version: 20240927
+per1_angle_params: (120 120 120 120)
+per2_angle_params: (120 120  62  30)
+
+# reload_camera_driver
+camera_num: 4
+target_service_before_reload_camera_driver: perception-startup.service

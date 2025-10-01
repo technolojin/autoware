@@ -40,12 +40,15 @@
     "subshell",
     "sxpf",
     "systemlog",
+    "tigervnc",
+    "timesyncd",
     "tmpfiles",
     "Tomohito",
     "vcan",
     "wmem",
     "xcarbon",
-    "xstartup"
+    "xstartup",
+    "writeback"
   ],
   "ignorePaths": [".release_info.yaml"]
 }

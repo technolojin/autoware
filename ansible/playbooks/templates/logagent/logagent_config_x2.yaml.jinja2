@@ -88,3 +88,9 @@ log_upload:
     #   extensions: [jpg]
     #   path: /var/log/
     #  except_current: false
+
+    - file_type: user
+      extensions: [txt,svg]
+      path: {{ systemd_analyze_collector_directory }}
+      hosts: []
+      except_current: false

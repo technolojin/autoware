@@ -4,7 +4,8 @@
 # NOTE: Cyclonedds settings for Sub ECU is not determined yet. Only 1GbE interface is used for now.
 cyclonedds:
   network_interface:
-    - { address: enp5s0f0, priority: default }
+    - { address: enp5s0f1, priority: 1 } # Prioritize 10Gb interface
+    - { address: enp5s0f0, priority: 0 }
   minimum_socket_receive_buffer_size: 20MB
   minimum_socket_send_buffer_size: default
   max_message_size: 65500B
@@ -16,19 +17,6 @@ ipv4_ipfrag_time: 1
 ipv4_ipfrag_high_thresh: 134217728
 netcore_rmem_max: 2147483647
 netcore_wmem_max: 2147483647
-
-# x2_cyclonedds_for_redundancy
-x2_cyclonedds_for_redundancy_cyclonedds:
-  network_interface:
-    - { address: enp5s0f1, priority: 1 } # Prioritize 10Gb interface
-    - { address: enp5s0f0, priority: 0 }
-  minimum_socket_receive_buffer_size: 20MB
-  minimum_socket_send_buffer_size: default
-  max_message_size: 65500B
-  fragment_size: 4000B
-  max_rexmit_message_size: 1456B
-  water_mark_whc_high: 500kB
-  water_mark_whc_low: 1kB
 
 # netplan
 netplan_files: netplan/99-autoware.x2-sub.yaml
@@ -51,7 +39,6 @@ rsyslog_queue_maxsize: 1g
 # rsyncd - server for logpacker coredump plugin
 # rsyncd - add systemd-tmpfiles configuration for logpacker coredump plugin
 setup_coredump_rsyncd_service: true
-# rsyncd_hosts_allow: 192.168.30.71 # X2 Logging ECU (10GB Eth)
 rsyncd_hosts_allow: 192.168.20.71 # X2 Logging ECU (1GB Eth)
 setup_coredump_tmpfiles_service: true
 
@@ -62,8 +49,20 @@ x2_configure_marvell_switch_file: X2_J6_Gen2_Sub_Marvell.xml
 # ptp4l
 x2_ptp4l_ecu: sub
 
+# SYNC.TOOLING
+sync_tooling:
+  worker:
+    ptp4l_units:
+      - ptp4l@enp3s0
+      - ptp4l@enp5s0f0
+    phc2sys_units:
+      - phc2sys_enp5s0f0_to_sys
+      - phc2sys_enp5s0f0_to_enp3s0
+
 # rviz
-rviz_config_path: /home/autoware/autoware.proj/src/autoware/launcher/autoware_launch/rviz/autoware_debug.rviz
+rviz_config_path: /home/autoware/autoware.proj/src/autoware/launcher/autoware_launch/rviz/autoware_x2.rviz
+rviz_launch_file_name: autoware_sub_rviz.launch.xml
+rviz_launch_method: autoware_launch
 
 # screen_recorder
 screen_recorder_default_logging_directory: /tmp
@@ -73,12 +72,16 @@ screen_recorder_default_service_enabled: false
 # redundancy switcher
 redundancy_switcher_repository_url: git@github.com:tier4/redundancy_switcher.git
 redundancy_switcher_clone_dir: /tmp/redundancy_switcher
-redundancy_switcher_version: beta/v4.2
+redundancy_switcher_version: v1.0.0
 redundancy_switcher_install_dir: /opt/redundancy_switcher/bin
 redundancy_switcher_conf_install_dir: /opt/redundancy_switcher/conf
 redundancy_switcher_conf_files: redundancy_switcher/node_info.yaml
 redundancy_switcher_service_template: redundancy_switcher.service.jinja2
 node_id: 1
+
+# fool proof check service
+check_target_service: autoware_sub_launch.service
+fool_proof_check_network_interface: enp5s0f0 # TODO: check vlan.500
 
 # letterbox_monitor
 letterbox_monitor:
@@ -89,3 +92,36 @@ letterbox_monitor:
     use_call_diag: false
     use_letterbox: false
     ignore_node_names: []
+  - service_name: autoware
+    ros_log_dir: /home/autoware/.ros/autoware_sub_log
+    user_name: autoware
+    group_name: autoware
+    use_call_diag: true
+    use_letterbox: true
+    ignore_node_names: []
+
+# tier4_service_standby_wait
+service_list_for_tier4_system: |
+  ptp4l@enp3s0.service \
+  ptp4l@enp5s0f0.service
+service_list_for_tier4_autoware: |
+  boot-shutdown.service \
+  tier4_system_standby_wait.target
+## In the L2 version, enp5s0f1 of the Sub ECU is not connected, so it needs to be changed to enp5s0f0.
+network_interface_for_tier4_service_standby_wait: enp5s0f1
+ecu_type: sub
+
+# simple_system_launch
+simple_system_launch_items:
+  # autoware_sub_launch
+  - file: simple_system_launch/autoware_sub_launch.service
+    command: |
+      mkdir -p /home/autoware/.ros/autoware_sub_log
+      export ROS_LOG_DIR=/home/autoware/.ros/autoware_sub_log
+      export ROS_DOMAIN_ID=2
+      ros2 launch autoware_launch autoware.sub.launch.xml \
+              vehicle_model:="$VEHICLE_MODEL" \
+              sensor_model:="$SENSOR_MODEL" 2>&1 | tee "$HOME"/autoware_sub.log
+
+# systemd_analyze_collector
+rsync_target_host_ip: 192.168.20.71

@@ -4,6 +4,8 @@
 syslog_collector_type: Client
 rsyslog_server_ipaddr: 192.168.30.71 # X2 Logging ECU
 rsyslog_queue_maxsize: 1g
+rsyslog_replace_enable: true # for 5G router syslog
+rsyslog_template_file: rsyslog.conf.j2 # for 5G router syslog, enable UDP
 
 # rsyncd - server for logpacker coredump plugin
 # rsyncd - add systemd-tmpfiles configuration for logpacker coredump plugin
@@ -11,11 +13,8 @@ setup_coredump_rsyncd_service: true
 rsyncd_hosts_allow: 192.168.30.71 # X2 Logging ECU
 setup_coredump_tmpfiles_service: true
 
-# boot shutdown
-boot_shutdown_tools_clone_dir: "{{ autoware_install_dir }}/src/product/boot_shutdown_tools"
-# boot shutdown manager
-# use parameter file in pilot-auto repository
-boot_shutdown_manager_param_file: boot_shutdown_manager/boot_shutdown_manager.param.yaml
+# systemd_analyze_collector
+rsync_target_host_ip: 192.168.30.71
 
 # configure marvell switch
 x2_configure_marvell_switch_board_config_file: bd_cfg_main.xml
@@ -24,10 +23,23 @@ x2_configure_marvell_switch_file: X2_J6_Gen2_Main_Marvell.xml
 # ptp4l
 x2_ptp4l_ecu: main
 
+# SYNC.TOOLING
+sync_tooling:
+  worker:
+    ptp4l_units:
+      - ptp4l@enp3s0
+      - ptp4l@vlan.500
+    phc2sys_units:
+      - phc2sys_sys_to_enp3s0
+      - phc2sys_sys_to_enp5s0f0
+  master:
+    config: sync_tooling/config.yaml
+    update_expiry_s: 5
+
 # redundancy switcher
 redundancy_switcher_repository_url: git@github.com:tier4/redundancy_switcher.git
 redundancy_switcher_clone_dir: /tmp/redundancy_switcher
-redundancy_switcher_version: beta/v4.2
+redundancy_switcher_version: v1.0.0
 redundancy_switcher_install_dir: /opt/redundancy_switcher/bin
 redundancy_switcher_conf_install_dir: /opt/redundancy_switcher/conf
 redundancy_switcher_conf_files: redundancy_switcher/node_info.yaml
@@ -44,7 +56,7 @@ letterbox_monitor:
     use_letterbox: true
     ignore_node_names: []
   - service_name: autoware
-    ros_log_dir: /home/autoware/.ros/autoware_log
+    ros_log_dir: /home/autoware/.ros/autoware_main_log
     user_name: autoware
     group_name: autoware
     use_call_diag: true
@@ -57,22 +69,35 @@ letterbox_monitor:
     use_call_diag: true
     use_letterbox: true
     ignore_node_names: []
+  - service_name: autoware_main_mrm
+    ros_log_dir: /home/autoware/.ros/autoware_main_mrm_log
+    user_name: autoware
+    group_name: autoware
+    use_call_diag: true
+    use_letterbox: true
+    ignore_node_names: []
 
 # simple_system_launch
 simple_system_launch_items:
-  # autoware_launch
-  - file: simple_system_launch/autoware_launch.service
+  # autoware_main_launch
+  - file: simple_system_launch/autoware_main_launch.service
     command: |
-      mkdir -p /home/autoware/.ros/autoware_log
-      export ROS_LOG_DIR=/home/autoware/.ros/autoware_log
-      ros2 launch autoware_launch autoware.launch.xml \
+      mkdir -p /home/autoware/.ros/autoware_main_log
+      export ROS_LOG_DIR=/home/autoware/.ros/autoware_main_log
+      ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml \
+              model_name:=centerpoint_x2 \
+              model_path:=/opt/autoware/mlmodels/centerpoint \
+              model_param_path:=$(ros2 pkg prefix autoware_launch --share)/config/perception/object_recognition/detection/lidar_model/centerpoint_x2.param.yaml \
+              build_only:=true 2>&1 | tee "$HOME"/autoware_main.log
+      ros2 launch autoware_launch autoware.main.launch.xml \
+              is_redundant:="true" \
               map_path:=/opt/autoware/maps \
               lanelet2_map_file:=lanelet2_map.osm \
               pointcloud_map_file:=pcd \
               vehicle_model:="$VEHICLE_MODEL" \
               sensor_model:="$SENSOR_MODEL" \
               launch_system:=false \
-              rviz:=false 2>&1 | tee "$HOME"/autoware.log
+              rviz:=false 2>&1 | tee -a "$HOME"/autoware_main.log
 
   # system
   - file: simple_system_launch/autoware_system_launch.service
@@ -80,16 +105,72 @@ simple_system_launch_items:
       mkdir -p /home/autoware/.ros/autoware_system_log
       export ROS_LOG_DIR=/home/autoware/.ros/autoware_system_log
       ros2 launch autoware_launch tier4_system_component.launch.xml \
+            is_redundant:="true" \
+            use_control_command_gate:="true" \
             system_run_mode:=online \
             launch_system_monitor:=true \
             launch_dummy_diag_publisher:=false \
             sensor_model:="$SENSOR_MODEL" 2>&1 | tee "$HOME"/autoware_system.log
+
+  # autoware_main_mrm_launch
+  - file: simple_system_launch/autoware_main_mrm_launch.service
+    command: |
+      mkdir -p /home/autoware/.ros/autoware_main_mrm_log
+      export ROS_LOG_DIR=/home/autoware/.ros/autoware_main_mrm_log
+      export ROS_DOMAIN_ID=3
+      ros2 launch autoware_launch autoware.main.mrm.launch.xml \
+            vehicle_model:="$VEHICLE_MODEL" \
+            sensor_model:="$SENSOR_MODEL" 2>&1 | tee "$HOME"/autoware_main_mrm.log
 
 # fool proof check service
 check_target_service: autoware_system_launch.service
 ecu_type: main
 fool_proof_check_network_interface: enp5s0f1 # TODO: check vlan.500
 
+# tier4_service_standby_wait
+service_list_for_tier4_system: |
+  ptp4l@enp3s0.service \
+  ptp4l@vlan.500.service \
+  ptp4l_hw_timestamp@vlan.500.service
+service_list_for_tier4_autoware: |
+  fool-proof-check.service \
+  emergency-vehicle-detector.service \
+  boot-shutdown.service \
+  boot-shutdown-manager.service \
+  letterbox_monitor@autoware.service \
+  letterbox_monitor@autoware_system.service \
+  letterbox_monitor@default.service \
+  tier4_system_standby_wait.target
+network_interface_for_tier4_service_standby_wait: enp5s0f1
+# disable services
+# cspell:ignore runlevel utmp
+disable_system_service_list:
+  - snapd.apparmor.service
+  - snapd.socket
+  - snapd.service
+  - snapd.seeded.service
+  - systemd-update-utmp-runlevel.service
+  - update-notifier-download.timer
+  - update-notifier-motd.timer
+  - motd-news.timer
+  - dpkg-db-backup.timer
+  - apt-daily-upgrade.timer
+  - apt-daily.timer
+
+mask_user_service_list:
+  - tracker-extract-3.service
+  - tracker-miner-fs-3.service
+  - tracker-miner-rss-3.service
+  - tracker-writeback-3.service
+  - tracker-xdg-portal-3.service
+  - tracker-miner-fs-control-3.service
+
 # scheduling settings
 scheduling_settings_autoware_yaml_file: scheduling_settings/scheduling_settings_autoware.yaml
 scheduling_settings_others_yaml_file: scheduling_settings/scheduling_settings_others.yaml
+
+# tc_bandwidth_limit
+tc_interface: enp5s0f1
+
+# boot_shutdown
+boot_shutdown_service_config_file: boot_shutdown_service/boot_shutdown.param.main.yaml

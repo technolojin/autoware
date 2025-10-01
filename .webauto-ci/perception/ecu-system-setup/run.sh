@@ -1,9 +1,16 @@
 #!/bin/bash -e
+# cspell: ignore webauto nsight jetpack
 
 : "${WEBAUTO_CI_GITHUB_TOKEN:?is not set}"
 
 : "${ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK:?is not set}"
 : "${ECU_ID:?is not set}"
+
+# cleanup base image first
+. .webauto-ci/common/ota-clean-up/clean-up-base-image.sh
+
+sudo -E apt-get -y update
+sudo -E apt-get -y install systemd-coredump
 
 export GITHUB_TOKEN="$WEBAUTO_CI_GITHUB_TOKEN"
 git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
@@ -22,5 +29,11 @@ sudo mkdir -p /etc/ota
 sudo cp "$(dirname "$0")/persistents.txt" /etc/ota/
 sudo cp "$(dirname "$0")/ignore.txt" /etc/ota/
 
-# clean up ecu firmware
-. .webauto-ci/common/ecu-clean-up/run.sh
+# remove "jetpack" dev packages
+. .webauto-ci/common/ota-clean-up/clean-up-jetpack-dev.sh
+# remove "nsight" related packages
+. .webauto-ci/common/ota-clean-up/clean-up-nsight.sh
+# reduce "git" folder size, and other folders
+. .webauto-ci/common/ota-clean-up/clean-up-ecu-image.sh
+# remove "ansible" related packages
+. .webauto-ci/common/ota-clean-up/clean-up-ansible.sh

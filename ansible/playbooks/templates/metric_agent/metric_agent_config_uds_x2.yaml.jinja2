@@ -1,0 +1,229 @@
+# metric agent configurations ------------------------------------------------------------------------
+diag_ok_state:
+  - initial
+  - ready
+  - running
+telegraf:
+  unix_domain_socket: {{ metric_agent_telegraf_unix_domain_socket }}
+  socket_type: {{ metric_agent_telegraf_socket_type }}
+metrics:  # available metrics < vehicle_geo_point >
+  - name: vehicle_geo_point
+    output_cycle: 10
+    output_type: gauge
+    aggregate: false
+
+  - name: localization_scores
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+
+  - name: ekf_pose_error_ellipse
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+
+  - name: pose_instability
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+
+  - name: operation_mode
+    output_cycle: 10
+    aggregate: false
+    output_type: gauge
+
+  - name: longitudinal_speed
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+
+  - name: acceleration
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+
+  - name: vehicle_status
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+
+  - name: system_monitor_metrics
+    output_cycle: 10
+    aggregate: false
+    output_type: gauge
+
+  - name: system_monitor_cpu_usage
+    output_cycle: 10
+    aggregate: false
+    output_type: gauge
+
+  - name: control_evaluation
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+
+  - name: planning_evaluation
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+
+  - name: accel_brake_map_calibration_status
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+
+  - name: perception_analytics
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+
+  {% set lidar_directions = ["front", "rear", "left", "right"] %}
+  {% set lidar_heights = ["upper", "lower"] %}
+
+  {% for lidar_direction in lidar_directions %}
+  {% for lidar_height in lidar_heights %}
+  {% set lidar_name = lidar_direction + "_" + lidar_height %}
+
+  - name: lidar_packet_loss_{{ lidar_name }}
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+    input:
+      type: diagnostics
+      diagnostic_name: "/sensing/lidar/{{ lidar_name }}/hesai_ros_wrapper_node: Packet loss status"
+      diagnostic_key: Lost packets
+      diagnostic_value_pattern: "(\\d+)"
+
+  {% for area in ["ground", "sky"] %}
+
+  - name: lidar_blockage_{{ area }}_{{ lidar_name }}
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+    input:
+      type: diagnostics
+      diagnostic_name: "blockage_return_diag: /sensing/lidar/{{ lidar_name }}: blockage_validation"
+      diagnostic_key: {{ area }}_blockage_ratio
+      diagnostic_value_pattern: "(\\d+(?:\\.\\d+)?)"
+
+  {% endfor %}{# area #}
+  {% endfor %}{# lidar_height #}
+  {% endfor %}{# lidar_direction #}
+
+  {% for camera_num in range(0, 11) %}
+
+  - name: camera{{ camera_num }}_publish_rate
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+    input:
+      type: diagnostics
+      diagnostic_name: "v4l2_camera_camera{{ camera_num }}: camera{{ camera_num }}_diagnostics"
+      diagnostic_key: Publish rate
+      diagnostic_value_pattern: "(\\d+(?:\\.\\d+)?)"
+
+  {% endfor %}{# camera_num #}
+
+  {# Only the front-facing cameras #3 and #5 have blockage/visibility diag enabled #}
+  {% for camera_num in [3, 5] %}
+  {% for type in ["blockage", "low_visibility"] %}
+
+  - name: camera{{ camera_num }}_{{ type }}_ratio
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+    input:
+      type: diagnostics
+      diagnostic_name: "image_diagnostics{{ camera_num }}: camera{{ camera_num }}"
+      diagnostic_key: {{ type }}_ratio
+      diagnostic_value_pattern: "(\\d+(?:\\.\\d+)?)"
+
+  {% endfor %}{# type #}
+  {% endfor %}{# camera_num #}
+
+  {% for lidar_direction in lidar_directions %}
+  {% for lidar_height in lidar_heights %}
+  {% set lidar_name = lidar_direction + "_" + lidar_height %}
+  {% set lidar_frame = "sensor@" + lidar_direction + "_" + lidar_height + "/lidar" %}
+
+  - name: sync_diag_offset_main_sys_to_{{ lidar_name }}
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+    input:
+      type: diagnostics
+      diagnostic_name: "{{ lidar_frame }}"
+      diagnostic_key: "upstream_links › main.sys -> {{ lidar_frame }} › measurement › offset_from_main.sys › diff [ms]"
+      diagnostic_value_pattern: "(\\d+(?:\\.\\d+)?)"
+
+  {% endfor %}{# lidar_height #}
+  {% endfor %}{# lidar_direction #}
+
+  {% set radar_directions = ["left", "center", "right"] %}
+  {% set radar_positions = ["front", "rear"] %}
+
+  {% for radar_direction in radar_directions %}
+  {% for radar_position in radar_positions %}
+  {% set radar_name = radar_position + "_" + radar_direction %}
+  {% set radar_frame = "sensor@" + radar_position + "_" + radar_direction + "/radar_link" %}
+
+  - name: sync_diag_offset_main_sys_to_{{ radar_name }}
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+    input:
+      type: diagnostics
+      diagnostic_name: "{{ radar_frame }}"
+      diagnostic_key: "upstream_links › main.sys -> {{ radar_frame }} › measurement › offset_from_main.sys › diff [ms]"
+      diagnostic_value_pattern: "(\\d+(?:\\.\\d+)?)"
+
+  {% endfor %}{# radar_position #}
+  {% endfor %}{# radar_direction #}
+
+  {# Only the upper right lidar has visibility diag enabled #}
+  {% set lidar_directions = ["right"] %}
+  {% set lidar_heights = ["upper"] %}
+
+  {% for lidar_direction in lidar_directions %}
+  {% for lidar_height in lidar_heights %}
+  {% set lidar_name = lidar_direction + "_" + lidar_height %}
+
+  - name: lidar_visibility_{{ lidar_name }}
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+    input:
+      type: diagnostics
+      diagnostic_name: "polar_voxel_outlier_filter: /sensing/lidar/{{ lidar_name }}: visibility_validation"
+      diagnostic_key: Visibility
+      diagnostic_value_pattern: "(\\d+(?:\\.\\d+)?)"
+
+  - name: lidar_filter_ratio_{{ lidar_name }}
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+    input:
+      type: diagnostics
+      diagnostic_name: "polar_voxel_outlier_filter: /sensing/lidar/{{ lidar_name }}: filter_ratio_validation"
+      diagnostic_key: Filter Ratio
+      diagnostic_value_pattern: "(\\d+(?:\\.\\d+)?)"
+
+  {% endfor %}{# lidar_height #}
+  {% endfor %}{# lidar_direction #}
+
+  {% set gyro_correction_types = ["bias_x", "bias_y", "bias_z", "scale_z"] %}
+
+  {% for gyro_correction_type in gyro_correction_types %}
+  {% set estimated_gyro_axis = gyro_correction_type %}
+
+  - name: imu_gyro_{{ estimated_gyro_axis }}
+    output_cycle: 10
+    aggregate: true
+    output_type: gauge
+    input:
+      type: diagnostics
+      diagnostic_name: "gyro_bias_scale_validator: gyro_bias_scale_validator"
+      diagnostic_key: estimated_gyro_{{ estimated_gyro_axis }}
+      diagnostic_value_pattern: "(\\d+(?:\\.\\d+)?)"
+
+  {% endfor %}{# gyro_correction_type #}

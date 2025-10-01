@@ -53,6 +53,8 @@
     - { role: autoware.ecu_system_setup.timezone }
     - { role: autoware.ecu_system_setup.x2_signage_env_setup }
     - { role: autoware.ecu_system_setup.turn_off_desktop_notification }
+    - { role: x2_disable_timesyncd }
+    - { role: autoware.ecu_system_setup.systemd_analyze_collector }
   post_tasks:
     - name: Setup netplan
       ansible.builtin.include_role:

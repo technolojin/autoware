@@ -1,0 +1,77 @@
+- name: Create configure_radar directory
+  ansible.builtin.file:
+    path: /opt/autoware/services/configure_radar/
+    state: directory
+    mode: 0755
+  become: true
+
+- name: Copy script for configuring radar
+  ansible.builtin.copy:
+    src: configure_radar.sh
+    dest: /opt/autoware/services/configure_radar/
+    mode: 0755
+  become: true
+
+- name: Copy script for get configure
+  ansible.builtin.copy:
+    src: get_cfg.sh
+    dest: /opt/autoware/services/configure_radar/
+    mode: 0755
+  become: true
+
+- name: Copy service
+  ansible.builtin.copy:
+    src: configure_radar.service
+    dest: /etc/systemd/system/
+    mode: 0755
+  become: true
+
+- name: Enable service
+  ansible.builtin.systemd:
+    name: configure_radar.service
+    daemon_reload: "{{ daemon_reload }}"
+    enabled: true
+    masked: false
+  become: true
+
+- name: Copy ideal front_center config
+  ansible.builtin.copy:
+    src: front_center.cfg
+    dest: /opt/autoware/services/configure_radar/
+    mode: 0755
+  become: true
+
+- name: Copy ideal front_right config
+  ansible.builtin.copy:
+    src: front_right.cfg
+    dest: /opt/autoware/services/configure_radar/
+    mode: 0755
+  become: true
+
+- name: Copy ideal front_left config
+  ansible.builtin.copy:
+    src: front_left.cfg
+    dest: /opt/autoware/services/configure_radar/
+    mode: 0755
+  become: true
+
+- name: Copy ideal rear_center config
+  ansible.builtin.copy:
+    src: rear_center.cfg
+    dest: /opt/autoware/services/configure_radar/
+    mode: 0755
+  become: true
+
+- name: Copy ideal rear_right config
+  ansible.builtin.copy:
+    src: rear_right.cfg
+    dest: /opt/autoware/services/configure_radar/
+    mode: 0755
+  become: true
+
+- name: Copy ideal rear_left config
+  ansible.builtin.copy:
+    src: rear_left.cfg
+    dest: /opt/autoware/services/configure_radar/
+    mode: 0755
+  become: true

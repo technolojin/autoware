@@ -1,0 +1,6 @@
+topic_address: [192.168.20.71]
+topic_port: 10000
+prepare_shutdown_time: 60
+prepare_shutdown_port: 10001
+execute_shutdown_port: 10002
+prepare_shutdown_command: [""]

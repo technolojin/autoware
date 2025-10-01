@@ -30,25 +30,27 @@ function build_ccache() {
 
 # --autoware:     Launch autoware
 function launch_autoware() {
-    ros2 launch autoware_launch autoware.launch.xml map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
+    ros2 launch autoware_launch autoware.main.launch.xml is_redundant:="false" map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware_main.log
 }
 
 # --autoware-main:     Launch autoware main
 function launch_autoware_main() {
-    ros2 launch autoware_launch autoware.main.launch.xml map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
+    ROS_DOMAIN_ID=1 ros2 launch autoware_launch autoware.main.launch.xml is_redundant:="true" map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware_main.log
 }
 
 # --autoware-start:     Start autoware services
 function start_autoware_service() {
     echo "Starting Autoware services."
     sudo systemctl start autoware_system_launch.service
-    sudo systemctl start autoware_launch.service
+    sudo systemctl start autoware_main_launch.service
+    sudo systemctl start autoware_main_mrm_launch.service
 }
 
 # --autoware-stop:     Stop autoware services
 function stop_autoware_service() {
     sudo systemctl stop autoware_system_launch.service
-    sudo systemctl stop autoware_launch.service
+    sudo systemctl stop autoware_main_launch.service
+    sudo systemctl stop autoware_main_mrm_launch.service
     echo "Stopped Autoware services."
 }
 
@@ -60,33 +62,54 @@ function restart_autoware_service() {
     echo "Autoware services restarted."
 }
 
+# --autoware-sub-start:     Start autoware sub services
+function start_autoware_sub_service() {
+    echo "Starting Autoware sub services."
+    sudo systemctl start autoware_sub_launch.service
+}
+
+# --autoware-sub-stop:     Stop autoware sub services
+function stop_autoware_sub_service() {
+    sudo systemctl stop autoware_sub_launch.service
+    echo "Stopped Autoware sub services."
+}
+
+# --autoware-sub-restart:     Restart autoware sub services
+function restart_autoware_sub_service() {
+    stop_autoware_sub_service
+    sleep 5
+    start_autoware_sub_service
+    echo "Autoware sub services restarted."
+}
+
+# --autoware-main-mrm:     Launch autoware main
 function launch_autoware_main_mrm() {
-    ROS_DOMAIN_ID=3 ros2 launch autoware_launch autoware.main.mrm.launch.xml vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
+    ROS_DOMAIN_ID=3 ros2 launch autoware_launch autoware.main.mrm.launch.xml vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware_main_mrm.log
 }
 
 # --psim-main-mrm:     Launch autoware main mrm with planning simulator
 function launch_psim_main_mrm() {
-    ROS_DOMAIN_ID=3 ros2 launch autoware_launch autoware.main.mrm.launch.xml is_simulation:="true" vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
+    ROS_DOMAIN_ID=3 ROS_LOG_DIR=/home/autoware/.ros/autoware_main_mrm_log ros2 launch autoware_launch planning_simulator.main.mrm.launch.xml is_simulation:="true" vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware_main_mrm.log
 }
 
 # --psim-main:       Launch autoware main with planning simulator
 function launch_psim_main() {
-    ros2 launch autoware_launch planning_simulator.main.launch.xml map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
+    ROS_DOMAIN_ID=1 ROS_LOG_DIR=/home/autoware/.ros/autoware_main_log ros2 launch autoware_launch planning_simulator.launch.xml is_redundant:="true" is_simulation:="true" map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware_main.log
 }
 
 # --autoware-sub: Launch autoware sub
 function launch_autoware_sub() {
-    ros2 launch autoware_launch autoware.sub.launch.xml vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
+    ROS_DOMAIN_ID=2 ros2 launch autoware_launch autoware.sub.launch.xml vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware_sub.log
 }
 
 # --psim-sub: Launch autoware sub with planning simulator
 function launch_psim_sub() {
-    ros2 launch autoware_launch planning_simulator.sub.launch.xml vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
+    ROS_DOMAIN_ID=2 ROS_LOG_DIR=/home/autoware/.ros/autoware_sub_log ros2 launch autoware_launch planning_simulator.sub.launch.xml vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware_sub.log
 }
 
 # --psim:         Launch simple planning simulator
 function launch_psim() {
-    ros2 launch autoware_launch planning_simulator.launch.xml map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
+    ros2 launch autoware_launch planning_simulator.launch.xml is_redundant:="false" is_simulation:="true" map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware.log
 }
 
 # --start_record
@@ -125,6 +148,9 @@ function help() {
     echo "    --autoware-start : start autoware all service"
     echo "    --autoware-stop : stop autoware all service"
     echo "    --autoware-restart : restart autoware all service"
+    echo "    --autoware-sub-start : start autoware sub service"
+    echo "    --autoware-sub-stop : stop autoware sub service"
+    echo "    --autoware-sub-restart : restart autoware sub service"
     echo "    --psim-main     :Launch autoware main with planning simulator"
     echo "    --autoware-main-mrm    :Launch autoware main mrm"
     echo "    --psim-main-mrm    :Launch autoware main mrm with planning simulator"
@@ -156,6 +182,12 @@ elif [ "${1-}" = "--autoware-stop" ]; then
     stop_autoware_service "${@:2}"
 elif [ "${1-}" = "--autoware-restart" ]; then
     restart_autoware_service "${@:2}"
+elif [ "${1-}" = "--autoware-sub-start" ]; then
+    start_autoware_sub_service "${@:2}"
+elif [ "${1-}" = "--autoware-sub-stop" ]; then
+    stop_autoware_sub_service "${@:2}"
+elif [ "${1-}" = "--autoware-sub-restart" ]; then
+    restart_autoware_sub_service "${@:2}"
 elif [ "${1-}" = "--autoware-main" ]; then
     launch_autoware_main "${@:2}"
 elif [ "${1-}" = "--psim-main" ]; then

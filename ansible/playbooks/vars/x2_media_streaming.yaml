@@ -26,3 +26,10 @@ media_streaming:
   install_docker: false
   required_python: python3.8
   required_libpython: libpython3.8
+
+# reload_camera_driver
+camera_num: 4
+target_service_before_reload_camera_driver: media.service
+
+# systemd_analyze_collector
+rsync_target_host_ip: 192.168.20.71

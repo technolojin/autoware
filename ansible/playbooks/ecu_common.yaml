@@ -29,3 +29,4 @@
     - { role: autoware.ecu_system_setup.timezone }
     - { role: autoware.ecu_system_setup.touch_enablehighlevelapi }
     - { role: autoware.ecu_system_setup.traffic_reader }
+    - { role: autoware.ecu_system_setup.rsyncd }

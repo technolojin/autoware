@@ -1,0 +1,114 @@
+/**:
+  product_metrics_config: # product_metric_config_for_X2
+    ## j6_interface_metric
+    - metric_name: vehicle_interface_steering_wheel_torque
+      topic_name: /vehicle/metrics/steering_wheel_torque
+      metric_description: steering wheel torque data from vehicle_interface
+      message_type: tier4_debug_msgs/msg/Float32Stamped
+      output_type: gauge
+      output_cycle: 10
+      aggregate: true
+      aggregate_type: [max]
+      aggregate_reset_count: 0
+      qos_size: 10 # Optional: QoS size
+      qos_reliability: best_effort # Optional: QoS reliability
+      custom_key: steering_wheel_torque
+      custom_tag: steering_wheel_torque
+
+    - metric_name: ndt_scan_matcher_execution_time
+      topic_name: /localization/pose_estimator/exe_time_ms
+      metric_description: execution time of ndt_scan_matcher node (ms)
+      message_type: autoware_internal_debug_msgs/msg/Float32Stamped
+      output_type: gauge
+      output_cycle: 10
+      aggregate: true
+      aggregate_type: [max]
+      aggregate_reset_count: 0
+      qos_size: 10
+      custom_key: ndt_scan_matcher_execution_time
+      custom_tag: ndt_scan_matcher_execution_time
+
+    - metric_name: ndt_scan_matcher_iteration_num
+      topic_name: /localization/pose_estimator/iteration_num
+      metric_description: Counts of iterative calculations in the ndt_scan_matcher node
+      message_type: autoware_internal_debug_msgs/msg/Int32Stamped
+      output_type: gauge
+      output_cycle: 10
+      aggregate: true
+      aggregate_type: [max]
+      aggregate_reset_count: 0
+      qos_size: 10
+      custom_key: ndt_scan_matcher_iteration_num
+      custom_tag: ndt_scan_matcher_iteration_num
+
+    - metric_name: whole_pipeline_latency
+      topic_name: /system/pipeline_latency_monitor/output/total_latency_ms
+      metric_description: whole pipeline latency (ms)
+      message_type: autoware_internal_debug_msgs/msg/Float64Stamped
+      output_type: gauge
+      output_cycle: 10
+      aggregate: true
+      aggregate_type: [min, max, mean]
+      aggregate_reset_count: 0
+      qos_size: 10 # Optional: QoS size
+      qos_reliability: best_effort # Optional: QoS reliability
+
+    - metric_name: planning_pipeline_latency
+      topic_name: /system/pipeline_latency_monitor/debug/planning_latency_ms
+      metric_description: planning pipeline latency (ms)
+      message_type: autoware_internal_debug_msgs/msg/Float64Stamped
+      output_type: gauge
+      output_cycle: 10
+      aggregate: true
+      aggregate_type: [min, max, mean]
+      aggregate_reset_count: 0
+      qos_size: 10 # Optional: QoS size
+      qos_reliability: best_effort # Optional: QoS reliability
+
+    - metric_name: control_pipeline_latency
+      topic_name: /system/pipeline_latency_monitor/debug/control_latency_ms
+      metric_description: control pipeline latency (ms)
+      message_type: autoware_internal_debug_msgs/msg/Float64Stamped
+      output_type: gauge
+      output_cycle: 10
+      aggregate: true
+      aggregate_type: [min, max, mean]
+      aggregate_reset_count: 0
+      qos_size: 10 # Optional: QoS size
+      qos_reliability: best_effort # Optional: QoS reliability
+
+    - metric_name: accel_brake_map_error
+      topic_name: /vehicle/calibration/accel_brake_map_calibrator/current_map_error
+      metric_description: pipeline latency (ms)
+      message_type: autoware_internal_debug_msgs/msg/Float32Stamped
+      output_type: gauge
+      output_cycle: 10
+      aggregate: true
+      aggregate_type: [min, max, abs_min, abs_max, mean]
+      aggregate_reset_count: 0
+      qos_size: 10 # Optional: QoS size
+      qos_reliability: best_effort # Optional: QoS reliability
+
+    - metric_name: steering_offset_error
+      topic_name: /vehicle/calibration/steer_offset_estimator/steering_offset_error
+      metric_description: steering offset error (rad)
+      message_type: autoware_internal_debug_msgs/msg/Float32Stamped
+      output_type: gauge
+      output_cycle: 10
+      aggregate: true
+      aggregate_type: [min, max, abs_min, abs_max, mean]
+      aggregate_reset_count: 0
+      qos_size: 10 # Optional: QoS size
+      qos_reliability: best_effort # Optional: QoS reliability
+
+    - metric_name: speed_scale_factor_error
+      topic_name: /sensing/calibration/deviation_estimator/speed_scale_factor_error
+      metric_description: speed scale factor error
+      message_type: autoware_internal_debug_msgs/msg/Float32Stamped
+      output_type: gauge
+      output_cycle: 10
+      aggregate: true
+      aggregate_type: [min, max, abs_min, abs_max, mean]
+      aggregate_reset_count: 0
+      qos_size: 10 # Optional: QoS size
+      qos_reliability: best_effort # Optional: QoS reliability

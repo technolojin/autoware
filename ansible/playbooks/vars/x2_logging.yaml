@@ -1,4 +1,4 @@
-# cspell: ignore mincho rexmit ipaddr maxsize nocaps netcore wmem
+# cspell: ignore mincho rexmit ipaddr maxsize nocaps netcore wmem pactl
 # common
 rosbag_logging_directory: /mnt/ROSBAG
 systemctl_default: multi-user.target
@@ -31,6 +31,22 @@ keyboard_layout_file: keyboard.jp+ctrl_nocaps
 
 # ptp4l port
 ptp4l_network_port: enp8s0
+ptp4l_use_software_stamp: false
+ptp4l_synchronize_system_clock: true
+ptp4l_phc2sys_offset: -37
+
+# SYNC.TOOLING
+sync_tooling:
+  worker:
+    ptp4l_units:
+      - ptp4l
+    phc2sys_units:
+      - phc2sys
+
+# rsyncd
+setup_systemd_analyze_collector: true
+# systemd_analyze_collector
+use_rsync_send: false # logging ECU does not need rsync to send data
 
 # netplan
 netplan_files: netplan/99-autoware.x2-logging.yaml
@@ -62,12 +78,12 @@ autoware_logging_suite_modules:
   - tier4_logging_event_trigger_panel
   - tier4_logging_dummy_hazard_panel
 # - logpacker
-logpacker_config_template: logpacker/logpacker_config_x2.yaml.jinja2
+logpacker_config_template: logpacker/logpacker_config.yaml.jinja2
 # - logpacker - syslog plugin
 logpacker_enable_syslog_plugin: true
 # - logpacker - rosbag plugin
 logpacker_enable_rosbag_plugin: true
-qos_profile_overrides_template: logpacker/qos_profile_overrides_x2.yaml
+qos_profile_overrides_template: logpacker/qos_profile_overrides.yaml
 # - bagtaker
 rosbag_copy_directory: /media/autoware/ROSBAG
 bagtaker_params_template: bagtaker2/bagtaker_params_x2.yaml.jinja2
@@ -75,22 +91,27 @@ bagtaker_params_template: bagtaker2/bagtaker_params_x2.yaml.jinja2
 bagkeeper_params_template: bagkeeper/bagkeeper_params_x2.yaml.jinja2
 # - bagrollbacker
 bagrollbacker_param_template: bagrollbacker/bagrollbacker_params_x2.yaml.jinja2
+# rsyncd - add systemd-tmpfiles configuration for logpacker coredump plugin
+setup_coredump_rsyncd_service: false
+setup_coredump_tmpfiles_service: true
 
 # boot_shutdown
-build_boot_shutdown_api_msgs: true
 boot_shutdown_tools_clone_dir: "{{ autoware_install_dir }}/src/product/boot_shutdown_tools"
+boot_shutdown_manager_param_file: boot_shutdown_manager/boot_shutdown_manager.param.yaml
 boot_shutdown_service_config_file: boot_shutdown_service/boot_shutdown.param.logging.yaml
 boot_shutdown_service_script_src_path: boot_shutdown_service/shutdown.logging.sh
 
 # mot_env_setup
-mot_repository_version_humble: 414ebc046ab06411ace803d16ca21523bfed1e97 # beta/v4.2.0
+mot_repository_version_humble: ae5aa3d5b7384256a8484fd945609b0655d08dee # beta/v4.3
 mot_install_dir: "{{ ansible_env.HOME }}/OperationMaintenanceTool"
+mot_run_command: "pactl set-sink-volume $(pactl list sinks | awk '/Name: / && /YunChen_Technology_USB_Composite_Device/ {print $2}') 100% && /opt/mot/build/MaintenanceOperationTool-*.*.*.AppImage"
 depends_node_version: v20.18.1
 replace_install_setup_bash: false
 bridge_ip_address: 127.0.0.1
 fms_agent_ip_address: 192.168.30.11
 zoom_level: 1
 mot_vehicle_model: j6-gen2
+mot_error_messages: mrm_messages/mrm_messages.json
 
 # release_rosbag_page_cache
 release_page_cache_threshold_second_from: 65
@@ -163,3 +184,28 @@ simple_system_launch_items:
           fi
         fi
       done
+
+# tier4_service_standby_wait
+service_list_for_tier4_system: ptp4l.service
+service_list_for_tier4_autoware: |
+  fool_proof_check.service \
+  boot-shutdown.service \
+  tier4_system_standby_wait.target
+
+### metric_agent
+# metric_agent node parameters
+metric_agent_rate_in_hertz: 10
+metric_agent_pubs_rate_in_hertz: 10
+metric_agent_subs_rate_in_hertz: 10
+
+# metric_agent config
+metric_agent_version: 2a64b8ccc5e042ca87abaa692205f18da8ba3d77 # develop # Future references will be by tags or SHAs.
+metric_agent_params_template: metric_agent/metric_agent_params_x2.yaml.jinja2
+metric_agent_config_template: metric_agent/metric_agent_config_uds_x2.yaml.jinja2
+metric_agent_product_config_template: metric_agent/product_metric_config_x2.yaml.jinja2 # If you want to manage all metrics derived from specific topic-type topics
+# metric_agent_product_metric_list: /vars/x2_product_metric_list.yaml # If you only want to product common metrics
+
+# telegraf config for metric_agent
+metric_agent_telegraf_service_config_template: metric_agent/telegraf.socket_listener_uds_x2.conf.jinja2
+metric_agent_telegraf_hostname: logging_ecu
+metric_agent_telegraf_otel_hostname: ${AGENT_HOSTNAME}

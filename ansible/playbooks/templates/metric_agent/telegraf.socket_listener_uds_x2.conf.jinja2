@@ -1,0 +1,62 @@
+[agent]
+  interval = "{{ metric_agent_telegraf_interval }}"
+  hostname = "{{ metric_agent_telegraf_hostname }}"
+  round_interval = true
+  precision = "{{ metric_agent_telegraf_precision }}"
+  omit_hostname = true
+  logfile = "{{ metric_agent_telegraf_logfile }}"
+  logfile_rotation_interval = "24h"
+
+###############################################################################
+# INPUT PLUGIN: socket_listener
+###############################################################################
+
+[[inputs.socket_listener]]
+  service_address = "{{ metric_agent_telegraf_service_protocol }}://{{ metric_agent_telegraf_unix_domain_socket }}"
+  data_format = "prometheus"
+  read_timeout = "{{ metric_agent_telegraf_read_timeout }}"
+  max_connections = {{ metric_agent_telegraf_max_connections }}
+
+###############################################################################
+# OUTPUT PLUGIN: otlp
+###############################################################################
+
+[[outputs.opentelemetry]]
+  ## The address of the OTLP/gRPC or OTLP/HTTP endpoint (e.g., OpenTelemetry Collector)
+  ## OTLP over gRPC:
+  # endpoint = "localhost:4317"
+  ## OTLP over HTTP:
+  # endpoint = "http://localhost:4318"
+
+  ## Protocol to use: "grpc" or "http"
+  # protocol = "grpc"
+
+  ## Resource attributes to include (optional)
+  # resource_attributes = { service.name = "telegraf-socket-proxy" }
+
+  ## Timeout for sending data
+  # timeout = "5s"
+
+  ## Optional headers (for authentication etc.)
+  # headers = { "Authorization" = "Bearer <token>" }
+
+  ## Optional TLS configuration (for secure OTLP)
+  # insecure_skip_verify = true
+  ## Override the default (localhost:4317) OpenTelemetry gRPC service
+  ## address:port
+  service_address = "{{ metric_agent_telegraf_otel_service_addr }}"
+
+  ## Override the default (5s) request timeout
+  timeout = "{{ metric_agent_telegraf_otel_timeout }}"
+
+  ## Override the default (gzip) compression used to send data.
+  ## Supports: "gzip", "none"
+  # compression = "gzip"
+
+  ## Additional OpenTelemetry resource attributes
+  [outputs.opentelemetry.attributes]
+  "hostname" = "{{ metric_agent_telegraf_otel_hostname }}"
+
+  ## Additional gRPC request metadata
+  # [outputs.opentelemetry.headers]
+  # key1 = "value1"

@@ -2,7 +2,7 @@
 Description=Auto-activation of CAN communication in ADM AL30 with systemd
 After=network.target
 Requires=network.target
-Before=autoware-launch.service
+Before=autoware_system_launch.service
 
 [Service]
 User=root
