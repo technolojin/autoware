@@ -168,13 +168,6 @@ repositories:
     url: https://github.com/tier4/launch_ros.git
     version: 3bf6abf86eefd1629d2499f8f666998311fa831b
     base: true
-  # Include many-nodes-in-container launch fix that ensures no LoadComposableNode call hangs
-  # See https://github.com/ros2/launch_ros/compare/humble...tier4:launch_ros:/t4-main
-  launch_ros:
-    type: git
-    url: https://github.com/tier4/launch_ros.git
-    version: 3bf6abf86eefd1629d2499f8f666998311fa831b
-    base: true
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
@@ -190,40 +183,25 @@ repositories:
     url: https://github.com/tier4/agnocast.git
     version: 2.1.2
     base: true
-  autoware/mrm_plugin:
-    type: git
-    url: git@github.com:tier4/mrm_plugin.x2.git
-    version: ca8a4e0bdfb8f07234f886c9c69bc3439a654709
-    base: false
-  vendor/redundancy_switcher_interface:
-    type: git
-    url: git@github.com:tier4/redundancy_switcher_interface.git
-    version: 1c0cb40d19f346e689576cfe5dc129bb059b360d
-    base: false
-  vendor/septentrio_gnss_driver:
-    type: git
-    url: https://github.com/tier4/septentrio_gnss_driver.git
-    version: a5790bbed2705f330cefe0c9963ef2ba953d79a1
-    base: false
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: 7f672a0870e2b2604567e5593d6fe35c9dc4fde3
+    version: tier4/main
     base: false
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: 18358f680d01ba91bdfbc5115cf3e420d9e5b255
+    version: main
     base: false
   description/vehicle/j6_gen2_description:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
-    version: 7323ed43429656c161286a61d4d44af90a2a6c99
+    version: main
     base: false
   vendor/mj20_interface:
     type: git
     url: git@github.com:tier4/mj20_interface.git
-    version: 3bf15ef2cce9a130f11e672fde54304d178b0ecf
+    version: main
     base: false
   vendor/ros2_socketcan:
     type: git
@@ -243,7 +221,7 @@ repositories:
   vendor/emergency_vehicle_detector:
     type: git
     url: git@github.com:tier4/emergency_vehicle_detector.git
-    version: 88c328a4bc4443964bbd2b70c2f9daab8331c495
+    version: vendor
     base: false
   vendor/pyrocan:
     type: git
