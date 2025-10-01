@@ -2,7 +2,7 @@ release_supervisors: # people in charge of all releases
   - TomohitoAndo
 parent_repository:
   url: https://github.com/tier4/pilot-auto
-  sync_version: beta/v0.48 # this is the tag in pilot auto we synced with, it must end with .0
+  sync_version: v0.55.0 # this is the tag in pilot auto we synced with, it must end with .0
 base_branch_for_release: main
 autoware_repos_file: autoware.repos
 additional_repos_files:
@@ -16,6 +16,8 @@ releases:
       full_sync: true
     release_managers:
       - TomohitoAndo
+      - kotaro-hihara
+      - Tomohiro-Murohashi
     released_repositories: # repos you want to release alongside
       - repo_name_in_autoware_repos: autoware/launcher
         release_version: v4.3
