@@ -2,7 +2,7 @@ repositories:
   simulator/scenario_simulator:
     type: git
     url: https://github.com/tier4/scenario_simulator_v2.git
-    version: fcd2c7ecbb5de57ad33f3400b3fa84f06d7bee82
+    version: 38d74783ec0758f3f81f9fd35388346a94b13f1b
   simulator/ndt_convergence_evaluation:
     type: git
     url: git@github.com:tier4/ndt_convergence_evaluation.git
