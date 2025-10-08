@@ -27,6 +27,8 @@
     - { role: autoware.ecu_system_setup.marvell_switch_driver }
     - { role: autoware.ecu_system_setup.simple_system_launch } # if you launch autoware as a service, delete comment out
     - { role: autoware.ecu_system_setup.fool_proof_check } # fool proof check for autoware function
+    - role: autoware.ecu_system_setup.param_diff_uploader
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.ecu_system_setup.letterbox_monitor }
     - role: autoware.ecu_system_setup.build_system_monitor
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
