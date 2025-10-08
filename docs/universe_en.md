@@ -43,6 +43,10 @@ The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL 
   - You can include `product_name` specific changes.
   - If you would like to create tag on `beta/product_name/x.y.z` without patch release, you can create `product_name/x.y.z+a`, where `z` will be incremented from 0.
 
+> [!WARNING]
+> Creating `beta/product_name/x.y` is NOT RECOMMENDED. It makes some differences from `beta/x.y` and costs to sync upstream. In addition, it has a large risk of conflict occurring. Please use `beta/x.y` as much as possible.
+> If absolutely necessary, please ask AD Release Engineering Group (@org-biz-rdd-adre).
+
 A schematic diagram of the branching strategy is shown in following:
 
 ```mermaid

@@ -16,7 +16,8 @@
     "subshell",
     "xstartup",
     "bevdet",
-    "logname"
+    "logname",
+    "adre"
   ],
   "ignorePaths": [".release_info.yaml"]
 }

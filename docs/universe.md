@@ -43,6 +43,10 @@
   - このブランチには、`product_name` に特有の変更を加えることができる。
   - もし、パッチリリースをせずに `beta/product_name/x.y.z` 上でタグを設定したい場合は、`product_name/x.y.z+a` というタグを作成してもよい。ただし、`a` の部分は 0 から順番にインクリメントする。
 
+> [!WARNING]
+> `beta/product_name/x.y` の作成は非推奨です。`beta/x.y` との差分が生まれ、追従のコストが発生します。また、conflict 発生のリスクも大きいです。可能な限り、`beta/x.y` を利用できないかご検討ください。
+> どうしても作成したい場合、AD Release Engineering Group (@org-biz-rdd-adre) に相談をお願いします。
+
 ブランチ運用の概略図を以下に示す。
 
 ```mermaid
