@@ -3,12 +3,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: c58ae3e3e0ba5f9c3886db928cf9c0e8edae2067
+    version: d4ffbf5b18377ee1a2c940c6e83681bafb7bbfce
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: 6d0cf2e62b6959489bdbd8c01b3faa14a28dfdf7
+    version: d930c2495be28823e825b4d8e7931b98608ab032
     base: true
   autoware/autoware_cmake:
     type: git
@@ -23,27 +23,27 @@ repositories:
   autoware/autoware_lanelet2_extension:
     type: git
     url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
-    version: 786685a93b1cc8c6c0f97c4e25b73d873712dbce
+    version: 177078274bdde7f13116a57249dea430f2490fbf
     base: true
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: 99fbeddf39a8cf0e0c4ed06a24f983a8f8b80d99
+    version: 7cbaa348dd1ba60e2a4f77639461ecf119386d13
     base: false
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: d68a142be25354a3d1e59b00c258eb45c16b4074
+    version: 601f70319a92be4b5dfc0d9c0e314744708ceb08
     base: true
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: eb2e3c21c44feac98d440ac9b04e3bad021a81ce
+    version: 75236e8f4c83c4cdbb1bece601ce081c62283419
     base: true
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: 0d9ad1f5bc784d5e210801b2e5e8111e284252f2
+    version: acaa1fc8e4ce7878965872ce67764122e5ecdf9f
     base: true
   autoware/autoware_msgs:
     type: git
@@ -206,7 +206,7 @@ repositories:
   launch: # Based humble version, the acceleration patched is added
     type: git
     url: https://github.com/tier4/launch.git
-    version: 9597d2bc050c408ffc1e6797cc45527bd7ce4232
+    version: 534a0de07192a1e13bb512ae366dd27239d1a1eb
     base: true
   # Include many-nodes-in-container launch fix that ensures no LoadComposableNode call hangs
   # See https://github.com/ros2/launch_ros/compare/humble...tier4:launch_ros:/t4-main
@@ -219,7 +219,7 @@ repositories:
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: 13e008d6bd6614a8ea17f06eb5c0235e8928e407
+    version: e8d20c5c01d9959dec767c63fa6ed39acde476e4
     base: true
 
   # middleware
@@ -230,5 +230,5 @@ repositories:
   middleware/external/agnocast:
     type: git
     url: https://github.com/tier4/agnocast.git
-    version: 2.1.1
+    version: 2.1.2
     base: true
