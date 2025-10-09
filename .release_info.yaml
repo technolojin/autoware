@@ -251,3 +251,26 @@ releases:
         release_version: v0.55
       - repo_name_in_autoware_repos: v2x/vehicle2infrastructure
         release_version: v0.55
+  - version: v0.56
+    release_managers:
+      - masaharuTakano
+    released_repositories:
+      - repo_name_in_autoware_repos: autoware/core
+        release_version: v0.56
+      - repo_name_in_autoware_repos: autoware/launcher
+        release_version: v0.56
+      - repo_name_in_autoware_repos: autoware/universe
+        release_version: v0.56
+      - repo_name_in_autoware_repos: autoware/aip_launcher
+        release_version: v0.56
+      - repo_name_in_autoware_repos: autoware/tier4_autoware_msgs
+        release_version: v0.56
+      - repo_name_in_autoware_repos: v2x/vehicle2infrastructure
+        release_version: v0.56
+      - repo_name_in_autoware_repos: autoware/ad_api_adaptor
+        release_version: v0.56
+    released_ansible_repos: # from ansible-galaxy-requirements.yaml file
+      - repo_full_name: tier4/autoware_ecu_system_setup # github repo full name (owner/repo) derived from name field in collections
+        release_version: v0.56
+      - repo_full_name: tier4/edge-auto-jetson
+        release_version: v0.56
