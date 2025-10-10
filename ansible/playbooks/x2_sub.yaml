@@ -54,6 +54,7 @@
     - { role: agnocast_module_loader }
     - { role: autoware.ecu_system_setup.systemd_analyze_collector }
     - { role: divert_jetpack_static_lib }
+    - { role: delete_ccache_duplicates }
 
 - name: Conditionally run cert setup
   hosts: localhost

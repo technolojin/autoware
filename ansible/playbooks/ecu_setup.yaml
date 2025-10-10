@@ -53,6 +53,8 @@
     - { role: autoware.ecu_system_setup.systemd_analyze_collector }
     - { role: autoware.ecu_system_setup.passenger_app_agent }
     - { role: divert_jetpack_static_lib }
+    # TODO: This is temporary change. Delete when applied https://github.com/autowarefoundation/autoware/pull/6475
+    - { role: delete_ccache_duplicates }
 
 - name: Conditionally run cert setup
   hosts: localhost
