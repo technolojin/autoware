@@ -979,13 +979,6 @@
       "error_code": "no error code",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "GNSS機器との接続が確認できていません",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
     }
   },
   "/sensing/lidar/front_lower/temperature": {
