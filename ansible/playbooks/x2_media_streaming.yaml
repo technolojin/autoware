@@ -47,7 +47,8 @@
     # for Driver View Monitor
     - { role: autoware.ecu_system_setup.automatic_login }
     - { role: autoware.ecu_system_setup.disable_lock_screen }
-    - { role: autoware.ecu_system_setup.cabin_sight_monitor }
+    - role: autoware.ecu_system_setup.cabin_sight_monitor
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.ecu_system_setup.systemd_analyze_collector }
 
 - name: Conditionally run cert setup
