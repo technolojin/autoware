@@ -253,6 +253,7 @@ simulations:
         use_traffic_light_recognition: "false"
         evaluation_detection_topic_regex: ^/perception/object_recognition/detection/objects$
         evaluation_prediction_topic_regex: None
+        tracker_publish_merged_objects: "true"
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
           mounts:
@@ -262,7 +263,7 @@ simulations:
           path: /home/autoware/autoware_data/lidar_centerpoint
           preserve_original_files: true
 
-  - name: PerformanceTest_perception_using_mct_merger
+  - name: PerformanceTest_perception_from_detected_object
     type: perception
     suite:
       selector:
@@ -280,6 +281,8 @@ simulations:
         use_traffic_light_recognition: "false"
         evaluation_detection_topic_regex: ^/perception/object_recognition/detection/objects$
         evaluation_prediction_topic_regex: None
+        use_multi_channel_tracker_merger: "false"
+        tracker_publish_merged_objects: "false"
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
           mounts:
@@ -380,6 +383,7 @@ simulations:
         evaluation_prediction_topic_regex: None
         perception_mode: lidar
         lidar_detection_model: centerpoint/centerpoint
+        tracker_publish_merged_objects: "true"
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint.param.yaml build_only:=true
           mounts:
@@ -409,6 +413,7 @@ simulations:
         evaluation_prediction_topic_regex: None
         perception_mode: lidar
         lidar_detection_model: centerpoint
+        tracker_publish_merged_objects: "true"
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
           mounts:
@@ -438,6 +443,7 @@ simulations:
         evaluation_prediction_topic_regex: None
         perception_mode: lidar
         lidar_detection_model: transfusion
+        tracker_publish_merged_objects: "true"
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_transfusion lidar_transfusion.launch.xml model_name:=transfusion model_path:=/home/autoware/autoware_data/lidar_transfusion build_only:=true
           mounts:
@@ -467,6 +473,7 @@ simulations:
         evaluation_prediction_topic_regex: None
         perception_mode: camera_lidar_fusion
         lidar_detection_model: apollo
+        tracker_publish_merged_objects: "true"
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_apollo_instance_segmentation lidar_apollo_instance_segmentation.launch.xml build_only:=true
           mounts:
@@ -496,6 +503,7 @@ simulations:
         evaluation_prediction_topic_regex: None
         perception_mode: camera_lidar_fusion
         lidar_detection_model: centerpoint
+        tracker_publish_merged_objects: "true"
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
           mounts:
@@ -525,6 +533,7 @@ simulations:
         evaluation_prediction_topic_regex: None
         perception_mode: camera_lidar_fusion
         lidar_detection_model: pointpainting
+        tracker_publish_merged_objects: "true"
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_image_projection_based_fusion pointpainting_fusion.launch.xml model_name:=pointpainting model_path:=/home/autoware/autoware_data/image_projection_based_fusion model_param_path:=$(ros2 pkg prefix autoware_image_projection_based_fusion --share)/config/pointpainting.param.yaml build_only:=true
           mounts:
@@ -554,6 +563,7 @@ simulations:
         evaluation_prediction_topic_regex: None
         perception_mode: camera_lidar_radar_fusion
         lidar_detection_model: centerpoint
+        tracker_publish_merged_objects: "true"
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
           mounts:
@@ -583,6 +593,7 @@ simulations:
         evaluation_prediction_topic_regex: None
         perception_mode: camera_lidar_radar_fusion
         lidar_detection_model: pointpainting
+        tracker_publish_merged_objects: "true"
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_image_projection_based_fusion pointpainting_fusion.launch.xml model_name:=pointpainting model_path:=/home/autoware/autoware_data/image_projection_based_fusion model_param_path:=$(ros2 pkg prefix autoware_image_projection_based_fusion --share)/config/pointpainting.param.yaml build_only:=true
           mounts:
