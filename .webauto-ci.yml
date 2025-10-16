@@ -135,6 +135,7 @@ simulations:
         autoware.output_metrics: "true"
         use_custom_centerline: "false"
         use_sim_time: "false"
+        use_trajectory_based_front_entity_detection: "true"
       logging:
         additional_log_archive:
           paths:
