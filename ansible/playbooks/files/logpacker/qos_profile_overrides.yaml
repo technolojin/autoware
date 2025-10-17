@@ -1223,11 +1223,6 @@
   durability: system_default
   history: keep_last
   reliability: best_effort
-/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/run_out:
-  depth: 10
-  durability: system_default
-  history: keep_last
-  reliability: best_effort
 /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/stop_line:
   depth: 10
   durability: system_default
