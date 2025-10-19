@@ -3,57 +3,57 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: 19350bff551181812026f570cb4a4bfad5178907
+    version: 27346f479db67e5a3783aaf182b312767e3c0e03
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: 6cb3ed2d3b7933bf7fd27f9f5d1da7a0471d386f
+    version: 4c1bc6b5710d784dba19758ba81fbbd7d77e57db
     base: true
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
-    version: 086dbe1e4c0c6230eb92a12b166b112236d07b32
+    version: 6829fde0b7f8ef6b0155f1902022b7f6d89b068b
     base: true
   autoware/autoware_utils:
     type: git
     url: https://github.com/autowarefoundation/autoware_utils.git
-    version: 021ac0af7a065a00303f4fea991fe7b141e0e1a6
+    version: 2fe987a6cc899efac88c59fecbf02f2b2646e123
     base: true
   autoware/autoware_lanelet2_extension:
     type: git
     url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
-    version: 82ea5f0ddf98681070da99bdfcde510ffcbf0416
+    version: 941af34739fcea27217c00a60ddc3c19fc885edb
     base: true
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: 289517cfa200ecbd993571777be5ff0fc006ca75
+    version: 766261f50b248a8257079853ea7f54037c56423a
     base: false
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 3600e94ed66bee86e6fde26f4ece934a6f79cbcc
+    version: a3bb5da2adce3ce52915e49b678d11dee78f7c83
     base: true
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: d58fa39cb911c7ef7bd2e518e4b8c6a171cd32a4
+    version: dd507a71688f8a7518253e3c4f299e6797e0ff34
     base: true
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: 9b25c598a714bb2c66f447d2a75ca074d6583071
+    version: 5ec622a7790e9cc7f9bf35ec08bac2837d8ed16d
     base: true
   autoware/autoware_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_msgs.git
-    version: cb0ca5b8ea6a01b2e2b254903ba467295773881e
+    version: 692c084078c1d5ad641a1b600e3bcf36cc24d291
     base: true
   autoware/autoware_adapi_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_adapi_msgs.git
-    version: 6085825c26f765fbde8094e95f01958d0f8a4681
+    version: 87fc41f07bc7054978ebedbfd30d5f88d18eddce
     base: true
   autoware/autoware_internal_msgs:
     type: git
@@ -73,7 +73,7 @@ repositories:
   autoware/autoware_rviz_plugins:
     type: git
     url: https://github.com/autowarefoundation/autoware_rviz_plugins.git
-    version: 69878ef0f4f3694a83ad838df1ca3054bb5c08db
+    version: c5f0baa6439849fa3733f09948242769e1c75b3f
     base: true
   # description
   description/sensor/sensor_component_description:
@@ -105,7 +105,7 @@ repositories:
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
-    version: 049081857b2c5d39daf24bb9f6f5bcf44b338314
+    version: cb1918a08f3a3fe7216686a5633ae69dad354f88
     base: true
   vendor/ublox:
     type: git
@@ -120,7 +120,7 @@ repositories:
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
-    version: v0.2.6
+    version: v0.2.6.2
     base: true
   vendor/boost_transport_drivers:
     type: git
@@ -198,11 +198,18 @@ repositories:
     url: https://github.com/tier4/launch.git
     version: 9122128dc931211e42116b055f150199285496e1
     base: true
+  # Include many-nodes-in-container launch fix that ensures no LoadComposableNode call hangs
+  # See https://github.com/ros2/launch_ros/compare/humble...tier4:launch_ros:/humble/fix/load_composable_node
+  launch_ros:
+    type: git
+    url: https://github.com/tier4/launch_ros.git
+    version: 2759f8ae5dca9d4ab517a9b5d6b5f2c66556337f
+    base: true
 
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: 72cb1f664546f5068b72aeaff2e520895c59c138
+    version: b899947a448a75f9915ea17b00cfec5e1a79451f
     base: true
 
   # middleware
@@ -213,5 +220,5 @@ repositories:
   middleware/external/agnocast:
     type: git
     url: https://github.com/tier4/agnocast.git
-    version: d04b92553fedefe46ebcae819add89821f3d6c6a # TODO(TIER IV): to be updated to v1.1.0
+    version: 72fd426d5cbb41a867b5be981cd483680b56e9ae # TODO(TIER IV): to be updated to v1.1.0
     base: true

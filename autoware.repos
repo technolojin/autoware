@@ -2,42 +2,42 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: fcc20fce2f01b95a9ec2e4be499f1cec83b8b549
+    version: v0.56.0
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: f376402d6a019b98d010f0fc29e822db5ea4c5e5
+    version: v0.56.0
     base: true
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
-    version: 086dbe1e4c0c6230eb92a12b166b112236d07b32
+    version: 99d799247aebc0ef95f4a1fab9ce13752f11ae5a
     base: true
   autoware/autoware_utils:
     type: git
     url: https://github.com/autowarefoundation/autoware_utils.git
-    version: 021ac0af7a065a00303f4fea991fe7b141e0e1a6
+    version: 3b0094fa0f4455e63418fb1f86b338e3f7578644
     base: true
   autoware/autoware_lanelet2_extension:
     type: git
     url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
-    version: 786685a93b1cc8c6c0f97c4e25b73d873712dbce
+    version: 177078274bdde7f13116a57249dea430f2490fbf
     base: true
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: a52dfdebcd0aac94bf48e2d732f93ac75a36d816
+    version: v0.56.0
     base: true
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: 0df1ebf2839cd8441351bdb09700599021b3640b
+    version: v0.56.0
     base: true
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: c79c856ada2ad0fe758ed3fc777a5fb915c197c5
+    version: v0.56.0
     base: true
   autoware/autoware_msgs:
     type: git
@@ -47,12 +47,12 @@ repositories:
   autoware/autoware_adapi_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_adapi_msgs.git
-    version: 87fc41f07bc7054978ebedbfd30d5f88d18eddce
+    version: a961390a6b9373757481cb6be25353b0ccd5d273
     base: true
   autoware/autoware_internal_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_internal_msgs.git
-    version: 1.12.0
+    version: f5524e501775463f508cdb93fe6aec45e1fb4836
     base: true
   autoware/managed_transform_buffer:
     type: git
@@ -62,7 +62,7 @@ repositories:
   autoware/autoware_rviz_plugins:
     type: git
     url: https://github.com/autowarefoundation/autoware_rviz_plugins.git
-    version: 331eae6b013215ebe0c333dbb0387b49f738a2e0
+    version: 5f02b1bee49f21194a7dbeebe8b4e387ea66d3d0
     base: true
   # description
   description/sensor/sensor_component_description:
@@ -83,7 +83,7 @@ repositories:
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
-    version: v0.2.12
+    version: v0.2.11
     base: true
   vendor/sync_tooling_msgs: # For Nebula SYNC.TOOLING support
     type: git
@@ -146,7 +146,12 @@ repositories:
     url: https://github.com/osrf/negotiated.git
     version: eac198b55dcd052af5988f0f174902913c5f20e7
     base: true
-  rclcpp: # Based stable version, the fix-patch for service in initialization, glog feature and the fix-patch for loading node in container is added
+  vendor/bevdet_vendor: # TODO: wrap the original bevdet-tensorrt-cpp source code as a vendor package and provide it to autoware_tensorrt_bevdet package
+    type: git
+    url: https://github.com/autowarefoundation/bevdet_vendor.git
+    version: 0cda477b09ed27cfc8484c792b4f5f3063cf425f
+    base: true
+  rclcpp: # Based stable version, the fix-patch for service in initialization and the glog feature and the fix-patch for loading node in container is added
     type: git
     url: https://github.com/tier4/rclcpp.git
     version: ef50da230a0c4a1320dc52b5a16dd0cc13018cec
@@ -154,7 +159,7 @@ repositories:
   launch: # Based humble version, the acceleration patched is added
     type: git
     url: https://github.com/tier4/launch.git
-    version: 9122128dc931211e42116b055f150199285496e1
+    version: 534a0de07192a1e13bb512ae366dd27239d1a1eb
     base: true
   # Include many-nodes-in-container launch fix that ensures no LoadComposableNode call hangs
   # See https://github.com/ros2/launch_ros/compare/humble...tier4:launch_ros:/t4-main
@@ -166,7 +171,7 @@ repositories:
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: 299a544ac6e9c4ac3a4931b25e0d05c2f3031422
+    version: v0.56.0
     base: true
   # middleware
   # TODO(TIER IV): During the transition period of Agnocast introduction,
@@ -178,40 +183,25 @@ repositories:
     url: https://github.com/tier4/agnocast.git
     version: 2.1.2
     base: true
-  autoware/mrm_plugin:
-    type: git
-    url: git@github.com:tier4/mrm_plugin.x2.git
-    version: ca8a4e0bdfb8f07234f886c9c69bc3439a654709
-    base: false
-  vendor/redundancy_switcher_interface:
-    type: git
-    url: git@github.com:tier4/redundancy_switcher_interface.git
-    version: 1c0cb40d19f346e689576cfe5dc129bb059b360d
-    base: false
-  vendor/septentrio_gnss_driver:
-    type: git
-    url: https://github.com/tier4/septentrio_gnss_driver.git
-    version: a5790bbed2705f330cefe0c9963ef2ba953d79a1
-    base: false
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: 2327066e74443ea915be3ee970e0c9267b19cacb
+    version: tier4/main
     base: false
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    version: 18358f680d01ba91bdfbc5115cf3e420d9e5b255
+    version: main
     base: false
   description/vehicle/j6_gen2_description:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
-    version: 7323ed43429656c161286a61d4d44af90a2a6c99
+    version: main
     base: false
   vendor/mj20_interface:
     type: git
     url: git@github.com:tier4/mj20_interface.git
-    version: 3bf15ef2cce9a130f11e672fde54304d178b0ecf
+    version: main
     base: false
   vendor/ros2_socketcan:
     type: git
@@ -226,12 +216,12 @@ repositories:
   product/l4_toolkit:
     type: git
     url: git@github.com:tier4/l4_toolkit.git
-    version: 38a6b9cd5003139cf85f2d586c192b2e3e5276d6
+    version: 12748a50285fe6030b1f593c33d62d8d815171a3
     base: false
   vendor/emergency_vehicle_detector:
     type: git
     url: git@github.com:tier4/emergency_vehicle_detector.git
-    version: 88c328a4bc4443964bbd2b70c2f9daab8331c495
+    version: vendor
     base: false
   vendor/pyrocan:
     type: git
@@ -247,4 +237,14 @@ repositories:
     type: git
     url: git@github.com:tier4/autoware_diagnostics_bridge.git
     version: 96281eab064c55a66b2e04d16de3fc51e61b3c83
+    base: false
+  vendor/redundancy_switcher_interface:
+    type: git
+    url: git@github.com:tier4/redundancy_switcher_interface.git
+    version: main
+    base: false
+  autoware/mrm_plugin:
+    type: git
+    url: git@github.com:tier4/mrm_plugin.x2.git
+    version: main
     base: false

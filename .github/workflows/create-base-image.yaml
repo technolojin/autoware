@@ -141,7 +141,7 @@ jobs:
         run: |
           mkdir -p build-context/docker/base-image
           cp -r docker/base-image/* build-context/docker/base-image/
-          cp autoware.repos setup-dev-env.sh ansible-galaxy-requirements.yaml amd64.env arm64.env build-context/
+          cp autoware.repos simulator.repos tools.repos setup-dev-env.sh ansible-galaxy-requirements.yaml amd64.env arm64.env build-context/
           cp -r ansible build-context/
 
       - name: Set image tag suffix
