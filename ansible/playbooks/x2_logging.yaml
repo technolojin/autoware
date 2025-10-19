@@ -22,7 +22,6 @@
     - role: autoware.ecu_system_setup.autoware_logging_suite
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.ecu_system_setup.bagkeeper }
-    - { role: autoware.ecu_system_setup.bagkeeper_launch }
     - { role: autoware.ecu_system_setup.bagrollbacker }
     - { role: autoware.ecu_system_setup.bagtaker2 }
     - role: autoware.ecu_system_setup.boot_shutdown_manager
