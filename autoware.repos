@@ -7,7 +7,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: 40ab93b674c54993a8503f8a8f16b0dcb4577074
+    version: fb9b9fac9e8431b4c9b7d155fc8818e6558ab5af
     base: true
   autoware/autoware_cmake:
     type: git
@@ -27,7 +27,7 @@ repositories:
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 5e69315b34dca76a67a915e89aea14414904725d
+    version: 38a450796a467c13190dc026aac5fa3d91871068
     base: true
   autoware/ad_api_adaptor:
     type: git
@@ -83,7 +83,7 @@ repositories:
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
-    version: v0.2.12
+    version: v0.2.13
     base: true
   vendor/sync_tooling_msgs: # For Nebula SYNC.TOOLING support
     type: git
