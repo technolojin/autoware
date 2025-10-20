@@ -47,6 +47,8 @@ sync_tooling:
 setup_systemd_analyze_collector: true
 # systemd_analyze_collector
 use_rsync_send: false # logging ECU does not need rsync to send data
+# param_diff_uploader
+is_param_diff_collector: true
 
 # netplan
 netplan_files: netplan/99-autoware.x2-logging.yaml

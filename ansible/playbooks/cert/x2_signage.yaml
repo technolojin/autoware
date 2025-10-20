@@ -1,0 +1,8 @@
+- name: Run signage cert
+  ansible.builtin.include_role:
+    name: "{{ cert_item.name }}"
+  loop:
+    - { name: autoware.ecu_system_setup.nftables }
+  loop_control:
+    label: "{{ cert_item.name }}"
+    loop_var: cert_item

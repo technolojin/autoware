@@ -11,7 +11,3 @@ fstab_entries: # noqa var-naming[no-role-prefix]
     mount_point: /mnt/LOG
     fs_type: none
     options: bind,nofail
-  - mount_specifier: LABEL=ROSBAG
-    mount_point: /media/autoware/ROSBAG
-    fs_type: ext4
-    options: nofail

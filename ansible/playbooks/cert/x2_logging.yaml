@@ -1,0 +1,10 @@
+- name: Run logging cert
+  ansible.builtin.include_role:
+    name: "{{ cert_item.name }}"
+  loop:
+    - { name: autoware.ecu_system_setup.dssad_packer }
+    - { name: autoware.ecu_system_setup.opal_disk }
+    - { name: autoware.ecu_system_setup.rootfs_encrypt }
+  loop_control:
+    label: "{{ cert_item.name }}"
+    loop_var: cert_item

@@ -963,6 +963,8 @@ simulations:
       parameters:
         use_traffic_light_recognition: "false"
         play_rate: "0.125"
+        vehicle_model: j6_gen2
+        sensor_model: aip_x2_gen2
       pre_tasks:
         - exec: rm -f /opt/autoware/mlmodels/centerpoint/*engine && rm -f /opt/autoware/mlmodels/centerpoint/*json && source /home/autoware/autoware.proj/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_x2 model_path:=/opt/autoware/mlmodels/centerpoint model_param_path:=$(ros2 pkg prefix autoware_launch --share)/config/perception/object_recognition/detection/lidar_model/centerpoint_x2.param.yaml build_only:=true
           mounts:
@@ -1394,6 +1396,8 @@ simulations:
         localization: "false"
         planning: "false"
         control_module_preset: dlr_control_validator
+        vehicle_model: j6_gen2
+        sensor_model: aip_x2_gen2
         override_topics_regex: '"^/(?!localization/[^ ]*/pointcloud$)(?!perception/object_recognition/detection/(?!objects$)).*"'
 
   - name: dlr_pc_w_loc_track_pred
@@ -1415,6 +1419,13 @@ simulations:
         perception: "true"
         localization: "true"
         play_delay: "20.0"
+        output_metrics: "true"
+        vehicle_model: j6_gen2
+        sensor_model: aip_x2_gen2
+      logging:
+        additional_log_archive:
+          paths:
+            - /home/autoware/.ros/log/autoware_metrics
         override_topics_regex: '"^/(?!localization/[^ ]*/pointcloud$)(?!perception/object_recognition/detection/(?!objects$)).*"'
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
@@ -1441,6 +1452,13 @@ simulations:
         sensing: "false"
         perception: "false"
         localization: "false"
+        output_metrics: "true"
+        vehicle_model: j6_gen2
+        sensor_model: aip_x2_gen2
+      logging:
+        additional_log_archive:
+          paths:
+            - /home/autoware/.ros/log/autoware_metrics
         override_topics_regex: '"^/(?!localization/[^ ]*/pointcloud$)(?!perception/object_recognition/detection/(?!objects$)).*"'
 
 release:

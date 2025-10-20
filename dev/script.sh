@@ -30,6 +30,10 @@ if [[ -z $interface ]]; then
     exit 1
 fi
 
+# 対象のinterfaceをNetworkManagerの管理対象から外してIPアドレスをリセット
+nmcli device set "$interface" managed no
+sudo ip addr flush dev "$interface"
+
 # IPアドレス設定
 sudo ip addr add 192.168.30.123/24 dev "$interface"
 sudo ip link set "$interface" up
@@ -66,7 +70,17 @@ until ros2 topic list | grep -q "/tf"; do
     echo "Waiting for /tf topic to appear..."
     sleep 0.5
 done
-echo "/tf topic discovered. Launching RViz."
+echo "/tf topic discovered. ROS2 is ready."
+
+# screen-recorder.serviceがinstallされている場合、serviceを再起動
+if [[ -f /etc/systemd/system/screen-recorder.service ]]; then
+    echo "Restarting screen-recorder.service"
+    sudo systemctl restart screen-recorder.service
+fi
 
 # Rviz起動
+echo "Launching RViz"
 ros2 launch autoware_launch autoware_sub_rviz.launch.xml rviz_config:="$script_dir/../src/autoware/launcher/autoware_launch/rviz/autoware_x2.rviz" vehicle_model:=j6_gen2 rviz_respawn:=true
+
+# 終了後にNerworkManagerの管理対象に戻す
+nmcli device set "$interface" managed yes

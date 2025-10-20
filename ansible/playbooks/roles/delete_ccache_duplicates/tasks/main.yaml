@@ -1,0 +1,5 @@
+- name: Delete duplicate ccache settings in .bashrc
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.bashrc"
+    regexp: ^export CCACHE_DIR="/var/tmp/ccache"$
+    state: absent

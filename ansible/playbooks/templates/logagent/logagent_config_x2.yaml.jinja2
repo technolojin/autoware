@@ -94,3 +94,9 @@ log_upload:
       path: {{ systemd_analyze_collector_directory }}
       hosts: []
       except_current: false
+
+    - file_type: user
+      extensions: [txt]
+      path: {{ param_diff_uploader_directory }}
+      hosts: []
+      except_current: false

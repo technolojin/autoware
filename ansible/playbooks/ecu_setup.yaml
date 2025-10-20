@@ -27,6 +27,8 @@
     - { role: autoware.ecu_system_setup.marvell_switch_driver }
     - { role: autoware.ecu_system_setup.simple_system_launch } # if you launch autoware as a service, delete comment out
     - { role: autoware.ecu_system_setup.fool_proof_check } # fool proof check for autoware function
+    - role: autoware.ecu_system_setup.param_diff_uploader
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.ecu_system_setup.letterbox_monitor }
     - role: autoware.ecu_system_setup.build_system_monitor
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
@@ -50,3 +52,15 @@
     - { role: autoware.ecu_system_setup.systemd_analyze_collector }
     - { role: autoware.ecu_system_setup.passenger_app_agent }
     - { role: divert_jetpack_static_lib }
+    # TODO: This is temporary change. Delete when applied https://github.com/autowarefoundation/autoware/pull/6475
+    - { role: delete_ccache_duplicates }
+
+- name: Conditionally run cert setup
+  hosts: localhost
+  vars_files:
+    - ./vars/essential_vars.yaml
+    - ./cert/vars/ecu_setup.yaml
+  tasks:
+    - name: Run cert setup tasks
+      ansible.builtin.include_tasks: cert/ecu_setup.yaml
+      when: run_cert_setup | default(false)
