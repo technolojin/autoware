@@ -57,4 +57,4 @@ otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-voice-system
 otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-1gbe.j2
 
 # Passenger App
-passenger_app_version: v0.0.1
+passenger_app_version: v0.0.2
