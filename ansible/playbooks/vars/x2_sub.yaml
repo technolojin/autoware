@@ -83,6 +83,8 @@ node_id: 1
 # fool proof check service
 check_target_service: autoware_sub_launch.service
 fool_proof_check_network_interface: enp5s0f0 # TODO: check vlan.500
+fool_proof_check_additional_command: | # Set ROS_DOMAIN_ID for redandancy
+  export ROS_DOMAIN_ID=2
 
 # letterbox_monitor
 letterbox_monitor:
