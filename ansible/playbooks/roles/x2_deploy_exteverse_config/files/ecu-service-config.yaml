@@ -1,0 +1,29 @@
+services:
+  - greengrass
+  - tier4_ros2_standby_wait
+  - screen-recorder
+  - perception-startup
+  - autoware-launch
+  - otaclient
+  - sxpf-ros-driver
+  - networkd-dispatcher
+  - ptp4l
+  - ptp4l@enp3s0
+  - autoware_main_launch
+  - autoware_system_launch
+  - autoware_main_mrm_launch
+  - autoware_sub_launch
+  - c2_fw_autoupdate
+  - letterbox_monitor@autoware_system
+  - fool-proof-check
+  - rosbag_watchdog
+  - logpacker
+  - rviz
+  - autoware_launch
+  - scheduling-settings
+  - rsyslog
+  - hdd-reader
+  - redundancy-switcher
+  - mot
+  - mot-start
+refreshInterval: 30000

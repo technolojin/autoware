@@ -1,0 +1,122 @@
+# グループ設定
+groups:
+  - id: in-vehicle-command
+    name: In Vehicle Command
+    icon: folder # see https://lucide.dev/icons/
+    collapsed: false
+
+# カード設定
+cards:
+  # - id: "deploy_app"                                        # 識別子
+  #   type: "action"                                          # カードの種類（現在actionのみ）
+  #   title: "アプリをデプロイ"                                  # UI に表示するタイトル
+  #   description: "現在のプロジェクトを本番環境へ一括デプロイ"      # 操作の説明文
+  #   icon: "rocket"  # see https://lucide.dev/icons          # 表示アイコン（Lucide 名）
+  #   icon_color: "#3b82f6"                                   # アイコン色（HEX）
+  #   category: "development"                                 # 所属グループ ID
+  #   button:                                                 # ボタン設定
+  #     text: "デプロイ開始"                                    # ボタンに表示する文字
+  #     text_color: "#ffffff"                                 # ボタン文字色（HEX）
+  #     background_color: "#2563eb"                           # ボタン背景色（HEX）
+  #     confirm: true                                         # 実行前の確認ダイアログの有無
+  #   confirm_message: "本番環境にデプロイしてよろしいですか?"    # 確認ダイアログのメッセージ
+  #   command: "npm run deploy:prod"                          # 実行するシェルコマンド
+  #   target: "local" #local or autoware@123.123.123.123      # 実行対象（local または リモート user@host）
+  #   working_directory: "~"                                  # コマンドの作業ディレクトリ
+  #   success_message: "デプロイ成功:アプリが本番へ公開されました"  # 成功時の通知メッセージ
+  #   error_message: "デプロイ失敗:ログを確認して再試行してください" # 失敗時の通知メッセージ
+
+  - id: ping
+    type: action
+    title: ネットワーク疎通確認
+    description: ping 8.8.8.8で疎通するかを確認する。
+    icon: globe # see https://lucide.dev/icons/
+    icon_color: "#f59e0b"
+    category: in-vehicle-command
+    button:
+      text: 実行
+      text_color: "#ffffff"
+      background_color: "#f59e0b"
+      confirm: false
+    confirm_message: >-
+    command: ping 8.8.8.8
+    target: local
+    working_directory: "~"
+    success_message: 実行成功
+    error_message: 実行成功
+
+  - id: action_1759901887587_rpx933u56
+    type: action
+    title: カメラ画像確認
+    description: カメラ画像11個が映っていることを確認する
+    icon: switch-camera # see https://lucide.dev/icons/
+    icon_color: "#3b82f6"
+    category: in-vehicle-command
+    button:
+      text: 実行
+      text_color: "#ffffff"
+      background_color: "#3b82f6"
+      confirm: false
+    confirm_message: >-
+    command: python3 /opt/devtools/v_and_v_util/X2_smoke_test_tool/perception_camera_checker_for_gen2.0.py
+    target: local
+    working_directory: "~"
+    success_message: 実行成功
+    error_message: 実行成功
+
+  - id: action_1759977803625_4ie8mr0v6
+    type: action
+    title: Topic hz確認
+    description: 必要なデータが受信できていることを確認する
+    icon: list-end # see https://lucide.dev/icons/
+    icon_color: "#10b981"
+    category: in-vehicle-command
+    button:
+      text: 実行
+      text_color: "#ffffff"
+      background_color: "#10b981"
+      confirm: false
+    confirm_message: >-
+    command: python3 /opt/devtools/data_collection_tools/data_collection_tools/topic_hz_checker.py /opt/devtools/data_collection_tools/data_collection_tools/config/j6_BYD_Gen2_topic_checklist.yaml
+    target: local
+    working_directory: "~"
+    success_message: 実行成功
+    error_message: 実行成功
+
+  - id: action_1759977925803_kfyanmcbe
+    type: action
+    title: LiDAR camera時刻同期(Echo)
+    description: timestampに大きなズレ（数秒以上）がないことを確認する。
+    icon: radar # see https://lucide.dev/icons/
+    icon_color: "#8b5cf6"
+    category: in-vehicle-command
+    button:
+      text: 実行
+      text_color: "#ffffff"
+      background_color: "#8b5cf6"
+      confirm: false
+    confirm_message: >-
+    command: python3 /opt/devtools/devtools.x2/scripts/gen2/lidar_camera_stamp_echo.py
+    target: local
+    working_directory: "~"
+    success_message: 実行成功
+    error_message: 実行成功
+
+  - id: action_1759978081730_niss8fm6h
+    type: action
+    title: LiDAR camera時刻同期(Delay)
+    description: timestampに大きなズレ（数秒以上）がないことを確認する。
+    icon: camera # see https://lucide.dev/icons/
+    icon_color: "#f59e0b"
+    category: in-vehicle-command
+    button:
+      text: 実行
+      text_color: "#ffffff"
+      background_color: "#f59e0b"
+      confirm: false
+    confirm_message: >-
+    command: python3 /opt/devtools/devtools.x2/scripts/gen2/lidar_camera_topic_delay.py
+    target: local
+    working_directory: "~"
+    success_message: 実行成功
+    error_message: 実行成功

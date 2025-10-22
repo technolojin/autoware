@@ -1,0 +1,1 @@
+x2_deploy_exteverse_config_target: "{{ ansible_env.HOME }}/exteverse-data/configs"

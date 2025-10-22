@@ -7,10 +7,12 @@
     "DDSI",
     "dkoldaev",
     "Dont",
+    "exteverse",
     "fintekcan",
     "kdump",
     "keyout",
     "kistler",
+    "Lucide",
     "logagent",
     "Logagent",
     "logfile",
@@ -46,7 +48,13 @@
     "wmem",
     "xcarbon",
     "xstartup",
-    "writeback"
+    "writeback",
+    "kfyanmcbe",
+    "niss",
+    "sinage",
+    "Exte",
+    "fileglob",
+    "wantlist"
   ],
   "ignorePaths": [".release_info.yaml"]
 }
