@@ -3,12 +3,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: d4ffbf5b18377ee1a2c940c6e83681bafb7bbfce
+    version: b4dfb0ba9d12dc1a3ac8d786471134e93a2ad15d
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: d930c2495be28823e825b4d8e7931b98608ab032
+    version: a80562fbdf7d2c9747884ac2b5ac2fd437dd5a03
     base: true
   autoware/autoware_cmake:
     type: git
@@ -18,7 +18,7 @@ repositories:
   autoware/autoware_utils:
     type: git
     url: https://github.com/autowarefoundation/autoware_utils.git
-    version: 3b0094fa0f4455e63418fb1f86b338e3f7578644
+    version: 8dd4133d18b1a539d8d7c252a146cae352b5a50d
     base: true
   autoware/autoware_lanelet2_extension:
     type: git
@@ -28,27 +28,27 @@ repositories:
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: 7cbaa348dd1ba60e2a4f77639461ecf119386d13
+    version: 265566a2eb74d0ca4047591434d91aab89c3e91a
     base: false
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 601f70319a92be4b5dfc0d9c0e314744708ceb08
+    version: 5c3caad00301bd1d72c1c31b11eb076c4c00971e
     base: true
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: 75236e8f4c83c4cdbb1bece601ce081c62283419
+    version: 38393794a7c46da2d6d4efd28a05b2a135099d71
     base: true
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: acaa1fc8e4ce7878965872ce67764122e5ecdf9f
+    version: b9c385197baf1a2e77f088bea46e7287cd3ec367
     base: true
   autoware/autoware_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_msgs.git
-    version: f49c35c7a7b0110ad7bf5d91f67967833fd1c0d9
+    version: 3f7afa5d79c4a9a37be4a92a7a2df1e825a4f362
     base: true
   autoware/autoware_adapi_msgs:
     type: git
@@ -206,7 +206,7 @@ repositories:
   launch: # Based humble version, the acceleration patched is added
     type: git
     url: https://github.com/tier4/launch.git
-    version: 534a0de07192a1e13bb512ae366dd27239d1a1eb
+    version: 2e7ee22f2d9c5389e7da807085255a745e3a0758
     base: true
   # Include many-nodes-in-container launch fix that ensures no LoadComposableNode call hangs
   # See https://github.com/ros2/launch_ros/compare/humble...tier4:launch_ros:/t4-main
