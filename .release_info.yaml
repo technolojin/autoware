@@ -308,3 +308,21 @@ releases:
         release_version: v0.56
       - repo_full_name: tier4/edge-auto-jetson
         release_version: v0.56
+  - version: v0.57
+    release_managers:
+      - masaharuTakano
+    released_repositories:
+      - from_file: autoware.repos
+        repos_list:
+          - repo_name: autoware/core
+            release_version: v0.57
+          - repo_name: autoware/launcher
+            release_version: v0.57
+          - repo_name: autoware/universe
+            release_version: v0.57
+          - repo_name: autoware/aip_launcher
+            release_version: v0.57
+          - repo_name: autoware/tier4_autoware_msgs
+            release_version: v0.57
+          - repo_name: v2x/vehicle2infrastructure
+            release_version: v0.57
