@@ -27,6 +27,8 @@ cyclonedds:
   max_rexmit_message_size: 1456B # Default value from CycloneDDS documentation
   water_mark_whc_high: 500kB # Default value from CycloneDDS documentation
   water_mark_whc_low: 1kB # Default value from CycloneDDS documentation
+  lease_duration: 32s
+  spdp_interval: 30s
 
 # ptp4l port
 ptp4l_network_port: vlan.500

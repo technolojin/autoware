@@ -12,6 +12,8 @@ cyclonedds:
   max_rexmit_message_size: 8950B
   water_mark_whc_high: 4MB
   water_mark_whc_low: 10kB
+  lease_duration: 32s
+  spdp_interval: 30s
 ipv4_ipfrag_time: 1
 ipv4_ipfrag_high_thresh: 134217728
 netcore_rmem_max: 2147483647
