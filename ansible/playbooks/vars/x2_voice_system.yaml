@@ -58,3 +58,6 @@ otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-1gbe.j2
 
 # Passenger App
 passenger_app_version: v0.0.2
+
+# set_autoware_env
+vehicle_id: INVALID_VEHICLE_ID

@@ -33,3 +33,6 @@ target_service_before_reload_camera_driver: media.service
 
 # systemd_analyze_collector
 rsync_target_host_ip: 192.168.20.71
+
+# set_autoware_env
+vehicle_id: INVALID_VEHICLE_ID

@@ -100,3 +100,6 @@ rsync_target_host_ip: 192.168.20.71
 setup_coredump_rsyncd_service: true
 rsyncd_hosts_allow: 192.168.30.71 # X2 Logging ECU
 setup_coredump_tmpfiles_service: true
+
+# set_autoware_env
+vehicle_id: INVALID_VEHICLE_ID

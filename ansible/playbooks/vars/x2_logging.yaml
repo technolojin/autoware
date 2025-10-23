@@ -211,3 +211,6 @@ metric_agent_product_config_template: metric_agent/product_metric_config_x2.yaml
 metric_agent_telegraf_service_config_template: metric_agent/telegraf.socket_listener_uds_x2.conf.jinja2
 metric_agent_telegraf_hostname: logging_ecu
 metric_agent_telegraf_otel_hostname: ${AGENT_HOSTNAME}
+
+# set_autoware_env
+vehicle_id: INVALID_VEHICLE_ID

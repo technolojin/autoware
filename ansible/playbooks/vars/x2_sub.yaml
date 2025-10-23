@@ -128,3 +128,6 @@ simple_system_launch_items:
 
 # systemd_analyze_collector
 rsync_target_host_ip: 192.168.20.71
+
+# set_autoware_env
+vehicle_id: INVALID_VEHICLE_ID
