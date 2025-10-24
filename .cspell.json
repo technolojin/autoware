@@ -17,7 +17,8 @@
     "xstartup",
     "bevdet",
     "logname",
-    "adre"
+    "adre",
+    "semseg"
   ],
   "ignorePaths": [".release_info.yaml"]
 }

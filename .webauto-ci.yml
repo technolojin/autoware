@@ -475,13 +475,27 @@ simulations:
         perception_mode: camera_lidar_fusion
         lidar_detection_model: apollo
         tracker_publish_merged_objects: "true"
+        with_optional_nodes: 2d_detector
+        yolox_model_path: /home/autoware/autoware_data/tensorrt_yolox/yolox-sPlus-T4-960x960-pseudo-finetune.onnx
+        yolox_label_path: /home/autoware/autoware_data/tensorrt_yolox/label.txt
+        yolox_color_map_path: /home/autoware/autoware_data/tensorrt_yolox/semseg_color_map.csv
+        yolox_param_file: yolox_s_plus_opt.param.yaml
+        use_bytetrack: "true"
+        camera_ids: 0,1,2,3,4,5
+        remap_arg: /perception/object_recognition/detection/rois0,/perception/object_recognition/detection/rois1,/perception/object_recognition/detection/rois2,/perception/object_recognition/detection/rois3,/perception/object_recognition/detection/rois4,/perception/object_recognition/detection/rois5
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_apollo_instance_segmentation lidar_apollo_instance_segmentation.launch.xml build_only:=true
           mounts:
             - volume: model
+        - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_tensorrt_yolox yolox_s_plus_opt.launch.xml model_path:=/home/autoware/autoware_data/tensorrt_yolox/yolox-sPlus-T4-960x960-pseudo-finetune.onnx label_path:=/home/autoware/autoware_data/tensorrt_yolox/label.txt color_map_path:=/home/autoware/autoware_data/tensorrt_yolox/semseg_color_map.csv yolox_param_path:=$(ros2 pkg prefix autoware_tensorrt_yolox --share)/config/yolox_s_plus_opt.param.yaml use_decompress:=false build_only:=true
+          mounts:
+            - volume: model_yolox
       volumes:
         - name: model
           path: /home/autoware/autoware_data/lidar_apollo_instance_segmentation
+          preserve_original_files: true
+        - name: model_yolox
+          path: /home/autoware/autoware_data/tensorrt_yolox
           preserve_original_files: true
 
   - name: NodeAliveTest_camera_lidar_fusion_centerpoint_tiny
@@ -505,13 +519,27 @@ simulations:
         perception_mode: camera_lidar_fusion
         lidar_detection_model: centerpoint
         tracker_publish_merged_objects: "true"
+        with_optional_nodes: 2d_detector
+        yolox_model_path: /home/autoware/autoware_data/tensorrt_yolox/yolox-sPlus-T4-960x960-pseudo-finetune.onnx
+        yolox_label_path: /home/autoware/autoware_data/tensorrt_yolox/label.txt
+        yolox_color_map_path: /home/autoware/autoware_data/tensorrt_yolox/semseg_color_map.csv
+        yolox_param_file: yolox_s_plus_opt.param.yaml
+        use_bytetrack: "true"
+        camera_ids: 0,1,2,3,4,5
+        remap_arg: /perception/object_recognition/detection/rois0,/perception/object_recognition/detection/rois1,/perception/object_recognition/detection/rois2,/perception/object_recognition/detection/rois3,/perception/object_recognition/detection/rois4,/perception/object_recognition/detection/rois5
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
           mounts:
             - volume: model
+        - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_tensorrt_yolox yolox_s_plus_opt.launch.xml model_path:=/home/autoware/autoware_data/tensorrt_yolox/yolox-sPlus-T4-960x960-pseudo-finetune.onnx label_path:=/home/autoware/autoware_data/tensorrt_yolox/label.txt color_map_path:=/home/autoware/autoware_data/tensorrt_yolox/semseg_color_map.csv yolox_param_path:=$(ros2 pkg prefix autoware_tensorrt_yolox --share)/config/yolox_s_plus_opt.param.yaml use_decompress:=false build_only:=true
+          mounts:
+            - volume: model_yolox
       volumes:
         - name: model
           path: /home/autoware/autoware_data/lidar_centerpoint
+          preserve_original_files: true
+        - name: model_yolox
+          path: /home/autoware/autoware_data/tensorrt_yolox
           preserve_original_files: true
 
   - name: NodeAliveTest_camera_lidar_fusion_pointpainting
@@ -535,13 +563,27 @@ simulations:
         perception_mode: camera_lidar_fusion
         lidar_detection_model: pointpainting
         tracker_publish_merged_objects: "true"
+        with_optional_nodes: 2d_detector
+        yolox_model_path: /home/autoware/autoware_data/tensorrt_yolox/yolox-sPlus-T4-960x960-pseudo-finetune.onnx
+        yolox_label_path: /home/autoware/autoware_data/tensorrt_yolox/label.txt
+        yolox_color_map_path: /home/autoware/autoware_data/tensorrt_yolox/semseg_color_map.csv
+        yolox_param_file: yolox_s_plus_opt.param.yaml
+        use_bytetrack: "true"
+        camera_ids: 0,1,2,3,4,5
+        remap_arg: /perception/object_recognition/detection/rois0,/perception/object_recognition/detection/rois1,/perception/object_recognition/detection/rois2,/perception/object_recognition/detection/rois3,/perception/object_recognition/detection/rois4,/perception/object_recognition/detection/rois5
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_image_projection_based_fusion pointpainting_fusion.launch.xml model_name:=pointpainting model_path:=/home/autoware/autoware_data/image_projection_based_fusion model_param_path:=$(ros2 pkg prefix autoware_image_projection_based_fusion --share)/config/pointpainting.param.yaml build_only:=true
           mounts:
             - volume: model
+        - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_tensorrt_yolox yolox_s_plus_opt.launch.xml model_path:=/home/autoware/autoware_data/tensorrt_yolox/yolox-sPlus-T4-960x960-pseudo-finetune.onnx label_path:=/home/autoware/autoware_data/tensorrt_yolox/label.txt color_map_path:=/home/autoware/autoware_data/tensorrt_yolox/semseg_color_map.csv yolox_param_path:=$(ros2 pkg prefix autoware_tensorrt_yolox --share)/config/yolox_s_plus_opt.param.yaml use_decompress:=false build_only:=true
+          mounts:
+            - volume: model_yolox
       volumes:
         - name: model
           path: /home/autoware/autoware_data/image_projection_based_fusion
+          preserve_original_files: true
+        - name: model_yolox
+          path: /home/autoware/autoware_data/tensorrt_yolox
           preserve_original_files: true
 
   - name: NodeAliveTest_camera_lidar_radar_fusion_centerpoint_tiny
@@ -565,13 +607,27 @@ simulations:
         perception_mode: camera_lidar_radar_fusion
         lidar_detection_model: centerpoint
         tracker_publish_merged_objects: "true"
+        with_optional_nodes: 2d_detector
+        yolox_model_path: /home/autoware/autoware_data/tensorrt_yolox/yolox-sPlus-T4-960x960-pseudo-finetune.onnx
+        yolox_label_path: /home/autoware/autoware_data/tensorrt_yolox/label.txt
+        yolox_color_map_path: /home/autoware/autoware_data/tensorrt_yolox/semseg_color_map.csv
+        yolox_param_file: yolox_s_plus_opt.param.yaml
+        use_bytetrack: "true"
+        camera_ids: 0,1,2,3,4,5
+        remap_arg: /perception/object_recognition/detection/rois0,/perception/object_recognition/detection/rois1,/perception/object_recognition/detection/rois2,/perception/object_recognition/detection/rois3,/perception/object_recognition/detection/rois4,/perception/object_recognition/detection/rois5
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
           mounts:
             - volume: model
+        - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_tensorrt_yolox yolox_s_plus_opt.launch.xml model_path:=/home/autoware/autoware_data/tensorrt_yolox/yolox-sPlus-T4-960x960-pseudo-finetune.onnx label_path:=/home/autoware/autoware_data/tensorrt_yolox/label.txt color_map_path:=/home/autoware/autoware_data/tensorrt_yolox/semseg_color_map.csv yolox_param_path:=$(ros2 pkg prefix autoware_tensorrt_yolox --share)/config/yolox_s_plus_opt.param.yaml use_decompress:=false build_only:=true
+          mounts:
+            - volume: model_yolox
       volumes:
         - name: model
           path: /home/autoware/autoware_data/lidar_centerpoint
+          preserve_original_files: true
+        - name: model_yolox
+          path: /home/autoware/autoware_data/tensorrt_yolox
           preserve_original_files: true
 
   - name: NodeAliveTest_camera_lidar_radar_fusion_pointpainting
@@ -595,13 +651,27 @@ simulations:
         perception_mode: camera_lidar_radar_fusion
         lidar_detection_model: pointpainting
         tracker_publish_merged_objects: "true"
+        with_optional_nodes: 2d_detector
+        yolox_model_path: /home/autoware/autoware_data/tensorrt_yolox/yolox-sPlus-T4-960x960-pseudo-finetune.onnx
+        yolox_label_path: /home/autoware/autoware_data/tensorrt_yolox/label.txt
+        yolox_color_map_path: /home/autoware/autoware_data/tensorrt_yolox/semseg_color_map.csv
+        yolox_param_file: yolox_s_plus_opt.param.yaml
+        use_bytetrack: "true"
+        camera_ids: 0,1,2,3,4,5
+        remap_arg: /perception/object_recognition/detection/rois0,/perception/object_recognition/detection/rois1,/perception/object_recognition/detection/rois2,/perception/object_recognition/detection/rois3,/perception/object_recognition/detection/rois4,/perception/object_recognition/detection/rois5
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_image_projection_based_fusion pointpainting_fusion.launch.xml model_name:=pointpainting model_path:=/home/autoware/autoware_data/image_projection_based_fusion model_param_path:=$(ros2 pkg prefix autoware_image_projection_based_fusion --share)/config/pointpainting.param.yaml build_only:=true
           mounts:
             - volume: model
+        - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_tensorrt_yolox yolox_s_plus_opt.launch.xml model_path:=/home/autoware/autoware_data/tensorrt_yolox/yolox-sPlus-T4-960x960-pseudo-finetune.onnx label_path:=/home/autoware/autoware_data/tensorrt_yolox/label.txt color_map_path:=/home/autoware/autoware_data/tensorrt_yolox/semseg_color_map.csv yolox_param_path:=$(ros2 pkg prefix autoware_tensorrt_yolox --share)/config/yolox_s_plus_opt.param.yaml use_decompress:=false build_only:=true
+          mounts:
+            - volume: model_yolox
       volumes:
         - name: model
           path: /home/autoware/autoware_data/image_projection_based_fusion
+          preserve_original_files: true
+        - name: model_yolox
+          path: /home/autoware/autoware_data/tensorrt_yolox
           preserve_original_files: true
 
   - name: yabloc
