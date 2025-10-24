@@ -11,6 +11,8 @@ cyclonedds:
   max_rexmit_message_size: 1456B # Default value from CycloneDDS documentation # cspell:disable-line
   water_mark_whc_high: 500kB # Default value from CycloneDDS documentation
   water_mark_whc_low: 1kB # Default value from CycloneDDS documentation
+  lease_duration: 32s
+  spdp_interval: 30s
 ipv4_ipfrag_high_thresh: 268435456
 
 # greengrass user/group
