@@ -20,10 +20,24 @@
 #   OPTIONAL. Path to the topic dictionary YAML file.
 #   DEFAULT: /etc/autoware_logging_suite/dssad/dict.yaml
 #   Example: /etc/dssad/dictionary.yaml
+#
 # debug: <bool>
 #   OPTIONAL. Enable verbose debug logging (RCLCPP_DEBUG).
 #   DEFAULT: false
 #   Set to true to output detailed internal state and processing flow.
+#
+# dump_topics: <list>
+#   OPTIONAL. List of topic names to dump in HEX/ASCII format for inspection.
+#   DEFAULT: empty
+#   Example:
+#     dump_topics:
+#       - "/in_vehicle_tool/log/mot"
+#   Behavior:
+#     - When specified, messages published to these topics are dumped both:
+#         (1) immediately upon reception, and
+#         (2) just before being written to the DSSAD database.
+#     - Each dump includes both hexadecimal and printable ASCII representation
+#       of the payload, for debugging or content verification purposes.
 # -------------------------------------------------------------------------------------------------
 # topics:
 #   <topic name>:              # Topic name
@@ -77,19 +91,45 @@
 #   day: <N>
 #     OPTIONAL. Retention period in days.
 #     Records older than this will be purged.
-#
-#   <Marking rules>:
-#     OPTIONAL. Rules for marking conditions of interest.
+# -------------------------------------------------------------------------------------------------
+#   mark_rules:
+#     OPTIONAL. Rules for marking specific conditions of interest.
 #     DEFAULT: no marking applied.
 #
-#   mark_rules:
-#     - {field_name}: A condition [eq, ne, le, lt, ge, gt, contains, not_contains]: {value} applied to the message field
-#       <field>: { eq: <value> } # equals
-#       <field>: { ne: <value> } # not equals
-#       function: <string>       # Function name for complex checks (pre-defined in code).
-#       mark: "⚠️"               # OPTIONAL. Mark symbol/text.
-#                                # DEFAULT: 🚩
-# =================================================================================================
+#     Each rule can define:
+#       <field>: { eq|ne|le|lt|ge|gt|contains|not_contains: <value>, mark: "<symbol>" }
+#         → Basic condition on a single field.
+#
+#     function:
+#       <function_name>:
+#         <event>: "<mark>"   # Special predefined event markers.
+#
+#     fields:
+#       <field_name>:
+#         <subfield>: { <operator>: <value>, mark: "<symbol>" }
+#         → Used when monitoring nested fields (e.g. msg.data).
+#         → Example:
+#             fields:
+#               accel_over_ride_status:
+#                 data: { eq: 1, mark: "⏩" }
+#
+#     labels:
+#       <label_name>:
+#         { <operator>: <value>, mark: "<symbol>" }
+#         → Used to define label-specific rules under a parent field.
+#         → Example:
+#             report:
+#               labels:
+#                 left:  { eq: 2, mark: "◀️" }
+#                 right: { eq: 3, mark: "▶️" }
+#
+#     mark: "<symbol>"
+#       Optional global mark for this rule group.
+#
+#     NOTE:
+#       - "fields:" replaces legacy dot-field notation (e.g. field.subfield.eq)
+#       - "labels:" explicitly groups logical sub-rules under a field.
+# -------------------------------------------------------------------------------------------------
 
 /**:
   ros__parameters:
@@ -99,6 +139,8 @@
     qos_depth: 1000
     topic_dictionary: {{ dssad_packer_config_dir }}/dict.yaml
     debug: true
+    #dump_topics:
+    #  - /in_vehicle_tool/log/mot
     topics:
       /api/localization/initialization_state:
         name: state
@@ -109,7 +151,7 @@
         mark_rules:
           mode: { eq: 2 }
       /pilot_auto/api/ecu/state:
-        name: state
+        name: summary
       /vehicle/status/control_mode:
         name: mode
         mark_rules:
@@ -127,10 +169,15 @@
         mark_rules:
           emergency: { eq: true, mark: "⛔" }
       /j6/can/status/m3_status:
-        name: [steering_over_ride_status, accel_over_ride_status]
+        name: [accel_over_ride_status, brake_over_ride_status, steering_over_ride_status]
         mark_rules:
-          steering_over_ride_status: { eq: 1, mark: "🛞" }
-          accel_over_ride_status: { eq: 1, mark: "⏩" }
+          fields:
+            accel_over_ride_status:
+              data: { eq: 1, mark: "⏩" }
+            brake_over_ride_status:
+              data: { eq: 1, mark: "🛑" }
+            steering_over_ride_status:
+              data: { eq: 1, mark: "🛞" }
       /api/fail_safe/mrm_state:
         name: [state, behavior]
         mark_rules:
@@ -155,8 +202,9 @@
         name: report
         mark_rules:
           report:
-            left: { eq: 2, mark: "◀️" }
-            right: { eq: 3, mark: "▶️" }
+            labels:
+              left: { eq: 2, mark: "◀️" }
+              right: { eq: 3, mark: "▶️" }
       /planning/planning_factors/static_obstacle_avoidance:
         name: factors
         mark_rules:
@@ -174,14 +222,16 @@
         name: is_level4_available
         mark_rules:
           is_level4_available:
-            l4: { eq: true, mark: "④" }
-            l2: { eq: false, mark: "②" }
+            labels:
+              l4: { eq: true, mark: "④" }
+              l2: { eq: false, mark: "②" }
       /level4_mode_manager/is_level4_driving:
         name: is_level4_driving
         mark_rules:
           is_level4_driving:
-            l4: { eq: true, mark: "4️⃣" }
-            l2: { eq: false, mark: "2️⃣" }
+            labels:
+              l4: { eq: true, mark: "4️⃣" }
+              l2: { eq: false, mark: "2️⃣" }
 
     diagnostics_graph:
       status:
@@ -189,10 +239,6 @@
           name: level
           count: 300000
           dump_mode: diff
-          mark_rules:
-            level: { ge: 2, mark: "❌"}
-        "j6_interface: vehicle_errors":
-          name: level
           mark_rules:
             level: { ge: 2, mark: "❌"}
         "collision_detector: collision_detect":
@@ -203,9 +249,13 @@
           name: level
           mark_rules:
             level: { ge: 2, mark: "❌"}
+        "sudden_deceleration_monitor: sudden_deceleration_monitor":
+          name: level
+          mark_rules:
+            level: { ge: 2, mark: "❌"}
 
       unknowns:
-        "sudden_deceleration_monitor: sudden_deceleration_monitor":
+        "j6_interface: vehicle_errors":
           name: level
           mark_rules:
             level: { ge: 2, mark: "❌"}
