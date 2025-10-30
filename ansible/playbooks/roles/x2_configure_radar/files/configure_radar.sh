@@ -66,96 +66,35 @@ call_service_or_exit() {
 # Main script execution starts here
 wait_robot_state_publisher
 
-echo "********* Get Current Parameters *********"
-/opt/autoware/services/configure_radar/get_cfg.sh
-
-TMP_FILES=(
-    "/tmp/front_center.cfg"
-    "/tmp/front_left.cfg"
-    "/tmp/front_right.cfg"
-    "/tmp/rear_center.cfg"
-    "/tmp/rear_left.cfg"
-    "/tmp/rear_right.cfg"
-)
-
-for FILE in "${TMP_FILES[@]}"; do
-    if [ ! -s "$FILE" ]; then
-        echo "Error: $FILE is empty or does not exist." >&2
-        exit 1
-    fi
-done
-
 echo "********* Front Center *********"
-position=front_center
-
-if diff -q /tmp/${position}.cfg /opt/autoware/services/configure_radar/${position}.cfg; then
-    echo "No differences found in ${position}"
-else
-    echo "Difference found in ${position}, applying changes..."
-    call_service_or_exit "Vehicle Params" /sensing/radar/front_center/set_vehicle_parameters continental_srvs/srv/ContinentalArs548SetVehicleParameters "{vehicle_length: -1.0, vehicle_width: -1.0, vehicle_height: -1.0, vehicle_wheelbase: -1.0}"
-    call_service_or_exit "Sensor Mounting" /sensing/radar/front_center/set_sensor_mounting continental_srvs/srv/ContinentalArs548SetSensorMounting "{longitudinal: 0.0, lateral: 0.0, vertical: 0.5, yaw: 0.0, pitch: 0.0, plug_orientation: false}"
-    call_service_or_exit "Radar Params" /sensing/radar/front_center/set_radar_parameters continental_srvs/srv/ContinentalArs548SetRadarParameters "{maximum_distance: 301, frequency_band: mid, cycle_time_ms: 100, time_slot_ms: 79, country_code: japan, powersave_standstill: 0}"
-fi
+call_service_or_exit "Vehicle Params" /sensing/radar/front_center/set_vehicle_parameters continental_srvs/srv/ContinentalArs548SetVehicleParameters "{vehicle_length: -1.0, vehicle_width: -1.0, vehicle_height: -1.0, vehicle_wheelbase: -1.0}"
+call_service_or_exit "Sensor Mounting" /sensing/radar/front_center/set_sensor_mounting continental_srvs/srv/ContinentalArs548SetSensorMounting "{longitudinal: 0.0, lateral: 0.0, vertical: 0.5, yaw: 0.0, pitch: 0.0, plug_orientation: false}"
+call_service_or_exit "Radar Params" /sensing/radar/front_center/set_radar_parameters continental_srvs/srv/ContinentalArs548SetRadarParameters "{maximum_distance: 301, frequency_band: mid, cycle_time_ms: 100, time_slot_ms: 79, country_code: japan, powersave_standstill: 0}"
 
 echo "********* Front Left *********"
-position=front_left
-
-if diff -q /tmp/${position}.cfg /opt/autoware/services/configure_radar/${position}.cfg; then
-    echo "No differences found in ${position}"
-else
-    echo "Difference found in ${position}, applying changes..."
-    call_service_or_exit "Vehicle Params" /sensing/radar/front_left/set_vehicle_parameters continental_srvs/srv/ContinentalArs548SetVehicleParameters "{vehicle_length: -1.0, vehicle_width: -1.0, vehicle_height: -1.0, vehicle_wheelbase: -1.0}"
-    call_service_or_exit "Sensor Mounting" /sensing/radar/front_left/set_sensor_mounting continental_srvs/srv/ContinentalArs548SetSensorMounting "{longitudinal: 0.0, lateral: 0.0, vertical: 0.5, yaw: 0.0, pitch: 0.0, plug_orientation: true}"
-    call_service_or_exit "Radar Params" /sensing/radar/front_left/set_radar_parameters continental_srvs/srv/ContinentalArs548SetRadarParameters "{maximum_distance: 301, frequency_band: low, cycle_time_ms: 100, time_slot_ms: 54, country_code: japan, powersave_standstill: 0}"
-fi
+call_service_or_exit "Vehicle Params" /sensing/radar/front_left/set_vehicle_parameters continental_srvs/srv/ContinentalArs548SetVehicleParameters "{vehicle_length: -1.0, vehicle_width: -1.0, vehicle_height: -1.0, vehicle_wheelbase: -1.0}"
+call_service_or_exit "Sensor Mounting" /sensing/radar/front_left/set_sensor_mounting continental_srvs/srv/ContinentalArs548SetSensorMounting "{longitudinal: 0.0, lateral: 0.0, vertical: 0.5, yaw: 0.0, pitch: 0.0, plug_orientation: true}"
+call_service_or_exit "Radar Params" /sensing/radar/front_left/set_radar_parameters continental_srvs/srv/ContinentalArs548SetRadarParameters "{maximum_distance: 301, frequency_band: low, cycle_time_ms: 100, time_slot_ms: 54, country_code: japan, powersave_standstill: 0}"
 
 echo "********* Front Right *********"
-position=front_right
-
-if diff -q /tmp/${position}.cfg /opt/autoware/services/configure_radar/${position}.cfg; then
-    echo "No differences found in ${position}"
-else
-    echo "Difference found in ${position}, applying changes..."
-    call_service_or_exit "Vehicle Params" /sensing/radar/front_right/set_vehicle_parameters continental_srvs/srv/ContinentalArs548SetVehicleParameters "{vehicle_length: -1.0, vehicle_width: -1.0, vehicle_height: -1.0, vehicle_wheelbase: -1.0}"
-    call_service_or_exit "Sensor Mounting" /sensing/radar/front_right/set_sensor_mounting continental_srvs/srv/ContinentalArs548SetSensorMounting "{longitudinal: 0.0, lateral: 0.0, vertical: 0.5, yaw: 0.0, pitch: 0.0, plug_orientation: false}"
-    call_service_or_exit "Radar Params" /sensing/radar/front_right/set_radar_parameters continental_srvs/srv/ContinentalArs548SetRadarParameters "{maximum_distance: 301, frequency_band: high, cycle_time_ms: 100, time_slot_ms: 10, country_code: japan, powersave_standstill: 0}"
-fi
+call_service_or_exit "Vehicle Params" /sensing/radar/front_right/set_vehicle_parameters continental_srvs/srv/ContinentalArs548SetVehicleParameters "{vehicle_length: -1.0, vehicle_width: -1.0, vehicle_height: -1.0, vehicle_wheelbase: -1.0}"
+call_service_or_exit "Sensor Mounting" /sensing/radar/front_right/set_sensor_mounting continental_srvs/srv/ContinentalArs548SetSensorMounting "{longitudinal: 0.0, lateral: 0.0, vertical: 0.5, yaw: 0.0, pitch: 0.0, plug_orientation: false}"
+call_service_or_exit "Radar Params" /sensing/radar/front_right/set_radar_parameters continental_srvs/srv/ContinentalArs548SetRadarParameters "{maximum_distance: 301, frequency_band: high, cycle_time_ms: 100, time_slot_ms: 10, country_code: japan, powersave_standstill: 0}"
 
 echo "********* Rear Center *********"
-position=rear_center
-
-if diff -q /tmp/${position}.cfg /opt/autoware/services/configure_radar/${position}.cfg; then
-    echo "No differences found in ${position}"
-else
-    echo "Difference found in ${position}, applying changes..."
-    call_service_or_exit "Vehicle Params" /sensing/radar/rear_center/set_vehicle_parameters continental_srvs/srv/ContinentalArs548SetVehicleParameters "{vehicle_length: -1.0, vehicle_width: -1.0, vehicle_height: -1.0, vehicle_wheelbase: -1.0}"
-    call_service_or_exit "Sensor Mounting" /sensing/radar/rear_center/set_sensor_mounting continental_srvs/srv/ContinentalArs548SetSensorMounting "{longitudinal: 0.0, lateral: 0.0, vertical: 0.5, yaw: 0.0, pitch: 0.0, plug_orientation: false}"
-    call_service_or_exit "Radar Params" /sensing/radar/rear_center/set_radar_parameters continental_srvs/srv/ContinentalArs548SetRadarParameters "{maximum_distance: 301, frequency_band: mid, cycle_time_ms: 100, time_slot_ms: 29, country_code: japan, powersave_standstill: 0}"
-fi
+call_service_or_exit "Vehicle Params" /sensing/radar/rear_center/set_vehicle_parameters continental_srvs/srv/ContinentalArs548SetVehicleParameters "{vehicle_length: -1.0, vehicle_width: -1.0, vehicle_height: -1.0, vehicle_wheelbase: -1.0}"
+call_service_or_exit "Sensor Mounting" /sensing/radar/rear_center/set_sensor_mounting continental_srvs/srv/ContinentalArs548SetSensorMounting "{longitudinal: 0.0, lateral: 0.0, vertical: 0.5, yaw: 0.0, pitch: 0.0, plug_orientation: false}"
+call_service_or_exit "Radar Params" /sensing/radar/rear_center/set_radar_parameters continental_srvs/srv/ContinentalArs548SetRadarParameters "{maximum_distance: 301, frequency_band: mid, cycle_time_ms: 100, time_slot_ms: 29, country_code: japan, powersave_standstill: 0}"
 
 echo "********* Rear Left *********"
-position=rear_left
-
-if diff -q /tmp/${position}.cfg /opt/autoware/services/configure_radar/${position}.cfg; then
-    echo "No differences found in ${position}"
-else
-    echo "Difference found in ${position}, applying changes..."
-    call_service_or_exit "Vehicle Params" /sensing/radar/rear_left/set_vehicle_parameters continental_srvs/srv/ContinentalArs548SetVehicleParameters "{vehicle_length: -1.0, vehicle_width: -1.0, vehicle_height: -1.0, vehicle_wheelbase: -1.0}"
-    call_service_or_exit "Sensor Mounting" /sensing/radar/rear_left/set_sensor_mounting continental_srvs/srv/ContinentalArs548SetSensorMounting "{longitudinal: 0.0, lateral: 0.0, vertical: 0.5, yaw: 0.0, pitch: 0.0, plug_orientation: true}"
-    call_service_or_exit "Radar Params" /sensing/radar/rear_left/set_radar_parameters continental_srvs/srv/ContinentalArs548SetRadarParameters "{maximum_distance: 301, frequency_band: high, cycle_time_ms: 100, time_slot_ms: 54, country_code: japan, powersave_standstill: 0}"
-fi
+call_service_or_exit "Vehicle Params" /sensing/radar/rear_left/set_vehicle_parameters continental_srvs/srv/ContinentalArs548SetVehicleParameters "{vehicle_length: -1.0, vehicle_width: -1.0, vehicle_height: -1.0, vehicle_wheelbase: -1.0}"
+call_service_or_exit "Sensor Mounting" /sensing/radar/rear_left/set_sensor_mounting continental_srvs/srv/ContinentalArs548SetSensorMounting "{longitudinal: 0.0, lateral: 0.0, vertical: 0.5, yaw: 0.0, pitch: 0.0, plug_orientation: true}"
+call_service_or_exit "Radar Params" /sensing/radar/rear_left/set_radar_parameters continental_srvs/srv/ContinentalArs548SetRadarParameters "{maximum_distance: 301, frequency_band: high, cycle_time_ms: 100, time_slot_ms: 54, country_code: japan, powersave_standstill: 0}"
 
 echo "********* Rear Right *********"
-position=rear_right
-
-if diff -q /tmp/${position}.cfg /opt/autoware/services/configure_radar/${position}.cfg; then
-    echo "No differences found in ${position}"
-else
-    echo "Difference found in ${position}, applying changes..."
-    call_service_or_exit "Vehicle Params" /sensing/radar/rear_right/set_vehicle_parameters continental_srvs/srv/ContinentalArs548SetVehicleParameters "{vehicle_length: -1.0, vehicle_width: -1.0, vehicle_height: -1.0, vehicle_wheelbase: -1.0}"
-    call_service_or_exit "Sensor Mounting" /sensing/radar/rear_right/set_sensor_mounting continental_srvs/srv/ContinentalArs548SetSensorMounting "{longitudinal: 0.0, lateral: 0.0, vertical: 0.5, yaw: 0.0, pitch: 0.0, plug_orientation: false}"
-    call_service_or_exit "Radar Params" /sensing/radar/rear_right/set_radar_parameters continental_srvs/srv/ContinentalArs548SetRadarParameters "{maximum_distance: 301, frequency_band: low, cycle_time_ms: 100, time_slot_ms: 10, country_code: japan, powersave_standstill: 0}"
-fi
+call_service_or_exit "Vehicle Params" /sensing/radar/rear_right/set_vehicle_parameters continental_srvs/srv/ContinentalArs548SetVehicleParameters "{vehicle_length: -1.0, vehicle_width: -1.0, vehicle_height: -1.0, vehicle_wheelbase: -1.0}"
+call_service_or_exit "Sensor Mounting" /sensing/radar/rear_right/set_sensor_mounting continental_srvs/srv/ContinentalArs548SetSensorMounting "{longitudinal: 0.0, lateral: 0.0, vertical: 0.5, yaw: 0.0, pitch: 0.0, plug_orientation: false}"
+call_service_or_exit "Radar Params" /sensing/radar/rear_right/set_radar_parameters continental_srvs/srv/ContinentalArs548SetRadarParameters "{maximum_distance: 301, frequency_band: low, cycle_time_ms: 100, time_slot_ms: 10, country_code: japan, powersave_standstill: 0}"
 
 echo "********* Radar configuration complete *********"
 
