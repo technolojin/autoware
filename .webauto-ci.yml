@@ -877,8 +877,27 @@ simulations:
       runtime:
         type: standard1/amd64/large
 
-  - name: localization
+  - name: localization_with_gpu_sensing
     type: localization
+    suite:
+      selector:
+        match_labels:
+          use_gpu: "true"
+    simulator:
+      deployment:
+        type: container
+        artifact: main
+      runtime:
+        type: gpu1/amd64/large
+      parameters:
+        play_rate: "0.125"
+
+  - name: localization_without_gpu_sensing
+    type: localization
+    suite:
+      selector:
+        match_labels:
+          use_gpu: "false"
     simulator:
       deployment:
         type: container
