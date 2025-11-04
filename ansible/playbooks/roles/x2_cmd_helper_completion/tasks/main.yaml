@@ -9,3 +9,16 @@
     src: cmd_helper_completion.sh
     dest: "{{ ansible_env.HOME }}/.local/share/bash-completion/completions/cmd_helper.sh"
     mode: "0644"
+
+- name: Create symlink for cmd_helper.sh in .local/share/bash-completion/completions
+  ansible.builtin.file:
+    src: "{{ ansible_env.HOME }}/.local/share/bash-completion/completions/cmd_helper.sh"
+    dest: "{{ ansible_env.HOME }}/.local/share/bash-completion/completions/cmd_helper"
+    state: link
+
+- name: Create symlink for cmd_helper.sh in /usr/local/bin
+  ansible.builtin.file:
+    src: /home/autoware/autoware.proj/cmd_helper.sh
+    dest: /usr/local/bin/cmd_helper
+    state: link
+  become: true
