@@ -3,12 +3,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: b44576b9e4e68914662f25ed22063d000921431f
+    version: baae46891cfe77f2c7da9e05cc0c8627b782cfb8
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: 300203ec1e32b2705d5b2e466380203524d7072b
+    version: a58459be1cf067ed084797d2437ef0a323dc246b
     base: true
   autoware/autoware_cmake:
     type: git
@@ -23,22 +23,22 @@ repositories:
   autoware/autoware_lanelet2_extension:
     type: git
     url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
-    version: 177078274bdde7f13116a57249dea430f2490fbf
+    version: 5fadbb76b96083685cb36335c3c28d6554392d7e
     base: true
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: 265566a2eb74d0ca4047591434d91aab89c3e91a
+    version: 012ee0ad71d7c614b28e6941bff4beedd68519f1
     base: false
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 5c3caad00301bd1d72c1c31b11eb076c4c00971e
+    version: 34a8c740b1fdd15fec1041e4df953e4927cda534
     base: true
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: 38393794a7c46da2d6d4efd28a05b2a135099d71
+    version: c90ecea7daf88d617f76ef2b33dbfaf6207fbbce
     base: true
   autoware/tier4_autoware_msgs:
     type: git
@@ -48,7 +48,7 @@ repositories:
   autoware/autoware_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_msgs.git
-    version: 815d02824612c516b51167c75fa3f3dde9426e87
+    version: 588f00df3acca009ea709a74acd6538897eef424
     base: true
   autoware/autoware_adapi_msgs:
     type: git
@@ -73,7 +73,7 @@ repositories:
   autoware/autoware_rviz_plugins:
     type: git
     url: https://github.com/autowarefoundation/autoware_rviz_plugins.git
-    version: 5f02b1bee49f21194a7dbeebe8b4e387ea66d3d0
+    version: 327df6bf10f029634c72c3b6dcf3205ca6bf22eb
     base: true
   # description
   description/sensor/sensor_component_description:
