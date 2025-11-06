@@ -47,7 +47,7 @@ find /home/autoware -type d -name ".git" -print0 | while IFS= read -r -d $'\0' g
         }
         echo "Running 'git gc --aggressive --prune=now'..."
         # Run the git gc command
-        sudo git gc --aggressive --prune=now
+        git gc --aggressive --prune=now
     )
     echo ""
 done
