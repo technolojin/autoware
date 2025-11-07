@@ -31,6 +31,7 @@
     - { role: autoware.ecu_system_setup.simple_system_launch }
     - { role: autoware.ecu_system_setup.fool_proof_check } # fool proof check for autoware function
     - { role: autoware.ecu_system_setup.letterbox_monitor }
+    - { role: autoware.ecu_system_setup.pre_journal_collector }
     - role: autoware.ecu_system_setup.build_system_monitor
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - role: autoware.ecu_system_setup.rviz

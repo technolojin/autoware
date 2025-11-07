@@ -30,10 +30,12 @@
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.ecu_system_setup.clean_ros_log }
     - { role: autoware.ecu_system_setup.cyclonedds }
+    - { role: autoware.ecu_system_setup.ota_first_boot_flag }
     - { role: autoware.ecu_system_setup.jetson_clocks }
     - { role: autoware.ecu_system_setup.netplan }
     - { role: autoware.ecu_system_setup.otaclient }
     - { role: autoware.ecu_system_setup.evaluator_self_hosted_environment }
+    - { role: autoware.ecu_system_setup.pre_journal_collector }
     - { role: autoware.ecu_system_setup.ptp4l }
     - { role: autoware.ecu_system_setup.reload_camera_driver }
     - { role: autoware.ecu_system_setup.rsyslog }
