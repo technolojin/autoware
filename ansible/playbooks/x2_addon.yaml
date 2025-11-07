@@ -38,6 +38,9 @@
     - { role: autoware.ecu_system_setup.stop_auto_upgrade }
     - { role: autoware.ecu_system_setup.timezone }
     - { role: autoware.ecu_system_setup.turn_off_desktop_notification }
+    - { role: autoware.ecu_system_setup.fool_proof_check } # fool proof check for autoware function
+    - { role: autoware.ecu_system_setup.letterbox_monitor }
+    - { role: autoware.edge_auto_jetson.link_retry_handler }
     - { role: x2_disable_timesyncd }
     - { role: x2_disable_chrony }
     - role: autoware.ecu_system_setup.sync_tooling
@@ -51,5 +54,4 @@
     - role: autoware.edge_auto_jetson.perception_application
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.ecu_system_setup.netplan } # need to be the last, as the internet will lost after this
-    # - { role: autoware.ecu_system_setup.letterbox_monitor }
     - { role: autoware.ecu_system_setup.systemd_analyze_collector }
