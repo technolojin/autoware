@@ -234,6 +234,13 @@
       "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
+    },
+    "WARN": {
+      "situation": "緊急停止ボタンが押されました",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後、緊急停止ボタンが押された原因を解決してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
     }
   },
   "/control/001-topic_status/control_command": {
