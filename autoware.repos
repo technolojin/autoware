@@ -2,12 +2,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: v0.57.0
+    version: v0.58.0
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: v0.57.0
+    version: v0.58.0
     base: true
   autoware/autoware_cmake:
     type: git
@@ -22,27 +22,27 @@ repositories:
   autoware/autoware_lanelet2_extension:
     type: git
     url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
-    version: 177078274bdde7f13116a57249dea430f2490fbf
+    version: 5fadbb76b96083685cb36335c3c28d6554392d7e
     base: true
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: v0.57.0
+    version: v0.58.0
     base: true
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: 38393794a7c46da2d6d4efd28a05b2a135099d71
+    version: c90ecea7daf88d617f76ef2b33dbfaf6207fbbce
     base: true
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: v0.57.0
+    version: v0.58.0
     base: true
   autoware/autoware_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_msgs.git
-    version: 815d02824612c516b51167c75fa3f3dde9426e87
+    version: 588f00df3acca009ea709a74acd6538897eef424
     base: true
   autoware/autoware_adapi_msgs:
     type: git
@@ -62,7 +62,7 @@ repositories:
   autoware/autoware_rviz_plugins:
     type: git
     url: https://github.com/autowarefoundation/autoware_rviz_plugins.git
-    version: 5f02b1bee49f21194a7dbeebe8b4e387ea66d3d0
+    version: 327df6bf10f029634c72c3b6dcf3205ca6bf22eb
     base: true
   # description
   description/sensor/sensor_component_description:
@@ -171,7 +171,7 @@ repositories:
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: v0.57.0
+    version: v0.58.0
     base: true
   # middleware
   # TODO(TIER IV): During the transition period of Agnocast introduction,
