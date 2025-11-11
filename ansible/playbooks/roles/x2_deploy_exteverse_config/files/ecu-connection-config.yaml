@@ -1,0 +1,15 @@
+ecus:
+  voice-system: autoware@192.168.20.51
+  sub: autoware@192.168.20.21
+  sinage: autoware@192.168.20.41
+  media-streaming1: autoware@192.168.20.61
+  main: autoware@192.168.20.11
+  perception2: autoware@192.168.20.32
+  perception1: autoware@192.168.20.31
+  media-streaming2: autoware@192.168.20.62
+  logging: autoware@192.168.20.71
+  addon: autoware@192.168.20.33
+settings:
+  defaultTimeout: 30
+  retryAttempts: 3
+  autoReconnect: true

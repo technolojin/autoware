@@ -6,6 +6,7 @@
     preparation_timeout: 60.0
     topic_port: 10000
     service_timeout: 1
+    aggregation_timeout_sec: 240.0
     managed_ecu:
       main:
         service_address: 192.168.20.11

@@ -11,7 +11,7 @@ ExecStart=/opt/autoware/services/configure_radar/configure_radar.sh
 Restart=no
 User=autoware
 TimeoutStartSec=0
-TimeoutStopSec=0
+TimeoutStopSec=30
 
 [Install]
 WantedBy=multi-user.target

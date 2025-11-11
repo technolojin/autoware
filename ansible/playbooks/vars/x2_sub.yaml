@@ -13,6 +13,8 @@ cyclonedds:
   max_rexmit_message_size: 1456B
   water_mark_whc_high: 500kB
   water_mark_whc_low: 1kB
+  lease_duration: 32s
+  spdp_interval: 30s
 ipv4_ipfrag_time: 1
 ipv4_ipfrag_high_thresh: 134217728
 netcore_rmem_max: 2147483647
@@ -63,6 +65,7 @@ sync_tooling:
 rviz_config_path: /home/autoware/autoware.proj/src/autoware/launcher/autoware_launch/rviz/autoware_x2.rviz
 rviz_launch_file_name: autoware_sub_rviz.launch.xml
 rviz_launch_method: autoware_launch
+rviz_default_service_enabled: false
 
 # screen_recorder
 screen_recorder_default_logging_directory: /tmp
@@ -82,6 +85,8 @@ node_id: 1
 # fool proof check service
 check_target_service: autoware_sub_launch.service
 fool_proof_check_network_interface: enp5s0f0 # TODO: check vlan.500
+fool_proof_check_additional_command: | # Set ROS_DOMAIN_ID for redandancy
+  export ROS_DOMAIN_ID=2
 
 # letterbox_monitor
 letterbox_monitor:
@@ -125,3 +130,6 @@ simple_system_launch_items:
 
 # systemd_analyze_collector
 rsync_target_host_ip: 192.168.20.71
+
+# set_autoware_env
+vehicle_id: INVALID_VEHICLE_ID

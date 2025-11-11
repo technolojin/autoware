@@ -236,7 +236,7 @@ repositories:
   product/autoware_diag_bridge:
     type: git
     url: git@github.com:tier4/autoware_diagnostics_bridge.git
-    version: 96281eab064c55a66b2e04d16de3fc51e61b3c83
+    version: 6085277b50d2b826df97e0ed6e2c292a783c00c7
     base: false
   vendor/redundancy_switcher_interface:
     type: git

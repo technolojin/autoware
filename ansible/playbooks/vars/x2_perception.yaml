@@ -14,6 +14,8 @@ cyclonedds:
   max_rexmit_message_size: 8950B
   water_mark_whc_high: 4MB
   water_mark_whc_low: 10kB
+  lease_duration: 32s
+  spdp_interval: 30s
 ipv4_ipfrag_time: 3
 ipv4_ipfrag_high_thresh: 134217728
 netcore_rmem_max: 2147483647
@@ -112,3 +114,6 @@ per2_angle_params: (120 120  62  30)
 # reload_camera_driver
 camera_num: 4
 target_service_before_reload_camera_driver: perception-startup.service
+
+# set_autoware_env
+vehicle_id: INVALID_VEHICLE_ID

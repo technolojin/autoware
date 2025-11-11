@@ -48,7 +48,9 @@
     - { role: x2_configure_marvell_switch }
     - { role: x2_ptp4l }
     - { role: x2_dev_tools }
-    - { role: x2_cmd_helper_completion }
+    - role: x2_cmd_helper_completion
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - { role: agnocast_module_loader }
     - { role: autoware.ecu_system_setup.systemd_analyze_collector }
     - { role: autoware.ecu_system_setup.passenger_app_agent }
     - { role: divert_jetpack_static_lib }

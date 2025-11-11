@@ -61,10 +61,28 @@ topics:
       5: DISENGAGED
       6: NOT_READY
   /j6/can/status/m3_status:
-    steering_over_ride_status:
+    shift_status.data:
+      0: NEUTRAL
+      1: DRIVE
+      2: REVERSE
+    parking_brake_status.data:
       0: OFF
       1: ON
-    accel_over_ride_status:
+    by_wire_mode_status.data:
+      0: OFF
+      1: AUTO
+      2: ACCEL_ONLY
+      3: STEER_ONLY
+    ad_level_status.data:
+      0: LEVEL2
+      1: LEVEL4
+    accel_over_ride_status.data:
+      0: OFF
+      1: ON
+    brake_over_ride_status.data:
+      0: OFF
+      1: ON
+    steering_over_ride_status.data:
       0: OFF
       1: ON
   /api/fail_safe/mrm_state:
@@ -80,6 +98,9 @@ topics:
       2: EMERGENCY_STOP
       3: COMFORTABLE_STOP
       4: PULL_OVER
+      11: main_ecu_in_lane_moderate_stop
+      12: main_ecu_in_lane_emergency_stop
+      21: sub_ecu_in_lane_moderate_stop
   /planning/planning_factors/lane_change_left:
     behavior:
       0: UNKNOWN

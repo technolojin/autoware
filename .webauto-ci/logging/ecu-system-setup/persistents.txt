@@ -15,3 +15,4 @@
 '/opt/dssad/'
 '/opt/opal-disk/pass_enc/'
 '/opt/pilotauto'
+'/var/lib/dssad_packer'
