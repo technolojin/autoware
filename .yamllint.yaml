@@ -17,6 +17,4 @@ rules:
   truthy:
     level: error
     check-keys: false # To allow 'on' of GitHub Actions
-  quoted-strings:
-    level: error
-    required: only-when-needed # To keep consistent style
+  quoted-strings: disable # To pass a value to the Evaluator.
