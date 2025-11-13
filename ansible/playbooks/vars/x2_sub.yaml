@@ -68,9 +68,10 @@ rviz_launch_method: autoware_launch
 rviz_default_service_enabled: false
 
 # screen_recorder
-screen_recorder_default_logging_directory: /tmp
+screen_recorder_default_logging_directory: /var/tmp/screen_recorder
 screen_recorder_default_display_variable: :0
 screen_recorder_default_service_enabled: false
+screen_recorder_retention_days: 3
 
 # redundancy switcher
 redundancy_switcher_repository_url: git@github.com:tier4/redundancy_switcher.git
@@ -85,7 +86,7 @@ node_id: 1
 # fool proof check service
 check_target_service: autoware_sub_launch.service
 fool_proof_check_network_interface: enp5s0f0 # TODO: check vlan.500
-fool_proof_check_additional_command: | # Set ROS_DOMAIN_ID for redandancy
+fool_proof_check_additional_command: | # Set ROS_DOMAIN_ID for redundancy
   export ROS_DOMAIN_ID=2
 
 # letterbox_monitor
