@@ -112,7 +112,24 @@ service_list_for_tier4_system: |
   ptp4l@enp5s0f0.service
 service_list_for_tier4_autoware: |
   boot-shutdown.service \
+  letterbox_monitor@autoware.service \
+  letterbox_monitor@default.service \
+  fool-proof-check.service \
   tier4_system_standby_wait.target
+# disable services
+# cspell:ignore runlevel utmp
+disable_system_service_list:
+  - snapd.apparmor.service
+  - snapd.socket
+  - snapd.service
+  - snapd.seeded.service
+  - systemd-update-utmp-runlevel.service
+  - update-notifier-download.timer
+  - update-notifier-motd.timer
+  - motd-news.timer
+  - dpkg-db-backup.timer
+  - apt-daily-upgrade.timer
+  - apt-daily.timer
 ## In the L2 version, enp5s0f1 of the Sub ECU is not connected, so it needs to be changed to enp5s0f0.
 network_interface_for_tier4_service_standby_wait: enp5s0f1
 ecu_type: sub

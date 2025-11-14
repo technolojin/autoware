@@ -192,9 +192,20 @@ simple_system_launch_items:
 # tier4_service_standby_wait
 service_list_for_tier4_system: ptp4l.service
 service_list_for_tier4_autoware: |
-  fool_proof_check.service \
+  fool-proof-check.service \
   boot-shutdown.service \
   tier4_system_standby_wait.target
+network_interface_for_tier4_service_standby_wait: enp3s0f0
+# disable services
+# cspell:ignore runlevel utmp
+disable_system_service_list:
+  - systemd-update-utmp-runlevel.service
+  - update-notifier-download.timer
+  - update-notifier-motd.timer
+  - motd-news.timer
+  - dpkg-db-backup.timer
+  - apt-daily-upgrade.timer
+  - apt-daily.timer
 
 ### metric_agent
 # metric_agent node parameters
@@ -216,3 +227,22 @@ metric_agent_telegraf_otel_hostname: ${AGENT_HOSTNAME}
 
 # set_autoware_env
 vehicle_id: INVALID_VEHICLE_ID
+
+# set services' order
+sync_tooling_wait_service:
+  - tier4_ros2_standby_wait.target
+bagkeeper_wait_service:
+  - tier4_autoware_standby_wait.target
+bagtaker_wait_service:
+  - tier4_autoware_standby_wait.target
+logagent_wait_service:
+  - tier4_autoware_standby_wait.target
+logpacker_wait_service:
+  - tier4_autoware_standby_wait.target
+mot_wait_service:
+  - tier4_autoware_standby_wait.target
+metric_agent_wait_service:
+  - tier4_autoware_standby_wait.target
+  - tier4_system_standby_wait.target
+rosbag_watchdog_wait_service:
+  - tier4_autoware_standby_wait.target

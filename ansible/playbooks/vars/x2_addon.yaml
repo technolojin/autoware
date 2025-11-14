@@ -66,6 +66,7 @@ perception_application_service_run_templates_file: perception_application/run.sh
 perception_application_native_built_ros: false # false when we are installing ROS with apt
 perception_application_directory_name: overlay_ws
 perception_type: addon
+perception_startup_service_template: perception_application/addon-perception-startup.service.j2
 
 # fool proof check service
 fool_proof_check: true
@@ -123,3 +124,16 @@ setup_coredump_tmpfiles_service: true
 
 # set_autoware_env
 vehicle_id: INVALID_VEHICLE_ID
+
+# tier4_service_standby_wait
+service_list_for_tier4_system: |
+  ptp4l.service
+service_list_for_tier4_autoware: |
+  boot-shutdown.service \
+  fool-proof-check.service \
+  tier4_system_standby_wait.target
+network_interface_for_tier4_service_standby_wait: enp7s0
+# disable services
+# cspell:ignore runlevel utmp
+disable_system_service_list:
+  - systemd-update-utmp-runlevel.service

@@ -81,6 +81,7 @@ perception_application_edge_auto_repo: git@github.com:tier4/edge-auto-jetson.x2.
 perception_application_native_built_ros: false # True if we build ROS from source and not using apt
 perception_application_service_run_templates_file: perception_application/run.sh.edge_auto_x2.j2 # we can use different run files if the path is in local
 perception_application_directory_name: overlay_ws
+perception_startup_service_template: perception_application/perception-startup.service.j2
 
 # fool proof check service
 fool_proof_check: true
@@ -117,3 +118,25 @@ target_service_before_reload_camera_driver: perception-startup.service
 
 # set_autoware_env
 vehicle_id: INVALID_VEHICLE_ID
+
+network_interface_for_tier4_service_standby_wait: mgbe1
+
+# tier4_service_standby_wait
+service_list_for_tier4_system: ptp4l.service
+service_list_for_tier4_autoware: |
+  boot-shutdown.service \
+  fool-proof-check.service \
+  tier4_system_standby_wait.target
+# disable services
+# cspell:ignore runlevel utmp
+disable_system_service_list:
+  - snapd.socket
+  - snapd.service
+  - snapd.seeded.service
+  - systemd-update-utmp-runlevel.service
+  - update-notifier-download.timer
+  - update-notifier-motd.timer
+  - motd-news.timer
+  - dpkg-db-backup.timer
+  - apt-daily-upgrade.timer
+  - apt-daily.timer
