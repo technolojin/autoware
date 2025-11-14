@@ -1408,6 +1408,26 @@
   durability: volatile
   history: keep_last
   reliability: best_effort
+/perception/object_recognition/detection/streampetr/objects:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/streampetr/latency/preprocess:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/streampetr/latency/total:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/streampetr/latency/inference:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
 /perception/object_recognition/detection/clustering/camera_lidar_fusion/objects:
   depth: 10
   durability: system_default
