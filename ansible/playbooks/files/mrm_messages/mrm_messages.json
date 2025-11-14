@@ -1,186 +1,221 @@
 {
-  "/control/005-trajectory_deviation": {
-    "default": {
-      "situation": "",
-      "solution": "手動走行で経路に戻ってください。その後自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/control/009-aeb_emergency_stop": {
-    "default": {
-      "situation": "",
-      "solution": "手動走行で回避してください。その後自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "no error code",
+  "/localization/001-topic_status/initialpose": {
+    "ERROR": {
+      "situation": "初期位置推定が完了していません",
+      "solution": "自己位置推定の完了を待ってください",
+      "error_code": "LOC01001E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
-      "situation": "何かと衝突する可能性があります",
-      "solution": "手動走行で回避してください。その後自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/control/011-slip_detection": {
     "default": {
-      "situation": "",
-      "solution": "安全を確認して再発進してください",
-      "error_code": "no error code",
+      "situation": "初期位置推定が完了していません",
+      "solution": "自己位置推定の完了を待ってください",
+      "error_code": "LOC01001",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
   },
-  "/control/collision_detector": {
+  "/localization/001-topic_status/pose_twist_fusion_filter": {
     "ERROR": {
-      "situation": "自車の近くに物体があり接触の危険があります",
-      "solution": "手動運転をして物体を回避、または物体の除去を行ってください。その後、自動モードへ切り替えてください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/control/rolling_back": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ移動してください。その後自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/hardware/hdd/003-connection": {
-    "default": {
-      "situation": "",
+      "situation": "/localization/pose_twist_fusion_filter/pose情報が正常に受け取れていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
+      "error_code": "LOC01002E",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "/localization/pose_twist_fusion_filter/pose情報が正常に受け取れていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "LOC01002",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/localization/001-topic_status/tf": {
+    "ERROR": {
+      "situation": "位置情報が正常に受けてれていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "LOC01003E",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "位置情報が正常に受けてれていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "LOC01003",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/localization/003-matching_score": {
+    "ERROR": {
+      "situation": "NDT scan matchingが正常動作していない可能性が高いです",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "LOC01004E",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "NDT scan matchingが正常動作していない可能性が高いです",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "LOC01004",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/localization/005-accuracy": {
+    "ERROR": {
+      "situation": "位置推定結果の信頼度が低くなっています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "LOC01005E",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "位置推定結果の信頼度が低くなっています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "LOC01005",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/map/001-topic_status/vector_map": {
+    "ERROR": {
+      "situation": "LL2Mapのデータが受け取れていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "MAP01001E",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "LL2Mapのデータが受け取れていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "MAP01001",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/map/001-topic_status/pointcloud_map": {
+    "ERROR": {
+      "situation": "点群地図のデータが受け取れていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "MAP01002E",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "点群地図のデータが受け取れていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "MAP01002",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  " /perception/001-topic_status/pointcloud": {
+    "ERROR": {
+      "situation": "LiDARの点群情報が受け取れていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "LiDARの点群情報が受け取れていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/perception/001-topic_status/objects": {
+    "ERROR": {
+      "situation": "認識オブジェクト情報が受け取れていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "認識オブジェクト情報が受け取れていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/perception/001-topic_status/traffic_signals": {
+    "ERROR": {
+      "situation": "信号情報が受け取れていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "PER01001E",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "信号情報が受け取れていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "PER01001",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/perception/002-detection_delay/tracker": {
+    "ERROR": {
+      "situation": "検知結果が遅れています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "検知結果が遅れています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/sensing/imu/001-connection": {
+    "ERROR": {
+      "situation": "IMU機器と接続が確認できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
-      "situation": "HDDが接続されていない状態です",
+    "default": {
+      "situation": "IMU機器と接続が確認できていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
   },
-  "/hardware/hdd/006-soft_error": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
+  "/sensing/lidar/concat_status": {
     "ERROR": {
-      "situation": "HDDのソフトウェア異常が発生しています",
+      "situation": "点群の結合に一時的に失敗しています",
+      "solution": "しばらく待って解決しない場合はORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "点群の結合に一時的に失敗しています",
+      "solution": "しばらく待って解決しない場合はORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/sensing/imu/008-monitor": {
+    "ERROR": {
+      "situation": "IMUに異常があります",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
-    }
-  },
-  "/hardware/memory/002-ecc": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
     },
-    "ERROR": {
-      "situation": "メモリのECCエラー（誤り検知機能の不具合）を検知しました",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/hardware/network/003-crc": {
     "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "NICでCRCエラー（異常補正機能の不具合）が発生しています",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/others/010-emergency_vehicle_main": {
-    "default": {
-      "situation": "",
-      "solution": "必要があれば手動で回避して回避が完了したら自動モードを切り替えてください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "緊急車両を検知しました",
-      "solution": "必要があれば手動で回避して回避が完了したら自動モードを切り替えてください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/others/011-daytime_monitor": {
-    "default": {
-      "situation": "",
-      "solution": "運行を終了して手動走行で移動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "ODD外の走行時間帯です",
-      "solution": "運行を終了して手動走行で移動してください",
-      "error_code": "",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/others/005-visibility_validation/front_lower": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/others/005-visibility_validation/right_upper": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "LiDARの視認性が落ちています",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sensing/imu/001-monitor": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
       "situation": "IMUに異常があります",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
@@ -188,943 +223,838 @@
       "routing_state_condition": "all"
     }
   },
-  "/system/002-emergency_stop_operation": {
-    "default": {
-      "situation": "",
-      "solution": "遠隔からの解除を待ってください。遠隔からの指示でない場合はECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
+  "/sensing/visibility_validation": {
     "ERROR": {
-      "situation": "緊急停止指示を受信しました。または遠隔操作機能と通信できていません",
-      "solution": "遠隔からの解除を待ってください。遠隔からの指示でない場合はECUを再起動してください",
+      "situation": "LiDARの視認性が落ちています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
-    }
-  },
-  "/vehicle/006-vehicle_errors": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
     },
-    "ERROR": {
-      "situation": "何らかの車両異常が発生しています",
+    "default": {
+      "situation": "LiDARの視認性が落ちています",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
   },
-  "/vehicle/007-vehicle-emergency-button": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後、緊急停止ボタンが押された原因を解決してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
+  "/sensing/gnss/001-connection": {
     "ERROR": {
-      "situation": "緊急停止ボタンが押されました",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後、緊急停止ボタンが押された原因を解決してください",
+      "situation": "GNSS機器との接続が確認できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
+    "default": {
+      "situation": "GNSS機器との接続が確認できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/planning/001-topic_status/route": {
     "WARN": {
-      "situation": "緊急停止ボタンが押されました",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後、緊急停止ボタンが押された原因を解決してください",
+      "situation": "経路情報が受け取れていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "経路情報が受け取れていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
     }
   },
-  "/control/001-topic_status/control_command": {
-    "default": {
-      "situation": "",
+  "/planning/001-topic_status/trajectory": {
+    "WARN": {
+      "situation": "追従経路情報が受け取れていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
     },
+    "default": {
+      "situation": "追従経路情報が受け取れていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/planning/003-trajectory_finite_validation": {
+    "WARN": {
+      "situation": "追従経路に異常があります",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "追従経路に異常があります",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/planning/004-trajectory_interval_validation": {
+    "WARN": {
+      "situation": "追従経路の点間が離れすぎています",
+      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "追従経路の点間が離れすぎています",
+      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/planning/005-trajectory_curvature_validation": {
+    "WARN": {
+      "situation": "追従経路の曲率が規定値以上になっています",
+      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "追従経路の曲率が規定値以上になっています",
+      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/planning/006-trajectory_relative_angle_validation": {
+    "WARN": {
+      "situation": "追従経路の相対角度が規定値以上になっています",
+      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "追従経路の相対角度が規定値以上になっています",
+      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/planning/007-trajectory_lateral_acceleration_validation": {
+    "WARN": {
+      "situation": "横加速度が規定値以上になっています",
+      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "横加速度が規定値以上になっています",
+      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/planning/008-trajectory_acceleration_validation": {
+    "WARN": {
+      "situation": "加速度が規定値以上になっています",
+      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "加速度が規定値以上になっています",
+      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/planning/009-trajectory_deceleration_validation": {
+    "WARN": {
+      "situation": "減速度が規定値以上になっています",
+      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "減速度が規定値以上になっています",
+      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/planning/010-trajectory_steering_validation": {
+    "WARN": {
+      "situation": "ステアリングの揺れ幅が規定値以上になっています",
+      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "ステアリングの揺れ幅が規定値以上になっています",
+      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/planning/011-trajectory_steering_rate_validation": {
+    "WARN": {
+      "situation": "ステアリングの加速度が規定値以上になっています",
+      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "ステアリングの加速度が規定値以上になっています",
+      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/planning/012-trajectory_velocity_deviation_validation": {
+    "WARN": {
+      "situation": "速度偏差が規定値以上になっています",
+      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "速度偏差が規定値以上になっています",
+      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/control/002-topic_status/control_command": {
     "ERROR": {
       "situation": "車両への操作コマンド情報が受け取れていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "CTL01001E",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "車両への操作コマンド情報が受け取れていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "CTL01001",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
     }
   },
-  "/control/010-max_distance_deviation": {
-    "default": {
-      "situation": "",
-      "solution": "手動走行で経路に戻ってください。その後自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
+  "/control/003-max_distance_deviation": {
     "ERROR": {
       "situation": "実際に通る予測経路と自動運転で出力された経路の差が大きいです",
       "solution": "手動走行で経路に戻ってください。その後自動モードへ切り替えて自動走行を再開してください",
       "error_code": "CTL01002E",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "実際に通る予測経路と自動運転で出力された経路の差が大きいです",
+      "solution": "手動走行で経路に戻ってください。その後自動モードへ切り替えて自動走行を再開してください",
+      "error_code": "CTL01002",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
     }
   },
-  "/control/over_velocity": {
-    "default": {
-      "situation": "",
+  "/control/004-over_velocity": {
+    "WARN": {
+      "situation": "指示速度より速い速度になっています",
       "solution": "制動系の故障の可能性があるためORして安全な場所に移動してください。その後制動系に異常がないか確認してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
+      "error_code": "CTL01001W",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "ERROR": {
+      "situation": "指示速度より速い速度になっています",
+      "solution": "制動系の故障の可能性があるためORして安全な場所に移動してください。その後制動系に異常がないか確認してください",
+      "error_code": "CTL01001E",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "指示速度より速い速度になっています",
+      "solution": "制動系の故障の可能性があるためORして安全な場所に移動してください。その後制動系に異常がないか確認してください",
+      "error_code": "CTL01001",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
     }
   },
-  "/control/overrun_stop_point": {
-    "ERROR": {
-      "situation": "詳細が不明です",
-      "solution": "対応が不明です",
+  "/control/009-slip_detection": {
+    "WARN": {
+      "situation": "スリップを検知しました",
+      "solution": "安全を確認して再発進してください",
       "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/hardware/hdd/002-usage": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後不要なファイルの削除を行ってください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
     },
-    "ERROR": {
-      "situation": "HDDの空き容量が不足しています",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後不要なファイルの削除を行ってください",
-      "error_code": "HRD01005W",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/hardware/mot/001-connection": {
     "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "MOTと通信できていません",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "HRD01004W",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/hardware/signage/001-connection": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "サイネージと通信できていません",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "HRD01005W",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/hardware/voice/001-connection": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "車外向け音声案内と通信できていません",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "HRD01004W",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/hardware/cpu/002-usage": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/hardware/cpu/004-throttling": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "CPU温度が最高動作温度付近まで上昇し、CPU周波数が低下しています",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "HRD01002E",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/hardware/gpu/001-temperature": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/hardware/gpu/002-usage": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/hardware/gpu/003-memory": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/hardware/gpu/004-throttling": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/hardware/gpu/005-frequency": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/hardware/hdd/001-temperature": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "HDD温度が最高動作温度付近まで上昇しています",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "HRD01003E",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/hardware/hdd/007-load/read_iops": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/hardware/hdd/007-load/read_rate": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/hardware/hdd/007-load/write_iops": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/hardware/hdd/007-load/write_rate": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/hardware/memory/001-usage": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/hardware/network/004-packet_reassembles": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/localization/001-topic_status/pose_twist_fusion_filter": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "/localization/pose_twist_fusion_filter/pose情報が正常に受け取れていません",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "LOC01002E",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/localization/002-tf": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "位置情報が正常に受けてれていません",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "LOC01003E",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/localization/003-matching_score": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "NDT scan matchingが正常動作していない可能性が高いです",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "LOC01004E",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/map/001-topic_status/pointcloud_map": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "点群地図のデータが受け取れていません",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "MAP01002E",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/map/001-topic_status/vector_map": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "LL2Mapのデータが受け取れていません",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "MAP01001E",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/others/002-blockage_validation/front_lower": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "LiDARについた汚れを検出しました",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
+      "situation": "スリップを検知しました",
+      "solution": "安全を確認して再発進してください",
       "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
     }
   },
-  "/others/002-blockage_validation/front_upper": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
+  "/control/010-collision_detector": {
     "ERROR": {
-      "situation": "LiDARについた汚れを検出しました",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
+      "situation": "自車の近くに物体があり接触の危険があります",
+      "solution": "手動運転をして物体を回避、または物体の除去を行ってください。その後、自動モードへ切り替えてください",
       "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "自車の近くに物体があり接触の危険があります",
+      "solution": "手動運転をして物体を回避、または物体の除去を行ってください。その後、自動モードへ切り替えてください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
     }
   },
-  "/others/002-blockage_validation/left_lower": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
+  "/control/011-rolling_back": {
+    "WARN": {
+      "situation": "ずり下がりを検知しました",
+      "solution": "ORして安全な場所へ移動してください。その後自動モードへ切り替えて自動走行を再開してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
     },
+    "default": {
+      "situation": "ずり下がりを検知しました",
+      "solution": "ORして安全な場所へ移動してください。その後自動モードへ切り替えて自動走行を再開してください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/system/005-daytime_monitor": {
     "ERROR": {
-      "situation": "LiDARについた汚れを検出しました",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
+      "situation": "ODD外の走行時間帯です",
+      "solution": "運行を終了して手動走行で移動してください",
       "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/others/002-blockage_validation/left_upper": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
-      "error_code": "no error code",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
-      "situation": "LiDARについた汚れを検出しました",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/others/002-blockage_validation/rear_lower": {
     "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
-      "error_code": "no error code",
+      "situation": "ODD外の走行時間帯です",
+      "solution": "運行を終了して手動走行で移動してください",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "LiDARについた汚れを検出しました",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
     }
   },
-  "/others/002-blockage_validation/rear_upper": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "LiDARについた汚れを検出しました",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/others/002-blockage_validation/right_lower": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "LiDARについた汚れを検出しました",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/others/002-blockage_validation/right_upper": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "LiDARについた汚れを検出しました",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/others/004-concat_status": {
-    "default": {
-      "situation": "",
-      "solution": "しばらく待って解決しない場合はORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "点群の結合に一時的に失敗しています",
-      "solution": "しばらく待って解決しない場合はORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/others/012-vehicle_stuck_checker": {
-    "default": {
-      "situation": "",
-      "solution": "手動運転をしてスタックから抜け出してください。その後自動モードへ切り替えてください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
+  "/system/006-vehicle_stuck_checker": {
     "ERROR": {
       "situation": "車両が停車した状態で時間が立ったため立ち往生と判断されました",
       "solution": "手動運転をしてスタックから抜け出してください。その後自動モードへ切り替えてください",
       "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "車両が停車した状態で時間が立ったため立ち往生と判断されました",
+      "solution": "手動運転をしてスタックから抜け出してください。その後自動モードへ切り替えてください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
     }
   },
-  "/perception/001-topic_status/objects": {
+  "/vehicle/007-vehicle-emergency-button": {
+    "ERROR": {
+      "situation": "緊急停止ボタンが押されました",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後、緊急停止ボタンが押された原因を解決してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
     "default": {
-      "situation": "",
+      "situation": "緊急停止ボタンが押されました",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後、緊急停止ボタンが押された原因を解決してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/system/018-emergency_vehicle_main": {
+    "ERROR": {
+      "situation": "緊急車両を検知しました",
+      "solution": "必要があれば手動で回避して回避が完了したら自動モードを切り替えてください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "緊急車両を検知しました",
+      "solution": "必要があれば手動で回避して回避が完了したら自動モードを切り替えてください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/foolproof/logging/heartbeat": {
+    "ERROR": {
+      "situation": "Logging ECUの診断プロセスが動作してません",
+      "solution": "次のバス停で自動走行を中断してください。その後ADKシステムを再起動してください",
+      "error_code": "FPR03001E",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "Logging ECUの診断プロセスが動作してません",
+      "solution": "次のバス停で自動走行を中断してください。その後ADKシステムを再起動してください",
+      "error_code": "FPR03001",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/foolproof/perception1/heartbeat": {
+    "ERROR": {
+      "situation": "Perception1 ECUの診断プロセスが動作してません",
+      "solution": "次のバス停で自動走行を中断してください。その後ADKシステムを再起動してください",
+      "error_code": "FPR04001E",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "Perception1 ECUの診断プロセスが動作してません",
+      "solution": "次のバス停で自動走行を中断してください。その後ADKシステムを再起動してください",
+      "error_code": "FPR04001",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/foolproof/perception2/heartbeat": {
+    "ERROR": {
+      "situation": "Perception2 ECUの診断プロセスが動作してません",
+      "solution": "次のバス停で自動走行を中断してください。その後ADKシステムを再起動してください",
+      "error_code": "FPR05001E",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "Perception2 ECUの診断プロセスが動作してません",
+      "solution": "次のバス停で自動走行を中断してください。その後ADKシステムを再起動してください",
+      "error_code": "FPR05001",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/foolproof/logging/ssd_not_found": {
+    "ERROR": {
+      "situation": "Logging ECUのrosbag記録用SSDが見つかりません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ADKシステムを電源を停止させてから記録用SSDを交換し、再起動してください",
+      "error_code": "FPR03002E",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "Logging ECUのrosbag記録用SSDが見つかりません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ADKシステムを電源を停止させてから記録用SSDを交換し、再起動してください",
+      "error_code": "FPR03002",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/foolproof/perception1/camera_not_found": {
+    "ERROR": {
+      "situation": "Perception1 ECUでカメラデバイスが見つかりませんでした",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
+      "error_code": "FPR04002E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
+    "default": {
+      "situation": "Perception1 ECUでカメラデバイスが見つかりませんでした",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "FPR04002",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/foolproof/perception2/camera_not_found": {
     "ERROR": {
-      "situation": "認識オブジェクト情報が受け取れていません",
+      "situation": "Perception2 ECUでカメラデバイスが見つかりませんでした",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "FPR05002E",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "Perception2 ECUでカメラデバイスが見つかりませんでした",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "FPR05002",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/foolproof/perception1/mgbe1_not_ready": {
+    "ERROR": {
+      "situation": "Perception1 ECUで通信経路が故障判定されています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "FPR04003E",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "Perception1 ECUで通信経路が故障判定されています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "FPR04003",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/foolproof/perception2/mgbe1_not_ready": {
+    "ERROR": {
+      "situation": "Perception2 ECUで通信経路が故障判定されています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "FPR05003E",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "Perception2 ECUで通信経路が故障判定されています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "FPR05003",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/foolproof/main/autoware_node_alive": {
+    "ERROR": {
+      "situation": "Main ECUでプロセス異常が発生しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "FPR01001E",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "Main ECUでプロセス異常が発生しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "FPR01001",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/foolproof/main/autoware_system_node_alive": {
+    "ERROR": {
+      "situation": "Main ECUでプロセス異常が発生しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "FPR01002E",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "Main ECUでプロセス異常が発生しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "FPR01002",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/foolproof/perception1/recognition_node_alive": {
+    "ERROR": {
+      "situation": "Perception1 ECUでプロセス異常が発生しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "FPR04004E",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "Perception1 ECUでプロセス異常が発生しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "FPR04004",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/foolproof/perception2/recognition_node_alive": {
+    "ERROR": {
+      "situation": "Perception2 ECUでプロセス異常が発生しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "FPR05004E",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "Perception2 ECUでプロセス異常が発生しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "FPR05004",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/foolproof/addon/recognition_node_alive": {
+    "ERROR": {
+      "situation": "Addon ECUでプロセス異常が発生しています",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/perception/001-topic_status/pointcloud": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
-      "situation": "LiDARの点群情報が受け取れていません",
+    "default": {
+      "situation": "Addon ECUでプロセス異常が発生しています",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/perception/001-topic_status/traffic_signals": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "信号情報が受け取れていません",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "PER01001E",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
     }
   },
-  "/perception/002-detection_delay": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
+  "/foolproof/addon/camera_driver_node_alive": {
     "ERROR": {
-      "situation": "検知結果が遅れています",
+      "situation": "Addon ECUでプロセス異常が発生しています",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/planning/001-topic_status/route": {
-    "ERROR": {
-      "situation": "経路情報が受け取れていません",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "Addon ECUでプロセス異常が発生しています",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
     }
   },
-  "/planning/001-topic_status/trajectory": {
+  "/vehicle/t4_vcu_version_check": {
     "ERROR": {
-      "situation": "追従経路情報が受け取れていません",
+      "situation": "ADKと車両ECUのバージョンが合っていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。ADKと車両ECUのバージョンを合わせて自動運転システムを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "ADKと車両ECUのバージョンが合っていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。ADKと車両ECUのバージョンを合わせて自動運転システムを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/control/control_command_gate/timeout_stop": {
+    "ERROR": {
+      "situation": "停止モードに必要な制御信号が確認できません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "停止モードに必要な制御信号が確認できません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/control/control_command_gate/timeout_main": {
+    "ERROR": {
+      "situation": "自動走行モードに必要な制御信号が確認できません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "自動走行モードに必要な制御信号が確認できません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/control/control_command_gate/timeout_in_lane_stop": {
+    "ERROR": {
+      "situation": "経路内停止モードに必要な制御信号が確認できません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "経路内停止モードに必要な制御信号が確認できません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/control/control_command_gate/timeout_output": {
+    "ERROR": {
+      "situation": "制御信号が適切に出力されていません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "制御信号が適切に出力されていません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/system/command_mode_decider/ready": {
+    "ERROR": {
+      "situation": "モード切替機能に必要な信号が受信できていません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "モード切替機能に必要な信号が受信できていません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/redundancy/redundancy_switcher": {
+    "ERROR": {
+      "situation": "冗長機能が適切に動作していません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/planning/003-trajectory_finite_validation": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
-      "situation": "追従経路に異常があります",
+    "default": {
+      "situation": "冗長機能が適切に動作していません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
     }
   },
-  "/planning/004-trajectory_interval_validation": {
-    "default": {
-      "situation": "",
-      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "no error code",
+  "/redundancy/topic_status/election_status": {
+    "ERROR": {
+      "situation": "冗長機能の現在状態が確認できません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
-      "situation": "追従経路の点間が離れすぎています",
-      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/planning/005-trajectory_curvature_validation": {
     "default": {
-      "situation": "",
-      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "no error code",
+      "situation": "冗長機能の現在状態が確認できません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "追従経路の曲率が規定値以上になっています",
-      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
     }
   },
-  "/planning/006-trajectory_relative_angle_validation": {
-    "default": {
-      "situation": "",
-      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
+  "/sub_ecu/vehicle/topic_status/velocity": {
     "ERROR": {
-      "situation": "追従経路の相対角度が規定値以上になっています",
-      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/planning/007-trajectory_lateral_acceleration_validation": {
-    "default": {
-      "situation": "",
-      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "横加速度が規定値以上になっています",
-      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/planning/008-trajectory_acceleration_validation": {
-    "default": {
-      "situation": "",
-      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "加速度が規定値以上になっています",
-      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/planning/009-trajectory_deceleration_validation": {
-    "default": {
-      "situation": "",
-      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "減速度が規定値以上になっています",
-      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/planning/010-trajectory_steering_validation": {
-    "default": {
-      "situation": "",
-      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "ステアリングの揺れ幅が規定値以上になっています",
-      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/planning/011-trajectory_steering_rate_validation": {
-    "default": {
-      "situation": "",
-      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "ステアリングの加速度が規定値以上になっています",
-      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/planning/012-trajectory_velocity_deviation_validation": {
-    "default": {
-      "situation": "",
-      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "速度偏差が規定値以上になっています",
-      "solution": "手動走行で経路をある程度走行したあと、自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/sensing/gnss/001-connection": {
-    "default": {
-      "situation": "",
+      "situation": "速度情報を受け取れていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "速度情報を受け取れていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
   },
-  "/sensing/lidar/front_lower/temperature": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後しばらく時間をおいてECUを再起動してください",
-      "error_code": "no error code",
+  "/sub_ecu/vehicle/topic_status/steering": {
+    "ERROR": {
+      "situation": "ステアリング情報が受け取れていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
-      "situation": "LiDARの温度が規定値以上です",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後しばらく時間をおいてECUを再起動してください",
+    "default": {
+      "situation": "ステアリング情報が受け取れていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
     }
   },
-  "/sensing/lidar/front_upper/temperature": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後しばらく時間をおいてECUを再起動してください",
-      "error_code": "no error code",
+  "/mrm_domain/localization/topic_status/pose": {
+    "ERROR": {
+      "situation": "経路内停止MRMのための自己位置情報が受信できていません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
-      "situation": "LiDARの温度が規定値以上です",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後しばらく時間をおいてECUを再起動してください",
+    "default": {
+      "situation": "経路内停止MRMのための自己位置情報が受信できていません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
     }
   },
-  "/sensing/lidar/left_lower/temperature": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後しばらく時間をおいてECUを再起動してください",
-      "error_code": "no error code",
+  "/mrm_domain/localization/topic_status/twist": {
+    "ERROR": {
+      "situation": "経路内停止MRMのための速度と操舵情報が受信できていません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
-      "situation": "LiDARの温度が規定値以上です",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後しばらく時間をおいてECUを再起動してください",
+    "default": {
+      "situation": "経路内停止MRMのための速度と操舵情報が受信できていません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
     }
   },
-  "/sensing/lidar/left_upper/temperature": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後しばらく時間をおいてECUを再起動してください",
-      "error_code": "no error code",
+  "/mrm_domain/planning/topic_status/trajectory": {
+    "ERROR": {
+      "situation": "経路内停止MRMのための経路情報が受信できていません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
-      "situation": "LiDARの温度が規定値以上です",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後しばらく時間をおいてECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/sensing/lidar/rear_lower/temperature": {
     "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後しばらく時間をおいてECUを再起動してください",
-      "error_code": "no error code",
+      "situation": "経路内停止MRMのための経路情報が受信できていません",
+      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "LiDARの温度が規定値以上です",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後しばらく時間をおいてECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/sensing/lidar/rear_upper/temperature": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後しばらく時間をおいてECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "LiDARの温度が規定値以上です",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後しばらく時間をおいてECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/sensing/lidar/right_lower/temperature": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後しばらく時間をおいてECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "LiDARの温度が規定値以上です",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後しばらく時間をおいてECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/sensing/lidar/right_upper/temperature": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後しばらく時間をおいてECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "LiDARの温度が規定値以上です",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後しばらく時間をおいてECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
     }
   },
   "/sensing/camera/0/connection": {
-    "default": {
-      "situation": "",
+    "ERROR": {
+      "situation": "カメラの接続が確認できていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
+    "default": {
       "situation": "カメラの接続が確認できていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
@@ -1133,14 +1063,14 @@
     }
   },
   "/sensing/camera/1/connection": {
-    "default": {
-      "situation": "",
+    "ERROR": {
+      "situation": "カメラの接続が確認できていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
+    "default": {
       "situation": "カメラの接続が確認できていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
@@ -1149,14 +1079,14 @@
     }
   },
   "/sensing/camera/2/connection": {
-    "default": {
-      "situation": "",
+    "ERROR": {
+      "situation": "カメラの接続が確認できていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
+    "default": {
       "situation": "カメラの接続が確認できていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
@@ -1165,14 +1095,14 @@
     }
   },
   "/sensing/camera/3/connection": {
-    "default": {
-      "situation": "",
+    "ERROR": {
+      "situation": "カメラの接続が確認できていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
+    "default": {
       "situation": "カメラの接続が確認できていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
@@ -1181,14 +1111,14 @@
     }
   },
   "/sensing/camera/4/connection": {
-    "default": {
-      "situation": "",
+    "ERROR": {
+      "situation": "カメラの接続が確認できていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
+    "default": {
       "situation": "カメラの接続が確認できていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
@@ -1197,14 +1127,14 @@
     }
   },
   "/sensing/camera/5/connection": {
-    "default": {
-      "situation": "",
+    "ERROR": {
+      "situation": "カメラの接続が確認できていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
+    "default": {
       "situation": "カメラの接続が確認できていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
@@ -1213,14 +1143,14 @@
     }
   },
   "/sensing/camera/6/connection": {
-    "default": {
-      "situation": "",
+    "ERROR": {
+      "situation": "カメラの接続が確認できていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
+    "default": {
       "situation": "カメラの接続が確認できていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
@@ -1229,14 +1159,14 @@
     }
   },
   "/sensing/camera/7/connection": {
-    "default": {
-      "situation": "",
+    "ERROR": {
+      "situation": "カメラの接続が確認できていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
+    "default": {
       "situation": "カメラの接続が確認できていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
@@ -1244,159 +1174,15 @@
       "routing_state_condition": "all"
     }
   },
-  "/sensing/imu/002-connection": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "IMU機器と接続が確認できていません",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sensing/lidar/front_lower/connection": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "LiDARとの接続が確認できていません",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sensing/lidar/front_upper/connection": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "LiDARとの接続が確認できていません",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sensing/lidar/left_lower/connection": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "LiDARとの接続が確認できていません",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sensing/lidar/left_upper/connection": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "LiDARとの接続が確認できていません",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sensing/lidar/rear_lower/connection": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "LiDARとの接続が確認できていません",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sensing/lidar/rear_upper/connection": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "LiDARとの接続が確認できていません",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sensing/lidar/right_lower/connection": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "LiDARとの接続が確認できていません",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sensing/lidar/right_upper/connection": {
-    "default": {
-      "situation": "",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "ERROR": {
-      "situation": "LiDARとの接続が確認できていません",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
   "/sensing/lidar/front_lower/ptp": {
-    "default": {
-      "situation": "",
+    "ERROR": {
+      "situation": "LiDARと時刻同期ができていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
+    "default": {
       "situation": "LiDARと時刻同期ができていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
@@ -1405,14 +1191,14 @@
     }
   },
   "/sensing/lidar/front_upper/ptp": {
-    "default": {
-      "situation": "",
+    "ERROR": {
+      "situation": "LiDARと時刻同期ができていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
+    "default": {
       "situation": "LiDARと時刻同期ができていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
@@ -1421,14 +1207,14 @@
     }
   },
   "/sensing/lidar/left_lower/ptp": {
-    "default": {
-      "situation": "",
+    "ERROR": {
+      "situation": "LiDARと時刻同期ができていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
+    "default": {
       "situation": "LiDARと時刻同期ができていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
@@ -1437,14 +1223,14 @@
     }
   },
   "/sensing/lidar/left_upper/ptp": {
-    "default": {
-      "situation": "",
+    "ERROR": {
+      "situation": "LiDARと時刻同期ができていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
+    "default": {
       "situation": "LiDARと時刻同期ができていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
@@ -1453,14 +1239,14 @@
     }
   },
   "/sensing/lidar/rear_lower/ptp": {
-    "default": {
-      "situation": "",
+    "ERROR": {
+      "situation": "LiDARと時刻同期ができていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
+    "default": {
       "situation": "LiDARと時刻同期ができていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
@@ -1469,14 +1255,14 @@
     }
   },
   "/sensing/lidar/rear_upper/ptp": {
-    "default": {
-      "situation": "",
+    "ERROR": {
+      "situation": "LiDARと時刻同期ができていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
+    "default": {
       "situation": "LiDARと時刻同期ができていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
@@ -1485,14 +1271,14 @@
     }
   },
   "/sensing/lidar/right_lower/ptp": {
-    "default": {
-      "situation": "",
+    "ERROR": {
+      "situation": "LiDARと時刻同期ができていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
+    "default": {
       "situation": "LiDARと時刻同期ができていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
@@ -1501,14 +1287,14 @@
     }
   },
   "/sensing/lidar/right_upper/ptp": {
-    "default": {
-      "situation": "",
+    "ERROR": {
+      "situation": "LiDARと時刻同期ができていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
+    "default": {
       "situation": "LiDARと時刻同期ができていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
@@ -1516,8 +1302,271 @@
       "routing_state_condition": "all"
     }
   },
+  "/sensing/lidar/front_lower/connection": {
+    "ERROR": {
+      "situation": "LiDARとの接続が確認できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "LiDARとの接続が確認できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/sensing/lidar/front_upper/connection": {
+    "ERROR": {
+      "situation": "LiDARとの接続が確認できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "LiDARとの接続が確認できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/sensing/lidar/left_lower/connection": {
+    "ERROR": {
+      "situation": "LiDARとの接続が確認できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "LiDARとの接続が確認できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/sensing/lidar/left_upper/connection": {
+    "ERROR": {
+      "situation": "LiDARとの接続が確認できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "LiDARとの接続が確認できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/sensing/lidar/rear_lower/connection": {
+    "ERROR": {
+      "situation": "LiDARとの接続が確認できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "LiDARとの接続が確認できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/sensing/lidar/rear_upper/connection": {
+    "ERROR": {
+      "situation": "LiDARとの接続が確認できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "LiDARとの接続が確認できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/sensing/lidar/right_lower/connection": {
+    "ERROR": {
+      "situation": "LiDARとの接続が確認できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "LiDARとの接続が確認できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/sensing/lidar/right_upper/connection": {
+    "ERROR": {
+      "situation": "LiDARとの接続が確認できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "LiDARとの接続が確認できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/sensing/lidar/front_lower/blockage_validation": {
+    "ERROR": {
+      "situation": "LiDARについた汚れを検出しました",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "LiDARについた汚れを検出しました",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/sensing/lidar/front_upper/blockage_validation": {
+    "ERROR": {
+      "situation": "LiDARについた汚れを検出しました",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "LiDARについた汚れを検出しました",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/sensing/lidar/left_lower/blockage_validation": {
+    "ERROR": {
+      "situation": "LiDARについた汚れを検出しました",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "LiDARについた汚れを検出しました",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/sensing/lidar/left_upper/blockage_validation": {
+    "ERROR": {
+      "situation": "LiDARについた汚れを検出しました",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "LiDARについた汚れを検出しました",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/sensing/lidar/rear_lower/blockage_validation": {
+    "ERROR": {
+      "situation": "LiDARについた汚れを検出しました",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "LiDARについた汚れを検出しました",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/sensing/lidar/rear_upper/blockage_validation": {
+    "ERROR": {
+      "situation": "LiDARについた汚れを検出しました",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "LiDARについた汚れを検出しました",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/sensing/lidar/right_lower/blockage_validation": {
+    "ERROR": {
+      "situation": "LiDARについた汚れを検出しました",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "LiDARについた汚れを検出しました",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/sensing/lidar/right_upper/blockage_validation": {
+    "ERROR": {
+      "situation": "LiDARについた汚れを検出しました",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "LiDARについた汚れを検出しました",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後車両の電源を切りLiDARの清掃をしてください",
+      "error_code": "",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
   "/sensing/radar/front_center/connection": {
     "ERROR": {
+      "situation": "RADARとの接続が確認できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
       "situation": "RADARとの接続が確認できていません",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
@@ -1532,439 +1581,605 @@
       "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "RADARとの接続が確認できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
     }
   },
-  "/system/001-topic_status": {
-    "default": {
-      "situation": "",
+  "/hardware/cpu/002-usage-error": {
+    "WARN": {
+      "situation": "CPU負荷が逼迫しています",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
+      "error_code": "HRD01001W",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "CPU負荷が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01001",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/hardware/cpu/004-throttling-error": {
+    "ERROR": {
+      "situation": "CPU温度が最高動作温度付近まで上昇し、CPU周波数が低下しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01002E",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "CPU温度が最高動作温度付近まで上昇し、CPU周波数が低下しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01002",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/hardware/hdd/001-temperature-error": {
+    "ERROR": {
+      "situation": "HDD温度が最高動作温度付近まで上昇しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01003E",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "HDD温度が最高動作温度付近まで上昇しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01003",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/hardware/hdd/002-usage-error": {
+    "ERROR": {
+      "situation": "HDDの空き容量が不足しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後不要なファイルの削除を行ってください",
+      "error_code": "HRD01005E",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "HDDの空き容量が不足しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後不要なファイルの削除を行ってください",
+      "error_code": "HRD01005",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/hardware/hdd/003-connection-error": {
+    "ERROR": {
+      "situation": "HDDが接続されていない状態です",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
-      "situation": "システム関係で受信できていない情報があります",
+    "default": {
+      "situation": "HDDが接続されていない状態です",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
   },
-  "/vehicle/001-topic_status/steering": {
-    "default": {
-      "situation": "",
+  "/hardware/hdd/007-load/read_rate": {
+    "WARN": {
+      "situation": "HDDの帯域が逼迫しています",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
+      "error_code": "HRD01004W",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "HDDの帯域が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01004",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/hardware/hdd/007-load/read_iops": {
+    "WARN": {
+      "situation": "HDDの帯域が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01005W",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "HDDの帯域が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01005",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/hardware/hdd/007-load/write_rate": {
+    "WARN": {
+      "situation": "HDDの帯域が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01004W",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "HDDの帯域が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01004",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/hardware/hdd/007-load/write_iops": {
+    "WARN": {
+      "situation": "HDDの帯域が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01005W",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "HDDの帯域が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01005",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/hardware/memory/001-usage-error": {
+    "WARN": {
+      "situation": "メモリの使用率が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01004W",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "メモリの使用率が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01004",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/hardware/memory/002-ecc-error": {
+    "ERROR": {
+      "situation": "メモリのECCエラー（誤り検知機能の不具合）を検知しました",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
-      "situation": "ステアリング情報が受け取れていません",
+    "default": {
+      "situation": "メモリのECCエラー（誤り検知機能の不具合）を検知しました",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
   },
-  "/vehicle/001-topic_status/velocity": {
-    "default": {
-      "situation": "",
+  "/hardware/gpu/001-temperature-error": {
+    "WARN": {
+      "situation": "GPU温度が最高動作温度付近まで上昇しています",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
+      "error_code": "HRD01004W",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "GPU温度が最高動作温度付近まで上昇しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01004",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/hardware/gpu/002-usage-error": {
+    "WARN": {
+      "situation": "GPU負荷が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01005W",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "GPU負荷が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01005",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/hardware/gpu/003-memory-error": {
+    "WARN": {
+      "situation": "GPUメモリの使用率が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01004W",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "GPUメモリの使用率が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01004",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/hardware/gpu/004-throttling-error": {
+    "WARN": {
+      "situation": "GPU温度が最高動作温度付近まで上昇し、GPU周波数が低下しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01005W",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "GPU温度が最高動作温度付近まで上昇し、GPU周波数が低下しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01005",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/hardware/gpu/005-frequency-error": {
+    "WARN": {
+      "situation": "GPU入力クロックが異常な状態である",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01004W",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "GPU入力クロックが異常な状態である",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01004",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/hardware/mot/001-connection": {
+    "ERROR": {
+      "situation": "MOTと通信できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01004E",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "MOTと通信できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01004",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/hardware/signage/001-connection": {
+    "ERROR": {
+      "situation": "サイネージと通信できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01005E",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "サイネージと通信できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01005",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/hardware/voice/001-connection": {
+    "ERROR": {
+      "situation": "車外向け音声案内と通信できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01004E",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "車外向け音声案内と通信できていません",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01004",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/sub_ecu/hardware/cpu/002-usage/warn-to-ok": {
+    "WARN": {
+      "situation": "CPU負荷が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01001W",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "CPU負荷が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01001",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/sub_ecu/hardware/cpu/004-throttling/warn-to-ok": {
+    "ERROR": {
+      "situation": "CPU温度が最高動作温度付近まで上昇し、CPU周波数が低下しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01002E",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "CPU温度が最高動作温度付近まで上昇し、CPU周波数が低下しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01002",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/sub_ecu/hardware/hdd/001-temperature/warn-to-ok": {
+    "ERROR": {
+      "situation": "HDD温度が最高動作温度付近まで上昇しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01003E",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "HDD温度が最高動作温度付近まで上昇しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01003",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/sub_ecu/hardware/hdd/002-usage/warn-to-ok": {
+    "ERROR": {
+      "situation": "HDDの空き容量が不足しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後不要なファイルの削除を行ってください",
+      "error_code": "HRD01005E",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "HDDの空き容量が不足しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後不要なファイルの削除を行ってください",
+      "error_code": "HRD01005",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/sub_ecu/hardware/hdd/003-connection/warn-to-ok": {
+    "ERROR": {
+      "situation": "HDDが接続されていない状態です",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
-      "situation": "速度情報を受け取れていません",
+    "default": {
+      "situation": "HDDが接続されていない状態です",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
   },
-  "/vehicle/005-vehicle_heartbeat": {
-    "default": {
-      "situation": "",
+  "/sub_ecu/hardware/hdd/007-load/read_rate/warn-to-ok": {
+    "WARN": {
+      "situation": "HDDの帯域が逼迫しています",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "no error code",
+      "error_code": "HRD01004W",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "HDDの帯域が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01004",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/sub_ecu/hardware/hdd/007-load/read_iops/warn-to-ok": {
+    "WARN": {
+      "situation": "HDDの帯域が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01005W",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "HDDの帯域が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01005",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/sub_ecu/hardware/hdd/007-load/write_rate/warn-to-ok": {
+    "WARN": {
+      "situation": "HDDの帯域が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01004W",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "HDDの帯域が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01004",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/sub_ecu/hardware/hdd/007-load/write_iops/warn-to-ok": {
+    "WARN": {
+      "situation": "HDDの帯域が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01005W",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "HDDの帯域が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01005",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/sub_ecu/hardware/memory/001-usage/warn-to-ok": {
+    "WARN": {
+      "situation": "メモリの使用率が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01004W",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
+    "default": {
+      "situation": "メモリの使用率が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01004",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    }
+  },
+  "/sub_ecu/hardware/memory/002-ecc/warn-to-ok": {
+    "ERROR": {
+      "situation": "メモリのECCエラー（誤り検知機能の不具合）を検知しました",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
-    "ERROR": {
-      "situation": "車両からのハートビードを受け取れていません",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/redundancy/main_ecu_fault": {
     "default": {
-      "situation": "",
-      "solution": "次のバス停で自動走行を中断してください。その後ADKシステムを再起動してください",
-      "error_code": "no error code",
+      "situation": "メモリのECCエラー（誤り検知機能の不具合）を検知しました",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
   },
-  "/redundancy/sub_ecu_fault": {
+  "/sub_ecu/hardware/gpu/001-temperature/warn-to-ok": {
+    "WARN": {
+      "situation": "GPU温度が最高動作温度付近まで上昇しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01004W",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
     "default": {
-      "situation": "",
-      "solution": "次のバス停で自動走行を中断してください。その後ADKシステムを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
+      "situation": "GPU温度が最高動作温度付近まで上昇しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01004",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
     }
   },
-  "/redundancy/main_vcu_fault": {
+  "/sub_ecu/hardware/gpu/002-usage/warn-to-ok": {
+    "WARN": {
+      "situation": "GPU負荷が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01005W",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
     "default": {
-      "situation": "",
-      "solution": "次のバス停で自動走行を中断してください。その後車両のIG OFFからシステムを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
+      "situation": "GPU負荷が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01005",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
     }
   },
-  "/redundancy/sub_vcu_fault": {
+  "/sub_ecu/hardware/gpu/003-memory/warn-to-ok": {
+    "WARN": {
+      "situation": "GPUメモリの使用率が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01004W",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
     "default": {
-      "situation": "",
-      "solution": "次のバス停で自動走行を中断してください。その後車両のIG OFFからシステムを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
+      "situation": "GPUメモリの使用率が逼迫しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01004",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
     }
   },
-  "/redundancy/main_ecu_to_sub_ecu_link_fault": {
+  "/sub_ecu/hardware/gpu/004-throttling/warn-to-ok": {
+    "WARN": {
+      "situation": "GPU温度が最高動作温度付近まで上昇し、GPU周波数が低下しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01005W",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
     "default": {
-      "situation": "",
-      "solution": "次のバス停で自動走行を中断してください。その後ADKシステムを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
+      "situation": "GPU温度が最高動作温度付近まで上昇し、GPU周波数が低下しています",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01005",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
     }
   },
-  "/redundancy/main_ecu_to_main_vcu_link_fault": {
+  "/sub_ecu/hardware/gpu/005-frequency/warn-to-ok": {
+    "WARN": {
+      "situation": "GPU入力クロックが異常な状態である",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01004W",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
+    },
     "default": {
-      "situation": "",
-      "solution": "次のバス停で自動走行を中断してください。その後車両のIG OFFからシステムを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
+      "situation": "GPU入力クロックが異常な状態である",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "HRD01004",
+      "initialization_state_condition": 3,
+      "routing_state_condition": 2
     }
   },
-  "/redundancy/sub_ecu_to_main_vcu_link_fault": {
+  "/hardware/perception1/hdd/003-connection-error": {
+    "ERROR": {
+      "situation": "HDDが接続されていない状態です",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
     "default": {
-      "situation": "",
-      "solution": "次のバス停で自動走行を中断してください。その後車両のIG OFFからシステムを再起動してください",
-      "error_code": "no error code",
+      "situation": "HDDが接続されていない状態です",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
   },
-  "/redundancy/sub_ecu_to_sub_vcu_link_fault": {
+  "/hardware/perception2/hdd/003-connection-error": {
+    "ERROR": {
+      "situation": "HDDが接続されていない状態です",
+      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
+      "error_code": "",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
     "default": {
-      "situation": "",
-      "solution": "次のバス停で自動走行を中断してください。その後車両のIG OFFからシステムを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/redundancy/main_vcu_to_sub_vcu_link_fault": {
-    "default": {
-      "situation": "",
-      "solution": "次のバス停で自動走行を中断してください。その後車両のIG OFFからシステムを再起動してください",
-      "error_code": "no error code",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/foolproof/logging/heartbeat": {
-    "ERROR": {
-      "situation": "Logging ECUの診断プロセスが動作してません",
-      "solution": "次のバス停で自動走行を中断してください。その後ADKシステムを再起動してください",
-      "error_code": "FPR03001E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/foolproof/perception1/heartbeat": {
-    "ERROR": {
-      "situation": "Perception1 ECUの診断プロセスが動作してません",
-      "solution": "次のバス停で自動走行を中断してください。その後ADKシステムを再起動してください",
-      "error_code": "FPR04001E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/foolproof/perception2/heartbeat": {
-    "ERROR": {
-      "situation": "Perception2 ECUの診断プロセスが動作してません",
-      "solution": "次のバス停で自動走行を中断してください。その後ADKシステムを再起動してください",
-      "error_code": "FPR05001E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/foolproof/logging/ssd_not_found": {
-    "ERROR": {
-      "situation": "Logging ECUのrosbag記録用SSDが見つかりません",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ADKシステムを電源を停止させてから記録用SSDを交換し、再起動してください",
-      "error_code": "FPR03002E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/foolproof/perception1/camera_not_found": {
-    "ERROR": {
-      "situation": "Perception1 ECUでカメラデバイスが見つかりませんでした",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "FPR04002E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/foolproof/perception2/camera_not_found": {
-    "ERROR": {
-      "situation": "Perception2 ECUでカメラデバイスが見つかりませんでした",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "FPR05002E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/foolproof/perception1/mgbe1_not_ready": {
-    "ERROR": {
-      "situation": "Perception1 ECUで通信経路が故障判定されています",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "FPR04003E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/foolproof/perception2/mgbe1_not_ready": {
-    "ERROR": {
-      "situation": "Perception2 ECUで通信経路が故障判定されています",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "FPR05003E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/foolproof/main/autoware_node_alive": {
-    "ERROR": {
-      "situation": "Main ECUでプロセス異常が発生しています",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "FPR01001E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/foolproof/main/autoware_system_node_alive": {
-    "ERROR": {
-      "situation": "Main ECUでプロセス異常が発生しています",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "FPR01002E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/foolproof/sub/autoware_node_alive": {
-    "ERROR": {
-      "situation": "Sub ECUでプロセス異常が発生しています",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "FPR02001E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/foolproof/perception1/recognition_node_alive": {
-    "ERROR": {
-      "situation": "Perception1 ECUでプロセス異常が発生しています",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "FPR04004E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/foolproof/perception2/recognition_node_alive": {
-    "ERROR": {
-      "situation": "Perception2 ECUでプロセス異常が発生しています",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "FPR05004E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/localization/001-topic_status/initialpose": {
-    "ERROR": {
-      "situation": "初期位置推定が完了していません",
-      "solution": "自己位置推定の完了を待ってください",
-      "error_code": "LOC01001E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/localization/004-accuracy": {
-    "ERROR": {
-      "situation": "位置推定結果の信頼度が低くなっています",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "LOC01005E",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/planning/016-path_optimizer_emergency_stop": {
-    "ERROR": {
-      "situation": "詳細が不明です",
-      "solution": "対応が不明です",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/others/014-operation_stop_request": {
-    "ERROR": {
-      "situation": "詳細が不明です",
-      "solution": "対応が不明です",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/vehicle/008-vcu-not-authenticated": {
-    "ERROR": {
-      "situation": "詳細が不明です",
-      "solution": "対応が不明です",
-      "error_code": "",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/control/004-lane_departure": {
-    "ERROR": {
-      "situation": "追従経路が走行可能レーンの外に出ています",
-      "solution": "手動走行で経路に戻ってください。その後自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/control/will_overrun_stop_point": {
-    "ERROR": {
-      "situation": "詳細が不明です",
-      "solution": "対応が不明です",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/others/005-visibility_validation/rear_upper": {
-    "ERROR": {
-      "situation": "詳細が不明です",
-      "solution": "対応が不明です",
-      "error_code": "",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/control/control_command_gate/timeout_stop": {
-    "ERROR": {
-      "situation": "停止モードに必要な制御信号が確認できません",
-      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/control/control_command_gate/timeout_main": {
-    "ERROR": {
-      "situation": "自動走行モードに必要な制御信号が確認できません",
-      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/control/control_command_gate/timeout_in_lane_stop": {
-    "ERROR": {
-      "situation": "経路内停止モードに必要な制御信号が確認できません",
-      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/control/control_command_gate/timeout_output": {
-    "ERROR": {
-      "situation": "制御信号が適切に出力されていません",
-      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/system/command_mode_decider/ready": {
-    "ERROR": {
-      "situation": "モード切替機能に必要な信号が受信できていません",
-      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/redundancy/redundancy_switcher_status": {
-    "ERROR": {
-      "situation": "冗長機能が適切に動作していません",
+      "situation": "HDDが接続されていない状態です",
       "solution": "ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
       "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/redundancy/topic_status/election_status": {
-    "ERROR": {
-      "situation": "冗長機能の現在状態が確認できません",
-      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/vehicle/t4_vcu_version_check": {
-    "ERROR": {
-      "situation": "ADKと車両ECUのバージョンが合っていません",
-      "solution": "ORして安全な場所へ退避して走行を中断してください。ADKと車両ECUのバージョンを合わせて自動運転システムを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/mrm_domain/localization/topic_status/pose": {
-    "ERROR": {
-      "situation": "経路内停止MRMのための自己位置情報が受信できていません",
-      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/mrm_domain/localization/topic_status/twist": {
-    "ERROR": {
-      "situation": "経路内停止MRMのための速度と操舵情報が受信できていません",
-      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
-    }
-  },
-  "/mrm_domain/planning/topic_status/trajectory": {
-    "ERROR": {
-      "situation": "経路内停止MRMのための経路情報が受信できていません",
-      "solution": "停止状態で復帰を試みてください。復帰できなければ、ORして安全な場所へ退避して走行を中断してください。その後ECUを再起動してください",
-      "error_code": "",
-      "initialization_state_condition": "3",
-      "routing_state_condition": "2"
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
     }
   }
 }
