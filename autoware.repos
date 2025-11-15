@@ -7,7 +7,7 @@ repositories:
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: 4e93fee6527383b0aeb4f0f7a2cc41e1bfed3d39
+    version: c96ace0a190e9fbdf04cb78bb329c7d6e5e44794
     base: true
   autoware/autoware_cmake:
     type: git
@@ -27,22 +27,22 @@ repositories:
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 8d96b291710ac5b34ec1d3b43bc760c9688187c9
+    version: f4c9bc2c198c92387a729209251ef93e5a7763a4
     base: true
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: f63337f85e91ce88ae8a443d114c66dc955fe008
+    version: 4f4c5caeae61156f4215039a9c502d1d3970789c
     base: true
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: c79c856ada2ad0fe758ed3fc777a5fb915c197c5
+    version: 556f7849b57b24a648c76775000ab20f0d430eef
     base: true
   autoware/autoware_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_msgs.git
-    version: f49c35c7a7b0110ad7bf5d91f67967833fd1c0d9
+    version: 588f00df3acca009ea709a74acd6538897eef424
     base: true
   autoware/autoware_adapi_msgs:
     type: git
@@ -83,7 +83,7 @@ repositories:
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
-    version: v0.2.15
+    version: v0.2.15.1
     base: true
   vendor/sync_tooling_msgs: # For Nebula SYNC.TOOLING support
     type: git
