@@ -231,6 +231,22 @@ rosbag:
   qos_profile_overrides_path: "{{ logpacker_config_dir }}/qos_profile_overrides.yaml"
   output_at: "{{ rosbag_logging_directory }}"
   exec_reindex: false
+  storage_id: sqlite3 # [sqlite3 or mcap]
+  # include_unpublished_topics: false  # >= humble
+  # include_hidden_topics: false
+  # serialization_format: s
+  # no_discovery: false
+  # polling_interval: 1000
+  # compression_mode: none
+  # compression_format: zstd
+  # compression_queue_size: 2
+  # compression_threads: 1
+  # snapshot_mode: false  # >= humble
+  # ignore_leaf_topics: false  # >= humble
+  # storage_preset_profile: zstd_fast
+  # storage_config_file: /etc/autoware_logging_suite/logpacker/mcap_writer_options.yaml # copy feature in logpacker is not available yet
+  # start_paused: false  # >= humble
+  # use_sim_time: false  # >= humble
 # -------------------------------------------------------------------------------------------------
 # syslog plugin configurations
 # -------------------------------------------------------------------------------------------------
@@ -310,9 +326,42 @@ coredump:
 # kdump plugin configurations
 # -------------------------------------------------------------------------------------------------
 kdump:
-  # If you use the other file for the kdump configuration, define its file path.
-  # params_file: "{{ logpacker_config_dir }}/kdump_params.yaml"
-  log_directory_path: "/var/crash"
+  hosts:
+    - host_name: autoware
+      ip_addr: 192.168.30.11
+      rsync_module: kdump
+      options:
+        - "-auv"
+        - "--include=[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/***"
+        - "--exclude=*"
+    - host_name: sub
+      ip_addr: 192.168.20.21
+      rsync_module: kdump
+      options:
+        - "-auv"
+        - "--include=[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/***"
+        - "--exclude=*"
+    - host_name: perception1
+      ip_addr: 192.168.30.31
+      rsync_module: kdump
+      options:
+        - "-auv"
+        - "--include=[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/***"
+        - "--exclude=*"
+    - host_name: perception2
+      ip_addr: 192.168.30.32
+      rsync_module: kdump
+      options:
+        - "-auv"
+        - "--include=[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/***"
+        - "--exclude=*"
+    - host_name: perception3
+      ip_addr: 192.168.30.33
+      rsync_module: export
+      options:
+        - "-auv"
+        - "--include=[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/***"
+        - "--exclude=*"
   output_at: "{{ rosbag_logging_directory }}"
 rotation:
   count_limit: 0
