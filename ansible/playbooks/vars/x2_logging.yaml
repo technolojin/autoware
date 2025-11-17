@@ -229,20 +229,20 @@ metric_agent_telegraf_otel_hostname: ${AGENT_HOSTNAME}
 vehicle_id: INVALID_VEHICLE_ID
 
 # set services' order
-sync_tooling_wait_service:
+sync_tooling_wait_for_services:
   - tier4_ros2_standby_wait.target
-bagkeeper_wait_service:
+bagkeeper_wait_for_services:
   - tier4_autoware_standby_wait.target
-bagtaker_wait_service:
+bagtaker_wait_for_services:
   - tier4_autoware_standby_wait.target
-logagent_wait_service:
+logagent_wait_for_services:
   - tier4_autoware_standby_wait.target
-logpacker_wait_service:
+logpacker_wait_for_services:
   - tier4_autoware_standby_wait.target
-mot_wait_service:
+mot_wait_for_services:
   - tier4_autoware_standby_wait.target
-metric_agent_wait_service:
+metric_agent_wait_for_services:
   - tier4_autoware_standby_wait.target
   - tier4_system_standby_wait.target
-rosbag_watchdog_wait_service:
+rosbag_watchdog_wait_for_services:
   - tier4_autoware_standby_wait.target
