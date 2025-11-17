@@ -14,7 +14,7 @@ collections:
     #   type: dir
   - name: git@github.com:tier4/autoware_ecu_system_setup.git
     type: git
-    version: a5a9bb4d80df4f1fde4cca632109173b52630f70
+    version: 36607d9de6c1f8e739c9ed6f16494caaee42163c
 
     # edge-auto-jetson contains some ansible scripts intended for the perception ECU.
   - name: git@github.com:tier4/edge-auto-jetson.git
