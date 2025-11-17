@@ -231,7 +231,7 @@ repositories:
   vendor/emergency_vehicle_detector:
     type: git
     url: git@github.com:tier4/emergency_vehicle_detector.git
-    version: b0fc3ab4267ac45a8491ca080121cc5b5df78cdd
+    version: 8bd950100dab35fc1458d19d283b9eb7d33813da
     base: false
   vendor/pyrocan:
     type: git
