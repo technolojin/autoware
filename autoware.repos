@@ -211,7 +211,7 @@ repositories:
   vendor/mj20_interface:
     type: git
     url: git@github.com:tier4/mj20_interface.git
-    version: 82de43312e1aef174530b64eb2da269ddce8ceba
+    version: dfa1867c8dc6faf4e2d55d933fc9575418774205
     base: false
   vendor/ros2_socketcan:
     type: git
