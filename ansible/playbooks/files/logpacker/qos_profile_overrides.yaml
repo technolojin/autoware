@@ -633,6 +633,11 @@
   durability: system_default
   history: keep_last
   reliability: best_effort
+/map/vector_map_marker:
+  depth: 1
+  durability: transient_local
+  history: keep_last
+  reliability: reliable
 /pacmod/accel_aux_rpt:
   depth: 10
   durability: system_default
