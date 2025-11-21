@@ -20,7 +20,6 @@
     - { role: autoware.ecu_system_setup.automatic_login }
     - role: autoware.ecu_system_setup.boot_shutdown_service
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
-    - { role: autoware.ecu_system_setup.ip_routing_policy }
     - { role: autoware.ecu_system_setup.lenovo_keyboard }
     - { role: autoware.ecu_system_setup.rootfs_encrypt }
     - { role: autoware.ecu_system_setup.rsyslog }
