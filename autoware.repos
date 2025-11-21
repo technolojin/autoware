@@ -181,7 +181,7 @@ repositories:
   autoware/mrm_plugin:
     type: git
     url: git@github.com:tier4/mrm_plugin.x2.git
-    version: bbfa8790bb22d27264095467240efcdedc2afd6f
+    version: ec51294916c5df5abfc6dad9190cdc9177844271
     base: false
   vendor/redundancy_switcher_interface:
     type: git
@@ -196,7 +196,7 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: 056b0f44769ebe679b4f13fe07153f2bfd51cc02
+    version: 7b940811b1574924b2428e976b402699fbb3823a
     base: false
   autoware/individual_params:
     type: git
