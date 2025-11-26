@@ -32,7 +32,7 @@ ptp4l_phc2sys_offset: -37
 
 # ros2-app-build
 ros2_app_repository: git@github.com:tier4/vehicle_voice_alert_system.git
-ros2_app_repository_version: ece9aefcae2215b91ef0f56b43045e94d41e6508 # beta/v4.3.1
+ros2_app_repository_version: d6e613af70255d37807e1feb659d730af9d9889d # beta/v4.3.1
 depends_repos: vehicle_voice_alert_system.repos
 
 # simple system launch
