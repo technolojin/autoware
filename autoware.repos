@@ -2,12 +2,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: 57710eec32ffddd09de90667e2cf6aca0a2b6e6b
+    version: 4e164a08c36c6e9e4e26bf818451b5e054051822
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: c497bae916714404a270e1587baa04ff9b14f167
+    version: 49b0e574fadd358f5a179020bdbe99d742287e70
     base: true
   autoware/autoware_cmake:
     type: git
@@ -166,7 +166,7 @@ repositories:
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: a96232ef9b6628a89058e3b9e684d8e772b3aaef
+    version: 93e6a0d71a2448a2b51c7541fa0851a9f5338fe0
     base: true
   # middleware
   # TODO(TIER IV): During the transition period of Agnocast introduction,
