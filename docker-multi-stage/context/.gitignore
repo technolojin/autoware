@@ -1,0 +1,5 @@
+setup/
+src/
+log/
+pkg/colcon-*.txt
+pkg/rosdep-*.txt

@@ -1,0 +1,458 @@
+# hadolint global ignore=SC1091,DL3006
+# cSpell: ignore readwrite
+ARG BASE_IMAGE_RUNTIME=pilot-auto:base-image-runtime
+ARG BASE_IMAGE_BUILD=pilot-auto:base-image-build
+
+
+
+FROM $BASE_IMAGE_BUILD AS tier4-ros-build
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+ARG ROS_DISTRO
+
+RUN --mount=type=bind,source=pkg/rosdep-build-tier4-ros.txt,target=/autoware/rosdep-build.txt \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && xargs -a /autoware/rosdep-build.txt apt-get install -y --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN --mount=type=bind,source=src/tier4-ros,target=/autoware/src \
+  source /opt/ros/$ROS_DISTRO/setup.bash \
+  && mkdir -p /opt/autoware \
+  && colcon build --merge-install --install-base /opt/autoware --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-w"
+
+CMD ["/bin/bash"]
+
+FROM $BASE_IMAGE_RUNTIME AS tier4-ros
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=bind,source=pkg/rosdep-exec-tier4-ros.txt,target=/autoware/rosdep-exec.txt \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && xargs -a /autoware/rosdep-exec.txt apt-get install -y --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+COPY --from=tier4-ros-build /opt/autoware /opt/autoware
+
+CMD ["/bin/bash"]
+
+
+
+FROM tier4-ros-build AS core-common-build
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=bind,source=pkg/rosdep-build-core-common.txt,target=/autoware/rosdep-build.txt \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && xargs -a /autoware/rosdep-build.txt apt-get install -y --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN --mount=type=bind,source=src/core-common,target=/autoware/src \
+  source /opt/autoware/setup.bash \
+  && mkdir -p /opt/autoware \
+  && colcon build --merge-install --install-base /opt/autoware --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-w"
+
+CMD ["/bin/bash"]
+
+FROM tier4-ros AS core-common
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=bind,source=pkg/rosdep-exec-core-common.txt,target=/autoware/rosdep-exec.txt \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && xargs -a /autoware/rosdep-exec.txt apt-get install -y --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+COPY --from=core-common-build /opt/autoware /opt/autoware
+
+CMD ["/bin/bash"]
+
+
+
+FROM core-common-build AS core-all-build
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=bind,source=pkg/rosdep-build-core-all.txt,target=/autoware/rosdep-build.txt \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && xargs -a /autoware/rosdep-build.txt apt-get install -y --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN --mount=type=bind,source=src/core-all,target=/autoware/src \
+  source /opt/autoware/setup.bash \
+  && mkdir -p /opt/autoware \
+  && colcon build --merge-install --install-base /opt/autoware --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-w"
+
+CMD ["/bin/bash"]
+
+FROM core-common AS core-all
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=bind,source=pkg/rosdep-exec-core-all.txt,target=/autoware/rosdep-exec.txt \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && xargs -a /autoware/rosdep-exec.txt apt-get install -y --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+COPY --from=core-all-build /opt/autoware /opt/autoware
+
+CMD ["/bin/bash"]
+
+
+
+FROM core-all-build AS universe-common-build
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=bind,source=pkg/rosdep-build-universe-common.txt,target=/autoware/rosdep-build.txt \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && xargs -a /autoware/rosdep-build.txt apt-get install -y --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+  # TODO: modify aip_urdf_compiler to not require write access
+RUN --mount=type=bind,source=src/universe-common,target=/autoware/src,readwrite \
+  source /opt/autoware/setup.bash \
+  && mkdir -p /opt/autoware \
+  && colcon build --merge-install --install-base /opt/autoware --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-w"
+
+# TODO: Build autoware_launch without dependencies. Split autoware_launch into components.
+RUN --mount=type=bind,source=src/launcher,target=/autoware/src \
+  source /opt/autoware/setup.bash \
+  && mkdir -p /opt/autoware \
+  && colcon build --merge-install --install-base /opt/autoware --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-w"
+
+CMD ["/bin/bash"]
+
+FROM core-all AS universe-common
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=bind,source=pkg/rosdep-exec-universe-common.txt,target=/autoware/rosdep-exec.txt \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && xargs -a /autoware/rosdep-exec.txt apt-get install -y --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+COPY --from=universe-common-build /opt/autoware /opt/autoware
+
+CMD ["/bin/bash"]
+
+
+
+FROM universe-common-build AS localization-mapping-build
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=bind,source=pkg/rosdep-build-localization-mapping.txt,target=/autoware/rosdep-build.txt \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && xargs -a /autoware/rosdep-build.txt apt-get install -y --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN --mount=type=bind,source=src/localization-mapping,target=/autoware/src \
+  source /opt/autoware/setup.bash \
+  && mkdir -p /opt/autoware \
+  && colcon build --merge-install --install-base /opt/autoware --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-w"
+
+CMD ["/bin/bash"]
+
+FROM universe-common AS localization-mapping
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=bind,source=pkg/rosdep-exec-localization-mapping.txt,target=/autoware/rosdep-exec.txt \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && xargs -a /autoware/rosdep-exec.txt apt-get install -y --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+COPY --from=localization-mapping-build /opt/autoware /opt/autoware
+
+COPY etc/entrypoint.bash /entrypoint.bash
+RUN chmod +x /entrypoint.bash
+
+ENTRYPOINT ["/entrypoint.bash"]
+CMD ["/bin/bash"]
+
+
+
+FROM universe-common-build AS planning-control-build
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=bind,source=pkg/rosdep-build-planning-control.txt,target=/autoware/rosdep-build.txt \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && xargs -a /autoware/rosdep-build.txt apt-get install -y --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN --mount=type=bind,source=src/planning-control,target=/autoware/src \
+  source /opt/autoware/setup.bash \
+  && mkdir -p /opt/autoware \
+  && colcon build --merge-install --install-base /opt/autoware --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-w"
+
+CMD ["/bin/bash"]
+
+FROM universe-common AS planning-control
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=bind,source=pkg/rosdep-exec-planning-control.txt,target=/autoware/rosdep-exec.txt \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && xargs -a /autoware/rosdep-exec.txt apt-get install -y --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+COPY --from=planning-control-build /opt/autoware /opt/autoware
+
+COPY etc/entrypoint.bash /entrypoint.bash
+RUN chmod +x /entrypoint.bash
+
+ENTRYPOINT ["/entrypoint.bash"]
+CMD ["/bin/bash"]
+
+
+
+FROM universe-common-build AS vehicle-system-build
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=bind,source=pkg/rosdep-build-vehicle-system.txt,target=/autoware/rosdep-build.txt \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && xargs -a /autoware/rosdep-build.txt apt-get install -y --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN --mount=type=bind,source=src/vehicle-system,target=/autoware/src \
+  source /opt/autoware/setup.bash \
+  && mkdir -p /opt/autoware \
+  && colcon build --merge-install --install-base /opt/autoware --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-w"
+
+CMD ["/bin/bash"]
+
+FROM universe-common AS vehicle-system
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=bind,source=pkg/rosdep-exec-vehicle-system.txt,target=/autoware/rosdep-exec.txt \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && xargs -a /autoware/rosdep-exec.txt apt-get install -y --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+COPY --from=vehicle-system-build /opt/autoware /opt/autoware
+
+COPY etc/entrypoint.bash /entrypoint.bash
+RUN chmod +x /entrypoint.bash
+
+ENTRYPOINT ["/entrypoint.bash"]
+CMD ["/bin/bash"]
+
+
+
+FROM universe-common-build AS sensing-perception-build
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=bind,source=pkg/rosdep-build-sensing-perception.txt,target=/autoware/rosdep-build.txt \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && xargs -a /autoware/rosdep-build.txt apt-get install -y --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN --mount=type=bind,source=src/sensing-perception,target=/autoware/src \
+  source /opt/autoware/setup.bash \
+  && mkdir -p /opt/autoware \
+  && colcon build --merge-install --install-base /opt/autoware --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-w"
+
+CMD ["/bin/bash"]
+
+FROM universe-common AS sensing-perception
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=bind,source=pkg/rosdep-exec-sensing-perception.txt,target=/autoware/rosdep-exec.txt \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && xargs -a /autoware/rosdep-exec.txt apt-get install -y --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+COPY --from=sensing-perception-build /opt/autoware /opt/autoware
+
+COPY etc/entrypoint.bash /entrypoint.bash
+RUN chmod +x /entrypoint.bash
+
+ENTRYPOINT ["/entrypoint.bash"]
+CMD ["/bin/bash"]
+
+
+
+FROM universe-common-build AS api-build
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=bind,source=pkg/rosdep-build-api.txt,target=/autoware/rosdep-build.txt \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && xargs -a /autoware/rosdep-build.txt apt-get install -y --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN --mount=type=bind,source=src/api,target=/autoware/src \
+  source /opt/autoware/setup.bash \
+  && mkdir -p /opt/autoware \
+  && colcon build --merge-install --install-base /opt/autoware --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-w"
+
+CMD ["/bin/bash"]
+
+FROM universe-common AS api
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=bind,source=pkg/rosdep-exec-api.txt,target=/autoware/rosdep-exec.txt \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && xargs -a /autoware/rosdep-exec.txt apt-get install -y --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+COPY --from=api-build /opt/autoware /opt/autoware
+
+COPY etc/entrypoint.bash /entrypoint.bash
+RUN chmod +x /entrypoint.bash
+
+ENTRYPOINT ["/entrypoint.bash"]
+CMD ["/bin/bash"]
+
+
+
+FROM universe-common-build AS visualization-build
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=bind,source=pkg/rosdep-build-visualization.txt,target=/autoware/rosdep-build.txt \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && xargs -a /autoware/rosdep-build.txt apt-get install -y --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN --mount=type=bind,source=src/visualization,target=/autoware/src \
+  source /opt/autoware/setup.bash \
+  && mkdir -p /opt/autoware \
+  && colcon build --merge-install --install-base /opt/autoware --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-w"
+
+CMD ["/bin/bash"]
+
+FROM universe-common AS visualization
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=bind,source=pkg/rosdep-exec-visualization.txt,target=/autoware/rosdep-exec.txt \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && xargs -a /autoware/rosdep-exec.txt apt-get install -y --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+COPY --from=visualization-build /opt/autoware /opt/autoware
+
+COPY etc/visualization.launch.xml /visualization.launch.xml
+COPY etc/entrypoint.bash /entrypoint.bash
+RUN chmod +x /entrypoint.bash
+
+ENTRYPOINT ["/entrypoint.bash"]
+CMD ["/bin/bash"]
+
+
+
+FROM universe-common-build AS simulation-build
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=bind,source=pkg/rosdep-build-simulation.txt,target=/autoware/rosdep-build.txt \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && xargs -a /autoware/rosdep-build.txt apt-get install -y --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN --mount=type=bind,source=src/simulation,target=/autoware/src \
+  source /opt/autoware/setup.bash \
+  && mkdir -p /opt/autoware \
+  && colcon build --merge-install --install-base /opt/autoware --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-w"
+
+CMD ["/bin/bash"]
+
+FROM universe-common AS simulation
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=bind,source=pkg/rosdep-exec-simulation.txt,target=/autoware/rosdep-exec.txt \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && xargs -a /autoware/rosdep-exec.txt apt-get install -y --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+COPY --from=simulation-build /opt/autoware /opt/autoware
+
+COPY etc/entrypoint.bash /entrypoint.bash
+RUN chmod +x /entrypoint.bash
+
+ENTRYPOINT ["/entrypoint.bash"]
+CMD ["/bin/bash"]
+
+
+
+FROM universe-common AS universe-all
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=bind,source=pkg/rosdep-exec-localization-mapping.txt,target=/autoware/rosdep-exec-localization-mapping.txt \
+    --mount=type=bind,source=pkg/rosdep-exec-planning-control.txt,target=/autoware/rosdep-exec-planning-control.txt \
+    --mount=type=bind,source=pkg/rosdep-exec-vehicle-system.txt,target=/autoware/rosdep-exec-vehicle-system.txt \
+    --mount=type=bind,source=pkg/rosdep-exec-api.txt,target=/autoware/rosdep-exec-api.txt \
+    --mount=type=bind,source=pkg/rosdep-exec-visualization.txt,target=/autoware/rosdep-exec-visualization.txt \
+    --mount=type=bind,source=pkg/rosdep-exec-simulation.txt,target=/autoware/rosdep-exec-simulation.txt \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && xargs -a /autoware/rosdep-exec-localization-mapping.txt apt-get install -y --no-install-recommends \
+  && xargs -a /autoware/rosdep-exec-planning-control.txt apt-get install -y --no-install-recommends \
+  && xargs -a /autoware/rosdep-exec-vehicle-system.txt apt-get install -y --no-install-recommends \
+  && xargs -a /autoware/rosdep-exec-api.txt apt-get install -y --no-install-recommends \
+  && xargs -a /autoware/rosdep-exec-visualization.txt apt-get install -y --no-install-recommends \
+  && xargs -a /autoware/rosdep-exec-simulation.txt apt-get install -y --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+COPY --from=localization-mapping-build /opt/autoware /opt/autoware
+COPY --from=planning-control-build /opt/autoware /opt/autoware
+COPY --from=vehicle-system-build /opt/autoware /opt/autoware
+COPY --from=api-build /opt/autoware /opt/autoware
+COPY --from=visualization-build /opt/autoware /opt/autoware
+COPY --from=simulation-build /opt/autoware /opt/autoware
+
+COPY etc/entrypoint.bash /entrypoint.bash
+RUN chmod +x /entrypoint.bash
+
+ENTRYPOINT ["/entrypoint.bash"]
+CMD ["/bin/bash"]
+
+
+
+FROM universe-common-build AS evaluation-build
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=bind,source=pkg/rosdep-build-evaluation.txt,target=/autoware/rosdep-build.txt \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && grep -Ev '^(xmlschema|yamale)$' /autoware/rosdep-build.txt | xargs apt-get install -y --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN --mount=type=bind,source=src/evaluation,target=/autoware/src \
+  source /opt/autoware/setup.bash \
+  && mkdir -p /opt/autoware \
+  && colcon build --merge-install --install-base /opt/autoware --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-w"
+
+CMD ["/bin/bash"]
+
+FROM universe-all AS evaluation
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+# hadolint ignore=DL3013
+RUN pip3 install --no-cache-dir xmlschema yamale
+
+RUN --mount=type=bind,source=pkg/rosdep-exec-evaluation.txt,target=/autoware/rosdep-exec.txt \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
+  && grep -Ev '^(xmlschema|yamale)$' /autoware/rosdep-exec.txt | xargs apt-get install -y --no-install-recommends \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+
+COPY --from=evaluation-build /opt/autoware /opt/autoware
+
+# Workaround for CI requiring install path suffix
+RUN source /opt/autoware/setup.bash && colcon build && rm -rf build log
+
+COPY etc/entrypoint.bash /entrypoint.bash
+RUN chmod +x /entrypoint.bash
+
+ENTRYPOINT ["/entrypoint.bash"]
+CMD ["/bin/bash"]

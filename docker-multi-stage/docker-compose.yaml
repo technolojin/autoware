@@ -1,0 +1,262 @@
+x-environment: &environment
+  RMW_IMPLEMENTATION: rmw_cyclonedds_cpp
+  ROS_DOMAIN_ID: ${ROS_DOMAIN_ID}
+  CYCLONEDDS_URI: file:///autoware/dds/cyclonedds.xml
+
+services:
+  map:
+    image: pilot-auto:localization-mapping
+    container_name: pilot-auto-map
+    init: true
+    ipc: host
+    network_mode: host
+    environment:
+      <<: *environment
+    volumes:
+      - ${DDS_PATH}:/autoware/dds:ro
+      - ${MAP_PATH}:/autoware/map:ro
+    command: >
+      ros2 launch autoware_launch tier4_map_component.launch.xml
+      map_path:=/autoware/map
+      lanelet2_map_file:=${LANELET2_MAP_FILE}
+      pointcloud_map_file:=${POINTCLOUD_MAP_FILE}
+      use_sim_time:=${USE_SIM_TIME}
+
+  planning:
+    image: pilot-auto:planning-control
+    container_name: pilot-auto-planning
+    init: true
+    ipc: host
+    network_mode: host
+    environment:
+      <<: *environment
+    volumes:
+      - ${DDS_PATH}:/autoware/dds:ro
+    depends_on:
+      - map
+    command: >
+      ros2 launch autoware_launch tier4_planning_component.launch.xml
+      pointcloud_container_name:=${POINTCLOUD_CONTAINER_NAME}
+      module_preset:=${PLANNING_MODULE_PRESET}
+      enable_all_modules_auto_mode:=${ENABLE_ALL_MODULES_AUTO_MODE}
+      is_simulation:=${IS_SIMULATION_MODE}
+      use_sim_time:=${USE_SIM_TIME}
+      vehicle_model:=${VEHICLE_MODEL}
+
+  system:
+    image: pilot-auto:vehicle-system
+    container_name: pilot-auto-system
+    init: true
+    ipc: host
+    network_mode: host
+    environment:
+      <<: *environment
+    volumes:
+      - ${DDS_PATH}:/autoware/dds:ro
+    depends_on:
+      - map
+    command: >
+      ros2 launch autoware_launch tier4_system_component.launch.xml
+      launch_system_monitor:=${LAUNCH_SYSTEM_MONITOR}
+      launch_dummy_diag_publisher:=${LAUNCH_DUMMY_DIAG_PUBLISHER}
+      system_run_mode:=${SYSTEM_RUN_MODE}
+      use_sim_time:=${USE_SIM_TIME}
+      vehicle_model:=${VEHICLE_MODEL}
+      sensor_model:=${SENSOR_MODEL}
+
+  control:
+    image: pilot-auto:planning-control
+    container_name: pilot-auto-control
+    init: true
+    ipc: host
+    network_mode: host
+    environment:
+      <<: *environment
+    volumes:
+      - ${DDS_PATH}:/autoware/dds:ro
+    depends_on:
+      - map
+      - planning
+      - system
+    command: >
+      ros2 launch autoware_launch tier4_control_component.launch.xml
+      module_preset:=${CONTROL_MODULE_PRESET}
+      check_external_emergency_heartbeat:=${CHECK_EXTERNAL_EMERGENCY_HEARTBEAT}
+      lateral_controller_mode:=${LATERAL_CONTROLLER_MODE}
+      longitudinal_controller_mode:=${LONGITUDINAL_CONTROLLER_MODE}
+      use_sim_time:=${USE_SIM_TIME}
+      vehicle_id:=${VEHICLE_ID}
+      vehicle_model:=${VEHICLE_MODEL}
+
+  vehicle:
+    image: pilot-auto:vehicle-system
+    container_name: pilot-auto-vehicle
+    init: true
+    ipc: host
+    network_mode: host
+    environment:
+      <<: *environment
+    volumes:
+      - ${DDS_PATH}:/autoware/dds:ro
+    profiles:
+      - logging-simulation
+    depends_on:
+      - map
+    command: >
+      ros2 launch tier4_vehicle_launch vehicle.launch.xml
+      launch_vehicle_interface:=${LAUNCH_VEHICLE_INTERFACE}
+      raw_vehicle_cmd_converter_param_path:=/opt/autoware/share/autoware_launch/config/vehicle/raw_vehicle_cmd_converter/raw_vehicle_cmd_converter.param.yaml
+      sensor_model:=${SENSOR_MODEL}
+      use_sim_time:=${USE_SIM_TIME}
+      vehicle_id:=${VEHICLE_ID}
+      vehicle_model:=${VEHICLE_MODEL}
+
+  sensing-perception:
+    image: pilot-auto:sensing-perception-cuda
+    container_name: pilot-auto-sensing-perception
+    init: true
+    ipc: host
+    network_mode: host
+    environment:
+      <<: *environment
+    volumes:
+      - ${DDS_PATH}:/autoware/dds:ro
+      - ${DATA_PATH}:/autoware/data:ro
+    profiles:
+      - logging-simulation
+    depends_on:
+      - map
+      - system
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    command: >
+      bash -c "
+      ros2 launch autoware_launch tier4_sensing_component.launch.xml
+      launch_pointcloud_container:=${LAUNCH_POINTCLOUD_CONTAINER_SENSING}
+      launch_sensing_driver:=${LAUNCH_SENSING_DRIVER}
+      pointcloud_container_name:=${POINTCLOUD_CONTAINER_NAME}
+      use_sim_time:=${USE_SIM_TIME}
+      sensor_model:=${SENSOR_MODEL}
+      vehicle_model:=${VEHICLE_MODEL} &
+      ros2 launch autoware_launch tier4_perception_component.launch.xml
+      data_path:=/autoware/data
+      launch_pointcloud_container:=${LAUNCH_POINTCLOUD_CONTAINER_PERCEPTION}
+      lidar_detection_model:=${LIDAR_DETECTION_MODEL}
+      occupancy_grid_map_method:=${OCCUPANCY_GRID_MAP_METHOD}
+      perception_mode:=${PERCEPTION_MODE}
+      pointcloud_container_name:=${POINTCLOUD_CONTAINER_NAME}
+      use_sim_time:=${USE_SIM_TIME}
+      vehicle_model:=${VEHICLE_MODEL}
+      "
+
+  localization:
+    image: pilot-auto:localization-mapping
+    container_name: pilot-auto-localization
+    init: true
+    ipc: host
+    network_mode: host
+    environment:
+      <<: *environment
+    volumes:
+      - ${DDS_PATH}:/autoware/dds:ro
+    profiles:
+      - logging-simulation
+    depends_on:
+      - map
+      - system
+      - sensing-perception
+    command: >
+      ros2 launch autoware_launch tier4_localization_component.launch.xml
+      system_run_mode:=${SYSTEM_RUN_MODE}
+      use_sim_time:=${USE_SIM_TIME}
+      vehicle_model:=${VEHICLE_MODEL}
+
+  api:
+    image: pilot-auto:api
+    container_name: pilot-auto-api
+    init: true
+    ipc: host
+    network_mode: host
+    environment:
+      <<: *environment
+    volumes:
+      - ${DDS_PATH}:/autoware/dds:ro
+    command: >
+      ros2 launch autoware_launch tier4_autoware_api_component.launch.xml
+      scenario_simulation:=${SCENARIO_SIMULATION}
+      use_sim_time:=${USE_SIM_TIME}
+      vehicle_model:=${VEHICLE_MODEL}
+
+  visualization:
+    image: pilot-auto:visualization
+    container_name: pilot-auto-visualization
+    init: true
+    ipc: host
+    network_mode: host
+    environment:
+      <<: *environment
+      DISPLAY: ${DISPLAY}
+      REMOTE_DISPLAY: ${REMOTE_DISPLAY}
+    volumes:
+      - ${DDS_PATH}:/autoware/dds:ro
+    profiles:
+      - visualization
+    command: >
+      ros2 launch /visualization.launch.xml
+      use_sim_time:=${USE_SIM_TIME}
+      vehicle_model:=${VEHICLE_MODEL}
+      sensor_model:=${SENSOR_MODEL}
+
+  simulator:
+    image: pilot-auto:simulation
+    container_name: pilot-auto-simulator
+    init: true
+    ipc: host
+    network_mode: host
+    environment:
+      <<: *environment
+    volumes:
+      - ${DDS_PATH}:/autoware/dds:ro
+    profiles:
+      - planning-simulation
+    command: >
+      ros2 launch autoware_launch tier4_simulator_component.launch.xml
+      initial_engage_state:=${INITIAL_ENGAGE_STATE}
+      launch_dummy_doors:=${LAUNCH_DUMMY_DOORS}
+      launch_dummy_perception:=${LAUNCH_DUMMY_PERCEPTION}
+      launch_dummy_vehicle:=${LAUNCH_DUMMY_VEHICLE}
+      launch_scenario_simulator_v2_adapter:=${LAUNCH_SCENARIO_SIMULATOR_V2_ADAPTER}
+      localization_sim_mode:=${LOCALIZATION_SIM_MODE}
+      perception/enable_detection_failure:=${PERCEPTION_ENABLE_DETECTION_FAILURE}
+      perception/enable_object_recognition:=${PERCEPTION_ENABLE_OBJECT_RECOGNITION}
+      perception/enable_traffic_light:=${PERCEPTION_ENABLE_TRAFFIC_LIGHT}
+      perception/use_base_link_z:=${PERCEPTION_USE_BASE_LINK_Z}
+      sensing/visible_range:=${SENSING_VISIBLE_RANGE}
+      raw_vehicle_cmd_converter_param_path:=/opt/autoware/share/autoware_launch/config/vehicle/raw_vehicle_cmd_converter/raw_vehicle_cmd_converter.param.yaml
+      scenario_simulation:=${SCENARIO_SIMULATION}
+      use_pointcloud_container:=${USE_POINTCLOUD_CONTAINER}
+      use_sim_time:=${USE_SIM_TIME}
+      vehicle_model:=${VEHICLE_MODEL}
+      vehicle_info_param_file:=/opt/autoware/share/${VEHICLE_MODEL}_description/config/vehicle_info.param.yaml
+
+  rosbag:
+    image: pilot-auto:universe-all
+    container_name: pilot-auto-rosbag
+    init: true
+    ipc: host
+    network_mode: host
+    environment:
+      <<: *environment
+    volumes:
+      - ${DDS_PATH}:/autoware/dds:ro
+      - ${ROSBAG_PATH}:/autoware/rosbag:ro
+    profiles:
+      - logging-simulation
+    command: >
+      bash -c "ros2 bag info /autoware/rosbag -s ${ROSBAG_FORMAT} &&
+      ros2 bag play /autoware/rosbag -r ${ROSBAG_RATE} -s ${ROSBAG_FORMAT}"
