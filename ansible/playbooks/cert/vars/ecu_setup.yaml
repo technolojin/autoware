@@ -1,5 +1,8 @@
 # cspell: ignore bmhook tmhook
 
+# file_integrity_check
+file_integrity_check_config_source: file_integrity_check/config.yaml
+
 # usbguard
 usbguard_rules_file: usbguard/rules.x2-main.conf
 

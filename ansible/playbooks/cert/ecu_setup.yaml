@@ -2,6 +2,7 @@
   ansible.builtin.include_role:
     name: "{{ cert_item.name }}"
   loop:
+    - { name: autoware.ecu_system_setup.file_integrity_check }
     - { name: autoware.ecu_system_setup.nftables }
     - { name: autoware.ecu_system_setup.tpm2 }
     - { name: autoware.ecu_system_setup.usbguard }
