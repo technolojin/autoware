@@ -459,10 +459,10 @@
   history: keep_last
   reliability: best_effort
 /diagnostics:
-  depth: 10
+  depth: 1000
   durability: system_default
   history: keep_last
-  reliability: best_effort
+  reliability: reliable
 /diagnostics_agg:
   depth: 10
   durability: system_default
