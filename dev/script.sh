@@ -80,7 +80,7 @@ fi
 
 # Rviz起動
 echo "Launching RViz"
-ros2 launch autoware_launch autoware_sub_rviz.launch.xml rviz_config:="$script_dir/../src/autoware/launcher/autoware_launch/rviz/autoware_x2.rviz" vehicle_model:=j6_gen2 rviz_respawn:=true
+ros2 launch autoware_launch autoware_sub_rviz.launch.xml rviz_config:="$script_dir/../src/autoware/launcher/autoware_launch/rviz/autoware_x2.rviz" vehicle_model:=j6_gen2 rviz_respawn:=false
 
 # 終了後にNerworkManagerの管理対象に戻す
 nmcli device set "$interface" managed yes
