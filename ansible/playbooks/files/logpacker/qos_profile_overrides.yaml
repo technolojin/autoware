@@ -538,37 +538,12 @@
   durability: system_default
   history: keep_last
   reliability: best_effort
-/jpn_signal/danger_info:
+/v2i_traffic_signal/traffic_light_info:
   depth: 10
   durability: system_default
   history: keep_last
   reliability: best_effort
-/jpn_signal/jpn_signal_mqtt_receiver/transition_event:
-  depth: 10
-  durability: system_default
-  history: keep_last
-  reliability: best_effort
-/jpn_signal/jpn_signal_sender/transition_event:
-  depth: 10
-  durability: system_default
-  history: keep_last
-  reliability: best_effort
-/jpn_signal/jpn_signal_udp_receiver/transition_event:
-  depth: 10
-  durability: system_default
-  history: keep_last
-  reliability: best_effort
-/jpn_signal/jpn_signal_v2i_wrapper/transition_event:
-  depth: 10
-  durability: system_default
-  history: keep_last
-  reliability: best_effort
-/jpn_signal/traffic_light_info:
-  depth: 10
-  durability: system_default
-  history: keep_last
-  reliability: best_effort
-/jpn_signal/trajectory_info:
+/v2i_traffic_signal/trajectory_info:
   depth: 10
   durability: system_default
   history: keep_last
