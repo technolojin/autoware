@@ -253,9 +253,9 @@ simulations:
       parameters:
         sensing: "false"
         use_traffic_light_recognition: "false"
-        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/objects$
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/centerpoint/validation/objects$
         evaluation_prediction_topic_regex: None
-        tracker_publish_merged_objects: "true"
+        degradation_topic: /perception/object_recognition/detection/centerpoint/validation/objects
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
           mounts:
@@ -281,10 +281,9 @@ simulations:
       parameters:
         sensing: "false"
         use_traffic_light_recognition: "false"
-        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/objects$
+        evaluation_detection_topic_regex: None
         evaluation_prediction_topic_regex: None
         use_multi_channel_tracker_merger: "false"
-        tracker_publish_merged_objects: "false"
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
           mounts:
@@ -381,11 +380,11 @@ simulations:
       parameters:
         sensing: "false"
         use_traffic_light_recognition: "false"
-        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/objects$
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/centerpoint/validation/objects$
         evaluation_prediction_topic_regex: None
+        degradation_topic: /perception/object_recognition/detection/centerpoint/validation/objects
         perception_mode: lidar
         lidar_detection_model: centerpoint/centerpoint
-        tracker_publish_merged_objects: "true"
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint.param.yaml build_only:=true
           mounts:
@@ -411,11 +410,11 @@ simulations:
       parameters:
         sensing: "false"
         use_traffic_light_recognition: "false"
-        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/objects$
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/centerpoint/validation/objects$
         evaluation_prediction_topic_regex: None
+        degradation_topic: /perception/object_recognition/detection/centerpoint/validation/objects
         perception_mode: lidar
         lidar_detection_model: centerpoint
-        tracker_publish_merged_objects: "true"
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
           mounts:
@@ -441,11 +440,11 @@ simulations:
       parameters:
         sensing: "false"
         use_traffic_light_recognition: "false"
-        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/objects$
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/transfusion/validation/objects$
         evaluation_prediction_topic_regex: None
+        degradation_topic: /perception/object_recognition/detection/transfusion/validation/objects
         perception_mode: lidar
         lidar_detection_model: transfusion
-        tracker_publish_merged_objects: "true"
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_transfusion lidar_transfusion.launch.xml model_name:=transfusion model_path:=/home/autoware/autoware_data/lidar_transfusion build_only:=true
           mounts:
@@ -472,11 +471,11 @@ simulations:
         play_rate: "0.25"
         sensing: "false"
         use_traffic_light_recognition: "false"
-        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/objects$
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/apollo/validation/objects$
         evaluation_prediction_topic_regex: None
+        degradation_topic: /perception/object_recognition/detection/apollo/validation/objects
         perception_mode: camera_lidar_fusion
         lidar_detection_model: apollo
-        tracker_publish_merged_objects: "true"
         with_optional_nodes: 2d_detector
         yolox_model_path: /home/autoware/autoware_data/tensorrt_yolox/yolox-sPlus-T4-960x960-pseudo-finetune.onnx
         yolox_label_path: /home/autoware/autoware_data/tensorrt_yolox/label.txt
@@ -517,11 +516,11 @@ simulations:
         play_rate: "0.25"
         sensing: "false"
         use_traffic_light_recognition: "false"
-        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/objects$
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/centerpoint/validation/objects$
         evaluation_prediction_topic_regex: None
+        degradation_topic: /perception/object_recognition/detection/centerpoint/validation/objects
         perception_mode: camera_lidar_fusion
         lidar_detection_model: centerpoint
-        tracker_publish_merged_objects: "true"
         with_optional_nodes: 2d_detector
         yolox_model_path: /home/autoware/autoware_data/tensorrt_yolox/yolox-sPlus-T4-960x960-pseudo-finetune.onnx
         yolox_label_path: /home/autoware/autoware_data/tensorrt_yolox/label.txt
@@ -562,11 +561,11 @@ simulations:
         play_rate: "0.25"
         sensing: "false"
         use_traffic_light_recognition: "false"
-        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/objects$
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/pointpainting/validation/objects$
         evaluation_prediction_topic_regex: None
+        degradation_topic: /perception/object_recognition/detection/pointpainting/validation/objects
         perception_mode: camera_lidar_fusion
         lidar_detection_model: pointpainting
-        tracker_publish_merged_objects: "true"
         with_optional_nodes: 2d_detector
         yolox_model_path: /home/autoware/autoware_data/tensorrt_yolox/yolox-sPlus-T4-960x960-pseudo-finetune.onnx
         yolox_label_path: /home/autoware/autoware_data/tensorrt_yolox/label.txt
@@ -607,11 +606,11 @@ simulations:
         play_rate: "0.25"
         sensing: "false"
         use_traffic_light_recognition: "false"
-        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/objects$
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/centerpoint/validation/objects$
         evaluation_prediction_topic_regex: None
+        degradation_topic: /perception/object_recognition/detection/centerpoint/validation/objects
         perception_mode: camera_lidar_radar_fusion
         lidar_detection_model: centerpoint
-        tracker_publish_merged_objects: "true"
         with_optional_nodes: 2d_detector
         yolox_model_path: /home/autoware/autoware_data/tensorrt_yolox/yolox-sPlus-T4-960x960-pseudo-finetune.onnx
         yolox_label_path: /home/autoware/autoware_data/tensorrt_yolox/label.txt
@@ -652,11 +651,11 @@ simulations:
         play_rate: "0.25"
         sensing: "false"
         use_traffic_light_recognition: "false"
-        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/objects$
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/pointpainting/validation/objects$
         evaluation_prediction_topic_regex: None
+        degradation_topic: /perception/object_recognition/detection/pointpainting/validation/objects
         perception_mode: camera_lidar_radar_fusion
         lidar_detection_model: pointpainting
-        tracker_publish_merged_objects: "true"
         with_optional_nodes: 2d_detector
         yolox_model_path: /home/autoware/autoware_data/tensorrt_yolox/yolox-sPlus-T4-960x960-pseudo-finetune.onnx
         yolox_label_path: /home/autoware/autoware_data/tensorrt_yolox/label.txt
