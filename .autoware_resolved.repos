@@ -3,12 +3,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: 4526d879ef09c048daca7c8e7d5944ff86d47ed0
+    version: fdc449eb24815e79656752ee18362cb4cb61cc36
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: 480f5b328a69a5e3e107a852583d31c7fb540f26
+    version: f3d3a1817b62479136dd8ec7c5e3a2ec7219a236
     base: true
   autoware/autoware_cmake:
     type: git
@@ -18,7 +18,7 @@ repositories:
   autoware/autoware_utils:
     type: git
     url: https://github.com/autowarefoundation/autoware_utils.git
-    version: 8dd4133d18b1a539d8d7c252a146cae352b5a50d
+    version: 1ab84eca6b4c1eb10f54c28c98ea8f547b60495f
     base: true
   autoware/autoware_lanelet2_extension:
     type: git
@@ -28,17 +28,17 @@ repositories:
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: 01e45be28abf8518acd74b92e1357c435d9c1803
+    version: a6e6b5636347f4f5545999eac01b3d182d187aef
     base: false
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 227efa49822256b0f8e9b7a53613206e4d4e38af
+    version: b6e40268cf2ecf5cab07bbd6c7841f64b3edb14a
     base: true
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: b80241598ec542621d59e0a1c7ae11f20a5181ae
+    version: a8ec321e0411fadf95597bef6d51c0650f0f70ef
     base: true
   autoware/tier4_autoware_msgs:
     type: git
@@ -73,7 +73,7 @@ repositories:
   autoware/autoware_rviz_plugins:
     type: git
     url: https://github.com/autowarefoundation/autoware_rviz_plugins.git
-    version: bac3843c2f203feb28ff0963701b763207163ff6
+    version: 06a4426df4bbfe9a98e4b3240f59928f014b824e
     base: true
   # description
   description/sensor/sensor_component_description:
@@ -183,6 +183,11 @@ repositories:
     url: https://github.com/tier4/glog.git
     version: ea36766fdc2ac8e8c8e3ac988ae69acd6d09bb30
     base: true
+  vendor/ros_foxglove_bridge:
+    type: git
+    url: https://github.com/tier4/ros-foxglove-bridge.git
+    version: 0.8.5
+    base: true
   vendor/cuda_blackboard:
     type: git
     url: https://github.com/autowarefoundation/cuda_blackboard.git
@@ -206,7 +211,7 @@ repositories:
   launch: # Based humble version, the acceleration patched is added
     type: git
     url: https://github.com/tier4/launch.git
-    version: c970f6dd00476f609153119ea1ac2b0b2427d714
+    version: 139c82ef83e152216cdecbed3e52ffe17d8dffd3
     base: true
   # Include many-nodes-in-container launch fix that ensures no LoadComposableNode call hangs
   # See https://github.com/ros2/launch_ros/compare/humble...tier4:launch_ros:/t4-main
@@ -219,7 +224,7 @@ repositories:
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: e8d20c5c01d9959dec767c63fa6ed39acde476e4
+    version: 31f4c2a7399e21d7f8a1a4d333d0802fdaec18fe
     base: true
 
   # middleware
