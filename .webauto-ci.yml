@@ -253,9 +253,8 @@ simulations:
       parameters:
         sensing: "false"
         use_traffic_light_recognition: "false"
-        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/centerpoint/validation/objects$
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/centerpoint/objects$
         evaluation_prediction_topic_regex: None
-        degradation_topic: /perception/object_recognition/detection/centerpoint/validation/objects
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
           mounts:
@@ -380,9 +379,8 @@ simulations:
       parameters:
         sensing: "false"
         use_traffic_light_recognition: "false"
-        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/centerpoint/validation/objects$
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/centerpoint/objects$
         evaluation_prediction_topic_regex: None
-        degradation_topic: /perception/object_recognition/detection/centerpoint/validation/objects
         perception_mode: lidar
         lidar_detection_model: centerpoint/centerpoint
       pre_tasks:
@@ -410,9 +408,8 @@ simulations:
       parameters:
         sensing: "false"
         use_traffic_light_recognition: "false"
-        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/centerpoint/validation/objects$
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/centerpoint/objects$
         evaluation_prediction_topic_regex: None
-        degradation_topic: /perception/object_recognition/detection/centerpoint/validation/objects
         perception_mode: lidar
         lidar_detection_model: centerpoint
       pre_tasks:
@@ -440,9 +437,8 @@ simulations:
       parameters:
         sensing: "false"
         use_traffic_light_recognition: "false"
-        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/transfusion/validation/objects$
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/transfusion/objects$
         evaluation_prediction_topic_regex: None
-        degradation_topic: /perception/object_recognition/detection/transfusion/validation/objects
         perception_mode: lidar
         lidar_detection_model: transfusion
       pre_tasks:
@@ -471,9 +467,8 @@ simulations:
         play_rate: "0.25"
         sensing: "false"
         use_traffic_light_recognition: "false"
-        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/apollo/validation/objects$
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/apollo/objects$
         evaluation_prediction_topic_regex: None
-        degradation_topic: /perception/object_recognition/detection/apollo/validation/objects
         perception_mode: camera_lidar_fusion
         lidar_detection_model: apollo
         with_optional_nodes: 2d_detector
@@ -516,9 +511,8 @@ simulations:
         play_rate: "0.25"
         sensing: "false"
         use_traffic_light_recognition: "false"
-        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/centerpoint/validation/objects$
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/centerpoint/objects$
         evaluation_prediction_topic_regex: None
-        degradation_topic: /perception/object_recognition/detection/centerpoint/validation/objects
         perception_mode: camera_lidar_fusion
         lidar_detection_model: centerpoint
         with_optional_nodes: 2d_detector
@@ -561,9 +555,8 @@ simulations:
         play_rate: "0.25"
         sensing: "false"
         use_traffic_light_recognition: "false"
-        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/pointpainting/validation/objects$
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/pointpainting/objects$
         evaluation_prediction_topic_regex: None
-        degradation_topic: /perception/object_recognition/detection/pointpainting/validation/objects
         perception_mode: camera_lidar_fusion
         lidar_detection_model: pointpainting
         with_optional_nodes: 2d_detector
@@ -606,9 +599,8 @@ simulations:
         play_rate: "0.25"
         sensing: "false"
         use_traffic_light_recognition: "false"
-        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/centerpoint/validation/objects$
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/centerpoint/objects$
         evaluation_prediction_topic_regex: None
-        degradation_topic: /perception/object_recognition/detection/centerpoint/validation/objects
         perception_mode: camera_lidar_radar_fusion
         lidar_detection_model: centerpoint
         with_optional_nodes: 2d_detector
@@ -651,9 +643,8 @@ simulations:
         play_rate: "0.25"
         sensing: "false"
         use_traffic_light_recognition: "false"
-        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/pointpainting/validation/objects$
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/pointpainting/objects$
         evaluation_prediction_topic_regex: None
-        degradation_topic: /perception/object_recognition/detection/pointpainting/validation/objects
         perception_mode: camera_lidar_radar_fusion
         lidar_detection_model: pointpainting
         with_optional_nodes: 2d_detector
