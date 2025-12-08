@@ -2,7 +2,7 @@ repositories:
   simulator/scenario_simulator:
     type: git
     url: https://github.com/tier4/scenario_simulator_v2.git
-    version: 2e9c60c985d2e17fd8dca897c5e207cdcede622b
+    version: 7b3f42ef8054627ac51579bc2c885c6591741e3a
   simulator/ndt_convergence_evaluation:
     type: git
     url: git@github.com:tier4/ndt_convergence_evaluation.git
@@ -10,7 +10,7 @@ repositories:
   simulator/driving_log_replayer_v2:
     type: git
     url: https://github.com/tier4/driving_log_replayer_v2.git
-    version: 0c989992cf89d95dc13842fd0badb675fab1b98a
+    version: e4e9373ccc197c689899ede88e311224d9b28380
   simulator/perception_eval:
     type: git
     url: https://github.com/tier4/autoware_perception_evaluation.git

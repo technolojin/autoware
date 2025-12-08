@@ -2,42 +2,42 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: v0.58.0
+    version: v0.60.0
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: v0.58.0
+    version: v0.60.0
     base: true
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
-    version: 99d799247aebc0ef95f4a1fab9ce13752f11ae5a
+    version: 0e0794e034fe1b8fea6e3a0bbcb9d9b8cdba03ad
     base: true
   autoware/autoware_utils:
     type: git
     url: https://github.com/autowarefoundation/autoware_utils.git
-    version: 8dd4133d18b1a539d8d7c252a146cae352b5a50d
+    version: 1ab84eca6b4c1eb10f54c28c98ea8f547b60495f
     base: true
   autoware/autoware_lanelet2_extension:
     type: git
     url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
-    version: 5fadbb76b96083685cb36335c3c28d6554392d7e
+    version: 39bd05936556f99cd38904022a2e5e6fd2efd93e
     base: true
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: v0.58.0
+    version: v0.60.0
     base: true
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: c90ecea7daf88d617f76ef2b33dbfaf6207fbbce
+    version: a8ec321e0411fadf95597bef6d51c0650f0f70ef
     base: true
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: v0.58.0
+    version: v0.60.0
     base: true
   autoware/autoware_msgs:
     type: git
@@ -47,7 +47,7 @@ repositories:
   autoware/autoware_adapi_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_adapi_msgs.git
-    version: a961390a6b9373757481cb6be25353b0ccd5d273
+    version: 6c3faf2311db65dbd37a78904c9b96edad4b3bbd
     base: true
   autoware/autoware_internal_msgs:
     type: git
@@ -62,7 +62,7 @@ repositories:
   autoware/autoware_rviz_plugins:
     type: git
     url: https://github.com/autowarefoundation/autoware_rviz_plugins.git
-    version: 327df6bf10f029634c72c3b6dcf3205ca6bf22eb
+    version: 06a4426df4bbfe9a98e4b3240f59928f014b824e
     base: true
   # description
   description/sensor/sensor_component_description:
@@ -136,6 +136,11 @@ repositories:
     url: https://github.com/tier4/glog.git
     version: ea36766fdc2ac8e8c8e3ac988ae69acd6d09bb30
     base: true
+  vendor/ros_foxglove_bridge:
+    type: git
+    url: https://github.com/tier4/ros-foxglove-bridge.git
+    version: 0.8.5
+    base: true
   vendor/cuda_blackboard:
     type: git
     url: https://github.com/autowarefoundation/cuda_blackboard.git
@@ -159,7 +164,7 @@ repositories:
   launch: # Based humble version, the acceleration patched is added
     type: git
     url: https://github.com/tier4/launch.git
-    version: 2e7ee22f2d9c5389e7da807085255a745e3a0758
+    version: 139c82ef83e152216cdecbed3e52ffe17d8dffd3
     base: true
   # Include many-nodes-in-container launch fix that ensures no LoadComposableNode call hangs
   # See https://github.com/ros2/launch_ros/compare/humble...tier4:launch_ros:/t4-main
@@ -171,7 +176,7 @@ repositories:
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: v0.58.0
+    version: v0.60.0
     base: true
   # middleware
   # TODO(TIER IV): During the transition period of Agnocast introduction,
@@ -242,4 +247,10 @@ repositories:
     type: git
     url: git@github.com:tier4/mrm_plugin.x2.git
     version: main
+    base: false
+  # remove when it is added to vanilla as base: true or aip_launcher does not depend on it
+  vendor/ars408_driver:
+    type: git
+    url: https://github.com/tier4/ars408_driver.git
+    version: 60678fc12918f968afed9f519915c16cf76edeae
     base: false

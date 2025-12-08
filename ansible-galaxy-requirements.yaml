@@ -6,7 +6,7 @@ collections:
 
   - name: https://github.com/autowarefoundation/autoware.git#/ansible
     type: git
-    version: 3d0eebf603fcabd02a27efc96c1cc63a992965d2
+    version: 704a7413bdb637d0663c6618c062087ff3e8c3eb
 
     # When you use your own customized ./src/ecu_system_setup,
     # comment out git settings, uncomment source settings and in autoware.repos
@@ -14,7 +14,7 @@ collections:
     #   type: dir
   - name: git@github.com:tier4/autoware_ecu_system_setup.git
     type: git
-    version: e9cb18a4ca0a235712883a44ef13670ea5ff0bcd
+    version: 14e5dd9dbaccfdb8d5f8c00431793840202e2558
 
     # edge-auto-jetson contains some ansible scripts intended for the perception ECU.
   - name: git@github.com:tier4/edge-auto-jetson.git
