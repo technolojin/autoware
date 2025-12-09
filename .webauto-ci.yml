@@ -1029,7 +1029,6 @@ simulations:
       parameters:
         sensing: "false"
         use_traffic_light_recognition: "false"
-        evaluation_prediction_topic_regex: None
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
           mounts:
@@ -1055,7 +1054,6 @@ simulations:
         # if `sensing: false` need to delete below.
         remap_arg: /sensing/lidar/concatenated/pointcloud
         use_empty_dynamic_object_publisher: "true"
-        evaluation_prediction_topic_regex: None
       pre_tasks:
         - exec: TLF=traffic_light_fine_detector && source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_${TLF} ${TLF}.launch.xml model_path:=$HOME/autoware_data/${TLF}/tlr_car_ped_yolox_s_batch_6.onnx label_name:=$HOME/autoware_data/${TLF}/tlr_labels.txt  build_only:=true
           mounts:
@@ -1421,6 +1419,7 @@ simulations:
         control_module_preset: dlr_control_validator
         vehicle_model: j6_gen2
         sensor_model: aip_x2_gen2
+        override_topics_regex: '"^/(?!localization/[^ ]*/pointcloud$)(?!perception/object_recognition/detection/(?!objects$)).*"'
 
   - name: dlr_pc_w_loc_track_pred
     type: planning_control
@@ -1448,6 +1447,7 @@ simulations:
         additional_log_archive:
           paths:
             - /home/autoware/.ros/log/autoware_metrics
+        override_topics_regex: '"^/(?!localization/[^ ]*/pointcloud$)(?!perception/object_recognition/detection/(?!objects$)).*"'
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
           mounts:
@@ -1480,6 +1480,7 @@ simulations:
         additional_log_archive:
           paths:
             - /home/autoware/.ros/log/autoware_metrics
+        override_topics_regex: '"^/(?!localization/[^ ]*/pointcloud$)(?!perception/object_recognition/detection/(?!objects$)).*"'
 
 release:
   name_template: ${datetime}-${version}
