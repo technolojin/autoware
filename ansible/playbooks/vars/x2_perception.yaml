@@ -75,7 +75,7 @@ ansible_python_path: /usr/bin/python3.10
 camera_driver_repo: https://api.github.com/repos/tier4/tier4_automotive_hdr_camera/releases/tags/v2.1.0
 
 # perception application/service
-perception_application_edge_auto_version: beta/v4.3
+perception_application_edge_auto_version: v4.3.1
 perception_application_base_path: /home/autoware
 perception_application_edge_auto_repo: git@github.com:tier4/edge-auto-jetson.x2.git
 perception_application_native_built_ros: false # True if we build ROS from source and not using apt
