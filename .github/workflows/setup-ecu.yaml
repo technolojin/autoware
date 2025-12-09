@@ -48,7 +48,6 @@ jobs:
           - x2_logging
           - x2_perception_1
           - x2_perception_2
-          - x2_perception_application
           - x2_addon
           - x2_addonlite
           - x2_media_streaming_1
@@ -72,7 +71,6 @@ jobs:
             playbook: x2_sub
             additional_args: -y -v -e vehicle_id=1234 -e run_cert_setup=true
           - job: x2_logging
-          - job: x2_logging
             playbook: x2_logging
             additional_args: -y -v -e vehicle_id=1234 -e github_token=''
           - job: x2_perception_1
@@ -81,9 +79,6 @@ jobs:
           - job: x2_perception_2
             playbook: x2_perception
             additional_args: -y -v -e ecu_id=perception2
-          - job: x2_perception_application
-            playbook: x2_perception_application
-            additional_args: -y -v -e ecu_id=perception1
           - job: x2_addon
             playbook: x2_addon
             additional_args: -y -v -e github_token=''
