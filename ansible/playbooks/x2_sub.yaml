@@ -20,7 +20,6 @@
     - { role: autoware.ecu_system_setup.automatic_login }
     - role: autoware.ecu_system_setup.boot_shutdown_service
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
-    - { role: autoware.ecu_system_setup.ip_routing_policy }
     - { role: autoware.ecu_system_setup.lenovo_keyboard }
     - { role: autoware.ecu_system_setup.rootfs_encrypt }
     - { role: autoware.ecu_system_setup.rsyslog }
@@ -31,6 +30,7 @@
     - { role: autoware.ecu_system_setup.simple_system_launch }
     - { role: autoware.ecu_system_setup.fool_proof_check } # fool proof check for autoware function
     - { role: autoware.ecu_system_setup.letterbox_monitor }
+    - { role: autoware.ecu_system_setup.pre_journal_collector }
     - role: autoware.ecu_system_setup.build_system_monitor
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - role: autoware.ecu_system_setup.rviz
@@ -56,6 +56,7 @@
     - { role: autoware.ecu_system_setup.systemd_analyze_collector }
     - { role: divert_jetpack_static_lib }
     - { role: delete_ccache_duplicates }
+    - { role: autoware.ecu_system_setup.disable_services }
 
 - name: Conditionally run cert setup
   hosts: localhost

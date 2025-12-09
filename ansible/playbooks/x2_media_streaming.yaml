@@ -38,6 +38,7 @@
     - { role: autoware.ecu_system_setup.netplan }
     - { role: autoware.ecu_system_setup.otaclient }
     - { role: autoware.ecu_system_setup.evaluator_self_hosted_environment }
+    - { role: autoware.ecu_system_setup.ota_first_boot_flag }
     - { role: autoware.ecu_system_setup.rsyslog }
     - { role: autoware.ecu_system_setup.stop_auto_upgrade }
     - { role: autoware.ecu_system_setup.syslog_collector_client }
@@ -50,6 +51,8 @@
     - role: autoware.ecu_system_setup.cabin_sight_monitor
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.ecu_system_setup.systemd_analyze_collector }
+    - { role: autoware.ecu_system_setup.tier4_service_standby_wait }
+    - { role: autoware.ecu_system_setup.disable_services }
 
 - name: Conditionally run cert setup
   hosts: localhost

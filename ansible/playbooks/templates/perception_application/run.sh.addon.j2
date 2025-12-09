@@ -6,6 +6,30 @@ source {{ autoware_env_dir }}/vehicle.env
 source /opt/ros/humble/setup.bash
 source {{ perception_application_base_path }}/overlay_ws/install/setup.bash
 
+{% if fool_proof_check | bool %}
+source /opt/autoware/services/fool-proof-check/activate_call_diag.sh
+{% endif %}
+
+if [ "$VEHICLE_MODEL" == "j6_gen2" ]; then
+    while [[ ! -e /var/run/enp7s0-ready ]]; do
+        {% if fool_proof_check | bool %}
+        call_diag_polling --status "Error" \
+                --mrm_name_suffix enp7s0-ready \
+                --event_id "Network Interface Error" \
+                --message "/var/run/enp7s0-ready is not found" \
+                --impact "Ethernet communication unavailable"
+        {% endif %}
+        sleep 1
+    done
+    {% if fool_proof_check | bool %}
+    call_diag_polling --status "Ok" \
+            --mrm_name_suffix enp7s0-ready \
+            --event_id "none" \
+            --message "none" \
+            --impact "none"
+    {% endif %}
+fi
+
 # for letterbox_monitor
 mkdir -p {{ perception_application_base_path }}/.ros/recognition_log
 export ROS_LOG_DIR={{ perception_application_base_path }}/.ros/recognition_log

@@ -509,10 +509,10 @@
   history: keep_last
   reliability: best_effort
 /diagnostics:
-  depth: 1
+  depth: 1000
   durability: volatile
   history: keep_last
-  reliability: best_effort
+  reliability: reliable
 /diagnostics_agg:
   depth: 1
   durability: volatile
@@ -1405,6 +1405,26 @@
   reliability: best_effort
 /perception/object_recognition/detection/centerpoint_irregular_object_merger/objects:
   depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/streampetr/objects:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/streampetr/latency/preprocess:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/streampetr/latency/total:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/streampetr/latency/inference:
+  depth: 1
   durability: volatile
   history: keep_last
   reliability: best_effort

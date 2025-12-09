@@ -14,8 +14,8 @@ cyclonedds:
   max_rexmit_message_size: 8950B
   water_mark_whc_high: 4MB
   water_mark_whc_low: 10kB
-  lease_duration: 32s
-  spdp_interval: 30s
+  lease_duration: 120s
+  spdp_interval: 90s
 ipv4_ipfrag_time: 3
 ipv4_ipfrag_high_thresh: 134217728
 netcore_rmem_max: 2147483647
@@ -41,9 +41,9 @@ sync_tooling:
       - phc2sys
 
 # otaclient
-otaclient_release_version: v3.11.0
-otaclient_package_whl_checksum: sha256:17e210f3dc99cfc0ec30cd450222632cdbe4c802b35dad20168bcf0144e8472b
-otaclient_manifest_checksum: sha256:197d236a37137afc43ee693ea6e7a907725f28526dca7794b9b27d17a6d612ea
+otaclient_release_version: v3.11.1
+otaclient_package_whl_checksum: sha256:70000d775e8a8510d837f320774b88e0d5edd61428c8ad0e53bb9244d4fdc4d4
+otaclient_manifest_checksum: sha256:dd08c1792169b72c7136b53949a5c06d0c4f2411fcf2fc3b28856e7e5b768ec2
 
 # otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-perception1
 otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-1gbe.j2
@@ -81,6 +81,7 @@ perception_application_edge_auto_repo: git@github.com:tier4/edge-auto-jetson.x2.
 perception_application_native_built_ros: false # True if we build ROS from source and not using apt
 perception_application_service_run_templates_file: perception_application/run.sh.edge_auto_x2.j2 # we can use different run files if the path is in local
 perception_application_directory_name: overlay_ws
+perception_startup_service_template: perception_application/perception-startup.service.j2
 
 # fool proof check service
 fool_proof_check: true
@@ -117,3 +118,25 @@ target_service_before_reload_camera_driver: perception-startup.service
 
 # set_autoware_env
 vehicle_id: INVALID_VEHICLE_ID
+
+network_interface_for_tier4_service_standby_wait: mgbe1
+
+# tier4_service_standby_wait
+service_list_for_tier4_system: ptp4l.service
+service_list_for_tier4_autoware: |
+  boot-shutdown.service \
+  fool-proof-check.service \
+  tier4_system_standby_wait.target
+# disable services
+# cspell:ignore runlevel utmp
+disable_system_service_list:
+  - snapd.socket
+  - snapd.service
+  - snapd.seeded.service
+  - systemd-update-utmp-runlevel.service
+  - update-notifier-download.timer
+  - update-notifier-motd.timer
+  - motd-news.timer
+  - dpkg-db-backup.timer
+  - apt-daily-upgrade.timer
+  - apt-daily.timer

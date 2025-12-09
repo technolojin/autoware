@@ -1,0 +1,38 @@
+# File Integrity Checker Configuration
+# This file controls the behavior of file-integrity-check.service
+
+# Path to the OTA database
+database_path: /opt/ota/image-meta/file_table.sqlite3
+
+# Number of parallel workers
+# 1 is recommended for VM environments to avoid disk I/O contention
+# 4-8 can be used on physical machines with good I/O performance
+workers: 4
+
+# Batch size for processing files
+# Lower values use less memory but may be slower
+batch_size: 60000
+
+# Include gigantic files (>1GB) in verification
+# WARNING: May cause VM crashes or take a very long time
+include_gigantic: false
+
+# Number of slowest files to report in results
+# 0 means report all slow files
+top_slow_files: 10
+
+# Root directory to scan when creating baseline database
+scan_root: /home/autoware/autoware.proj
+
+# File patterns to include in verification
+# Empty list means check all files
+# Example: [/opt/autoware/*, /etc/*, /boot/*]
+include_patterns:
+  - /home/autoware/autoware.proj/*
+
+# File patterns to exclude from verification
+# Files matching these patterns will be skipped
+# Example: [*.log, /usr/lib/*/libcudnn*, /tmp/*]
+exclude_patterns:
+  - /home/autoware/autoware.proj/.git/* # Exclude Git objects
+  - /home/autoware/autoware.proj/src/**/.git/* # Exclude Git objects

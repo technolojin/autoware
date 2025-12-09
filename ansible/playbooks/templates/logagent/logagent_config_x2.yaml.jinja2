@@ -57,6 +57,8 @@ streaming:
         priority: warning
 # <file upload configurations> --------------------------------------------------------------------
 log_upload:
+  libcurl: {{ logagent_libcurl }}
+  max_file_size_mb: {{ logagent_log_upload_max_file_size_mb }}
   upload_logs:
     # - file_type: rosbag
     #   extensions: [db3]
@@ -67,6 +69,7 @@ log_upload:
       extensions: [log]
       base_path: "{{ logagent_rosbag_logging_directory }}"
       hosts: []
+      max_file_size_mb: {{ logagent_syslog_upload_max_file_size_mb }}
       except_current: true
     # - file_type: kdump
     #   base_path: "{{ logagent_rosbag_logging_directory }}"

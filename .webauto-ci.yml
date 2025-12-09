@@ -507,6 +507,8 @@ artifacts:
           ml_packages:
             - name: yolox
               release: with_unknown/mlmodel/v1.0.1
+            - name: streampetr
+              release: test/v0.4
         - name: ecu-system-setup
           user: autoware
           exec: ./.webauto-ci/addon/ecu-system-setup/run.sh

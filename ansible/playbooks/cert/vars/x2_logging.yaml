@@ -1,11 +1,32 @@
-# cspell: ignore btrfs luks
+# cspell: ignore btrfs csum luks
 
 # dssad_packer
 dssad_packer_param_template: dssad_packer/dssad_packer_params_x2.yaml.jinja2
 dssad_encryption_type: opal
-# - opal
-opal_disk:
-  device: /dev/sda
-  partition_label: DSSAD
-  filesystem: btrfs
-  mountpoint: /mnt/DSSAD
+
+# opal_disk: Mixed configuration
+opal_disks:
+  # Single partition disk (uses entire disk)
+  - device: /dev/sda
+    partition_label: DSSAD
+    filesystem: btrfs
+    mountpoint: /mnt/DSSAD
+    mkfs_extra_option: -f -d single --csum sha256
+
+  # Multiple partitions disk
+  - device: /dev/nvme0n1
+    partitions:
+      - size: 60%
+        label: ROSBAG_INTERNAL
+        filesystem: ext4
+        mountpoint: /mnt/ROSBAG
+        mkfs_extra_option: ""
+      - size: 40%
+        label: TMP
+        filesystem: ext4
+        mountpoint: /mnt/TMP
+        mkfs_extra_option: ""
+        post_mount_commands:
+          - mkdir -p {mountpoint}/tmp
+          - mkdir -p /mnt/LOG
+          - mount --bind {mountpoint}/tmp /mnt/LOG

@@ -38,28 +38,70 @@ function launch_autoware_main() {
     ROS_DOMAIN_ID=1 ros2 launch autoware_launch autoware.main.launch.xml is_redundant:="true" map_path:=/opt/autoware/maps lanelet2_map_file:=lanelet2_map.osm pointcloud_map_file:=pcd vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" "$@" 2>&1 | tee "$SCRIPT_DIR"/autoware_main.log
 }
 
-# --autoware-start:     Start autoware services
+# --autoware-start:     Start autoware all services
 function start_autoware_service() {
-    echo "Starting Autoware services."
+    echo "Starting all Autoware services.(including main and sub services)"
+    ssh -o ConnectTimeout=3 autoware@192.168.20.21 "echo autoware | sudo -S systemctl start autoware_sub_launch.service"
+    rc=$?
+    if [ $rc -eq 0 ]; then
+        echo -e "Remote autoware_sub_launch started successfully."
+    else
+        echo -e "Remote autoware_sub_launch failed (ignored)."
+    fi
+    start_autoware_main_service
+    echo "Started all Autoware services."
+}
+
+# --autoware-stop:     Stop autoware all services
+function stop_autoware_service() {
+    echo "Stopping all Autoware services.(including main and sub services)"
+    ssh -o ConnectTimeout=3 autoware@192.168.20.21 "echo autoware | sudo -S systemctl stop autoware_sub_launch.service"
+    rc=$?
+    if [ $rc -eq 0 ]; then
+        echo -e "Remote autoware_sub_launch stopped successfully."
+    else
+        echo -e "Remote autoware_sub_launch failed (ignored)."
+    fi
+    stop_autoware_main_service
+    echo "Stopped all Autoware services."
+}
+
+# --autoware-restart:     Restart autoware all services
+function restart_autoware_service() {
+    echo "Restarting all Autoware services.(including main and sub services)"
+    ssh -o ConnectTimeout=3 autoware@192.168.20.21 "echo autoware | sudo -S systemctl restart autoware_sub_launch.service"
+    rc=$?
+    if [ $rc -eq 0 ]; then
+        echo -e "Remote autoware_sub_launch restarted successfully."
+    else
+        echo -e "Remote autoware_sub_launch failed (ignored)."
+    fi
+    restart_autoware_main_service
+    echo "All Autoware services restarted."
+}
+
+# --autoware-main-start:     Start autoware services
+function start_autoware_main_service() {
+    echo "Starting Autoware main services."
     sudo systemctl start autoware_system_launch.service
     sudo systemctl start autoware_main_launch.service
     sudo systemctl start autoware_main_mrm_launch.service
 }
 
-# --autoware-stop:     Stop autoware services
-function stop_autoware_service() {
+# --autoware-main-stop:     Stop autoware services
+function stop_autoware_main_service() {
     sudo systemctl stop autoware_system_launch.service
     sudo systemctl stop autoware_main_launch.service
     sudo systemctl stop autoware_main_mrm_launch.service
-    echo "Stopped Autoware services."
+    echo "Stopped Autoware main services."
 }
 
-# --autoware-restart:     Restart autoware services
-function restart_autoware_service() {
-    stop_autoware_service
+# --autoware-main-restart:     Restart autoware services
+function restart_autoware_main_service() {
+    stop_autoware_main_service
     sleep 5
-    start_autoware_service
-    echo "Autoware services restarted."
+    start_autoware_main_service
+    echo "Autoware main services restarted."
 }
 
 # --autoware-sub-start:     Start autoware sub services
@@ -146,8 +188,11 @@ function help() {
     echo "    --autoware        :Launch autoware"
     echo "    --autoware-main    :Launch autoware main"
     echo "    --autoware-start : start autoware all service"
-    echo "    --autoware-stop : stop autoware all service"
+    echo "    --autoware-stop  : stop autoware all service"
     echo "    --autoware-restart : restart autoware all service"
+    echo "    --autoware-main-start : start autoware main service"
+    echo "    --autoware-main-stop : stop autoware main service"
+    echo "    --autoware-main-restart : restart autoware main service"
     echo "    --autoware-sub-start : start autoware sub service"
     echo "    --autoware-sub-stop : stop autoware sub service"
     echo "    --autoware-sub-restart : restart autoware sub service"
@@ -182,6 +227,12 @@ elif [ "${1-}" = "--autoware-stop" ]; then
     stop_autoware_service "${@:2}"
 elif [ "${1-}" = "--autoware-restart" ]; then
     restart_autoware_service "${@:2}"
+elif [ "${1-}" = "--autoware-main-start" ]; then
+    start_autoware_main_service "${@:2}"
+elif [ "${1-}" = "--autoware-main-stop" ]; then
+    stop_autoware_main_service "${@:2}"
+elif [ "${1-}" = "--autoware-main-restart" ]; then
+    restart_autoware_main_service "${@:2}"
 elif [ "${1-}" = "--autoware-sub-start" ]; then
     start_autoware_sub_service "${@:2}"
 elif [ "${1-}" = "--autoware-sub-stop" ]; then
