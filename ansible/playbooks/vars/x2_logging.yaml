@@ -69,7 +69,7 @@ target_remove_log_dirs:
   - /home/autoware/.config/MaintenanceOperationTool/logs/*
 
 # autoware logging suite
-autoware_logging_suite_version: v0.10.2
+autoware_logging_suite_version: v0.10.3
 autoware_logging_suite_modules:
   - autoware_logging_msgs
   - logpacker
