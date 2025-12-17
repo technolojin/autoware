@@ -3,113 +3,135 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
+    branch: awf-latest
     version: awf-latest
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
+    branch: awf-latest
     version: awf-latest
     base: true
   autoware/autoware_cmake:
     type: git
     url: https://github.com/autowarefoundation/autoware_cmake.git
+    branch: main
     version: main
     base: true
   autoware/autoware_utils:
     type: git
     url: https://github.com/autowarefoundation/autoware_utils.git
+    branch: main
     version: main
     base: true
   autoware/autoware_lanelet2_extension:
     type: git
     url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
+    branch: main
     version: main
     base: true
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
+    branch: awf-latest
     version: awf-latest
     base: false
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
+    branch: tier4/universe
     version: tier4/universe
     base: true
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
+    branch: tier4/universe
     version: tier4/universe
     base: true
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
+    branch: tier4/universe
     version: tier4/universe
     base: true
   autoware/autoware_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_msgs.git
+    branch: main
     version: main
     base: true
   autoware/autoware_adapi_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_adapi_msgs.git
+    branch: main
     version: main
     base: true
   autoware/autoware_internal_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_internal_msgs.git
+    branch: main
     version: main
     base: true
   autoware/individual_params:
     type: git
     url: https://github.com/tier4/autoware_individual_params.git
+    branch: main
     version: main
     base: false
   autoware/managed_transform_buffer:
     type: git
     url: https://github.com/autowarefoundation/managed_transform_buffer.git
+    branch: main
     version: main
     base: true
   autoware/autoware_rviz_plugins:
     type: git
     url: https://github.com/autowarefoundation/autoware_rviz_plugins.git
+    branch: main
     version: main
     base: true
   # description
   description/sensor/sensor_component_description:
     type: git
     url: https://github.com/tier4/sensor_component_description.git
+    branch: main
     version: main
     base: true
   description/vehicle/lexus_description:
     type: git
     url: https://github.com/tier4/lexus_description.iv.git
+    branch: tier4/universe
     version: tier4/universe
     base: false
   description/vehicle/reference_vehicle_descriptions:
     type: git
     url: git@github.com:tier4/reference_vehicle_descriptions.git
+    branch: main
     version: main
     base: false
   # ecu_system_setup: When you use your own customized ecu_system_setup, uncomment this.
   # ecu_system_setup:
   #   type: git
   #   url: git@github.com:tier4/autoware_ecu_system_setup.git
+  #   branch: main
   #   version: main
   # vendor
   vendor/pacmod_interface:
     type: git
     url: https://github.com/tier4/pacmod_interface.git
+    branch: main
     version: main
     base: false
   vendor/tamagawa_imu_driver:
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
+    branch: ros2
     version: ros2
     base: true
   vendor/ublox:
     type: git
     url: https://github.com/tier4/ublox.git
+    branch: tier4/rolling
     version: tier4/rolling
     base: true
   vendor/lidar-driver:
@@ -130,21 +152,25 @@ repositories:
   vendor/boost_transport_drivers:
     type: git
     url: https://github.com/autowarefoundation/transport_drivers.git
+    branch: main
     version: main
     base: true
   vendor/mussp:
     type: git
     url: https://github.com/tier4/muSSP.git
+    branch: tier4/main
     version: tier4/main
     base: true
   vendor/pointcloud_to_laserscan:
     type: git
     url: https://github.com/tier4/pointcloud_to_laserscan.git
+    branch: tier4/main
     version: tier4/main
     base: true
   vendor/ars408_driver:
     type: git
     url: https://github.com/tier4/ars408_driver.git
+    branch: main
     version: main
     base: true
   vendor/spinnaker:
@@ -161,16 +187,19 @@ repositories:
   vendor/eagleye:
     type: git
     url: https://github.com/MapIV/eagleye.git
+    branch: autoware-main
     version: autoware-main
     base: true
   vendor/rtklib_ros_bridge:
     type: git
     url: https://github.com/MapIV/rtklib_ros_bridge.git
+    branch: ros2-v0.1.0
     version: ros2-v0.1.0
     base: true
   vendor/llh_converter:
     type: git
     url: https://github.com/MapIV/llh_converter.git
+    branch: ros2
     version: ros2
     base: true
   vendor/dynamic_message_introspection:
@@ -181,6 +210,7 @@ repositories:
   vendor/glog:  # TODO: to use isGoogleInitialized() API in v0.6.0. Remove when the rosdep glog version is updated to v0.6.0 (already updated in Ubuntu 24.04)
     type: git
     url: https://github.com/tier4/glog.git
+    branch: v0.6.0_t4-ros
     version: v0.6.0_t4-ros
     base: true
   vendor/ros_foxglove_bridge:
@@ -201,16 +231,19 @@ repositories:
   vendor/bevdet_vendor: # TODO: wrap the original bevdet-tensorrt-cpp source code as a vendor package and provide it to autoware_tensorrt_bevdet package
     type: git
     url: https://github.com/autowarefoundation/bevdet_vendor.git
+    branch: bevdet_vendor-ros2
     version: bevdet_vendor-ros2
     base: true
   rclcpp:  # Based stable version, the fix-patch for service in initialization and the glog feature and the fix-patch for loading node in container is added
     type: git
     url: https://github.com/tier4/rclcpp.git
+    branch: t4-main
     version: t4-main
     base: true
   launch: # Based humble version, the acceleration patched is added
     type: git
     url: https://github.com/tier4/launch.git
+    branch: humble
     version: humble
     base: true
   # Include many-nodes-in-container launch fix that ensures no LoadComposableNode call hangs
@@ -218,12 +251,14 @@ repositories:
   launch_ros:
     type: git
     url: https://github.com/tier4/launch_ros.git
+    branch: t4-main
     version: t4-main
     base: true
 
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
+    branch: main
     version: main
     base: true
 
