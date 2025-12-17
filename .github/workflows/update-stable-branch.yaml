@@ -1,0 +1,44 @@
+name: Update Stable Branch
+
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.0"
+
+jobs:
+  update-stable:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+      - name: Check if this is the latest vX.Y.0 tag
+        run: |
+          CURRENT_TAG="${GITHUB_REF#refs/tags/}"
+          echo "Current tag: $CURRENT_TAG"
+
+          # Get all tags matching vX.Y.0 pattern and sort them
+          LATEST_TAG=$(git tag -l 'v[0-9]*.[0-9]*.0' | sort -V | tail -n 1)
+          echo "Latest tag: $LATEST_TAG"
+
+          if [ "$CURRENT_TAG" != "$LATEST_TAG" ]; then
+            echo "Error: $CURRENT_TAG is not the latest .0 tag. Latest is $LATEST_TAG"
+            exit 1
+          fi
+
+          echo "$CURRENT_TAG is the latest .0 tag. Updating stable branch."
+
+      - name: Update stable branch
+        run: |
+          git checkout -B stable
+          git push origin stable --force-with-lease
