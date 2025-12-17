@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - "v[0-9]+.[0-9]+.0"
+  workflow_dispatch:
 
 jobs:
   update-stable:
@@ -22,23 +23,39 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
 
-      - name: Check if this is the latest vX.Y.0 tag
+      - name: Determine target tag
+        id: determine-tag
         run: |
-          CURRENT_TAG="${GITHUB_REF#refs/tags/}"
-          echo "Current tag: $CURRENT_TAG"
-
           # Get all tags matching vX.Y.0 pattern and sort them
           LATEST_TAG=$(git tag -l 'v[0-9]*.[0-9]*.0' | sort -V | tail -n 1)
           echo "Latest tag: $LATEST_TAG"
 
-          if [ "$CURRENT_TAG" != "$LATEST_TAG" ]; then
-            echo "Error: $CURRENT_TAG is not the latest .0 tag. Latest is $LATEST_TAG"
+          if [ -z "$LATEST_TAG" ]; then
+            echo "Error: No matching tags found."
             exit 1
           fi
 
-          echo "$CURRENT_TAG is the latest .0 tag. Updating stable branch."
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "Workflow manually triggered. Targeting latest tag: $LATEST_TAG"
+            TARGET_TAG="$LATEST_TAG"
+          else
+            CURRENT_TAG="${GITHUB_REF#refs/tags/}"
+            echo "Current tag: $CURRENT_TAG"
+
+            if [ "$CURRENT_TAG" != "$LATEST_TAG" ]; then
+              echo "Error: $CURRENT_TAG is not the latest .0 tag. Latest is $LATEST_TAG"
+              exit 1
+            fi
+
+            echo "$CURRENT_TAG is the latest .0 tag. Updating stable branch."
+            TARGET_TAG="$CURRENT_TAG"
+          fi
+
+          echo "target_tag=$TARGET_TAG" >> $GITHUB_OUTPUT
 
       - name: Update stable branch
         run: |
+          TARGET_TAG="${{ steps.determine-tag.outputs.target_tag }}"
+          git checkout "$TARGET_TAG"
           git checkout -B stable
           git push origin stable --force-with-lease
