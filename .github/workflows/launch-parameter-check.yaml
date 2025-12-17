@@ -50,15 +50,14 @@ jobs:
 
       - name: Set Project-Based Variables
         run: |
-          echo "src_directory=src" >> $GITHUB_ENV
-          echo "launch_directory=src/autoware/launcher/autoware_launch/launch" >> $GITHUB_ENV
-          echo "vehicle_model=lexus" >> $GITHUB_ENV
-          echo "sensor_model=aip_xx1" >> $GITHUB_ENV
+          echo "SRC_DIRECTORY=src" >> $GITHUB_ENV
+          echo "LAUNCH_DIRECTORY=src/autoware/launcher/autoware_launch/launch" >> $GITHUB_ENV
+          cat defaults.env >> $GITHUB_ENV
 
       - name: Run launch check for planning simulator
         run: |
-          python3 .github/workflows/scripts/launch_parameter_test.py --src_dir "${{ env.src_directory }}"  --launch_file "${{ env.launch_directory }}"/planning_simulator.launch.xml --context vehicle_model="${{ env.vehicle_model }}" sensor_model="${{ env.sensor_model }}" map_path=.
+          python3 .github/workflows/scripts/launch_parameter_test.py --src_dir "${{ env.SRC_DIRECTORY }}"  --launch_file "${{ env.LAUNCH_DIRECTORY }}"/planning_simulator.launch.xml --context vehicle_model="${{ env.VEHICLE_MODEL }}" sensor_model="${{ env.SENSOR_MODEL }}" map_path=.
 
       - name: Run launch check for logging simulator
         run: |
-          python3 .github/workflows/scripts/launch_parameter_test.py --src_dir "${{ env.src_directory }}"  --launch_file "${{ env.launch_directory }}"/logging_simulator.launch.xml --context vehicle_model="${{ env.vehicle_model }}" sensor_model="${{ env.sensor_model }}" map_path=.
+          python3 .github/workflows/scripts/launch_parameter_test.py --src_dir "${{ env.SRC_DIRECTORY }}"  --launch_file "${{ env.LAUNCH_DIRECTORY }}"/logging_simulator.launch.xml --context vehicle_model="${{ env.VEHICLE_MODEL }}" sensor_model="${{ env.SENSOR_MODEL }}" map_path=.
