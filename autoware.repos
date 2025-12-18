@@ -191,21 +191,25 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
+    branch: tier4/main
     version: tier4/main
     base: false
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
+    branch: main
     version: main
     base: false
   description/vehicle/j6_gen2_description:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
+    branch: main
     version: main
     base: false
   vendor/mj20_interface:
     type: git
     url: git@github.com:tier4/mj20_interface.git
+    branch: main
     version: main
     base: false
   vendor/ros2_socketcan:
@@ -221,6 +225,7 @@ repositories:
   vendor/emergency_vehicle_detector:
     type: git
     url: git@github.com:tier4/emergency_vehicle_detector.git
+    branch: vendor
     version: vendor
     base: false
   vendor/pyrocan:
@@ -241,11 +246,13 @@ repositories:
   vendor/redundancy_switcher_interface:
     type: git
     url: git@github.com:tier4/redundancy_switcher_interface.git
+    branch: main
     version: main
     base: false
   autoware/mrm_plugin:
     type: git
     url: git@github.com:tier4/mrm_plugin.x2.git
+    branch: main
     version: main
     base: false
   # remove when it is added to vanilla as base: true or aip_launcher does not depend on it
