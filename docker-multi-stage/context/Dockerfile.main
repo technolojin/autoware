@@ -164,6 +164,7 @@ RUN --mount=type=bind,source=pkg/rosdep-exec-localization-mapping.txt,target=/au
 
 COPY --from=localization-mapping-build /opt/autoware /opt/autoware
 
+COPY etc/cyclonedds.xml /autoware/dds/cyclonedds.xml
 COPY etc/entrypoint.bash /entrypoint.bash
 RUN chmod +x /entrypoint.bash
 
@@ -199,6 +200,7 @@ RUN --mount=type=bind,source=pkg/rosdep-exec-planning-control.txt,target=/autowa
 
 COPY --from=planning-control-build /opt/autoware /opt/autoware
 
+COPY etc/cyclonedds.xml /autoware/dds/cyclonedds.xml
 COPY etc/entrypoint.bash /entrypoint.bash
 RUN chmod +x /entrypoint.bash
 
@@ -234,6 +236,7 @@ RUN --mount=type=bind,source=pkg/rosdep-exec-vehicle-system.txt,target=/autoware
 
 COPY --from=vehicle-system-build /opt/autoware /opt/autoware
 
+COPY etc/cyclonedds.xml /autoware/dds/cyclonedds.xml
 COPY etc/entrypoint.bash /entrypoint.bash
 RUN chmod +x /entrypoint.bash
 
@@ -269,6 +272,7 @@ RUN --mount=type=bind,source=pkg/rosdep-exec-sensing-perception.txt,target=/auto
 
 COPY --from=sensing-perception-build /opt/autoware /opt/autoware
 
+COPY etc/cyclonedds.xml /autoware/dds/cyclonedds.xml
 COPY etc/entrypoint.bash /entrypoint.bash
 RUN chmod +x /entrypoint.bash
 
@@ -304,6 +308,7 @@ RUN --mount=type=bind,source=pkg/rosdep-exec-api.txt,target=/autoware/rosdep-exe
 
 COPY --from=api-build /opt/autoware /opt/autoware
 
+COPY etc/cyclonedds.xml /autoware/dds/cyclonedds.xml
 COPY etc/entrypoint.bash /entrypoint.bash
 RUN chmod +x /entrypoint.bash
 
@@ -340,6 +345,7 @@ RUN --mount=type=bind,source=pkg/rosdep-exec-visualization.txt,target=/autoware/
 COPY --from=visualization-build /opt/autoware /opt/autoware
 
 COPY etc/visualization.launch.xml /visualization.launch.xml
+COPY etc/cyclonedds.xml /autoware/dds/cyclonedds.xml
 COPY etc/entrypoint.bash /entrypoint.bash
 RUN chmod +x /entrypoint.bash
 
@@ -375,6 +381,7 @@ RUN --mount=type=bind,source=pkg/rosdep-exec-simulation.txt,target=/autoware/ros
 
 COPY --from=simulation-build /opt/autoware /opt/autoware
 
+COPY etc/cyclonedds.xml /autoware/dds/cyclonedds.xml
 COPY etc/entrypoint.bash /entrypoint.bash
 RUN chmod +x /entrypoint.bash
 
@@ -409,6 +416,7 @@ COPY --from=api-build /opt/autoware /opt/autoware
 COPY --from=visualization-build /opt/autoware /opt/autoware
 COPY --from=simulation-build /opt/autoware /opt/autoware
 
+COPY etc/cyclonedds.xml /autoware/dds/cyclonedds.xml
 COPY etc/entrypoint.bash /entrypoint.bash
 RUN chmod +x /entrypoint.bash
 

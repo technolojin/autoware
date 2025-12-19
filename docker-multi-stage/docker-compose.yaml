@@ -9,11 +9,10 @@ services:
     container_name: pilot-auto-map
     init: true
     ipc: host
-    network_mode: host
+    network_mode: bridge
     environment:
       <<: *environment
     volumes:
-      - ${DDS_PATH}:/autoware/dds:ro
       - ${MAP_PATH}:/autoware/map:ro
     command: >
       ros2 launch autoware_launch tier4_map_component.launch.xml
@@ -27,11 +26,9 @@ services:
     container_name: pilot-auto-planning
     init: true
     ipc: host
-    network_mode: host
+    network_mode: bridge
     environment:
       <<: *environment
-    volumes:
-      - ${DDS_PATH}:/autoware/dds:ro
     depends_on:
       - map
     command: >
@@ -48,11 +45,9 @@ services:
     container_name: pilot-auto-system
     init: true
     ipc: host
-    network_mode: host
+    network_mode: bridge
     environment:
       <<: *environment
-    volumes:
-      - ${DDS_PATH}:/autoware/dds:ro
     depends_on:
       - map
     command: >
@@ -69,11 +64,9 @@ services:
     container_name: pilot-auto-control
     init: true
     ipc: host
-    network_mode: host
+    network_mode: bridge
     environment:
       <<: *environment
-    volumes:
-      - ${DDS_PATH}:/autoware/dds:ro
     depends_on:
       - map
       - planning
@@ -93,11 +86,9 @@ services:
     container_name: pilot-auto-vehicle
     init: true
     ipc: host
-    network_mode: host
+    network_mode: bridge
     environment:
       <<: *environment
-    volumes:
-      - ${DDS_PATH}:/autoware/dds:ro
     profiles:
       - logging-simulation
     depends_on:
@@ -116,11 +107,10 @@ services:
     container_name: pilot-auto-sensing-perception
     init: true
     ipc: host
-    network_mode: host
+    network_mode: bridge
     environment:
       <<: *environment
     volumes:
-      - ${DDS_PATH}:/autoware/dds:ro
       - ${DATA_PATH}:/autoware/data:ro
     profiles:
       - logging-simulation
@@ -159,11 +149,9 @@ services:
     container_name: pilot-auto-localization
     init: true
     ipc: host
-    network_mode: host
+    network_mode: bridge
     environment:
       <<: *environment
-    volumes:
-      - ${DDS_PATH}:/autoware/dds:ro
     profiles:
       - logging-simulation
     depends_on:
@@ -181,11 +169,9 @@ services:
     container_name: pilot-auto-api
     init: true
     ipc: host
-    network_mode: host
+    network_mode: bridge
     environment:
       <<: *environment
-    volumes:
-      - ${DDS_PATH}:/autoware/dds:ro
     command: >
       ros2 launch autoware_launch tier4_autoware_api_component.launch.xml
       scenario_simulation:=${SCENARIO_SIMULATION}
@@ -197,13 +183,12 @@ services:
     container_name: pilot-auto-visualization
     init: true
     ipc: host
-    network_mode: host
+    network_mode: bridge
     environment:
       <<: *environment
       DISPLAY: ${DISPLAY}
-      REMOTE_DISPLAY: ${REMOTE_DISPLAY}
     volumes:
-      - ${DDS_PATH}:/autoware/dds:ro
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
     profiles:
       - visualization
     command: >
@@ -217,11 +202,9 @@ services:
     container_name: pilot-auto-simulator
     init: true
     ipc: host
-    network_mode: host
+    network_mode: bridge
     environment:
       <<: *environment
-    volumes:
-      - ${DDS_PATH}:/autoware/dds:ro
     profiles:
       - planning-simulation
     command: >
@@ -249,11 +232,10 @@ services:
     container_name: pilot-auto-rosbag
     init: true
     ipc: host
-    network_mode: host
+    network_mode: bridge
     environment:
       <<: *environment
     volumes:
-      - ${DDS_PATH}:/autoware/dds:ro
       - ${ROSBAG_PATH}:/autoware/rosbag:ro
     profiles:
       - logging-simulation

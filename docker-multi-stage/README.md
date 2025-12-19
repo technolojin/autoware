@@ -87,12 +87,19 @@ This document assumes the file path is `~/github-token`. Note that the file shou
 
 1. Edit the following values ​​in the `planning-simulation.env` according to your environment.
 
-   | Value    | Description                                                                            |
-   | -------- | -------------------------------------------------------------------------------------- |
-   | DDS_PATH | Directory where Cyclone DDS config is located. The file name must be `cyclonedds.xml`. |
-   | MAP_PATH | Directory where the map is located.                                                    |
+   | Value    | Description                         |
+   | -------- | ----------------------------------- |
+   | MAP_PATH | Directory where the map is located. |
 
-2. Run the following command.
+2. Tune the [network settings](https://autowarefoundation.github.io/autoware-documentation/main/installation/additional-settings-for-developers/network-configuration/dds-settings/#tune-system-wide-network-settings) on the host.
+
+   ```bash
+   sudo sysctl -w net.core.rmem_max=2147483647
+   sudo sysctl -w net.ipv4.ipfrag_time=3
+   sudo sysctl -w net.ipv4.ipfrag_high_thresh=134217728
+   ```
+
+3. Run the following command.
 
    ```bash
    xhost +local:
@@ -103,14 +110,21 @@ This document assumes the file path is `~/github-token`. Note that the file shou
 
 1. Edit the following values ​​in the `logging-simulation.env` according to your environment.
 
-   | Value       | Description                                                                            |
-   | ----------- | -------------------------------------------------------------------------------------- |
-   | DDS_PATH    | Directory where Cyclone DDS config is located. The file name must be `cyclonedds.xml`. |
-   | MAP_PATH    | Directory where the map is located.                                                    |
-   | DATA_PATH   | Directory where ONNX model files and other artifacts are located.                      |
-   | ROSBAG_PATH | Directory where the ROSBAG file is located.                                            |
+   | Value       | Description                                                       |
+   | ----------- | ----------------------------------------------------------------- |
+   | MAP_PATH    | Directory where the map is located.                               |
+   | DATA_PATH   | Directory where ONNX model files and other artifacts are located. |
+   | ROSBAG_PATH | Directory where the ROSBAG file is located.                       |
 
-2. Run the following command.
+2. Tune the [network settings](https://autowarefoundation.github.io/autoware-documentation/main/installation/additional-settings-for-developers/network-configuration/dds-settings/#tune-system-wide-network-settings) on the host.
+
+   ```bash
+   sudo sysctl -w net.core.rmem_max=2147483647
+   sudo sysctl -w net.ipv4.ipfrag_time=3
+   sudo sysctl -w net.ipv4.ipfrag_high_thresh=134217728
+   ```
+
+3. Run the following command.
 
    ```bash
    xhost +local:
