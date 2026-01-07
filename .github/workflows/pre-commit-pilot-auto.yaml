@@ -1,0 +1,29 @@
+name: pre-commit-pilot-auto
+
+on:
+  pull_request:
+
+jobs:
+  pre-commit-pilot-auto:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check if config exists in base branch
+        id: check-config
+        run: |
+          if git cat-file -e origin/${{ github.base_ref }}:.pre-commit-config-pilot-auto.yaml 2>/dev/null; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run pre-commit
+        if: steps.check-config.outputs.exists == 'true'
+        uses: autowarefoundation/autoware-github-actions/pre-commit@v1
+        with:
+          pre-commit-config: .pre-commit-config-pilot-auto.yaml
+          base-branch: origin/${{ github.base_ref }}
