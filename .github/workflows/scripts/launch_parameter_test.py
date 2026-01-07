@@ -382,7 +382,7 @@ def parse_argument_tag(
 ):
     # argument_name = os.path.join(base_namespace, argument_tag.get("name"))
     argument_name = argument_tag.get("name")
-    if argument_tag.get("default"):
+    if argument_tag.get("default") is not None:
         if argument_name not in context:
             value = analyze_string(
                 argument_tag.get("default"), context, local_context, base_namespace
