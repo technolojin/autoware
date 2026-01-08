@@ -2,9 +2,9 @@ name: Check Base Tags
 
 on:
   pull_request:
-    # Remove path filtering to make it run on all PRs
-    # paths:
-    #   - autoware.repos
+  # Remove path filtering to make it run on all PRs
+  # paths:
+  #   - autoware.repos
 
 jobs:
   check-base-tags:

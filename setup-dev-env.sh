@@ -20,6 +20,7 @@ print_help() {
     echo "  --download-artifacts"
     echo "                  Download artifacts"
     echo "  --module        Specify the module (default: all)"
+    echo "  --ros-distro    Specify ROS distribution (humble or jazzy, default: humble)"
     echo ""
 }
 
@@ -66,6 +67,10 @@ while [ "$1" != "" ]; do
         ;;
     --module)
         option_module="$2"
+        shift
+        ;;
+    --ros-distro)
+        option_ros_distro="$2"
         shift
         ;;
     *)
@@ -127,13 +132,7 @@ else
 fi
 
 # Check downloading artifacts
-if [ "$option_yes" = "true" ] || [ "$option_download_artifacts" = "true" ]; then
-    echo -e "\e[36mArtifacts will be downloaded to $option_data_dir\e[m"
-    ansible_args+=("--extra-vars" "prompt_download_artifacts=y")
-fi
-
-# Check downloading artifacts
-if [ "$target_playbook" = "pilot_auto.dev_env.docker" ] || [ "$target_playbook" = "pilot_auto.dev_env.openadk" ]; then
+if [ "$target_playbook" = "pilot_auto.dev_env.openadkit" ]; then
     if [ "$option_download_artifacts" = "true" ]; then
         echo -e "\e[36mArtifacts will be downloaded to $option_data_dir\e[m"
         ansible_args+=("--extra-vars" "prompt_download_artifacts=y")
@@ -152,15 +151,27 @@ if [ "$option_module" != "" ]; then
     ansible_args+=("--extra-vars" "module=$option_module")
 fi
 
+# Check ros-distro option
+if [ "$option_ros_distro" != "" ]; then
+    export ROS_DISTRO="$option_ros_distro"
+    ansible_args+=("--extra-vars" "rosdistro=$option_ros_distro")
+fi
+
 # Load env
 source "$SCRIPT_DIR/amd64.env"
+env_file="$SCRIPT_DIR/amd64.env"
+if [ "$option_ros_distro" = "jazzy" ]; then
+    source "$SCRIPT_DIR/amd64_jazzy.env"
+    env_file="$SCRIPT_DIR/amd64_jazzy.env"
+fi
+
 if [ "$(uname -m)" = "aarch64" ]; then
     source "$SCRIPT_DIR/arm64.env"
 fi
 
 # Add env args
 # shellcheck disable=SC2013
-for env_name in $(sed -e "s/^\s*//" -e "/^#/d" -e "s/=.*//" <amd64.env); do
+for env_name in $(sed -e "s/^\s*//" -e "/^#/d" -e "s/=.*//" <"$env_file"); do
     ansible_args+=("--extra-vars" "${env_name}=${!env_name}")
 done
 
@@ -185,13 +196,13 @@ fi
 # Install pipx for ansible
 if ! (python3 -m pipx --version >/dev/null 2>&1); then
     sudo apt-get -y update
-    python3 -m pip install --user pipx
+    sudo apt-get -y install pipx
 fi
 
 # Install ansible
 python3 -m pipx ensurepath
 export PATH="${PIPX_BIN_DIR:=$HOME/.local/bin}:$PATH"
-pipx install --include-deps --force "ansible==6.*"
+pipx install --include-deps --force "ansible==10.*"
 
 # Install ansible collections
 echo -e "\e[36m"ansible-galaxy collection install -f -r "$SCRIPT_DIR/ansible-galaxy-requirements.yaml" "\e[m"

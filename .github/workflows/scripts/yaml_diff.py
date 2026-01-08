@@ -11,31 +11,31 @@ This script is used to compare all yaml files between two directories.
 
 import os
 from pathlib import Path
-import yaml
-from typing import Dict, List, Tuple
+from typing import Dict
+from typing import List
+from typing import Tuple
+
 from deepdiff import DeepDiff
 import pandas as pd
+import yaml
+
 
 # Define the mapping for exceptions where file names are different between directories
-def create_file_mapping()->Dict[str, List[str]]:
+def create_file_mapping() -> Dict[str, List[str]]:
     FILE_MAPPING_XX1_template = {
-        "src/autoware/universe/control/autoware_mpc_lateral_controller/param/lateral_controller_defaults.param.yaml":
-            "src/autoware/launcher/autoware_launch/config/control/trajectory_follower/{index}/lateral/mpc.param.yaml",
-        "src/autoware/universe/control/autoware_pid_longitudinal_controller/param/longitudinal_controller_defaults.param.yaml":
-            "src/autoware/launcher/autoware_launch/config/control/trajectory_follower/{index}/longitudinal/pid.param.yaml",
-        "src/autoware/universe/perception/autoware_image_projection_based_fusion/config/roi_pointcloud_fusion.param.yaml":
-            "src/autoware/launcher/autoware_launch/config/perception/object_recognition/detection/irregular_object_detection/irregular_object_detector.param.yaml"
+        "src/autoware/universe/control/autoware_mpc_lateral_controller/param/lateral_controller_defaults.param.yaml": "src/autoware/launcher/autoware_launch/config/control/trajectory_follower/{index}/lateral/mpc.param.yaml",
+        "src/autoware/universe/control/autoware_pid_longitudinal_controller/param/longitudinal_controller_defaults.param.yaml": "src/autoware/launcher/autoware_launch/config/control/trajectory_follower/{index}/longitudinal/pid.param.yaml",
+        "src/autoware/universe/perception/autoware_image_projection_based_fusion/config/roi_pointcloud_fusion.param.yaml": "src/autoware/launcher/autoware_launch/config/perception/object_recognition/detection/irregular_object_detection/irregular_object_detector.param.yaml",
     }
     FILE_MAPPING_X2_template = {
-        "src/autoware/universe/control/autoware_mpc_lateral_controller/param/lateral_controller_defaults.param.yaml":
-            "src/autoware/launcher/autoware_launch/config/control/trajectory_follower/lateral/mpc.param.yaml",
-        "src/autoware/universe/control/autoware_pid_longitudinal_controller/param/longitudinal_controller_defaults.param.yaml":
-            "src/autoware/launcher/autoware_launch/config/control/trajectory_follower/longitudinal/pid.param.yaml",
-        "src/autoware/universe/perception/autoware_image_projection_based_fusion/config/roi_pointcloud_fusion.param.yaml":
-            "src/autoware/launcher/autoware_launch/config/perception/object_recognition/detection/irregular_object_detection/irregular_object_detector.param.yaml"
+        "src/autoware/universe/control/autoware_mpc_lateral_controller/param/lateral_controller_defaults.param.yaml": "src/autoware/launcher/autoware_launch/config/control/trajectory_follower/lateral/mpc.param.yaml",
+        "src/autoware/universe/control/autoware_pid_longitudinal_controller/param/longitudinal_controller_defaults.param.yaml": "src/autoware/launcher/autoware_launch/config/control/trajectory_follower/longitudinal/pid.param.yaml",
+        "src/autoware/universe/perception/autoware_image_projection_based_fusion/config/roi_pointcloud_fusion.param.yaml": "src/autoware/launcher/autoware_launch/config/perception/object_recognition/detection/irregular_object_detection/irregular_object_detector.param.yaml",
     }
     FILE_MAPPING = {}
-    for key, value in list(FILE_MAPPING_XX1_template.items()) + list(FILE_MAPPING_X2_template.items()):
+    for key, value in list(FILE_MAPPING_XX1_template.items()) + list(
+        FILE_MAPPING_X2_template.items()
+    ):
         if "{index}" not in value:
             # the file does not have a template needed to loop through
             if os.path.exists(value):
@@ -59,6 +59,7 @@ def create_file_mapping()->Dict[str, List[str]]:
 
     return FILE_MAPPING
 
+
 FILE_MAPPING = create_file_mapping()
 
 
@@ -74,7 +75,7 @@ def check_if_ros_yaml(file_path: str) -> bool:
     """
     try:
         yaml_content = load_yaml(file_path)
-    except Exception as e:
+    except Exception:
         return False
     if yaml_content is None:
         return False
@@ -83,6 +84,7 @@ def check_if_ros_yaml(file_path: str) -> bool:
             return True
 
     return False
+
 
 def find_yaml_files(directory: str) -> List[str]:
     """
@@ -94,10 +96,12 @@ def find_yaml_files(directory: str) -> List[str]:
     Returns:
         List[str]: List of file paths for all yaml files found.
     """
-
     return [str(file) for file in Path(directory).rglob("*.yaml") if check_if_ros_yaml(file)]
 
-def map_files_by_name(dir1_files: List[str], dir2_files: List[str], file_mapping: Dict[str, List[str]]) -> List[Tuple[str, str]]:
+
+def map_files_by_name(
+    dir1_files: List[str], dir2_files: List[str], file_mapping: Dict[str, List[str]]
+) -> List[Tuple[str, str]]:
     """
     Map files between two directories by matching file names.
 
@@ -132,6 +136,7 @@ def map_files_by_name(dir1_files: List[str], dir2_files: List[str], file_mapping
 
     return mapped_files
 
+
 def load_yaml(file_path: str) -> Dict:
     """
     Load the content of a YAML file.
@@ -142,8 +147,9 @@ def load_yaml(file_path: str) -> Dict:
     Returns:
         Dict: Parsed content of the yaml file.
     """
-    with open(file_path, 'r') as file:
+    with open(file_path, "r") as file:
         return yaml.safe_load(file)
+
 
 def compare_yaml_files(file1: str, file2: str) -> DeepDiff:
     """
@@ -158,13 +164,16 @@ def compare_yaml_files(file1: str, file2: str) -> DeepDiff:
     """
     yaml1 = load_yaml(file1)
     yaml2 = load_yaml(file2)
-    return DeepDiff(yaml1["/**"]["ros__parameters"], yaml2["/**"]["ros__parameters"], ignore_order=True)
+    return DeepDiff(
+        yaml1["/**"]["ros__parameters"], yaml2["/**"]["ros__parameters"], ignore_order=True
+    )
 
 
 def process_deepdiff_path(path_str: str) -> tuple:
     """
-    Convert DeepDiff path strings from root['key_1']['key_2']...['key_n']
-    to a more readable dot notation like key1.key2.key3...
+    Convert DeepDiff path strings from root['key_1']['key_2']...['key_n'].
+
+    Convert to a more readable dot notation like key1.key2.key3...
     Ignores paths where the last key is a number (i.e., a list index).
 
     Args:
@@ -177,7 +186,11 @@ def process_deepdiff_path(path_str: str) -> tuple:
     path_parts = path_str.replace("root", "").split("[")
 
     # Clean up the string by removing the trailing "']" and empty parts
-    cleaned_parts = [part.replace("']", "").replace("]", "").replace("'", "") for part in path_parts if part.strip()]
+    cleaned_parts = [
+        part.replace("']", "").replace("]", "").replace("'", "")
+        for part in path_parts
+        if part.strip()
+    ]
 
     # Check if the last part of the path is numeric (i.e., a list index)
     if cleaned_parts and cleaned_parts[-1].isdigit():
@@ -187,10 +200,9 @@ def process_deepdiff_path(path_str: str) -> tuple:
     # Join the parts with dots to create the final readable path
     return ".".join(cleaned_parts), True
 
+
 def deepdiff_to_diff_table(file1, file2, diff: DeepDiff) -> list:
-    """
-    Convert the DeepDiff object to a table format for exporting.
-    """
+    """Convert the DeepDiff object to a table format for exporting."""
     diff_table = []
     file_basename = os.path.basename(file1)
     if "dummy" in file_basename:
@@ -201,7 +213,7 @@ def deepdiff_to_diff_table(file1, file2, diff: DeepDiff) -> list:
                 readable_path, valid_path = process_deepdiff_path(str(change))
                 if not valid_path:
                     continue
-                diff_table.append([file_basename, "extra params", readable_path,file2])
+                diff_table.append([file_basename, "extra params", readable_path, file2])
         elif change_type == "dictionary_item_removed":
             for change in changes:
                 readable_path, valid_path = process_deepdiff_path(str(change))
@@ -209,14 +221,13 @@ def deepdiff_to_diff_table(file1, file2, diff: DeepDiff) -> list:
                     continue
                 diff_table.append([file_basename, "missing params", readable_path, file2])
         else:
-            continue # Skip other change types
+            continue  # Skip other change types
 
     return diff_table
 
+
 def diff_table_to_markdown(diff_table: list, base_dir2, output_file: str) -> None:
-    """
-    Export the differences table to a markdown file.
-    """
+    """Export the differences table to a markdown file."""
     # Initialize markdown content
     markdown_content = "# YAML Differences Report\n\n"
 
@@ -231,16 +242,18 @@ def diff_table_to_markdown(diff_table: list, base_dir2, output_file: str) -> Non
         if file2 != current_file:
             # Write the previous file's table to markdown if it exists
             if current_file is not None and current_file_table:
-                markdown_content += pd.DataFrame(current_file_table, columns=["Compared to Universe", "Parameters"]).to_markdown(index=False)
+                markdown_content += pd.DataFrame(
+                    current_file_table, columns=["Compared to Universe", "Parameters"]
+                ).to_markdown(index=False)
                 markdown_content += "\n\n"
 
             # Start a new section for the current file
             if detailing:
-                markdown_content += f"</details>\n\n"
+                markdown_content += "</details>\n\n"
             else:
                 detailing = True
 
-            markdown_content += f"<details>\n\n"
+            markdown_content += "<details>\n\n"
             markdown_content += f"<summary>Differences for {file2.replace(base_dir2, '')} to {filename}</summary>\n\n"
             current_file = file2
             current_file_table = []
@@ -250,13 +263,15 @@ def diff_table_to_markdown(diff_table: list, base_dir2, output_file: str) -> Non
 
     # Write the last file's table to markdown
     if current_file_table:
-        markdown_content += pd.DataFrame(current_file_table, columns=["Compared to Universe", "Parameters"]).to_markdown(index=False)
+        markdown_content += pd.DataFrame(
+            current_file_table, columns=["Compared to Universe", "Parameters"]
+        ).to_markdown(index=False)
         markdown_content += "\n\n"
     if detailing:
-        markdown_content += f"</details>\n\n"
+        markdown_content += "</details>\n\n"
 
     # Write the markdown content to the file
-    with open(output_file, 'w') as md_file:
+    with open(output_file, "w") as md_file:
         md_file.write(markdown_content)
 
 

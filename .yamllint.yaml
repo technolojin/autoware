@@ -1,3 +1,7 @@
+# This file is automatically synced from:
+# https://github.com/autowarefoundation/sync-file-templates
+# To make changes, update the source repository and follow the guidelines in its README.
+
 extends: default
 
 ignore: |
@@ -18,5 +22,5 @@ rules:
     level: error
     check-keys: false # To allow 'on' of GitHub Actions
   quoted-strings:
-    level: warning # Don't set it to error to pass values to the Evaluator
-    required: only-when-needed # To keep consistent style.
+    level: error
+    required: only-when-needed # To keep consistent style

@@ -136,7 +136,7 @@ simulations:
         use_custom_centerline: "false"
         use_sim_time: "false"
         use_trajectory_based_front_entity_detection: "true"
-        pedestrian_ignore_see_around: "aware"
+        pedestrian_ignore_see_around: aware
       logging:
         additional_log_archive:
           paths:

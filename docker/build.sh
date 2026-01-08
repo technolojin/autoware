@@ -11,6 +11,8 @@ print_help() {
     echo "  --no-cuda       Disable CUDA support"
     echo "  --platform      Specify the platform (default: current platform)"
     echo "  --devel-only    Build devel image only"
+    echo "  --target        Specify the target image (default: universe or universe-devel if --devel-only is set)"
+    echo "  --ros-distro    Specify ROS distribution (humble or jazzy, default: humble)"
     echo ""
     echo "Note: The --platform option should be one of 'linux/amd64' or 'linux/arm64'."
 }
@@ -36,6 +38,14 @@ parse_arguments() {
         --devel-only)
             option_devel_only=true
             ;;
+        --target)
+            option_target="$2"
+            shift
+            ;;
+        --ros-distro)
+            option_ros_distro="$2"
+            shift
+            ;;
         *)
             echo "Unknown option: $1"
             print_help
@@ -44,6 +54,15 @@ parse_arguments() {
         esac
         shift
     done
+}
+
+# Set ROS distribution
+set_ros_distro() {
+    if [ -n "$option_ros_distro" ]; then
+        ros_distro="$option_ros_distro"
+    else
+        ros_distro="humble"
+    fi
 }
 
 # Set CUDA options
@@ -56,12 +75,20 @@ set_cuda_options() {
     fi
 }
 
+# Note: Image tags are loaded from env files (amd64.env or amd64_jazzy.env)
+# via the load_env() function, which sets $autoware_base_image and $autoware_base_cuda_image
+
 # Set build options
 set_build_options() {
-    if [ "$option_devel_only" = "true" ]; then
-        targets=("devel")
+    if [ -n "$option_target" ]; then
+        target="$option_target"
+        image_name_suffix=""
     else
-        targets=()
+        if [ "$option_devel_only" = "true" ]; then
+            target="universe-devel"
+        else
+            target="universe"
+        fi
     fi
 }
 
@@ -91,9 +118,28 @@ set_arch_lib_dir() {
 
 # Load env
 load_env() {
-    source "$WORKSPACE_ROOT/amd64.env"
+    if [ "$ros_distro" = "humble" ]; then
+        source "$WORKSPACE_ROOT/amd64.env"
+    else
+        source "$WORKSPACE_ROOT/amd64_jazzy.env"
+    fi
     if [ "$platform" = "linux/arm64" ]; then
         source "$WORKSPACE_ROOT/arm64.env"
+    fi
+}
+
+# Clone repositories
+clone_repositories() {
+    cd "$WORKSPACE_ROOT"
+    if [ ! -d "src" ]; then
+        mkdir -p src
+        vcs import src <pilot-auto.repos
+        vcs import src <extra-packages.repos
+    else
+        echo "Source directory already exists. Updating repositories..."
+        vcs import src <pilot-auto.repos
+        vcs import src <extra-packages.repos
+        vcs pull src
     fi
 }
 
@@ -108,10 +154,10 @@ build_images() {
     echo "Setup args: $setup_args"
     echo "Lib dir: $lib_dir"
     echo "Image name suffix: $image_name_suffix"
-    echo "Targets: ${targets[*]}"
+    echo "Target: $target"
 
     set -x
-    docker buildx bake --load --progress=plain -f "$SCRIPT_DIR/docker-bake.hcl" \
+    docker buildx bake --allow=ssh --load --progress=plain -f "$SCRIPT_DIR/docker-bake-base.hcl" \
         --set "*.context=$WORKSPACE_ROOT" \
         --set "*.ssh=default" \
         --set "*.platform=$platform" \
@@ -119,18 +165,50 @@ build_images() {
         --set "*.args.BASE_IMAGE=$base_image" \
         --set "*.args.SETUP_ARGS=$setup_args" \
         --set "*.args.LIB_DIR=$lib_dir" \
-        --set "devel.tags=ghcr.io/tier4/autoware:latest-devel$image_name_suffix" \
-        --set "prebuilt.tags=ghcr.io/tier4/autoware:latest-prebuilt$image_name_suffix" \
-        --set "runtime.tags=ghcr.io/tier4/autoware:latest-runtime$image_name_suffix" \
-        "${targets[@]}"
+        --set "base.tags=$autoware_base_image" \
+        --set "base-cuda.tags=$autoware_base_cuda_image"
+    docker buildx bake --allow=ssh --load --progress=plain -f "$SCRIPT_DIR/docker-bake.hcl" -f "$SCRIPT_DIR/docker-bake-cuda.hcl" \
+        --set "*.context=$WORKSPACE_ROOT" \
+        --set "*.ssh=default" \
+        --set "*.platform=$platform" \
+        --set "*.args.ROS_DISTRO=$rosdistro" \
+        --set "*.args.AUTOWARE_BASE_IMAGE=$autoware_base_image" \
+        --set "*.args.AUTOWARE_BASE_CUDA_IMAGE=$autoware_base_cuda_image" \
+        --set "*.args.SETUP_ARGS=$setup_args" \
+        --set "*.args.LIB_DIR=$lib_dir" \
+        --set "universe-sensing-perception-devel.tags=ghcr.io/tier4/pilot-auto:universe-sensing-perception-devel" \
+        --set "universe-sensing-perception.tags=ghcr.io/tier4/pilot-auto:universe-sensing-perception" \
+        --set "universe-localization-mapping-devel.tags=ghcr.io/tier4/pilot-auto:universe-localization-mapping-devel" \
+        --set "universe-localization-mapping.tags=ghcr.io/tier4/pilot-auto:universe-localization-mapping" \
+        --set "universe-planning-control-devel.tags=ghcr.io/tier4/pilot-auto:universe-planning-control-devel" \
+        --set "universe-planning-control.tags=ghcr.io/tier4/pilot-auto:universe-planning-control" \
+        --set "universe-vehicle-system-devel.tags=ghcr.io/tier4/pilot-auto:universe-vehicle-system-devel" \
+        --set "universe-vehicle-system.tags=ghcr.io/tier4/pilot-auto:universe-vehicle-system" \
+        --set "universe-visualization-devel.tags=ghcr.io/tier4/pilot-auto:universe-visualization-devel" \
+        --set "universe-visualization.tags=ghcr.io/tier4/pilot-auto:universe-visualization" \
+        --set "universe-devel.tags=ghcr.io/tier4/pilot-auto:universe-devel" \
+        --set "universe.tags=ghcr.io/tier4/pilot-auto:universe" \
+        --set "universe-sensing-perception-devel-cuda.tags=ghcr.io/tier4/pilot-auto:universe-sensing-perception-devel-cuda" \
+        --set "universe-sensing-perception-cuda.tags=ghcr.io/tier4/pilot-auto:universe-sensing-perception-cuda" \
+        --set "universe-devel-cuda.tags=ghcr.io/tier4/pilot-auto:universe-devel-cuda" \
+        --set "universe-cuda.tags=ghcr.io/tier4/pilot-auto:universe-cuda" \
+        "$target$image_name_suffix"
     set +x
+}
+
+# Remove dangling images
+remove_dangling_images() {
+    docker image prune -f
 }
 
 # Main script execution
 parse_arguments "$@"
+set_ros_distro
 set_cuda_options
 set_build_options
 set_platform
 set_arch_lib_dir
 load_env
+clone_repositories
 build_images
+remove_dangling_images
