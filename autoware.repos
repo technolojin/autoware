@@ -181,14 +181,14 @@ repositories:
   autoware/mrm_plugin:
     type: git
     url: git@github.com:tier4/mrm_plugin.x2.git
-    version: ec51294916c5df5abfc6dad9190cdc9177844271
     branch: beta/v4.3
+    version: ec51294916c5df5abfc6dad9190cdc9177844271
     base: false
   vendor/redundancy_switcher_interface:
     type: git
     url: git@github.com:tier4/redundancy_switcher_interface.git
-    version: 934b49d1b13ec2d5da475d1530e42af0c067f376
     branch: beta/v4.3
+    version: 934b49d1b13ec2d5da475d1530e42af0c067f376
     base: false
   vendor/septentrio_gnss_driver:
     type: git
@@ -198,8 +198,8 @@ repositories:
   autoware/launcher:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    version: c4b56a2d8fcf407f4ddfbe438d1d46e6a5e0c40c
     branch: beta/v4.3
+    version: 2eecaf06acb061b80f921e207460f4d884faa05b
     base: false
   autoware/individual_params:
     type: git
@@ -209,14 +209,14 @@ repositories:
   description/vehicle/j6_gen2_description:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
-    version: 59bd2e606483b1db85d401dbeeaa7d191ade7654
     branch: beta/v4.3
+    version: 59bd2e606483b1db85d401dbeeaa7d191ade7654
     base: false
   vendor/mj20_interface:
     type: git
     url: git@github.com:tier4/mj20_interface.git
-    version: afe4b7a8c5b0e8e23b0a0312009e3a4f3d2e0430
     branch: beta/v4.3
+    version: afe4b7a8c5b0e8e23b0a0312009e3a4f3d2e0430
     base: false
   vendor/ros2_socketcan:
     type: git
