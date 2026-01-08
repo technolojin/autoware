@@ -3,12 +3,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: fdc449eb24815e79656752ee18362cb4cb61cc36
+    version: cc51e6d513f455ebcb6308e012b832c547958dcb
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: f3d3a1817b62479136dd8ec7c5e3a2ec7219a236
+    version: 5660f5e1de98e9b424aec16bc0e55efac058ea0a
     base: true
   autoware/autoware_cmake:
     type: git
@@ -18,47 +18,47 @@ repositories:
   autoware/autoware_utils:
     type: git
     url: https://github.com/autowarefoundation/autoware_utils.git
-    version: 1ab84eca6b4c1eb10f54c28c98ea8f547b60495f
+    version: 8f3fb1c3815bf346510cf58d14a4d76d4cdf4a48
     base: true
   autoware/autoware_lanelet2_extension:
     type: git
     url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
-    version: 39bd05936556f99cd38904022a2e5e6fd2efd93e
+    version: 15a50aff0771ae64262be4ea037f718b9ccf71d2
     base: true
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: a6e6b5636347f4f5545999eac01b3d182d187aef
+    version: 00d7f7450eec78cc9858a0e8e4f213934a4683c9
     base: false
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: b6e40268cf2ecf5cab07bbd6c7841f64b3edb14a
+    version: 0bcc7c54e4aab403aa957b4496e5dee15dadaef8
     base: true
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: a8ec321e0411fadf95597bef6d51c0650f0f70ef
+    version: 6158491d2c100265938b6a2aaace42401ea7e726
     base: true
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: b9c385197baf1a2e77f088bea46e7287cd3ec367
+    version: c92a340c35a3de63cae462c2d3ad93c446d1ce6c
     base: true
   autoware/autoware_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_msgs.git
-    version: 588f00df3acca009ea709a74acd6538897eef424
+    version: c0bcee78433229d6f447342b9ca6bb228f2d1e75
     base: true
   autoware/autoware_adapi_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_adapi_msgs.git
-    version: 6c3faf2311db65dbd37a78904c9b96edad4b3bbd
+    version: 34f89d088c2cf0ae7ca72f1a325ddb8308a0daeb
     base: true
   autoware/autoware_internal_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_internal_msgs.git
-    version: f5524e501775463f508cdb93fe6aec45e1fb4836
+    version: 094122d37e56c7bfd8f3385307d345cfdb2123e6
     base: true
   autoware/individual_params:
     type: git
@@ -73,7 +73,7 @@ repositories:
   autoware/autoware_rviz_plugins:
     type: git
     url: https://github.com/autowarefoundation/autoware_rviz_plugins.git
-    version: 06a4426df4bbfe9a98e4b3240f59928f014b824e
+    version: df40247651df65c0ba702c5f89cf42c0b147ee34
     base: true
   # description
   description/sensor/sensor_component_description:
@@ -95,12 +95,13 @@ repositories:
   # ecu_system_setup:
   #   type: git
   #   url: git@github.com:tier4/autoware_ecu_system_setup.git
+  #   branch: main
   #   version: main
   # vendor
   vendor/pacmod_interface:
     type: git
     url: https://github.com/tier4/pacmod_interface.git
-    version: 7da80108c801fb090e8f86df02c433f8f286fcb8
+    version: 2b93fb21d0bd2d9d2366856314577198cdbe2aa3
     base: false
   vendor/tamagawa_imu_driver:
     type: git
@@ -120,7 +121,7 @@ repositories:
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
-    version: v0.2.11
+    version: v0.2.15.1
     base: true
   vendor/sync_tooling_msgs:  # For Nebula SYNC.TOOLING support
     type: git
@@ -146,7 +147,7 @@ repositories:
     type: git
     url: https://github.com/tier4/ars408_driver.git
     version: 60678fc12918f968afed9f519915c16cf76edeae
-    base: false
+    base: true
   vendor/spinnaker:
     type: git
     url: https://github.com/tier4/spinnaker.git
@@ -224,7 +225,7 @@ repositories:
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: 31f4c2a7399e21d7f8a1a4d333d0802fdaec18fe
+    version: e24f67e083cae3718f44764089cf44e554db35d1
     base: true
 
   # middleware
