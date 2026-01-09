@@ -24,7 +24,7 @@ ansible_args+=("--extra-vars" "data_dir=$HOME/autoware_data")
 source 'amd64.env'
 while read -r env_name; do
     ansible_args+=("--extra-vars" "${env_name}=${!env_name}")
-done < <(sed "s/=.*//" <amd64.env)
+done < <(sed -e '/^[[:space:]]*#/d' -e '/^[[:space:]]*$/d' -e "s/=.*//" <amd64.env)
 
 ansible-galaxy collection install -f -r "ansible-galaxy-requirements.yaml"
 ansible-playbook "ansible/playbooks/local_dev_env.yaml" \
