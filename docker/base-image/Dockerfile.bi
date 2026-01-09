@@ -21,7 +21,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install --no-ins
   && rm -rf /var/lib/apt/lists/*
 
 ## Copy files
-COPY autoware.repos setup-dev-env.sh ansible-galaxy-requirements.yaml amd64.env arm64.env /autoware/
+COPY autoware.repos simulator.repos tools.repos setup-dev-env.sh ansible-galaxy-requirements.yaml amd64.env arm64.env /autoware/
 COPY ansible/ /autoware/ansible/
 WORKDIR /autoware
 RUN ls /autoware
@@ -38,11 +38,19 @@ RUN --mount=type=ssh ./setup-dev-env.sh -y $SETUP_ARGS \
   && pip uninstall -y ansible ansible-core
 
 RUN sed -i "s/git@github\.com:/https:\/\/github\.com\//g" ./autoware.repos \
+  && sed -i "s/git@github\.com:/https:\/\/github\.com\//g" ./simulator.repos \
+  && sed -i "s/git@github\.com:/https:\/\/github\.com\//g" ./tools.repos \
   && sed -i "s/https:\/\/github.com/https:\/\/x-access-token:$GITHUB_TOKEN@github.com/g" ./autoware.repos \
+  && sed -i "s/https:\/\/github.com/https:\/\/x-access-token:$GITHUB_TOKEN@github.com/g" ./simulator.repos \
+  && sed -i "s/https:\/\/github.com/https:\/\/x-access-token:$GITHUB_TOKEN@github.com/g" ./tools.repos \
   && cat ./autoware.repos \
+  && cat ./simulator.repos \
+  && cat ./tools.repos \
   && mkdir -p src
 
-RUN --mount=type=ssh vcs import src < autoware.repos --shallow
+RUN --mount=type=ssh vcs import src < autoware.repos --shallow \
+  && vcs import src < simulator.repos --shallow \
+  && vcs import src < tools.repos --shallow
 
 RUN rosdep update \
   && DEBIAN_FRONTEND=noninteractive rosdep install -y --ignore-src --from-paths src --rosdistro "$ROS_DISTRO" \

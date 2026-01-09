@@ -22,7 +22,7 @@ artifacts:
             - tools.repos
           import_path: src
       environment_variables:
-        AUTOWARE_PATH: /home/autoware/autoware.proj
+        AUTOWARE_PATH: /home/autoware/pilot-auto
         ML_MODELS_PATH: /opt/autoware/mlmodels
         DEBIAN_FRONTEND: noninteractive
         LANG: C.UTF-8
@@ -113,7 +113,7 @@ artifacts:
         from: ghcr.io/tier4/pilot-auto.x2/base-image:v4.3
       output_container_image:
         from: asset-deploy
-        workdir: /home/autoware/autoware.proj
+        workdir: /home/autoware/pilot-auto
         user: autoware
       output_rootfs_image:
         from: ecu-system-setup
@@ -142,7 +142,7 @@ artifacts:
             - tools.repos
           import_path: src
       environment_variables:
-        AUTOWARE_PATH: /home/autoware/autoware.proj
+        AUTOWARE_PATH: /home/autoware/pilot-auto
         ML_MODELS_PATH: /opt/autoware/mlmodels
         DEBIAN_FRONTEND: noninteractive
         LANG: C.UTF-8
@@ -229,7 +229,7 @@ artifacts:
         from: ghcr.io/tier4/pilot-auto.x2/base-image:v4.3
       output_container_image:
         from: asset-deploy
-        workdir: /home/autoware/autoware.proj
+        workdir: /home/autoware/pilot-auto
         user: autoware
       output_rootfs_image:
         from: ecu-system-setup
@@ -254,7 +254,7 @@ artifacts:
             - autoware.repos
           import_path: src
       environment_variables:
-        AUTOWARE_PATH: /home/autoware/pilot-auto.x2
+        AUTOWARE_PATH: /home/autoware/pilot-auto
         DEBIAN_FRONTEND: noninteractive
         LANG: C.UTF-8
       linux_parameters:
@@ -1014,7 +1014,7 @@ simulations:
         vehicle_model: j6_gen2
         sensor_model: aip_x2_gen2
       pre_tasks:
-        - exec: rm -f /opt/autoware/mlmodels/centerpoint/*engine && rm -f /opt/autoware/mlmodels/centerpoint/*json && source /home/autoware/autoware.proj/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_x2 model_path:=/opt/autoware/mlmodels/centerpoint model_param_path:=$(ros2 pkg prefix autoware_launch --share)/config/perception/object_recognition/detection/lidar_model/centerpoint_x2.param.yaml build_only:=true
+        - exec: rm -f /opt/autoware/mlmodels/centerpoint/*engine && rm -f /opt/autoware/mlmodels/centerpoint/*json && source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_x2 model_path:=/opt/autoware/mlmodels/centerpoint model_param_path:=$(ros2 pkg prefix autoware_launch --share)/config/perception/object_recognition/detection/lidar_model/centerpoint_x2.param.yaml build_only:=true
           mounts:
             - volume: model
       volumes:
@@ -1050,10 +1050,10 @@ simulations:
       runtime:
         type: gpu1/amd64/large
       pre_tasks:
-        - exec: rm -f /opt/autoware/mlmodels/centerpoint/*engine && rm -f /opt/autoware/mlmodels/centerpoint/*json && source /home/autoware/autoware.proj/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_x2 model_path:=/opt/autoware/mlmodels/centerpoint model_param_path:=$(ros2 pkg prefix autoware_launch --share)/config/perception/object_recognition/detection/lidar_model/centerpoint_x2.param.yaml build_only:=true
+        - exec: rm -f /opt/autoware/mlmodels/centerpoint/*engine && rm -f /opt/autoware/mlmodels/centerpoint/*json && source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_x2 model_path:=/opt/autoware/mlmodels/centerpoint model_param_path:=$(ros2 pkg prefix autoware_launch --share)/config/perception/object_recognition/detection/lidar_model/centerpoint_x2.param.yaml build_only:=true
           mounts:
             - volume: model
-        - exec: source /home/autoware/autoware.proj/install/setup.bash && ros2 launch autoware_tensorrt_yolox yolox_s_plus_opt.launch.xml model_path:=/opt/autoware/mlmodels/yolox/yolox-sPlus-T4-960x960-debris.onnx label_path:=/opt/autoware/mlmodels/yolox/label.txt color_map_path:=/opt/autoware/mlmodels/yolox/semseg_color_map.csv yolox_param_path:=$(ros2 pkg prefix autoware_tensorrt_yolox --share)/config/yolox_s_plus_opt.param.yaml use_decompress:=false build_only:=true
+        - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_tensorrt_yolox yolox_s_plus_opt.launch.xml model_path:=/opt/autoware/mlmodels/yolox/yolox-sPlus-T4-960x960-debris.onnx label_path:=/opt/autoware/mlmodels/yolox/label.txt color_map_path:=/opt/autoware/mlmodels/yolox/semseg_color_map.csv yolox_param_path:=$(ros2 pkg prefix autoware_tensorrt_yolox --share)/config/yolox_s_plus_opt.param.yaml use_decompress:=false build_only:=true
           mounts:
             - volume: model_yolox
       parameters:
@@ -1146,6 +1146,7 @@ simulations:
         control_module_preset: dlr_control_validator
         vehicle_model: j6_gen2
         sensor_model: aip_x2_gen2
+        override_topics_regex: '"^/(?!localization/[^ ]*/pointcloud$)(?!perception/object_recognition/detection/(?!objects$)).*"'
 
   - name: dlr_pc_w_loc_track_pred
     type: planning_control
@@ -1173,6 +1174,7 @@ simulations:
         additional_log_archive:
           paths:
             - /home/autoware/.ros/log/autoware_metrics
+        override_topics_regex: '"^/(?!localization/[^ ]*/pointcloud$)(?!perception/object_recognition/detection/(?!objects$)).*"'
       pre_tasks:
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_tiny model_path:=/home/autoware/autoware_data/lidar_centerpoint model_param_path:=$(ros2 pkg prefix autoware_lidar_centerpoint --share)/config/centerpoint_tiny.param.yaml build_only:=true
           mounts:
@@ -1205,6 +1207,7 @@ simulations:
         additional_log_archive:
           paths:
             - /home/autoware/.ros/log/autoware_metrics
+        override_topics_regex: '"^/(?!localization/[^ ]*/pointcloud$)(?!perception/object_recognition/detection/(?!objects$)).*"'
 
 release:
   name_template: ${datetime}-${version}

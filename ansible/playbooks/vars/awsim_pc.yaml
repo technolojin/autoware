@@ -2,7 +2,7 @@
 # common
 daemon_reload: "{{ reload_systemd | default('yes') }}"
 autoware_env_dir: "{{ ansible_env.HOME }}"
-autoware_install_dir: "{{ ansible_env.HOME }}/pilot-auto.x2"
+autoware_install_dir: "{{ ansible_env.HOME }}/pilot-auto"
 autoware_env_dir_privileged: false
 ros_domain_id: 180
 vehicle_model: j6_gen1

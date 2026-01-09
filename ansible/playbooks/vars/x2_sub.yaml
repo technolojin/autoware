@@ -62,7 +62,7 @@ sync_tooling:
       - phc2sys_enp5s0f0_to_enp3s0
 
 # rviz
-rviz_config_path: /home/autoware/autoware.proj/src/autoware/launcher/autoware_launch/rviz/autoware_x2.rviz
+rviz_config_path: "{{ autoware_install_dir }}/install/autoware_launch/share/autoware_launch/rviz/autoware_x2.rviz"
 rviz_launch_file_name: autoware_sub_rviz.launch.xml
 rviz_launch_method: autoware_launch
 rviz_default_service_enabled: false
