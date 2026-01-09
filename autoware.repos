@@ -234,6 +234,11 @@ repositories:
     branch: bevdet_vendor-ros2
     version: bevdet_vendor-ros2
     base: true
+  vendor/generate_parameter_library:  # To solve the dependency problem of rclcpp_lifecycle
+    type: git
+    url: https://github.com/PickNikRobotics/generate_parameter_library.git
+    version: 0.6.0
+    base: true
   rclcpp:  # Based stable version, the fix-patch for service in initialization and the glog feature and the fix-patch for loading node in container is added
     type: git
     url: https://github.com/tier4/rclcpp.git
