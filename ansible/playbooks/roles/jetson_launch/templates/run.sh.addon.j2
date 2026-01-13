@@ -3,8 +3,12 @@
 source {{ autoware_env_dir }}/autoware.env && true
 source {{ autoware_env_dir }}/vehicle.env
 
-source /opt/ros/humble/setup.bash
-source {{ perception_application_base_path }}/overlay_ws/install/setup.bash
+# get installed ros distro
+# shellcheck disable=SC2012
+ROS_DISTRO=$(ls -1 /opt/ros | head -1)
+
+source /opt/ros/${ROS_DISTRO}/setup.bash
+source {{ autoware_install_dir }}/install/setup.bash
 
 {% if fool_proof_check | bool %}
 source /opt/autoware/services/fool-proof-check/activate_call_diag.sh
@@ -31,7 +35,7 @@ if [ "$VEHICLE_MODEL" == "j6_gen2" ]; then
 fi
 
 # for letterbox_monitor
-mkdir -p {{ perception_application_base_path }}/.ros/recognition_log
-export ROS_LOG_DIR={{ perception_application_base_path }}/.ros/recognition_log
+mkdir -p /home/autoware/.ros/recognition_log
+export ROS_LOG_DIR=/home/autoware/.ros/recognition_log
 
 ros2 launch edge_auto_jetson_launch edge_auto_jetson.launch.xml

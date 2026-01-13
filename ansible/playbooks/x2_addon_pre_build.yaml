@@ -1,0 +1,4 @@
+- name: Setup x2 addon (pre-build)
+  hosts: localhost
+  roles:
+    - role: autoware.ecu_system_setup.sxpf_driver

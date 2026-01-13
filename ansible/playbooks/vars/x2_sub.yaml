@@ -132,7 +132,6 @@ disable_system_service_list:
   - apt-daily.timer
 ## In the L2 version, enp5s0f1 of the Sub ECU is not connected, so it needs to be changed to enp5s0f0.
 network_interface_for_tier4_service_standby_wait: enp5s0f1
-ecu_type: sub
 
 # simple_system_launch
 simple_system_launch_items:

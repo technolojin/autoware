@@ -22,9 +22,6 @@ netcore_rmem_max: 2147483647
 netcore_rmem_default: 212992
 netcore_wmem_max: 2147483647
 
-# jetson-perception-service
-# jetson_id: 0
-
 # ptp4l port
 ptp4l_network_port: enP1p1s0
 ptp4l_use_software_stamp: false
@@ -57,7 +54,7 @@ rsyslog_server_ipaddr: 192.168.30.71 # X2 Logging ECU
 rsyslog_queue_maxsize: 1g
 
 # set-autoware-env
-autoware_install_dir: /home/autoware/overlay_ws
+autoware_install_dir: /home/autoware/edge-auto-jetson
 
 # rsyncd - server for logpacker coredump plugin
 # rsyncd - add systemd-tmpfiles configuration for logpacker coredump plugin
@@ -74,32 +71,28 @@ ansible_python_path: /usr/bin/python3.10
 # camera driver
 camera_driver_repo: https://api.github.com/repos/tier4/tier4_automotive_hdr_camera/releases/tags/v2.1.0
 
-# perception application/service
-perception_application_edge_auto_version: beta/v4.3
-perception_application_base_path: /home/autoware
-perception_application_edge_auto_repo: git@github.com:tier4/edge-auto-jetson.x2.git
-perception_application_native_built_ros: false # True if we build ROS from source and not using apt
-perception_application_service_run_templates_file: perception_application/run.sh.edge_auto_x2.j2 # we can use different run files if the path is in local
-perception_application_directory_name: overlay_ws
-perception_startup_service_template: perception_application/perception-startup.service.j2
+# jetson_launch
+# jetson_launch_id: 0 (perception1) or 1 (perception2) -- set in playbook
+jetson_launch_run_template: run.sh.edge_auto_x2.j2 # we can use different run files if the path is in local
+# jetson_launch_perception_type: od (perception1) or tlr (perception2) -- set in playbook
+# jetson_launch_video_num: 4 (perception1/perception2) -- set in playbook
 
 # fool proof check service
 fool_proof_check: true
 check_target_service: perception-startup.service
-ecu_type: perception
 fool_proof_check_network_interface: mgbe1
 
 # letterbox_monitor
 letterbox_monitor:
   - service_name: default
-    ros_log_dir: "{{ perception_application_base_path }}/.ros/log"
+    ros_log_dir: /home/autoware/.ros/log
     user_name: autoware
     group_name: autoware
     use_call_diag: false
     use_letterbox: false
     ignore_node_names: []
   - service_name: recognition
-    ros_log_dir: "{{ perception_application_base_path }}/.ros/recognition_log"
+    ros_log_dir: /home/autoware/.ros/recognition_log
     user_name: autoware
     group_name: autoware
     use_call_diag: true

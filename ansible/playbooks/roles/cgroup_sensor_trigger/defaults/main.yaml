@@ -1,0 +1,2 @@
+cgroup_sensor_trigger_executable_find_path: "{{ autoware_install_dir }}/install"
+cgroup_sensor_trigger_executable_name: sensor_trigger_exe

@@ -37,7 +37,6 @@ rsync_target_host_ip: 192.168.20.71
 # set_autoware_env
 vehicle_id: INVALID_VEHICLE_ID
 network_interface_for_tier4_service_standby_wait: vlan.500
-ecu_type: media_streaming
 # disable services
 # cspell:ignore runlevel utmp
 disable_system_service_list:
