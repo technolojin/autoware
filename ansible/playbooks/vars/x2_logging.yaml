@@ -142,7 +142,6 @@ logagent_rosbag_logging_directory_mountpoint: "{{ logagent_rosbag_logging_direct
 # fool proof check service
 fool_proof_check: true
 check_target_service: logpacker.service
-ecu_type: logging
 fool_proof_check_network_interface: enp3s0f0
 # # letterbox_monitor
 # letterbox_monitor:

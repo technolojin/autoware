@@ -1,0 +1,10 @@
+#!/bin/bash
+# cspell: ignore sxpf
+
+source /opt/autoware/services/set-autoware-env/setup.sh
+
+source {{ autoware_install_dir }}/install/setup.bash
+
+mkdir -p /home/autoware/.ros/sxpf_ros_driver_log
+export ROS_LOG_DIR=/home/autoware/.ros/sxpf_ros_driver_log
+ros2 launch sxpf {{ sxpf_ros_driver_service_launch_file }} all_camera_namespaces:=[{{ sxpf_ros_driver_service_cameras | join(',') }}] do_rectify:={{ sxpf_ros_driver_service_do_rectify }}

@@ -32,4 +32,7 @@ ansible-playbook "ansible/playbooks/local_dev_env.yaml" \
     -e WORKSPACE_ROOT="$(pwd)" \
     --skip-tags vcs
 
+# Install sxpf_driver for addon ECU
+ansible-playbook "ansible/playbooks/x2_addon_pre_build.yaml"
+
 git config --global --unset-all url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf

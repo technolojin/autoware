@@ -343,11 +343,12 @@ artifacts:
       source:
         vcstool:
           repositories_files:
-            - autoware.repos
+            - edge-auto-jetson.repos
           import_path: src
       environment_variables:
-        DEBIAN_FRONTEND: noninteractive
+        AUTOWARE_PATH: /home/autoware/edge-auto-jetson
         ML_MODELS_PATH: /opt/autoware/mlmodels
+        DEBIAN_FRONTEND: noninteractive
       linux_parameters:
         kernel_version: 5.15.148-tegra
       phases:
@@ -368,8 +369,28 @@ artifacts:
           ml_packages:
             - name: yolox
               release: with_unknown/mlmodel/v1.0.1_Anvil_ESG620-133-r36.4.0
+        - name: edge-auto-jetson-build
+          user: autoware
+          exec: ./.webauto-ci/perception/edge-auto-jetson-build/run.sh
+          environment_variables:
+            PARALLEL_WORKERS: "32"
+            CCACHE_DIR: /tmp/build/cache/ccache
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+            - name: ccache
+              mountpoint: /tmp/build/cache/ccache
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/perception/edge-auto-jetson-build/**/*
+              - src/**/*
+              - "!src/ecu_system_setup/**"
+          incremental_build:
+            enabled: true
         - name: ecu-system-setup
-          user: root
+          user: autoware
           exec: ./.webauto-ci/perception/ecu-system-setup/run.sh
           environment_variables:
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_perception.yaml
@@ -386,7 +407,7 @@ artifacts:
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
-        from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.48.0
+        from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.48
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
@@ -401,11 +422,12 @@ artifacts:
       source:
         vcstool:
           repositories_files:
-            - autoware.repos
+            - edge-auto-jetson.repos
           import_path: src
       environment_variables:
-        DEBIAN_FRONTEND: noninteractive
+        AUTOWARE_PATH: /home/autoware/edge-auto-jetson
         ML_MODELS_PATH: /opt/autoware/mlmodels
+        DEBIAN_FRONTEND: noninteractive
       linux_parameters:
         kernel_version: 5.15.148-tegra
       phases:
@@ -432,8 +454,28 @@ artifacts:
               release: awf/1.0_Anvil_ESG620-133-r36.4.0
             - name: traffic_light_detector
               release: common/mlmodel/v0.1.2_Anvil_ESG620-133-r36.4.0
+        - name: edge-auto-jetson-build
+          user: autoware
+          exec: ./.webauto-ci/perception/edge-auto-jetson-build/run.sh
+          environment_variables:
+            PARALLEL_WORKERS: "32"
+            CCACHE_DIR: /tmp/build/cache/ccache
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+            - name: ccache
+              mountpoint: /tmp/build/cache/ccache
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/perception/edge-auto-jetson-build/**/*
+              - src/**/*
+              - "!src/ecu_system_setup/**"
+          incremental_build:
+            enabled: true
         - name: ecu-system-setup
-          user: root
+          user: autoware
           exec: ./.webauto-ci/perception/ecu-system-setup/run.sh
           environment_variables:
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_perception.yaml
@@ -450,7 +492,7 @@ artifacts:
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
-        from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.48.0
+        from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.48
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
@@ -465,10 +507,10 @@ artifacts:
       source:
         vcstool:
           repositories_files:
-            - autoware.repos
+            - edge-auto-jetson.repos
           import_path: src
       environment_variables:
-        AUTOWARE_PATH: /home/autoware/overlay_ws
+        AUTOWARE_PATH: /home/autoware/edge-auto-jetson
         ML_MODELS_PATH: /opt/autoware/mlmodels
         DEBIAN_FRONTEND: noninteractive
         LANG: C.UTF-8
@@ -509,6 +551,26 @@ artifacts:
               release: with_unknown/mlmodel/v1.0.1
             - name: streampetr
               release: test/v0.4
+        - name: edge-auto-jetson-build
+          user: autoware
+          exec: ./.webauto-ci/addon/edge-auto-jetson-build/run.sh
+          environment_variables:
+            PARALLEL_WORKERS: "32"
+            CCACHE_DIR: /tmp/build/cache/ccache
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+            - name: ccache
+              mountpoint: /tmp/build/cache/ccache
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/addon/edge-auto-jetson-build/**/*
+              - src/**/*
+              - "!src/ecu_system_setup/**"
+          incremental_build:
+            enabled: true
         - name: ecu-system-setup
           user: autoware
           exec: ./.webauto-ci/addon/ecu-system-setup/run.sh
@@ -547,9 +609,10 @@ artifacts:
       source:
         vcstool:
           repositories_files:
-            - autoware.repos
+            - edge-auto-jetson.repos
           import_path: src
       environment_variables:
+        AUTOWARE_PATH: /home/autoware/edge-auto-jetson
         ML_MODELS_PATH: /opt/autoware/mlmodels
       linux_parameters:
         kernel_version: 5.15.148-tegra
@@ -565,6 +628,26 @@ artifacts:
           build_result_reuse:
             key_files:
               - .webauto-ci/addonlite/environment-setup/**/*
+        - name: edge-auto-jetson-build
+          user: autoware
+          exec: ./.webauto-ci/addonlite/edge-auto-jetson-build/run.sh
+          environment_variables:
+            PARALLEL_WORKERS: "32"
+            CCACHE_DIR: /tmp/build/cache/ccache
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+            - name: ccache
+              mountpoint: /tmp/build/cache/ccache
+          build_result_reuse:
+            key_files:
+              - .webauto-ci/addonlite/edge-auto-jetson-build/**/*
+              - src/**/*
+              - "!src/ecu_system_setup/**"
+          incremental_build:
+            enabled: true
         - name: asset-deploy
           user: autoware
           exec: ./.webauto-ci/common/asset-deploy/run.sh
@@ -578,7 +661,7 @@ artifacts:
             - name: traffic_light_detector
               release: common/mlmodel/v0.1.2_Anvil_ESG620-133-r36.4.0
         - name: ecu-system-setup
-          user: root
+          user: autoware
           exec: ./.webauto-ci/addonlite/ecu-system-setup/run.sh
           environment_variables:
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_addonlite.yaml
@@ -590,12 +673,12 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
-              - .webauto-ci/perception/ecu-system-setup/**/*
+              - .webauto-ci/addonlite/ecu-system-setup/**/*
               - src/ecu_system_setup/**/*
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
-        from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.48.0
+        from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.48
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
@@ -947,13 +1030,13 @@ simulations:
         play_delay: "150"
         traffic_light_recognition/fusion_only: "false"
       pre_tasks:
-        - exec: TLF=traffic_light_fine_detector && source $HOME/autoware.proj/install/setup.bash && ros2 launch autoware_${TLF} ${TLF}.launch.xml model_path:=$HOME/autoware_data/${TLF}/tlr_car_ped_yolox_s_batch_6.onnx label_name:=$HOME/autoware_data/${TLF}/tlr_labels.txt  build_only:=true
+        - exec: TLF=traffic_light_fine_detector && source $HOME/pilot-auto/install/setup.bash && ros2 launch autoware_${TLF} ${TLF}.launch.xml model_path:=$HOME/autoware_data/${TLF}/tlr_car_ped_yolox_s_batch_6.onnx label_name:=$HOME/autoware_data/${TLF}/tlr_labels.txt  build_only:=true
           mounts:
             - volume: model_fine_detector
-        - exec: TLC=traffic_light_classifier && source $HOME/autoware.proj/install/setup.bash && ros2 launch autoware_${TLC} car_${TLC}.launch.xml model_path:=$HOME/autoware_data/${TLC}/${TLC}_mobilenetv2_batch_6.onnx label_path:=$HOME/autoware_data/${TLC}/lamp_labels.txt build_only:=true
+        - exec: TLC=traffic_light_classifier && source $HOME/pilot-auto/install/setup.bash && ros2 launch autoware_${TLC} car_${TLC}.launch.xml model_path:=$HOME/autoware_data/${TLC}/${TLC}_mobilenetv2_batch_6.onnx label_path:=$HOME/autoware_data/${TLC}/lamp_labels.txt build_only:=true
           mounts:
             - volume: model_classifier
-        - exec: TLC=traffic_light_classifier && source $HOME/autoware.proj/install/setup.bash && ros2 launch autoware_${TLC} pedestrian_${TLC}.launch.xml model_path:=$HOME/autoware_data/${TLC}/ped_${TLC}_mobilenetv2_batch_6.onnx label_name:=$HOME/autoware_data/${TLC}/lamp_labels_ped.txt build_only:=true
+        - exec: TLC=traffic_light_classifier && source $HOME/pilot-auto/install/setup.bash && ros2 launch autoware_${TLC} pedestrian_${TLC}.launch.xml model_path:=$HOME/autoware_data/${TLC}/ped_${TLC}_mobilenetv2_batch_6.onnx label_name:=$HOME/autoware_data/${TLC}/lamp_labels_ped.txt build_only:=true
           mounts:
             - volume: model_classifier
       volumes:
@@ -979,13 +1062,13 @@ simulations:
         traffic_light_recognition/fusion_only: "false"
         traffic_light_recognition/high_accuracy_detection_type: whole_image_detection
       pre_tasks:
-        - exec: source $HOME/autoware.proj/install/setup.bash && ros2 launch autoware_tensorrt_yolox yolox_traffic_light_detector.launch.xml model_path:=$HOME/autoware_data/tensorrt_yolox/yolox_s_car_ped_tl_detector_960_960_batch_1.onnx label_path:=$HOME/autoware_data/tensorrt_yolox/car_ped_tl_detector_labels.txt yolox_param_path:=$(ros2 pkg prefix autoware_tensorrt_yolox --share)/config/yolox_traffic_light_detector.param.yaml use_decompress:=false build_only:=true
+        - exec: source $HOME/pilot-auto/install/setup.bash && ros2 launch autoware_tensorrt_yolox yolox_traffic_light_detector.launch.xml model_path:=$HOME/autoware_data/tensorrt_yolox/yolox_s_car_ped_tl_detector_960_960_batch_1.onnx label_path:=$HOME/autoware_data/tensorrt_yolox/car_ped_tl_detector_labels.txt yolox_param_path:=$(ros2 pkg prefix autoware_tensorrt_yolox --share)/config/yolox_traffic_light_detector.param.yaml use_decompress:=false build_only:=true
           mounts:
             - volume: model_tensorrt_yolox
-        - exec: TLC=traffic_light_classifier && source $HOME/autoware.proj/install/setup.bash && ros2 launch autoware_${TLC} car_${TLC}.launch.xml model_path:=$HOME/autoware_data/${TLC}/${TLC}_mobilenetv2_batch_6.onnx label_path:=$HOME/autoware_data/${TLC}/lamp_labels.txt build_only:=true
+        - exec: TLC=traffic_light_classifier && source $HOME/pilot-auto/install/setup.bash && ros2 launch autoware_${TLC} car_${TLC}.launch.xml model_path:=$HOME/autoware_data/${TLC}/${TLC}_mobilenetv2_batch_6.onnx label_path:=$HOME/autoware_data/${TLC}/lamp_labels.txt build_only:=true
           mounts:
             - volume: model_classifier
-        - exec: TLC=traffic_light_classifier && source $HOME/autoware.proj/install/setup.bash && ros2 launch autoware_${TLC} pedestrian_${TLC}.launch.xml model_path:=$HOME/autoware_data/${TLC}/ped_${TLC}_mobilenetv2_batch_6.onnx label_name:=$HOME/autoware_data/${TLC}/lamp_labels_ped.txt build_only:=true
+        - exec: TLC=traffic_light_classifier && source $HOME/pilot-auto/install/setup.bash && ros2 launch autoware_${TLC} pedestrian_${TLC}.launch.xml model_path:=$HOME/autoware_data/${TLC}/ped_${TLC}_mobilenetv2_batch_6.onnx label_name:=$HOME/autoware_data/${TLC}/lamp_labels_ped.txt build_only:=true
           mounts:
             - volume: model_classifier
       volumes:
@@ -1014,7 +1097,7 @@ simulations:
         vehicle_model: j6_gen2
         sensor_model: aip_x2_gen2
       pre_tasks:
-        - exec: rm -f /opt/autoware/mlmodels/centerpoint/*engine && rm -f /opt/autoware/mlmodels/centerpoint/*json && source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_x2 model_path:=/opt/autoware/mlmodels/centerpoint model_param_path:=$(ros2 pkg prefix autoware_launch --share)/config/perception/object_recognition/detection/lidar_model/centerpoint_x2.param.yaml build_only:=true
+        - exec: rm -f /opt/autoware/mlmodels/centerpoint/*engine && rm -f /opt/autoware/mlmodels/centerpoint/*json && source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint model_path:=/opt/autoware/mlmodels/centerpoint model_param_path:=$(ros2 pkg prefix autoware_launch --share)/config/perception/object_recognition/detection/lidar_model/centerpoint.param.yaml build_only:=true
           mounts:
             - volume: model
       volumes:
@@ -1050,7 +1133,7 @@ simulations:
       runtime:
         type: gpu1/amd64/large
       pre_tasks:
-        - exec: rm -f /opt/autoware/mlmodels/centerpoint/*engine && rm -f /opt/autoware/mlmodels/centerpoint/*json && source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint_x2 model_path:=/opt/autoware/mlmodels/centerpoint model_param_path:=$(ros2 pkg prefix autoware_launch --share)/config/perception/object_recognition/detection/lidar_model/centerpoint_x2.param.yaml build_only:=true
+        - exec: rm -f /opt/autoware/mlmodels/centerpoint/*engine && rm -f /opt/autoware/mlmodels/centerpoint/*json && source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint model_path:=/opt/autoware/mlmodels/centerpoint model_param_path:=$(ros2 pkg prefix autoware_launch --share)/config/perception/object_recognition/detection/lidar_model/centerpoint.param.yaml build_only:=true
           mounts:
             - volume: model
         - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_tensorrt_yolox yolox_s_plus_opt.launch.xml model_path:=/opt/autoware/mlmodels/yolox/yolox-sPlus-T4-960x960-debris.onnx label_path:=/opt/autoware/mlmodels/yolox/label.txt color_map_path:=/opt/autoware/mlmodels/yolox/semseg_color_map.csv yolox_param_path:=$(ros2 pkg prefix autoware_tensorrt_yolox --share)/config/yolox_s_plus_opt.param.yaml use_decompress:=false build_only:=true

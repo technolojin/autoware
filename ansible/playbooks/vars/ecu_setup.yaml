@@ -92,9 +92,9 @@ simple_system_launch_items:
         echo "[$(date '+%Y-%m-%d %H:%M:%S')] Starting centerpoint model build..."
         START_TIME=$(date +%s)
         ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml \
-                model_name:=centerpoint_x2 \
+                model_name:=centerpoint \
                 model_path:=/opt/autoware/mlmodels/centerpoint \
-                model_param_path:=$(ros2 pkg prefix autoware_launch --share)/config/perception/object_recognition/detection/lidar_model/centerpoint_x2.param.yaml \
+                model_param_path:=$(ros2 pkg prefix autoware_launch --share)/config/perception/object_recognition/detection/lidar_model/centerpoint.param.yaml \
                 build_only:=true 2>&1 | tee -a "$HOME"/autoware_main.log
         END_TIME=$(date +%s)
         ELAPSED_TIME=$((END_TIME - START_TIME))
@@ -135,7 +135,6 @@ simple_system_launch_items:
 
 # fool proof check service
 check_target_service: autoware_system_launch.service
-ecu_type: main
 fool_proof_check_network_interface: enp5s0f1 # TODO: check vlan.500
 
 # tier4_service_standby_wait

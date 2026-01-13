@@ -25,10 +25,9 @@ cyclonedds:
 ipv4_ipfrag_time: 1
 ipv4_ipfrag_high_thresh: 134217728
 netcore_rmem_max: 2147483647
-netcore_wmem_max:
-  2147483647
+netcore_wmem_max: 2147483647
 
-  # keyboard
+# keyboard
 keyboard_layout_file: keyboard.jp+ctrl_nocaps
 
 # ptp4l port
@@ -52,26 +51,18 @@ otaclient_manifest_checksum: sha256:dd08c1792169b72c7136b53949a5c06d0c4f2411fcf2
 otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-addon
 otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-10gbe.j2
 
-# sxpf_ros_driver
-sxpf_ros_driver_version: 493f4ddb3d40f828ab7caea4d39e2c6d02928758
-
 # set-autoware-env
-autoware_install_dir: /home/autoware/overlay_ws
+autoware_install_dir: /home/autoware/edge-auto-jetson
 
-# perception application/service
-perception_application_edge_auto_version: beta/v4.3_streampetr
-perception_application_base_path: /home/autoware
-perception_application_edge_auto_repo: git@github.com:tier4/edge-auto-jetson.x2.git
-perception_application_service_run_templates_file: perception_application/run.sh.addon.j2 # we can use different run files if the path is in local
-perception_application_native_built_ros: false # false when we are installing ROS with apt
-perception_application_directory_name: overlay_ws
-perception_type: addon
-perception_startup_service_template: perception_application/addon-perception-startup.service.j2
+# jetson_launch
+jetson_launch_id: -1
+jetson_launch_run_template: run.sh.addon.j2 # we can use different run files if the path is in local
+jetson_launch_perception_type: addon
+jetson_launch_video_num: 2 # unused for addon
 
 # fool proof check service
 fool_proof_check: true
 check_target_service: perception-startup.service
-ecu_type: perception
 fool_proof_check_network_interface: enp7s0
 
 link_retry_handler_ping_dst_ip: 192.168.30.11
@@ -87,21 +78,21 @@ rsyslog_queue_maxsize: 1g
 # letterbox_monitor
 letterbox_monitor:
   - service_name: default
-    ros_log_dir: "{{ perception_application_base_path }}/.ros/log"
+    ros_log_dir: /home/autoware/.ros/log
     user_name: autoware
     group_name: autoware
     use_call_diag: false
     use_letterbox: false
     ignore_node_names: []
   - service_name: recognition
-    ros_log_dir: "{{ perception_application_base_path }}/.ros/recognition_log"
+    ros_log_dir: /home/autoware/.ros/recognition_log
     user_name: autoware
     group_name: autoware
     use_call_diag: true
     use_letterbox: false
     ignore_node_names: []
   - service_name: camera_driver
-    ros_log_dir: "{{ perception_application_base_path }}/.ros/sxpf_ros_driver_log"
+    ros_log_dir: /home/autoware/.ros/sxpf_ros_driver_log
     user_name: autoware
     group_name: autoware
     use_call_diag: true
@@ -112,6 +103,8 @@ letterbox_monitor:
 c2_ecu_type: addon
 fw_rom_version: 20240927
 addon_angle_params: (120 120 120)
+# TODO(someone): decouple sxpf_ros_driver from this role
+sxpf_ros_driver_workspace: "{{ autoware_install_dir }}"
 
 # systemd_analyze_collector
 rsync_target_host_ip: 192.168.20.71

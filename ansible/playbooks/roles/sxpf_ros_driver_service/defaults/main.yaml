@@ -1,0 +1,7 @@
+# cspell: ignore sxpf
+sxpf_ros_driver_service_cameras:
+  - camera8
+  - camera9
+  - camera10
+sxpf_ros_driver_service_launch_file: sxpf_multiple.launch.py
+sxpf_ros_driver_service_do_rectify: false
