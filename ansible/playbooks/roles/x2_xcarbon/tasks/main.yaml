@@ -64,6 +64,7 @@
     - aal.conf
     - aal_script.conf
     - bm.conf
+    - hips.conf
   become: true
 
 - name: Copy service

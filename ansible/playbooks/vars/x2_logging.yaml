@@ -20,8 +20,8 @@ cyclonedds:
   max_rexmit_message_size: 8950B
   water_mark_whc_high: 4MB
   water_mark_whc_low: 10kB
-  lease_duration: 120s
-  spdp_interval: 90s
+  lease_duration: 10s
+  spdp_interval: 8s
 ipv4_ipfrag_time: 1
 ipv4_ipfrag_high_thresh: 134217728
 netcore_rmem_max: 2147483647
@@ -69,7 +69,7 @@ target_remove_log_dirs:
   - /home/autoware/.config/MaintenanceOperationTool/logs/*
 
 # autoware logging suite
-autoware_logging_suite_version: v0.10.2
+autoware_logging_suite_version: v0.10.3
 autoware_logging_suite_modules:
   - autoware_logging_msgs
   - logpacker
@@ -198,7 +198,9 @@ service_list_for_tier4_autoware: |
   fool-proof-check.service \
   boot-shutdown.service \
   tier4_system_standby_wait.target
-network_interface_for_tier4_service_standby_wait: enp3s0f0
+network_interface_for_tier4_service_standby_wait:
+  - enp3s0f0
+  - enp8s0
 # disable services
 # cspell:ignore runlevel utmp
 disable_system_service_list:
