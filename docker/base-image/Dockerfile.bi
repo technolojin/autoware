@@ -12,9 +12,14 @@ ARG DESCRIPTION
 
 LABEL org.opencontainers.image.description=$DESCRIPTION
 
+# To avoid tzdata interactive dialog
+ARG DEBIAN_FRONTEND=noninteractive
+RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
+  echo "Asia/Tokyo" > /etc/timezone
+
 ## Install apt packages
 # hadolint ignore=DL3008
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends \
+RUN apt-get update && apt-get -y install --no-install-recommends \
   git \
   ssh \
   && apt-get clean \
