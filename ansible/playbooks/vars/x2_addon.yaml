@@ -13,6 +13,7 @@ additional_font_packages:
 cyclonedds:
   network_interface:
     - { address: enp7s0, priority: default }
+    - { address: enp3s0f1, priority: 1 } # High priority for direct connection to Perception ECU #2
   minimum_socket_receive_buffer_size: 10MB
   minimum_socket_send_buffer_size: 10MB
   max_message_size: 8950B
