@@ -550,7 +550,7 @@ artifacts:
             - name: yolox
               release: with_unknown/mlmodel/v1.0.1
             - name: streampetr
-              release: test/v0.4
+              release: beta/1.0
         - name: edge-auto-jetson-build
           user: autoware
           exec: ./.webauto-ci/addon/edge-auto-jetson-build/run.sh
