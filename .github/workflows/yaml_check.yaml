@@ -43,7 +43,7 @@ jobs:
 
       - name: Run vcs import
         run: |
-          mkdir src
+          mkdir -p src
           vcs import src < autoware.repos
 
       - name: Install yaml diff dependencies

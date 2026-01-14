@@ -9,6 +9,8 @@
     "euclidian",
     "openbox",
     "tigervnc",
+    "tracetools",
+    "libtracetools",
     "websockify",
     "newkey",
     "keyout",

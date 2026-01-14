@@ -36,7 +36,7 @@ jobs:
 
       - name: Run vcs import
         run: |
-          mkdir src
+          mkdir -p src
           vcs import src < autoware.repos --shallow
           vcs import src < tools.repos --shallow
 

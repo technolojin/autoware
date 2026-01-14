@@ -165,7 +165,7 @@ jobs:
           echo "${{ secrets.LOGIN_PASS }}" | sudo apt install python3-pip
           pip3 install vcstool
           cd _InstallTempFolder/${{ env.REPO_NAME }}
-          mkdir src
+          mkdir -p src
           vcs import src < autoware.repos
 
       - name: Delete .gif

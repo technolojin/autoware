@@ -85,8 +85,8 @@
 
     - source: docker/build.sh
       pre-commands: |
+        sd "autowarefoundation/autoware" "tier4/pilot-auto" {source}
         sd "autowarefoundation" "tier4" {source}
-        sd "autoware" "pilot-auto" {source}
 
     - source: docker/docker-bake.hcl
       dest: docker/pilot-auto/docker-bake.hcl

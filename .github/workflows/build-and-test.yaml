@@ -113,7 +113,7 @@ jobs:
 
       - name: Run vcs import
         run: |
-          mkdir src
+          mkdir -p src
           vcs import src < .autoware_resolved.repos --shallow
 
       - name: Show disk space before the tasks
