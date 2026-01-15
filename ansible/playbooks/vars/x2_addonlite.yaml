@@ -66,7 +66,7 @@ camera_driver_repo: https://api.github.com/repos/tier4/tier4_automotive_hdr_came
 
 # jetson_launch
 jetson_launch_id: 2
-jetson_launch_run_template: run.sh.edge_auto_x2.j2 # we can use different run files if the path is in local
+jetson_launch_run_template: jetson_launch/run.sh.edge_auto_x2.j2
 jetson_launch_perception_type: od
 jetson_launch_video_num: 3
 

@@ -1,4 +1,0 @@
-jetson_launch_id: -1
-jetson_launch_run_template: run.sh.edge_auto_x2.j2
-jetson_launch_perception_type: addon # tlr/od/addon
-jetson_launch_video_num: 2

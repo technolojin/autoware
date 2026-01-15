@@ -26,11 +26,13 @@ if [ "$VEHICLE_MODEL" == "j6_gen2" ]; then
         {% endif %}
         sleep 1
     done
+    {% if fool_proof_check | bool %}
     call_diag_polling --status "Ok" \
             --mrm_name_suffix mgbe1-ready \
             --event_id "none" \
             --message "none" \
             --impact "none"
+    {% endif %}
 fi
 
 {% if jetson_launch_perception_type == "tlr" %}

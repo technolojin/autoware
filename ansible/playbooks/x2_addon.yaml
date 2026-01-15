@@ -47,12 +47,10 @@
     - { role: x2_disable_chrony }
     - role: autoware.ecu_system_setup.sync_tooling
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
-    - role: sxpf_ros_driver_service # `sxpf_driver` is executed in pre-build playbook
-      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - { role: autoware.ecu_system_setup.sxpf_ros_driver_service } # `sxpf_driver` is executed in pre-build playbook
     - role: autoware.ecu_system_setup.c2_fw_autoupdate # `sxpf_driver` is executed in pre-build playbook
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
-    - role: jetson_launch
-      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - { role: autoware.ecu_system_setup.jetson_launch }
     - { role: autoware.ecu_system_setup.netplan } # need to be the last, as the internet will lost after this
     - { role: autoware.ecu_system_setup.systemd_analyze_collector }
     - { role: autoware.ecu_system_setup.tier4_service_standby_wait }

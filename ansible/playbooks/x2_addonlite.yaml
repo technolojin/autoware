@@ -56,9 +56,7 @@
     - { role: autoware.ecu_system_setup.hdd_reader }
     - { role: autoware.ecu_system_setup.lm_sensors }
     - { role: autoware.ecu_system_setup.traffic_reader }
-    - role: jetson_launch
-      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - { role: autoware.ecu_system_setup.jetson_launch }
     - role: autoware.ecu_system_setup.tier4_hdr_camera_driver
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
-    - role: cgroup_sensor_trigger
-      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - { role: autoware.ecu_system_setup.cgroup_nice_setup }

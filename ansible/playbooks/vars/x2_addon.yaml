@@ -56,7 +56,7 @@ autoware_install_dir: /home/autoware/edge-auto-jetson
 
 # jetson_launch
 jetson_launch_id: -1
-jetson_launch_run_template: run.sh.addon.j2 # we can use different run files if the path is in local
+jetson_launch_run_template: jetson_launch/run.sh.addon.j2
 jetson_launch_perception_type: addon
 jetson_launch_video_num: 2 # unused for addon
 
