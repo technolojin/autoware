@@ -147,7 +147,6 @@ service_list_for_tier4_autoware: |
   fool-proof-check.service \
   emergency-vehicle-detector.service \
   boot-shutdown.service \
-  boot-shutdown-manager.service \
   letterbox_monitor@autoware.service \
   letterbox_monitor@autoware_system.service \
   letterbox_monitor@default.service \
