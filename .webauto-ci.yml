@@ -407,7 +407,7 @@ artifacts:
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
-        from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.48
+        from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.48.0
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
@@ -492,7 +492,7 @@ artifacts:
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
-        from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.48
+        from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.48.0
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
@@ -678,7 +678,7 @@ artifacts:
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
-        from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.48
+        from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.48.0
       output_rootfs_image:
         from: ecu-system-setup
         persistent_file_path: /etc/ota/persistents.txt
