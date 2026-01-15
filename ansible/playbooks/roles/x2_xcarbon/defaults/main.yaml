@@ -4,7 +4,7 @@ x2_xcarbon_ecu_model: Autoware-test
 x2_xcarbon_ecu_id: Autoware-test-01
 x2_xcarbon_vehicle_model: X2 J6 Gen2
 x2_xcarbon_custom_group_id: Autoware-x2
-x2_xcarbon_package_name: vicone_xcarbon_5.6.8_ubuntu_22_04_x86_64_tier4.tar.gz
+x2_xcarbon_package_name: vicone_xcarbon_5.6.13_ubuntu_22_04_x86_64_tier4.tar.gz
 x2_xcarbon_package_path: xcarbon_packages_and_keys/{{ x2_xcarbon_package_name }}
 x2_xcarbon_sdkkey_name: customer_key
 x2_xcarbon_sdkkey_path: xcarbon_packages_and_keys/{{ x2_xcarbon_sdkkey_name }}

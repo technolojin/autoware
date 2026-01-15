@@ -5,7 +5,7 @@ scheduling_settings:
       node: (pointcloud_container|hesai_ros_wrapper_node)
       ns: /sensing/lidar.*
     settings:
-      cpu: 0-15
+      cpu: 0-9,11-15
   - process:
       name: .*component_container.*
       node: pointcloud_container
