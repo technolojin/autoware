@@ -73,27 +73,3 @@
       pre-commands: |
         sd "autoware.dev_env" "pilot_auto.dev_env" {source}
         sd "dev_env.universe" "dev_env.local_dev_env" {source}
-
-    # Docker
-    - source: docker/README.md
-      pre-commands: |
-        perl -pi -e 's/(?<!:\/\/)(?<!\[)(autowarefoundation)/tier4/g' {source}
-        perl -pi -e 's/(?<!:\/\/)(?<!\[)(autoware-universe)/pilot-auto/g' {source}
-        perl -pi -e 's/(?<!:\/\/)(?<!\[)(Autoware Universe)/Pilot.Auto/g' {source}
-        perl -pi -e 's/(?<!:\/\/)(?<!\[)(Autoware)/Pilot.Auto/g' {source}
-        sd -s "../" "https://github.com/autowarefoundation/autoware/tree/main/" {source}
-
-    - source: docker/build.sh
-      pre-commands: |
-        sd "autowarefoundation/autoware" "tier4/pilot-auto" {source}
-        sd "autowarefoundation" "tier4" {source}
-
-    - source: docker/docker-bake.hcl
-      dest: docker/pilot-auto/docker-bake.hcl
-      pre-commands: |
-        sd "autoware-universe" "pilot-auto" {source}
-
-    - source: docker/Dockerfile
-      dest: docker/pilot-auto/Dockerfile
-      pre-commands: |
-        sd "universe" "local_dev_env" {source}
