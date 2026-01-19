@@ -22,17 +22,17 @@ include_gigantic: false
 top_slow_files: 10
 
 # Root directory to scan when creating baseline database
-scan_root: /home/autoware/autoware.proj
+scan_root: "{{ autoware_install_dir }}"
 
 # File patterns to include in verification
 # Empty list means check all files
 # Example: [/opt/autoware/*, /etc/*, /boot/*]
 include_patterns:
-  - /home/autoware/autoware.proj/*
+  - "{{ autoware_install_dir }}/*"
 
 # File patterns to exclude from verification
 # Files matching these patterns will be skipped
 # Example: [*.log, /usr/lib/*/libcudnn*, /tmp/*]
 exclude_patterns:
-  - /home/autoware/autoware.proj/.git/* # Exclude Git objects
-  - /home/autoware/autoware.proj/src/**/.git/* # Exclude Git objects
+  - "{{ autoware_install_dir }}/.git/*" # Exclude Git objects
+  - "{{ autoware_install_dir }}/src/**/.git/*" # Exclude Git objects

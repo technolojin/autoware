@@ -18,7 +18,7 @@
 
 - name: Create symlink for cmd_helper.sh in /usr/local/bin
   ansible.builtin.file:
-    src: /home/autoware/autoware.proj/cmd_helper.sh
+    src: "{{ autoware_install_dir }}/cmd_helper.sh"
     dest: /usr/local/bin/cmd_helper
     state: link
   become: true

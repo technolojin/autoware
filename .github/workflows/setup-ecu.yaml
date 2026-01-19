@@ -71,7 +71,6 @@ jobs:
             playbook: x2_sub
             additional_args: -y -v -e vehicle_id=1234 -e run_cert_setup=true
           - job: x2_logging
-          - job: x2_logging
             playbook: x2_logging
             additional_args: -y -v -e vehicle_id=1234 -e github_token=''
           - job: x2_perception_1

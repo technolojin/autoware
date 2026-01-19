@@ -16,13 +16,10 @@
 
     - name: Set addonlite params
       ansible.builtin.set_fact:
-        jetson_id: 2
         netplan_files: netplan/99-autoware.x2-addonlite.yaml
         otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-addonlite
-        perception_type: od
         dtb_sensor_type: imx490
         distortion_correction: 0
-        video_num: 3
         c2_angle_params: "{{ addonlite_angle_params }}"
 
   roles:
@@ -44,44 +41,22 @@
     - { role: autoware.ecu_system_setup.timezone }
     - { role: autoware.ecu_system_setup.set_large_txqueue }
     - { role: autoware.ecu_system_setup.rsyncd }
-    - { role: autoware.edge_auto_jetson.link_retry_handler }
-    - role: autoware.edge_auto_jetson.sensor_trigger_for_anvil
+    - { role: autoware.ecu_system_setup.link_retry_handler }
+    - role: autoware.ecu_system_setup.sensor_trigger_for_anvil
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
-    - { role: autoware.edge_auto_jetson.vcstool }
     - { role: autoware.ecu_system_setup.fool_proof_check } # fool proof check for autoware function
     # - { role: autoware.ecu_system_setup.letterbox_monitor }
     - { role: x2_disable_timesyncd }
     - role: autoware.ecu_system_setup.sync_tooling
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
-    - role: autoware.ecu_system_setup.c2_fw_autoupdate # This must be executed after `sxpf_driver`
+    - role: autoware.ecu_system_setup.c2_fw_autoupdate
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - { role: autoware.ecu_system_setup.systemd_analyze_collector }
     - { role: autoware.ecu_system_setup.install_system_monitor } # hdd_reader, lm_sensors and traffic_reader are necessary for autoware_system_monitor
     - { role: autoware.ecu_system_setup.hdd_reader }
     - { role: autoware.ecu_system_setup.lm_sensors }
     - { role: autoware.ecu_system_setup.traffic_reader }
-
-  # Any `tasks` defined in the play will be executed after each role listed in `roles`
-  # see: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html#using-roles-at-the-play-level
-  tasks:
-    - name: Setup ECU for Object Recognition or Traffic Light Recognition
+    - { role: autoware.ecu_system_setup.jetson_launch }
+    - role: autoware.ecu_system_setup.tier4_hdr_camera_driver
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
-      block:
-        - name: ROS 2 application build
-          ansible.builtin.include_role:
-            name: autoware.edge_auto_jetson.perception_application
-
-        - name: TIER IV camera driver
-          ansible.builtin.include_role:
-            name: autoware.edge_auto_jetson.tier4_hdr_camera_driver
-
-        # Because actual executable path will be searched during the `cgroups` role,
-        # it must be executed after `perception_application` role to set proper capability
-        # for sensor_trigger
-        - name: Cgroup setting for sensor trigger
-          ansible.builtin.include_role:
-            name: autoware.edge_auto_jetson.cgroups
-          vars:
-            cgroup:
-              executable_find_path: "{{ perception_application_base_path }}/{{ perception_application_directory_name }}/install"
-              executable_name: sensor_trigger_exe
+    - { role: autoware.ecu_system_setup.cgroup_nice_setup }

@@ -4,8 +4,12 @@ source {{ autoware_env_dir }}/autoware.env && true
 source {{ autoware_env_dir }}/vehicle.env
 source {{ autoware_env_dir }}/jetson.env
 
-source /opt/ros/humble/install/setup.bash
-source {{ perception_application_base_path }}/{{ perception_application_directory_name }}/install/setup.bash
+# get installed ros distro
+# shellcheck disable=SC2012
+ROS_DISTRO=$(ls -1 /opt/ros | head -1)
+
+source /opt/ros/${ROS_DISTRO}/setup.bash
+source {{ autoware_install_dir }}/install/setup.bash
 
 {% if fool_proof_check | bool %}
 source /opt/autoware/services/fool-proof-check/activate_call_diag.sh
@@ -22,14 +26,16 @@ if [ "$VEHICLE_MODEL" == "j6_gen2" ]; then
         {% endif %}
         sleep 1
     done
+    {% if fool_proof_check | bool %}
     call_diag_polling --status "Ok" \
             --mrm_name_suffix mgbe1-ready \
             --event_id "none" \
             --message "none" \
             --impact "none"
+    {% endif %}
 fi
 
-{% if perception_type == "tlr" %}
+{% if jetson_launch_perception_type == "tlr" %}
 ros2 launch edge_auto_jetson_launch edge_auto_multi_launch_engine.launch.py \
         build_engine_only:=true camera_driver_camera_ids:="[]" container_name:="none" \
         traffic_light_camera_ids:="[0]" object_recognition_camera_ids:="[0]"  \
@@ -41,7 +47,7 @@ ros2 launch edge_auto_jetson_launch edge_auto_multi_launch_engine.launch.py \
         yolox_precision:=int8 live_sensor:=false use_multithread:=true
 {% endif %}
 
-{% for i in range(video_num) %}
+{% for i in range(jetson_launch_video_num) %}
 while [[ ! -e /dev/video{{ i }} ]]; do
     {% if fool_proof_check | bool %}
         call_diag_polling --status "Error" \
@@ -64,7 +70,7 @@ call_diag_polling --status "Ok" \
 {% endfor %}
 
 # for letterbox_monitor
-mkdir -p {{ perception_application_base_path }}/.ros/recognition_log
-export ROS_LOG_DIR={{ perception_application_base_path }}/.ros/recognition_log
+mkdir -p /home/autoware/.ros/recognition_log
+export ROS_LOG_DIR=/home/autoware/.ros/recognition_log
 
 ros2 launch edge_auto_jetson_launch edge_auto_jetson.launch.xml

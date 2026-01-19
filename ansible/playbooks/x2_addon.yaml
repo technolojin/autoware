@@ -15,9 +15,10 @@
       ansible.builtin.set_fact:
         rosdistro: humble
       when: ansible_distribution_version == "22.04"
-    - name: Set addonlite params
+    - name: Set addon params
       ansible.builtin.set_fact:
         c2_angle_params: "{{ addon_angle_params }}"
+
   roles:
     - { role: autoware.ecu_system_setup.automatic_login }
     - { role: autoware.ecu_system_setup.additional_fonts }
@@ -41,19 +42,15 @@
     - { role: autoware.ecu_system_setup.turn_off_desktop_notification }
     - { role: autoware.ecu_system_setup.fool_proof_check } # fool proof check for autoware function
     - { role: autoware.ecu_system_setup.letterbox_monitor }
-    - { role: autoware.edge_auto_jetson.link_retry_handler }
+    - { role: autoware.ecu_system_setup.link_retry_handler }
     - { role: x2_disable_timesyncd }
     - { role: x2_disable_chrony }
     - role: autoware.ecu_system_setup.sync_tooling
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
-    - role: autoware.ecu_system_setup.sxpf_driver
+    - { role: autoware.ecu_system_setup.sxpf_ros_driver_service } # `sxpf_driver` is executed in pre-build playbook
+    - role: autoware.ecu_system_setup.c2_fw_autoupdate # `sxpf_driver` is executed in pre-build playbook
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
-    - role: autoware.ecu_system_setup.sxpf_ros_driver # This must be executed after `sxpf_driver`
-      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
-    - role: autoware.ecu_system_setup.c2_fw_autoupdate # This must be executed after `sxpf_driver`
-      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
-    - role: autoware.edge_auto_jetson.perception_application
-      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - { role: autoware.ecu_system_setup.jetson_launch }
     - { role: autoware.ecu_system_setup.netplan } # need to be the last, as the internet will lost after this
     - { role: autoware.ecu_system_setup.systemd_analyze_collector }
     - { role: autoware.ecu_system_setup.tier4_service_standby_wait }
