@@ -36,6 +36,7 @@
         dtb_sensor_type: imx490
         distortion_correction: 0
         c2_angle_params: "{{ per2_angle_params }}"
+        cyclonedds: "{{ cyclonedds | combine({'network_interface': cyclonedds.network_interface + [{'address': 'mgbe0', 'priority': 1}]}, recursive=True) }}"
       when: ecu_id == "perception2"
 
   roles:

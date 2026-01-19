@@ -2,6 +2,10 @@
 
 # file_integrity_check
 file_integrity_check_config_source: file_integrity_check/config.yaml
+file_integrity_check_blocked_services:
+  - autoware_system_launch.service
+  - autoware_main_launch.service
+  - autoware_main_mrm_launch.service
 
 # usbguard
 usbguard_rules_file: usbguard/rules.x2-main.conf

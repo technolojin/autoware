@@ -893,57 +893,6 @@ simulations:
           paths:
             - /home/autoware/.ros/log/autoware_metrics
 
-  # - name: planning_sim_v2_robobus_gen2
-  #   type: planning_sim_v2
-  #   scenario_parameter_group: robobus_gen2 # Necessary to define the name for each vehicle type
-  #   simulator:
-  #     deployment:
-  #       type: container
-  #       artifact: main
-  #     runtime:
-  #       type: standard1/amd64/medium
-  #     parameters:
-  #       vehicle_model: robobus_gen2
-  #       sensor_model: robobus_gen2_sensor_kit
-  #       autoware_launch_package: autoware_launch
-  #       autoware_launch_file: planning_simulator.launch.xml
-  #       architecture_type: awf/universe/20240605
-  #       initialize_duration: "90"
-
-  # - name: planning_sim_v2_robobus_gen2
-  #   type: planning_sim_v2
-  #   scenario_parameter_group: robobus_gen2 # Necessary to define the name for each vehicle type
-  #   simulator:
-  #     deployment:
-  #       type: container
-  #       artifact: main
-  #     runtime:
-  #       type: standard1/amd64/medium
-  #     parameters:
-  #       vehicle_model: robobus_gen2
-  #       sensor_model: robobus_gen2_sensor_kit
-  #       autoware_launch_package: autoware_launch
-  #       autoware_launch_file: planning_simulator.launch.xml
-  #       architecture_type: awf/universe/20240605
-  #       initialize_duration: "90"
-
-  # - name: planning_sim_v2_robobus_gen2
-  #   type: planning_sim_v2
-  #   scenario_parameter_group: robobus_gen2 # Necessary to define the name for each vehicle type
-  #   simulator:
-  #     deployment:
-  #       type: container
-  #       artifact: main
-  #     runtime:
-  #       type: standard1/amd64/medium
-  #     parameters:
-  #       vehicle_model: robobus_gen2
-  #       sensor_model: robobus_gen2_sensor_kit
-  #       autoware_launch_package: autoware_launch
-  #       autoware_launch_file: planning_simulator.launch.xml
-  #       architecture_type: awf/universe/20240605
-  #       initialize_duration: "90"
-
   - name: obstacle_detection
     type: obstacle_detection
     simulator:
@@ -1401,30 +1350,3 @@ scenario_parameter_groups:
       traffic_light_stop_line_distance: 0.5 # param name in autoware_launch: stop_margin
       run_out_stop_line_distance: 2.5 # param name in autoware_launch: stop_margin
       turn_signal_search_distance: 40.0 # param name in autoware_launch: turn_signal_intersection_search_distance
-  - name: robobus_gen2
-    parameters:
-      __ego_center_x__: 1.508485 # ego_dimensions_length / 2.0 - rear_overhang
-      __ego_center_y__: 0
-      __ego_center_z__: 1.121265 # ego_dimensions_height / 2.0
-      __ego_dimensions_width__: 1.946 # wheel_tread + left_overhang + right_overhang
-      __ego_dimensions_length__: 3.94901 # wheel_base + front_overhang + rear_overhang
-      __ego_dimensions_height__: 2.24253
-      wheel_radius: 0.3854
-      wheel_width: 0.265
-      wheel_base: 3.02034 # between front wheel center and rear wheel center
-      wheel_tread: 1.62 # between left wheel center and right wheel center
-      front_overhang: 0.46265 # between front wheel center and vehicle front
-      rear_overhang: 0.46602 # between rear wheel center and vehicle rear
-      left_overhang: 0.163 # between left wheel center and vehicle left
-      right_overhang: 0.163 # between right wheel center and vehicle right
-      max_steer_angle: 0.4051693404329938 # [rad]
-      stop_line_distance: 0.0 # param name in autoware_launch: stop_margin
-      blind_spot_stop_line_distance: 1.0 # param name in autoware_launch: stop_line_margin
-      obstacle_stop_line_distance: 5.0 # param name in autoware_launch: stop_margin
-      terminal_obstacle_stop_line_distance: 3.0 # param name in autoware_launch: terminal_stop_margin
-      crosswalk_stop_line_distance: 3.5 # param name in autoware_launch: stop_distance_from_crosswalk
-      walkway_stop_line_distance: 3.5 # param name in autoware_launch: stop_distance_from_crosswalk
-      intersection_stop_line_distance: 3.0 # param name in autoware_launch: stop_line_margin
-      traffic_light_stop_line_distance: 0.0 # param name in autoware_launch: stop_margin
-      run_out_stop_line_distance: 2.5 # param name in autoware_launch: stop_margin
-      turn_signal_search_distance: 30.0 # param name in autoware_launch: turn_signal_intersection_search_distance
