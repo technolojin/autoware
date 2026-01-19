@@ -20,7 +20,9 @@
     "bevdet",
     "logname",
     "adre",
-    "semseg"
+    "semseg",
+    "tzdata",
+    "zoneinfo"
   ],
   "ignorePaths": [".release_info.yaml"]
 }

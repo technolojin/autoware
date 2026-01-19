@@ -9,13 +9,14 @@ ARG ROS_DISTRO
 ARG SETUP_ARGS
 ARG GITHUB_TOKEN
 ARG DESCRIPTION
+ARG TIMEZONE=Asia/Tokyo
 
 LABEL org.opencontainers.image.description=$DESCRIPTION
 
 # To avoid tzdata interactive dialog
 ARG DEBIAN_FRONTEND=noninteractive
-RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
-  echo "Asia/Tokyo" > /etc/timezone
+RUN ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime && \
+  echo "$TIMEZONE" > /etc/timezone
 
 ## Install apt packages
 # hadolint ignore=DL3008

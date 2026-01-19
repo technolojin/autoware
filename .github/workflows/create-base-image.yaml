@@ -12,6 +12,14 @@ on:
         type: string
         required: false
         default: ""
+      timezone:
+        description: Timezone for the Docker image
+        type: choice
+        options:
+          - Asia/Tokyo
+          - UTC
+        required: true
+        default: Asia/Tokyo
       update-latest:
         description: Update the latest tag
         type: boolean
@@ -176,3 +184,4 @@ jobs:
             BASE_IMAGE=${{ env.BASE_IMAGE }}
             ROS_DISTRO=${{ env.ROS_DISTRO }}
             SETUP_ARGS=${{ env.SETUP_ARGS }}
+            TIMEZONE=${{ github.event.inputs.timezone }}
