@@ -167,6 +167,7 @@ jobs:
           cd _InstallTempFolder/${{ env.REPO_NAME }}
           mkdir -p src
           vcs import src < autoware.repos
+          vcs import src < tools.repos
 
       - name: Delete .gif
         run: |
