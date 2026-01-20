@@ -2,12 +2,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: v0.60.0
+    version: v0.61.0
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: v0.60.0
+    version: v0.61.0
     base: true
   autoware/autoware_cmake:
     type: git
@@ -17,42 +17,42 @@ repositories:
   autoware/autoware_utils:
     type: git
     url: https://github.com/autowarefoundation/autoware_utils.git
-    version: 1ab84eca6b4c1eb10f54c28c98ea8f547b60495f
+    version: 8f3fb1c3815bf346510cf58d14a4d76d4cdf4a48
     base: true
   autoware/autoware_lanelet2_extension:
     type: git
     url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
-    version: 39bd05936556f99cd38904022a2e5e6fd2efd93e
+    version: 15a50aff0771ae64262be4ea037f718b9ccf71d2
     base: true
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: v0.60.0
+    version: v0.61.0
     base: true
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: a8ec321e0411fadf95597bef6d51c0650f0f70ef
+    version: 6158491d2c100265938b6a2aaace42401ea7e726
     base: true
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: v0.60.0
+    version: v0.61.0
     base: true
   autoware/autoware_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_msgs.git
-    version: 588f00df3acca009ea709a74acd6538897eef424
+    version: c0bcee78433229d6f447342b9ca6bb228f2d1e75
     base: true
   autoware/autoware_adapi_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_adapi_msgs.git
-    version: 6c3faf2311db65dbd37a78904c9b96edad4b3bbd
+    version: 34f89d088c2cf0ae7ca72f1a325ddb8308a0daeb
     base: true
   autoware/autoware_internal_msgs:
     type: git
     url: https://github.com/autowarefoundation/autoware_internal_msgs.git
-    version: f5524e501775463f508cdb93fe6aec45e1fb4836
+    version: 094122d37e56c7bfd8f3385307d345cfdb2123e6
     base: true
   autoware/managed_transform_buffer:
     type: git
@@ -62,7 +62,7 @@ repositories:
   autoware/autoware_rviz_plugins:
     type: git
     url: https://github.com/autowarefoundation/autoware_rviz_plugins.git
-    version: 06a4426df4bbfe9a98e4b3240f59928f014b824e
+    version: df40247651df65c0ba702c5f89cf42c0b147ee34
     base: true
   # description
   description/sensor/sensor_component_description:
@@ -105,6 +105,12 @@ repositories:
     url: https://github.com/tier4/pointcloud_to_laserscan.git
     version: d969ec699f84fad827fbadfa3001c9c657482fbe
     base: true
+  # remove when it is added to vanilla as base: true or aip_launcher does not depend on it
+  vendor/ars408_driver:
+    type: git
+    url: https://github.com/tier4/ars408_driver.git
+    version: 60678fc12918f968afed9f519915c16cf76edeae
+    base: false
   # Fix the version not to merge https://github.com/MORAI-Autonomous/MORAI-ROS2_morai_msgs/pull/9
   vendor/morai_msgs:
     type: git
@@ -156,6 +162,11 @@ repositories:
     url: https://github.com/autowarefoundation/bevdet_vendor.git
     version: 0cda477b09ed27cfc8484c792b4f5f3063cf425f
     base: true
+  vendor/generate_parameter_library: # To solve the dependency problem of rclcpp_lifecycle
+    type: git
+    url: https://github.com/PickNikRobotics/generate_parameter_library.git
+    version: 0.6.0
+    base: true
   rclcpp: # Based stable version, the fix-patch for service in initialization and the glog feature and the fix-patch for loading node in container is added
     type: git
     url: https://github.com/tier4/rclcpp.git
@@ -176,7 +187,7 @@ repositories:
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: v0.60.0
+    version: v0.61.0
     base: true
   # middleware
   # TODO(TIER IV): During the transition period of Agnocast introduction,
@@ -254,10 +265,4 @@ repositories:
     url: git@github.com:tier4/mrm_plugin.x2.git
     branch: main
     version: main
-    base: false
-  # remove when it is added to vanilla as base: true or aip_launcher does not depend on it
-  vendor/ars408_driver:
-    type: git
-    url: https://github.com/tier4/ars408_driver.git
-    version: 60678fc12918f968afed9f519915c16cf76edeae
     base: false
