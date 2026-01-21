@@ -133,6 +133,7 @@ simulations:
         record_storage_id: mcap
         record_option: "'-x /map/pointcloud_map|/.*occupancy_grid_map.*/|/.*iv_msgs.*/'"
         autoware.output_metrics: "true"
+        autoware.diagnostic_config: ./simulation/config/ssv2_adaptor_diagnostic_config.yaml
         use_custom_centerline: "false"
         use_sim_time: "false"
         use_trajectory_based_front_entity_detection: "true"
