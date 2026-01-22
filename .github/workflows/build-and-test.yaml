@@ -126,6 +126,13 @@ jobs:
         id: get-self-packages
         uses: autowarefoundation/autoware-github-actions/get-self-packages@v1
 
+      - name: Install pacmod3 packages
+        run: |
+          sudo apt -y install apt-transport-https
+          sudo sh -c 'echo "deb [trusted=yes] https://s3.amazonaws.com/autonomoustuff-repo/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/autonomoustuff-public.list'
+          sudo apt -y update
+          sudo apt -y install ros-${{ matrix.rosdistro }}-pacmod3
+
       - name: Build
         if: ${{ steps.get-self-packages.outputs.self-packages != '' }}
         uses: autowarefoundation/autoware-github-actions/colcon-build@v1
@@ -133,6 +140,7 @@ jobs:
           rosdistro: ${{ matrix.rosdistro }}
           target-packages: ${{ steps.get-self-packages.outputs.self-packages }}
           build-depends-repos: ${{ matrix.build-depends-repos }}
+          underlay-workspace: /opt/ros/${{ matrix.rosdistro }}
 
       - name: Show ccache stats after build
         run: |
