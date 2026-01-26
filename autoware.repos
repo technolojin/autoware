@@ -2,12 +2,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: v0.61.0
+    version: v0.62.0
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: v0.61.0
+    version: v0.62.0
     base: true
   autoware/autoware_cmake:
     type: git
@@ -27,7 +27,7 @@ repositories:
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: v0.61.0
+    version: v0.62.0
     base: true
   autoware/ad_api_adaptor:
     type: git
@@ -37,7 +37,7 @@ repositories:
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: v0.61.0
+    version: v0.62.0
     base: true
   autoware/autoware_msgs:
     type: git
@@ -57,7 +57,7 @@ repositories:
   autoware/managed_transform_buffer:
     type: git
     url: https://github.com/autowarefoundation/managed_transform_buffer.git
-    version: 7de93a00769de0b0e3fd1b80aa5ec4e146115fe1
+    version: c94d992b296256041b88771256cdddb486279340
     base: true
   autoware/autoware_rviz_plugins:
     type: git
@@ -105,7 +105,6 @@ repositories:
     url: https://github.com/tier4/pointcloud_to_laserscan.git
     version: d969ec699f84fad827fbadfa3001c9c657482fbe
     base: true
-  # remove when it is added to vanilla as base: true or aip_launcher does not depend on it
   vendor/ars408_driver:
     type: git
     url: https://github.com/tier4/ars408_driver.git
@@ -130,7 +129,7 @@ repositories:
   vendor/llh_converter:
     type: git
     url: https://github.com/MapIV/llh_converter.git
-    version: 07ad112b4f6b83eccd3a5f777bbe40ff01c67382
+    version: 4fc2a2e1bc9dcf3e6ab0a8085d8257168e160342
     base: true
   vendor/dynamic_message_introspection:
     type: git
@@ -170,12 +169,12 @@ repositories:
   rclcpp: # Based stable version, the fix-patch for service in initialization and the glog feature and the fix-patch for loading node in container is added
     type: git
     url: https://github.com/tier4/rclcpp.git
-    version: ef50da230a0c4a1320dc52b5a16dd0cc13018cec
+    version: f2cdbdc4bd68d2df75b6614b792489738859ade1
     base: true
   launch: # Based humble version, the acceleration patched is added
     type: git
     url: https://github.com/tier4/launch.git
-    version: 139c82ef83e152216cdecbed3e52ffe17d8dffd3
+    version: 1e7ae963ce5d5058f3fc0469a17d15de458420a0
     base: true
   # Include many-nodes-in-container launch fix that ensures no LoadComposableNode call hangs
   # See https://github.com/ros2/launch_ros/compare/humble...tier4:launch_ros:/t4-main
@@ -187,7 +186,7 @@ repositories:
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: v0.61.0
+    version: v0.62.0
     base: true
   # middleware
   # TODO(TIER IV): During the transition period of Agnocast introduction,

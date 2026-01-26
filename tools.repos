@@ -2,11 +2,11 @@ repositories:
   tools:
     type: git
     url: https://github.com/tier4/autoware_tools.git
-    version: 7748829f080ea5c1a80e4feee81455f498fd8fe0
+    version: c7be8b5487cf4130084ac721b5255ee9ebd22340
   autoware/document:
     type: git
     url: git@github.com:tier4/pilot-auto-documentation.git
-    version: c7fb6d3cbe175b71d0126637717032484fa9cc90
+    version: 1ac3c57f6639e94ae59d7d44939a419d62602d4a
 
   # TODO: Remove when autoware support for renaming the plotjuggler package. (plotjuggler_ros -> plotjuggler)
   external/plotjuggler_ros:
