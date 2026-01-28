@@ -1251,6 +1251,8 @@ release:
       alternative_deployments:
         - type: installer
           artifact: main
+        - type: container
+          artifact: main
     - name: sub
       deployment:
         type: rootfs
