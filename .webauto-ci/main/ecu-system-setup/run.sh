@@ -58,5 +58,7 @@ if [[ $ECU_ID == "sub" ]]; then
 fi
 # reduce "git" folder size, and other folders
 . .webauto-ci/common/ota-clean-up/clean-up-ecu-image.sh
+# remove build files and folders
+python3 .webauto-ci/common/ota-clean-up/clean-up-build.py /
 
 sudo sed -i '/^autoware\sALL=(ALL)\sNOPASSWD:ALL/d' /etc/sudoers

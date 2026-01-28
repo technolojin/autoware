@@ -40,5 +40,7 @@ sudo cp "$(dirname "$0")/ignore.txt" /etc/ota/
 . .webauto-ci/common/ota-clean-up/clean-up-ecu-image.sh
 # remove "ansible" related packages
 . .webauto-ci/common/ota-clean-up/clean-up-ansible.sh
+# remove build files and folders
+python3 .webauto-ci/common/ota-clean-up/clean-up-build.py /
 
 sudo sed -i '/^autoware\sALL=(ALL)\sNOPASSWD:ALL/d' /etc/sudoers
