@@ -22,6 +22,14 @@ jobs:
         run: |
           df -h
 
+      - name: Create pipx symlink
+        run: |
+          if [ -f /opt/pipx/bin/pipx ]; then
+            sudo ln -sf /opt/pipx/bin/pipx /usr/bin/pipx
+          else
+            which pipx | xargs -I{} sudo ln -sf {} /usr/bin/pipx
+          fi
+
       - name: Generate token
         id: generate-token
         uses: tibdex/github-app-token@v1
