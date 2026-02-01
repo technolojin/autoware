@@ -3,10 +3,6 @@ repositories:
     type: git
     url: https://github.com/tier4/scenario_simulator_v2.git
     version: 9c5b79ff5f6f5c6aecb8f5b674b69a2b73579fce
-  simulator/ndt_convergence_evaluation:
-    type: git
-    url: git@github.com:tier4/ndt_convergence_evaluation.git
-    version: b041fcac83bf582be11ca17e9c4840b199d27f60
   simulator/driving_log_replayer_v2:
     type: git
     url: https://github.com/tier4/driving_log_replayer_v2.git
