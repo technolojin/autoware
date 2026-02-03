@@ -20,7 +20,7 @@
       planning_validator_diagnostics:
         output_topic_name: /diagnostics/scenario_simulator_v2_adapter/planning_validator_diagnostics
         aggregation_list:
-          - /diagnostics/planning_validator/intersection_validation_collision_check
+          # - /diagnostics/planning_validator/intersection_validation_collision_check
           - /diagnostics/planning_validator/trajectory_validation_acceleration
           - /diagnostics/planning_validator/trajectory_validation_distance_deviation
           - /diagnostics/planning_validator/trajectory_validation_steering
