@@ -888,6 +888,7 @@ simulations:
         consider_acceleration_by_road_slope: "true"
         record_storage_id: mcap
         autoware.output_metrics: "true"
+        autoware.diagnostic_config: ./simulation/config/ssv2_adaptor_diagnostic_config.yaml
       logging:
         additional_log_archive:
           paths:
