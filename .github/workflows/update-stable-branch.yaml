@@ -3,7 +3,7 @@ name: Update Stable Branch
 on:
   push:
     tags:
-      - v[0-9]+.[0-9]+.0
+      - v[0-9]+.[0-9]+.[0-9]+
   workflow_dispatch:
 
 jobs:
@@ -33,8 +33,8 @@ jobs:
       - name: Determine target tag
         id: determine-tag
         run: |
-          # Get all tags matching vX.Y.0 pattern and sort them
-          LATEST_TAG=$(git tag -l 'v[0-9]*.[0-9]*.0' | sort -V | tail -n 1)
+          # Get all tags matching vX.Y.Z pattern and sort them
+          LATEST_TAG=$(git tag -l 'v[0-9]*.[0-9]*.[0-9]*' | sort -V | tail -n 1)
           echo "Latest tag: $LATEST_TAG"
 
           if [ -z "$LATEST_TAG" ]; then
@@ -50,11 +50,11 @@ jobs:
             echo "Current tag: $CURRENT_TAG"
 
             if [ "$CURRENT_TAG" != "$LATEST_TAG" ]; then
-              echo "Error: $CURRENT_TAG is not the latest .0 tag. Latest is $LATEST_TAG"
+              echo "Error: $CURRENT_TAG is not the latest vX.Y.Z tag. Latest is $LATEST_TAG"
               exit 1
             fi
 
-            echo "$CURRENT_TAG is the latest .0 tag. Updating stable branch."
+            echo "$CURRENT_TAG is the latest vX.Y.Z tag. Updating stable branch."
             TARGET_TAG="$CURRENT_TAG"
           fi
 
