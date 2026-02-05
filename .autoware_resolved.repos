@@ -3,12 +3,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: dd9a80619148464b3a482bdafd904b1efbfc109e
+    version: 7ca22714ee8e7f6e9c0faded50932a9ab04572e7
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: e3747817310487d90c1e4251fead51ecab21be58
+    version: 058acdf85f116fc469d773c998b3b7f3d8792df1
     base: true
   autoware/autoware_cmake:
     type: git
@@ -23,22 +23,22 @@ repositories:
   autoware/autoware_lanelet2_extension:
     type: git
     url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
-    version: 15a50aff0771ae64262be4ea037f718b9ccf71d2
+    version: 1d8d6ee922a838f79fc026242644fab1c87b3e31
     base: true
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: 1dbdc160710b6a4b0593f6a795818f7c17a62e27
+    version: b03668609f0913b84649a0b8b66588926d52ce83
     base: false
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 0bcc7c54e4aab403aa957b4496e5dee15dadaef8
+    version: 1cfd841178a0bf7a5874907ec5d400a62a6afac8
     base: true
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: 6158491d2c100265938b6a2aaace42401ea7e726
+    version: 039b41ce384417a83c55bbfe7cad1a0ab0d1c4a9
     base: true
   autoware/tier4_autoware_msgs:
     type: git
@@ -73,7 +73,7 @@ repositories:
   autoware/autoware_rviz_plugins:
     type: git
     url: https://github.com/autowarefoundation/autoware_rviz_plugins.git
-    version: df40247651df65c0ba702c5f89cf42c0b147ee34
+    version: 959de0c9cb58ec553dc30ae56c2b670945af5609
     base: true
   # description
   description/sensor/sensor_component_description:
@@ -89,7 +89,7 @@ repositories:
   description/vehicle/reference_vehicle_descriptions:
     type: git
     url: git@github.com:tier4/reference_vehicle_descriptions.git
-    version: 6ab873a7aa8e94c513149b9d0b26a7be1ff75836
+    version: 1fa17dfb7a82fcbf7e8cbffbc5183d64c0f2b893
     base: false
   # ecu_system_setup: When you use your own customized ecu_system_setup, uncomment this.
   # ecu_system_setup:
@@ -162,7 +162,7 @@ repositories:
   vendor/eagleye:
     type: git
     url: https://github.com/MapIV/eagleye.git
-    version: c1919448336e86a8dd9c94a337032c05fcf6c381
+    version: 575136ebba99892946d36d8398f228aee2136af0
     base: true
   vendor/rtklib_ros_bridge:
     type: git
@@ -202,7 +202,7 @@ repositories:
   vendor/bevdet_vendor: # TODO: wrap the original bevdet-tensorrt-cpp source code as a vendor package and provide it to autoware_tensorrt_bevdet package
     type: git
     url: https://github.com/autowarefoundation/bevdet_vendor.git
-    version: 0cda477b09ed27cfc8484c792b4f5f3063cf425f
+    version: 143465b355ef3e885174f6ea0bf4eb273ca6bb83
     base: true
   vendor/generate_parameter_library:  # To solve the dependency problem of rclcpp_lifecycle
     type: git
