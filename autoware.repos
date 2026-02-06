@@ -32,8 +32,7 @@ repositories:
     labels: [main, common]
     type: git
     url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
-    branch: main
-    version: main
+    version: 0.10.0
     base: true
   autoware/autoware_system_designer:
     labels: [main, common]
@@ -95,6 +94,10 @@ repositories:
     branch: main
     version: main
     base: true
+  autoware/autoware_system_designer:
+    type: git
+    url: https://github.com/autowarefoundation/autoware_system_designer.git
+    version: main
   autoware/individual_params:
     labels: [main, common]
     type: git
@@ -116,6 +119,10 @@ repositories:
     branch: main
     version: main
     base: true
+  pilot_auto_systems:
+    type: git
+    url: git@github.com:tier4/autoware_system_designer_deploys_poc.git
+    version: main
   # description
   description/sensor/sensor_component_description:
     labels: [main, common]
@@ -136,6 +143,16 @@ repositories:
     type: git
     url: git@github.com:tier4/reference_vehicle_descriptions.git
     branch: main
+    version: main
+    base: false
+  description/vehicle/jpntaxi_description:
+    type: git
+    url: git@github.com:tier4/jpntaxi_description.git
+    version: main
+    base: false
+  description/vehicle/j6_gen2_description:
+    type: git
+    url: git@github.com:tier4/j6_gen2_description.git
     version: main
     base: false
   # ecu_system_setup: When you use your own customized ecu_system_setup, uncomment this.
