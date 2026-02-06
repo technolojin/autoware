@@ -6,7 +6,7 @@ collections:
 
   - name: https://github.com/autowarefoundation/autoware.git#/ansible
     type: git
-    version: d37f0d8f494dfdfac3f316c478d27333f536290c
+    version: 93c1eed7371412d971b73b873252e18dd7cb473a
 
     # When you use your own customized ./src/ecu_system_setup,
     # comment out git settings, uncomment source settings and in autoware.repos
@@ -14,4 +14,4 @@ collections:
     #   type: dir
   - name: git@github.com:tier4/autoware_ecu_system_setup.git
     type: git
-    version: 6f4d173bdd4d77bd25afc2297be7254199c4eed4
+    version: b664962cf4481a6e7469997a28cd6de33ae9e3e4

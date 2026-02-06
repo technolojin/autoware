@@ -2,12 +2,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: v0.62.0
+    version: v0.63.0
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: v0.62.0
+    version: v0.63.0
     base: true
   autoware/autoware_cmake:
     type: git
@@ -22,22 +22,22 @@ repositories:
   autoware/autoware_lanelet2_extension:
     type: git
     url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
-    version: 15a50aff0771ae64262be4ea037f718b9ccf71d2
+    version: 1d8d6ee922a838f79fc026242644fab1c87b3e31
     base: true
   autoware/aip_launcher:
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: v0.62.0
+    version: v0.63.0
     base: true
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: 6158491d2c100265938b6a2aaace42401ea7e726
+    version: 039b41ce384417a83c55bbfe7cad1a0ab0d1c4a9
     base: true
   autoware/tier4_autoware_msgs:
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: v0.62.0
+    version: v0.63.0
     base: true
   autoware/autoware_msgs:
     type: git
@@ -62,7 +62,7 @@ repositories:
   autoware/autoware_rviz_plugins:
     type: git
     url: https://github.com/autowarefoundation/autoware_rviz_plugins.git
-    version: df40247651df65c0ba702c5f89cf42c0b147ee34
+    version: 959de0c9cb58ec553dc30ae56c2b670945af5609
     base: true
   # description
   description/sensor/sensor_component_description:
@@ -119,7 +119,7 @@ repositories:
   vendor/eagleye:
     type: git
     url: https://github.com/MapIV/eagleye.git
-    version: c1919448336e86a8dd9c94a337032c05fcf6c381
+    version: 575136ebba99892946d36d8398f228aee2136af0
     base: true
   vendor/rtklib_ros_bridge:
     type: git
@@ -159,7 +159,7 @@ repositories:
   vendor/bevdet_vendor: # TODO: wrap the original bevdet-tensorrt-cpp source code as a vendor package and provide it to autoware_tensorrt_bevdet package
     type: git
     url: https://github.com/autowarefoundation/bevdet_vendor.git
-    version: 0cda477b09ed27cfc8484c792b4f5f3063cf425f
+    version: 143465b355ef3e885174f6ea0bf4eb273ca6bb83
     base: true
   vendor/generate_parameter_library: # To solve the dependency problem of rclcpp_lifecycle
     type: git
@@ -186,7 +186,7 @@ repositories:
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: v0.62.0
+    version: v0.63.0
     base: true
   # middleware
   # TODO(TIER IV): During the transition period of Agnocast introduction,
