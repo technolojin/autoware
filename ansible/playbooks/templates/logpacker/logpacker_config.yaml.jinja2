@@ -48,7 +48,6 @@ rosbag:
     - "(.*)/debug/cyclic_time_ms$"
     - "(.*)/debug/processing_time_ms$"
     - "(.*)/metrics$"
-    - "(.*)/pointcloud_raw_ex$"
     - "(.*)/velodyne_packets$"
     - "(.*)/virtual_wall/(.*)"
     - "(.*)/virtual_walls"
@@ -309,8 +308,9 @@ logging_mode:
       initial_state: "recording"
       output_at: "{{ rosbag_logging_directory }}"
       # qos_profile_overrides_path: "{{ logpacker_config_dir }}/qos_profile_overrides.yaml"
-      # topic_list_type: "allowlist"
-      # topic_list: # Add topics here to record only in event mode
+      topic_list_type: "allowlist"
+      topic_list: # Add topics here to record only in event mode
+        - "(.*)/pointcloud_raw_ex$"
       # split_type: "duration"
       # split_size: 256
       split_duration: "15"
