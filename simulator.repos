@@ -2,11 +2,11 @@ repositories:
   simulator/scenario_simulator:
     type: git
     url: https://github.com/tier4/scenario_simulator_v2.git
-    version: 9c5b79ff5f6f5c6aecb8f5b674b69a2b73579fce
+    version: 6e9781534edf8cf2fa19ebd0552939a5d1d165df
   simulator/driving_log_replayer_v2:
     type: git
     url: https://github.com/tier4/driving_log_replayer_v2.git
-    version: ce8916fd7a260786a43cce2ccb7ab22f288879a3
+    version: 589e0d078362175c3fcf790133dbd490e00f0336
   simulator/perception_eval:
     type: git
     url: https://github.com/tier4/autoware_perception_evaluation.git
