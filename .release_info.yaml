@@ -316,7 +316,7 @@ releases:
     released_ansible_repos: # from ansible-galaxy-requirements.yaml file
       - repo_full_name: tier4/autoware_ecu_system_setup # github repo full name (owner/repo) derived from name field in collections
         release_version: v0.56
-      - repo_full_name: tier4/edge-auto-jetson
+      - repo_full_name: tier4/edge-auto-jetson # removed in v0.64 and later
         release_version: v0.56
   - version: v0.57
     release_managers:
@@ -438,7 +438,7 @@ releases:
             release_version: v0.63
           - repo_name: autoware/universe
             release_version: v0.63
-          - repo_name: autoware/aip_launcher
+          - repo_name: autoware/aip_launcher # removed in v0.64 and later
             release_version: v0.63
           - repo_name: autoware/tier4_autoware_msgs
             release_version: v0.63

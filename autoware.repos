@@ -33,15 +33,16 @@ repositories:
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    branch: awf-latest
-    version: awf-latest
+    branch: tier4/main
+    version: tier4/main
     base: false
   autoware/aip_launcher:
+    # aip_launcher repository is no longer maintained and only left for legacy support.
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    branch: tier4/universe
-    version: tier4/universe
-    base: true
+    branch: tier4/unmigrated-packages  # cspell:ignore unmigrated
+    version: 21a1d63cad185703611d2c57cdfdb1a726fb09fe
+    base: false
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
