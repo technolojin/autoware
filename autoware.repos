@@ -143,7 +143,7 @@ repositories:
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
-    version: v0.2.15.1
+    version: v0.3.2.1
     base: true
   vendor/sync_tooling_msgs:  # For Nebula SYNC.TOOLING support
     type: git
