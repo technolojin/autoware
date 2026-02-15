@@ -5,6 +5,7 @@ set -e
 
 # Default values
 MAP_PATH="$HOME/autoware_map/sample-map-planning"
+V2X_LOCATION="komatsu"
 RUN_SIMULATOR=false
 CLEAN_BUILD=false
 ROSDEP_RUN=false
@@ -119,8 +120,9 @@ run_simulator() {
     echo "  Map path: $MAP_PATH"
     echo "  Vehicle model: $VEHICLE_MODEL"
     echo "  Sensor model: $SENSOR_MODEL"
+    echo "  V2X location: $V2X_LOCATION"
 
-    ros2 launch autoware_launch planning_simulator.launch.xml map_path:="$MAP_PATH" vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL"
+    ros2 launch autoware_launch planning_simulator.launch.xml map_path:="$MAP_PATH" vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL" v2x_location:="$V2X_LOCATION"
 }
 
 # Parse command line arguments

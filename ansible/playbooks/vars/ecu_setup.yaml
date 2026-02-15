@@ -107,6 +107,7 @@ simple_system_launch_items:
               pointcloud_map_file:=pcd \
               vehicle_model:="$VEHICLE_MODEL" \
               sensor_model:="$SENSOR_MODEL" \
+              v2x_location:="$V2X_LOCATION" \
               launch_system:=false \
               rviz:=false 2>&1 | tee -a "$HOME"/autoware_main.log
 
