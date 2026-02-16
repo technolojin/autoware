@@ -2017,14 +2017,14 @@
   },
   "/sub_ecu/vehicle/topic_status/actuation_command": {
     "ERROR": {
-      "situation": "acation commandのトピックが遅延しています",
+      "situation": "action commandのトピックが遅延しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
       "error_code": "VHC-01-E01-058E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
-      "situation": "acation commandのトピックが遅延しています",
+      "situation": "action commandのトピックが遅延しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
       "error_code": "VHC-01-E01-058",
       "initialization_state_condition": "all",
