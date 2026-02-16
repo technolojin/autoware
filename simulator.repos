@@ -3,19 +3,24 @@ repositories:
     type: git
     url: https://github.com/tier4/scenario_simulator_v2.git
     version: 6e9781534edf8cf2fa19ebd0552939a5d1d165df
+    base: true
   simulator/driving_log_replayer_v2:
     type: git
     url: https://github.com/tier4/driving_log_replayer_v2.git
     version: 589e0d078362175c3fcf790133dbd490e00f0336
+    base: true
   simulator/perception_eval:
     type: git
     url: https://github.com/tier4/autoware_perception_evaluation.git
     version: ee9b8613ebef33ad770f40f5dd66a0c39a11c294
+    base: true
   simulator/vendor/ros2_numpy:
     type: git
     url: https://github.com/Box-Robotics/ros2_numpy.git
     version: d665add22e6a9070e88d9514bbf0dcbcb122a3dc
+    base: true
   simulator/vendor/operational-design-domains:
     type: git
     url: https://gitlab.com/autowarefoundation/operational-design-domains
     version: 42321f9a04fcaef9caf3694530e1c63d3e27c47a
+    base: true
