@@ -46,7 +46,7 @@ while read -r line; do
 
     # search release of ml packages
     res=$(webauto ml package-release search \
-        --project-id prd_jt \
+        --project-id x2_dev \
         --package-name "$ml_packages_name" \
         --package-release-name "$ml_packages_release" \
         --output json --quiet)
@@ -62,11 +62,11 @@ while read -r line; do
 
     # download ml packages
     res=$(webauto ml package-release pull \
-        --project-id prd_jt \
+        --project-id x2_dev \
         --package-id "$package_id" \
         --package-release-id "$release_id" \
         --target-dir ./tmp \
-        --output json--quiet 2>&1)
+        --output json --quiet 2>&1)
     if echo "$res" | grep -q "Error:" || echo "$res" | grep -q "\[403\]"; then
         echo -e "\e[31m$res\e[0m"
         echo -e "\e[31mFailed to download ml model. [$ml_packages_name]\e[0m"
