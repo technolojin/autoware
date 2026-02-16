@@ -24,11 +24,6 @@ repositories:
     url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
     version: 1d8d6ee922a838f79fc026242644fab1c87b3e31
     base: true
-  autoware/aip_launcher:
-    type: git
-    url: https://github.com/tier4/aip_launcher.git
-    version: v0.63.0
-    base: true
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git

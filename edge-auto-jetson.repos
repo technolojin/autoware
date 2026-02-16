@@ -181,14 +181,6 @@ repositories:
     type: git
     url: https://github.com/MapIV/rtklib_ros_bridge.git
     version: ef094407bba4f475a8032972e0c60cbb939b51b8
-  vendor/nebula:
-    type: git
-    url: https://github.com/tier4/nebula.git
-    version: v0.2.15.1
-  vendor/sync_tooling_msgs: # For Nebula SYNC.TOOLING support
-    type: git
-    url: https://github.com/tier4/sync_tooling_msgs.git
-    version: v0.2.3
   vendor/negotiated:
     type: git
     url: https://github.com/osrf/negotiated.git
