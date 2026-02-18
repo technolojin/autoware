@@ -86,6 +86,7 @@ artifacts:
           environment_variables:
             ECU_SYSTEM_SETUP_SOURCE_PATH: ansible
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/ecu_setup.yaml
+            ECU_ID: main
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
