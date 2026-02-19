@@ -1,23 +1,13 @@
 #!/bin/bash -e
 # cspell: ignore nsight
 
-: "${WEBAUTO_CI_SOURCE_PATH:?is not set}"
 : "${WEBAUTO_CI_GITHUB_TOKEN:?is not set}"
 
-: "${AUTOWARE_PATH:?is not set}"
-: "${ECU_SYSTEM_SETUP_SOURCE_PATH:?is not set}"
 : "${ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK:?is not set}"
 : "${ECU_ID:?is not set}"
 
 # cleanup base image first
 . .webauto-ci/common/ota-clean-up/clean-up-base-image.sh
-
-cd "$AUTOWARE_PATH"
-# Delete files for incremental builds created in the autoware-build phase.
-find "$AUTOWARE_PATH" \( -name ".rsync-include" -or -name ".rsync-exclude" \) -print0 | xargs -0 rm
-
-rm -rf "$ECU_SYSTEM_SETUP_SOURCE_PATH"
-cp -r "${WEBAUTO_CI_SOURCE_PATH}/${ECU_SYSTEM_SETUP_SOURCE_PATH}" "$ECU_SYSTEM_SETUP_SOURCE_PATH"
 
 sudo -E apt-get -y update
 sudo -E apt-get -y install "linux-image-$(uname -r)" "linux-headers-$(uname -r)" "linux-modules-extra-$(uname -r)"
@@ -30,18 +20,18 @@ sudo sed -i 's/\(.*sleep-inactive-ac-timeout=.*\)/sleep-inactive-ac-timeout=0/g'
 sudo sed -i 's/\(.*sleep-inactive-battery-timeout=.*\)/sleep-inactive-battery-timeout=0/g' /etc/gdm3/greeter.dconf-defaults
 
 export GITHUB_TOKEN="$WEBAUTO_CI_GITHUB_TOKEN"
-git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
-git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "git@github.com:"
+git config --global url."https://github.com/".insteadOf "git@github.com:"
+# shellcheck disable=SC2016
+git config --global credential."https://github.com".helper '!f() { echo "username=x-access-token"; echo "password=${GITHUB_TOKEN}"; }; f'
 
 readonly dummy_vehicle_id=default # Reconfigure during OTA update
 ansible-galaxy collection install -f -r "ansible-galaxy-requirements.yaml"
 ansible-playbook "${ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK}" \
-    -e autoware_install_dir="$(pwd)" \
-    -e github_token="${GITHUB_TOKEN}" \
     -e vehicle_id="${dummy_vehicle_id}" \
     -e reload_systemd=no
 
-git config --global --unset-all url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf
+git config --global --unset credential."https://github.com".helper
+git config --global --unset url."https://github.com/".insteadOf
 
 sudo mkdir -p /etc/ota
 sudo cp "$(dirname "$0")/persistents.txt" /etc/ota/

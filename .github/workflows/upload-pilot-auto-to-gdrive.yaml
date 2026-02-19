@@ -166,7 +166,7 @@ jobs:
           pip3 install vcstool
           cd _InstallTempFolder/${{ env.REPO_NAME }}
           mkdir src
-          vcs import src < autoware.repos
+          vcs import src --recursive < autoware.repos
 
       - name: Delete .gif
         run: |

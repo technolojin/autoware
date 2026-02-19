@@ -13,8 +13,9 @@ sudo -E apt-get -y update
 sudo -E apt-get -y install systemd-coredump
 
 export GITHUB_TOKEN="$WEBAUTO_CI_GITHUB_TOKEN"
-git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
-git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "git@github.com:"
+git config --global url."https://github.com/".insteadOf "git@github.com:"
+# shellcheck disable=SC2016
+git config --global credential."https://github.com".helper '!f() { echo "username=x-access-token"; echo "password=${GITHUB_TOKEN}"; }; f'
 
 ansible-galaxy collection install -f -r "ansible-galaxy-requirements.yaml"
 eval ansible-playbook "'${ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK}'" \
@@ -23,7 +24,8 @@ eval ansible-playbook "'${ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK}'" \
     -e github_token="${GITHUB_TOKEN}" \
     -e reload_systemd=no
 
-git config --global --unset-all url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf
+git config --global --unset credential."https://github.com".helper
+git config --global --unset url."https://github.com/".insteadOf
 
 sudo mkdir -p /etc/ota
 sudo cp "$(dirname "$0")/persistents.txt" /etc/ota/

@@ -12,8 +12,9 @@ sudo -E apt-get -y update
 sudo -E apt-get -y install usbutils # For kvaser
 
 export GITHUB_TOKEN="$WEBAUTO_CI_GITHUB_TOKEN"
-git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
-git config --global --add url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "git@github.com:"
+git config --global url."https://github.com/".insteadOf "git@github.com:"
+# shellcheck disable=SC2016
+git config --global credential."https://github.com".helper '!f() { echo "username=x-access-token"; echo "password=${GITHUB_TOKEN}"; }; f'
 
 ansible_args=()
 ansible_args+=("--extra-vars" "prompt_install_nvidia=y")
@@ -35,4 +36,5 @@ ansible-playbook "ansible/playbooks/local_dev_env.yaml" \
 # Install sxpf_driver for addon ECU
 ansible-playbook "ansible/playbooks/x2_addon_pre_build.yaml"
 
-git config --global --unset-all url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf
+git config --global --unset credential."https://github.com".helper
+git config --global --unset url."https://github.com/".insteadOf

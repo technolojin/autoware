@@ -1,9 +1,8 @@
 #!/bin/bash -e
 
-: "${WEBAUTO_CI_SOURCE_PATH:?is not set}"
 : "${WEBAUTO_CI_DEBUG_BUILD:?is not set}"
+: "${WEBAUTO_CI_GITHUB_TOKEN:?is not set}"
 
-: "${AUTOWARE_PATH:?is not set}"
 : "${CCACHE_DIR:=}"
 : "${CCACHE_SIZE:=1G}"
 : "${PARALLEL_WORKERS:=4}"
@@ -11,26 +10,6 @@
 # get installed ros distro
 # shellcheck disable=SC2012
 ROS_DISTRO=$(ls -1 /opt/ros | head -1)
-
-# For incremental builds, the source files used in previous builds are already in place.
-# Delete any files that have been removed from the new source, except for files specified in .gitignore.
-# Also, to take advantage of incremental builds, preserve the timestamps of files with the same checksum.
-src=$(mktemp -p /tmp -d src.XXXXX)
-cp -rfT "$WEBAUTO_CI_SOURCE_PATH" "$src"
-# shellcheck disable=SC2016
-find "$src" -name '.gitignore' -printf '%P\0' | xargs -0 -I {} sh -c "sed -n "'s/^!//gp'" $src/{} > $src/"'$(dirname {})'"/.rsync-include"
-# shellcheck disable=SC2016
-find "$src" -name '.gitignore' -printf '%P\0' | xargs -0 -I {} sh -c "sed -n "'/^[^!]/p'" $src/{} > $src/"'$(dirname {})'"/.rsync-exclude"
-rsync -rlpc -f":+ .rsync-include" -f":- .rsync-exclude" --del "$src"/ "$AUTOWARE_PATH"
-# The `src` directory is excluded from the root .gitignore and must be synchronized separately.
-rsync -rlpc -f":+ .rsync-include" -f":- .rsync-exclude" --del "$src"/src/ "$AUTOWARE_PATH"/src
-# `.rsync-include` and `.rsync-exclude` must be included in the output of this phase for reference in the next incremental build.
-# These files are removed in the ecu-system-setup phase.
-#find "$AUTOWARE_PATH" \( -name ".rsync-include" -or -name ".rsync-exclude" \) -print0 | xargs -0 rm
-rm -rf "$src"
-
-chmod 755 "$AUTOWARE_PATH"
-cd "$AUTOWARE_PATH"
 
 if [ -n "$CCACHE_DIR" ]; then
     mkdir -p "$CCACHE_DIR"
@@ -43,12 +22,29 @@ fi
 
 sudo -E apt-get -y update
 
+sudo -E apt-get -y install python3-vcs2l
+mkdir -p src
+
+export GITHUB_TOKEN="$WEBAUTO_CI_GITHUB_TOKEN"
+git config --global url."https://github.com/".insteadOf "git@github.com:"
+# shellcheck disable=SC2016
+git config --global credential."https://github.com".helper '!f() { echo "username=x-access-token"; echo "password=${GITHUB_TOKEN}"; }; f'
+
+# Cloning repositories
+# Not using --shallow option here:
+# vcs export fails for shallow cloned and SHA-pinned repositories
+vcs import src --recursive <autoware.repos
+echo "--- exact.repos ---"
+vcs export src --exact
+echo "--- end of exact.repos ---"
+
+git config --global --unset credential."https://github.com".helper
+git config --global --unset url."https://github.com/".insteadOf
+
 # shellcheck disable=SC1090
 source "/opt/ros/${ROS_DISTRO}/setup.bash"
 rosdep update
 rosdep install -y --from-paths src --ignore-src --rosdistro "$ROS_DISTRO"
-
-cd "$AUTOWARE_PATH"
 
 [[ $WEBAUTO_CI_DEBUG_BUILD == "true" ]] && build_type="RelWithDebInfo" || build_type="Release"
 

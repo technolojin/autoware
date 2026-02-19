@@ -44,7 +44,7 @@ jobs:
       - name: Run vcs import
         run: |
           mkdir src
-          vcs import src < autoware.repos
+          vcs import src --recursive < autoware.repos
 
       - name: Install yaml diff dependencies
         run: |

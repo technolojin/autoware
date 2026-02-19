@@ -48,9 +48,9 @@ RUN sed -i "s/git@github\.com:/https:\/\/github\.com\//g" ./autoware.repos \
   && cat ./tools.repos \
   && mkdir -p src
 
-RUN --mount=type=ssh vcs import src < autoware.repos --shallow \
-  && vcs import src < simulator.repos --shallow \
-  && vcs import src < tools.repos --shallow
+RUN --mount=type=ssh vcs import src --recursive --shallow < autoware.repos \
+  && vcs import src --recursive --shallow < simulator.repos \
+  && vcs import src --recursive --shallow < tools.repos
 
 RUN rosdep update \
   && DEBIAN_FRONTEND=noninteractive rosdep install -y --ignore-src --from-paths src --rosdistro "$ROS_DISTRO" \

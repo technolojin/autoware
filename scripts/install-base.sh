@@ -109,7 +109,7 @@ yq e '.repositories | with_entries(select(.value.base == true))' autoware.repos 
 
 cd "$PILOT_AUTO_VERSION_REPO"
 mkdir -p src
-vcs import src <base.repos
+vcs import src --recursive <base.repos
 
 colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 

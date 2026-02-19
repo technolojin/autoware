@@ -37,8 +37,8 @@ jobs:
       - name: Run vcs import
         run: |
           mkdir src
-          vcs import src < autoware.repos --shallow
-          vcs import src < tools.repos --shallow
+          vcs import src --recursive --shallow < autoware.repos
+          vcs import src --recursive --shallow < tools.repos
 
       # - name: Remove exec_depend
       #   uses: autowarefoundation/autoware-github-actions/remove-exec-depend@v1

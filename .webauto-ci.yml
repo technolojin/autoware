@@ -14,13 +14,6 @@ artifacts:
       type: custom
       runtime:
         type: standard1/amd64/xlarge
-      source:
-        vcstool:
-          repositories_files:
-            - autoware.repos
-            - simulator.repos
-            - tools.repos
-          import_path: src
       environment_variables:
         AUTOWARE_PATH: /home/autoware/pilot-auto
         ML_MODELS_PATH: /opt/autoware/mlmodels
@@ -44,9 +37,11 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/main/environment-setup/**/*
         - name: autoware-setup
           user: autoware
+          workdir: /home/autoware/pilot-auto
           exec: ./.webauto-ci/main/autoware-setup/run.sh
           caches:
             - name: apt-lists
@@ -55,6 +50,7 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/main/autoware-setup/**/*
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
@@ -63,6 +59,7 @@ artifacts:
             enabled: true
         - name: autoware-build
           user: autoware
+          workdir: /home/autoware/pilot-auto
           exec: ./.webauto-ci/main/autoware-build/run.sh
           environment_variables:
             PARALLEL_WORKERS: "32"
@@ -76,13 +73,16 @@ artifacts:
               mountpoint: /tmp/build/cache/ccache
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/main/autoware-build/**/*
-              - src/**/*
-              - "!src/ecu_system_setup/**"
+              - autoware.repos
+              - simulator.repos
+              - tools.repos
           incremental_build:
             enabled: true
         - name: asset-deploy
           user: autoware
+          workdir: /home/autoware/pilot-auto
           exec: ./.webauto-ci/common/asset-deploy/run.sh
           ml_packages:
             - name: centerpoint
@@ -93,9 +93,9 @@ artifacts:
               release: with_unknown/mlmodel/v1.0.1
         - name: ecu-system-setup
           user: autoware
+          workdir: /home/autoware/pilot-auto
           exec: ./.webauto-ci/main/ecu-system-setup/run.sh
           environment_variables:
-            ECU_SYSTEM_SETUP_SOURCE_PATH: ansible
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/ecu_setup.yaml
             ECU_ID: main
           caches:
@@ -105,8 +105,8 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/main/ecu-system-setup/**/*
-              - src/ecu_system_setup/**/*
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
@@ -134,13 +134,6 @@ artifacts:
       type: custom
       runtime:
         type: standard1/amd64/xlarge
-      source:
-        vcstool:
-          repositories_files:
-            - autoware.repos
-            - simulator.repos
-            - tools.repos
-          import_path: src
       environment_variables:
         AUTOWARE_PATH: /home/autoware/pilot-auto
         ML_MODELS_PATH: /opt/autoware/mlmodels
@@ -164,9 +157,11 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/main/environment-setup/**/*
         - name: autoware-setup
           user: autoware
+          workdir: /home/autoware/pilot-auto
           exec: ./.webauto-ci/main/autoware-setup/run.sh
           caches:
             - name: apt-lists
@@ -175,6 +170,7 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/main/autoware-setup/**/*
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
@@ -183,6 +179,7 @@ artifacts:
             enabled: true
         - name: autoware-build
           user: autoware
+          workdir: /home/autoware/pilot-auto
           exec: ./.webauto-ci/main/autoware-build/run.sh
           environment_variables:
             PARALLEL_WORKERS: "32"
@@ -196,22 +193,25 @@ artifacts:
               mountpoint: /tmp/build/cache/ccache
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/main/autoware-build/**/*
-              - src/**/*
-              - "!src/ecu_system_setup/**"
+              - autoware.repos
+              - simulator.repos
+              - tools.repos
           incremental_build:
             enabled: true
         - name: asset-deploy
           user: autoware
+          workdir: /home/autoware/pilot-auto
           exec: ./.webauto-ci/common/asset-deploy/run.sh
           ml_packages:
             - name: centerpoint
               release: x2/v2.3.1_ADM-AL30_Ubuntu22.04
         - name: ecu-system-setup
           user: autoware
+          workdir: /home/autoware/pilot-auto
           exec: ./.webauto-ci/main/ecu-system-setup/run.sh
           environment_variables:
-            ECU_SYSTEM_SETUP_SOURCE_PATH: ansible
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_sub.yaml
             ECU_ID: sub
           caches:
@@ -221,8 +221,8 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/main/ecu-system-setup/**/*
-              - src/ecu_system_setup/**/*
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
@@ -248,11 +248,6 @@ artifacts:
       type: custom
       runtime:
         type: standard1/amd64/xlarge
-      source:
-        vcstool:
-          repositories_files:
-            - autoware.repos
-          import_path: src
       environment_variables:
         AUTOWARE_PATH: /home/autoware/pilot-auto
         DEBIAN_FRONTEND: noninteractive
@@ -269,9 +264,11 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/logging/environment-setup/**/*
         - name: autoware-setup
           user: autoware
+          workdir: /home/autoware/pilot-auto
           exec: ./.webauto-ci/logging/autoware-setup/run.sh
           caches:
             - name: apt-lists
@@ -280,6 +277,7 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/logging/autoware-setup/**/*
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
@@ -288,6 +286,7 @@ artifacts:
             enabled: true
         - name: autoware-build
           user: autoware
+          workdir: /home/autoware/pilot-auto
           exec: ./.webauto-ci/logging/autoware-build/run.sh
           environment_variables:
             PARALLEL_WORKERS: "32"
@@ -301,13 +300,14 @@ artifacts:
               mountpoint: /tmp/build/cache/ccache
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/logging/autoware-build/**/*
-              - src/**/*
-              - "!src/ecu_system_setup/**"
+              - autoware.repos
           incremental_build:
             enabled: true
         - name: ecu-system-setup
           user: autoware
+          workdir: /home/autoware/pilot-auto
           exec: ./.webauto-ci/logging/ecu-system-setup/run.sh
           environment_variables:
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_logging.yaml
@@ -318,8 +318,8 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/logging/ecu-system-setup/**/*
-              - src/ecu_system_setup/**/*
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
@@ -340,11 +340,6 @@ artifacts:
       type: custom
       runtime:
         type: standard1/arm64/large
-      source:
-        vcstool:
-          repositories_files:
-            - edge-auto-jetson.repos
-          import_path: src
       environment_variables:
         AUTOWARE_PATH: /home/autoware/edge-auto-jetson
         ML_MODELS_PATH: /opt/autoware/mlmodels
@@ -362,15 +357,18 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/perception/environment-setup/**/*
         - name: asset-deploy
           user: autoware
+          workdir: /home/autoware/edge-auto-jetson
           exec: ./.webauto-ci/common/asset-deploy/run.sh
           ml_packages:
             - name: yolox
               release: with_unknown/mlmodel/v1.0.1_Anvil_ESG620-133-r36.4.0
         - name: edge-auto-jetson-build
           user: autoware
+          workdir: /home/autoware/edge-auto-jetson
           exec: ./.webauto-ci/perception/edge-auto-jetson-build/run.sh
           environment_variables:
             PARALLEL_WORKERS: "32"
@@ -384,13 +382,14 @@ artifacts:
               mountpoint: /tmp/build/cache/ccache
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/perception/edge-auto-jetson-build/**/*
-              - src/**/*
-              - "!src/ecu_system_setup/**"
+              - edge-auto-jetson.repos
           incremental_build:
             enabled: true
         - name: ecu-system-setup
           user: autoware
+          workdir: /home/autoware/edge-auto-jetson
           exec: ./.webauto-ci/perception/ecu-system-setup/run.sh
           environment_variables:
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_perception.yaml
@@ -402,8 +401,8 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/perception/ecu-system-setup/**/*
-              - src/ecu_system_setup/**/*
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
@@ -419,11 +418,6 @@ artifacts:
       type: custom
       runtime:
         type: standard1/arm64/large
-      source:
-        vcstool:
-          repositories_files:
-            - edge-auto-jetson.repos
-          import_path: src
       environment_variables:
         AUTOWARE_PATH: /home/autoware/edge-auto-jetson
         ML_MODELS_PATH: /opt/autoware/mlmodels
@@ -441,9 +435,11 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/perception/environment-setup/**/*
         - name: asset-deploy
           user: autoware
+          workdir: /home/autoware/edge-auto-jetson
           exec: ./.webauto-ci/common/asset-deploy/run.sh
           ml_packages:
             - name: yolox
@@ -456,6 +452,7 @@ artifacts:
               release: common/mlmodel/v0.1.2_Anvil_ESG620-133-r36.4.0
         - name: edge-auto-jetson-build
           user: autoware
+          workdir: /home/autoware/edge-auto-jetson
           exec: ./.webauto-ci/perception/edge-auto-jetson-build/run.sh
           environment_variables:
             PARALLEL_WORKERS: "32"
@@ -469,13 +466,14 @@ artifacts:
               mountpoint: /tmp/build/cache/ccache
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/perception/edge-auto-jetson-build/**/*
-              - src/**/*
-              - "!src/ecu_system_setup/**"
+              - edge-auto-jetson.repos
           incremental_build:
             enabled: true
         - name: ecu-system-setup
           user: autoware
+          workdir: /home/autoware/edge-auto-jetson
           exec: ./.webauto-ci/perception/ecu-system-setup/run.sh
           environment_variables:
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_perception.yaml
@@ -487,8 +485,8 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/perception/ecu-system-setup/**/*
-              - src/ecu_system_setup/**/*
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
@@ -504,11 +502,6 @@ artifacts:
       type: custom
       runtime:
         type: standard1/amd64/large
-      source:
-        vcstool:
-          repositories_files:
-            - edge-auto-jetson.repos
-          import_path: src
       environment_variables:
         AUTOWARE_PATH: /home/autoware/edge-auto-jetson
         ML_MODELS_PATH: /opt/autoware/mlmodels
@@ -518,6 +511,7 @@ artifacts:
         kernel_version: 5.19.0-50-generic
       phases:
         - name: environment-setup
+          user: root
           exec: ./.webauto-ci/addon/environment-setup/run.sh
           caches:
             - name: apt-lists
@@ -526,9 +520,11 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/addon/environment-setup/**/*
         - name: autoware-setup
           user: autoware
+          workdir: /home/autoware/edge-auto-jetson
           exec: ./.webauto-ci/addon/autoware-setup/run.sh
           caches:
             - name: apt-lists
@@ -537,6 +533,7 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/addon/autoware-setup/**/*
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
@@ -545,6 +542,7 @@ artifacts:
             enabled: true
         - name: asset-deploy
           user: autoware
+          workdir: /home/autoware/edge-auto-jetson
           exec: ./.webauto-ci/common/asset-deploy/run.sh
           ml_packages:
             - name: yolox
@@ -553,6 +551,7 @@ artifacts:
               release: beta/1.0
         - name: edge-auto-jetson-build
           user: autoware
+          workdir: /home/autoware/edge-auto-jetson
           exec: ./.webauto-ci/addon/edge-auto-jetson-build/run.sh
           environment_variables:
             PARALLEL_WORKERS: "32"
@@ -566,13 +565,14 @@ artifacts:
               mountpoint: /tmp/build/cache/ccache
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/addon/edge-auto-jetson-build/**/*
-              - src/**/*
-              - "!src/ecu_system_setup/**"
+              - edge-auto-jetson.repos
           incremental_build:
             enabled: true
         - name: ecu-system-setup
           user: autoware
+          workdir: /home/autoware/edge-auto-jetson
           exec: ./.webauto-ci/addon/ecu-system-setup/run.sh
           environment_variables:
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_addon.yaml
@@ -583,8 +583,8 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/addon/ecu-system-setup/**/*
-              - src/ecu_system_setup/**/*
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
@@ -606,11 +606,6 @@ artifacts:
       type: custom
       runtime:
         type: standard1/arm64/large
-      source:
-        vcstool:
-          repositories_files:
-            - edge-auto-jetson.repos
-          import_path: src
       environment_variables:
         AUTOWARE_PATH: /home/autoware/edge-auto-jetson
         ML_MODELS_PATH: /opt/autoware/mlmodels
@@ -627,9 +622,11 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/addonlite/environment-setup/**/*
         - name: edge-auto-jetson-build
           user: autoware
+          workdir: /home/autoware/edge-auto-jetson
           exec: ./.webauto-ci/addonlite/edge-auto-jetson-build/run.sh
           environment_variables:
             PARALLEL_WORKERS: "32"
@@ -643,13 +640,14 @@ artifacts:
               mountpoint: /tmp/build/cache/ccache
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/addonlite/edge-auto-jetson-build/**/*
-              - src/**/*
-              - "!src/ecu_system_setup/**"
+              - edge-auto-jetson.repos
           incremental_build:
             enabled: true
         - name: asset-deploy
           user: autoware
+          workdir: /home/autoware/edge-auto-jetson
           exec: ./.webauto-ci/common/asset-deploy/run.sh
           ml_packages:
             - name: yolox
@@ -662,6 +660,7 @@ artifacts:
               release: common/mlmodel/v0.1.2_Anvil_ESG620-133-r36.4.0
         - name: ecu-system-setup
           user: autoware
+          workdir: /home/autoware/edge-auto-jetson
           exec: ./.webauto-ci/addonlite/ecu-system-setup/run.sh
           environment_variables:
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_addonlite.yaml
@@ -673,8 +672,8 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/addonlite/ecu-system-setup/**/*
-              - src/ecu_system_setup/**/*
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
@@ -690,11 +689,6 @@ artifacts:
       type: custom
       runtime:
         type: standard1/arm64/large
-      source:
-        vcstool:
-          repositories_files:
-            - autoware.repos
-          import_path: src
       linux_parameters:
         kernel_version: 5.10.120-tegra
       phases:
@@ -710,8 +704,8 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/media-streaming/ecu-system-setup/**/*
-              - src/ecu_system_setup/**/*
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
@@ -726,11 +720,6 @@ artifacts:
       type: custom
       runtime:
         type: standard1/arm64/large
-      source:
-        vcstool:
-          repositories_files:
-            - autoware.repos
-          import_path: src
       linux_parameters:
         kernel_version: 5.10.120-tegra
       phases:
@@ -746,8 +735,8 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/media-streaming/ecu-system-setup/**/*
-              - src/ecu_system_setup/**/*
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
@@ -762,11 +751,6 @@ artifacts:
       type: custom
       runtime:
         type: standard1/amd64/large
-      source:
-        vcstool:
-          repositories_files:
-            - autoware.repos
-          import_path: src
       environment_variables:
         DEBIAN_FRONTEND: noninteractive
         LANG: C.UTF-8
@@ -783,6 +767,7 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/signage/environment-setup/**/*
         - name: ecu-system-setup
           user: autoware
@@ -796,8 +781,8 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/signage/ecu-system-setup/**/*
-              - src/ecu_system_setup/**/*
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
@@ -818,11 +803,6 @@ artifacts:
       type: custom
       runtime:
         type: standard1/amd64/large
-      source:
-        vcstool:
-          repositories_files:
-            - autoware.repos
-          import_path: src
       environment_variables:
         DEBIAN_FRONTEND: noninteractive
         LANG: C.UTF-8
@@ -839,6 +819,7 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/signage/environment-setup/**/*
         - name: ecu-system-setup
           user: autoware
@@ -852,8 +833,8 @@ artifacts:
               mountpoint: /var/cache/apt/archives
           build_result_reuse:
             key_files:
+              - .webauto-ci.yml
               - .webauto-ci/signage/ecu-system-setup/**/*
-              - src/ecu_system_setup/**/*
               - ansible/**/*
               - ansible-galaxy-requirements.yaml
       base_container_image:
