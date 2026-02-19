@@ -3,12 +3,12 @@ repositories:
   autoware/core:
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: 7ca22714ee8e7f6e9c0faded50932a9ab04572e7
+    version: d9cf7c9a0df8a3ec575ff5f5509d5a3c3f611bd5
     base: true
   autoware/universe:
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: 058acdf85f116fc469d773c998b3b7f3d8792df1
+    version: d34c6f1bcf789dc76430a258497acf7948157657
     base: true
   autoware/autoware_cmake:
     type: git
@@ -18,27 +18,28 @@ repositories:
   autoware/autoware_utils:
     type: git
     url: https://github.com/autowarefoundation/autoware_utils.git
-    version: 8f3fb1c3815bf346510cf58d14a4d76d4cdf4a48
+    version: 99e412fcc9e6b9c77c16cb33ad36f09d887e7853
     base: true
   autoware/autoware_lanelet2_extension:
     type: git
     url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
-    version: 1d8d6ee922a838f79fc026242644fab1c87b3e31
+    version: 38b5af5ac8121989e018ef6e48a1d508119e0128
     base: true
   autoware/launcher:
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: b03668609f0913b84649a0b8b66588926d52ce83
+    version: d226ee31dffd0bca33dd13ebd884e2d698895c52
     base: false
   autoware/aip_launcher:
+    # aip_launcher repository is no longer maintained and only left for legacy support.
     type: git
     url: https://github.com/tier4/aip_launcher.git
-    version: 1cfd841178a0bf7a5874907ec5d400a62a6afac8
-    base: true
+    version: 21a1d63cad185703611d2c57cdfdb1a726fb09fe
+    base: false
   autoware/ad_api_adaptor:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: 039b41ce384417a83c55bbfe7cad1a0ab0d1c4a9
+    version: 2f9d67f24a66484d6a9e69b8ff0cf05124324337
     base: true
   autoware/tier4_autoware_msgs:
     type: git
@@ -68,12 +69,12 @@ repositories:
   autoware/managed_transform_buffer:
     type: git
     url: https://github.com/autowarefoundation/managed_transform_buffer.git
-    version: c94d992b296256041b88771256cdddb486279340
+    version: b12c9c11bccdb0ea24ac3665c91f0933ba43752f
     base: true
   autoware/autoware_rviz_plugins:
     type: git
     url: https://github.com/autowarefoundation/autoware_rviz_plugins.git
-    version: 959de0c9cb58ec553dc30ae56c2b670945af5609
+    version: 5d3d4f0aa296470912ca7ff94f3524d9aed1f8b1
     base: true
   # description
   description/sensor/sensor_component_description:
@@ -121,7 +122,7 @@ repositories:
   vendor/nebula:
     type: git
     url: https://github.com/tier4/nebula.git
-    version: v0.2.15.1
+    version: v0.3.2.1
     base: true
   vendor/sync_tooling_msgs:  # For Nebula SYNC.TOOLING support
     type: git
@@ -230,7 +231,7 @@ repositories:
   v2x/vehicle2infrastructure:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: e24f67e083cae3718f44764089cf44e554db35d1
+    version: d80e25e4f79ad50fe734ec8a2b8cf796ed9c2d5c
     base: true
 
   # middleware
