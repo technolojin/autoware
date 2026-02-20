@@ -6,5 +6,6 @@
 '/etc/dhcpd.conf'
 '/etc/nftables.conf'
 '/opt/autoware/env/vehicle.env'
+'/opt/autoware/env/domain.env'
 '/opt/autoware/env/jetson.env'
 '/opt/devtools'

@@ -6,6 +6,7 @@
 '/etc/tpm2_pkcs11/tpm2_pkcs11.sqlite3'
 '/etc/usbguard/rules.conf'
 '/home/autoware/vehicle.env'
+'/home/autoware/domain.env'
 '/greengrass/config/config.json'
 '/greengrass/certs'
 '/greengrass/v2/init_config'
