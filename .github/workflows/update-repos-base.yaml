@@ -1,0 +1,176 @@
+# For ref.design repositories.
+# Update base=true repositories in .repos files from the corresponding vanilla branch.
+name: Update Repos Base from Vanilla
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: Target branch name (e.g. 'main', 'beta/v4.3')
+        required: true
+        type: string
+      vanilla_branch:
+        description: Vanilla branch name to sync with (e.g. 'stable', 'beta/v0.48')
+        required: false
+        type: string
+  workflow_call:
+    inputs:
+      branch:
+        description: Target branch name
+        required: true
+        type: string
+      vanilla_branch:
+        description: Vanilla branch name to sync with
+        required: false
+        type: string
+
+jobs:
+  update-repos-base:
+    runs-on: ubuntu-latest
+    if: ${{ github.repository != 'tier4/pilot-auto' }}
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          ref: ${{ inputs.branch }}
+          path: target
+
+      - name: Generate token
+        id: generate-token
+        uses: tibdex/github-app-token@v2
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Set git config
+        uses: autowarefoundation/autoware-github-actions/set-git-config@v1
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+
+      - name: Install yq
+        run: |
+          sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/v4.49.2/yq_linux_amd64
+          echo "be2c0ddcf426b6a231648610ec5d1666ae50e9f6473e82f6486f9f4cb6e3e2f7  /usr/local/bin/yq" | sha256sum -c -
+          sudo chmod a+x /usr/local/bin/yq
+
+      - name: Determine vanilla branch
+        id: determine-vanilla-branch
+        env:
+          INPUT_BRANCH_NAME: ${{ inputs.branch }}
+          INPUT_VANILLA_BRANCH_NAME: ${{ inputs.vanilla_branch }}
+        run: |
+          cd "${GITHUB_WORKSPACE}/target"
+          if [ -n "${INPUT_VANILLA_BRANCH_NAME}" ]; then
+            echo "vanilla_branch=${INPUT_VANILLA_BRANCH_NAME}" >> $GITHUB_OUTPUT
+            echo "Using specified vanilla branch: ${INPUT_VANILLA_BRANCH_NAME}"
+          else
+            # Infer vanilla branch from target branch (e.g. main -> stable, beta/v4.3 -> beta/v0.43)
+            if [[ "${INPUT_BRANCH_NAME}" == "main" ]]; then
+              VANILLA_BRANCH_NAME="stable"
+            elif [[ "${INPUT_BRANCH_NAME}" == beta/+ ]]; then
+              version_name="${INPUT_BRANCH_NAME#beta/}"
+              parent_version=$(yq '.releases[] | select(.version == "'"${version_name}"'") | .parent.version' .release_info.yaml)
+              if [ -z "${parent_version}" ]; then
+                echo "Error: Could not find parent version for '${version_name}' in .release_info.yaml." >&2
+                exit 1
+              fi
+              VANILLA_BRANCH_NAME="beta/${parent_version}"
+            else
+              echo "Error: Unable to determine vanilla branch for target branch '${INPUT_BRANCH_NAME}'." >&2
+              exit 1
+            fi
+            echo "vanilla_branch=${VANILLA_BRANCH_NAME}" >> $GITHUB_OUTPUT
+            echo "Using inferred vanilla branch: ${VANILLA_BRANCH_NAME}"
+          fi
+
+      - name: Checkout vanilla repository
+        if: ${{ inputs.vanilla_branch != '' }}
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          repository: tier4/pilot-auto
+          ref: ${{ steps.determine-vanilla-branch.outputs.vanilla_branch }}
+          path: vanilla
+
+      - name: Update base repos files from vanilla
+        id: update-repos-base
+        env:
+          BRANCH_NAME: ${{ inputs.branch }}
+          VANILLA_BRANCH_NAME: ${{ steps.determine-vanilla-branch.outputs.vanilla_branch }}
+        run: |
+          cd "${GITHUB_WORKSPACE}/target"
+
+          PR_BRANCH_NAME="update-repos-base-${BRANCH_NAME}"
+          git checkout -B "${PR_BRANCH_NAME}"
+
+          TEMP_DIR=$(mktemp -d)
+          for REPO in autoware simulator tools; do
+            REPO_FILE="${REPO}.repos"
+            if [ -f "$GITHUB_WORKSPACE/vanilla/$REPO_FILE" ] && [ -f "$GITHUB_WORKSPACE/target/$REPO_FILE" ]; then
+              yq e '.repositories | with_entries(select(.value.base == true) | .value |= del(.branch))' "$GITHUB_WORKSPACE/vanilla/$REPO_FILE" > "${TEMP_DIR}/${REPO}_base.repos"
+              yq e '.repositories | with_entries(select(.value.base == false))' "$GITHUB_WORKSPACE/target/$REPO_FILE" > "${TEMP_DIR}/${REPO}_nonbase.repos"
+              yq eval-all --prettyPrint 'select(fileIndex == 0) * select(fileIndex == 1)' "${TEMP_DIR}/${REPO}_base.repos" "${TEMP_DIR}/${REPO}_nonbase.repos" > "$GITHUB_WORKSPACE/target/$REPO_FILE"
+
+              git add $REPO_FILE
+            else
+              echo "Warning: ${REPO_FILE} not found in either vanilla or target. Skipping."
+            fi
+          done
+          rm -rf "${TEMP_DIR}"
+
+          # Copy ansible-galaxy-requirements.yaml from vanilla to target,
+          # Strip collections[*].branch fields
+
+          yq --prettyPrint 'del(.collections[].branch)' "$GITHUB_WORKSPACE/vanilla/ansible-galaxy-requirements.yaml" > "$GITHUB_WORKSPACE/target/ansible-galaxy-requirements.yaml"
+          git add ansible-galaxy-requirements.yaml
+
+          if git diff --cached --quiet; then
+            echo "No base updates to commit"
+            echo "has-changes=false" >> $GITHUB_OUTPUT
+          else
+            git commit -m "chore: update repos base on ${BRANCH_NAME} from vanilla:${VANILLA_BRANCH_NAME}"
+            git fetch origin "${PR_BRANCH_NAME}" || true
+            git push origin "${PR_BRANCH_NAME}" --force-with-lease
+
+            echo "has-changes=true" >> $GITHUB_OUTPUT
+          fi
+
+          echo "branch=${BRANCH_NAME}" >> $GITHUB_OUTPUT
+          echo "sync-branch=${PR_BRANCH_NAME}" >> $GITHUB_OUTPUT
+          echo "vanilla-branch=${VANILLA_BRANCH_NAME}" >> $GITHUB_OUTPUT
+
+          # Updating autoware_launch repository might be required.
+          # Although autoware_launch is decoupled from this update workflow,
+          # remind the PR reviewers to check for necessary updates in autoware_launch.
+
+          if [[ "${GITHUB_REPOSITORY}" == tier4/pilot-auto* ]]; then
+            echo "autoware-launch-repo="tier4/autoware_launch${GITHUB_REPOSITORY#tier4/pilot-auto}" >> $GITHUB_OUTPUT
+          else
+            # We don't expect this case to happen.
+            echo "autoware-launch-repo=unknown" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create or update a sync PR
+        if: steps.update-repos-base.outputs.has-changes == 'true'
+        uses: autowarefoundation/autoware-github-actions/sync-branches@v1
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+          base-branch: ${{ steps.update-repos-base.outputs.branch }}
+          sync-pr-branch: ${{ steps.update-repos-base.outputs.sync-branch }}
+          sync-target-repository: https://github.com/${{ github.repository }}.git
+          sync-target-branch: ${{ steps.update-repos-base.outputs.branch }}
+          pr-title: "chore: update repos base on ${{ steps.update-repos-base.outputs.branch }} from vanilla:${{ steps.update-repos-base.outputs.vanilla-branch }}"
+          pr-body-header: |
+            This PR updates the base repositories in ${{ steps.update-repos-base.outputs.branch }} to match those in vanilla:${{ steps.update-repos-base.outputs.vanilla-branch }}.
+
+            - **Please review the changes before merging.**
+            - Syncing autoware_launch repository might be required alongside.
+              Check https://github.com/${{ steps.update-repos-base.outputs.autoware-launch-repo }}/pulls for necessary updates in autoware_launch.
+          pr-labels: |
+            bot
+            update-repos-base
+          auto-merge-method: squash
