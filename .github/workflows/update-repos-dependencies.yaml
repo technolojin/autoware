@@ -81,7 +81,6 @@ jobs:
             # non-PR branch for daily tests
             UNSTABLE_BRANCH_NAME="unstable"
             git checkout -B "${UNSTABLE_BRANCH_NAME}"
-            git fetch origin "${UNSTABLE_BRANCH_NAME}" || true
             git push origin "${UNSTABLE_BRANCH_NAME}" --force-with-lease
           fi
 
