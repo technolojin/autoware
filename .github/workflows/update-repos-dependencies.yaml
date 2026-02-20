@@ -1,0 +1,107 @@
+# For vanilla and ref.design repositories.
+# Update .repos files and create/update a PR if there are changes.
+# Additionally, for the main branch, update the unstable branch for daily tests.
+name: Update Repos Dependencies
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: Target branch name (e.g. 'main')
+        required: true
+        type: string
+  workflow_call:
+    inputs:
+      branch:
+        description: Target branch name
+        required: true
+        type: string
+
+jobs:
+  update-repos-dependencies:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          ref: ${{ inputs.branch }}
+
+      - name: Generate token
+        id: generate-token
+        uses: tibdex/github-app-token@v2
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Set git config
+        uses: autowarefoundation/autoware-github-actions/set-git-config@v1
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install ruamel.yaml
+
+      - name: Update repos dependencies on target branch
+        id: update-repos-dependencies
+        env:
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+          BRANCH_NAME: ${{ inputs.branch }}
+        run: |
+          PR_BRANCH_NAME="update-repos-dependencies-${BRANCH_NAME}"
+
+          git checkout "${BRANCH_NAME}"
+          git checkout -B "${PR_BRANCH_NAME}"
+
+          # Run the Python script to update repos and generate PR body
+          python .github/workflows/scripts/update_repos_wrapper.py
+
+          # Commit changes
+          git add *.repos ansible-galaxy-requirements.yaml
+          if git diff --cached --quiet; then
+            echo "No dependency updates to commit"
+            echo "has-changes=false" >> $GITHUB_OUTPUT
+          else
+            git commit -m "chore: update repos dependencies on ${BRANCH_NAME}"
+            git fetch origin "${PR_BRANCH_NAME}" || true
+            git push origin "${PR_BRANCH_NAME}" --force-with-lease
+            echo "has-changes=true" >> $GITHUB_OUTPUT
+          fi
+
+          if [ "${BRANCH_NAME}" = "main" ]; then
+            # non-PR branch for daily tests
+            UNSTABLE_BRANCH_NAME="unstable"
+            git checkout -B "${UNSTABLE_BRANCH_NAME}"
+            git fetch origin "${UNSTABLE_BRANCH_NAME}" || true
+            git push origin "${UNSTABLE_BRANCH_NAME}" --force-with-lease
+          fi
+
+          echo "branch=${BRANCH_NAME}" >> $GITHUB_OUTPUT
+          echo "sync-branch=${PR_BRANCH_NAME}" >> $GITHUB_OUTPUT
+
+          echo "pr-body=This PR updates the branch-tracking repositories in ${BRANCH_NAME}." >> $GITHUB_OUTPUT
+
+      - name: Create or update a sync PR
+        if: steps.update-repos-dependencies.outputs.has-changes == 'true'
+        uses: autowarefoundation/autoware-github-actions/sync-branches@v1
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+          base-branch: ${{ steps.update-repos-dependencies.outputs.branch }}
+          sync-pr-branch: ${{ steps.update-repos-dependencies.outputs.sync-branch }}
+          sync-target-repository: https://github.com/${{ github.repository }}.git
+          sync-target-branch: ${{ steps.update-repos-dependencies.outputs.branch }}
+          pr-title: "chore: update repos dependencies on ${{ steps.update-repos-dependencies.outputs.branch }}"
+          pr-body-header: ${{ steps.update-repos-dependencies.outputs.pr-body }}
+          pr-labels: |
+            bot
+            update-repos-dependencies
+          auto-merge-method: squash

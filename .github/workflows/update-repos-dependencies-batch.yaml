@@ -1,0 +1,50 @@
+# Batch update .repos files for all released versions
+name: Update Repos Dependencies (Batch)
+
+on:
+  schedule:
+    - cron: 30 21 * * * # Daily at 06:30 JST
+  workflow_dispatch:
+
+jobs:
+  generate-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      releases: ${{ steps.set-matrix.outputs.releases }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Install yq
+        run: |
+          sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/v4.49.2/yq_linux_amd64
+          echo "be2c0ddcf426b6a231648610ec5d1666ae50e9f6473e82f6486f9f4cb6e3e2f7  /usr/local/bin/yq" | sha256sum -c -
+          sudo chmod a+x /usr/local/bin/yq
+
+      - name: Generate version matrix
+        id: set-matrix
+        run: |
+          RELEASES=$(yq '.releases[].version' .release_info.yaml | jq -R . | jq -s -c .)
+
+          echo "releases=${RELEASES}" >> $GITHUB_OUTPUT
+          echo "Generated matrix: ${RELEASES}"
+
+  update-dependencies-main:
+    uses: ./.github/workflows/update-repos-dependencies.yaml
+    with:
+      branch: main
+    secrets: inherit
+
+  update-dependencies-releases:
+    needs: generate-matrix
+    strategy:
+      matrix:
+        version: ${{ fromJson(needs.generate-matrix.outputs.releases) }}
+      fail-fast: false
+      max-parallel: 5
+    uses: ./.github/workflows/update-repos-dependencies.yaml
+    with:
+      branch: beta/${{ matrix.version }}
+    secrets: inherit

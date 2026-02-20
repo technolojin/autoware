@@ -197,25 +197,25 @@ repositories:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
     branch: tier4/main
-    version: tier4/main
+    version: 32c2dd0678df46be70d98e6873bb3acaa01f77ec
     base: false
   autoware/individual_params:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
     branch: main
-    version: main
+    version: ca1ceab301e863f480c4c7bc56a8cbd0ce6ce9ed
     base: false
   description/vehicle/j6_gen2_description:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
     branch: main
-    version: main
+    version: 31a3bf4cf6be92fdce490f65ca2e0b28b6c66e3f
     base: false
   vendor/mj20_interface:
     type: git
     url: git@github.com:tier4/mj20_interface.git
     branch: main
-    version: main
+    version: 80483867c541972d21031c07dbd3c4dd68ef6435
     base: false
   vendor/ros2_socketcan:
     type: git
@@ -231,7 +231,7 @@ repositories:
     type: git
     url: git@github.com:tier4/emergency_vehicle_detector.git
     branch: vendor
-    version: vendor
+    version: c9a0609e91b2a8d59fb1108f2aa0ddc585deed2c
     base: false
   vendor/pyrocan:
     type: git
@@ -252,11 +252,11 @@ repositories:
     type: git
     url: git@github.com:tier4/redundancy_switcher_interface.git
     branch: main
-    version: main
+    version: dd17cc14bcab6441331ec4f15b44bfc056e16368
     base: false
   autoware/mrm_plugin:
     type: git
     url: git@github.com:tier4/mrm_plugin.x2.git
     branch: main
-    version: main
+    version: 1d8e22118d5dbed3f0cd0687f51bfd0181ba6067
     base: false
