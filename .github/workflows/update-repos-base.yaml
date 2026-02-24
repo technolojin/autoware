@@ -35,8 +35,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
-          ref: ${{ inputs.branch }}
+          fetch-depth: 0
           path: target
 
       - name: Generate token
@@ -51,11 +50,14 @@ jobs:
         with:
           token: ${{ steps.generate-token.outputs.token }}
 
-      - name: Install yq
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
         run: |
-          sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/v4.49.2/yq_linux_amd64
-          echo "be2c0ddcf426b6a231648610ec5d1666ae50e9f6473e82f6486f9f4cb6e3e2f7  /usr/local/bin/yq" | sha256sum -c -
-          sudo chmod a+x /usr/local/bin/yq
+          pip install ruamel.yaml
 
       - name: Determine vanilla branch
         id: determine-vanilla-branch
@@ -69,6 +71,8 @@ jobs:
             echo "Using specified vanilla branch: ${INPUT_VANILLA_BRANCH_NAME}"
           else
             # Infer vanilla branch from target branch (e.g. main -> stable, beta/v4.3 -> beta/v0.43)
+            # `.release_info.yaml` of the initial branch is used.
+
             if [[ "${INPUT_BRANCH_NAME}" == "main" ]]; then
               VANILLA_BRANCH_NAME="stable"
             elif [[ "${INPUT_BRANCH_NAME}" == beta/+ ]]; then
@@ -88,13 +92,14 @@ jobs:
           fi
 
       - name: Checkout vanilla repository
-        if: ${{ inputs.vanilla_branch != '' }}
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
+          fetch-tags: true
           repository: tier4/pilot-auto
           ref: ${{ steps.determine-vanilla-branch.outputs.vanilla_branch }}
           path: vanilla
+          token: ${{ steps.generate-token.outputs.token }}
 
       - name: Update base repos files from vanilla
         id: update-repos-base
@@ -104,17 +109,20 @@ jobs:
         run: |
           cd "${GITHUB_WORKSPACE}/target"
 
+          # Scripts should be copied to tmp directory before checkout.
+          cp .github/workflows/scripts/repos-merge.py /tmp/repos-merge.py
+          cp .github/workflows/scripts/repos-diff.py /tmp/repos-diff.py
+
           PR_BRANCH_NAME="update-repos-base-${BRANCH_NAME}"
+          git checkout "${BRANCH_NAME}"
           git checkout -B "${PR_BRANCH_NAME}"
 
           TEMP_DIR=$(mktemp -d)
           for REPO in autoware simulator tools; do
             REPO_FILE="${REPO}.repos"
-            if [ -f "$GITHUB_WORKSPACE/vanilla/$REPO_FILE" ] && [ -f "$GITHUB_WORKSPACE/target/$REPO_FILE" ]; then
-              yq e '.repositories | with_entries(select(.value.base == true) | .value |= del(.branch))' "$GITHUB_WORKSPACE/vanilla/$REPO_FILE" > "${TEMP_DIR}/${REPO}_base.repos"
-              yq e '.repositories | with_entries(select(.value.base == false))' "$GITHUB_WORKSPACE/target/$REPO_FILE" > "${TEMP_DIR}/${REPO}_nonbase.repos"
-              yq eval-all --prettyPrint 'select(fileIndex == 0) * select(fileIndex == 1)' "${TEMP_DIR}/${REPO}_base.repos" "${TEMP_DIR}/${REPO}_nonbase.repos" > "$GITHUB_WORKSPACE/target/$REPO_FILE"
-
+            BASE_REPO_FILE="${GITHUB_WORKSPACE}/vanilla/${REPO_FILE}"
+            if [ -f "$REPO_FILE" ] && [ -f "$BASE_REPO_FILE" ]; then
+              python /tmp/repos-merge.py "$REPO_FILE" "$BASE_REPO_FILE"
               git add $REPO_FILE
             else
               echo "Warning: ${REPO_FILE} not found in either vanilla or target. Skipping."
@@ -133,8 +141,7 @@ jobs:
             echo "has-changes=false" >> $GITHUB_OUTPUT
           else
             git commit -m "chore: update repos base on ${BRANCH_NAME} from vanilla:${VANILLA_BRANCH_NAME}"
-            git fetch origin "${PR_BRANCH_NAME}" || true
-            git push origin "${PR_BRANCH_NAME}" --force-with-lease
+            git push origin "${PR_BRANCH_NAME}" --force
 
             echo "has-changes=true" >> $GITHUB_OUTPUT
           fi
@@ -143,34 +150,90 @@ jobs:
           echo "sync-branch=${PR_BRANCH_NAME}" >> $GITHUB_OUTPUT
           echo "vanilla-branch=${VANILLA_BRANCH_NAME}" >> $GITHUB_OUTPUT
 
+          # Collect markdown diffs for all files
+          DIFF_MD=""
+          for file in autoware.repos simulator.repos tools.repos awsim.repos ansible-galaxy-requirements.yaml; do
+            if [ -f "$file" ]; then
+              DIFF_OUT=$(python /tmp/repos-diff.py "$file" HEAD~1 HEAD)
+              DIFF_MD="${DIFF_MD}\n${DIFF_OUT}\n"
+            fi
+          done
+
+          # Save to GITHUB_OUTPUT for use in PR body
+          echo "diff-md<<EOF" >> $GITHUB_OUTPUT
+          echo -e "$DIFF_MD" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
           # Updating autoware_launch repository might be required.
           # Although autoware_launch is decoupled from this update workflow,
           # remind the PR reviewers to check for necessary updates in autoware_launch.
 
           if [[ "${GITHUB_REPOSITORY}" == tier4/pilot-auto* ]]; then
-            echo "autoware-launch-repo="tier4/autoware_launch${GITHUB_REPOSITORY#tier4/pilot-auto}" >> $GITHUB_OUTPUT
+            echo "autoware-launch-repo=tier4/autoware_launch${GITHUB_REPOSITORY#tier4/pilot-auto}" >> $GITHUB_OUTPUT
           else
             # We don't expect this case to happen.
+            echo "Warning: Unexpected repository ${GITHUB_REPOSITORY}. Unable to determine corresponding autoware_launch repository for PR body." >&2
             echo "autoware-launch-repo=unknown" >> $GITHUB_OUTPUT
           fi
 
-      - name: Create or update a sync PR
+      - name: Describe vanilla repository
         if: steps.update-repos-base.outputs.has-changes == 'true'
-        uses: autowarefoundation/autoware-github-actions/sync-branches@v1
-        with:
-          token: ${{ steps.generate-token.outputs.token }}
-          base-branch: ${{ steps.update-repos-base.outputs.branch }}
-          sync-pr-branch: ${{ steps.update-repos-base.outputs.sync-branch }}
-          sync-target-repository: https://github.com/${{ github.repository }}.git
-          sync-target-branch: ${{ steps.update-repos-base.outputs.branch }}
-          pr-title: "chore: update repos base on ${{ steps.update-repos-base.outputs.branch }} from vanilla:${{ steps.update-repos-base.outputs.vanilla-branch }}"
-          pr-body-header: |
-            This PR updates the base repositories in ${{ steps.update-repos-base.outputs.branch }} to match those in vanilla:${{ steps.update-repos-base.outputs.vanilla-branch }}.
+        id: describe-vanilla
+        run: |
+          cd "${GITHUB_WORKSPACE}/vanilla"
 
-            - **Please review the changes before merging.**
-            - Syncing autoware_launch repository might be required alongside.
-              Check https://github.com/${{ steps.update-repos-base.outputs.autoware-launch-repo }}/pulls for necessary updates in autoware_launch.
-          pr-labels: |
-            bot
-            update-repos-base
-          auto-merge-method: squash
+          VANILLA_DESCRIPTION=$(git describe --tags --always)
+          echo "vanilla-description=${VANILLA_DESCRIPTION}" >> $GITHUB_OUTPUT
+
+      - name: Create or Update Pull Request
+        if: steps.update-repos-base.outputs.has-changes == 'true'
+        env:
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+          BRANCH_NAME: ${{ steps.update-repos-base.outputs.branch }}
+          PR_BRANCH_NAME: ${{ steps.update-repos-base.outputs.sync-branch }}
+          VANILLA_BRANCH_NAME: ${{ steps.update-repos-base.outputs.vanilla-branch }}
+          VANILLA_DESCRIPTION: ${{ steps.describe-vanilla.outputs.vanilla-description }}
+          DIFF_MD: ${{ steps.update-repos-base.outputs.diff-md }}
+        run: |
+          cd "${GITHUB_WORKSPACE}/target"
+
+          # Prepare PR body
+          echo "## Changes" > pr-body.md
+          echo "" >> pr-body.md
+          echo "$DIFF_MD" >> pr-body.md
+          cat <<EOF >> pr-body.md
+
+          ## Notes for Reviewers
+          This PR updates the base repositories in ${BRANCH_NAME} to match those in vanilla:${{ steps.update-repos-base.outputs.vanilla-branch }} (${{ steps.describe-vanilla.outputs.vanilla-description }}).
+
+          - **Please review the changes before merging.**
+          - Syncing autoware_launch repository might be required alongside.
+            Check https://github.com/${{ steps.update-repos-base.outputs.autoware-launch-repo }}/pulls for necessary updates in autoware_launch.
+          ## Workflow Information
+          - **Run**: [${{ github.workflow }} #${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          EOF
+
+          # Create or update PR using gh CLI
+          # Labels `bot` and `tag:run-build-test` are assumed to exist.
+          gh label create update-repos-base || true
+
+          # Try to create a new PR. If it already exists, update the existing one.
+          if gh pr create \
+            --base "${BRANCH_NAME}" \
+            --head "${PR_BRANCH_NAME}" \
+            --title "chore: update repos base on ${BRANCH_NAME} from vanilla:${VANILLA_BRANCH_NAME} (${VANILLA_DESCRIPTION})" \
+            --body-file pr-body.md \
+            --label bot \
+            --label update-repos-base \
+            --label tag:run-build-test
+          then
+            # Enable auto-merge
+            gh pr merge --squash --auto "${PR_BRANCH_NAME}"
+          else
+            gh pr edit "${PR_BRANCH_NAME}" \
+              --title "chore: update repos base on ${BRANCH_NAME} from vanilla:${VANILLA_BRANCH_NAME} (${VANILLA_DESCRIPTION})" \
+              --body-file pr-body.md \
+              --add-label bot \
+              --add-label update-repos-base \
+              --add-label tag:run-build-test
+          fi

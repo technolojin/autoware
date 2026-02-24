@@ -1,5 +1,5 @@
 # Batch update base repos for all released versions
-name: Update Repos Base (Batch)
+name: Update Repos Base from Vanilla (Batch)
 
 on:
   schedule:

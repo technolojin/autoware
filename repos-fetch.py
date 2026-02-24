@@ -110,16 +110,17 @@ def is_commit_hash(value: str) -> bool:
     return len(value) == COMMIT_HASH_LENGTH and all(c in "0123456789abcdef" for c in value.lower())
 
 
-def process_entry(entry: dict, url: str, version: str) -> None:
+def process_entry(entry: dict, url: str) -> None:
     """
     Process entry by resolving version field to SHA if needed.
 
     Args:
         entry: Entry configuration dict from YAML (repo or collection)
         url: Repository URL
-        version: Current version value
 
     """
+    version = entry.get("branch", entry.get("version"))
+
     # If version is not a commit hash, resolve it
     if version and not is_commit_hash(version):
         allow_tags = True
@@ -157,8 +158,7 @@ def update_repos_file(filepath: str) -> str:
         if not url:
             continue
 
-        version = repo_config.get("version")
-        process_entry(repo_config, url, version)
+        process_entry(repo_config, url)
 
     # Convert to string
     output = StringIO()
@@ -199,8 +199,7 @@ def update_ansible_galaxy_file(filepath: str) -> str:
         # Extract base URL (remove #/path suffix)
         base_url = url.split("#")[0] if "#" in url else url
 
-        version = collection.get("version")
-        process_entry(collection, base_url, version)
+        process_entry(collection, base_url)
 
     # Convert to string
     output = StringIO()
@@ -228,7 +227,7 @@ def main() -> None:
     # Determine file type and update accordingly
     if args.file.endswith(".repos"):
         updated_content = update_repos_file(args.file)
-    elif Path(args.file).name == "ansible-galaxy-requirements.yaml":
+    elif args.file.endswith("requirements.yaml"):
         updated_content = update_ansible_galaxy_file(args.file)
     else:
         print(f"Error: Unknown file type: {args.file}", file=sys.stderr)  # noqa: T201

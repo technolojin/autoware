@@ -27,8 +27,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
-          ref: ${{ inputs.branch }}
+          fetch-depth: 0
 
       - name: Generate token
         id: generate-token
@@ -59,21 +58,29 @@ jobs:
         run: |
           PR_BRANCH_NAME="update-repos-dependencies-${BRANCH_NAME}"
 
+          # Scripts should be copied to tmp directory before checkout.
+          cp repos-fetch.py /tmp/repos-fetch.py
+          cp .github/workflows/scripts/repos-diff.py /tmp/repos-diff.py
+
           git checkout "${BRANCH_NAME}"
           git checkout -B "${PR_BRANCH_NAME}"
 
           # Run the Python script to update repos and generate PR body
-          python .github/workflows/scripts/update_repos_wrapper.py
+          for file in autoware.repos simulator.repos tools.repos awsim.repos ansible-galaxy-requirements.yaml; do
+            if [ -f "$file" ]; then
+              echo "Updating $file"
+              python /tmp/repos-fetch.py "$file" --update
+              git add "$file"
+            fi
+          done
 
           # Commit changes
-          git add *.repos ansible-galaxy-requirements.yaml
           if git diff --cached --quiet; then
             echo "No dependency updates to commit"
             echo "has-changes=false" >> $GITHUB_OUTPUT
           else
             git commit -m "chore: update repos dependencies on ${BRANCH_NAME}"
-            git fetch origin "${PR_BRANCH_NAME}" || true
-            git push origin "${PR_BRANCH_NAME}" --force-with-lease
+            git push origin "${PR_BRANCH_NAME}" --force
             echo "has-changes=true" >> $GITHUB_OUTPUT
           fi
 
@@ -81,26 +88,70 @@ jobs:
             # non-PR branch for daily tests
             UNSTABLE_BRANCH_NAME="unstable"
             git checkout -B "${UNSTABLE_BRANCH_NAME}"
-            git push origin "${UNSTABLE_BRANCH_NAME}" --force-with-lease
+            git push origin "${UNSTABLE_BRANCH_NAME}" --force
           fi
 
           echo "branch=${BRANCH_NAME}" >> $GITHUB_OUTPUT
           echo "sync-branch=${PR_BRANCH_NAME}" >> $GITHUB_OUTPUT
 
-          echo "pr-body=This PR updates the branch-tracking repositories in ${BRANCH_NAME}." >> $GITHUB_OUTPUT
+          # Collect markdown diffs for all files
+          DIFF_MD=""
+          for file in autoware.repos simulator.repos tools.repos awsim.repos ansible-galaxy-requirements.yaml; do
+            if [ -f "$file" ]; then
+              DIFF_OUT=$(python /tmp/repos-diff.py "$file" HEAD~1 HEAD)
+              DIFF_MD="${DIFF_MD}\n${DIFF_OUT}\n"
+            fi
+          done
 
-      - name: Create or update a sync PR
+          # Save to GITHUB_OUTPUT for use in PR body
+          echo "diff-md<<EOF" >> $GITHUB_OUTPUT
+          echo -e "$DIFF_MD" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Create or Update Pull Request
         if: steps.update-repos-dependencies.outputs.has-changes == 'true'
-        uses: autowarefoundation/autoware-github-actions/sync-branches@v1
-        with:
-          token: ${{ steps.generate-token.outputs.token }}
-          base-branch: ${{ steps.update-repos-dependencies.outputs.branch }}
-          sync-pr-branch: ${{ steps.update-repos-dependencies.outputs.sync-branch }}
-          sync-target-repository: https://github.com/${{ github.repository }}.git
-          sync-target-branch: ${{ steps.update-repos-dependencies.outputs.branch }}
-          pr-title: "chore: update repos dependencies on ${{ steps.update-repos-dependencies.outputs.branch }}"
-          pr-body-header: ${{ steps.update-repos-dependencies.outputs.pr-body }}
-          pr-labels: |
-            bot
-            update-repos-dependencies
-          auto-merge-method: squash
+        env:
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+          BRANCH_NAME: ${{ steps.update-repos-dependencies.outputs.branch }}
+          PR_BRANCH_NAME: ${{ steps.update-repos-dependencies.outputs.sync-branch }}
+          DIFF_MD: ${{ steps.update-repos-dependencies.outputs.diff-md }}
+        run: |
+          # Prepare PR body
+          echo "## Changes" > pr-body.md
+          echo "" >> pr-body.md
+          echo "$DIFF_MD" >> pr-body.md
+          cat <<EOF >> pr-body.md
+
+          ## Notes for Reviewers
+          This PR updates the repository dependencies in ${BRANCH_NAME}.
+
+          - **Please review the changes before merging.**
+
+          ## Workflow Information
+          - **Run**: [${{ github.workflow }} #${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          EOF
+
+          # Create or update PR using gh CLI
+          # Labels `bot` and `tag:run-build-test` are assumed to exist.
+          gh label create update-repos-dependencies || true
+
+          # Try to create a new PR. If it already exists, update the existing one.
+          if gh pr create \
+            --base "${BRANCH_NAME}" \
+            --head "${PR_BRANCH_NAME}" \
+            --title "chore: update repos dependencies on ${BRANCH_NAME}" \
+            --body-file pr-body.md \
+            --label bot \
+            --label update-repos-dependencies \
+            --label tag:run-build-test
+          then
+            # Enable auto-merge
+            gh pr merge --squash --auto "${PR_BRANCH_NAME}"
+          else
+            gh pr edit "${PR_BRANCH_NAME}" \
+              --title "chore: update repos dependencies on ${BRANCH_NAME}" \
+              --body-file pr-body.md \
+              --add-label bot \
+              --add-label update-repos-dependencies \
+              --add-label tag:run-build-test
+          fi
