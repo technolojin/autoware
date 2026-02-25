@@ -58,28 +58,28 @@ repositories:
     version: tier4/universe
     base: true
   autoware/tier4_autoware_msgs:
-    labels: [main, common]
+    labels: [main, common, message]
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
     branch: tier4/universe
     version: tier4/universe
     base: true
   autoware/autoware_msgs:
-    labels: [main, common]
+    labels: [main, common, message]
     type: git
     url: https://github.com/autowarefoundation/autoware_msgs.git
     branch: main
     version: main
     base: true
   autoware/autoware_adapi_msgs:
-    labels: [main, common]
+    labels: [main, common, message]
     type: git
     url: https://github.com/autowarefoundation/autoware_adapi_msgs.git
     branch: main
     version: main
     base: true
   autoware/autoware_internal_msgs:
-    labels: [main, common]
+    labels: [main, common, message]
     type: git
     url: https://github.com/autowarefoundation/autoware_internal_msgs.git
     branch: main
