@@ -30,10 +30,6 @@ eval ansible-playbook "'${ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK}'" \
 git config --global --unset credential."https://github.com".helper
 git config --global --unset url."https://github.com/".insteadOf
 
-sudo mkdir -p /etc/ota
-sudo cp "$(dirname "$0")/persistents.txt" /etc/ota/
-sudo cp "$(dirname "$0")/ignore.txt" /etc/ota/
-
 # remove "jetpack" dev packages
 . .webauto-ci/common/ota-clean-up/clean-up-jetpack-dev.sh
 # remove "nsight" related packages

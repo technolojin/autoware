@@ -115,10 +115,16 @@ artifacts:
         from: asset-deploy
         workdir: /home/autoware/pilot-auto
         user: autoware
-      output_rootfs_image:
-        from: ecu-system-setup
-        persistent_file_path: /etc/ota/persistents.txt
-        ignore_file_path: /etc/ota/ignore.txt
+      output_ota_image:
+        annotations:
+          vnd.tier4.pilot-auto.platform: x2gen2
+          vnd.tier4.pilot-auto.platform.ecu.hardware-model: ADM-AL30
+        image_payloads:
+          - from: ecu-system-setup
+            exclude_config: ./ota/extra_excludes.txt
+            sys_configs:
+              - ecu_id: autoware
+                sys_config: ./ota/main_sys_config.yaml
       output_installer_image:
         from: ecu-system-setup
         type: iso
@@ -231,10 +237,16 @@ artifacts:
         from: asset-deploy
         workdir: /home/autoware/pilot-auto
         user: autoware
-      output_rootfs_image:
-        from: ecu-system-setup
-        persistent_file_path: /etc/ota/persistents.txt
-        ignore_file_path: /etc/ota/ignore.txt
+      output_ota_image:
+        annotations:
+          vnd.tier4.pilot-auto.platform: x2gen2
+          vnd.tier4.pilot-auto.platform.ecu.hardware-model: ADM-AL30
+        image_payloads:
+          - from: ecu-system-setup
+            exclude_config: ./ota/extra_excludes.txt
+            sys_configs:
+              - ecu_id: sub
+                sys_config: ./ota/sub_sys_config.yaml
       output_installer_image:
         from: ecu-system-setup
         type: iso
@@ -324,10 +336,16 @@ artifacts:
               - ansible-galaxy-requirements.yaml
       base_container_image:
         from: ghcr.io/tier4/pilot-auto.x2/base-image:v4.3
-      output_rootfs_image:
-        from: ecu-system-setup
-        persistent_file_path: /etc/ota/persistents.txt
-        ignore_file_path: /etc/ota/ignore.txt
+      output_ota_image:
+        annotations:
+          vnd.tier4.pilot-auto.platform: x2gen2
+          vnd.tier4.pilot-auto.platform.ecu.hardware-model: RCO-6000-RPL
+        image_payloads:
+          - from: ecu-system-setup
+            exclude_config: ./ota/extra_excludes.txt
+            sys_configs:
+              - ecu_id: logging
+                sys_config: ./ota/logging_sys_config.yaml
       output_installer_image:
         from: ecu-system-setup
         type: iso
@@ -407,10 +425,17 @@ artifacts:
               - ansible-galaxy-requirements.yaml
       base_container_image:
         from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.48-tf2-ros-resolution
-      output_rootfs_image:
-        from: ecu-system-setup
-        persistent_file_path: /etc/ota/persistents.txt
-        ignore_file_path: /etc/ota/ignore.txt
+      output_ota_image:
+        annotations:
+          vnd.tier4.pilot-auto.platform: x2gen2
+          vnd.tier4.pilot-auto.platform.ecu.hardware-model: esg620
+          vnd.tier4.pilot-auto.platform.ecu.hardware-series: CTI Anvil
+        image_payloads:
+          - from: ecu-system-setup
+            exclude_config: ./ota/extra_excludes.txt
+            sys_configs:
+              - ecu_id: perception1
+                sys_config: ./ota/perception1_sys_config.yaml
 
   # Perception ECU2
   - name: perception2
@@ -491,10 +516,17 @@ artifacts:
               - ansible-galaxy-requirements.yaml
       base_container_image:
         from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.48-tf2-ros-resolution
-      output_rootfs_image:
-        from: ecu-system-setup
-        persistent_file_path: /etc/ota/persistents.txt
-        ignore_file_path: /etc/ota/ignore.txt
+      output_ota_image:
+        annotations:
+          vnd.tier4.pilot-auto.platform: x2gen2
+          vnd.tier4.pilot-auto.platform.ecu.hardware-model: esg620
+          vnd.tier4.pilot-auto.platform.ecu.hardware-series: CTI Anvil
+        image_payloads:
+          - from: ecu-system-setup
+            exclude_config: ./ota/extra_excludes.txt
+            sys_configs:
+              - ecu_id: perception2
+                sys_config: ./ota/perception2_sys_config.yaml
 
   # Addon ECU
   - name: addon
@@ -589,10 +621,16 @@ artifacts:
               - ansible-galaxy-requirements.yaml
       base_container_image:
         from: ghcr.io/tier4/pilot-auto.x2/base-image:v4.3
-      output_rootfs_image:
-        from: ecu-system-setup
-        persistent_file_path: /etc/ota/persistents.txt
-        ignore_file_path: /etc/ota/ignore.txt
+      output_ota_image:
+        annotations:
+          vnd.tier4.pilot-auto.platform: x2gen2
+          vnd.tier4.pilot-auto.platform.ecu.hardware-model: Nuvo-10208GC
+        image_payloads:
+          - from: ecu-system-setup
+            exclude_config: ./ota/extra_excludes.txt
+            sys_configs:
+              - ecu_id: addon
+                sys_config: ./ota/addon_sys_config.yaml
       output_installer_image:
         from: ecu-system-setup
         type: iso
@@ -678,10 +716,17 @@ artifacts:
               - ansible-galaxy-requirements.yaml
       base_container_image:
         from: ghcr.io/tier4/edge-auto-jetson/base-image:v0.48-tf2-ros-resolution
-      output_rootfs_image:
-        from: ecu-system-setup
-        persistent_file_path: /etc/ota/persistents.txt
-        ignore_file_path: /etc/ota/ignore.txt
+      output_ota_image:
+        annotations:
+          vnd.tier4.pilot-auto.platform: x2gen2
+          vnd.tier4.pilot-auto.platform.ecu.hardware-model: esg620
+          vnd.tier4.pilot-auto.platform.ecu.hardware-series: CTI Anvil
+        image_payloads:
+          - from: ecu-system-setup
+            exclude_config: ./ota/extra_excludes.txt
+            sys_configs:
+              - ecu_id: addonlite
+                sys_config: ./ota/addonlite_sys_config.yaml
 
   # MS ECU1
   - name: media-streaming1
@@ -710,9 +755,17 @@ artifacts:
               - ansible-galaxy-requirements.yaml
       base_container_image:
         from: ghcr.io/tier4/ota-base-image/esg620_nvidia-jetpack:r35.4.1-v001-cti_orin-agx_forge_base-nvme0n1
-      output_rootfs_image:
-        from: ecu-system-setup
-        persistent_file_path: /etc/ota/persistents.txt
+      output_ota_image:
+        annotations:
+          vnd.tier4.pilot-auto.platform: x2gen2
+          vnd.tier4.pilot-auto.platform.ecu.hardware-model: esg620
+          vnd.tier4.pilot-auto.platform.ecu.hardware-series: CTI Anvil
+        image_payloads:
+          - from: ecu-system-setup
+            exclude_config: ./ota/extra_excludes.txt
+            sys_configs:
+              - ecu_id: media-streaming1
+                sys_config: ./ota/media-streaming1_sys_config.yaml
 
   # MS ECU2
   - name: media-streaming2
@@ -741,9 +794,17 @@ artifacts:
               - ansible-galaxy-requirements.yaml
       base_container_image:
         from: ghcr.io/tier4/ota-base-image/esg620_nvidia-jetpack:r35.4.1-v001-cti_orin-agx_forge_base-nvme0n1
-      output_rootfs_image:
-        from: ecu-system-setup
-        persistent_file_path: /etc/ota/persistents.txt
+      output_ota_image:
+        annotations:
+          vnd.tier4.pilot-auto.platform: x2gen2
+          vnd.tier4.pilot-auto.platform.ecu.hardware-model: esg620
+          vnd.tier4.pilot-auto.platform.ecu.hardware-series: CTI Anvil
+        image_payloads:
+          - from: ecu-system-setup
+            exclude_config: ./ota/extra_excludes.txt
+            sys_configs:
+              - ecu_id: media-streaming2
+                sys_config: ./ota/media-streaming2_sys_config.yaml
 
   # Signage ECU
   - name: signage
@@ -787,10 +848,16 @@ artifacts:
               - ansible-galaxy-requirements.yaml
       base_container_image:
         from: ubuntu:22.04
-      output_rootfs_image:
-        from: ecu-system-setup
-        persistent_file_path: /etc/ota/persistents.txt
-        ignore_file_path: /etc/ota/ignore.txt
+      output_ota_image:
+        annotations:
+          vnd.tier4.pilot-auto.platform: x2gen2
+          vnd.tier4.pilot-auto.platform.ecu.hardware-model: EMP-510-6305E
+        image_payloads:
+          - from: ecu-system-setup
+            exclude_config: ./ota/extra_excludes.txt
+            sys_configs:
+              - ecu_id: signage
+                sys_config: ./ota/signage_sys_config.yaml
       output_installer_image:
         from: ecu-system-setup
         type: iso
@@ -839,10 +906,16 @@ artifacts:
               - ansible-galaxy-requirements.yaml
       base_container_image:
         from: ubuntu:22.04
-      output_rootfs_image:
-        from: ecu-system-setup
-        persistent_file_path: /etc/ota/persistents.txt
-        ignore_file_path: /etc/ota/ignore.txt
+      output_ota_image:
+        annotations:
+          vnd.tier4.pilot-auto.platform: x2gen2
+          vnd.tier4.pilot-auto.platform.ecu.hardware-model: EMP-510-6305E
+        image_payloads:
+          - from: ecu-system-setup
+            exclude_config: ./ota/extra_excludes.txt
+            sys_configs:
+              - ecu_id: voice-system
+                sys_config: ./ota/voice-system_sys_config.yaml
       output_installer_image:
         from: ecu-system-setup
         type: iso
@@ -1277,7 +1350,7 @@ release:
   components:
     - name: autoware
       deployment:
-        type: rootfs
+        type: ota_image
         artifact: main
       alternative_deployments:
         - type: installer
@@ -1286,70 +1359,55 @@ release:
           artifact: main
     - name: sub
       deployment:
-        type: rootfs
+        type: ota_image
         artifact: sub
       alternative_deployments:
         - type: installer
           artifact: sub
     - name: logging
       deployment:
-        type: rootfs
+        type: ota_image
         artifact: logging
       alternative_deployments:
         - type: installer
           artifact: logging
     - name: perception1
       deployment:
-        type: rootfs
+        type: ota_image
         artifact: perception1
-      alternative_deployments:
-        - type: installer
-          artifact: perception1
     - name: perception2
       deployment:
-        type: rootfs
+        type: ota_image
         artifact: perception2
-      alternative_deployments:
-        - type: installer
-          artifact: perception2
     - name: addon
       deployment:
-        type: rootfs
+        type: ota_image
         artifact: addon
       alternative_deployments:
         - type: installer
           artifact: addon
     - name: addonlite
       deployment:
-        type: rootfs
+        type: ota_image
         artifact: addonlite
-      alternative_deployments:
-        - type: installer
-          artifact: addonlite
     - name: media-streaming1
       deployment:
-        type: rootfs
+        type: ota_image
         artifact: media-streaming1
-      alternative_deployments:
-        - type: installer
-          artifact: media-streaming1
     - name: media-streaming2
       deployment:
-        type: rootfs
+        type: ota_image
         artifact: media-streaming2
-      alternative_deployments:
-        - type: installer
-          artifact: media-streaming2
     - name: signage
       deployment:
-        type: rootfs
+        type: ota_image
         artifact: signage
       alternative_deployments:
         - type: installer
           artifact: signage
     - name: voice-system
       deployment:
-        type: rootfs
+        type: ota_image
         artifact: voice-system
       alternative_deployments:
         - type: installer

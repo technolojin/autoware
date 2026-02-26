@@ -33,10 +33,6 @@ ansible-playbook "${ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK}" \
 git config --global --unset credential."https://github.com".helper
 git config --global --unset url."https://github.com/".insteadOf
 
-sudo mkdir -p /etc/ota
-sudo cp "$(dirname "$0")/persistents.txt" /etc/ota/
-sudo cp "$(dirname "$0")/ignore.txt" /etc/ota/
-
 # Check the value of ECU_ID
 if [[ $ECU_ID == "sub" ]]; then
     # remove "jetpack" dev packages

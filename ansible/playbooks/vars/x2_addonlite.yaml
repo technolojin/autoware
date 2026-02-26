@@ -33,9 +33,9 @@ sync_tooling:
     phc2sys_units: []
 
 # otaclient
-otaclient_release_version: v3.13.0
-otaclient_package_whl_checksum: sha256:00831b0572a5be33a2349f7865da06d31e514be2d411bd95d89c9f19b25b5996
-otaclient_manifest_checksum: sha256:ff002837125cfb9b20df11badc107d8bbd98fafe5b2d0710992d5d712c5b9cb1
+otaclient_release_version: v3.13.2
+otaclient_package_whl_checksum: sha256:84c714886d8c17add0ed6e613a753274f017a4476b20784609117299ddfc75a7
+otaclient_manifest_checksum: sha256:83083c803296985ad7b116f5194ea95131756f2cd87308e7d5dc9347914145dd
 otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-1gbe.j2
 # otaclient_bionic_compat: true
 

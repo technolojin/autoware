@@ -1,5 +1,0 @@
-'/etc/hosts'
-'/etc/hostname'
-'/etc/resolv.conf'
-'/opt/autoware/volume.txt'
-'/opt/devtools'

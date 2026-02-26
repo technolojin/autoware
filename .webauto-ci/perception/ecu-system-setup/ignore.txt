@@ -1,4 +1,0 @@
-__pycache__/
-.ssh/
-/home/autoware/*/log
-/var/cache/apt/archives
