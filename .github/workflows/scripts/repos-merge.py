@@ -20,7 +20,9 @@ def main(non_base_repos_path: str, base_repos_path: str) -> None:
     with Path(non_base_repos_path).open() as f:
         non_base_data = yaml.load(f)
         for repo_name, repo_entry in non_base_data["repositories"].items():
-            if repo_entry["base"] != False:
+            # For old simulator.repos and tools.repos which don't have base field yet, treat all entries as base entries
+            # The actual base=true / false is determined from vanilla side.
+            if repo_entry.get("base", True) != False:
                 continue
             if "labels" in repo_entry:
                 repo_entry["labels"].fa.set_flow_style()
