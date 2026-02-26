@@ -33,7 +33,7 @@ git config --global credential."https://github.com".helper '!f() { echo "usernam
 # Cloning repositories
 # Not using --shallow option here:
 # vcs export fails for shallow cloned and SHA-pinned repositories
-vcs import src --recursive <autoware.repos
+./repos-filter.sh autoware.repos main | vcs import src
 echo "--- exact.repos ---"
 vcs export src --exact
 echo "--- end of exact.repos ---"

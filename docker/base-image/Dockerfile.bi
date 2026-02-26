@@ -21,7 +21,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install --no-ins
   && rm -rf /var/lib/apt/lists/*
 
 ## Copy files
-COPY autoware.repos simulator.repos tools.repos setup-dev-env.sh ansible-galaxy-requirements.yaml amd64.env arm64.env /autoware/
+COPY autoware.repos simulator.repos tools.repos repos-filter.sh setup-dev-env.sh ansible-galaxy-requirements.yaml amd64.env arm64.env /autoware/
 COPY ansible/ /autoware/ansible/
 WORKDIR /autoware
 RUN ls /autoware
@@ -48,9 +48,9 @@ RUN sed -i "s/git@github\.com:/https:\/\/github\.com\//g" ./autoware.repos \
   && cat ./tools.repos \
   && mkdir -p src
 
-RUN --mount=type=ssh vcs import src --recursive --shallow < autoware.repos \
-  && vcs import src --recursive --shallow < simulator.repos \
-  && vcs import src --recursive --shallow < tools.repos
+RUN --mount=type=ssh ./repos-filter.sh autoware.repos main | vcs import src --shallow \
+  && ./repos-filter.sh simulator.repos simulator | vcs import src --shallow \
+  && ./repos-filter.sh tools.repos tools | vcs import src --shallow
 
 RUN rosdep update \
   && DEBIAN_FRONTEND=noninteractive rosdep install -y --ignore-src --from-paths src --rosdistro "$ROS_DISTRO" \

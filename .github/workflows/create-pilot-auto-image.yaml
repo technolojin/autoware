@@ -126,7 +126,7 @@ jobs:
       - name: Fetch source files
         run: |
           mkdir -p build-context/src
-          vcs import --shallow build-context/src < autoware.repos
+          ./repos-filter.sh autoware.repos main | vcs import build-context/src --shallow
 
       - name: Build and push
         uses: docker/build-push-action@v5

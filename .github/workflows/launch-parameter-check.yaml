@@ -34,11 +34,19 @@ jobs:
           sudo apt-get -y install python3-pip
           pip3 install pyyaml
 
+      # Temp: until sxpf and c2-readout-delay-setter is visible in CI environment
+      - name: Set up yq
+        uses: chrisdickinson/setup-yq@v1.0.1
+        with:
+          yq-version: v4.49.2
+
       - name: Run vcs import
         run: |
           mkdir src
-          vcs import src --recursive --shallow < autoware.repos
-          vcs import src --recursive --shallow < tools.repos
+          # import all repos (no filtering)
+          ./repos-filter.sh autoware.repos main | vcs import src --shallow # temp: until sxpf and c2-readout-delay-setter is visible in CI environment
+          # vcs import src --shallow < autoware.repos
+          vcs import src --shallow < tools.repos
 
       # - name: Remove exec_depend
       #   uses: autowarefoundation/autoware-github-actions/remove-exec-depend@v1

@@ -1,4 +1,5 @@
 repositories:
+  # autoware
   autoware/core:
     labels: [main, common]
     type: git
@@ -121,10 +122,11 @@ repositories:
     version: d969ec699f84fad827fbadfa3001c9c657482fbe
     base: true
   vendor/ars408_driver:
+    labels: [main]
     type: git
     url: https://github.com/tier4/ars408_driver.git
     version: 60678fc12918f968afed9f519915c16cf76edeae
-    base: false
+    base: true
   # Fix the version not to merge https://github.com/MORAI-Autonomous/MORAI-ROS2_morai_msgs/pull/9
   vendor/morai_msgs:
     labels: [main]
@@ -231,70 +233,206 @@ repositories:
     url: https://github.com/tier4/agnocast.git
     version: 2.1.2
     base: true
+
   autoware/launcher:
+    labels: [main]
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
     branch: tier4/main
     version: e35bb07bea90421497e97cf273631f49f9f20d1b
     base: false
   autoware/individual_params:
+    labels: [main, common]
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
     branch: main
     version: 329630658c3eafec19cf9594ace43398c092355a
     base: false
   description/vehicle/j6_gen2_description:
+    labels: [main]
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
     branch: main
     version: 31a3bf4cf6be92fdce490f65ca2e0b28b6c66e3f
     base: false
   vendor/mj20_interface:
+    labels: [main]
     type: git
     url: git@github.com:tier4/mj20_interface.git
     branch: main
     version: 80483867c541972d21031c07dbd3c4dd68ef6435
     base: false
   vendor/ros2_socketcan:
+    labels: [main]
     type: git
     url: https://github.com/autowarefoundation/ros2_socketcan.git
     version: 822ca033c8ce934dc5a622d7bb80adb575522b33
     base: false
   product/l4_toolkit:
+    labels: [main]
     type: git
     url: git@github.com:tier4/l4_toolkit.git
     version: e891597c39f7122dcfd1f6deb7ca3000d1cfeb2d
     base: false
   vendor/emergency_vehicle_detector:
+    labels: [main]
     type: git
     url: git@github.com:tier4/emergency_vehicle_detector.git
     branch: vendor
     version: c9a0609e91b2a8d59fb1108f2aa0ddc585deed2c
     base: false
   vendor/pyrocan:
+    labels: [main]
     type: git
     url: git@github.com:tier4/pyrocan.git
     version: f1c9abf9309fae8966bb2500707af063a17aef25
     base: false
   vendor/rosbag2:
+    labels: [main]
     type: git
     url: https://github.com/ros2/rosbag2.git
     version: 0.15.13
     base: false
   product/autoware_diag_bridge:
+    labels: [main, common]
     type: git
     url: git@github.com:tier4/autoware_diagnostics_bridge.git
     version: 6085277b50d2b826df97e0ed6e2c292a783c00c7
     base: false
   vendor/redundancy_switcher_interface:
+    labels: [main]
     type: git
     url: git@github.com:tier4/redundancy_switcher_interface.git
     branch: main
     version: dd17cc14bcab6441331ec4f15b44bfc056e16368
     base: false
   autoware/mrm_plugin:
+    labels: [main]
     type: git
     url: git@github.com:tier4/mrm_plugin.x2.git
     branch: main
     version: 1d8e22118d5dbed3f0cd0687f51bfd0181ba6067
+    base: false
+
+  edge_auto_jetson/edge_auto_jetson_launch:
+    labels: [perception]
+    type: git
+    url: git@github.com:tier4/edge_auto_jetson_launch.x2.git
+    branch: main
+    version: f90a94538d215012b5eeec58c9a912671a0e80f7
+    base: false
+  edge_auto_jetson/sensor_trigger:
+    labels: [perception]
+    type: git
+    url: https://github.com/tier4/sensor_trigger.git
+    # branch: feat/use_libgpiod
+    version: f0d76ad4ed60b613eadcd41ae79fd05710ad321b
+    base: false
+  ## if XX1 also use diagnostic in v4l2, XX1/X2 can align  https://github.com/tier4/ros2_v4l2_camera/pull/19
+  edge_auto_jetson/ros2_v4l2_camera:
+    labels: [perception]
+    type: git
+    url: https://github.com/tier4/ros2_v4l2_camera.git
+    # branch: galactic
+    version: a4f24fbe28000d88531e8d4dafb0145623d5a788
+    base: false
+  # package dependencies
+  edge_auto_jetson/topic_tools:
+    labels: [perception]
+    type: git
+    url: https://github.com/ros-tooling/topic_tools
+    # branch: humble
+    version: 83f53b5562b45603c2544e9b2a4090ee17fcb2f0
+    base: false
+  edge_auto_jetson/lanelet2:
+    labels: [perception]
+    type: git
+    url: https://github.com/fzi-forschungszentrum-informatik/Lanelet2.git
+    # branch: master
+    version: f5fc98d487aff61b885237613a6cb65b0b738b8d
+    base: false
+  edge_auto_jetson/mrt_cmake_module:
+    labels: [perception]
+    type: git
+    url: git@github.com:KIT-MRT/mrt_cmake_modules.git
+    # branch: master
+    version: 1.0.11
+    base: false
+  edge_auto_jetson/image_pipeline:
+    labels: [perception]
+    type: git
+    # url: https://github.com/ros-perception/image_pipeline.git
+    # # branch: humble
+    # version: 3.0.9
+    url: https://github.com/tier4/image_pipeline.git
+    # branch: tier4/main
+    version: 8413f087568ce9e43b46e410490cb2a60ce14add
+    base: false
+  edge_auto_jetson/image_transport_plugins:
+    labels: [perception]
+    type: git
+    url: https://github.com/ros-perception/image_transport_plugins.git
+    # # branch: humble
+    # version: 2.5.4
+    # branch: foxy-devel
+    version: 6d4faa5cb8bbc777c486b352f1c393a89d8d9296
+    base: false
+  sxpf: # sxpf_ros_driver. The directory name is hardcoded in `c2_fw_autoupdate` role, we should follow it until it get fixed
+    labels: [perception]
+    type: git
+    url: git@github.com:tier4/sxpf.git
+    # branch: main
+    version: 5eeb9909008f37b36f02f60df9fc2e6e319c66af
+    base: false
+
+  # build dependencies
+  edge_auto_jetson/cudnn_cmake_module:
+    labels: [perception]
+    type: git
+    url: https://github.com/tier4/cudnn_cmake_module.git
+    # branch: main
+    version: 0.0.1
+    base: false
+  edge_auto_jetson/tensorrt_cmake_module:
+    labels: [perception]
+    type: git
+    url: https://github.com/tier4/tensorrt_cmake_module.git
+    # branch: main
+    version: 0.0.4
+    base: false
+  edge_auto_jetson/accelerated_image_processor:
+    labels: [perception]
+    type: git
+    url: git@github.com:tier4/accelerated_image_processor.git
+    # had been perf/modify_cuda_utilization
+    # branch: main
+    version: 9fda74465eb485a311e7d32dd4e2c8e30916cd3f
+    base: false
+  edge_auto_jetson/c2_readout_delay_setter:
+    labels: [perception]
+    type: git
+    url: git@github.com:tier4/c2_readout_delay_setter.git
+    # branch: main
+    version: 117d6f97d692019ee4e10ac2ef10526ddfb793da
+    base: false
+  edge_auto_jetson/geographic_info:
+    labels: [perception]
+    type: git
+    url: git@github.com:ros-geographic-info/geographic_info.git
+    # branch: ros2
+    version: 491eff4860c314b51ebd1b96a1f3042987e8bd94
+    base: false
+  edge_auto_jetson/tier4_camera_sync_doctor:
+    labels: [perception]
+    type: git
+    url: git@github.com:tier4/tier4_camera_sync_doctor.git
+    # branch: main
+    version: a8e6809cb53daf9d492b276f0168f4384c12c2e0
+    base: false
+  edge_auto_jetson/uevent_diagnostics_publisher:
+    labels: [perception]
+    type: git
+    url: git@github.com:tier4/uevent_diagnostics_publisher.git
+    # branch: main
+    version: e3293e73d180e77629990514f57225d9f9eaa950
     base: false

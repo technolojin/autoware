@@ -160,13 +160,21 @@ jobs:
           ansible-galaxy collection install -f -r "ansible-galaxy-requirements.yaml"
           ansible-playbook autoware.dev_env.download_artifacts -e "data_dir=$HOME/autoware_data" --ask-become-pass
 
+      # Temp: until sxpf and c2-readout-delay-setter is visible in CI environment
+      - name: Set up yq
+        uses: chrisdickinson/setup-yq@v1.0.1
+        with:
+          yq-version: v4.49.2
+
       - name: vcs import src
         run: |
           echo "${{ secrets.LOGIN_PASS }}" | sudo apt install python3-pip
           pip3 install vcstool
           cd _InstallTempFolder/${{ env.REPO_NAME }}
           mkdir src
-          vcs import src --recursive < autoware.repos
+          # import all repos (no filtering)
+          ./repos-filter.sh autoware.repos main | vcs import src --shallow # temp: until sxpf and c2-readout-delay-setter is visible in CI environment
+          # vcs import src --shallow < autoware.repos
 
       - name: Delete .gif
         run: |

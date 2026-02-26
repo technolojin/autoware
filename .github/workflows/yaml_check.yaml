@@ -41,16 +41,24 @@ jobs:
         with:
           token: ${{ steps.generate-token.outputs.token }}
 
-      - name: Run vcs import
-        run: |
-          mkdir src
-          vcs import src --recursive < autoware.repos
-
       - name: Install yaml diff dependencies
         run: |
           sudo apt-get -y update
           sudo apt-get -y install python3-pip
           pip3 install pyyaml pandas tabulate deepdiff
+
+      # Temp: until sxpf and c2-readout-delay-setter is visible in CI environment
+      - name: Set up yq
+        uses: chrisdickinson/setup-yq@v1.0.1
+        with:
+          yq-version: v4.49.2
+
+      - name: Run vcs import
+        run: |
+          mkdir src
+          # import all repos (no filtering)
+          ./repos-filter.sh autoware.repos main | vcs import src --shallow # temp: until sxpf and c2-readout-delay-setter is visible in CI environment
+          # vcs import src --shallow < autoware.repos
 
       - name: Run yaml diff test
         run: |

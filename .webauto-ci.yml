@@ -402,7 +402,7 @@ artifacts:
             key_files:
               - .webauto-ci.yml
               - .webauto-ci/perception/edge-auto-jetson-build/**/*
-              - edge-auto-jetson.repos
+              - autoware.repos
           incremental_build:
             enabled: true
         - name: ecu-system-setup
@@ -493,7 +493,7 @@ artifacts:
             key_files:
               - .webauto-ci.yml
               - .webauto-ci/perception/edge-auto-jetson-build/**/*
-              - edge-auto-jetson.repos
+              - autoware.repos
           incremental_build:
             enabled: true
         - name: ecu-system-setup
@@ -599,7 +599,7 @@ artifacts:
             key_files:
               - .webauto-ci.yml
               - .webauto-ci/addon/edge-auto-jetson-build/**/*
-              - edge-auto-jetson.repos
+              - autoware.repos
           incremental_build:
             enabled: true
         - name: ecu-system-setup
@@ -680,7 +680,7 @@ artifacts:
             key_files:
               - .webauto-ci.yml
               - .webauto-ci/addonlite/edge-auto-jetson-build/**/*
-              - edge-auto-jetson.repos
+              - autoware.repos
           incremental_build:
             enabled: true
         - name: asset-deploy

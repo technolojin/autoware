@@ -75,7 +75,7 @@ import_repos() {
     echo "Repositories to import:"
     cat "$tmp_product_repos"
 
-    vcs import src --recursive <"$tmp_product_repos"
+    vcs import src <"$tmp_product_repos"
 }
 
 # Helper to clean workspace directories

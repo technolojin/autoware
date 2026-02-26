@@ -114,7 +114,7 @@ jobs:
       - name: Run vcs import
         run: |
           mkdir src
-          vcs import src --recursive --shallow < .autoware_resolved.repos
+          ./repos-filter.sh autoware.repos main | vcs import src --shallow
 
       - name: Show disk space before the tasks
         run: df -h
