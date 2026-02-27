@@ -238,28 +238,24 @@ repositories:
     labels: [main]
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    branch: tier4/main
     version: 6dc2e2528d6e1e4137202999b403bdd89beea0df
     base: false
   autoware/individual_params:
     labels: [main, common]
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
-    branch: main
     version: ec273830a665986c5171061791d476b249342d1f
     base: false
   description/vehicle/j6_gen2_description:
     labels: [main]
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
-    branch: main
     version: 31a3bf4cf6be92fdce490f65ca2e0b28b6c66e3f
     base: false
   vendor/mj20_interface:
     labels: [main]
     type: git
     url: git@github.com:tier4/mj20_interface.git
-    branch: main
     version: 80483867c541972d21031c07dbd3c4dd68ef6435
     base: false
   vendor/ros2_socketcan:
@@ -278,7 +274,6 @@ repositories:
     labels: [main]
     type: git
     url: git@github.com:tier4/emergency_vehicle_detector.git
-    branch: vendor
     version: c9a0609e91b2a8d59fb1108f2aa0ddc585deed2c
     base: false
   vendor/pyrocan:
@@ -303,14 +298,12 @@ repositories:
     labels: [main]
     type: git
     url: git@github.com:tier4/redundancy_switcher_interface.git
-    branch: main
     version: dd17cc14bcab6441331ec4f15b44bfc056e16368
     base: false
   autoware/mrm_plugin:
     labels: [main]
     type: git
     url: git@github.com:tier4/mrm_plugin.x2.git
-    branch: main
     version: 1d8e22118d5dbed3f0cd0687f51bfd0181ba6067
     base: false
 
@@ -318,7 +311,6 @@ repositories:
     labels: [perception]
     type: git
     url: git@github.com:tier4/edge_auto_jetson_launch.x2.git
-    branch: main
     version: 3f6cc2f0c7eb78698a71e0a41d21e7b5f1256a53
     base: false
   edge_auto_jetson/sensor_trigger:
@@ -441,13 +433,11 @@ repositories:
     labels: [signage]
     type: git
     url: git@github.com:tier4/AutowareSignage.git
-    branch: develop
     version: 44f1eefbf2f0b2ee0f812b56aba8174dbfa9a9b6
     base: false
   voice_system:
     labels: [voice]
     type: git
     url: git@github.com:tier4/vehicle_voice_alert_system.git
-    branch: develop
     version: 601476079ea7db7f15e1a665b253d6575438c1d6
     base: false
