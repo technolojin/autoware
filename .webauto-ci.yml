@@ -64,6 +64,7 @@ artifacts:
           environment_variables:
             PARALLEL_WORKERS: "32"
             CCACHE_DIR: /tmp/build/cache/ccache
+            BUILD_LABELS: main simulator tools document
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
@@ -190,6 +191,7 @@ artifacts:
           environment_variables:
             PARALLEL_WORKERS: "32"
             CCACHE_DIR: /tmp/build/cache/ccache
+            BUILD_LABELS: main simulator tools document
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
@@ -303,6 +305,7 @@ artifacts:
           environment_variables:
             PARALLEL_WORKERS: "32"
             CCACHE_DIR: /tmp/build/cache/ccache
+            BUILD_LABELS: main # maybe "message logging" after migrate logger to autoware.repos
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
@@ -391,6 +394,7 @@ artifacts:
           environment_variables:
             PARALLEL_WORKERS: "32"
             CCACHE_DIR: /tmp/build/cache/ccache
+            BUILD_LABELS: common perception
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
@@ -482,6 +486,7 @@ artifacts:
           environment_variables:
             PARALLEL_WORKERS: "32"
             CCACHE_DIR: /tmp/build/cache/ccache
+            BUILD_LABELS: common perception
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
@@ -588,6 +593,7 @@ artifacts:
           environment_variables:
             PARALLEL_WORKERS: "32"
             CCACHE_DIR: /tmp/build/cache/ccache
+            BUILD_LABELS: common perception
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
@@ -669,6 +675,7 @@ artifacts:
           environment_variables:
             PARALLEL_WORKERS: "32"
             CCACHE_DIR: /tmp/build/cache/ccache
+            BUILD_LABELS: common perception
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
@@ -813,6 +820,7 @@ artifacts:
       runtime:
         type: standard1/amd64/large
       environment_variables:
+        AUTOWARE_PATH: /home/autoware/AutowareSignage
         DEBIAN_FRONTEND: noninteractive
         LANG: C.UTF-8
       linux_parameters:
@@ -830,8 +838,41 @@ artifacts:
             key_files:
               - .webauto-ci.yml
               - .webauto-ci/signage/environment-setup/**/*
+        - name: ros-app-setup
+          user: autoware
+          workdir: /home/autoware/AutowareSignage
+          exec: ./.webauto-ci/signage/ros-app-setup/run.sh
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci.yml
+              - .webauto-ci/signage/ros-app-setup/**/*
+              - ansible/**/*
+              - ansible-galaxy-requirements.yaml
+              - amd64.env
+          incremental_build:
+            enabled: true
+        - name: ros-app-build
+          user: autoware
+          workdir: /home/autoware/AutowareSignage
+          exec: ./.webauto-ci/signage/ros-app-build/run.sh
+          environment_variables:
+            PARALLEL_WORKERS: "32"
+            BUILD_LABELS: message signage # space-separated list of build labels
+          build_result_reuse:
+            key_files:
+              - .webauto-ci.yml
+              - .webauto-ci/signage/ros-app-build/**/*
+              - autoware.repos
+          incremental_build:
+            enabled: true
         - name: ecu-system-setup
           user: autoware
+          workdir: /home/autoware/AutowareSignage
           exec: ./.webauto-ci/signage/ecu-system-setup/run.sh
           environment_variables:
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_signage.yaml
@@ -871,6 +912,7 @@ artifacts:
       runtime:
         type: standard1/amd64/large
       environment_variables:
+        AUTOWARE_PATH: /home/autoware/vehicle_voice_alert_system
         DEBIAN_FRONTEND: noninteractive
         LANG: C.UTF-8
       linux_parameters:
@@ -888,8 +930,41 @@ artifacts:
             key_files:
               - .webauto-ci.yml
               - .webauto-ci/signage/environment-setup/**/*
+        - name: ros-app-setup
+          user: autoware
+          workdir: /home/autoware/vehicle_voice_alert_system
+          exec: ./.webauto-ci/signage/ros-app-setup/run.sh
+          caches:
+            - name: apt-lists
+              mountpoint: /var/lib/apt/lists
+            - name: apt-archives
+              mountpoint: /var/cache/apt/archives
+          build_result_reuse:
+            key_files:
+              - .webauto-ci.yml
+              - .webauto-ci/signage/ros-app-setup/**/*
+              - ansible/**/*
+              - ansible-galaxy-requirements.yaml
+              - amd64.env
+          incremental_build:
+            enabled: true
+        - name: ros-app-build
+          user: autoware
+          workdir: /home/autoware/vehicle_voice_alert_system
+          exec: ./.webauto-ci/signage/ros-app-build/run.sh
+          environment_variables:
+            PARALLEL_WORKERS: "32"
+            BUILD_LABELS: message voice # space-separated list of build labels
+          build_result_reuse:
+            key_files:
+              - .webauto-ci.yml
+              - .webauto-ci/signage/ros-app-build/**/*
+              - autoware.repos
+          incremental_build:
+            enabled: true
         - name: ecu-system-setup
           user: autoware
+          workdir: /home/autoware/vehicle_voice_alert_system
           exec: ./.webauto-ci/signage/ecu-system-setup/run.sh
           environment_variables:
             ECU_SYSTEM_SETUP_ANSIBLE_PLAYBOOK: ansible/playbooks/x2_voice_system.yaml

@@ -1,6 +1,5 @@
 # cspell: ignore Fonglun ipaddr maxsize mincho momo pactl rexmit
 # common
-autoware_install_dir: "{{ ansible_env.HOME }}/AutowareSignage"
 systemctl_default: multi-user.target
 
 # additional-fonts
@@ -10,11 +9,6 @@ additional_font_packages:
 
 # keyboard
 keyboard_layout_file: keyboard.jp
-
-# ros2-app-build
-ros2_app_repository: git@github.com:tier4/AutowareSignage.git
-ros2_app_repository_version: d336620a657f0e9cb3d8a0d4b60ce0d7f67fe6c1 # beta/v4.3.1
-depends_repos: signage.repos
 
 # cyclonedds
 cyclonedds:

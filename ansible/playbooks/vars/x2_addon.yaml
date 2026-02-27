@@ -52,9 +52,6 @@ otaclient_manifest_checksum: sha256:83083c803296985ad7b116f5194ea95131756f2cd873
 otaclient_ecu_info_yaml: otaclient/ecu_info.yaml.x2-addon
 otaclient_proxy_info_yaml: otaclient/proxy_info.yaml.x2-10gbe.j2
 
-# set-autoware-env
-autoware_install_dir: /home/autoware/edge-auto-jetson
-
 # jetson_launch
 jetson_launch_id: -1
 jetson_launch_run_template: jetson_launch/run.sh.addon.j2

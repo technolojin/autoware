@@ -1,4 +1,6 @@
 - name: Setup x2 addon (pre-build)
   hosts: localhost
+  vars_files:
+    - ./vars/essential_vars.yaml
   roles:
     - role: autoware.ecu_system_setup.sxpf_driver

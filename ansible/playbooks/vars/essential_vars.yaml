@@ -1,6 +1,6 @@
 autoware_env_dir_privileged: false
 autoware_env_dir: "{{ ansible_env.HOME }}"
-autoware_install_dir: "{{ ansible_env.HOME }}/pilot-auto"
+autoware_install_dir: "{{ lookup('env', 'AUTOWARE_PATH') }}"
 daemon_reload: "{{ reload_systemd | default('yes') }}"
 ros_domain_id: 1
 sensor_model: aip_x2_gen2

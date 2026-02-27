@@ -37,25 +37,25 @@ repositories:
     version: v0.64.0
     base: true
   autoware/tier4_autoware_msgs:
-    labels: [main, common]
+    labels: [main, common, message]
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
     version: v0.64.0
     base: true
   autoware/autoware_msgs:
-    labels: [main, common]
+    labels: [main, common, message]
     type: git
     url: https://github.com/autowarefoundation/autoware_msgs.git
     version: c0bcee78433229d6f447342b9ca6bb228f2d1e75
     base: true
   autoware/autoware_adapi_msgs:
-    labels: [main, common]
+    labels: [main, common, message]
     type: git
     url: https://github.com/autowarefoundation/autoware_adapi_msgs.git
     version: 34f89d088c2cf0ae7ca72f1a325ddb8308a0daeb
     base: true
   autoware/autoware_internal_msgs:
-    labels: [main, common]
+    labels: [main, common, message]
     type: git
     url: https://github.com/autowarefoundation/autoware_internal_msgs.git
     version: 094122d37e56c7bfd8f3385307d345cfdb2123e6
@@ -435,4 +435,19 @@ repositories:
     url: git@github.com:tier4/uevent_diagnostics_publisher.git
     # branch: main
     version: e3293e73d180e77629990514f57225d9f9eaa950
+    base: false
+
+  signage:
+    labels: [signage]
+    type: git
+    url: git@github.com:tier4/AutowareSignage.git
+    branch: develop
+    version: 44f1eefbf2f0b2ee0f812b56aba8174dbfa9a9b6
+    base: false
+  voice_system:
+    labels: [voice]
+    type: git
+    url: git@github.com:tier4/vehicle_voice_alert_system.git
+    branch: develop
+    version: 601476079ea7db7f15e1a665b253d6575438c1d6
     base: false

@@ -3,6 +3,7 @@
 : "${WEBAUTO_CI_DEBUG_BUILD:?is not set}"
 : "${WEBAUTO_CI_GITHUB_TOKEN:?is not set}"
 
+: "${BUILD_LABELS:?is not set}" # space-separated labels to filter repositories for build
 : "${CCACHE_DIR:=}"
 : "${CCACHE_SIZE:=1G}"
 : "${PARALLEL_WORKERS:=4}"
@@ -68,9 +69,14 @@ git config --global credential."https://github.com".helper '!f() { echo "usernam
 # Cloning repositories
 # Not using --shallow option here:
 # vcs export fails for shallow cloned and SHA-pinned repositories
-./repos-filter.sh autoware.repos main | vcs import src
-./repos-filter.sh simulator.repos simulator | vcs import src
-./repos-filter.sh tools.repos tools | vcs import src
+
+# each chunks will be passed as separate argument
+# shellcheck disable=SC2086
+./repos-filter.sh autoware.repos ${BUILD_LABELS} | vcs import src
+# shellcheck disable=SC2086
+./repos-filter.sh simulator.repos ${BUILD_LABELS} | vcs import src
+# shellcheck disable=SC2086
+./repos-filter.sh tools.repos ${BUILD_LABELS} | vcs import src
 echo "--- exact.repos ---"
 vcs export src --exact
 echo "--- end of exact.repos ---"

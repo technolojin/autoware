@@ -1,11 +1,8 @@
 #!/bin/bash
 
-: "${WEBAUTO_CI_DEBUG_BUILD:?is not set}"
 : "${WEBAUTO_CI_GITHUB_TOKEN:?is not set}"
 
 : "${BUILD_LABELS:?is not set}" # space-separated labels to filter repositories for build
-: "${CCACHE_DIR:=}"
-: "${CCACHE_SIZE:=1G}"
 : "${PARALLEL_WORKERS:=4}"
 
 export PATH=/usr/local/cuda/bin:$PATH
@@ -16,20 +13,6 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 ROS_DISTRO=$(ls -1 /opt/ros | head -1)
 
 sudo -E apt-get -y update
-
-pip install pyopenssl --upgrade
-
-if [ -n "$CCACHE_DIR" ]; then
-    mkdir -p "$CCACHE_DIR"
-    export USE_CCACHE=1
-    export CCACHE_DIR="$CCACHE_DIR"
-    export CC="/usr/lib/ccache/gcc"
-    export CXX="/usr/lib/ccache/g++"
-    ccache -M "$CCACHE_SIZE"
-fi
-
-[[ $WEBAUTO_CI_DEBUG_BUILD == "true" ]] && build_type="RelWithDebInfo" || build_type="Release"
-
 sudo -E apt-get -y install python3-vcs2l
 mkdir -p src
 
@@ -59,10 +42,6 @@ rosdep update
 rosdep install --from-paths src --ignore-src -r -y --rosdistro "${ROS_DISTRO}"
 
 colcon build \
-    --symlink-install --allow-overriding image_view --cmake-force-configure \
-    --cmake-args -DCMAKE_BUILD_TYPE="$build_type" -DCMAKE_CXX_FLAGS="-w" -DCMAKE_CUDA_STANDARD=14 -DCMAKE_CUDA_ARCHITECTURES=87 -DCMAKE_CUDA_COMPILER=/usr/local/cuda/bin/nvcc -DBUILD_TESTING=OFF \
-    -DPython3_EXECUTABLE="$(which python3)" \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    --symlink-install \
     --executor parallel \
-    --parallel-workers "$PARALLEL_WORKERS" \
-    --packages-up-to edge_auto_jetson_launch autoware_diagnostics_bridge autoware_system_monitor
+    --parallel-workers "$PARALLEL_WORKERS"
