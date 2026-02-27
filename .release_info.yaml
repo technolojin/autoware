@@ -2,7 +2,7 @@ release_supervisors: # people in charge of all releases
   - TomohitoAndo
 parent_repository:
   url: https://github.com/tier4/pilot-auto
-  sync_version: v0.63.1 # this is the tag in pilot auto we synced with, it must end with .0
+  sync_version: v0.64.1
 base_branch_for_release: main
 autoware_repos_file: autoware.repos
 additional_repos_files:
@@ -31,3 +31,24 @@ releases:
             release_version: v4.3
           - repo_name: vendor/redundancy_switcher_interface
             release_version: v4.3
+  - version: v4.4
+    parent:
+      name: vanilla
+      version: v0.64
+      full_sync: true
+    release_managers:
+      - TomohitoAndo
+      - paulsohn
+    released_repositories:
+      - from_file: autoware.repos
+        repos_list:
+          - repo_name: autoware/launcher
+            release_version: v4.4
+          - repo_name: autoware/mrm_plugin
+            release_version: v4.4
+          - repo_name: description/vehicle/j6_gen2_description
+            release_version: v4.4
+          - repo_name: vendor/mj20_interface
+            release_version: v4.4
+          - repo_name: vendor/redundancy_switcher_interface
+            release_version: v4.4
