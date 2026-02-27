@@ -239,14 +239,14 @@ repositories:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
     branch: tier4/main
-    version: e35bb07bea90421497e97cf273631f49f9f20d1b
+    version: 6dc2e2528d6e1e4137202999b403bdd89beea0df
     base: false
   autoware/individual_params:
     labels: [main, common]
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
     branch: main
-    version: 329630658c3eafec19cf9594ace43398c092355a
+    version: ec273830a665986c5171061791d476b249342d1f
     base: false
   description/vehicle/j6_gen2_description:
     labels: [main]
@@ -319,7 +319,7 @@ repositories:
     type: git
     url: git@github.com:tier4/edge_auto_jetson_launch.x2.git
     branch: main
-    version: f90a94538d215012b5eeec58c9a912671a0e80f7
+    version: 3f6cc2f0c7eb78698a71e0a41d21e7b5f1256a53
     base: false
   edge_auto_jetson/sensor_trigger:
     labels: [perception]
