@@ -1,16 +1,15 @@
 repositories:
-  # autoware
   autoware/core:
     labels: [main, common]
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: v0.64.0
+    version: e286a7fcd012edaa679a4594be18b5626165ada5
     base: true
   autoware/universe:
     labels: [main, common]
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: v0.64.0
+    version: d6a9e9bfb8e18d3a208157ced9460bcd85fbb4bf
     base: true
   autoware/autoware_cmake:
     labels: [main, common]
@@ -34,13 +33,13 @@ repositories:
     labels: [main, common]
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: v0.64.0
+    version: ab10fa1f6a74c500d709515bd9a9b4d4743a6735
     base: true
   autoware/tier4_autoware_msgs:
     labels: [main, common, message]
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: v0.64.0
+    version: c92a340c35a3de63cae462c2d3ad93c446d1ce6c
     base: true
   autoware/autoware_msgs:
     labels: [main, common, message]
@@ -127,7 +126,6 @@ repositories:
     url: https://github.com/tier4/ars408_driver.git
     version: 60678fc12918f968afed9f519915c16cf76edeae
     base: true
-  # Fix the version not to merge https://github.com/MORAI-Autonomous/MORAI-ROS2_morai_msgs/pull/9
   vendor/morai_msgs:
     labels: [main]
     type: git
@@ -219,7 +217,7 @@ repositories:
     labels: [main]
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: v0.64.0
+    version: d80e25e4f79ad50fe734ec8a2b8cf796ed9c2d5c
     base: true
 
   # middleware
@@ -233,7 +231,6 @@ repositories:
     url: https://github.com/tier4/agnocast.git
     version: 2.1.2
     base: true
-
   autoware/launcher:
     labels: [main]
     type: git

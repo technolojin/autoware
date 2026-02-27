@@ -11,4 +11,4 @@ collections:
   #   type: dir
   - name: git@github.com:tier4/autoware_ecu_system_setup.git
     type: git
-    version: 6eb25c6b1764b555ef9cff95ef82b95d025b5178
+    version: d6e1854533eb0609858cc6cde07d0fd228186034
