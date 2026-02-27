@@ -238,6 +238,7 @@ repositories:
     labels: [main]
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
+    branch: beta/v4.4
     version: 6dc2e2528d6e1e4137202999b403bdd89beea0df
     base: false
   autoware/individual_params:
@@ -250,12 +251,14 @@ repositories:
     labels: [main]
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
+    branch: beta/v4.4
     version: 31a3bf4cf6be92fdce490f65ca2e0b28b6c66e3f
     base: false
   vendor/mj20_interface:
     labels: [main]
     type: git
     url: git@github.com:tier4/mj20_interface.git
+    branch: beta/v4.4
     version: 80483867c541972d21031c07dbd3c4dd68ef6435
     base: false
   vendor/ros2_socketcan:
@@ -298,12 +301,14 @@ repositories:
     labels: [main]
     type: git
     url: git@github.com:tier4/redundancy_switcher_interface.git
+    branch: beta/v4.4
     version: dd17cc14bcab6441331ec4f15b44bfc056e16368
     base: false
   autoware/mrm_plugin:
     labels: [main]
     type: git
     url: git@github.com:tier4/mrm_plugin.x2.git
+    branch: beta/v4.4
     version: 1d8e22118d5dbed3f0cd0687f51bfd0181ba6067
     base: false
 
