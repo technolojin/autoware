@@ -469,3 +469,19 @@ releases:
     released_ansible_repos: # from ansible-galaxy-requirements.yaml file
       - repo_full_name: tier4/autoware_ecu_system_setup # github repo full name (owner/repo) derived from name field in collections
         release_version: v0.64
+  - version: v0.65
+    release_managers:
+      - masaharuTakano
+    released_repositories:
+      - from_file: autoware.repos
+        repos_list:
+          - repo_name: autoware/core
+            release_version: v0.65
+          - repo_name: autoware/launcher
+            release_version: v0.65
+          - repo_name: autoware/universe
+            release_version: v0.65
+          - repo_name: autoware/tier4_autoware_msgs
+            release_version: v0.65
+          - repo_name: v2x/vehicle2infrastructure
+            release_version: v0.65
