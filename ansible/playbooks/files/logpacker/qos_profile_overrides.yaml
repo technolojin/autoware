@@ -1388,6 +1388,76 @@
   durability: volatile
   history: keep_last
   reliability: best_effort
+/perception/object_recognition/detection/bevfusion/objects:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/bevfusion/roi_fusion/objects:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/bevfusion/validation/objects:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/bevfusion_irregular_object_merger/objects:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/bevfusion_roi_cluster_fusion/objects:
+  depth: 10
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/bevfusion/bevfusion/debug/cyclic_time_ms:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/bevfusion/bevfusion/debug/pipeline_latency_ms:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/bevfusion/bevfusion/debug/processing_time/inference_ms:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/bevfusion/bevfusion/debug/processing_time/postprocess_ms:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/bevfusion/bevfusion/debug/processing_time/preprocess_ms:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/bevfusion/bevfusion/debug/processing_time/total_ms:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/bevfusion/objects/debug/published_time:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/bevfusion/validation/objects/debug/published_time:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
+/perception/object_recognition/detection/bevfusion_roi_cluster_fusion/objects/debug/published_time:
+  depth: 1
+  durability: volatile
+  history: keep_last
+  reliability: best_effort
 /perception/object_recognition/detection/centerpoint/downsample/pointcloud:
   depth: 5
   durability: volatile
