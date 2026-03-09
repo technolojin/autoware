@@ -35,6 +35,16 @@ echo "--- end of exact.repos ---"
 git config --global --unset credential."https://github.com".helper
 git config --global --unset url."https://github.com/".insteadOf
 
+# workaround for level4_mode_manager_msgs.
+# TODO: find a way to truly build only packages we want.
+if [ -d "src/product/l4_toolkit/.git" ]; then
+    cd src/product/l4_toolkit || true
+    git config core.sparseCheckout true
+    echo "level4_mode_manager_msgs" >>.git/info/sparse-checkout
+    git checkout
+    cd - || true
+fi
+
 # shellcheck disable=SC1090
 source "/opt/ros/${ROS_DISTRO}/setup.bash"
 

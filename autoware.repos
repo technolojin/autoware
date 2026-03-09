@@ -266,7 +266,7 @@ repositories:
     version: 822ca033c8ce934dc5a622d7bb80adb575522b33
     base: false
   product/l4_toolkit:
-    labels: [main]
+    labels: [main, signage] # signage needs this for level4_mode_manager_msgs
     type: git
     url: git@github.com:tier4/l4_toolkit.git
     version: e891597c39f7122dcfd1f6deb7ca3000d1cfeb2d
@@ -436,7 +436,7 @@ repositories:
     labels: [signage]
     type: git
     url: git@github.com:tier4/AutowareSignage.git
-    version: 44f1eefbf2f0b2ee0f812b56aba8174dbfa9a9b6
+    version: cffbf6fa5fea824d5df98333922d8ee720666131
     base: false
   voice_system:
     labels: [voice]
