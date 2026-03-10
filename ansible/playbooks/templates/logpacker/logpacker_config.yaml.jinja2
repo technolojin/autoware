@@ -308,9 +308,8 @@ logging_mode:
       initial_state: "recording"
       output_at: "{{ rosbag_logging_directory }}"
       # qos_profile_overrides_path: "{{ logpacker_config_dir }}/qos_profile_overrides.yaml"
-      topic_list_type: "allowlist"
-      topic_list: # Add topics here to record only in event mode
-        - "(.*)/pointcloud_raw_ex$"
+      # topic_list_type: "allowlist"
+      # topic_list: # Add topics here to record only in event mode
       # split_type: "duration"
       # split_size: 256
       split_duration: "15"
