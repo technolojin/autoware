@@ -15,6 +15,7 @@ LABEL org.opencontainers.image.description=$DESCRIPTION
 ## Install apt packages
 # hadolint ignore=DL3008
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends \
+  curl \
   git \
   ssh \
   && apt-get clean \
@@ -48,12 +49,16 @@ RUN sed -i "s/git@github\.com:/https:\/\/github\.com\//g" ./autoware.repos \
   && cat ./tools.repos \
   && mkdir -p src
 
+RUN ARCH=$(dpkg --print-architecture) \
+  && curl -fsSL "https://github.com/mikefarah/yq/releases/latest/download/yq_linux_${ARCH}" -o /usr/local/bin/yq \
+  && chmod +x /usr/local/bin/yq
+
 RUN --mount=type=ssh ./repos-filter.sh autoware.repos main | vcs import src --shallow \
   && ./repos-filter.sh simulator.repos simulator | vcs import src --shallow \
   && ./repos-filter.sh tools.repos tools | vcs import src --shallow
 
 RUN rosdep update \
-  && DEBIAN_FRONTEND=noninteractive rosdep install -y --ignore-src --from-paths src --rosdistro "$ROS_DISTRO" \
+  && DEBIAN_FRONTEND=noninteractive rosdep install -y --ignore-src --from-paths src --rosdistro "$ROS_DISTRO" --skip-keys pacmod3 \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
