@@ -250,7 +250,7 @@ repositories:
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
     branch: beta/v4.4
-    version: 31a3bf4cf6be92fdce490f65ca2e0b28b6c66e3f
+    version: db0629c23dfb607ef9080692bb016bba775bdd08
     base: false
   vendor/mj20_interface:
     labels: [main]
