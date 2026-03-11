@@ -46,4 +46,5 @@ disable_system_service_list:
   - apt-daily-upgrade.timer
   - apt-daily.timer
   - ModemManager
-  - tier4_ros2_standby_wait
+  - tier4_ros2_standby_wait.service
+  - tier4_ros2_standby_wait.target
