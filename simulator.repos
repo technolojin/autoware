@@ -9,13 +9,13 @@ repositories:
     labels: [simulator]
     type: git
     url: https://github.com/tier4/driving_log_replayer_v2.git
-    version: 589e0d078362175c3fcf790133dbd490e00f0336
+    version: 3.16.0
     base: true
   simulator/perception_eval:
     labels: [simulator]
     type: git
     url: https://github.com/tier4/autoware_perception_evaluation.git
-    version: ee9b8613ebef33ad770f40f5dd66a0c39a11c294
+    version: v1.3.2
     base: true
   simulator/vendor/ros2_numpy:
     labels: [simulator]
