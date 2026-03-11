@@ -86,6 +86,8 @@ artifacts:
           workdir: /home/autoware/pilot-auto
           exec: ./.webauto-ci/common/asset-deploy/run.sh
           ml_packages:
+            - name: diffusion_planner_for_x2
+              release: 20260213_neighbor0.1_epoch0100
             - name: centerpoint
               release: x2/v2.3.1_ADM-AL30_Ubuntu22.04
             # Modify to the version you want to evaluate
@@ -213,6 +215,8 @@ artifacts:
           workdir: /home/autoware/pilot-auto
           exec: ./.webauto-ci/common/asset-deploy/run.sh
           ml_packages:
+            - name: diffusion_planner_for_x2
+              release: 20260213_neighbor0.1_epoch0100
             - name: centerpoint
               release: x2/v2.3.1_ADM-AL30_Ubuntu22.04
         - name: ecu-system-setup
