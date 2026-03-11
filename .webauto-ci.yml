@@ -89,7 +89,7 @@ artifacts:
             - name: diffusion_planner_for_x2
               release: 20260213_neighbor0.1_epoch0100
             - name: centerpoint
-              release: x2/v2.3.1_ADM-AL30_Ubuntu22.04
+              release: x2/2.6.1_ADM-AL30_Ubuntu22.04
             # Modify to the version you want to evaluate
             # This model only affects the simulation result, no need to use version with engine files
             - name: yolox
@@ -218,7 +218,7 @@ artifacts:
             - name: diffusion_planner_for_x2
               release: 20260213_neighbor0.1_epoch0100
             - name: centerpoint
-              release: x2/v2.3.1_ADM-AL30_Ubuntu22.04
+              release: x2/2.6.1_ADM-AL30_Ubuntu22.04
         - name: ecu-system-setup
           user: autoware
           workdir: /home/autoware/pilot-auto
