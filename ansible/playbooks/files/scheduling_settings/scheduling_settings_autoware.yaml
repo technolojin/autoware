@@ -55,8 +55,8 @@ scheduling_settings:
       cpu: 16-23
   - process:
       name: .*component_container.*
-      node: awapi_relay_container
-      ns: .*awapi.*
+      node: internal_api_relay_container
+      ns: .*autoware_api.*
     settings:
       cpu: 16-23
   - process:
