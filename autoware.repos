@@ -156,12 +156,6 @@ repositories:
     branch: tier4/rolling
     version: tier4/rolling
     base: true
-  vendor/lidar-driver:
-    labels: [main]
-    type: git
-    url: git@github.com:tier4/lidar_driver.git
-    version: v0.1.4
-    base: false
   vendor/nebula:
     labels: [main]
     type: git
