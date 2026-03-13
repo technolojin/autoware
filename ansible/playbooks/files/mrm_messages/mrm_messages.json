@@ -1919,6 +1919,54 @@
       "routing_state_condition": "all"
     }
   },
+  "/foolproof/main/update_status_ota": {
+    "ERROR": {
+      "situation": "OTA処理が実施中です",
+      "solution": "OTA処理の完了をお待ちください",
+      "error_code": "SYS-00-E00-63E",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "OTA処理が実施中です",
+      "solution": "OTA処理の完了をお待ちください",
+      "error_code": "SYS-00-E00-63",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/foolproof/main/update_status_map": {
+    "ERROR": {
+      "situation": "地図更新が実施中です",
+      "solution": "地図更新後、Autowareを再起動させてください",
+      "error_code": "SYS-00-E00-63E",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "地図更新が実施中です",
+      "solution": "地図更新後、Autowareを再起動させてください",
+      "error_code": "SYS-00-E00-63",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
+  "/foolproof/main/update_status_unrecoverable": {
+    "ERROR": {
+      "situation": "証明書エラー：FMSとの接続ができません",
+      "solution": "手動でFMSから証明書を再発行し、セットアップしなおしてください",
+      "error_code": "SYS-00-E00-63E",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    },
+    "default": {
+      "situation": "証明書エラー：FMSとの接続ができません",
+      "solution": "手動でFMSから証明書を再発行し、セットアップしなおしてください",
+      "error_code": "SYS-00-E00-63",
+      "initialization_state_condition": "all",
+      "routing_state_condition": "all"
+    }
+  },
   "/sub_ecu/localization/topic_status/pose": {
     "ERROR": {
       "situation": "poseのトピックが遅延しています",
