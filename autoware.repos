@@ -236,14 +236,14 @@ repositories:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
     branch: beta/v4.4
-    version: a6885e53355c78634f2a886b082c01920ae93fca
+    version: 1c2a01feb6e68a1cec0d2875511bb45aa0783be4
     base: false
   autoware/individual_params:
     labels: [main, common]
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
     branch: main
-    version: c5e603d53ab01e877e8c994766dba7cffcdc98c4
+    version: 8b52b22dd98eff276ba020dd0f634695972cfd85
     base: false
   description/vehicle/j6_gen2_description:
     labels: [main]
