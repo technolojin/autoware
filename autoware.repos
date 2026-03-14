@@ -21,7 +21,7 @@ repositories:
     labels: [main, common]
     type: git
     url: https://github.com/autowarefoundation/autoware_utils.git
-    version: 99e412fcc9e6b9c77c16cb33ad36f09d887e7853
+    version: 1.7.0
     base: true
   autoware/autoware_lanelet2_extension:
     labels: [main, common]
