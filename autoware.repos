@@ -3,13 +3,13 @@ repositories:
     labels: [main, common]
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: e286a7fcd012edaa679a4594be18b5626165ada5
+    version: e7d6a2caefa8f5aa318a17c9ec711fe64b47cbdc
     base: true
   autoware/universe:
     labels: [main, common]
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: 3f814d26b156c93a7bb770e50ad6c1c25468cc7a
+    version: 065ff5f521a9cb114281ad1a2d8ef59505d7e8c2
     base: true
   autoware/autoware_cmake:
     labels: [main, common]
@@ -33,7 +33,7 @@ repositories:
     labels: [main, common]
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: ab10fa1f6a74c500d709515bd9a9b4d4743a6735
+    version: 266b2371e9694d25e94c2914bc77e5891cf727ef
     base: true
   autoware/tier4_autoware_msgs:
     labels: [main, common, message]
