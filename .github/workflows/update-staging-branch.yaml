@@ -1,0 +1,67 @@
+name: Update Staging Branch
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: update-staging-branch
+  cancel-in-progress: true
+
+jobs:
+  update-staging:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Generate token
+        id: generate-token
+        uses: tibdex/github-app-token@v2
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Set git config
+        uses: autowarefoundation/autoware-github-actions/set-git-config@v1
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+
+      - name: Install yq
+        run: |
+          sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/v4.49.2/yq_linux_amd64
+          echo "be2c0ddcf426b6a231648610ec5d1666ae50e9f6473e82f6486f9f4cb6e3e2f7  /usr/local/bin/yq" | sha256sum -c -
+          sudo chmod a+x /usr/local/bin/yq
+
+      - name: Update autoware.repos
+        run: |
+          # Update autoware/launcher branch and version to staging
+          yq -i '.repositories."autoware/launcher".branch = "staging"' autoware.repos
+          yq -i '.repositories."autoware/launcher".version = "staging"' autoware.repos
+
+          # Verify the changes
+          echo "Updated autoware.repos:"
+          yq '.repositories."autoware/launcher"' autoware.repos
+
+      - name: Commit changes
+        run: |
+          git add autoware.repos
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update autoware/launcher to staging branch"
+          fi
+
+      - name: Update staging branch
+        run: |
+          git fetch origin
+          git checkout -B staging
+          git push origin staging --force

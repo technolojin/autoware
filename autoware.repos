@@ -39,6 +39,9 @@ repositories:
     labels: [main]
     type: git
     url: https://github.com/tier4/autoware_launch.git
+    # IMPORTANT: 'tier4/main' branch in tier4/autoware_launch may be behind from AWF latest due to the review process.
+    # The daily test branch (pilot-auto 'staging', not 'main') uses the 'staging' branch in tier4/autoware_launch,
+    # which is an automerge with the AWF latest into tier4/main.
     branch: tier4/main
     version: tier4/main
     base: false
