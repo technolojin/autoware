@@ -39,7 +39,7 @@ repositories:
     labels: [main, common, message]
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: c92a340c35a3de63cae462c2d3ad93c446d1ce6c
+    version: 325985ec9531d7732f84b6ebb654858a86b0d6a3
     base: true
   autoware/autoware_msgs:
     labels: [main, common, message]
