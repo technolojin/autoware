@@ -54,18 +54,11 @@ jobs:
         with:
           token: ${{ steps.generate-token.outputs.token }}
 
-      # Temp: until sxpf and c2-readout-delay-setter is visible in CI environment
-      - name: Set up yq
-        uses: chrisdickinson/setup-yq@v1.0.1
-        with:
-          yq-version: v4.49.2
-
       - name: Run vcs import
         run: |
-          mkdir src
+          mkdir -p src
           # import all repos (no filtering)
-          ./repos-filter.sh autoware.repos main | vcs import src --shallow # temp: until sxpf and c2-readout-delay-setter is visible in CI environment
-          # vcs import src --shallow < autoware.repos
+          vcs import src --shallow < autoware.repos
           vcs import src --shallow < simulator.repos
           vcs import src --shallow < tools.repos
 

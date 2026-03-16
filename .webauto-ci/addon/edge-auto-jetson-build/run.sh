@@ -55,9 +55,15 @@ git config --global --unset url."https://github.com/".insteadOf
 # shellcheck disable=SC1090
 source "/opt/ros/${ROS_DISTRO}/setup.bash"
 
-rosdep update
-rosdep install --from-paths src --ignore-src -r -y --rosdistro "${ROS_DISTRO}"
+PACKAGES_UP_TO="edge_auto_jetson_launch sxpf autoware_diagnostics_bridge autoware_system_monitor"
+# shellcheck disable=SC2086
+PACKAGES_PATHS=$(colcon list -p --packages-up-to $PACKAGES_UP_TO)
 
+rosdep update
+# shellcheck disable=SC2086
+rosdep install --from-paths $PACKAGES_PATHS --ignore-src -r -y --rosdistro "${ROS_DISTRO}"
+
+# shellcheck disable=SC2086
 colcon build \
     --symlink-install --allow-overriding image_view --cmake-force-configure \
     --cmake-args -DCMAKE_BUILD_TYPE="$build_type" -DCMAKE_CXX_FLAGS="-w" -DCMAKE_CUDA_STANDARD=14 -DCMAKE_CUDA_ARCHITECTURES=87 -DCMAKE_CUDA_COMPILER=/usr/local/cuda/bin/nvcc -DBUILD_TESTING=OFF \
@@ -66,4 +72,4 @@ colcon build \
     --executor parallel \
     --parallel-workers "$PARALLEL_WORKERS" \
     --continue-on-error --cmake-clean-cache \
-    --packages-up-to edge_auto_jetson_launch sxpf autoware_diagnostics_bridge autoware_system_monitor
+    --packages-up-to $PACKAGES_UP_TO

@@ -232,14 +232,14 @@ repositories:
     version: 2.1.2
     base: true
   autoware/launcher:
-    labels: [main]
+    labels: [main, perception] # contains edge_auto_jetson_x2_launch
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
     branch: beta/v4.4
-    version: 2b1ba7475806a2245b1a6a486339b1b6e22ebbd5
+    version: 2105b8a711cfcfb8a24400c55a2e631232cb3266
     base: false
   autoware/individual_params:
-    labels: [main, common]
+    labels: [main, perception]
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
     branch: main
@@ -290,7 +290,7 @@ repositories:
     version: 0.15.13
     base: false
   product/autoware_diag_bridge:
-    labels: [main, common]
+    labels: [main, perception]
     type: git
     url: git@github.com:tier4/autoware_diagnostics_bridge.git
     version: 6085277b50d2b826df97e0ed6e2c292a783c00c7
@@ -308,13 +308,6 @@ repositories:
     url: git@github.com:tier4/mrm_plugin.x2.git
     branch: beta/v4.4
     version: 1d8e22118d5dbed3f0cd0687f51bfd0181ba6067
-    base: false
-
-  edge_auto_jetson/edge_auto_jetson_launch:
-    labels: [perception]
-    type: git
-    url: git@github.com:tier4/edge_auto_jetson_launch.x2.git
-    version: 3f6cc2f0c7eb78698a71e0a41d21e7b5f1256a53
     base: false
   edge_auto_jetson/sensor_trigger:
     labels: [perception]

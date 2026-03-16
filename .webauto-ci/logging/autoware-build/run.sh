@@ -45,6 +45,13 @@ echo "--- end of exact.repos ---"
 git config --global --unset credential."https://github.com".helper
 git config --global --unset url."https://github.com/".insteadOf
 
+# THIS IS AN EVIL HACK for ignoring edge_auto_jetson_launch,
+# while colcon does not support e.g. --packages-skip-exposed-by edge_auto_jetson_launch
+# (--packages-skip-up-to does not work as well since some dependencies
+# in edge_auto_jetson_launch are also dependencies of autoware_launch)
+# TODO: find a way to truly build only packages we want. --packages-up-to autoware_launch is not reliable.
+rm -rf src/autoware/launcher/edge_auto_jetson_launch
+
 # shellcheck disable=SC1090
 source "/opt/ros/${ROS_DISTRO}/setup.bash"
 rosdep update
