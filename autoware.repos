@@ -269,7 +269,8 @@ repositories:
     labels: [main, signage] # signage needs this for level4_mode_manager_msgs
     type: git
     url: git@github.com:tier4/l4_toolkit.git
-    version: e891597c39f7122dcfd1f6deb7ca3000d1cfeb2d
+    branch: beta/v4.4
+    version: 3cca15bf26c07776483a16b8495b24a6464a3404
     base: false
   vendor/emergency_vehicle_detector:
     labels: [main]
