@@ -43,6 +43,11 @@ RUN sed -i "s/git@github\.com:/https:\/\/github\.com\//g" ./ansible-galaxy-requi
 RUN --mount=type=ssh ./setup-dev-env.sh -y $SETUP_ARGS \
   && pip uninstall -y ansible ansible-core
 
+## So colcon/build finds acados (installed by ansible acados role)
+ENV CMAKE_PREFIX_PATH="/opt/acados:${CMAKE_PREFIX_PATH}"
+ENV ACADOS_SOURCE_DIR="/opt/acados"
+ENV LD_LIBRARY_PATH="/opt/acados/lib:${LD_LIBRARY_PATH}"
+
 RUN sed -i "s/git@github\.com:/https:\/\/github\.com\//g" ./autoware.repos \
   && sed -i "s/git@github\.com:/https:\/\/github\.com\//g" ./simulator.repos \
   && sed -i "s/git@github\.com:/https:\/\/github\.com\//g" ./tools.repos \
