@@ -236,7 +236,7 @@ repositories:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
     branch: beta/v4.4
-    version: 1c3b8853aca3ff31722025c74b091596566e57f6
+    version: aad03217ba1f8b31ecbe363f78e7cb03624a89cc
     base: false
   autoware/individual_params:
     labels: [main, perception]
