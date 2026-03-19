@@ -4,13 +4,13 @@ repositories:
     labels: [main, common]
     type: git
     url: https://github.com/tier4/autoware_core.git
-    version: bf8d25aab55f991cb3ab5e4247d4aa6aaca30083
+    version: e5f794bd72490492fd9e892d016b56eca33a339b
     base: true
   autoware/universe:
     labels: [main, common]
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: d159a5358a191366df04d6b70be7dd5b6ee9dc4d
+    version: c4f45eb4ab27e7035930d8a38167b422698adefa
     base: true
   autoware/autoware_cmake:
     labels: [main, common]
@@ -22,19 +22,22 @@ repositories:
     labels: [main, common]
     type: git
     url: https://github.com/autowarefoundation/autoware_utils.git
-    version: b30664b872b95a46dc47e48dbe1e2d8dcd9bb56b
+    version: f3c8f34264fe4812da406ab0390e65c95ec386ab
     base: true
   autoware/autoware_lanelet2_extension:
     labels: [main, common]
     type: git
     url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
-    version: 68219c4793f00317e43a467b963c6d50f33437c6
+    version: 5b1cb2391055c4c661ff4f79c094889d1a1d95aa
     base: true
   autoware/launcher:
     labels: [main]
     type: git
     url: https://github.com/tier4/autoware_launch.git
-    version: 136e3f5138f4672da918949905261aa9fa6eb4c4
+    # IMPORTANT: 'tier4/main' branch in tier4/autoware_launch may be behind from AWF latest due to the review process.
+    # The daily test branch (pilot-auto 'staging', not 'main') uses the 'staging' branch in tier4/autoware_launch,
+    # which is an automerge with the AWF latest into tier4/main.
+    version: df508174fa770aa29b27532cf4f8ac882c23100c
     base: false
   autoware/aip_launcher:
     # aip_launcher repository is no longer maintained and only left for legacy support.
@@ -47,13 +50,13 @@ repositories:
     labels: [main, common]
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
-    version: 9386aa8f8936e20161410a3b4b1207b0dd6e9d93
+    version: cc18be828a018f58ef0714769d848da3f38f0e3b
     base: true
   autoware/tier4_autoware_msgs:
     labels: [main, common, message]
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
-    version: c92a340c35a3de63cae462c2d3ad93c446d1ce6c
+    version: 16b60bb8a4673bf56c592cc23144a9336880354c
     base: true
   autoware/autoware_msgs:
     labels: [main, common, message]
@@ -127,7 +130,7 @@ repositories:
     labels: [main]
     type: git
     url: https://github.com/tier4/tamagawa_imu_driver.git
-    version: fc939e9bfbf171986d2d558400a4a4fee97332c6
+    version: 03e43abf69a6c1faa47f37c4a7d1ea70fec05fab
     base: true
   vendor/ublox:
     labels: [main]
@@ -135,12 +138,6 @@ repositories:
     url: https://github.com/tier4/ublox.git
     version: dc49c2dcc9384401030c77d7db05fea9161cbcc0
     base: true
-  vendor/lidar-driver:
-    labels: [main]
-    type: git
-    url: git@github.com:tier4/lidar_driver.git
-    version: v0.1.4
-    base: false
   vendor/nebula:
     labels: [main]
     type: git
@@ -254,7 +251,7 @@ repositories:
     labels: [main]
     type: git
     url: https://github.com/tier4/rclcpp.git
-    version: f2cdbdc4bd68d2df75b6614b792489738859ade1
+    version: 0fdf9caefc5957f6cb5803f229f65577fdd5bbe8
     base: true
   launch: # Based humble version, the acceleration patched is added
     labels: [main]
@@ -268,7 +265,7 @@ repositories:
     labels: [main]
     type: git
     url: https://github.com/tier4/launch_ros.git
-    version: 3bf6abf86eefd1629d2499f8f666998311fa831b
+    version: 93b995fd85fb8787f8ccfc626d8dedf896da2cec
     base: true
 
   v2x/vehicle2infrastructure:
