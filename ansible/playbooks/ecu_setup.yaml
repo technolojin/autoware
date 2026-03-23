@@ -52,6 +52,7 @@
     - { role: x2_dev_tools }
     - role: x2_cmd_helper_completion
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - { role: autoware.ecu_system_setup.agnocast_sysctl }
     - { role: agnocast_module_loader }
     - { role: autoware.ecu_system_setup.systemd_analyze_collector }
     - { role: autoware.ecu_system_setup.passenger_app_agent }
