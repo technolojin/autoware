@@ -236,7 +236,7 @@ repositories:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
     branch: beta/v4.4
-    version: aad03217ba1f8b31ecbe363f78e7cb03624a89cc
+    version: d81c6f63b9a26dd5135c1471670cfcacda51f60d
     base: false
   autoware/individual_params:
     labels: [main, perception]
@@ -257,7 +257,7 @@ repositories:
     type: git
     url: git@github.com:tier4/mj20_interface.git
     branch: beta/v4.4
-    version: 89afa73bf0a77d3b0c010e0d3f025694763cdd2b
+    version: 427ffad731cd75bd9461aae44059d6f9b80640e8
     base: false
   vendor/ros2_socketcan:
     labels: [main]
