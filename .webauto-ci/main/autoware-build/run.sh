@@ -143,6 +143,22 @@ colcon build \
     --parallel-workers "$PARALLEL_WORKERS" \
     $ADDITIONAL_OPTIONS
 
+# Agnocast bridge plugins
+if [ "${ENABLE_AGNOCAST:-0}" = "1" ]; then
+    echo "===== Build Agnocast Bridge Plugins ====="
+    # shellcheck disable=SC1091
+    source "$AUTOWARE_PATH/install/setup.bash"
+    ros2 agnocast generate-bridge-plugins --all
+    colcon build \
+        --symlink-install \
+        --cmake-args -DCMAKE_BUILD_TYPE="$build_type" -DCMAKE_CXX_FLAGS="-w" -DBUILD_TESTING=off \
+        --catkin-skip-building-tests \
+        --executor parallel \
+        --parallel-workers "$PARALLEL_WORKERS" \
+        --packages-select agnocast_bridge_plugins \
+        "${ADDITIONAL_OPTIONS[@]}"
+fi
+
 if [ "$WEBAUTO_CI_BUILD_OPTION_CARET_ENABLED" = "ENABLED" ]; then
     echo "===== Check CARET SETUP ====="
     # shellcheck disable=SC1090,SC1091,SC2015

@@ -4,6 +4,7 @@ After=autoware_system_launch.service tier4_autoware_standby_wait.target tier4_sy
 
 [Service]
 Environment=ENABLE_AGNOCAST=1
+Environment=AGNOCAST_BRIDGE_MODE=performance
 ExecStart=/opt/autoware/services/system_launch/autoware_main_mrm_launch.service/run.sh
 KillSignal=SIGINT
 User=autoware
