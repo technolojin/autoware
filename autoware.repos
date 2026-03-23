@@ -263,7 +263,7 @@ repositories:
     labels: [main]
     type: git
     url: https://github.com/autowarefoundation/ros2_socketcan.git
-    version: 822ca033c8ce934dc5a622d7bb80adb575522b33
+    version: e16bb19c51f3f48b1ac0a61ee53a3de70b1fe665
     base: false
   product/l4_toolkit:
     labels: [main, signage] # signage needs this for level4_mode_manager_msgs
