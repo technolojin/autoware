@@ -9,7 +9,7 @@ repositories:
     labels: [main, common]
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: 065ff5f521a9cb114281ad1a2d8ef59505d7e8c2
+    version: 02847a8d360beff3bb6f82221d40e7c628c1590d
     base: true
   autoware/autoware_cmake:
     labels: [main, common]
@@ -229,7 +229,7 @@ repositories:
     labels: [main, common]
     type: git
     url: https://github.com/tier4/agnocast.git
-    version: 2.1.2
+    version: 2.3.1
     base: true
   autoware/launcher:
     labels: [main, perception] # contains edge_auto_jetson_x2_launch
