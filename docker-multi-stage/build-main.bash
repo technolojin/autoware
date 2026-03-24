@@ -46,8 +46,8 @@ while (($# > 0)); do
 done
 
 if "$use_ghcr"; then
-    base_image_runtime=ghcr.io/tier4/pilot-auto/base-image-only-setup:latest
-    base_image_build=ghcr.io/tier4/pilot-auto/base-image-only-setup:latest
+    base_image_runtime=ghcr.io/tier4/pilot-auto/base-image-only-setup:runtime
+    base_image_build=ghcr.io/tier4/pilot-auto/base-image-only-setup:build
 else
     base_image_runtime=pilot-auto-base-image:runtime
     base_image_build=pilot-auto-base-image:build
