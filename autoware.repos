@@ -236,7 +236,7 @@ repositories:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
     branch: beta/v4.4
-    version: d81c6f63b9a26dd5135c1471670cfcacda51f60d
+    version: ffbed5da2a0313e5047019517a487118e8c2ddd3
     base: false
   autoware/individual_params:
     labels: [main, perception]
@@ -301,7 +301,7 @@ repositories:
     type: git
     url: git@github.com:tier4/redundancy_switcher_interface.git
     branch: beta/v4.4
-    version: dd17cc14bcab6441331ec4f15b44bfc056e16368
+    version: 872b1e01390b098304a24faa37eb0b7f0e64be9e
     base: false
   autoware/mrm_plugin:
     labels: [main]
