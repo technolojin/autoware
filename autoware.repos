@@ -301,7 +301,7 @@ repositories:
     type: git
     url: git@github.com:tier4/redundancy_switcher_interface.git
     branch: beta/v4.4
-    version: 872b1e01390b098304a24faa37eb0b7f0e64be9e
+    version: 47afee22ec8a58f6a4487f492936289b5209248a
     base: false
   autoware/mrm_plugin:
     labels: [main]
