@@ -9,7 +9,7 @@ repositories:
     labels: [main, common]
     type: git
     url: https://github.com/tier4/autoware_universe.git
-    version: 05eaf7c09819d610f705488acd17272ab3ad9064
+    version: 502e7b029d9252876d99ded0dedab2e6e7821525
     base: true
   autoware/autoware_cmake:
     labels: [main, common]
