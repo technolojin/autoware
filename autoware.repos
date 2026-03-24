@@ -303,6 +303,13 @@ repositories:
     branch: beta/v4.4
     version: 47afee22ec8a58f6a4487f492936289b5209248a
     base: false
+  vendor/domain_bridge:
+    labels: [main]
+    type: git
+    url: git@github.com:tier4/domain_bridge.git
+    # branch: tier4/humble
+    version: 4e6b779a4769508b4c8fe2a3d35b3f7add7115e5
+    base: false
   autoware/mrm_plugin:
     labels: [main]
     type: git
