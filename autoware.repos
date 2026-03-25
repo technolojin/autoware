@@ -232,86 +232,86 @@ repositories:
     version: 2.3.1
     base: true
   autoware/launcher:
-    labels: [main, perception] # contains edge_auto_jetson_x2_launch
+    labels: [mainecu, perception] # contains edge_auto_jetson_x2_launch
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
     branch: beta/v4.4
     version: ffbed5da2a0313e5047019517a487118e8c2ddd3
     base: false
   autoware/individual_params:
-    labels: [main, perception]
+    labels: [mainecu, logging, perception]
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
     branch: main
     version: f65e6dbd32b90c911f8929e1ebe7fb7e426cb77b
     base: false
   description/vehicle/j6_gen2_description:
-    labels: [main]
+    labels: [mainecu, logging]
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
     branch: beta/v4.4
     version: db0629c23dfb607ef9080692bb016bba775bdd08
     base: false
   vendor/mj20_interface:
-    labels: [main]
+    labels: [mainecu, logging]
     type: git
     url: git@github.com:tier4/mj20_interface.git
     branch: beta/v4.4
     version: 427ffad731cd75bd9461aae44059d6f9b80640e8
     base: false
   vendor/ros2_socketcan:
-    labels: [main]
+    labels: [mainecu, logging]
     type: git
     url: https://github.com/autowarefoundation/ros2_socketcan.git
     version: e16bb19c51f3f48b1ac0a61ee53a3de70b1fe665
     base: false
   product/l4_toolkit:
-    labels: [main, signage] # signage needs this for level4_mode_manager_msgs
+    labels: [mainecu, logging, signage] # signage needs this for level4_mode_manager_msgs
     type: git
     url: git@github.com:tier4/l4_toolkit.git
     branch: beta/v4.4
     version: 3cca15bf26c07776483a16b8495b24a6464a3404
     base: false
   vendor/emergency_vehicle_detector:
-    labels: [main]
+    labels: [mainecu, logging]
     type: git
     url: git@github.com:tier4/emergency_vehicle_detector.git
     version: c9a0609e91b2a8d59fb1108f2aa0ddc585deed2c
     base: false
   vendor/pyrocan:
-    labels: [main]
+    labels: [mainecu, logging]
     type: git
     url: git@github.com:tier4/pyrocan.git
     version: f1c9abf9309fae8966bb2500707af063a17aef25
     base: false
   vendor/rosbag2:
-    labels: [main]
+    labels: [mainecu, logging]
     type: git
     url: https://github.com/ros2/rosbag2.git
     version: 0.15.13
     base: false
   product/autoware_diag_bridge:
-    labels: [main, perception]
+    labels: [mainecu, logging, perception]
     type: git
     url: git@github.com:tier4/autoware_diagnostics_bridge.git
     version: 6085277b50d2b826df97e0ed6e2c292a783c00c7
     base: false
   vendor/redundancy_switcher_interface:
-    labels: [main]
+    labels: [mainecu]
     type: git
     url: git@github.com:tier4/redundancy_switcher_interface.git
     branch: beta/v4.4
     version: 5e4f542408d5217c76a8dc2efb55db25ed248481
     base: false
   vendor/domain_bridge:
-    labels: [main]
+    labels: [mainecu]
     type: git
     url: git@github.com:tier4/domain_bridge.git
     # branch: tier4/humble
     version: 4e6b779a4769508b4c8fe2a3d35b3f7add7115e5
     base: false
   autoware/mrm_plugin:
-    labels: [main]
+    labels: [mainecu]
     type: git
     url: git@github.com:tier4/mrm_plugin.x2.git
     branch: beta/v4.4
