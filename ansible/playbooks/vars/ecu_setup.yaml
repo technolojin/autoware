@@ -42,7 +42,7 @@ sync_tooling:
 # redundancy switcher
 redundancy_switcher_repository_url: git@github.com:tier4/redundancy_switcher.git
 redundancy_switcher_clone_dir: /tmp/redundancy_switcher
-redundancy_switcher_version: v1.0.0
+redundancy_switcher_version: v4.4.0
 redundancy_switcher_install_dir: /opt/redundancy_switcher/bin
 redundancy_switcher_conf_install_dir: /opt/redundancy_switcher/conf
 redundancy_switcher_conf_files: redundancy_switcher/node_info.yaml
