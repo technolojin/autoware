@@ -1,0 +1,8 @@
+# NOTE: This is a temporary config file. It should be replaced with the production config.
+
+rt_throttling:
+  runtime_us: 950000
+  period_us: 1000000
+
+callback_groups: []
+non_ros_threads: []

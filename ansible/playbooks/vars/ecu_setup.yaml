@@ -211,6 +211,11 @@ mask_user_service_list:
 scheduling_settings_autoware_yaml_file: scheduling_settings/scheduling_settings_autoware.yaml
 scheduling_settings_others_yaml_file: scheduling_settings/scheduling_settings_others.yaml
 
+# thread_configurator
+thread_configurator_config_file: thread_configurator/x2_gen2_v4.4.0.yaml
+thread_configurator_rt_period_us: 1000000
+thread_configurator_rt_runtime_us: 950000
+
 # tc_bandwidth_limit
 tc_interface: enp5s0f1
 
