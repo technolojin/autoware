@@ -301,7 +301,7 @@ repositories:
     type: git
     url: git@github.com:tier4/redundancy_switcher_interface.git
     branch: beta/v4.4
-    version: 47afee22ec8a58f6a4487f492936289b5209248a
+    version: 5e4f542408d5217c76a8dc2efb55db25ed248481
     base: false
   vendor/domain_bridge:
     labels: [main]
