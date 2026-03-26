@@ -217,7 +217,7 @@ repositories:
     labels: [main]
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
-    version: d80e25e4f79ad50fe734ec8a2b8cf796ed9c2d5c
+    version: 1073947d956201c27607174638bc733e82da9561
     base: true
 
   # middleware
