@@ -130,3 +130,24 @@ disable_system_service_list:
   - dpkg-db-backup.timer
   - apt-daily-upgrade.timer
   - apt-daily.timer
+
+# anomaly_sentinel
+anomaly_sentinel_version_items_append:
+  - name: c2_anvil_camera_isp_fw_versions
+    description: C2 anvil camera ISP FW versions (gw5-fw-updater)
+    script: c2_anvil_camera_isp_fw_versions
+    args: [/home/autoware/gw5_isp_tools/obj/gw5-fw-updater]
+  - name: nvidia_smi_list
+    description: NVIDIA GPU List (nvidia-smi -L)
+    script: nvidia_smi_list
+    args: []
+  - name: nvidia_driver_version
+    description: NVIDIA driver version (/proc/driver/nvidia/version)
+    script: nvidia_driver_version
+    args: []
+
+anomaly_sentinel_check_commands_list_append:
+  - output_file_name: nvidia_smi
+    script: nvidia_smi
+    args: []
+    description: NVIDIA GPU Information (nvidia-smi)

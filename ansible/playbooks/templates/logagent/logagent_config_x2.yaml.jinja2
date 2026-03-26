@@ -103,3 +103,9 @@ log_upload:
       path: {{ param_diff_uploader_directory }}
       hosts: []
       except_current: false
+
+    - file_type: user
+      extensions: [txt,zip,log,tgz,zstd]
+      path: {{ anomaly_sentinel_collector_directory }}
+      hosts: []
+      except_current: false

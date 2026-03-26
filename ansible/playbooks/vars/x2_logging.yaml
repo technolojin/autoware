@@ -51,6 +51,23 @@ setup_systemd_analyze_collector: true
 use_rsync_send: false # logging ECU does not need rsync to send data
 # param_diff_uploader
 is_param_diff_collector: true
+# anomaly_sentinel
+setup_anomaly_sentinel_collector: true
+anomaly_sentinel_check_commands_list_append:
+  - output_file_name: nvidia_smi
+    script: nvidia_smi
+    args: []
+    description: NVIDIA GPU Information (nvidia-smi)
+
+anomaly_sentinel_version_items_append:
+  - name: nvidia_smi_list
+    description: NVIDIA GPU List (nvidia-smi -L)
+    script: nvidia_smi_list
+    args: []
+  - name: nvidia_driver_version
+    description: NVIDIA driver version (/proc/driver/nvidia/version)
+    script: nvidia_driver_version
+    args: []
 
 # netplan
 netplan_files: netplan/99-autoware.x2-logging.yaml

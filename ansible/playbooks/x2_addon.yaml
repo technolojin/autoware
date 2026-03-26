@@ -20,6 +20,7 @@
         c2_angle_params: "{{ addon_angle_params }}"
 
   roles:
+    - { role: autoware.ecu_system_setup.anomaly_sentinel }
     - { role: autoware.ecu_system_setup.automatic_login }
     - { role: autoware.ecu_system_setup.additional_fonts }
     - { role: autoware.ecu_system_setup.bash_completion }

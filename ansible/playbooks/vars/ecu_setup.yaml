@@ -224,3 +224,22 @@ boot_shutdown_service_config_file: boot_shutdown_service/boot_shutdown.param.mai
 
 # set_autoware_env
 vehicle_id: INVALID_VEHICLE_ID
+
+# anomaly_sentinel
+anomaly_sentinel_check_commands_list_append:
+  - output_file_name: nvidia_smi
+    tag:
+      - Info
+    script: nvidia_smi
+    args: []
+    description: NVIDIA GPU Information (nvidia-smi)
+
+anomaly_sentinel_version_items_append:
+  - name: nvidia_smi_list
+    description: NVIDIA GPU List (nvidia-smi -L)
+    script: nvidia_smi_list
+    args: []
+  - name: nvidia_driver_version
+    description: NVIDIA driver version (/proc/driver/nvidia/version)
+    script: nvidia_driver_version
+    args: []
