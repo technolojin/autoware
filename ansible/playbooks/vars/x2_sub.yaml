@@ -65,7 +65,7 @@ sync_tooling:
 rviz_config_path: "{{ autoware_install_dir }}/install/autoware_launch/share/autoware_launch/rviz/autoware_x2.rviz"
 rviz_launch_file_name: autoware_sub_rviz.launch.xml
 rviz_launch_method: autoware_launch
-rviz_default_service_enabled: false
+rviz_default_service_enabled: true
 
 # screen_recorder
 screen_recorder_default_logging_directory: /var/tmp/screen_recorder
