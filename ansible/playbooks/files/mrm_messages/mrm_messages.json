@@ -3,14 +3,14 @@
     "ERROR": {
       "situation": "初期位置推定が完了していません",
       "solution": "自己位置推定の完了を待ってください",
-      "error_code": "LOC-00-E00-001E",
+      "error_code": "LOC-00-E00-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "初期位置推定が完了していません",
       "solution": "自己位置推定の完了を待ってください",
-      "error_code": "LOC-00-E00-001",
+      "error_code": "LOC-00-E00-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -19,14 +19,14 @@
     "ERROR": {
       "situation": "/localization/pose_twist_fusion_filter/pose情報が正常に受け取れていません",
       "solution": "手動走行で安全な場所へ退避して走行を中断してください。その後車両を再起動してください",
-      "error_code": "LOC-00-E00-002E",
+      "error_code": "LOC-00-E00-87E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "/localization/pose_twist_fusion_filter/pose情報が正常に受け取れていません",
       "solution": "手動走行で安全な場所へ退避して走行を中断してください。その後車両を再起動してください",
-      "error_code": "LOC-00-E00-002",
+      "error_code": "LOC-00-E00-87",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -35,14 +35,14 @@
     "ERROR": {
       "situation": "位置情報が正常に受けてれていません",
       "solution": "手動走行で安全な場所に移動してください。停止してエラーが解消されるかを確認してください。しばらく待って解決しない場合は次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "LOC-00-E00-003E",
+      "error_code": "LOC-00-E00-87E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "位置情報が正常に受けてれていません",
       "solution": "手動走行で安全な場所に移動してください。停止してエラーが解消されるかを確認してください。しばらく待って解決しない場合は次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "LOC-00-E00-003",
+      "error_code": "LOC-00-E00-87",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -51,14 +51,14 @@
     "ERROR": {
       "situation": "IMU、車速が途絶している、または遅延しています。センサ故障によりデータが出力されていない可能性があります",
       "solution": "手動走行で安全な場所に移動してください。停止してエラーが解消されるかを確認してください。しばらく待って解決しない場合は次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "LOC-00-E00-004E",
+      "error_code": "LOC-00-E00-61E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "IMU、車速が途絶している、または遅延しています。センサ故障によりデータが出力されていない可能性があります",
       "solution": "手動走行で安全な場所に移動してください。停止してエラーが解消されるかを確認してください。しばらく待って解決しない場合は次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "LOC-00-E00-004",
+      "error_code": "LOC-00-E00-61",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -67,14 +67,14 @@
     "ERROR": {
       "situation": "NDT scan matchingが正常動作していない可能性が高いです",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "LOC-00-E00-005E",
+      "error_code": "LOC-00-E00-FDE",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "NDT scan matchingが正常動作していない可能性が高いです",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "LOC-00-E00-005",
+      "error_code": "LOC-00-E00-FD",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -83,14 +83,14 @@
     "ERROR": {
       "situation": "動的な地図読み込み機能が正常に動作していません",
       "solution": "手動走行で安全な場所に移動してください。停止してエラーが解消されるかを確認してください。しばらく待って解決しない場合は次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "LOC-00-E00-010E",
+      "error_code": "LOC-00-E00-FDE",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "動的な地図読み込み機能が正常に動作していません",
       "solution": "手動走行で安全な場所に移動してください。停止してエラーが解消されるかを確認してください。しばらく待って解決しない場合は次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "LOC-00-E00-010",
+      "error_code": "LOC-00-E00-FD",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -99,14 +99,14 @@
     "ERROR": {
       "situation": "位置推定結果の信頼度が低くなっています",
       "solution": "手動走行で安全な場所に移動してください。停止してエラーが解消されるかを確認してください。しばらく待って解決しない場合は次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "LOC-00-E00-011E",
+      "error_code": "LOC-00-E00-62E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "位置推定結果の信頼度が低くなっています",
       "solution": "手動走行で安全な場所に移動してください。停止してエラーが解消されるかを確認してください。しばらく待って解決しない場合は次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "LOC-00-E00-011",
+      "error_code": "LOC-00-E00-62",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -115,14 +115,14 @@
     "ERROR": {
       "situation": "位置推定結果の信頼度が低くなっています",
       "solution": "手動走行で安全な場所に移動してください。停止してエラーが解消されるかを確認してください。しばらく待って解決しない場合は次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "LOC-00-E00-012E",
+      "error_code": "LOC-00-E00-FDE",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "位置推定結果の信頼度が低くなっています",
       "solution": "手動走行で安全な場所に移動してください。停止してエラーが解消されるかを確認してください。しばらく待って解決しない場合は次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "LOC-00-E00-012",
+      "error_code": "LOC-00-E00-FD",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -131,14 +131,14 @@
     "ERROR": {
       "situation": "位置推定結果の信頼度が低くなっています",
       "solution": "手動走行で安全な場所に移動してください。停止してエラーが解消されるかを確認してください。しばらく待って解決しない場合は次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "LOC-00-E00-013E",
+      "error_code": "LOC-00-E00-62E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "位置推定結果の信頼度が低くなっています",
       "solution": "手動走行で安全な場所に移動してください。停止してエラーが解消されるかを確認してください。しばらく待って解決しない場合は次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "LOC-00-E00-013",
+      "error_code": "LOC-00-E00-62",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -147,14 +147,14 @@
     "ERROR": {
       "situation": "LL2Mapのデータが受け取れていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "MAP-00-E00-001E",
+      "error_code": "MAP-00-E00-87E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "LL2Mapのデータが受け取れていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "MAP-00-E00-001",
+      "error_code": "MAP-00-E00-87",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -163,14 +163,14 @@
     "ERROR": {
       "situation": "点群地図のデータが受け取れていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "MAP-00-E00-002E",
+      "error_code": "MAP-00-E00-87E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "点群地図のデータが受け取れていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "MAP-00-E00-002",
+      "error_code": "MAP-00-E00-87",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -179,14 +179,14 @@
     "ERROR": {
       "situation": "LiDARの点群情報が受け取れていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PER-00-E00-001E",
+      "error_code": "PER-00-E00-87E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "LiDARの点群情報が受け取れていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PER-00-E00-001",
+      "error_code": "PER-00-E00-87",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -195,14 +195,14 @@
     "ERROR": {
       "situation": "認識オブジェクト情報が受け取れていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PER-00-E00-002E",
+      "error_code": "PER-00-E00-87E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "認識オブジェクト情報が受け取れていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PER-00-E00-002",
+      "error_code": "PER-00-E00-87",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -211,14 +211,14 @@
     "ERROR": {
       "situation": "信号情報が受け取れていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PER-00-E00-003E",
+      "error_code": "PER-00-E00-87E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "信号情報が受け取れていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PER-00-E00-003",
+      "error_code": "PER-00-E00-87",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -227,14 +227,14 @@
     "ERROR": {
       "situation": "検知結果が遅れています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PER-00-E00-004E",
+      "error_code": "PER-00-E00-F0E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "検知結果が遅れています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PER-00-E00-004",
+      "error_code": "PER-00-E00-F0",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -243,14 +243,14 @@
     "ERROR": {
       "situation": "地図データに不具合があります",
       "solution": "手動走行で安全な場所まで移動してください。地図に異常があるのでCSに問い合わせてください",
-      "error_code": "PER-00-E00-019E",
+      "error_code": "PER-00-E00-85E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "地図データに不具合があります",
       "solution": "手動走行で安全な場所まで移動してください。地図に異常があるのでCSに問い合わせてください",
-      "error_code": "PER-00-E00-019",
+      "error_code": "PER-00-E00-85",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -259,14 +259,14 @@
     "ERROR": {
       "situation": "カメラ0の認識結果作成速度が遅くなっています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PER-03-C00-021E",
+      "error_code": "PER-03-C00-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラ0の認識結果作成速度が遅くなっています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PER-03-C00-021",
+      "error_code": "PER-03-C00-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -275,14 +275,14 @@
     "ERROR": {
       "situation": "カメラ1の物体認識結果作成速度が遅くなっています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PER-03-C01-021E",
+      "error_code": "PER-03-C01-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラ1の物体認識結果作成速度が遅くなっています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PER-03-C01-021",
+      "error_code": "PER-03-C01-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -291,14 +291,14 @@
     "ERROR": {
       "situation": "カメラ2の物体認識結果作成速度が遅くなっています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PER-03-C02-021E",
+      "error_code": "PER-03-C02-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラ2の物体認識結果作成速度が遅くなっています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PER-03-C02-021",
+      "error_code": "PER-03-C02-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -307,14 +307,14 @@
     "ERROR": {
       "situation": "カメラ3の物体認識結果作成速度が遅くなっています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PER-03-C03-021E",
+      "error_code": "PER-03-C03-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラ3の物体認識結果作成速度が遅くなっています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PER-03-C03-021",
+      "error_code": "PER-03-C03-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -323,14 +323,14 @@
     "ERROR": {
       "situation": "カメラ4の物体認識結果作成速度が遅くなっています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PER-04-C04-021E",
+      "error_code": "PER-04-C04-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラ4の物体認識結果作成速度が遅くなっています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PER-04-C04-021",
+      "error_code": "PER-04-C04-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -339,14 +339,14 @@
     "ERROR": {
       "situation": "カメラ5の物体認識結果作成速度が遅くなっています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PER-04-C05-021E",
+      "error_code": "PER-04-C05-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラ5の物体認識結果作成速度が遅くなっています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PER-04-C05-021",
+      "error_code": "PER-04-C05-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -355,14 +355,14 @@
     "ERROR": {
       "situation": "カメラ4の信号認識結果作成速度が遅くなっています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PER-04-C04-022E",
+      "error_code": "PER-04-C04-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラ4の信号認識結果作成速度が遅くなっています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PER-04-C04-022",
+      "error_code": "PER-04-C04-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -371,14 +371,14 @@
     "ERROR": {
       "situation": "カメラ5の信号認識結果作成速度が遅くなっています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PER-04-C05-022E",
+      "error_code": "PER-04-C05-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラ5の信号認識結果作成速度が遅くなっています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PER-04-C05-022",
+      "error_code": "PER-04-C05-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -387,14 +387,14 @@
     "ERROR": {
       "situation": "IMU機器と接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-I00-001E",
+      "error_code": "SEN-00-I00-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "IMU機器と接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-I00-001",
+      "error_code": "SEN-00-I00-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -403,14 +403,14 @@
     "ERROR": {
       "situation": "点群の結合に一時的に失敗しています",
       "solution": "しばらく待って解決しない場合は手動走行で安全な場所し退避しその後車両を再起動してください。",
-      "error_code": "SEN-00-E00-002E",
+      "error_code": "SEN-00-E00-87E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "点群の結合に一時的に失敗しています",
       "solution": "しばらく待って解決しない場合は手動走行で安全な場所し退避しその後車両を再起動してください。",
-      "error_code": "SEN-00-E00-002",
+      "error_code": "SEN-00-E00-87",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -419,14 +419,14 @@
     "ERROR": {
       "situation": "カメラ0の通信不良が起きています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C00-003E",
+      "error_code": "SEN-03-C00-F6E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラ0の通信不良が起きています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C00-003",
+      "error_code": "SEN-03-C00-F6",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -435,14 +435,14 @@
     "ERROR": {
       "situation": "カメラ1の通信不良が起きています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C01-003E",
+      "error_code": "SEN-03-C01-F6E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラ1の通信不良が起きています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C01-003",
+      "error_code": "SEN-03-C01-F6",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -451,14 +451,14 @@
     "ERROR": {
       "situation": "カメラ2の通信不良が起きています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C02-003E",
+      "error_code": "SEN-03-C02-F6E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラ2の通信不良が起きています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C02-003",
+      "error_code": "SEN-03-C02-F6",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -467,14 +467,14 @@
     "ERROR": {
       "situation": "カメラ3の通信不良が起きています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C03-003E",
+      "error_code": "SEN-03-C03-F6E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラ3の通信不良が起きています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C03-003",
+      "error_code": "SEN-03-C03-F6",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -483,14 +483,14 @@
     "ERROR": {
       "situation": "カメラ4の通信不良が起きています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C04-003E",
+      "error_code": "SEN-04-C04-F6E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラ4の通信不良が起きています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C04-003",
+      "error_code": "SEN-04-C04-F6",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -499,14 +499,14 @@
     "ERROR": {
       "situation": "カメラ5の通信不良が起きています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C05-003E",
+      "error_code": "SEN-04-C05-F6E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラ5の通信不良が起きています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C05-003",
+      "error_code": "SEN-04-C05-F6",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -515,14 +515,14 @@
     "ERROR": {
       "situation": "カメラ6の通信不良が起きています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C06-003E",
+      "error_code": "SEN-04-C06-F6E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラ6の通信不良が起きています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C06-003",
+      "error_code": "SEN-04-C06-F6",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -531,14 +531,14 @@
     "ERROR": {
       "situation": "カメラ7の通信不良が起きています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C07-003E",
+      "error_code": "SEN-04-C07-F6E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラ7の通信不良が起きています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C07-003",
+      "error_code": "SEN-04-C07-F6",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -547,14 +547,14 @@
     "ERROR": {
       "situation": "カメラ8の通信不良が起きています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-05-C08-003E",
+      "error_code": "SEN-05-C08-F6E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラ8の通信不良が起きています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-05-C08-003",
+      "error_code": "SEN-05-C08-F6",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -563,14 +563,14 @@
     "ERROR": {
       "situation": "カメラ9の通信不良が起きています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-05-C09-003E",
+      "error_code": "SEN-05-C09-F6E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラ9の通信不良が起きています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-05-C09-003",
+      "error_code": "SEN-05-C09-F6",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -579,14 +579,14 @@
     "ERROR": {
       "situation": "カメラ10の通信不良が起きています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-05-C10-003E",
+      "error_code": "SEN-05-C10-F6E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラ10の通信不良が起きています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-05-C10-003",
+      "error_code": "SEN-05-C10-F6",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -595,14 +595,14 @@
     "ERROR": {
       "situation": "カメラ3の視界が何かで覆われています",
       "solution": "手動走行で安全な場所に移動してください。停止してエラーが解消されるかを確認してください。しばらく待って解決しない場合は次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C03-004E",
+      "error_code": "SEN-03-C03-97E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラ3の視界が何かで覆われています",
       "solution": "手動走行で安全な場所に移動してください。停止してエラーが解消されるかを確認してください。しばらく待って解決しない場合は次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C03-004",
+      "error_code": "SEN-03-C03-97",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -611,14 +611,14 @@
     "ERROR": {
       "situation": "カメラ5の視界が何かで覆われています",
       "solution": "手動走行で安全な場所に移動してください。停止してエラーが解消されるかを確認してください。しばらく待って解決しない場合は次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C03-004E",
+      "error_code": "SEN-04-C03-97E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラ5の視界が何かで覆われています",
       "solution": "手動走行で安全な場所に移動してください。停止してエラーが解消されるかを確認してください。しばらく待って解決しない場合は次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C03-004",
+      "error_code": "SEN-04-C03-97",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -627,14 +627,14 @@
     "ERROR": {
       "situation": "front lowerのLiDARの歪み補正機能に異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L00-007E",
+      "error_code": "SEN-00-L00-F0E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "front lowerのLiDARの歪み補正機能に異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L00-007",
+      "error_code": "SEN-00-L00-F0",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -643,14 +643,14 @@
     "ERROR": {
       "situation": "front upperのLiDARのRingOutlierFilter計算時間に異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L01-007E",
+      "error_code": "SEN-00-L01-F0E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "front upperのLiDARのRingOutlierFilter計算時間に異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L01-007",
+      "error_code": "SEN-00-L01-F0",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -659,14 +659,14 @@
     "ERROR": {
       "situation": "left lowerのLiDARの歪み補正機能に異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L02-007E",
+      "error_code": "SEN-00-L02-F0E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "left lowerのLiDARの歪み補正機能に異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L02-007",
+      "error_code": "SEN-00-L02-F0",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -675,14 +675,14 @@
     "ERROR": {
       "situation": "left upperのLiDARの歪み補正機能に異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L03-007E",
+      "error_code": "SEN-00-L03-F0E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "left upperのLiDARの歪み補正機能に異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L03-007",
+      "error_code": "SEN-00-L03-F0",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -691,14 +691,14 @@
     "ERROR": {
       "situation": "rear lowerのLiDARの歪み補正機能に異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L04-007E",
+      "error_code": "SEN-00-L04-F0E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "rear lowerのLiDARの歪み補正機能に異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L04-007",
+      "error_code": "SEN-00-L04-F0",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -707,14 +707,14 @@
     "ERROR": {
       "situation": "rear upperのLiDARの歪み補正機能に異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L05-007E",
+      "error_code": "SEN-00-L05-F0E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "rear upperのLiDARの歪み補正機能に異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L05-007",
+      "error_code": "SEN-00-L05-F0",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -723,14 +723,14 @@
     "ERROR": {
       "situation": "right lowerのLiDARの歪み補正機能に異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L06-007E",
+      "error_code": "SEN-00-L06-F0E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "right lowerのLiDARの歪み補正機能に異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L06-007",
+      "error_code": "SEN-00-L06-F0",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -739,14 +739,14 @@
     "ERROR": {
       "situation": "right upperのLiDARの歪み補正機能に異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L07-007E",
+      "error_code": "SEN-00-L07-F0E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "right upperのLiDARの歪み補正機能に異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L07-007",
+      "error_code": "SEN-00-L07-F0",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -755,14 +755,14 @@
     "ERROR": {
       "situation": "IMUに異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-I00-008E",
+      "error_code": "SEN-00-I00-62E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "IMUに異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-I00-008",
+      "error_code": "SEN-00-I00-62",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -770,31 +770,15 @@
   "/sensing/visibility_validation": {
     "ERROR": {
       "situation": "LiDARの視認性が落ちています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-E00-009E",
+      "solution": "次のバス停まで手動で走行し視界が回復したら異常解除して下さい",
+      "error_code": "SEN-00-E00-97E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "LiDARの視認性が落ちています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-E00-009",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sensing/gnss/001-connection": {
-    "ERROR": {
-      "situation": "GNSS機器との接続が確認できていません",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-G00-010E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "GNSS機器との接続が確認できていません",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-G00-010",
+      "solution": "次のバス停まで手動で走行し視界が回復したら異常解除して下さい",
+      "error_code": "SEN-00-E00-97",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -803,14 +787,14 @@
     "ERROR": {
       "situation": "経路情報が受け取れていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PLN-00-E00-001E",
+      "error_code": "PLN-00-E00-87E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "経路情報が受け取れていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PLN-00-E00-001",
+      "error_code": "PLN-00-E00-87",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -818,15 +802,15 @@
   "/planning/003-trajectory_finite_validation": {
     "ERROR": {
       "situation": "追従経路に異常があります",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PLN-00-E00-003E",
+      "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
+      "error_code": "PLN-00-E00-29E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "追従経路に異常があります",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "PLN-00-E00-003",
+      "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
+      "error_code": "PLN-00-E00-29",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -835,14 +819,14 @@
     "ERROR": {
       "situation": "追従経路の点間が離れすぎています",
       "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
-      "error_code": "PLN-00-E00-004E",
+      "error_code": "PLN-00-E00-64E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "追従経路の点間が離れすぎています",
       "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
-      "error_code": "PLN-00-E00-004",
+      "error_code": "PLN-00-E00-64",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -851,14 +835,14 @@
     "ERROR": {
       "situation": "追従経路の曲率が規定値以上になっています",
       "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
-      "error_code": "PLN-00-E00-005E",
+      "error_code": "PLN-00-E00-64E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "追従経路の曲率が規定値以上になっています",
       "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
-      "error_code": "PLN-00-E00-005",
+      "error_code": "PLN-00-E00-64",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -867,14 +851,14 @@
     "ERROR": {
       "situation": "追従経路の相対角度が規定値以上になっています",
       "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
-      "error_code": "PLN-00-E00-006E",
+      "error_code": "PLN-00-E00-64E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "追従経路の相対角度が規定値以上になっています",
       "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
-      "error_code": "PLN-00-E00-006",
+      "error_code": "PLN-00-E00-64",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -883,14 +867,14 @@
     "ERROR": {
       "situation": "横加速度が規定値以上になっています",
       "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
-      "error_code": "PLN-00-E00-007E",
+      "error_code": "PLN-00-E00-64E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "横加速度が規定値以上になっています",
       "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
-      "error_code": "PLN-00-E00-007",
+      "error_code": "PLN-00-E00-64",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -899,14 +883,14 @@
     "ERROR": {
       "situation": "加速度が規定値以上になっています",
       "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
-      "error_code": "PLN-00-E00-008E",
+      "error_code": "PLN-00-E00-64E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "加速度が規定値以上になっています",
       "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
-      "error_code": "PLN-00-E00-008",
+      "error_code": "PLN-00-E00-64",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -915,14 +899,14 @@
     "ERROR": {
       "situation": "減速度が規定値以上になっています",
       "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
-      "error_code": "PLN-00-E00-009E",
+      "error_code": "PLN-00-E00-64E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "減速度が規定値以上になっています",
       "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
-      "error_code": "PLN-00-E00-009",
+      "error_code": "PLN-00-E00-64",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -931,14 +915,14 @@
     "ERROR": {
       "situation": "ステアリングの揺れ幅が規定値以上になっています",
       "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
-      "error_code": "PLN-00-E00-010E",
+      "error_code": "PLN-00-E00-64E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "ステアリングの揺れ幅が規定値以上になっています",
       "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
-      "error_code": "PLN-00-E00-010",
+      "error_code": "PLN-00-E00-64",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -947,14 +931,14 @@
     "ERROR": {
       "situation": "ステアリングの加速度が規定値以上になっています",
       "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
-      "error_code": "PLN-00-E00-011E",
+      "error_code": "PLN-00-E00-64E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "ステアリングの加速度が規定値以上になっています",
       "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
-      "error_code": "PLN-00-E00-011",
+      "error_code": "PLN-00-E00-64",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -963,14 +947,14 @@
     "ERROR": {
       "situation": "速度偏差が規定値以上になっています",
       "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
-      "error_code": "PLN-00-E00-012E",
+      "error_code": "PLN-00-E00-64E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "速度偏差が規定値以上になっています",
       "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
-      "error_code": "PLN-00-E00-012",
+      "error_code": "PLN-00-E00-64",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -978,15 +962,15 @@
   "/planning/013-trajectory_shift_validation": {
     "ERROR": {
       "situation": "急ハンドル・急加速・急ブレーキになる経路状態になっています",
-      "solution": "手動走行で経路に復帰し自動モードに入れてください。改善しない場合は手動走行で安全な地点まで走行し車両を再起動してください",
-      "error_code": "PLN-00-E00-013E",
+      "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
+      "error_code": "PLN-00-E00-64E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "急ハンドル・急加速・急ブレーキになる経路状態になっています",
-      "solution": "手動走行で経路に復帰し自動モードに入れてください。改善しない場合は手動走行で安全な地点まで走行し車両を再起動してください",
-      "error_code": "PLN-00-E00-013",
+      "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
+      "error_code": "PLN-00-E00-64",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -994,15 +978,15 @@
   "/planning/014-trajectory_validation_yaw_deviation": {
     "ERROR": {
       "situation": "経路の曲がりが大きいために急ハンドルを行う可能性がありました",
-      "solution": "手動走行で経路に復帰し自動モードに入れてください。改善しない場合は手動走行で安全な地点まで走行し車両を再起動してください",
-      "error_code": "PLN-00-E00-014E",
+      "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
+      "error_code": "PLN-00-E00-64E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "経路の曲がりが大きいために急ハンドルを行う可能性がありました",
-      "solution": "手動走行で経路に復帰し自動モードに入れてください。改善しない場合は手動走行で安全な地点まで走行し車両を再起動してください",
-      "error_code": "PLN-00-E00-014",
+      "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
+      "error_code": "PLN-00-E00-64",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1010,15 +994,15 @@
   "/planning/016-trajectory_validation_distance_deviation": {
     "ERROR": {
       "situation": "経路が横に大きくずれているため急ハンドルを行う可能性がありました",
-      "solution": "手動走行で経路に復帰し自動モードに入れてください。改善しない場合は手動走行で安全な地点まで走行し車両を再起動してください",
-      "error_code": "PLN-00-E00-016E",
+      "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
+      "error_code": "PLN-00-E00-64E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "経路が横に大きくずれているため急ハンドルを行う可能性がありました",
-      "solution": "手動走行で経路に復帰し自動モードに入れてください。改善しない場合は手動走行で安全な地点まで走行し車両を再起動してください",
-      "error_code": "PLN-00-E00-016",
+      "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
+      "error_code": "PLN-00-E00-64",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1026,15 +1010,15 @@
   "/planning/017-trajectory_distance_deviation_validation": {
     "ERROR": {
       "situation": "経路目標点が前後にずれているため急アクセル・急ブレーキを行う可能性がありました",
-      "solution": "手動走行で経路に復帰し自動モードに入れてください。改善しない場合は手動走行で安全な地点まで走行し車両を再起動してください",
-      "error_code": "PLN-00-E00-017E",
+      "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
+      "error_code": "PLN-00-E00-64E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "経路目標点が前後にずれているため急アクセル・急ブレーキを行う可能性がありました",
-      "solution": "手動走行で経路に復帰し自動モードに入れてください。改善しない場合は手動走行で安全な地点まで走行し車両を再起動してください",
-      "error_code": "PLN-00-E00-017",
+      "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
+      "error_code": "PLN-00-E00-64",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1042,15 +1026,15 @@
   "/planning/020-boundary_departure": {
     "ERROR": {
       "situation": "縁石など地図上の物体にぶつかる経路が引かれています",
-      "solution": "手動走行で経路に復帰し自動モードに入れてください。改善しない場合は手動走行で安全な地点まで走行し車両を再起動してください",
-      "error_code": "PLN-00-E00-019E",
+      "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
+      "error_code": "PLN-00-E00-FDE",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "縁石など地図上の物体にぶつかる経路が引かれています",
-      "solution": "手動走行で経路に復帰し自動モードに入れてください。改善しない場合は手動走行で安全な地点まで走行し車両を再起動してください",
-      "error_code": "PLN-00-E00-019",
+      "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
+      "error_code": "PLN-00-E00-FD",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1059,14 +1043,14 @@
     "ERROR": {
       "situation": "車両への操作コマンド情報が受け取れていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "CTL-00-E00-002E",
+      "error_code": "CTL-00-E00-87E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "車両への操作コマンド情報が受け取れていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "CTL-00-E00-002",
+      "error_code": "CTL-00-E00-87",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -1075,14 +1059,14 @@
     "ERROR": {
       "situation": "実際に通る予測経路と自動運転で出力された経路の差が大きいです",
       "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
-      "error_code": "CTL-00-E00-003E",
+      "error_code": "CTL-00-E00-FDE",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "実際に通る予測経路と自動運転で出力された経路の差が大きいです",
       "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
-      "error_code": "CTL-00-E00-003",
+      "error_code": "CTL-00-E00-FD",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -1091,14 +1075,14 @@
     "ERROR": {
       "situation": "指示速度より速い速度になっています",
       "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
-      "error_code": "CTL-00-E00-004E",
+      "error_code": "CTL-00-E00-62E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "指示速度より速い速度になっています",
       "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
-      "error_code": "CTL-00-E00-004",
+      "error_code": "CTL-00-E00-62",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -1107,14 +1091,14 @@
     "ERROR": {
       "situation": "経路の曲がりが大きいなど追従ができなくなっています",
       "solution": "経路上の安全な場所に手動運転で移動してください。異常解除ボタンを押してから自動走行を再開してください。復帰できない場合は手動走行で次のバス停まで走行し車両を再起動してください",
-      "error_code": "CTL-00-E00-005E",
+      "error_code": "CTL-00-E00-62E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "経路の曲がりが大きいなど追従ができなくなっています",
       "solution": "経路上の安全な場所に手動運転で移動してください。異常解除ボタンを押してから自動走行を再開してください。復帰できない場合は手動走行で次のバス停まで走行し車両を再起動してください",
-      "error_code": "CTL-00-E00-005",
+      "error_code": "CTL-00-E00-62",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1122,15 +1106,15 @@
   "/control/009-slip_detection": {
     "ERROR": {
       "situation": "スリップを検知しました",
-      "solution": "安全を確認して運行再開ボタンを押してください",
-      "error_code": "CTL-00-E00-009E",
+      "solution": "手動走行で安全な場所に停止した後、車両を再起動してください",
+      "error_code": "CTL-00-E00-62E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "スリップを検知しました",
-      "solution": "安全を確認して運行再開ボタンを押してください",
-      "error_code": "CTL-00-E00-009",
+      "solution": "手動走行で安全な場所に停止した後、車両を再起動してください",
+      "error_code": "CTL-00-E00-62",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -1139,14 +1123,14 @@
     "ERROR": {
       "situation": "自車の近くに物体があり接触の危険があります",
       "solution": "手動運転をして物体を回避、または物体の除去を行ってください。その後、異常解除ボタンを押してから自動モードへ切り替えてください",
-      "error_code": "CTL-00-E00-010E",
+      "error_code": "CTL-00-E00-64E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "自車の近くに物体があり接触の危険があります",
       "solution": "手動運転をして物体を回避、または物体の除去を行ってください。その後、異常解除ボタンを押してから自動モードへ切り替えてください",
-      "error_code": "CTL-00-E00-010",
+      "error_code": "CTL-00-E00-64",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -1155,14 +1139,14 @@
     "ERROR": {
       "situation": "ずり下がりを検知しました",
       "solution": "手動走行で安全な場所へ移動してください。その後、異常解除ボタンを押してから自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "CTL-00-E00-011E",
+      "error_code": "CTL-00-E00-62E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "ずり下がりを検知しました",
       "solution": "手動走行で安全な場所へ移動してください。その後、異常解除ボタンを押してから自動モードへ切り替えて自動走行を再開してください",
-      "error_code": "CTL-00-E00-011",
+      "error_code": "CTL-00-E00-62",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -1171,14 +1155,14 @@
     "ERROR": {
       "situation": "LiDARの点群取得から操作反映までの時間が遅延しています",
       "solution": "安全な場所まで手動で走行し異常解除ボタンを押してから自動モードに復帰してください",
-      "error_code": "SYS-00-E00-003E",
+      "error_code": "SYS-00-E00-FEE",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "LiDARの点群取得から操作反映までの時間が遅延しています",
       "solution": "安全な場所まで手動で走行し異常解除ボタンを押してから自動モードに復帰してください",
-      "error_code": "SYS-00-E00-003",
+      "error_code": "SYS-00-E00-FE",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1187,46 +1171,30 @@
     "ERROR": {
       "situation": "ODD外の走行時間帯です",
       "solution": "運行を終了して手動走行で移動してください",
-      "error_code": "SYS-00-E00-018E",
+      "error_code": "SYS-00-E00-9AE",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "ODD外の走行時間帯です",
       "solution": "運行を終了して手動走行で移動してください",
-      "error_code": "SYS-00-E00-018",
+      "error_code": "SYS-00-E00-9A",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
-    }
-  },
-  "/system/006-vehicle_stuck_checker": {
-    "ERROR": {
-      "situation": "車両が停車した状態で時間が立ったため立ち往生と判断されました",
-      "solution": "手動運転をしてスタックから抜け出してください。その後自動モードへ切り替えてください",
-      "error_code": "SYS-00-E00-019E",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    },
-    "default": {
-      "situation": "車両が停車した状態で時間が立ったため立ち往生と判断されました",
-      "solution": "手動運転をしてスタックから抜け出してください。その後自動モードへ切り替えてください",
-      "error_code": "SYS-00-E00-019",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
     }
   },
   "/system/009-dssad": {
     "ERROR": {
       "situation": "DSSADのSSDへの書き込み異常が発生しています",
       "solution": "L4であれば停止、手動走行で下さい。手動運転の場合には運行継続して問題ありません。\nL2や手動運転の場合は運行継続してください",
-      "error_code": "SYS-02-E00-021E",
+      "error_code": "SYS-02-E00-F2E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "DSSADのSSDへの書き込み異常が発生しています",
       "solution": "L4であれば停止、手動走行で下さい。手動運転の場合には運行継続して問題ありません。\nL2や手動運転の場合は運行継続してください",
-      "error_code": "SYS-02-E00-021",
+      "error_code": "SYS-02-E00-F2",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1235,14 +1203,14 @@
     "ERROR": {
       "situation": "Main or Sub ADKがMain VCUと機器認証照合ができていません",
       "solution": "機器認証用の鍵や権限、またはADKとVCU間の通信に異常があることをCSに問い合わせしてください",
-      "error_code": "SYS-00-E00-025E",
+      "error_code": "SYS-00-E00-61E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Main or Sub ADKがMain VCUと機器認証照合ができていません",
       "solution": "機器認証用の鍵や権限、またはADKとVCU間の通信に異常があることをCSに問い合わせしてください",
-      "error_code": "SYS-00-E00-025",
+      "error_code": "SYS-00-E00-61",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1250,15 +1218,15 @@
   "/vehicle/override_when_level4_driving": {
     "ERROR": {
       "situation": "L4モードですがORが行われました",
-      "solution": "手動で運転して経路に復帰してから自動モードに復帰してください",
-      "error_code": "SYS-00-E00-026E",
+      "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
+      "error_code": "SYS-00-E00-E3E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "L4モードですがORが行われました",
-      "solution": "手動で運転して経路に復帰してから自動モードに復帰してください",
-      "error_code": "SYS-00-E00-026",
+      "solution": "安全な場所に手動運転で移動してください。その場所で異常が解消しているならば異常解除ボタンを押してから自動走行を再開してください。難しい場合は次のバス停まで移動してから同様に走行再開操作をしてください。",
+      "error_code": "SYS-00-E00-E3",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1267,14 +1235,14 @@
     "ERROR": {
       "situation": "車両からの速度情報が遅延しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SYS-00-E00-027E",
+      "error_code": "SYS-00-E00-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "車両からの速度情報が遅延しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SYS-00-E00-027",
+      "error_code": "SYS-00-E00-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1283,14 +1251,14 @@
     "ERROR": {
       "situation": "車両からの操舵情報が遅延しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SYS-00-E00-028E",
+      "error_code": "SYS-00-E00-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "車両からの操舵情報が遅延しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SYS-00-E00-028",
+      "error_code": "SYS-00-E00-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1299,14 +1267,14 @@
     "ERROR": {
       "situation": "緊急停止ボタンが押されました",
       "solution": "手動走行で安全な場所へ退避して走行を中断してください。その後、緊急停止ボタンが押された原因を解決してください",
-      "error_code": "SYS-00-E00-029E",
+      "error_code": "SYS-00-E00-E1E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "緊急停止ボタンが押されました",
       "solution": "手動走行で安全な場所へ退避して走行を中断してください。その後、緊急停止ボタンが押された原因を解決してください",
-      "error_code": "SYS-00-E00-029",
+      "error_code": "SYS-00-E00-E1",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1315,14 +1283,14 @@
     "ERROR": {
       "situation": "緊急車両を検知しました",
       "solution": "必要に応じて手動で回避して回避が完了したら自動モードを切り替えてください",
-      "error_code": "SYS-00-E00-030E",
+      "error_code": "SYS-00-E00-E0E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "緊急車両を検知しました",
       "solution": "必要に応じて手動で回避して回避が完了したら自動モードを切り替えてください",
-      "error_code": "SYS-00-E00-030",
+      "error_code": "SYS-00-E00-E0",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -1331,14 +1299,14 @@
     "ERROR": {
       "situation": "logpackerのイベント記録が失敗しました",
       "solution": "手動走行で安全な場所まで移動してから以下を確認してください。Main ECUが起動されているかのご確認、ADKがインターネットに接続されているかのご確認、SSDが正しくSATA HDDベイに正しく挿入されているかのご確認、前日までに保存されたログがアップロードされているかのご確認",
-      "error_code": "SYS-00-E00-031E",
+      "error_code": "SYS-00-E00-F2E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "logpackerのイベント記録が失敗しました",
       "solution": "手動走行で安全な場所まで移動してから以下を確認してください。Main ECUが起動されているかのご確認、ADKがインターネットに接続されているかのご確認、SSDが正しくSATA HDDベイに正しく挿入されているかのご確認、前日までに保存されたログがアップロードされているかのご確認",
-      "error_code": "SYS-00-E00-031",
+      "error_code": "SYS-00-E00-F2",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1347,14 +1315,14 @@
     "ERROR": {
       "situation": "運行停止ボタン押下により停止中です",
       "solution": "MOTから走行再開ボタンを押してください",
-      "error_code": "SYS-00-E00-032E",
+      "error_code": "SYS-00-E00-E2E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "運行停止ボタン押下により停止中です",
       "solution": "MOTから走行再開ボタンを押してください",
-      "error_code": "SYS-00-E00-032",
+      "error_code": "SYS-00-E00-E2",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1363,14 +1331,14 @@
     "ERROR": {
       "situation": "スケジューリング設定に異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SYS-00-E00-033E",
+      "error_code": "FPR-00-E00-FCE",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "スケジューリング設定に異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SYS-00-E00-033",
+      "error_code": "FPR-00-E00-FC",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1379,14 +1347,14 @@
     "ERROR": {
       "situation": "スケジューリング設定に異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SYS-00-E00-034E",
+      "error_code": "FPR-00-E00-FCE",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "スケジューリング設定に異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SYS-00-E00-034",
+      "error_code": "FPR-00-E00-FC",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1395,14 +1363,14 @@
     "ERROR": {
       "situation": "Logging ECUの診断プロセスが動作してません",
       "solution": "次のバス停で自動走行を中断してください。その後ADKシステムを再起動してください",
-      "error_code": "FPR-02-E00-024E",
+      "error_code": "FPR-02-E00-FCE",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Logging ECUの診断プロセスが動作してません",
       "solution": "次のバス停で自動走行を中断してください。その後ADKシステムを再起動してください",
-      "error_code": "FPR-02-E00-024",
+      "error_code": "FPR-02-E00-FC",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1411,14 +1379,14 @@
     "ERROR": {
       "situation": "Perception1 ECUの診断プロセスが動作してません",
       "solution": "次のバス停で自動走行を中断してください。その後ADKシステムを再起動してください",
-      "error_code": "FPR-03-E00-025E",
+      "error_code": "FPR-03-E00-FCE",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Perception1 ECUの診断プロセスが動作してません",
       "solution": "次のバス停で自動走行を中断してください。その後ADKシステムを再起動してください",
-      "error_code": "FPR-03-E00-025",
+      "error_code": "FPR-03-E00-FC",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1427,14 +1395,14 @@
     "ERROR": {
       "situation": "Perception2 ECUの診断プロセスが動作してません",
       "solution": "次のバス停で自動走行を中断してください。その後ADKシステムを再起動してください",
-      "error_code": "FPR-04-E00-026E",
+      "error_code": "FPR-04-E00-FCE",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Perception2 ECUの診断プロセスが動作してません",
       "solution": "次のバス停で自動走行を中断してください。その後ADKシステムを再起動してください",
-      "error_code": "FPR-04-E00-026",
+      "error_code": "FPR-04-E00-FC",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1443,14 +1411,14 @@
     "ERROR": {
       "situation": "Logging ECUのrosbag記録用SSDが見つかりません",
       "solution": "手動走行で安全な場所へ退避して走行を中断してください。その後ADKシステムを電源を停止させてから記録用SSDを交換し、再起動してください",
-      "error_code": "FPR-02-E02-027E",
+      "error_code": "FPR-02-E02-F8E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Logging ECUのrosbag記録用SSDが見つかりません",
       "solution": "手動走行で安全な場所へ退避して走行を中断してください。その後ADKシステムを電源を停止させてから記録用SSDを交換し、再起動してください",
-      "error_code": "FPR-02-E02-027",
+      "error_code": "FPR-02-E02-F8",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1459,14 +1427,14 @@
     "ERROR": {
       "situation": "Perception1 ECUでカメラデバイスが見つかりませんでした",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "FPR-03-E02-028E",
+      "error_code": "FPR-03-E02-F8E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Perception1 ECUでカメラデバイスが見つかりませんでした",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "FPR-03-E02-028",
+      "error_code": "FPR-03-E02-F8",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1475,14 +1443,14 @@
     "ERROR": {
       "situation": "Perception2 ECUでカメラデバイスが見つかりませんでした",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "FPR-04-E02-029E",
+      "error_code": "FPR-04-E02-F8E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Perception2 ECUでカメラデバイスが見つかりませんでした",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "FPR-04-E02-029",
+      "error_code": "FPR-04-E02-F8",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1491,14 +1459,14 @@
     "ERROR": {
       "situation": "Perception1 ECUで通信経路が故障判定されています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "FPR-03-E02-030E",
+      "error_code": "FPR-03-E02-F8E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Perception1 ECUで通信経路が故障判定されています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "FPR-03-E02-030",
+      "error_code": "FPR-03-E02-F8",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1507,14 +1475,14 @@
     "ERROR": {
       "situation": "Perception2 ECUで通信経路が故障判定されています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "FPR-04-E02-031E",
+      "error_code": "FPR-04-E02-F8E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Perception2 ECUで通信経路が故障判定されています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "FPR-04-E02-031",
+      "error_code": "FPR-04-E02-F8",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1523,14 +1491,14 @@
     "ERROR": {
       "situation": "addon ECUのsystem check機能が動作していません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "FPR-02-E02-032E",
+      "error_code": "FPR-02-E02-FCE",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "addon ECUのsystem check機能が動作していません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "FPR-02-E02-032",
+      "error_code": "FPR-02-E02-FC",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1539,14 +1507,14 @@
     "ERROR": {
       "situation": "Main ECUでプロセス異常が発生しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "FPR-00-E00-033E",
+      "error_code": "FPR-00-E00-93E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Main ECUでプロセス異常が発生しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "FPR-00-E00-033",
+      "error_code": "FPR-00-E00-93",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1555,14 +1523,14 @@
     "ERROR": {
       "situation": "Main ECUでプロセス異常が発生しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "FPR-00-E00-034E",
+      "error_code": "FPR-00-E00-93E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Main ECUでプロセス異常が発生しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "FPR-00-E00-034",
+      "error_code": "FPR-00-E00-93",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1571,14 +1539,14 @@
     "ERROR": {
       "situation": "Perception1 ECUでプロセス異常が発生しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "FPR-03-E00-036E",
+      "error_code": "FPR-03-E00-93E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Perception1 ECUでプロセス異常が発生しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "FPR-03-E00-036",
+      "error_code": "FPR-03-E00-93",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1587,14 +1555,14 @@
     "ERROR": {
       "situation": "Perception2 ECUでプロセス異常が発生しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "FPR-04-E00-037E",
+      "error_code": "FPR-04-E00-93E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Perception2 ECUでプロセス異常が発生しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "FPR-04-E00-037",
+      "error_code": "FPR-04-E00-93",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1603,14 +1571,14 @@
     "ERROR": {
       "situation": "Addon ECUでプロセス異常が発生しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "FPR-05-E00-038E",
+      "error_code": "FPR-05-E00-93E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Addon ECUでプロセス異常が発生しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "FPR-05-E00-038",
+      "error_code": "FPR-05-E00-93",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1619,14 +1587,14 @@
     "ERROR": {
       "situation": "Addon ECUでプロセス異常が発生しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "FPR-05-E00-039E",
+      "error_code": "FPR-05-E00-93E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Addon ECUでプロセス異常が発生しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "FPR-05-E00-039",
+      "error_code": "FPR-05-E00-93",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1635,14 +1603,14 @@
     "ERROR": {
       "situation": "ADKと車両ECUのバージョンが合っていません",
       "solution": "手動走行で安全な場所へ退避して走行を中断してください。ADKと車両ECUのバージョンを合わせて自動運転システムを再起動してください",
-      "error_code": "VHC-00-V00-001E",
+      "error_code": "VHC-00-V00-57E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "ADKと車両ECUのバージョンが合っていません",
       "solution": "手動走行で安全な場所へ退避して走行を中断してください。ADKと車両ECUのバージョンを合わせて自動運転システムを再起動してください",
-      "error_code": "VHC-00-V00-001",
+      "error_code": "VHC-00-V00-57",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1651,14 +1619,14 @@
     "ERROR": {
       "situation": "停止モードに必要な制御信号が確認できません",
       "solution": "停止状態で復帰を試みてください。復帰できなければ、手動走行で安全な場所へ退避して走行を中断してください。その後車両を再起動してください",
-      "error_code": "SYS-00-E00-035E",
+      "error_code": "SYS-00-E00-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "停止モードに必要な制御信号が確認できません",
       "solution": "停止状態で復帰を試みてください。復帰できなければ、手動走行で安全な場所へ退避して走行を中断してください。その後車両を再起動してください",
-      "error_code": "SYS-00-E00-035",
+      "error_code": "SYS-00-E00-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1667,14 +1635,14 @@
     "ERROR": {
       "situation": "自動走行モードに必要な制御信号が確認できません",
       "solution": "停止状態で復帰を試みてください。復帰できなければ、手動走行で安全な場所へ退避して走行を中断してください。その後車両を再起動してください",
-      "error_code": "SYS-00-E00-036E",
+      "error_code": "SYS-00-E00-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "自動走行モードに必要な制御信号が確認できません",
       "solution": "停止状態で復帰を試みてください。復帰できなければ、手動走行で安全な場所へ退避して走行を中断してください。その後車両を再起動してください",
-      "error_code": "SYS-00-E00-036",
+      "error_code": "SYS-00-E00-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1683,14 +1651,14 @@
     "ERROR": {
       "situation": "経路内停止モードに必要な制御信号が確認できません",
       "solution": "停止状態で復帰を試みてください。復帰できなければ、手動走行で安全な場所へ退避して走行を中断してください。その後車両を再起動してください",
-      "error_code": "SYS-00-E00-037E",
+      "error_code": "SYS-00-E00-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "経路内停止モードに必要な制御信号が確認できません",
       "solution": "停止状態で復帰を試みてください。復帰できなければ、手動走行で安全な場所へ退避して走行を中断してください。その後車両を再起動してください",
-      "error_code": "SYS-00-E00-037",
+      "error_code": "SYS-00-E00-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1699,30 +1667,14 @@
     "ERROR": {
       "situation": "制御信号が適切に出力されていません",
       "solution": "停止状態で復帰を試みてください。復帰できなければ、手動走行で安全な場所へ退避して走行を中断してください。その後車両を再起動してください",
-      "error_code": "SYS-00-E00-038E",
+      "error_code": "SYS-00-E00-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "制御信号が適切に出力されていません",
       "solution": "停止状態で復帰を試みてください。復帰できなければ、手動走行で安全な場所へ退避して走行を中断してください。その後車両を再起動してください",
-      "error_code": "SYS-00-E00-038",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/system/command_mode_decider/ready": {
-    "ERROR": {
-      "situation": "モード切替機能に必要な信号が受信できていません",
-      "solution": "停止状態で復帰を試みてください。復帰できなければ、手動走行で安全な場所へ退避して走行を中断してください。その後車両を再起動してください",
-      "error_code": "SYS-00-E00-039E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "モード切替機能に必要な信号が受信できていません",
-      "solution": "停止状態で復帰を試みてください。復帰できなければ、手動走行で安全な場所へ退避して走行を中断してください。その後車両を再起動してください",
-      "error_code": "SYS-00-E00-039",
+      "error_code": "SYS-00-E00-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1731,174 +1683,14 @@
     "ERROR": {
       "situation": "冗長機能が適切に動作していません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SYS-00-E00-040E",
+      "error_code": "SYS-00-E00-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "冗長機能が適切に動作していません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SYS-00-E00-040",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/redundancy/main_ecu/main_ecu_fault": {
-    "ERROR": {
-      "situation": "Main ECUが故障判定されています",
-      "solution": "手動走行で安全な場所に停止した後、車両を再起動してください。",
-      "error_code": "SYS-00-E00-041E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "Main ECUが故障判定されています",
-      "solution": "手動走行で安全な場所に停止した後、車両を再起動してください。",
-      "error_code": "SYS-00-E00-041",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/redundancy/main_ecu/sub_ecu_fault": {
-    "ERROR": {
-      "situation": "Sub ECUが故障判定されています",
-      "solution": "手動走行で安全な場所に停止して、異常状態解除ボタンを押してください。解除に失敗する場合は、ECU再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-00-E00-042E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "Sub ECUが故障判定されています",
-      "solution": "手動走行で安全な場所に停止して、異常状態解除ボタンを押してください。解除に失敗する場合は、ECU再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-00-E00-042",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/redundancy/main_ecu/main_vcu_fault": {
-    "ERROR": {
-      "situation": "Main VCUが故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-00-V00-043E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "Main VCUが故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-00-V00-043",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/redundancy/main_ecu/sub_vcu_fault": {
-    "ERROR": {
-      "situation": "Sub VCUが故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-00-V04-044E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "Sub VCUが故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-00-V04-044",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/redundancy/main_ecu/main_ecu_to_sub_ecu_link_fault": {
-    "ERROR": {
-      "situation": "Main ECUとSub ECU間の通信経路が故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-00-E00-045E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "Main ECUとSub ECU間の通信経路が故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-00-E00-045",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/redundancy/main_ecu/main_ecu_to_main_vcu_link_fault": {
-    "ERROR": {
-      "situation": "Main ECUとMain VCU間の通信経路が故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-00-V00-046E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "Main ECUとMain VCU間の通信経路が故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-00-V00-046",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/redundancy/main_ecu/main_ecu_to_sub_vcu_link_fault": {
-    "ERROR": {
-      "situation": "Main ECUとSub VCU間の通信経路が故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-00-V04-047E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "Main ECUとSub VCU間の通信経路が故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-00-V04-047",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/redundancy/main_ecu/sub_ecu_to_main_vcu_link_fault": {
-    "ERROR": {
-      "situation": "Sub ECUとMain VCU間の通信経路が故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-01-V00-048E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "Sub ECUとMain VCU間の通信経路が故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-01-V00-048",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/redundancy/main_ecu/sub_ecu_to_sub_vcu_link_fault": {
-    "ERROR": {
-      "situation": "Sub ECUとSub VCU間の通信経路が故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-01-V04-049E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "Sub ECUとSub VCU間の通信経路が故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-01-V04-049",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/redundancy/main_ecu/main_vcu_to_sub_vcu_link_fault": {
-    "ERROR": {
-      "situation": "Main VCUとSub VCU間の通信経路が故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-00-E00-050E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "Main VCUとSub VCU間の通信経路が故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-00-E00-050",
+      "error_code": "SYS-00-E00-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1907,14 +1699,14 @@
     "ERROR": {
       "situation": "冗長機能の現在状態が確認できません",
       "solution": "停止状態で復帰を試みてください。復帰できなければ、手動走行で安全な場所へ退避して走行を中断してください。その後車両を再起動してください",
-      "error_code": "SYS-00-E00-051E",
+      "error_code": "SYS-00-E00-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "冗長機能の現在状態が確認できません",
       "solution": "停止状態で復帰を試みてください。復帰できなければ、手動走行で安全な場所へ退避して走行を中断してください。その後車両を再起動してください",
-      "error_code": "SYS-00-E00-051",
+      "error_code": "SYS-00-E00-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -1922,14 +1714,14 @@
   "/foolproof/main/update_status_ota": {
     "ERROR": {
       "situation": "OTA処理が実施中です",
-      "solution": "OTA処理の完了をお待ちください",
+      "solution": "手動走行で安全な場所に停止した後、OTA処理の完了をお待ちください",
       "error_code": "SYS-00-E00-63E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "OTA処理が実施中です",
-      "solution": "OTA処理の完了をお待ちください",
+      "solution": "手動走行で安全な場所に停止した後、OTA処理の完了をお待ちください",
       "error_code": "SYS-00-E00-63",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
@@ -1938,14 +1730,14 @@
   "/foolproof/main/update_status_map": {
     "ERROR": {
       "situation": "地図更新が実施中です",
-      "solution": "地図更新後、Autowareを再起動させてください",
+      "solution": "手動走行で安全な場所に停止し地図更新完了後、車両を再起動させてください",
       "error_code": "SYS-00-E00-63E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "地図更新が実施中です",
-      "solution": "地図更新後、Autowareを再起動させてください",
+      "solution": "手動走行で安全な場所に停止し地図更新完了後、車両を再起動させてください",
       "error_code": "SYS-00-E00-63",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
@@ -1953,400 +1745,16 @@
   },
   "/foolproof/main/update_status_unrecoverable": {
     "ERROR": {
-      "situation": "証明書エラー：FMSとの接続ができません",
-      "solution": "手動でFMSから証明書を再発行し、セットアップしなおしてください",
+      "situation": "証明書エラーによりFMSとの接続ができません",
+      "solution": "FMSから証明書を再発行し、セットアップしなおしてください",
       "error_code": "SYS-00-E00-63E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
-      "situation": "証明書エラー：FMSとの接続ができません",
-      "solution": "手動でFMSから証明書を再発行し、セットアップしなおしてください",
+      "situation": "証明書エラーによりFMSとの接続ができません",
+      "solution": "FMSから証明書を再発行し、セットアップしなおしてください",
       "error_code": "SYS-00-E00-63",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/localization/topic_status/pose": {
-    "ERROR": {
-      "situation": "poseのトピックが遅延しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "LOC-01-E01-052E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "poseのトピックが遅延しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "LOC-01-E01-052",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/localization/topic_status/twist": {
-    "ERROR": {
-      "situation": "twistのトピックが遅延しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "LOC-01-E01-053E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "twistのトピックが遅延しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "LOC-01-E01-053",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/planning/topic_status/trajectory": {
-    "ERROR": {
-      "situation": "trajectoryのトピックが遅延しています",
-      "solution": "手動走行で経路中央に停車し異常解除ボタンを押してから自動モードに切り替えてください。復帰できない場合は安全な場所へ退避し車両を再起動してください。",
-      "error_code": "PLN-01-E01-054E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "trajectoryのトピックが遅延しています",
-      "solution": "手動走行で経路中央に停車し異常解除ボタンを押してから自動モードに切り替えてください。復帰できない場合は安全な場所へ退避し車両を再起動してください。",
-      "error_code": "PLN-01-E01-054",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/control/topic_status/control_command": {
-    "ERROR": {
-      "situation": "control commandのトピックが遅延しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "CTL-01-E01-055E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "control commandのトピックが遅延しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "CTL-01-E01-055",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/control/control_command_gate/timeout_in_lane_stop": {
-    "ERROR": {
-      "situation": "in lane stopモードに使われる情報が来ていません",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "CTL-01-E01-056E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "in lane stopモードに使われる情報が来ていません",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "CTL-01-E01-056",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/control/control_command_gate/timeout_output": {
-    "ERROR": {
-      "situation": "control commandの出力に異常があります",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "CTL-01-E01-057E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "control commandの出力に異常があります",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "CTL-01-E01-057",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/vehicle/topic_status/actuation_command": {
-    "ERROR": {
-      "situation": "action commandのトピックが遅延しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "VHC-01-E01-058E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "action commandのトピックが遅延しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "VHC-01-E01-058",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/vehicle/topic_status/velocity": {
-    "ERROR": {
-      "situation": "速度情報を受け取れていません",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "VHC-01-E01-059E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "速度情報を受け取れていません",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "VHC-01-E01-059",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/vehicle/topic_status/steering": {
-    "ERROR": {
-      "situation": "ステアリング情報が受け取れていません",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "VHC-01-E01-060E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "ステアリング情報が受け取れていません",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "VHC-01-E01-060",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/vehicle/vcu_not_authenticated": {
-    "ERROR": {
-      "situation": "VCUの認証がされていません",
-      "solution": "\n機器認証用の鍵や権限が適切に設定されているか確認してください。それでも直らない場合はADKとVCU間の通信を確認してください",
-      "error_code": "VHC-01-E01-061E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "VCUの認証がされていません",
-      "solution": "\n機器認証用の鍵や権限が適切に設定されているか確認してください。それでも直らない場合はADKとVCU間の通信を確認してください",
-      "error_code": "VHC-01-E01-061",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/vehicle/t4_vcu_version_check": {
-    "ERROR": {
-      "situation": "VCUのバージョンが動作保証範囲外です",
-      "solution": "ADKとVCUのバージョンを確認し、動作保証されている組み合わせに変更してください",
-      "error_code": "VHC-01-V00-062E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "VCUのバージョンが動作保証範囲外です",
-      "solution": "ADKとVCUのバージョンを確認し、動作保証されている組み合わせに変更してください",
-      "error_code": "VHC-01-V00-062",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/system/command_mode_decider/ready": {
-    "ERROR": {
-      "situation": "システム横断処理の動作に異常があります",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SYS-01-E01-063E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "システム横断処理の動作に異常があります",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SYS-01-E01-063",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/redundancy/redundancy_switcher_status": {
-    "ERROR": {
-      "situation": "冗長機能に異常があります",
-      "solution": "経路上の安全な場所に手動運転で移動してください。異常解除ボタンを押してから自動走行を再開してください。復帰できない場合は手動走行で次のバス停まで走行し車両を再起動してください",
-      "error_code": "SYS-01-E00-064E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "冗長機能に異常があります",
-      "solution": "経路上の安全な場所に手動運転で移動してください。異常解除ボタンを押してから自動走行を再開してください。復帰できない場合は手動走行で次のバス停まで走行し車両を再起動してください",
-      "error_code": "SYS-01-E00-064",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/redundancy/main_ecu_fault": {
-    "ERROR": {
-      "situation": "Main ECUが故障判定されています",
-      "solution": "手動走行で安全な場所に停止した後、車両を再起動してください。",
-      "error_code": "SYS-01-E00-065E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "Main ECUが故障判定されています",
-      "solution": "手動走行で安全な場所に停止した後、車両を再起動してください。",
-      "error_code": "SYS-01-E00-065",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/redundancy/sub_ecu_fault": {
-    "ERROR": {
-      "situation": "Sub ECUが故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-01-E01-066E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "Sub ECUが故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-01-E01-066",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/redundancy/main_vcu_fault": {
-    "ERROR": {
-      "situation": "Main VCUが故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-01-E00-067E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "Main VCUが故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-01-E00-067",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/redundancy/sub_vcu_fault": {
-    "ERROR": {
-      "situation": "Sub VCUが故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-01-V04-068E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "Sub VCUが故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-01-V04-068",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/redundancy/main_ecu_to_sub_ecu_link_fault": {
-    "ERROR": {
-      "situation": "Main ECUとSub ECU間の通信経路が故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-01-E00-069E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "Main ECUとSub ECU間の通信経路が故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-01-E00-069",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/redundancy/main_ecu_to_main_vcu_link_fault": {
-    "ERROR": {
-      "situation": "Main ECUとMain VCU間の通信経路が故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-01-E00-070E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "Main ECUとMain VCU間の通信経路が故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-01-E00-070",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/redundancy/main_ecu_to_sub_vcu_link_fault": {
-    "ERROR": {
-      "situation": "Main ECUとSub VCU間の通信経路が故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-01-E00-071E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "Main ECUとSub VCU間の通信経路が故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-01-E00-071",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/redundancy/sub_ecu_to_main_vcu_link_fault": {
-    "ERROR": {
-      "situation": "Sub ECUとMain VCU間の通信経路が故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-01-E00-072E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "Sub ECUとMain VCU間の通信経路が故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-01-E00-072",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/redundancy/sub_ecu_to_sub_vcu_link_fault": {
-    "ERROR": {
-      "situation": "Sub ECUとSub VCU間の通信経路が故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-01-V04-073E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "Sub ECUとSub VCU間の通信経路が故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-01-V04-073",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/redundancy/main_vcu_to_sub_vcu_link_fault": {
-    "ERROR": {
-      "situation": "Main VCUとSub VCU間の通信経路が故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-01-E00-074E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "Main VCUとSub VCU間の通信経路が故障判定されています",
-      "solution": "安全な場所に停止して、走行再開ボタンあるいは異常状態解除ボタンを押してください。警告が再度表示される場合はECUを再起動あるいはIG電源から再起動してください。",
-      "error_code": "SYS-01-E00-074",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/redundancy/topic_status/election_status": {
-    "ERROR": {
-      "situation": "冗長システムから出力される/system/election/statusが途絶しました",
-      "solution": "手動走行で安全な場所に停止した後、車両を再起動してください。",
-      "error_code": "SYS-01-E00-075E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "冗長システムから出力される/system/election/statusが途絶しました",
-      "solution": "手動走行で安全な場所に停止した後、車両を再起動してください。",
-      "error_code": "SYS-01-E00-075",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2355,14 +1763,14 @@
     "ERROR": {
       "situation": "何らかのノードが停止したことを検知しました",
       "solution": "手動走行で安全な場所に停止した後、車両を再起動してください。",
-      "error_code": "SYS-01-E01-076E",
+      "error_code": "SAS-01-E01-68E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "何らかのノードが停止したことを検知しました",
       "solution": "手動走行で安全な場所に停止した後、車両を再起動してください。",
-      "error_code": "SYS-01-E01-076",
+      "error_code": "SAS-01-E01-68",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2371,14 +1779,14 @@
     "ERROR": {
       "situation": "経路内停止MRMのための自己位置情報が受信できていません",
       "solution": "手動で安全な場所または次のバス停へ移動し、異常解除ボタンを押して自動走行を再開してください",
-      "error_code": "SYS-0B-E00-077E",
+      "error_code": "MRD-0B-E00-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "経路内停止MRMのための自己位置情報が受信できていません",
       "solution": "手動で安全な場所または次のバス停へ移動し、異常解除ボタンを押して自動走行を再開してください",
-      "error_code": "SYS-0B-E00-077",
+      "error_code": "MRD-0B-E00-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2387,14 +1795,14 @@
     "ERROR": {
       "situation": "経路内停止MRMのための速度と操舵情報が受信できていません",
       "solution": "手動で安全な場所または次のバス停へ移動し、異常解除ボタンを押して自動走行を再開してください",
-      "error_code": "SYS-0B-E00-078E",
+      "error_code": "MRD-0B-E00-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "経路内停止MRMのための速度と操舵情報が受信できていません",
       "solution": "手動で安全な場所または次のバス停へ移動し、異常解除ボタンを押して自動走行を再開してください",
-      "error_code": "SYS-0B-E00-078",
+      "error_code": "MRD-0B-E00-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2403,14 +1811,14 @@
     "ERROR": {
       "situation": "経路内停止MRMのための経路情報が受信できていません",
       "solution": "経路上の安全な場所に手動運転で移動してください。異常解除ボタンを押してから自動走行を再開してください。復帰できない場合は手動走行で次のバス停まで走行し車両を再起動してください",
-      "error_code": "SYS-0B-E00-079E",
+      "error_code": "MRD-0B-E00-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "経路内停止MRMのための経路情報が受信できていません",
       "solution": "経路上の安全な場所に手動運転で移動してください。異常解除ボタンを押してから自動走行を再開してください。復帰できない場合は手動走行で次のバス停まで走行し車両を再起動してください",
-      "error_code": "SYS-0B-E00-079",
+      "error_code": "MRD-0B-E00-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2419,14 +1827,14 @@
     "ERROR": {
       "situation": "EBSで故障が発生しました",
       "solution": "手動走行でバス停まで移動した後、ECUをシャットダウンしてください。その後、イグニッションを切り車外の主電源スイッチもOFFにして1分ほど待機してください。待機した後に車外の主電源スイッチをONにして車両の起動を行ってください",
-      "error_code": "VEH-00-V03-001E",
+      "error_code": "VEH-00-V03-04E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "EBSで故障が発生しました",
       "solution": "手動走行でバス停まで移動した後、ECUをシャットダウンしてください。その後、イグニッションを切り車外の主電源スイッチもOFFにして1分ほど待機してください。待機した後に車外の主電源スイッチをONにして車両の起動を行ってください",
-      "error_code": "VEH-00-V03-001",
+      "error_code": "VEH-00-V03-04",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2435,14 +1843,14 @@
     "ERROR": {
       "situation": "EBSで故障が発生しました",
       "solution": "手動走行でバス停まで移動した後、ECUをシャットダウンしてください。その後、イグニッションを切り車外の主電源スイッチもOFFにして1分ほど待機してください。待機した後に車外の主電源スイッチをONにして車両の起動を行ってください",
-      "error_code": "VEH-00-V03-003E",
+      "error_code": "VEH-00-V03-E7E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "EBSで故障が発生しました",
       "solution": "手動走行でバス停まで移動した後、ECUをシャットダウンしてください。その後、イグニッションを切り車外の主電源スイッチもOFFにして1分ほど待機してください。待機した後に車外の主電源スイッチをONにして車両の起動を行ってください",
-      "error_code": "VEH-00-V03-003",
+      "error_code": "VEH-00-V03-E7",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2451,14 +1859,14 @@
     "ERROR": {
       "situation": "EBSの受信異常が発生しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "VEH-00-V03-005E",
+      "error_code": "VEH-00-V03-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "EBSの受信異常が発生しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "VEH-00-V03-005",
+      "error_code": "VEH-00-V03-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2467,14 +1875,14 @@
     "ERROR": {
       "situation": "EPBエアタンクのエア圧不足，エア配管経路の損傷によるエア漏れが発生しました",
       "solution": "手動走行で安全な場所へ退避して走行を中断してください。タンクにエアが充填されるまでしばらく待機してから復帰してください",
-      "error_code": "VEH-00-V02-006E",
+      "error_code": "VEH-00-V02-04E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "EPBエアタンクのエア圧不足，エア配管経路の損傷によるエア漏れが発生しました",
       "solution": "手動走行で安全な場所へ退避して走行を中断してください。タンクにエアが充填されるまでしばらく待機してから復帰してください",
-      "error_code": "VEH-00-V02-006",
+      "error_code": "VEH-00-V02-04",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2483,14 +1891,14 @@
     "ERROR": {
       "situation": "EPBで故障が発生しました",
       "solution": "手動走行でバス停まで移動した後、ECUをシャットダウンしてください。その後、イグニッションを切り車外の主電源スイッチもOFFにして1分ほど待機してください。待機した後に車外の主電源スイッチをONにして車両の起動を行ってください",
-      "error_code": "VEH-00-V02-008E",
+      "error_code": "VEH-00-V02-E7E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "EPBで故障が発生しました",
       "solution": "手動走行でバス停まで移動した後、ECUをシャットダウンしてください。その後、イグニッションを切り車外の主電源スイッチもOFFにして1分ほど待機してください。待機した後に車外の主電源スイッチをONにして車両の起動を行ってください",
-      "error_code": "VEH-00-V02-008",
+      "error_code": "VEH-00-V02-E7",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2499,14 +1907,14 @@
     "ERROR": {
       "situation": "EPBで故障が発生しました",
       "solution": "手動走行でバス停まで移動した後、ECUをシャットダウンしてください。その後、イグニッションを切り車外の主電源スイッチもOFFにして1分ほど待機してください。待機した後に車外の主電源スイッチをONにして車両の起動を行ってください",
-      "error_code": "VEH-00-V02-011E",
+      "error_code": "VEH-00-V02-68E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "EPBで故障が発生しました",
       "solution": "手動走行でバス停まで移動した後、ECUをシャットダウンしてください。その後、イグニッションを切り車外の主電源スイッチもOFFにして1分ほど待機してください。待機した後に車外の主電源スイッチをONにして車両の起動を行ってください",
-      "error_code": "VEH-00-V02-011",
+      "error_code": "VEH-00-V02-68",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2515,14 +1923,14 @@
     "ERROR": {
       "situation": "EPB-ECUとVCUの間の通信に問題発生しました",
       "solution": "手動走行でバス停まで移動した後、ECUをシャットダウンしてください。その後、イグニッションを切り車外の主電源スイッチもOFFにして1分ほど待機してください。待機した後に車外の主電源スイッチをONにして車両の起動を行ってください",
-      "error_code": "VEH-00-V02-012E",
+      "error_code": "VEH-00-V02-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "EPB-ECUとVCUの間の通信に問題発生しました",
       "solution": "手動走行でバス停まで移動した後、ECUをシャットダウンしてください。その後、イグニッションを切り車外の主電源スイッチもOFFにして1分ほど待機してください。待機した後に車外の主電源スイッチをONにして車両の起動を行ってください",
-      "error_code": "VEH-00-V02-012",
+      "error_code": "VEH-00-V02-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2531,14 +1939,14 @@
     "ERROR": {
       "situation": "EPS Ch1系が故障しています",
       "solution": "次のバス停まで手動で走行し車両をイグニッションのON/OFFをして再起動してください",
-      "error_code": "VEH-00-V01-014E",
+      "error_code": "VEH-00-V01-04E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "EPS Ch1系が故障しています",
       "solution": "次のバス停まで手動で走行し車両をイグニッションのON/OFFをして再起動してください",
-      "error_code": "VEH-00-V01-014",
+      "error_code": "VEH-00-V01-04",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2547,14 +1955,14 @@
     "ERROR": {
       "situation": "EPS Ch2系が故障しています",
       "solution": "次のバス停まで手動で走行し車両をイグニッションのON/OFFをして再起動してください",
-      "error_code": "VEH-00-V01-015E",
+      "error_code": "VEH-00-V01-04E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "EPS Ch2系が故障しています",
       "solution": "次のバス停まで手動で走行し車両をイグニッションのON/OFFをして再起動してください",
-      "error_code": "VEH-00-V01-015",
+      "error_code": "VEH-00-V01-04",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2563,14 +1971,14 @@
     "ERROR": {
       "situation": "EPSで故障が発生しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "VEH-00-V01-017E",
+      "error_code": "VEH-00-V01-04E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "EPSで故障が発生しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "VEH-00-V01-017",
+      "error_code": "VEH-00-V01-04",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2579,14 +1987,14 @@
     "ERROR": {
       "situation": "EPSのステア角の初期化に失敗しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "VEH-00-V01-018E",
+      "error_code": "VEH-00-V01-E5E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "EPSのステア角の初期化に失敗しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "VEH-00-V01-018",
+      "error_code": "VEH-00-V01-E5",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2595,14 +2003,14 @@
     "ERROR": {
       "situation": "steering_system_canに異常が発生しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "VEH-00-V01-020E",
+      "error_code": "VEH-00-V01-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "steering_system_canに異常が発生しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "VEH-00-V01-020",
+      "error_code": "VEH-00-V01-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2611,14 +2019,14 @@
     "ERROR": {
       "situation": "ベース車両の駆動システムで故障が確定した",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "VEH-00-V01-021E",
+      "error_code": "VEH-00-V01-04E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "ベース車両の駆動システムで故障が確定した",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "VEH-00-V01-021",
+      "error_code": "VEH-00-V01-04",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2627,14 +2035,14 @@
     "ERROR": {
       "situation": "drive_system_canで異常が発生しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "VEH-00-V01-023E",
+      "error_code": "VEH-00-V01-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "drive_system_canで異常が発生しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "VEH-00-V01-023",
+      "error_code": "VEH-00-V01-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2643,14 +2051,14 @@
     "ERROR": {
       "situation": "EPSが加熱しているので保護状態になっています",
       "solution": "手動走行で次のバス停まで移動してください。ステアリングシステムの冷却のためしばらく停車してください。",
-      "error_code": "VEH-00-V01-025E",
+      "error_code": "VEH-00-V01-98E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "EPSが加熱しているので保護状態になっています",
       "solution": "手動走行で次のバス停まで移動してください。ステアリングシステムの冷却のためしばらく停車してください。",
-      "error_code": "VEH-00-V01-025",
+      "error_code": "VEH-00-V01-98",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2659,14 +2067,14 @@
     "ERROR": {
       "situation": "SASで故障が発生しました",
       "solution": "手動走行で次のバス停まで移動してください。舵角センサのキャリブレーション方法に関してCSに問い合わせてください",
-      "error_code": "VEH-00-V01-026E",
+      "error_code": "VEH-00-V01-54E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "SASで故障が発生しました",
       "solution": "手動走行で次のバス停まで移動してください。舵角センサのキャリブレーション方法に関してCSに問い合わせてください",
-      "error_code": "VEH-00-V01-026",
+      "error_code": "VEH-00-V01-54",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2675,14 +2083,14 @@
     "ERROR": {
       "situation": "カメラの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C00-020E",
+      "error_code": "SEN-03-C00-13E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C00-020",
+      "error_code": "SEN-03-C00-13",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2691,14 +2099,14 @@
     "ERROR": {
       "situation": "カメラの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C01-020E",
+      "error_code": "SEN-03-C01-13E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C01-020",
+      "error_code": "SEN-03-C01-13",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2707,14 +2115,14 @@
     "ERROR": {
       "situation": "カメラの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C02-020E",
+      "error_code": "SEN-03-C02-13E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C02-020",
+      "error_code": "SEN-03-C02-13",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2723,14 +2131,14 @@
     "ERROR": {
       "situation": "カメラの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C03-020E",
+      "error_code": "SEN-03-C03-13E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C03-020",
+      "error_code": "SEN-03-C03-13",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2739,14 +2147,14 @@
     "ERROR": {
       "situation": "カメラの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C04-020E",
+      "error_code": "SEN-04-C04-13E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C04-020",
+      "error_code": "SEN-04-C04-13",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2755,14 +2163,14 @@
     "ERROR": {
       "situation": "カメラの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C05-020E",
+      "error_code": "SEN-04-C05-13E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C05-020",
+      "error_code": "SEN-04-C05-13",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2771,14 +2179,14 @@
     "ERROR": {
       "situation": "カメラの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C06-020E",
+      "error_code": "SEN-04-C06-13E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C06-020",
+      "error_code": "SEN-04-C06-13",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2787,14 +2195,14 @@
     "ERROR": {
       "situation": "カメラの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C07-020E",
+      "error_code": "SEN-04-C07-13E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "カメラの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C07-020",
+      "error_code": "SEN-04-C07-13",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2803,14 +2211,14 @@
     "ERROR": {
       "situation": "camera0のイメージングセンサの異常検知機構またはカメラ内部ISPの異常検知機構が異常を検知しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C00-021E",
+      "error_code": "SEN-03-C00-96E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "camera0のイメージングセンサの異常検知機構またはカメラ内部ISPの異常検知機構が異常を検知しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C00-021",
+      "error_code": "SEN-03-C00-96",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2819,14 +2227,14 @@
     "ERROR": {
       "situation": "camera1のイメージングセンサの異常検知機構またはカメラ内部ISPの異常検知機構が異常を検知しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C01-021E",
+      "error_code": "SEN-03-C01-96E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "camera1のイメージングセンサの異常検知機構またはカメラ内部ISPの異常検知機構が異常を検知しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C01-021",
+      "error_code": "SEN-03-C01-96",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2835,14 +2243,14 @@
     "ERROR": {
       "situation": "camera2のイメージングセンサの異常検知機構またはカメラ内部ISPの異常検知機構が異常を検知しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C02-021E",
+      "error_code": "SEN-03-C02-96E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "camera2のイメージングセンサの異常検知機構またはカメラ内部ISPの異常検知機構が異常を検知しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C02-021",
+      "error_code": "SEN-03-C02-96",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2851,14 +2259,14 @@
     "ERROR": {
       "situation": "camera3のイメージングセンサの異常検知機構またはカメラ内部ISPの異常検知機構が異常を検知しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C03-021E",
+      "error_code": "SEN-03-C03-96E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "camera3のイメージングセンサの異常検知機構またはカメラ内部ISPの異常検知機構が異常を検知しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-03-C03-021",
+      "error_code": "SEN-03-C03-96",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2867,14 +2275,14 @@
     "ERROR": {
       "situation": "camera4のイメージングセンサの異常検知機構またはカメラ内部ISPの異常検知機構が異常を検知しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C04-021E",
+      "error_code": "SEN-04-C04-96E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "camera4のイメージングセンサの異常検知機構またはカメラ内部ISPの異常検知機構が異常を検知しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C04-021",
+      "error_code": "SEN-04-C04-96",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2883,14 +2291,14 @@
     "ERROR": {
       "situation": "camera5のイメージングセンサの異常検知機構またはカメラ内部ISPの異常検知機構が異常を検知しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C05-021E",
+      "error_code": "SEN-04-C05-96E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "camera5のイメージングセンサの異常検知機構またはカメラ内部ISPの異常検知機構が異常を検知しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C05-021",
+      "error_code": "SEN-04-C05-96",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2899,14 +2307,14 @@
     "ERROR": {
       "situation": "camera6のイメージングセンサの異常検知機構またはカメラ内部ISPの異常検知機構が異常を検知しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C06-021E",
+      "error_code": "SEN-04-C06-96E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "camera6のイメージングセンサの異常検知機構またはカメラ内部ISPの異常検知機構が異常を検知しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C06-021",
+      "error_code": "SEN-04-C06-96",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2915,14 +2323,14 @@
     "ERROR": {
       "situation": "camera7のイメージングセンサの異常検知機構またはカメラ内部ISPの異常検知機構が異常を検知しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C07-021E",
+      "error_code": "SEN-04-C07-96E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "camera7のイメージングセンサの異常検知機構またはカメラ内部ISPの異常検知機構が異常を検知しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-04-C07-021",
+      "error_code": "SEN-04-C07-96",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2931,14 +2339,14 @@
     "ERROR": {
       "situation": "camera8のイメージングセンサの異常検知機構またはカメラ内部ISPの異常検知機構が異常を検知しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-05-C08-021E",
+      "error_code": "SEN-05-C08-96E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "camera8のイメージングセンサの異常検知機構またはカメラ内部ISPの異常検知機構が異常を検知しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-05-C08-021",
+      "error_code": "SEN-05-C08-96",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2947,14 +2355,14 @@
     "ERROR": {
       "situation": "camera9のイメージングセンサの異常検知機構またはカメラ内部ISPの異常検知機構が異常を検知しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-05-C09-021E",
+      "error_code": "SEN-05-C09-96E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "camera9のイメージングセンサの異常検知機構またはカメラ内部ISPの異常検知機構が異常を検知しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-05-C09-021",
+      "error_code": "SEN-05-C09-96",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2963,14 +2371,14 @@
     "ERROR": {
       "situation": "camera10のイメージングセンサの異常検知機構またはカメラ内部ISPの異常検知機構が異常を検知しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-05-C10-021E",
+      "error_code": "SEN-05-C10-96E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "camera10のイメージングセンサの異常検知機構またはカメラ内部ISPの異常検知機構が異常を検知しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-05-C10-021",
+      "error_code": "SEN-05-C10-96",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2979,14 +2387,14 @@
     "ERROR": {
       "situation": "front lowerのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L00-022E",
+      "error_code": "SEN-00-L00-09E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "front lowerのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L00-022",
+      "error_code": "SEN-00-L00-09",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -2995,14 +2403,14 @@
     "ERROR": {
       "situation": "front upperのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L01-022E",
+      "error_code": "SEN-00-L01-09E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "front upperのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L01-022",
+      "error_code": "SEN-00-L01-09",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3011,14 +2419,14 @@
     "ERROR": {
       "situation": "left lowerのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L02-022E",
+      "error_code": "SEN-00-L02-09E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "left lowerのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L02-022",
+      "error_code": "SEN-00-L02-09",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3027,14 +2435,14 @@
     "ERROR": {
       "situation": "left upperのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L03-022E",
+      "error_code": "SEN-00-L03-09E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "left upperのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L03-022",
+      "error_code": "SEN-00-L03-09",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3043,14 +2451,14 @@
     "ERROR": {
       "situation": "rear lowerのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L04-022E",
+      "error_code": "SEN-00-L04-09E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "rear lowerのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L04-022",
+      "error_code": "SEN-00-L04-09",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3059,14 +2467,14 @@
     "ERROR": {
       "situation": "rear upperのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L05-022E",
+      "error_code": "SEN-00-L05-09E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "rear upperのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L05-022",
+      "error_code": "SEN-00-L05-09",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3075,14 +2483,14 @@
     "ERROR": {
       "situation": "right lowerのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L06-022E",
+      "error_code": "SEN-00-L06-09E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "right lowerのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L06-022",
+      "error_code": "SEN-00-L06-09",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3091,14 +2499,14 @@
     "ERROR": {
       "situation": "right upperのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L07-022E",
+      "error_code": "SEN-00-L07-09E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "right upperのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L07-022",
+      "error_code": "SEN-00-L07-09",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3107,14 +2515,14 @@
     "ERROR": {
       "situation": "front lowerのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L00-023E",
+      "error_code": "SEN-00-L00-08E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "front lowerのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L00-023",
+      "error_code": "SEN-00-L00-08",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3123,14 +2531,14 @@
     "ERROR": {
       "situation": "front upperのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L01-023E",
+      "error_code": "SEN-00-L01-08E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "front upperのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L01-023",
+      "error_code": "SEN-00-L01-08",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3139,14 +2547,14 @@
     "ERROR": {
       "situation": "left lowerのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L02-023E",
+      "error_code": "SEN-00-L02-08E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "left lowerのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L02-023",
+      "error_code": "SEN-00-L02-08",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3155,14 +2563,14 @@
     "ERROR": {
       "situation": "left upperのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L03-023E",
+      "error_code": "SEN-00-L03-08E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "left upperのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L03-023",
+      "error_code": "SEN-00-L03-08",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3171,14 +2579,14 @@
     "ERROR": {
       "situation": "rear lowerのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L04-023E",
+      "error_code": "SEN-00-L04-08E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "rear lowerのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L04-023",
+      "error_code": "SEN-00-L04-08",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3187,14 +2595,14 @@
     "ERROR": {
       "situation": "rear upperのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L05-023E",
+      "error_code": "SEN-00-L05-08E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "rear upperのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L05-023",
+      "error_code": "SEN-00-L05-08",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3203,14 +2611,14 @@
     "ERROR": {
       "situation": "right lowerのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L06-023E",
+      "error_code": "SEN-00-L06-08E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "right lowerのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L06-023",
+      "error_code": "SEN-00-L06-08",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3219,14 +2627,14 @@
     "ERROR": {
       "situation": "right upperのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L07-023E",
+      "error_code": "SEN-00-L07-08E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "right upperのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L07-023",
+      "error_code": "SEN-00-L07-08",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3235,14 +2643,14 @@
     "ERROR": {
       "situation": "front lowerのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L00-024E",
+      "error_code": "SEN-00-L00-96E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "front lowerのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L00-024",
+      "error_code": "SEN-00-L00-96",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3251,14 +2659,14 @@
     "ERROR": {
       "situation": "front upperのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L01-024E",
+      "error_code": "SEN-00-L01-96E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "front upperのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L01-024",
+      "error_code": "SEN-00-L01-96",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3267,14 +2675,14 @@
     "ERROR": {
       "situation": "left lowerのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L02-024E",
+      "error_code": "SEN-00-L02-96E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "left lowerのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L02-024",
+      "error_code": "SEN-00-L02-96",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3283,14 +2691,14 @@
     "ERROR": {
       "situation": "left upperのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L03-024E",
+      "error_code": "SEN-00-L03-96E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "left upperのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L03-024",
+      "error_code": "SEN-00-L03-96",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3299,14 +2707,14 @@
     "ERROR": {
       "situation": "rear lowerのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L04-024E",
+      "error_code": "SEN-00-L04-96E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "rear lowerのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L04-024",
+      "error_code": "SEN-00-L04-96",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3315,14 +2723,14 @@
     "ERROR": {
       "situation": "rear upperのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L05-024E",
+      "error_code": "SEN-00-L05-96E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "rear upperのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L05-024",
+      "error_code": "SEN-00-L05-96",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3331,14 +2739,14 @@
     "ERROR": {
       "situation": "right lowerのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L06-024E",
+      "error_code": "SEN-00-L06-96E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "right lowerのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L06-024",
+      "error_code": "SEN-00-L06-96",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3347,14 +2755,14 @@
     "ERROR": {
       "situation": "right upperのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L07-024E",
+      "error_code": "SEN-00-L07-96E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "right upperのLiDARからの情報に欠損・遅延などの異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L07-024",
+      "error_code": "SEN-00-L07-96",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3363,14 +2771,14 @@
     "ERROR": {
       "situation": "LiDARと時刻同期ができていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L00-025E",
+      "error_code": "SEN-00-L00-F6E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "LiDARと時刻同期ができていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L00-025",
+      "error_code": "SEN-00-L00-F6",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3379,14 +2787,14 @@
     "ERROR": {
       "situation": "LiDARと時刻同期ができていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L01-025E",
+      "error_code": "SEN-00-L01-F6E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "LiDARと時刻同期ができていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L01-025",
+      "error_code": "SEN-00-L01-F6",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3395,14 +2803,14 @@
     "ERROR": {
       "situation": "LiDARと時刻同期ができていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L02-025E",
+      "error_code": "SEN-00-L02-F6E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "LiDARと時刻同期ができていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L02-025",
+      "error_code": "SEN-00-L02-F6",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3411,14 +2819,14 @@
     "ERROR": {
       "situation": "LiDARと時刻同期ができていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L03-025E",
+      "error_code": "SEN-00-L03-F6E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "LiDARと時刻同期ができていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L03-025",
+      "error_code": "SEN-00-L03-F6",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3427,14 +2835,14 @@
     "ERROR": {
       "situation": "LiDARと時刻同期ができていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L04-025E",
+      "error_code": "SEN-00-L04-F6E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "LiDARと時刻同期ができていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L04-025",
+      "error_code": "SEN-00-L04-F6",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3443,14 +2851,14 @@
     "ERROR": {
       "situation": "LiDARと時刻同期ができていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L05-025E",
+      "error_code": "SEN-00-L05-F6E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "LiDARと時刻同期ができていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L05-025",
+      "error_code": "SEN-00-L05-F6",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3459,14 +2867,14 @@
     "ERROR": {
       "situation": "LiDARと時刻同期ができていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L06-025E",
+      "error_code": "SEN-00-L06-F6E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "LiDARと時刻同期ができていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L06-025",
+      "error_code": "SEN-00-L06-F6",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3475,14 +2883,14 @@
     "ERROR": {
       "situation": "LiDARと時刻同期ができていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L07-025E",
+      "error_code": "SEN-00-L07-F6E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "LiDARと時刻同期ができていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L07-025",
+      "error_code": "SEN-00-L07-F6",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3491,14 +2899,14 @@
     "ERROR": {
       "situation": "LiDARとの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L00-026E",
+      "error_code": "SEN-00-L00-13E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "LiDARとの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L00-026",
+      "error_code": "SEN-00-L00-13",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3507,14 +2915,14 @@
     "ERROR": {
       "situation": "LiDARとの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L01-026E",
+      "error_code": "SEN-00-L01-13E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "LiDARとの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L01-026",
+      "error_code": "SEN-00-L01-13",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3523,14 +2931,14 @@
     "ERROR": {
       "situation": "LiDARとの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L02-026E",
+      "error_code": "SEN-00-L02-13E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "LiDARとの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L02-026",
+      "error_code": "SEN-00-L02-13",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3539,14 +2947,14 @@
     "ERROR": {
       "situation": "LiDARとの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L03-026E",
+      "error_code": "SEN-00-L03-13E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "LiDARとの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L03-026",
+      "error_code": "SEN-00-L03-13",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3555,14 +2963,14 @@
     "ERROR": {
       "situation": "LiDARとの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L04-026E",
+      "error_code": "SEN-00-L04-13E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "LiDARとの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L04-026",
+      "error_code": "SEN-00-L04-13",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3571,14 +2979,14 @@
     "ERROR": {
       "situation": "LiDARとの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L05-026E",
+      "error_code": "SEN-00-L05-13E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "LiDARとの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L05-026",
+      "error_code": "SEN-00-L05-13",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3587,14 +2995,14 @@
     "ERROR": {
       "situation": "LiDARとの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L06-026E",
+      "error_code": "SEN-00-L06-13E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "LiDARとの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L06-026",
+      "error_code": "SEN-00-L06-13",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3603,14 +3011,14 @@
     "ERROR": {
       "situation": "LiDARとの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L07-026E",
+      "error_code": "SEN-00-L07-13E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "LiDARとの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-L07-026",
+      "error_code": "SEN-00-L07-13",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3619,14 +3027,14 @@
     "ERROR": {
       "situation": "LiDARについた汚れを検出しました",
       "solution": "手動運転で次のバス停まで移動してください。その後、前方のLiDARの点検・清掃をしてください",
-      "error_code": "SEN-00-L00-027E",
+      "error_code": "SEN-00-L00-97E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "LiDARについた汚れを検出しました",
       "solution": "手動運転で次のバス停まで移動してください。その後、前方のLiDARの点検・清掃をしてください",
-      "error_code": "SEN-00-L00-027",
+      "error_code": "SEN-00-L00-97",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -3635,14 +3043,14 @@
     "ERROR": {
       "situation": "LiDARについた汚れを検出しました",
       "solution": "手動運転で次のバス停まで移動してください。その後、前方のLiDARの点検・清掃をしてください",
-      "error_code": "SEN-00-L01-027E",
+      "error_code": "SEN-00-L01-97E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "LiDARについた汚れを検出しました",
       "solution": "手動運転で次のバス停まで移動してください。その後、前方のLiDARの点検・清掃をしてください",
-      "error_code": "SEN-00-L01-027",
+      "error_code": "SEN-00-L01-97",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -3651,14 +3059,14 @@
     "ERROR": {
       "situation": "LiDARについた汚れを検出しました",
       "solution": "手動運転で次のバス停まで移動してください。その後左上部のLiDARの点検・清掃をしてください",
-      "error_code": "SEN-00-L02-027E",
+      "error_code": "SEN-00-L02-97E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "LiDARについた汚れを検出しました",
       "solution": "手動運転で次のバス停まで移動してください。その後左上部のLiDARの点検・清掃をしてください",
-      "error_code": "SEN-00-L02-027",
+      "error_code": "SEN-00-L02-97",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -3667,14 +3075,14 @@
     "ERROR": {
       "situation": "LiDARについた汚れを検出しました",
       "solution": "手動運転で次のバス停まで移動してください。その後左上部のLiDARの点検・清掃をしてください",
-      "error_code": "SEN-00-L03-027E",
+      "error_code": "SEN-00-L03-97E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "LiDARについた汚れを検出しました",
       "solution": "手動運転で次のバス停まで移動してください。その後左上部のLiDARの点検・清掃をしてください",
-      "error_code": "SEN-00-L03-027",
+      "error_code": "SEN-00-L03-97",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -3683,14 +3091,14 @@
     "ERROR": {
       "situation": "LiDARについた汚れを検出しました",
       "solution": "手動運転で次のバス停まで移動してください。その後、後方のLiDARの点検・清掃をしてください",
-      "error_code": "SEN-00-L04-027E",
+      "error_code": "SEN-00-L04-97E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "LiDARについた汚れを検出しました",
       "solution": "手動運転で次のバス停まで移動してください。その後、後方のLiDARの点検・清掃をしてください",
-      "error_code": "SEN-00-L04-027",
+      "error_code": "SEN-00-L04-97",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -3699,14 +3107,14 @@
     "ERROR": {
       "situation": "LiDARについた汚れを検出しました",
       "solution": "手動運転で次のバス停まで移動してください。その後、後方のLiDARの点検・清掃をしてください",
-      "error_code": "SEN-00-L05-027E",
+      "error_code": "SEN-00-L05-97E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "LiDARについた汚れを検出しました",
       "solution": "手動運転で次のバス停まで移動してください。その後、後方のLiDARの点検・清掃をしてください",
-      "error_code": "SEN-00-L05-027",
+      "error_code": "SEN-00-L05-97",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -3715,14 +3123,14 @@
     "ERROR": {
       "situation": "LiDARについた汚れを検出しました",
       "solution": "手動運転で次のバス停まで移動してください。その後、右上部のLiDARの点検・清掃をしてください",
-      "error_code": "SEN-00-L06-027E",
+      "error_code": "SEN-00-L06-97E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "LiDARについた汚れを検出しました",
       "solution": "手動運転で次のバス停まで移動してください。その後、右上部のLiDARの点検・清掃をしてください",
-      "error_code": "SEN-00-L06-027",
+      "error_code": "SEN-00-L06-97",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -3731,14 +3139,14 @@
     "ERROR": {
       "situation": "LiDARについた汚れを検出しました",
       "solution": "手動運転で次のバス停まで移動してください。その後、右上部のLiDARの点検・清掃をしてください",
-      "error_code": "SEN-00-L07-027E",
+      "error_code": "SEN-00-L07-97E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "LiDARについた汚れを検出しました",
       "solution": "手動運転で次のバス停まで移動してください。その後、右上部のLiDARの点検・清掃をしてください",
-      "error_code": "SEN-00-L07-027",
+      "error_code": "SEN-00-L07-97",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -3747,14 +3155,14 @@
     "ERROR": {
       "situation": "Front CenterのRADARが計測している情報に異常がありました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-R00-028E",
+      "error_code": "SEN-00-R00-81E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Front CenterのRADARが計測している情報に異常がありました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-R00-028",
+      "error_code": "SEN-00-R00-81",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3763,14 +3171,14 @@
     "ERROR": {
       "situation": "Rear CenterのRADARが計測している情報に異常がありました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-R03-028E",
+      "error_code": "SEN-00-R03-81E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Rear CenterのRADARが計測している情報に異常がありました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-R03-028",
+      "error_code": "SEN-00-R03-81",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3779,14 +3187,14 @@
     "ERROR": {
       "situation": "Front CenterのRADARの内部情報に異常がありました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-R00-029E",
+      "error_code": "SEN-00-R00-96E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Front CenterのRADARの内部情報に異常がありました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-R00-029",
+      "error_code": "SEN-00-R00-96",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3795,14 +3203,14 @@
     "ERROR": {
       "situation": "Rear CenterのRADARの内部情報に異常がありました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-R03-029E",
+      "error_code": "SEN-00-R03-96E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Rear CenterのRADARの内部情報に異常がありました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-R03-029",
+      "error_code": "SEN-00-R03-96",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3811,14 +3219,14 @@
     "ERROR": {
       "situation": "Front CenterのRADARがなにかに塞がれています",
       "solution": "手動で安全な場所または次のバス停へ移動し、後方RADARの汚れを確認後、異常状態を解除し走行を再開してください",
-      "error_code": "SEN-00-R00-030E",
+      "error_code": "SEN-00-R00-97E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Front CenterのRADARがなにかに塞がれています",
       "solution": "手動で安全な場所または次のバス停へ移動し、後方RADARの汚れを確認後、異常状態を解除し走行を再開してください",
-      "error_code": "SEN-00-R00-030",
+      "error_code": "SEN-00-R00-97",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3827,14 +3235,14 @@
     "ERROR": {
       "situation": "Rear CenterのRADARがなにかに塞がれています",
       "solution": "手動走行に介入して目的地まで走行してください。その後，後ろのRADARが何かに覆われていないか確認してください",
-      "error_code": "SEN-00-R03-030E",
+      "error_code": "SEN-00-R03-97E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Rear CenterのRADARがなにかに塞がれています",
       "solution": "手動走行に介入して目的地まで走行してください。その後，後ろのRADARが何かに覆われていないか確認してください",
-      "error_code": "SEN-00-R03-030",
+      "error_code": "SEN-00-R03-97",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3843,14 +3251,14 @@
     "ERROR": {
       "situation": "Front CenterのRADARのObject信号の周期に異常がありました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-R00-031E",
+      "error_code": "SEN-00-R00-62E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Front CenterのRADARのObject信号の周期に異常がありました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-R00-031",
+      "error_code": "SEN-00-R00-62",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3859,14 +3267,14 @@
     "ERROR": {
       "situation": "Rear CenterのRADARのObject信号の周期に異常がありました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-R03-031E",
+      "error_code": "SEN-00-R03-62E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Rear CenterのRADARのObject信号の周期に異常がありました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-R03-031",
+      "error_code": "SEN-00-R03-62",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3875,14 +3283,14 @@
     "ERROR": {
       "situation": "Front CenterのRADARのDetections信号の周期に異常がありました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-R00-032E",
+      "error_code": "SEN-00-R00-62E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Front CenterのRADARのDetections信号の周期に異常がありました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-R00-032",
+      "error_code": "SEN-00-R00-62",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3891,14 +3299,14 @@
     "ERROR": {
       "situation": "Rear CenterのRADARのDetections信号の周期に異常がありました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-R03-032E",
+      "error_code": "SEN-00-R03-62E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Rear CenterのRADARのDetections信号の周期に異常がありました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-R03-032",
+      "error_code": "SEN-00-R03-62",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3907,14 +3315,14 @@
     "ERROR": {
       "situation": "RADARとの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-R00-033E",
+      "error_code": "SEN-00-R00-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "RADARとの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-R00-033",
+      "error_code": "SEN-00-R00-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3923,14 +3331,14 @@
     "ERROR": {
       "situation": "RADARとの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-R03-033E",
+      "error_code": "SEN-00-R03-87E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "RADARとの接続が確認できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-R03-033",
+      "error_code": "SEN-00-R03-87",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3939,14 +3347,14 @@
     "ERROR": {
       "situation": "IMUの振動または温度に異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-I00-036E",
+      "error_code": "SEN-00-I00-62E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "IMUの振動または温度に異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-I00-036",
+      "error_code": "SEN-00-I00-62",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -3955,46 +3363,14 @@
     "ERROR": {
       "situation": "IMUの情報の頻度に異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-I00-037E",
+      "error_code": "SEN-00-I00-62E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "IMUの情報の頻度に異常があります",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-00-I00-037",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/sensing/imu/gyro_bias_scale_validation": {
-    "ERROR": {
-      "situation": "IMUに測定値異常があります",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-01-I01-048E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "IMUに測定値異常があります",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-01-I01-048",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/sensing/imu/rate_bound_check": {
-    "ERROR": {
-      "situation": "IMUの情報頻度に異常があります",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-01-I01-049E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "IMUの情報頻度に異常があります",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "SEN-01-I01-049",
+      "error_code": "SEN-00-I00-62",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -4003,14 +3379,14 @@
     "ERROR": {
       "situation": "CPUの温度が最高値付近まで上昇しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-001E",
+      "error_code": "HRD-00-E00-98E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "CPUの温度が最高値付近まで上昇しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-001",
+      "error_code": "HRD-00-E00-98",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -4019,14 +3395,14 @@
     "ERROR": {
       "situation": "CPU負荷が逼迫しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-002E",
+      "error_code": "HRD-00-E00-E8E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "CPU負荷が逼迫しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-002",
+      "error_code": "HRD-00-E00-E8",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -4035,14 +3411,14 @@
     "ERROR": {
       "situation": "各CPUにおいてそれぞれ特定のプロセスの処理が専有しています",
       "solution": "手動走行で安全な場所に停止した後、車両を再起動してください。",
-      "error_code": "HRD-00-E00-003E",
+      "error_code": "HRD-00-E00-FBE",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "各CPUにおいてそれぞれ特定のプロセスの処理が専有しています",
       "solution": "手動走行で安全な場所に停止した後、車両を再起動してください。",
-      "error_code": "HRD-00-E00-003",
+      "error_code": "HRD-00-E00-FB",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -4051,46 +3427,30 @@
     "ERROR": {
       "situation": "CPU温度が最高動作温度付近まで上昇し、CPU周波数が低下しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-004E",
+      "error_code": "HRD-00-E00-92E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "CPU温度が最高動作温度付近まで上昇し、CPU周波数が低下しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-004",
+      "error_code": "HRD-00-E00-92",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
-    }
-  },
-  "/hardware/cpu/005-frequency-error": {
-    "ERROR": {
-      "situation": "CPUの周波数通知や記録が目的のため、エラーではありません",
-      "solution": "対応は不要です",
-      "error_code": "HRD-00-E00-005E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "CPUの周波数通知や記録が目的のため、エラーではありません",
-      "solution": "対応は不要です",
-      "error_code": "HRD-00-E00-005",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
     }
   },
   "/hardware/hdd/001-temperature-error": {
     "ERROR": {
       "situation": "HDD温度が最高動作温度付近まで上昇しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-013E",
+      "error_code": "HRD-00-E00-98E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "HDD温度が最高動作温度付近まで上昇しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-013",
+      "error_code": "HRD-00-E00-98",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -4099,14 +3459,14 @@
     "ERROR": {
       "situation": "HDDの空き容量が不足しています",
       "solution": "手動走行で安全な場所へ退避して走行を中断してください。その後不要なファイルの削除を行ってください",
-      "error_code": "HRD-00-E00-014E",
+      "error_code": "HRD-00-E00-9AE",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "HDDの空き容量が不足しています",
       "solution": "手動走行で安全な場所へ退避して走行を中断してください。その後不要なファイルの削除を行ってください",
-      "error_code": "HRD-00-E00-014",
+      "error_code": "HRD-00-E00-9A",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -4115,14 +3475,14 @@
     "ERROR": {
       "situation": "HDDが接続されていない状態です",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-015E",
+      "error_code": "HRD-00-E00-13E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "HDDが接続されていない状態です",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-015",
+      "error_code": "HRD-00-E00-13",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -4131,14 +3491,14 @@
     "ERROR": {
       "situation": "HDDへの書き込み回数異常が起きています",
       "solution": "手動走行で安全な場所に停止した後、車両を再起動してください。",
-      "error_code": "HRD-00-E00-016E",
+      "error_code": "HRD-00-E00-9AE",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "HDDへの書き込み回数異常が起きています",
       "solution": "手動走行で安全な場所に停止した後、車両を再起動してください。",
-      "error_code": "HRD-00-E00-016",
+      "error_code": "HRD-00-E00-9A",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -4147,14 +3507,14 @@
     "ERROR": {
       "situation": "HDDのソフトウェア異常が起きています",
       "solution": "手動走行で安全な場所に停止した後、車両を再起動してください。",
-      "error_code": "HRD-00-E00-018E",
+      "error_code": "HRD-00-E00-06E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "HDDのソフトウェア異常が起きています",
       "solution": "手動走行で安全な場所に停止した後、車両を再起動してください。",
-      "error_code": "HRD-00-E00-018",
+      "error_code": "HRD-00-E00-06",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -4163,14 +3523,14 @@
     "ERROR": {
       "situation": "HDDの帯域が逼迫しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-019E",
+      "error_code": "HRD-00-E00-E8E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "HDDの帯域が逼迫しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-019",
+      "error_code": "HRD-00-E00-E8",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -4179,14 +3539,14 @@
     "ERROR": {
       "situation": "HDDの帯域が逼迫しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-020E",
+      "error_code": "HRD-00-E00-E8E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "HDDの帯域が逼迫しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-020",
+      "error_code": "HRD-00-E00-E8",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -4195,14 +3555,14 @@
     "ERROR": {
       "situation": "HDDの帯域が逼迫しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-021E",
+      "error_code": "HRD-00-E00-E8E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "HDDの帯域が逼迫しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-021",
+      "error_code": "HRD-00-E00-E8",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -4211,14 +3571,14 @@
     "ERROR": {
       "situation": "HDDの帯域が逼迫しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-022E",
+      "error_code": "HRD-00-E00-E8E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "HDDの帯域が逼迫しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-022",
+      "error_code": "HRD-00-E00-E8",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -4227,14 +3587,14 @@
     "ERROR": {
       "situation": "メモリの使用率が逼迫しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-028E",
+      "error_code": "HRD-00-E00-E8E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "メモリの使用率が逼迫しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-028",
+      "error_code": "HRD-00-E00-E8",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -4243,14 +3603,14 @@
     "ERROR": {
       "situation": "メモリのECCエラー（誤り検知機能の不具合）を検知しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-029E",
+      "error_code": "HRD-00-E00-83E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "メモリのECCエラー（誤り検知機能の不具合）を検知しました",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-029",
+      "error_code": "HRD-00-E00-83",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -4259,14 +3619,14 @@
     "ERROR": {
       "situation": "GPU温度が最高動作温度付近まで上昇しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-054E",
+      "error_code": "HRD-00-E00-98E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "GPU温度が最高動作温度付近まで上昇しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-054",
+      "error_code": "HRD-00-E00-98",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -4275,14 +3635,14 @@
     "ERROR": {
       "situation": "GPU負荷が逼迫しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-055E",
+      "error_code": "HRD-00-E00-E8E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "GPU負荷が逼迫しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-055",
+      "error_code": "HRD-00-E00-E8",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -4291,14 +3651,14 @@
     "ERROR": {
       "situation": "GPUメモリの使用率が逼迫しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-056E",
+      "error_code": "HRD-00-E00-E8E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "GPUメモリの使用率が逼迫しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-056",
+      "error_code": "HRD-00-E00-E8",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -4307,14 +3667,14 @@
     "ERROR": {
       "situation": "GPU温度が最高動作温度付近まで上昇し、GPU周波数が低下しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-057E",
+      "error_code": "HRD-00-E00-92E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "GPU温度が最高動作温度付近まで上昇し、GPU周波数が低下しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-057",
+      "error_code": "HRD-00-E00-92",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -4323,14 +3683,14 @@
     "ERROR": {
       "situation": "GPU入力クロックが異常な状態になっています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-058E",
+      "error_code": "HRD-00-E00-96E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "GPU入力クロックが異常な状態になっています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E00-058",
+      "error_code": "HRD-00-E00-96",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -4339,14 +3699,14 @@
     "ERROR": {
       "situation": "MOTの起動信号が自動運転システムで確認できません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-02-E02-097E",
+      "error_code": "HRD-02-E02-13E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "MOTの起動信号が自動運転システムで確認できません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-02-E02-097",
+      "error_code": "HRD-02-E02-13",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -4355,14 +3715,14 @@
     "ERROR": {
       "situation": "サイネージと通信できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E09-098E",
+      "error_code": "HRD-00-E09-13E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "サイネージと通信できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E09-098",
+      "error_code": "HRD-00-E09-13",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -4371,366 +3731,14 @@
     "ERROR": {
       "situation": "車外向け音声案内と通信できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E10-099E",
+      "error_code": "HRD-00-E10-13E",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     },
     "default": {
       "situation": "車外向け音声案内と通信できていません",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-00-E10-099",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    }
-  },
-  "/sub_ecu/hardware/cpu/001-temperature/warn-to-ok": {
-    "ERROR": {
-      "situation": "CPUの温度が最高値付近まで上昇しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-001E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "CPUの温度が最高値付近まで上昇しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-001",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/hardware/cpu/002-usage/warn-to-ok": {
-    "ERROR": {
-      "situation": "CPUの負荷が高まっています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-002E",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    },
-    "default": {
-      "situation": "CPUの負荷が高まっています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-002",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    }
-  },
-  "/sub_ecu/hardware/cpu/003-load_average/warn-to-ok": {
-    "ERROR": {
-      "situation": "各CPUにおいてそれぞれ特定のプロセスの処理が専有しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-003E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "各CPUにおいてそれぞれ特定のプロセスの処理が専有しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-003",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/hardware/cpu/004-throttling/warn-to-ok": {
-    "ERROR": {
-      "situation": "CPU温度が最高動作温度付近まで上昇し、CPU周波数が低下しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-004E",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    },
-    "default": {
-      "situation": "CPU温度が最高動作温度付近まで上昇し、CPU周波数が低下しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-004",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    }
-  },
-  "/sub_ecu/hardware/cpu/005-frequency/warn-to-ok": {
-    "ERROR": {
-      "situation": "CPUの周波数通知や記録が目的のため、エラーではありません",
-      "solution": "対応は不要です",
-      "error_code": "HRD-01-E00-005E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "CPUの周波数通知や記録が目的のため、エラーではありません",
-      "solution": "対応は不要です",
-      "error_code": "HRD-01-E00-005",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/hardware/hdd/001-temperature/warn-to-ok": {
-    "ERROR": {
-      "situation": "HDD温度が最高動作温度付近まで上昇しています",
-      "solution": "手動走行で安全な場所へ退避して走行を中断してください。その後車両を再起動してください",
-      "error_code": "HRD-01-E00-013E",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    },
-    "default": {
-      "situation": "HDD温度が最高動作温度付近まで上昇しています",
-      "solution": "手動走行で安全な場所へ退避して走行を中断してください。その後車両を再起動してください",
-      "error_code": "HRD-01-E00-013",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    }
-  },
-  "/sub_ecu/hardware/hdd/002-usage/warn-to-ok": {
-    "ERROR": {
-      "situation": "HDDの空き容量が不足しています",
-      "solution": "手動走行で安全な場所へ退避して走行を中断してください。その後不要なファイルの削除を行ってください",
-      "error_code": "HRD-01-E00-014E",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    },
-    "default": {
-      "situation": "HDDの空き容量が不足しています",
-      "solution": "手動走行で安全な場所へ退避して走行を中断してください。その後不要なファイルの削除を行ってください",
-      "error_code": "HRD-01-E00-014",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    }
-  },
-  "/sub_ecu/hardware/hdd/003-connection/warn-to-ok": {
-    "ERROR": {
-      "situation": "HDDが接続されていない状態です",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-015E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "HDDが接続されていない状態です",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-015",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/hardware/hdd/004-total_written/warn-to-ok": {
-    "ERROR": {
-      "situation": "HDDへの書き込み回数異常が起きています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-016E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "HDDへの書き込み回数異常が起きています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-016",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/hardware/hdd/005-warranty_period/warn-to-ok": {
-    "ERROR": {
-      "situation": "HDDのメーカー保証期間が過ぎています",
-      "solution": "HDDの交換を行ってください",
-      "error_code": "HRD-01-E00-017E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "HDDのメーカー保証期間が過ぎています",
-      "solution": "HDDの交換を行ってください",
-      "error_code": "HRD-01-E00-017",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/hardware/hdd/006-soft_error/warn-to-ok": {
-    "ERROR": {
-      "situation": "HDDのソフトウェア異常が起きています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-018E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "HDDのソフトウェア異常が起きています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-018",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/hardware/hdd/007-load/read_rate/warn-to-ok": {
-    "ERROR": {
-      "situation": "HDDの帯域が逼迫しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-019E",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    },
-    "default": {
-      "situation": "HDDの帯域が逼迫しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-019",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    }
-  },
-  "/sub_ecu/hardware/hdd/007-load/read_iops/warn-to-ok": {
-    "ERROR": {
-      "situation": "HDDの帯域が逼迫しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-020E",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    },
-    "default": {
-      "situation": "HDDの帯域が逼迫しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-020",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    }
-  },
-  "/sub_ecu/hardware/hdd/007-load/write_rate/warn-to-ok": {
-    "ERROR": {
-      "situation": "HDDの帯域が逼迫しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-021E",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    },
-    "default": {
-      "situation": "HDDの帯域が逼迫しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-021",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    }
-  },
-  "/sub_ecu/hardware/hdd/007-load/write_iops/warn-to-ok": {
-    "ERROR": {
-      "situation": "HDDの帯域が逼迫しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-022E",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    },
-    "default": {
-      "situation": "HDDの帯域が逼迫しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-022",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    }
-  },
-  "/sub_ecu/hardware/memory/001-usage/warn-to-ok": {
-    "ERROR": {
-      "situation": "メモリの使用率が逼迫しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-028E",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    },
-    "default": {
-      "situation": "メモリの使用率が逼迫しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-028",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    }
-  },
-  "/sub_ecu/hardware/memory/002-ecc/warn-to-ok": {
-    "ERROR": {
-      "situation": "メモリのECCエラー（誤り検知機能の不具合）を検知しました",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-029E",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    },
-    "default": {
-      "situation": "メモリのECCエラー（誤り検知機能の不具合）を検知しました",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-029",
-      "initialization_state_condition": "all",
-      "routing_state_condition": "all"
-    }
-  },
-  "/sub_ecu/hardware/gpu/001-temperature/warn-to-ok": {
-    "ERROR": {
-      "situation": "GPU温度が最高動作温度付近まで上昇しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-054E",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    },
-    "default": {
-      "situation": "GPU温度が最高動作温度付近まで上昇しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-054",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    }
-  },
-  "/sub_ecu/hardware/gpu/002-usage/warn-to-ok": {
-    "ERROR": {
-      "situation": "GPU負荷が逼迫しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-055E",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    },
-    "default": {
-      "situation": "GPU負荷が逼迫しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-055",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    }
-  },
-  "/sub_ecu/hardware/gpu/003-memory/warn-to-ok": {
-    "ERROR": {
-      "situation": "GPUメモリの使用率が逼迫しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-056E",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    },
-    "default": {
-      "situation": "GPUメモリの使用率が逼迫しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-056",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    }
-  },
-  "/sub_ecu/hardware/gpu/004-throttling/warn-to-ok": {
-    "ERROR": {
-      "situation": "GPU温度が最高動作温度付近まで上昇し、GPU周波数が低下しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-057E",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    },
-    "default": {
-      "situation": "GPU温度が最高動作温度付近まで上昇し、GPU周波数が低下しています",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E00-057",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    }
-  },
-  "/sub_ecu/hardware/gpu/005-frequency/warn-to-ok": {
-    "ERROR": {
-      "situation": "GPU入力クロックが異常な状態です",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E01-058E",
-      "initialization_state_condition": 3,
-      "routing_state_condition": 2
-    },
-    "default": {
-      "situation": "GPU入力クロックが異常な状態です",
-      "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-01-E01-058",
+      "error_code": "HRD-00-E10-13",
       "initialization_state_condition": 3,
       "routing_state_condition": 2
     }
@@ -4739,14 +3747,14 @@
     "ERROR": {
       "situation": "Perception ECU1のCPUの温度が最高値付近まで上昇しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-03-E03-001E",
+      "error_code": "HRD-03-E03-98E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Perception ECU1のCPUの温度が最高値付近まで上昇しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-03-E03-001",
+      "error_code": "HRD-03-E03-98",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -4755,14 +3763,14 @@
     "ERROR": {
       "situation": "Perception ECU1の各CPUにおいてそれぞれ特定のプロセスの処理が専有しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-03-E03-002E",
+      "error_code": "HRD-03-E03-E8E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Perception ECU1の各CPUにおいてそれぞれ特定のプロセスの処理が専有しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-03-E03-002",
+      "error_code": "HRD-03-E03-E8",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -4771,14 +3779,14 @@
     "ERROR": {
       "situation": "Perception ECU1のHDDの空き容量が亡くなっています",
       "solution": "HDDから不要なファイルの削除をCSに依頼してください",
-      "error_code": "HRD-03-E03-014E",
+      "error_code": "HRD-03-E03-9AE",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Perception ECU1のHDDの空き容量が亡くなっています",
       "solution": "HDDから不要なファイルの削除をCSに依頼してください",
-      "error_code": "HRD-03-E03-014",
+      "error_code": "HRD-03-E03-9A",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -4787,14 +3795,14 @@
     "ERROR": {
       "situation": "HDDが接続されていない状態です",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-03-E03-015E",
+      "error_code": "HRD-03-E03-13E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "HDDが接続されていない状態です",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-03-E03-015",
+      "error_code": "HRD-03-E03-13",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -4803,14 +3811,14 @@
     "ERROR": {
       "situation": "Perception ECU1のメモリ容量が足りなくなっています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-03-E03-028E",
+      "error_code": "HRD-03-E03-E8E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Perception ECU1のメモリ容量が足りなくなっています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-03-E03-028",
+      "error_code": "HRD-03-E03-E8",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -4819,14 +3827,14 @@
     "ERROR": {
       "situation": "Perception ECU1のGPU温度が最高値付近まで上昇しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-03-E03-046E",
+      "error_code": "HRD-03-E03-9AE",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Perception ECU1のGPU温度が最高値付近まで上昇しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-03-E03-046",
+      "error_code": "HRD-03-E03-9A",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -4835,14 +3843,14 @@
     "ERROR": {
       "situation": "Perception ECU2のCPUの温度が最高値付近まで上昇しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-04-E04-001E",
+      "error_code": "HRD-04-E04-98E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Perception ECU2のCPUの温度が最高値付近まで上昇しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-04-E04-001",
+      "error_code": "HRD-04-E04-98",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -4851,14 +3859,14 @@
     "ERROR": {
       "situation": "Perception ECU2の各CPUにおいてそれぞれ特定のプロセスの処理が専有しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-04-E04-002E",
+      "error_code": "HRD-04-E04-E8E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Perception ECU2の各CPUにおいてそれぞれ特定のプロセスの処理が専有しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-04-E04-002",
+      "error_code": "HRD-04-E04-E8",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -4867,14 +3875,14 @@
     "ERROR": {
       "situation": "Perception ECU2のHDDの空き容量が亡くなっています",
       "solution": "HDDから不要なファイルの削除をCSに依頼してください",
-      "error_code": "HRD-04-E04-014E",
+      "error_code": "HRD-04-E04-9AE",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Perception ECU2のHDDの空き容量が亡くなっています",
       "solution": "HDDから不要なファイルの削除をCSに依頼してください",
-      "error_code": "HRD-04-E04-014",
+      "error_code": "HRD-04-E04-9A",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -4883,14 +3891,14 @@
     "ERROR": {
       "situation": "HDDが接続されていない状態です",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-04-E04-015E",
+      "error_code": "HRD-04-E04-13E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "HDDが接続されていない状態です",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-04-E04-015",
+      "error_code": "HRD-04-E04-13",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -4899,14 +3907,14 @@
     "ERROR": {
       "situation": "Perception ECU2のメモリ容量が足りなくなっています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-04-E04-028E",
+      "error_code": "HRD-04-E04-E8E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Perception ECU2のメモリ容量が足りなくなっています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-04-E04-028",
+      "error_code": "HRD-04-E04-E8",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }
@@ -4915,14 +3923,14 @@
     "ERROR": {
       "situation": "Perception ECU2のGPU温度が最高値付近まで上昇しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-04-E04-046E",
+      "error_code": "HRD-04-E04-98E",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     },
     "default": {
       "situation": "Perception ECU2のGPU温度が最高値付近まで上昇しています",
       "solution": "次のバス停まで手動で走行し車両を再起動してください",
-      "error_code": "HRD-04-E04-046",
+      "error_code": "HRD-04-E04-98",
       "initialization_state_condition": "all",
       "routing_state_condition": "all"
     }

@@ -1,0 +1,66 @@
+{
+  "usbPollingIntervalMs": 3000,
+  "canTimeoutMs": 5000,
+  "usbDevices": [
+    {
+      "id": "mot-speaker",
+      "name": "MOTスピーカー",
+      "identifier": "0909:005b"
+    },
+    {
+      "id": "mot-lamp",
+      "name": "MOTランプ",
+      "identifier": "191a:6001"
+    }
+  ],
+  "cans": [
+    {
+      "canID": "pcan0",
+      "devices": [
+        {
+          "deviceID": "195",
+          "buttonAssignments": [
+            {
+              "buttonID": "02",
+              "action": "rtc_approve"
+            },
+            {
+              "buttonID": "08",
+              "action": "stop_guidance"
+            },
+            {
+              "buttonID": "01",
+              "action": "creep_approve"
+            }
+          ],
+          "enableDeveloperOperation": false,
+          "developerOperations": []
+        }
+      ]
+    },
+    {
+      "canID": "pcan1",
+      "devices": [
+        {
+          "deviceID": "195",
+          "buttonAssignments": [
+            {
+              "buttonID": "02",
+              "action": "rtc_approve"
+            },
+            {
+              "buttonID": "04",
+              "action": "stop_guidance"
+            },
+            {
+              "buttonID": "01",
+              "action": "creep_approve"
+            }
+          ],
+          "enableDeveloperOperation": false,
+          "developerOperations": []
+        }
+      ]
+    }
+  ]
+}
