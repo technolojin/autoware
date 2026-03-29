@@ -236,14 +236,14 @@ repositories:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
     branch: beta/v4.4
-    version: 419dd4812a423224283ea61606a77be4e57104c6
+    version: 0044517dec48e80eba144f0ea6b8108e654db945
     base: false
   autoware/individual_params:
     labels: [mainecu, logging, perception]
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
     branch: main
-    version: 287c61bad752f421f36f1c73a6556ee6f870239a
+    version: 347c25a7cb30c160cb2b7e1615dfd7ca4f8a692c
     base: false
   description/vehicle/j6_gen2_description:
     labels: [mainecu, logging]
