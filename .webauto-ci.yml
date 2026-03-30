@@ -1011,6 +1011,9 @@ simulations:
         artifact: main
       runtime:
         type: standard1/amd64/medium
+        kernel_modules:
+          agnocast:
+            version: "2.3"
       parameters:
         vehicle_model: j6_gen2
         sensor_model: aip_x2_gen2
@@ -1059,6 +1062,9 @@ simulations:
         artifact: main
       runtime:
         type: standard1/amd64/medium
+        kernel_modules:
+          agnocast:
+            version: "2.3"
 
   - name: ndt_convergence
     type: ndt_convergence
@@ -1068,6 +1074,9 @@ simulations:
         artifact: main
       runtime:
         type: standard1/amd64/large
+        kernel_modules:
+          agnocast:
+            version: "2.3"
 
   - name: localization_with_gpu_sensing
     type: localization
@@ -1081,6 +1090,9 @@ simulations:
         artifact: main
       runtime:
         type: gpu1/amd64/large
+        kernel_modules:
+          agnocast:
+            version: "2.3"
       parameters:
         play_rate: "0.125"
 
@@ -1096,6 +1108,9 @@ simulations:
         artifact: main
       runtime:
         type: standard1/amd64/xlarge
+        kernel_modules:
+          agnocast:
+            version: "2.3"
       parameters:
         play_rate: "0.125"
 
@@ -1107,6 +1122,9 @@ simulations:
         artifact: main
       runtime:
         type: gpu1/amd64/large
+        kernel_modules:
+          agnocast:
+            version: "2.3"
       parameters:
         use_traffic_light_recognition: "false"
         lidar_detection_model: clustering
@@ -1119,6 +1137,9 @@ simulations:
         artifact: main
       runtime:
         type: gpu1/amd64/large
+        kernel_modules:
+          agnocast:
+            version: "2.3"
       parameters:
         play_rate: "0.125"
         localization: "false"
@@ -1131,6 +1152,9 @@ simulations:
         artifact: main
       runtime:
         type: gpu1/amd64/large
+        kernel_modules:
+          agnocast:
+            version: "2.3"
       parameters:
         remap_arg: /sensing/lidar/concatenated/pointcloud
         use_empty_dynamic_object_publisher: "true"
@@ -1162,6 +1186,9 @@ simulations:
         artifact: main
       runtime:
         type: gpu1/amd64/large
+        kernel_modules:
+          agnocast:
+            version: "2.3"
       parameters:
         remap_arg: /sensing/lidar/concatenated/pointcloud
         use_empty_dynamic_object_publisher: "true"
@@ -1198,6 +1225,9 @@ simulations:
         artifact: main
       runtime:
         type: gpu1/amd64/large
+        kernel_modules:
+          agnocast:
+            version: "2.3"
       parameters:
         use_traffic_light_recognition: "false"
         play_rate: "0.125"
@@ -1220,6 +1250,9 @@ simulations:
         artifact: main
       runtime:
         type: gpu1/amd64/large
+        kernel_modules:
+          agnocast:
+            version: "2.3"
       parameters:
         use_traffic_light_recognition: "false"
       pre_tasks:
@@ -1239,6 +1272,9 @@ simulations:
         artifact: main
       runtime:
         type: gpu1/amd64/large
+        kernel_modules:
+          agnocast:
+            version: "2.3"
       pre_tasks:
         - exec: rm -f /opt/autoware/mlmodels/centerpoint/*engine && rm -f /opt/autoware/mlmodels/centerpoint/*json && source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint model_path:=/opt/autoware/mlmodels/centerpoint model_param_path:=$(ros2 pkg prefix autoware_launch --share)/config/perception/object_recognition/detection/lidar_model/centerpoint.param.yaml build_only:=true
           mounts:
@@ -1278,6 +1314,9 @@ simulations:
         artifact: main
       runtime:
         type: standard1/amd64/medium
+        kernel_modules:
+          agnocast:
+            version: "2.3"
 
   - name: eagleye
     type: eagleye
@@ -1287,6 +1326,9 @@ simulations:
         artifact: main
       runtime:
         type: standard1/amd64/medium
+        kernel_modules:
+          agnocast:
+            version: "2.3"
 
   - name: ar_tag_based_localizer
     type: ar_tag_based_localizer
@@ -1296,6 +1338,9 @@ simulations:
         artifact: main
       runtime:
         type: standard1/amd64/medium
+        kernel_modules:
+          agnocast:
+            version: "2.3"
 
   - name: all_components
     type: all_components
@@ -1305,6 +1350,9 @@ simulations:
         artifact: main
       runtime:
         type: gpu1/amd64/large
+        kernel_modules:
+          agnocast:
+            version: "2.3"
       parameters:
         use_traffic_light_recognition: "false"
       pre_tasks:
@@ -1328,6 +1376,9 @@ simulations:
         artifact: main
       runtime:
         type: standard1/amd64/medium
+        kernel_modules:
+          agnocast:
+            version: "2.3"
       parameters:
         sensing: "false"
         perception: "false"
@@ -1350,6 +1401,9 @@ simulations:
         artifact: main
       runtime:
         type: gpu1/amd64/large
+        kernel_modules:
+          agnocast:
+            version: "2.3"
       parameters:
         use_traffic_light_recognition: "false"
         pose_source: ndt
@@ -1386,6 +1440,9 @@ simulations:
         artifact: main
       runtime:
         type: standard1/amd64/medium
+        kernel_modules:
+          agnocast:
+            version: "2.3"
       parameters:
         sensing: "false"
         perception: "false"
@@ -1411,6 +1468,9 @@ simulations:
         artifact: main
       runtime:
         type: standard1/amd64/medium
+        kernel_modules:
+          agnocast:
+            version: "2.3"
       parameters:
         sensing: "false"
         perception: "false"
