@@ -1,8 +1,0 @@
-- name: Ensure agnocast module is loaded at boot via modules-load.d
-  ansible.builtin.copy:
-    dest: /etc/modules-load.d/agnocast.conf
-    content: "agnocast\n"
-    owner: root
-    group: root
-    mode: "0644"
-  become: true
