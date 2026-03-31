@@ -108,6 +108,50 @@ function restart_autoware_main_service() {
     echo "Autoware main services restarted."
 }
 
+# --switch-to-diffusion-planner: Switch planning setting and scheduling settings
+# --switch-to-rule-based:        Switch planning setting and scheduling settings
+function switch_planning_setting() {
+    local planning_setting="$1"
+    local planning_settings_file="$SCRIPT_DIR/parameter_settings/planning_settings.env"
+    local scheduling_settings_dir="$SCRIPT_DIR/ansible/playbooks/files/scheduling_settings"
+    local scheduling_settings_target="/opt/autoware/services/scheduling-settings/scheduling_settings_autoware.yaml"
+    local scheduling_settings_backup="${scheduling_settings_target}.old"
+    local scheduling_settings_source=""
+
+    case "$planning_setting" in
+    diffusion_planner)
+        scheduling_settings_source="$scheduling_settings_dir/scheduling_settings_autoware.diffusion_planner.yaml"
+        ;;
+    rule_based)
+        scheduling_settings_source="$scheduling_settings_dir/scheduling_settings_autoware.yaml"
+        ;;
+    *)
+        echo "Unsupported planning_setting: $planning_setting"
+        exit 1
+        ;;
+    esac
+
+    if [ ! -f "$scheduling_settings_source" ]; then
+        echo "Missing scheduling settings file: $scheduling_settings_source"
+        exit 1
+    fi
+
+    mkdir -p "$(dirname "$planning_settings_file")"
+    echo "PLANNING_SETTING=$planning_setting" >"$planning_settings_file"
+
+    if [ -f "$scheduling_settings_target" ] && [ ! -f "$scheduling_settings_backup" ]; then
+        sudo cp "$scheduling_settings_target" "$scheduling_settings_backup"
+    fi
+    sudo cp "$scheduling_settings_source" "$scheduling_settings_target"
+
+    echo "Applied planning setting: $planning_setting"
+    echo "Updated scheduling settings: $scheduling_settings_source -> $scheduling_settings_target"
+    echo "Restarting Autoware services to apply changes."
+    stop_autoware_service
+    sleep 5
+    start_autoware_service
+}
+
 # --autoware-sub-start:     Start autoware sub services
 function start_autoware_sub_service() {
     echo "Starting Autoware sub services."
@@ -200,6 +244,8 @@ function help() {
     echo "    --autoware-sub-start : start autoware sub service"
     echo "    --autoware-sub-stop : stop autoware sub service"
     echo "    --autoware-sub-restart : restart autoware sub service"
+    echo "    --switch-to-diffusion-planner : switch planning setting to diffusion_planner"
+    echo "    --switch-to-rule-based : switch planning setting to rule_based"
     echo "    --psim-main     :Launch autoware main with planning simulator"
     echo "    --autoware-main-mrm    :Launch autoware main mrm"
     echo "    --psim-main-mrm    :Launch autoware main mrm with planning simulator"
@@ -243,6 +289,10 @@ elif [ "${1-}" = "--autoware-sub-stop" ]; then
     stop_autoware_sub_service "${@:2}"
 elif [ "${1-}" = "--autoware-sub-restart" ]; then
     restart_autoware_sub_service "${@:2}"
+elif [ "${1-}" = "--switch-to-diffusion-planner" ]; then
+    switch_planning_setting diffusion_planner
+elif [ "${1-}" = "--switch-to-rule-based" ]; then
+    switch_planning_setting rule_based
 elif [ "${1-}" = "--autoware-main" ]; then
     launch_autoware_main "${@:2}"
 elif [ "${1-}" = "--psim-main" ]; then

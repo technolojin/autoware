@@ -89,7 +89,7 @@ simple_system_launch_items:
       export ROS_LOG_DIR=/home/autoware/.ros/autoware_main_log
       # Temporary v4.4 workaround for planning_setting switching.
       # Remove this block in the next version when planning_setting is handled centrally.
-      PLANNING_SETTINGS_FILE="/home/autoware/pilot-auto/planning_settings.env"
+      PLANNING_SETTINGS_FILE="/home/autoware/pilot-auto/parameter_settings/planning_settings.env"
       if [ -f "$PLANNING_SETTINGS_FILE" ]; then
         source "$PLANNING_SETTINGS_FILE"
       fi
@@ -134,7 +134,7 @@ simple_system_launch_items:
       export ROS_LOG_DIR=/home/autoware/.ros/autoware_system_log
       # Temporary v4.4 workaround for planning_setting switching.
       # Remove this block in the next version when planning_setting is handled centrally.
-      PLANNING_SETTINGS_FILE="/home/autoware/pilot-auto/planning_settings.env"
+      PLANNING_SETTINGS_FILE="/home/autoware/pilot-auto/parameter_settings/planning_settings.env"
       if [ -f "$PLANNING_SETTINGS_FILE" ]; then
         source "$PLANNING_SETTINGS_FILE"
       fi

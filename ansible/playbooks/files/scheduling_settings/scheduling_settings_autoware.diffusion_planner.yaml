@@ -1,0 +1,68 @@
+scheduling_settings:
+  # processes to run on P core
+  - process:
+      name: (.*component_container.*|.*hesai_ros_wrapper_node)
+      node: (pointcloud_container|hesai_ros_wrapper_node)
+      ns: /sensing/lidar.*
+    settings:
+      cpu: 0-9,11-15
+  - process:
+      name: .*component_container.*
+      node: pointcloud_container
+      ns: /
+    settings:
+      cpu: 0-15
+
+  # processes to run on E core
+  - process:
+      name: .*component_container.*
+      node: control_container
+    settings:
+      cpu: 16-23
+  - process:
+      name: .*duplicated_node_checker_node.*
+    settings:
+      cpu: 16-23
+  - process:
+      name: .*topic_state_monitor_node.*
+    settings:
+      cpu: 16-23
+  - process:
+      name: .*component_container.*
+      node: container
+      ns: .*component_state_monitor.*
+    settings:
+      cpu: 16-23
+  - process:
+      name: .*component_container.*
+      node: container
+      ns: .*adapi.*
+    settings:
+      cpu: 16-23
+  - process:
+      name: .*awapi_awiv_adapter.*
+    settings:
+      cpu: 16-23
+  - process:
+      name: .*component_container.*
+      node: internal_api_relay_container
+      ns: .*autoware_api.*
+    settings:
+      cpu: 16-23
+  - process:
+      name: .*component_container.*
+      node: autoware_iv_adaptor
+      ns: /autoware_api/external
+    settings:
+      cpu: 16-23
+  - process:
+      name: .*component_container.*
+      node: container
+      ns: /autoware_api/external/rtc_controller
+    settings:
+      cpu: 16-23
+  - process:
+      name: .*python3.*
+      node: rosbridge_websocket
+    settings:
+      cpu: 16-23
