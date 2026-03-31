@@ -4,14 +4,11 @@
 set -e
 
 # Default values
-MAP_PATH="$HOME/autoware_map/sample-map-planning"
-RUN_SIMULATOR=false
 CLEAN_BUILD=false
 ROSDEP_RUN=false
 REMOTE_PRODUCT=""
 REMOTE_BRANCH=""
 LOCAL_PRODUCT_PATH=""
-SOURCE_MODE=false
 
 # Display help information
 show_help() {
@@ -23,38 +20,50 @@ show_help() {
     echo "  --branch BRANCH          Branch to checkout for remote repo (default: repo default)"
     echo "  --clean|-c               Clean build (removes src/, build/, install/) before building"
     echo "  --rosdep                 Run rosdep install before building"
-    echo "  --map PATH               Set the map path (default: $MAP_PATH)"
-    echo "  --vehicle MODEL          Set the vehicle model (default: set in defaults.env)"
-    echo "  --sensor MODEL           Set the sensor model (default: set in defaults.env)"
-    echo "  --run|-r                 Run the simulator after building"
-    echo "  --source-mode|--only-run Only run the simulator (skip build, local repo only)"
     echo "  --help|-h                Display this help message"
     echo ""
     echo "Examples:"
     echo "  $0 --remote xx1 --branch main --clean --rosdep"
-    echo "  $0 --local /path/to/local/repo --run"
-    echo "  $0 --local /path/to/local/repo --source-mode"
+    echo "  $0 --local /path/to/local/repo"
     echo ""
 }
 
 # Source ROS and sync version
 source_setup() {
-    # Source ROS Humble setup
-    if [ -f "/opt/ros/humble/setup.bash" ]; then
+    # Source ROS Humble or Jazzy setup
+    if [ -f "/opt/ros/jazzy/setup.bash" ]; then
+        # shellcheck disable=SC1091
+        source /opt/ros/jazzy/setup.bash
+    elif [ -f "/opt/ros/humble/setup.bash" ]; then
+        # shellcheck disable=SC1091
         source /opt/ros/humble/setup.bash
     else
-        echo "ROS Humble setup.bash not found. Please make sure ROS Humble is installed."
+        echo "ROS not found. Please make sure ROS Humble or Jazzy is installed."
         exit 1
     fi
 
-    #check sync version in .release_info.yaml
-    sync_version=$(yq -r '.parent_repository.sync_version' .release_info.yaml)
-    # check if sync version is installed in ~/.pilot-auto/$version
-    if [ -f ~/.pilot-auto/"$sync_version"/install/setup.bash ]; then
+    release_info_file="$PRODUCT_PATH/.release_info.yaml"
+
+    # check sync version in .release_info.yaml
+    sync_version=$(yq -r '.parent_repository.sync_version' "$release_info_file")
+    if [ -z "$sync_version" ]; then
+        echo "Error: Could not determine sync version from $release_info_file"
+        exit 1
+    fi
+    if [ -f "$HOME/.pilot-auto/$ROS_DISTRO/$sync_version/install/setup.bash" ]; then
+        # check if sync version is installed in ~/.pilot-auto/$ROS_DISTRO/$sync_version
         echo "Sync version $sync_version is installed. Proceeding..."
-        source ~/.pilot-auto/"$sync_version"/install/setup.bash
+
+        VANILLA_DIR="$HOME/.pilot-auto/$ROS_DISTRO/$sync_version"
+        source "$VANILLA_DIR/install/setup.bash"
+    elif [ -f "$HOME/.pilot-auto/$sync_version/install/setup.bash" ] && [ "$ROS_DISTRO" = "humble" ]; then
+        # backward compatibility for old directory structure
+        echo "Sync version $sync_version is installed in the old directory structure. Proceeding..."
+
+        VANILLA_DIR="$HOME/.pilot-auto/$sync_version"
+        source "$VANILLA_DIR/install/setup.bash"
     else
-        echo "Sync version $sync_version is not installed. Please install base pilot auto first."
+        echo "Sync version $sync_version is not installed. Please install vanilla pilot auto first."
         exit 1
     fi
 
@@ -64,9 +73,10 @@ source_setup() {
     fi
 }
 
-# Import repositories
+# Import base=false repositories
 import_repos() {
     mkdir -p src/
+
     tmp_product_repos=$(mktemp)
     yq e '.repositories | with_entries(select(.value.base == false))' autoware.repos |
         yq e '{"repositories": .}' - >"$tmp_product_repos"
@@ -108,19 +118,23 @@ build_workspace() {
         rosdep install -y --from-paths src --ignore-src --rosdistro "$ROS_DISTRO"
     fi
     echo "Building packages..."
-    colcon build --merge-install --cmake-args -DCMAKE_BUILD_TYPE=Release
+    # products may have some packages that fail to build (e.g. packages not used in the main ECU)
+    # we continue on error and then build autoware_launch separately to ensure it gets built
+    colcon build --merge-install --cmake-args -DCMAKE_BUILD_TYPE=Release --continue-on-error || true
+    colcon build --merge-install --cmake-args -DCMAKE_BUILD_TYPE=Release --packages-select autoware_launch
     source install/setup.bash
     echo "Build completed."
 }
 
-# Run the simulator
-run_simulator() {
-    echo "Launching the simulator with:"
-    echo "  Map path: $MAP_PATH"
-    echo "  Vehicle model: $VEHICLE_MODEL"
-    echo "  Sensor model: $SENSOR_MODEL"
+# Print the simulator launch guide command
+print_simulator_guide_command() {
+    source defaults.env
+    MAP_PATH="$HOME/autoware_map/sample-map-planning"
 
-    ros2 launch autoware_launch planning_simulator.launch.xml map_path:="$MAP_PATH" vehicle_model:="$VEHICLE_MODEL" sensor_model:="$SENSOR_MODEL"
+    echo "Simulator launch command (from a fresh terminal):"
+    echo ""
+    echo "source $PRODUCT_PATH/install/setup.bash"
+    echo "ros2 launch autoware_launch planning_simulator.launch.xml map_path:=\"$MAP_PATH\" vehicle_model:=\"$VEHICLE_MODEL\" sensor_model:=\"$SENSOR_MODEL\""
 }
 
 # Parse command line arguments
@@ -159,29 +173,6 @@ while [ "$#" -gt 0 ]; do
         ROSDEP_RUN=true
         shift
         ;;
-    --map)
-        shift
-        MAP_PATH="$1"
-        shift
-        ;;
-    --vehicle)
-        shift
-        VEHICLE_MODEL="$1"
-        shift
-        ;;
-    --sensor)
-        shift
-        SENSOR_MODEL="$1"
-        shift
-        ;;
-    --run | -r)
-        RUN_SIMULATOR=true
-        shift
-        ;;
-    --source-mode | --only-run)
-        SOURCE_MODE=true
-        shift
-        ;;
     --help | -h)
         show_help
         exit 0
@@ -201,13 +192,6 @@ if [ -z "$REMOTE_PRODUCT" ] && [ -z "$LOCAL_PRODUCT_PATH" ]; then
     exit 1
 fi
 
-# --source-mode/--only-run is only valid for local repo
-if [ "$SOURCE_MODE" = true ] && [ -n "$REMOTE_PRODUCT" ]; then
-    echo "Error: --source-mode/--only-run can only be used with --local."
-    show_help
-    exit 1
-fi
-
 # Handle remote product logic
 if [ -n "$REMOTE_PRODUCT" ]; then
     REMOTE_REPO="https://github.com/tier4/pilot-auto.${REMOTE_PRODUCT}.git"
@@ -216,7 +200,7 @@ if [ -n "$REMOTE_PRODUCT" ]; then
     if [ -n "$REMOTE_BRANCH" ]; then
         git clone --branch "$REMOTE_BRANCH" --single-branch "$REMOTE_REPO" "$CLONE_DIR"
     else
-        git clone "$REMOTE_REPO" "$CLONE_DIR"
+        git clone --single-branch "$REMOTE_REPO" "$CLONE_DIR"
     fi
     PRODUCT_PATH="$CLONE_DIR"
     echo "Cloned remote repo. Using PRODUCT_PATH: $PRODUCT_PATH"
@@ -235,31 +219,13 @@ cd "$PRODUCT_PATH" || {
     echo "Failed to change to directory $PRODUCT_PATH"
     exit 1
 }
-source defaults.env
 
 # Source environment
 source_setup
 
-# If --source-mode/--only-run, skip build and just run
-if [ "$SOURCE_MODE" = true ]; then
-    if [ ! -f "install/setup.bash" ]; then
-        echo "Error: In source mode, could not find install/setup.bash. Please build the workspace first."
-        exit 1
-    fi
-    run_simulator
-    exit 0
-fi
-
 # Build the workspace
 build_workspace
 
-# Optionally run the simulator
-if [ "$RUN_SIMULATOR" = true ]; then
-    run_simulator
-elif [ -n "$REMOTE_PRODUCT" ] && [ "$SOURCE_MODE" = false ]; then
-    echo ""
-    echo "Remote product was built in: $PRODUCT_PATH"
-    echo "To run the simulator later, use:"
-    echo "  $0 --local $PRODUCT_PATH --source-mode"
-    echo "(You may also add --map, --vehicle, or --sensor options as needed.)"
-fi
+echo ""
+echo "Workspace was built in: $PRODUCT_PATH"
+print_simulator_guide_command
