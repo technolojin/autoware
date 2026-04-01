@@ -105,9 +105,15 @@ artifacts:
         from: autoware-build
         workdir: /home/autoware/pilot-auto
         user: autoware
-      output_rootfs_image:
-        from: ecu-system-setup
-        persistent_file_path: /home/autoware/pilot-auto/.webauto-ci/main/ecu-system-setup/persistents.txt
+      output_ota_image:
+        annotations:
+          vnd.tier4.pilot-auto.platform: vanilla
+        image_payloads:
+          - from: ecu-system-setup
+            exclude_config: ./ota/extra_excludes.txt
+            sys_configs:
+              - ecu_id: autoware
+                sys_config: ./ota/autoware_sys_config.yaml
       output_installer_image:
         from: ecu-system-setup
         type: iso
@@ -847,7 +853,7 @@ release:
   components:
     - name: autoware
       deployment:
-        type: rootfs
+        type: ota_image
         artifact: main
       alternative_deployments:
         - type: installer
