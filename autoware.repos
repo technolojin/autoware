@@ -277,6 +277,11 @@ repositories:
     url: https://github.com/PickNikRobotics/generate_parameter_library.git
     version: 0.6.0
     base: true
+  vendor/rosbag2:
+    type: git
+    url: https://github.com/tier4/rosbag2.git
+    version: tier4/humble
+    base: false
   rclcpp:  # Based stable version, the fix-patch for service in initialization and the glog feature and the fix-patch for loading node in container is added
     labels: [main]
     type: git
