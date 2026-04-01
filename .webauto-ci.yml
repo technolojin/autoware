@@ -1095,6 +1095,7 @@ simulations:
             version: "2.3"
       parameters:
         play_rate: "0.125"
+        enable_analysis: "false"
 
   - name: localization_without_gpu_sensing
     type: localization
@@ -1113,6 +1114,7 @@ simulations:
             version: "2.3"
       parameters:
         play_rate: "0.125"
+        enable_analysis: "false"
 
   - name: obstacle_segmentation
     type: obstacle_segmentation
@@ -1158,6 +1160,7 @@ simulations:
       parameters:
         remap_arg: /sensing/lidar/concatenated/pointcloud
         use_empty_dynamic_object_publisher: "true"
+        play_rate: "0.125"
         play_delay: "150"
         traffic_light_recognition/fusion_only: "false"
       pre_tasks:
@@ -1231,8 +1234,11 @@ simulations:
       parameters:
         use_traffic_light_recognition: "false"
         play_rate: "0.125"
+        play_delay: "50"
         vehicle_model: j6_gen2
         sensor_model: aip_x2_gen2
+        remap_profile: x2_perception
+        publish_topic_from_rosbag: /sensing/camera/camera0/camera_info,/sensing/camera/camera1/camera_info,/sensing/camera/camera2/camera_info,/sensing/camera/camera3/camera_info,/sensing/camera/camera4/camera_info,/sensing/camera/camera5/camera_info,/sensing/camera/camera6/camera_info,/sensing/camera/camera7/camera_info,/sensing/camera/camera8/camera_info,/sensing/camera/camera9/camera_info,/sensing/camera/camera10/camera_info
       pre_tasks:
         - exec: rm -f /opt/autoware/mlmodels/centerpoint/*engine && rm -f /opt/autoware/mlmodels/centerpoint/*json && source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_lidar_centerpoint lidar_centerpoint.launch.xml model_name:=centerpoint model_path:=/opt/autoware/mlmodels/centerpoint model_param_path:=$(ros2 pkg prefix autoware_launch --share)/config/perception/object_recognition/detection/lidar_model/centerpoint.param.yaml build_only:=true
           mounts:
@@ -1286,10 +1292,10 @@ simulations:
         use_traffic_light_recognition: "false"
         evaluation_detection_topic_regex: None
         evaluation_prediction_topic_regex: None
-        play_rate: "0.1"
+        play_rate: "0.2"
         play_delay: "50"
         remap_profile: x2_perception_all
-        with_2d_detector: "true"
+        with_optional_nodes: 2d_detector
         yolox_model_path: /opt/autoware/mlmodels/yolox/yolox-sPlus-T4-960x960-debris.onnx
         yolox_label_path: /opt/autoware/mlmodels/yolox/label.txt
         yolox_color_map_path: /opt/autoware/mlmodels/yolox/semseg_color_map.csv
@@ -1298,6 +1304,7 @@ simulations:
         camera_ids: 0,1,2,3,4,5
 
         publish_topic_from_rosbag: /sensing/camera/camera0/camera_info,/sensing/camera/camera1/camera_info,/sensing/camera/camera2/camera_info,/sensing/camera/camera3/camera_info,/sensing/camera/camera4/camera_info,/sensing/camera/camera5/camera_info,/sensing/camera/camera6/camera_info,/sensing/camera/camera7/camera_info,/sensing/camera/camera8/camera_info,/sensing/camera/camera9/camera_info,/sensing/camera/camera10/camera_info
+        enable_analysis: "false"
       volumes:
         - name: model
           path: /opt/autoware/mlmodels/centerpoint
