@@ -123,7 +123,7 @@ boot_shutdown_service_config_file: boot_shutdown_service/boot_shutdown.param.log
 boot_shutdown_service_script_src_path: boot_shutdown_service/shutdown.logging.sh
 
 # mot_env_setup
-mot_release_tag: 4.4.0-20260319
+mot_release_tag: 4.4.0-20260401
 mot_run_command: "pactl set-sink-volume $(pactl list sinks | awk '/Name: / && /YunChen_Technology_USB_Composite_Device/ {print $2}') 100% && /opt/mot/build/MaintenanceOperationTool-{{ mot_release_tag }}.AppImage"
 replace_install_setup_bash: false
 bridge_ip_address: 127.0.0.1
