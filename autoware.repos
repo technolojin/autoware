@@ -243,7 +243,7 @@ repositories:
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
     branch: main
-    version: 0424cbe8ecbdbfadca2e934ca5f22a787d2b3be1
+    version: a64495f23bf38dbad1294046162e6156f24ece3f
     base: false
   description/vehicle/j6_gen2_description:
     labels: [mainecu, logging]
