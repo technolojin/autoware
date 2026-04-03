@@ -1,0 +1,4 @@
+enableBorderCheck: false
+Vehicle:
+  - name: status
+    diag_paths: []

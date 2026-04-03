@@ -79,6 +79,7 @@
     - { role: autoware.ecu_system_setup.param_diff_uploader }
     - { role: autoware.ecu_system_setup.tier4_service_standby_wait }
     - { role: autoware.ecu_system_setup.disable_services }
+    - { role: autoware.ecu_system_setup.install_status_dashboard }
 
 - name: Conditionally run cert setup
   hosts: localhost

@@ -1,0 +1,8 @@
+Mission:
+  - name: route
+    diag_paths:
+      - /planning/001-topic_status/route
+Scenario:
+  - name: trajectory
+    diag_paths:
+      - /planning/001-topic_status/trajectory

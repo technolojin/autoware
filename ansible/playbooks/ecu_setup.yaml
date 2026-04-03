@@ -59,6 +59,7 @@
     - { role: divert_jetpack_static_lib }
     # TODO: This is temporary change. Delete when applied https://github.com/autowarefoundation/autoware/pull/6475
     - { role: delete_ccache_duplicates }
+    - { role: autoware.ecu_system_setup.install_status_dashboard_kiosk }
 
 - name: Conditionally run cert setup
   hosts: localhost

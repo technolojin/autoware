@@ -1,0 +1,116 @@
+LiDAR:
+  - name: left_upper
+    diag_paths:
+      - /sensing/lidar/left_upper/connection
+      - /sensing/lidar/left_upper/ptp
+  - name: left_lower
+    diag_paths:
+      - /sensing/lidar/left_lower/connection
+      - /sensing/lidar/left_lower/ptp
+  - name: right_upper
+    diag_paths:
+      - /sensing/lidar/right_upper/connection
+      - /sensing/lidar/right_upper/ptp
+  - name: right_lower
+    diag_paths:
+      - /sensing/lidar/right_lower/connection
+      - /sensing/lidar/right_lower/ptp
+  - name: front_upper
+    diag_paths:
+      - /sensing/lidar/front_upper/connection
+      - /sensing/lidar/front_upper/ptp
+  - name: front_lower
+    diag_paths:
+      - /sensing/lidar/front_lower/connection
+      - /sensing/lidar/front_lower/ptp
+  - name: rear_upper
+    diag_paths:
+      - /sensing/lidar/rear_upper/connection
+      - /sensing/lidar/rear_upper/ptp
+  - name: rear_lower
+    diag_paths:
+      - /sensing/lidar/rear_lower/connection
+      - /sensing/lidar/rear_lower/ptp
+Camera:
+  - name: "0"
+    diag_paths:
+      - /sensing/camera/0/connection
+      - /sensing/camera/0/sync
+  - name: "1"
+    diag_paths:
+      - /sensing/camera/1/connection
+      - /sensing/camera/1/sync
+  - name: "2"
+    diag_paths:
+      - /sensing/camera/2/connection
+      - /sensing/camera/2/sync
+  - name: "3"
+    diag_paths:
+      - /sensing/camera/3/connection
+      - /sensing/camera/3/sync
+  - name: "4"
+    diag_paths:
+      - /sensing/camera/4/connection
+      - /sensing/camera/4/sync
+  - name: "5"
+    diag_paths:
+      - /sensing/camera/5/connection
+      - /sensing/camera/5/sync
+  - name: "6"
+    diag_paths:
+      - /sensing/camera/6/connection
+      - /sensing/camera/6/sync
+  - name: "7"
+    diag_paths:
+      - /sensing/camera/7/connection
+      - /sensing/camera/7/sync
+  - name: "8"
+    diag_paths:
+      - /sensing/camera/8/connection
+      - /sensing/camera/8/sync
+    optional: true
+  - name: "9"
+    diag_paths:
+      - /sensing/camera/9/connection
+      - /sensing/camera/9/sync
+    optional: true
+  - name: "10"
+    diag_paths:
+      - /sensing/camera/10/connection
+      - /sensing/camera/10/sync
+    optional: true
+Radar:
+  - name: front_left
+    diag_paths:
+      - /sensing/radar/front_left/connection
+    optional: true
+  - name: front_right
+    diag_paths:
+      - /sensing/radar/front_right/connection
+    optional: true
+  - name: rear_left
+    diag_paths:
+      - /sensing/radar/rear_left/connection
+    optional: true
+  - name: rear_right
+    diag_paths:
+      - /sensing/radar/rear_right/connection
+    optional: true
+  - name: front_center
+    diag_paths:
+      - /sensing/radar/front_center/connection
+    optional: false
+  - name: rear_center
+    diag_paths:
+      - /sensing/radar/rear_center/connection
+    optional: false
+IMU:
+  - name: main
+    diag_paths:
+      - /sensing/imu/001-connection-error
+    optional: true
+GNSS:
+  - name: main
+    diag_paths:
+      - /sensing/gnss/001-connection-error
+    optional: true

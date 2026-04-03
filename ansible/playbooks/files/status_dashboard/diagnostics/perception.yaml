@@ -1,0 +1,14 @@
+Recognition:
+  - name: objects
+    diag_paths:
+      - /perception/001-topic_status/objects
+  - name: pointcloud
+    diag_paths:
+      - /perception/001-topic_status/pointcloud
+  - name: perception_rois
+    diag_paths:
+      - /perception/topic_state_monitor/perception_ecu
+Traffic light:
+  - name: traffic_signals
+    diag_paths:
+      - /perception/001-topic_status/traffic_signals

@@ -1,0 +1,58 @@
+links:
+  - sourceNodeId: sensors
+    sourcePortId: out
+    targetNodeId: sensing
+    targetPortId: sensors-in
+    diagPathList:
+      - /localization/001-topic_status/tf-error
+  - sourceNodeId: sensing
+    sourcePortId: perception-out
+    targetNodeId: perception
+    targetPortId: perception-in
+    diagPathList:
+      - /localization/001-topic_status/tf-error
+  - sourceNodeId: sensing
+    sourcePortId: loc-out
+    targetNodeId: localization
+    targetPortId: sensing-in
+    diagPathList:
+      - /localization/001-topic_status/tf-error
+  - sourceNodeId: mapData
+    sourcePortId: out
+    targetNodeId: localization
+    targetPortId: map-in
+    diagPathList:
+      - /map/001-topic_status/vector_map
+  - sourceNodeId: perception
+    sourcePortId: out
+    targetNodeId: planning
+    targetPortId: planning-in
+    diagPathList:
+      - /localization/001-topic_status/tf-error
+  - sourceNodeId: planning
+    sourcePortId: out
+    targetNodeId: control
+    targetPortId: planning-in
+    diagPathList:
+      - /planning/001-topic_status/route
+  - sourceNodeId: control
+    sourcePortId: control-out
+    targetNodeId: vehicleInterface
+    targetPortId: control-in
+    diagPathList:
+      - /control/002-topic_status/control_command
+  - sourceNodeId: vehicleInterface
+    sourcePortId: vehicle-out
+    targetNodeId: vehicle
+    targetPortId: in
+    diagPathList: []
+  - sourceNodeId: vehicle
+    sourcePortId: out
+    targetNodeId: vehicleInterface
+    targetPortId: vehicle-in
+    diagPathList: []
+  - sourceNodeId: vehicleInterface
+    sourcePortId: localization-out
+    targetNodeId: localization
+    targetPortId: vehicle-in
+    diagPathList: []

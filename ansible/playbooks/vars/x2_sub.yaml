@@ -151,6 +151,8 @@ rsync_target_host_ip: 192.168.20.71
 # set_autoware_env
 vehicle_id: INVALID_VEHICLE_ID
 
+# status dashboard
+status_dashboard_kiosk_browser_url: http://192.168.20.71:3000
 # anomaly_sentinel
 anomaly_sentinel_check_commands_list_append:
   - output_file_name: nvidia_smi

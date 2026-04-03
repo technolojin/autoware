@@ -1,0 +1,7 @@
+Vehicle Status:
+  - name: velocity
+    diag_paths:
+      - /system/015-velocity-status
+  - name: steering
+    diag_paths:
+      - /system/016-steering-status

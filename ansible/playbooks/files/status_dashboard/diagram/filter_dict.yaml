@@ -1,0 +1,219 @@
+# Filter dictionary for stream API
+# Add paths to include in the stream
+dict:
+  # heartbeat
+  - path: /foolproof/logging/heartbeat
+    ecu: logging
+    component: system
+  - path: /foolproof/perception1/heartbeat
+    ecu: perception1
+    component: system
+  - path: /foolproof/perception2/heartbeat
+    ecu: perception2
+    component: system
+
+  # node_alive
+  - path: /foolproof/main/autoware_node_alive
+    ecu: main
+    component: all
+  - path: /foolproof/main/autoware_system_node_alive
+    ecu: main
+    component: system
+  - path: /foolproof/perception1/recognition_node_alive
+    ecu: perception1
+    component: perception
+  - path: /foolproof/perception2/recognition_node_alive
+    ecu: perception2
+    component: perception
+  - path: /foolproof/addon/recognition_node_alive
+    ecu: addon
+    component: perception
+  - path: /foolproof/addon/camera_driver_node_alive
+    ecu: addon
+    component: sensing
+
+  # critical component status
+  - path: /localization/001-topic_status/tf-error
+    ecu: main
+    component: localization
+  - path: /control/002-topic_status/control_command
+    ecu: main
+    component: control
+  - path: /planning/001-topic_status/route
+    ecu: main
+    component: planning
+  - path: /map/001-topic_status/vector_map
+    ecu: main
+    component: map
+
+  # perception
+  - path: /perception/001-topic_status/objects
+    ecu: main
+    component: perception
+  - path: /perception/001-topic_status/pointcloud
+    ecu: main
+    component: perception
+  - path: /perception/001-topic_status/traffic_signals
+    ecu: main
+
+  # sensing
+  - path: /sensing/lidar/left_upper/connection
+    ecu: main
+    component: sensing
+  - path: /sensing/lidar/left_upper/ptp
+    ecu: main
+    component: sensing
+  - path: /sensing/lidar/left_lower/connection
+    ecu: main
+    component: sensing
+  - path: /sensing/lidar/left_lower/ptp
+    ecu: main
+    component: sensing
+  - path: /sensing/lidar/right_upper/connection
+    ecu: main
+    component: sensing
+  - path: /sensing/lidar/right_upper/ptp
+    ecu: main
+    component: sensing
+  - path: /sensing/lidar/right_lower/connection
+    ecu: main
+    component: sensing
+  - path: /sensing/lidar/right_lower/ptp
+    ecu: main
+    component: sensing
+  - path: /sensing/lidar/front_upper/connection
+    ecu: main
+    component: sensing
+  - path: /sensing/lidar/front_upper/ptp
+    ecu: main
+    component: sensing
+  - path: /sensing/lidar/front_lower/connection
+    ecu: main
+    component: sensing
+  - path: /sensing/lidar/front_lower/ptp
+    ecu: main
+    component: sensing
+  - path: /sensing/lidar/rear_upper/connection
+    ecu: main
+    component: sensing
+  - path: /sensing/lidar/rear_upper/ptp
+    ecu: main
+    component: sensing
+  - path: /sensing/lidar/rear_lower/connection
+    ecu: main
+    component: sensing
+  - path: /sensing/lidar/rear_lower/ptp
+    ecu: main
+    component: sensing
+
+  # Radar
+  - path: /sensing/radar/front_center/connection
+    ecu: main
+    component: sensing
+  - path: /sensing/radar/rear_center/connection
+    ecu: main
+    component: sensing
+
+  # gnss
+  - path: /sensing/gnss/001-connection
+    ecu: main
+    component: sensing
+
+  # camera
+  - path: /sensing/camera/0/connection
+    ecu: perception1
+    component: sensing
+  - path: /sensing/camera/0/sync
+    ecu: perception1
+    component: sensing
+  - path: /sensing/camera/1/connection
+    ecu: perception1
+    component: sensing
+  - path: /sensing/camera/1/sync
+    ecu: perception1
+    component: sensing
+  - path: /sensing/camera/2/connection
+    ecu: perception1
+    component: sensing
+  - path: /sensing/camera/2/sync
+    ecu: perception1
+    component: sensing
+  - path: /sensing/camera/3/connection
+    ecu: perception1
+    component: sensing
+  - path: /sensing/camera/3/sync
+    ecu: perception1
+    component: sensing
+  - path: /sensing/camera/4/connection
+    ecu: perception2
+    component: sensing
+  - path: /sensing/camera/4/sync
+    ecu: perception2
+    component: sensing
+  - path: /sensing/camera/5/connection
+    ecu: perception2
+    component: sensing
+  - path: /sensing/camera/5/sync
+    ecu: perception2
+    component: sensing
+  - path: /sensing/camera/6/connection
+    ecu: perception2
+    component: sensing
+  - path: /sensing/camera/6/sync
+    ecu: perception2
+    component: sensing
+  - path: /sensing/camera/7/connection
+    ecu: perception2
+    component: sensing
+  - path: /sensing/camera/7/sync
+    ecu: perception2
+    component: sensing
+  - path: /sensing/camera/8/connection
+    ecu: addon
+    component: sensing
+  - path: /sensing/camera/9/connection
+    ecu: addon
+    component: sensing
+  - path: /sensing/camera/9/sync
+    ecu: addon
+    component: sensing
+  - path: /sensing/camera/10/connection
+    ecu: addon
+    component: sensing
+  - path: /sensing/camera/10/sync
+    ecu: addon
+    component: sensing
+
+  # vehicle
+  - path: /system/015-velocity-status
+    ecu: main
+    component: vehicle
+  - path: /system/016-steering-status
+    ecu: main
+    component: vehicle
+
+  # perception
+  - path: /perception/topic_state_monitor/perception_ecu
+    ecu: main
+    component: perception
+
+  # planning
+  - path: /planning/001-topic_status/trajectory
+    ecu: main
+    component: planning
+
+  # network
+  - path: /system/012-fms_connection
+    ecu: main
+    component: network
+
+  # foolproof
+  - path: /foolproof/main/update_status_ota
+    ecu: main
+    component: foolproof
+  - path: /foolproof/main/update_status_unrecoverable
+    ecu: main
+    component: foolproof
+  - path: /foolproof/main/update_status_map
+    ecu: main
+    component: foolproof

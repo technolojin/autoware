@@ -268,3 +268,9 @@ metric_agent_wait_for_services:
   - tier4_system_standby_wait.target
 rosbag_watchdog_wait_for_services:
   - tier4_autoware_standby_wait.target
+
+# status-dashboard
+status_dashboard_custom_config_yaml_dir: files/status_dashboard/
+status_dashboard_repo_version: v0.1.1
+status_dashboard_service_after: foxglove-bridge.service tier4_autoware_standby_wait.target
+status_dashboard_service_requires: foxglove-bridge.service tier4_autoware_standby_wait.target

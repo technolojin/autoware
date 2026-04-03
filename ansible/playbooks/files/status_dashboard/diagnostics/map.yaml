@@ -1,0 +1,5 @@
+categoryName: Map Loader
+items:
+  - name: vector_map
+    diag_paths:
+      - /map/001-topic_status/vector_map

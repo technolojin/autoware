@@ -1,0 +1,5 @@
+categoryName: EKF Localizer
+items:
+  - name: tf
+    diag_paths:
+      - /localization/001-topic_status/tf-error

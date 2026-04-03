@@ -1,0 +1,5 @@
+Follower: []
+CommandGate:
+  - name: control_command
+    diag_paths:
+      - /control/002-topic_status/control_command

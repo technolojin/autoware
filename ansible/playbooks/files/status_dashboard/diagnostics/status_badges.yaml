@@ -1,0 +1,20 @@
+# Status badges configuration for header display
+# Each badge monitors a specific diagnostic path and displays when status is false (error state)
+
+badges:
+  - key: network
+    label: FMS connection lost
+    path: /system/012-fms_connection
+    description: FMS connection is lost. please check the network connection.
+  - key: fms
+    label: FMS connection initializing...
+    path: /foolproof/main/update_status_unrecoverable
+    description: FMS connection is being established. please wait for the connection to complete.
+  - key: map
+    label: Map is updating...
+    path: /foolproof/main/update_status_map
+    description: Map is being updated. please wait for the update to complete.
+  - key: ota
+    label: OTA is processing...
+    path: /foolproof/main/update_status_ota
+    description: OTA is in progress. please wait for the update to complete.

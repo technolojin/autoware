@@ -1,0 +1,55 @@
+ecuSubItems:
+  - title: main
+    watch:
+      - type: heartbeat
+        path:
+          - name: /foolproof/main/heartbeat
+            optional: true
+      - type: node_alive
+        path:
+          - name: /foolproof/main/autoware_node_alive
+            optional: false
+          - name: /foolproof/main/autoware_system_node_alive
+            optional: false
+  - title: logging
+    watch:
+      - type: heartbeat
+        path:
+          - name: /foolproof/logging/heartbeat
+            optional: false
+      - type: node_alive
+        path:
+          - name: /foolproof/logging/autoware_node_alive
+            optional: true
+  - title: perception1
+    watch:
+      - type: heartbeat
+        path:
+          - name: /foolproof/perception1/heartbeat
+            optional: false
+      - type: node_alive
+        path:
+          - name: /foolproof/perception1/recognition_node_alive
+            optional: false
+  - title: perception2
+    watch:
+      - type: heartbeat
+        path:
+          - name: /foolproof/perception2/heartbeat
+            optional: false
+      - type: node_alive
+        path:
+          - name: /foolproof/perception2/recognition_node_alive
+            optional: false
+  - title: addon
+    watch:
+      - type: heartbeat
+        path:
+          - name: /foolproof/addon/heartbeat
+            optional: true
+      - type: node_alive
+        path:
+          - name: /foolproof/addon/recognition_node_alive
+            optional: false
+          - name: /foolproof/addon/camera_driver_node_alive
+            optional: false

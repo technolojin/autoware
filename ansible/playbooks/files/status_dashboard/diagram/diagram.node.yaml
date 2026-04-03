@@ -1,0 +1,116 @@
+nodes:
+  - id: sensing
+    name: Sensing
+    variant: sensing
+    width: 360
+    height: 480
+    position:
+      x: 10
+      y: 10
+    ports:
+      - id: perception-out
+        label: Out Perception
+        isInput: false
+        alignment: right
+      - id: loc-out
+        label: Out Loc
+        isInput: false
+        alignment: right
+  - id: perception
+    name: Perception
+    variant: perception
+    width: 360
+    height: 180
+    position:
+      x: 460
+      y: 10
+    ports:
+      - id: perception-in
+        label: In Perception
+        isInput: true
+        alignment: left
+      - id: out
+        label: Out
+        isInput: false
+        alignment: right
+  - id: planning
+    name: Planning
+    variant: planning
+    width: 360
+    height: 180
+    position:
+      x: 910
+      y: 10
+    ports:
+      - id: planning-in
+        label: In Planning
+        isInput: true
+        alignment: left
+      - id: out
+        label: Out
+        isInput: false
+        alignment: right
+  - id: control
+    name: Control
+    variant: control
+    width: 360
+    height: 180
+    position:
+      x: 1360
+      y: 10
+    ports:
+      - id: planning-in
+        label: In Planning
+        isInput: true
+        alignment: left
+      - id: vehicle-in
+        label: In Vehicle
+        isInput: true
+        alignment: bottom
+      - id: control-out
+        label: Out Control
+        isInput: false
+        alignment: bottom
+  - id: localization
+    name: Localization
+    variant: localization
+    width: 360
+    height: 125
+    position:
+      x: 460
+      y: 270
+    ports:
+      - id: map-in
+        label: In Map
+        isInput: true
+        alignment: bottom
+      - id: sensing-in
+        label: In Sensing
+        isInput: true
+        alignment: left
+  - id: mapData
+    name: Map Data
+    variant: map
+    width: 360
+    height: 125
+    position:
+      x: 460
+      y: 425
+    ports:
+      - id: out
+        label: Out
+        isInput: false
+        alignment: top
+  - id: vehicleInterface
+    name: Vehicle Interface
+    variant: vehicle_interface
+    width: 360
+    height: 280
+    position:
+      x: 1360
+      y: 270
+    ports:
+      - id: control-in
+        label: In Control
+        isInput: true
+        alignment: top
