@@ -79,6 +79,9 @@
     - { role: autoware.ecu_system_setup.param_diff_uploader }
     - { role: autoware.ecu_system_setup.tier4_service_standby_wait }
     - { role: autoware.ecu_system_setup.disable_services }
+    - role: autoware.ecu_system_setup.build_system_monitor
+      when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
+    - { role: autoware.ecu_system_setup.install_system_monitor }
     - { role: autoware.ecu_system_setup.install_status_dashboard }
 
 - name: Conditionally run cert setup

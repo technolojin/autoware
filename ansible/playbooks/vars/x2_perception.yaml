@@ -151,3 +151,6 @@ anomaly_sentinel_check_commands_list_append:
     script: nvidia_smi
     args: []
     description: NVIDIA GPU Information (nvidia-smi)
+
+# install_system_monitor
+system_monitor_param_file: system_monitor/system_monitor.x2-perception.param.yaml

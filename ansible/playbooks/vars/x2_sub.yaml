@@ -169,3 +169,16 @@ anomaly_sentinel_version_items_append:
     description: NVIDIA driver version (/proc/driver/nvidia/version)
     script: nvidia_driver_version
     args: []
+
+# Autoware Viewer Switcher
+autoware_viewer_switcher_add_to_favorites: true
+
+# x2_systemd_networkd
+x2_systemd_networkd_wait_online_interface_list: [enp5s0f0]
+x2_systemd_networkd_wait_online_timeout: 0
+x2_systemd_networkd_waiting_for_interface_list: [enp3s0, enp4s0]
+x2_systemd_networkd_waiting_for_interface_timeout: 0
+x2_systemd_networkd_carrier_only_interface_list: [enp3s0]
+
+# install_system_monitor
+system_monitor_param_file: system_monitor/system_monitor.x2-sub.param.yaml

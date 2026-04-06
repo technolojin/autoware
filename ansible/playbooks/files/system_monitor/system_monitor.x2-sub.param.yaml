@@ -1,0 +1,46 @@
+# This parameter overrides the default parameters in the autoware_system_monitor package.
+# For more details, check [here](https://github.com/autowarefoundation/autoware.universe/tree/main/system/autoware_system_monitor/docs/ros_parameters.md), please.
+
+# CPU Monitor
+cpu_monitor_config:
+  enabled: true
+
+# GPU Monitor
+gpu_monitor_config:
+  enabled: true
+
+# HDD Monitor
+hdd_monitor_config:
+  enabled: true
+  num_disks: 1
+  disks:
+    disk0:
+      name: /
+      temp_warn: 70.0
+      temp_error: 85.0
+      total_data_written_warn: 1386217472
+
+# MEM Monitor
+mem_monitor_config:
+  enabled: true
+
+# NET Monitor
+net_monitor_config:
+  enabled: true
+  devices: ["enp3s0", "enp4s0", "enp5s0f0", "enp5s0f1", "lo"]
+  enable_traffic_monitor: false
+
+# NTP Monitor
+#   Please note that if you want to use ntp_monitor, you must install the chrony package on the target ECU.
+#   However, this will affect time synchronization between multiple ECUs, so it is recommended to set it to false.
+ntp_monitor_config:
+  enabled: false
+
+# Process Monitor
+process_monitor_config:
+  enabled: true
+  num_of_procs: 40
+
+# Voltage Monitor
+voltage_monitor_config:
+  enabled: true
