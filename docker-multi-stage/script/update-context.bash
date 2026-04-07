@@ -43,14 +43,31 @@ function clone_packages() {
     mkdir -p "${prefix}" && xargs -a "${target}" -I {} bash -c 'cp -r {} ${1}/$(basename {})' -- "${prefix}"
 }
 
+# Split rosdep resolve output into apt and pip package files.
+# Usage: _split_rosdep_output <apt_file> <pip_file>
+function _split_rosdep_output() {
+    local apt_file="$1"
+    local pip_file="$2"
+    awk -v apt_file="${apt_file}" -v pip_file="${pip_file}" '
+    /^#/{installer=substr($0,2); next}
+    NF{
+      gsub(/ +/, "\n")
+      if (installer == "pip") print > pip_file
+      else print > apt_file
+    }
+    '
+    sort -u "${apt_file}" -o "${apt_file}" 2>/dev/null || touch "${apt_file}"
+    sort -u "${pip_file}" -o "${pip_file}" 2>/dev/null || touch "${pip_file}"
+}
+
 # TODO set rosdistro
 function generate_rosdep_depends() {
     prefix="${SRC_DIR}/${1}"
 
     unset AMENT_PREFIX_PATH
     unset ROS_PACKAGE_PATH
-    ROS_PACKAGE_PATH=${VCS_DIR} rosdep keys --ignore-src --from-paths "${prefix}" | xargs rosdep resolve --rosdistro humble | grep -v '^#' | sed 's/ \+/\n/g' | sort -u >"${PKG_DIR}/rosdep-build-${1}.txt"
-    ROS_PACKAGE_PATH=${VCS_DIR} rosdep keys --ignore-src --from-paths "${prefix}" -t exec | xargs rosdep resolve --rosdistro humble | grep -v '^#' | sed 's/ \+/\n/g' | sort -u >"${PKG_DIR}/rosdep-exec-${1}.txt"
+    ROS_PACKAGE_PATH=${VCS_DIR} rosdep keys --ignore-src --from-paths "${prefix}" | xargs rosdep resolve --rosdistro humble | _split_rosdep_output "${PKG_DIR}/rosdep-build-${1}.txt" "${PKG_DIR}/rosdep-pip-build-${1}.txt"
+    ROS_PACKAGE_PATH=${VCS_DIR} rosdep keys --ignore-src --from-paths "${prefix}" -t exec | xargs rosdep resolve --rosdistro humble | _split_rosdep_output "${PKG_DIR}/rosdep-exec-${1}.txt" "${PKG_DIR}/rosdep-pip-exec-${1}.txt"
 }
 
 # Check src directory exists.
