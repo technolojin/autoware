@@ -107,10 +107,10 @@ Radar:
 IMU:
   - name: main
     diag_paths:
-      - /sensing/imu/001-connection-error
-    optional: true
+      - /sensing/imu/001-connection
+    optional: false
 GNSS:
   - name: main
     diag_paths:
-      - /sensing/gnss/001-connection-error
-    optional: true
+      - /sensing/gnss/001-connection
+    optional: false

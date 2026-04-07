@@ -114,6 +114,11 @@ dict:
     ecu: main
     component: sensing
 
+  # imu
+  - path: /sensing/imu/001-connection
+    ecu: main
+    component: sensing
+
   # gnss
   - path: /sensing/gnss/001-connection
     ecu: main
