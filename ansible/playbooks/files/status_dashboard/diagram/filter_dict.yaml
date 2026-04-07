@@ -36,6 +36,9 @@ dict:
   - path: /localization/001-topic_status/tf-error
     ecu: main
     component: localization
+  - path: /localization/005-accuracy
+    ecu: main
+    component: localization
   - path: /control/002-topic_status/control_command
     ecu: main
     component: control
@@ -174,6 +177,9 @@ dict:
     ecu: perception2
     component: sensing
   - path: /sensing/camera/8/connection
+    ecu: addon
+    component: sensing
+  - path: /sensing/camera/8/sync
     ecu: addon
     component: sensing
   - path: /sensing/camera/9/connection

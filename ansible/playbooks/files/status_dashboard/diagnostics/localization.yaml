@@ -3,3 +3,6 @@ items:
   - name: tf
     diag_paths:
       - /localization/001-topic_status/tf-error
+  - name: accuracy
+    diag_paths:
+      - /localization/005-accuracy
