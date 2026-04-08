@@ -46,7 +46,7 @@ ecuSubItems:
       - type: heartbeat
         path:
           - name: /foolproof/addon/heartbeat
-            optional: true
+            optional: false
       - type: node_alive
         path:
           - name: /foolproof/addon/recognition_node_alive

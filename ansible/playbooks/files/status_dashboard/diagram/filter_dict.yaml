@@ -11,6 +11,9 @@ dict:
   - path: /foolproof/perception2/heartbeat
     ecu: perception2
     component: system
+  - path: /foolproof/addon/heartbeat
+    ecu: addon
+    component: system
 
   # node_alive
   - path: /foolproof/main/autoware_node_alive
