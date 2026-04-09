@@ -459,12 +459,12 @@ RUN --mount=type=bind,source=pkg/rosdep-exec-localization-mapping.txt,target=/au
   && xargs -a /autoware/rosdep-exec-api.txt apt-get install -y --no-install-recommends \
   && xargs -a /autoware/rosdep-exec-visualization.txt apt-get install -y --no-install-recommends \
   && xargs -a /autoware/rosdep-exec-simulation.txt apt-get install -y --no-install-recommends \
-  && if [ -s /autoware/rosdep-exec-localization-mapping.txt ]; then pip install --no-cache-dir -r /autoware/rosdep-exec-localization-mapping.txt; fi \
-  && if [ -s /autoware/rosdep-exec-planning-control.txt ]; then pip install --no-cache-dir -r /autoware/rosdep-exec-planning-control.txt; fi \
-  && if [ -s /autoware/rosdep-exec-vehicle-system.txt ]; then pip install --no-cache-dir -r /autoware/rosdep-exec-vehicle-system.txt; fi \
-  && if [ -s /autoware/rosdep-exec-api.txt ]; then pip install --no-cache-dir -r /autoware/rosdep-exec-api.txt; fi \
-  && if [ -s /autoware/rosdep-exec-visualization.txt ]; then pip install --no-cache-dir -r /autoware/rosdep-exec-visualization.txt; fi \
-  && if [ -s /autoware/rosdep-exec-simulation.txt ]; then pip install --no-cache-dir -r /autoware/rosdep-exec-simulation.txt; fi \
+  && if [ -s /autoware/rosdep-pip-exec-localization-mapping.txt ]; then pip install --no-cache-dir -r /autoware/rosdep-pip-exec-localization-mapping.txt; fi \
+  && if [ -s /autoware/rosdep-pip-exec-planning-control.txt ]; then pip install --no-cache-dir -r /autoware/rosdep-pip-exec-planning-control.txt; fi \
+  && if [ -s /autoware/rosdep-pip-exec-vehicle-system.txt ]; then pip install --no-cache-dir -r /autoware/rosdep-pip-exec-vehicle-system.txt; fi \
+  && if [ -s /autoware/rosdep-pip-exec-api.txt ]; then pip install --no-cache-dir -r /autoware/rosdep-pip-exec-api.txt; fi \
+  && if [ -s /autoware/rosdep-pip-exec-visualization.txt ]; then pip install --no-cache-dir -r /autoware/rosdep-pip-exec-visualization.txt; fi \
+  && if [ -s /autoware/rosdep-pip-exec-simulation.txt ]; then pip install --no-cache-dir -r /autoware/rosdep-pip-exec-simulation.txt; fi \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY --from=localization-mapping-build /opt/autoware /opt/autoware
