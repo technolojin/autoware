@@ -1,4 +1,4 @@
 autoware/universe/map
-autoware/universe/launch/tier4_map_launch
+autoware/launcher/tier4_universe_launch/tier4_map_launch
 autoware/universe/localization
-autoware/universe/launch/tier4_localization_launch
+autoware/launcher/tier4_universe_launch/tier4_localization_launch

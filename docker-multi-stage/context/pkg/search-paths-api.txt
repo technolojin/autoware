@@ -1,1 +1,2 @@
-autoware/universe/launch/tier4_autoware_api_launch
+autoware/launcher/tier4_universe_launch/tier4_autoware_api_launch
+autoware/ad_api_adaptor

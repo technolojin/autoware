@@ -1,4 +1,4 @@
 autoware/universe/planning
-autoware/universe/launch/tier4_planning_launch
+autoware/launcher/tier4_universe_launch/tier4_planning_launch
 autoware/universe/control
-autoware/universe/launch/tier4_control_launch
+autoware/launcher/tier4_universe_launch/tier4_control_launch

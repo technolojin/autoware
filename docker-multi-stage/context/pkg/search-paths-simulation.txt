@@ -1,2 +1,2 @@
-autoware/universe/launch/tier4_simulator_launch
+autoware/launcher/tier4_universe_launch/tier4_simulator_launch
 autoware/universe/vehicle/autoware_raw_vehicle_cmd_converter
