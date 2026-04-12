@@ -3,7 +3,7 @@ repositories:
     labels: [tools]
     type: git
     url: https://github.com/tier4/autoware_tools.git
-    version: 4dcacf4dda20d8638360d75b5881c00d4bb2a794
+    version: c31119ec399e02aa4f533df605481b90e50b2b8f
     base: true
   autoware/document:
     labels: [document]
