@@ -1,0 +1,111 @@
+# This is required for Continuous Integration for Autoware using the simulator
+# and remote update (Over The Air update) to real cars.
+# If you have any additional questions, please contact us at #tier4-dev channel.
+
+# cSpell: ignore nestybox
+
+version: 2
+
+artifacts:
+  - name: main
+    build:
+      type: custom/v2
+      runtime:
+        type: standard2/amd64/xlarge
+      source:
+        vcstool:
+          import_path: src
+          repositories_files:
+            - autoware.repos
+            - simulator.repos
+      linux_parameters:
+        kernel_version: 5.15.0-72-generic
+      phases:
+        - name: docker-build
+          exec: ./.webauto-ci/main/docker-build/run.sh
+          environment_variables:
+            DOCKER_BUILD_CACHE_DIR: /var/cache/docker
+          caches:
+            - name: docker-build-cache
+              mountpoint: /var/cache/docker
+      base_container_image:
+        from: nestybox/ubuntu-jammy-systemd-docker
+      output_container_image:
+        from: docker-build
+        image: pilot-auto:evaluation
+
+simulations:
+  - name: planning_sim_v2
+    type: planning_sim_v2
+    scenario_parameter_group: common
+    simulator:
+      deployment:
+        type: container
+        artifact: main
+      runtime:
+        type: standard1/amd64/medium
+      parameters:
+        vehicle_model: lexus
+        sensor_model: aip_xx1
+        autoware_launch_package: autoware_launch
+        autoware_launch_file: planning_simulator.launch.xml
+        architecture_type: awf/universe/20250130
+        initialize_duration: "90"
+        consider_acceleration_by_road_slope: "true"
+        record_storage_id: mcap
+        record_option: "'-x /map/pointcloud_map|/.*occupancy_grid_map.*/|/.*iv_msgs.*/'"
+        autoware.output_metrics: "true"
+        use_custom_centerline: "false"
+        use_sim_time: "false"
+      logging:
+        additional_log_archive:
+          paths:
+            - /home/autoware/.ros/log/autoware_metrics
+
+scenario_parameter_groups:
+  - name: common
+    parameters:
+      __ego_center_x__: 1.345
+      __ego_center_y__: 0
+      __ego_center_z__: 1.25
+      __ego_dimensions_width__: 1.896
+      __ego_dimensions_length__: 4.89
+      __ego_dimensions_height__: 2.5
+      wheel_radius: 0.383
+      wheel_width: 0.235
+      wheel_base: 2.79 # between front wheel center and rear wheel center
+      wheel_tread: 1.64 # between left wheel center and right wheel center
+      front_overhang: 1.0 # between front wheel center and vehicle front
+      rear_overhang: 1.1 # between rear wheel center and vehicle rear
+      left_overhang: 0.128 # between left wheel center and vehicle left
+      right_overhang: 0.128 # between right wheel center and vehicle right
+      # --- metrics condition parameter from here ---
+      max_processing_time: 1000.0 # [ms] `/system/processing_time_checker/metrics/processing_time/{module}`
+      max_stand_still: 100.0 # [s] stand still condition
+      max_deceleration: 10.0 # [m/ss] (1.02G) acceleration condition
+      max_lateral_deviation_abs: 15.0 # [m] `/control/control_evaluator/metrics/lateral_deviation`
+      max_lateral_trajectory_displacement_local: 15.0 # [m] `/planning/planning_evaluator/metrics/lateral_trajectory_displacement_local/max`
+      max_resampled_relative_angle: 5.0 # [rad] `/planning/planning_evaluator/metrics/resampled_relative_angle/max`
+      max_steer_rate_fast: 15.0 # [rad/s] `/control/control_evaluator/metrics/steering_rate` when ego_speed is fast
+      max_steer_rate_slow: 13.0 # [rad/s] `/control/control_evaluator/metrics/steering_rate` when ego_speed is slow
+      min_npc_longitudinal_distance_euclidian: 0.0 # [m] relative distance condition
+      min_npc_longitudinal_distance_lateral: 0.0 # [m] relative distance condition
+      min_npc_distance_euclidian: 0.0 # [m] relative distance condition
+      max_goal_lateral_deviation_abs: 1000.0 # [m] `/control/control_evaluator/metrics/goal_lateral_deviation`
+      max_goal_longitudinal_deviation: 1000.0 # [m] `/control/control_evaluator/metrics/goal_longitudinal_deviation`
+      max_goal_yaw_deviation_abs: 5.0 # [rad] `/control/control_evaluator/metrics/goal_yaw_deviation`
+      max_stop_deviation_abs: 100 # [m] `/control/control_evaluator/metrics/stop_deviation/{module}`
+      max_blinker_change_count: 5.0 # [times] `/planning/planning_evaluator/metrics/blinker_change_count/count_in_duration`
+      max_steer_change_count: 20.0 # [times] `/planning/planning_evaluator/metrics/steer_change_count/count_in_duration`
+      max_steer_angle: 0.70 # [rad] `/control/control_evaluator/metrics/steering_angle`
+      # --- metrics condition parameter to here ---
+      stop_line_distance: 0.0 # param name in autoware_launch: stop_margin
+      blind_spot_stop_line_distance: 1.0 # param name in autoware_launch: stop_line_margin
+      obstacle_stop_line_distance: 5.0 # param name in autoware_launch: stop_margin
+      terminal_obstacle_stop_line_distance: 3.0 # param name in autoware_launch: terminal_stop_margin
+      crosswalk_stop_line_distance: 3.5 # param name in autoware_launch: stop_distance_from_crosswalk
+      walkway_stop_line_distance: 3.5 # param name in autoware_launch: stop_distance_from_crosswalk
+      intersection_stop_line_distance: 3.0 # param name in autoware_launch: stop_line_margin
+      traffic_light_stop_line_distance: 0.0 # param name in autoware_launch: stop_margin
+      run_out_stop_line_distance: 2.5 # param name in autoware_launch: stop_margin
+      turn_signal_search_distance: 30.0 # param name in autoware_launch: turn_signal_intersection_search_distance

@@ -1,0 +1,5 @@
+autoware/universe/common
+autoware/tier4_autoware_msgs
+autoware/aip_launcher
+description/vehicle/lexus_description
+middleware

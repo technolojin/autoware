@@ -1,0 +1,76 @@
+# cSpell: ignore readwrite
+ARG BASE_IMAGE=ubuntu:22.04
+
+# hadolint ignore=DL3006
+FROM $BASE_IMAGE AS base-image-runtime
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+ARG ROS_DISTRO
+ARG DESCRIPTION
+LABEL org.opencontainers.image.description=$DESCRIPTION
+
+# hadolint ignore=DL3008
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends \
+  git \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+## Set up development environment
+WORKDIR /autoware
+RUN --mount=type=secret,id=github_token,env=GITHUB_TOKEN \
+    --mount=type=ssh \
+    --mount=type=bind,source=setup,target=/autoware,readwrite \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  sed -i "s/git@github\.com:/https:\/\/github\.com\//g" ./ansible-galaxy-requirements.yaml \
+  && sed -i "s/https:\/\/github.com/https:\/\/x-access-token:$GITHUB_TOKEN@github.com/g" ./ansible-galaxy-requirements.yaml \
+  && ./setup-dev-env.sh -y --no-nvidia --no-cuda-drivers --runtime \
+  && pip uninstall -y ansible ansible-core \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+## Disable source ROS
+RUN sed -i "\|source /opt/ros/$ROS_DISTRO/setup.bash|d" ~/.bashrc
+
+CMD ["/bin/bash"]
+
+
+
+FROM base-image-runtime AS base-image-build
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=secret,id=github_token,env=GITHUB_TOKEN \
+    --mount=type=ssh \
+    --mount=type=bind,source=setup,target=/autoware,readwrite \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  sed -i "s/git@github\.com:/https:\/\/github\.com\//g" ./ansible-galaxy-requirements.yaml \
+  && sed -i "s/https:\/\/github.com/https:\/\/x-access-token:$GITHUB_TOKEN@github.com/g" ./ansible-galaxy-requirements.yaml \
+  && ./setup-dev-env.sh -y --no-nvidia --no-cuda-drivers \
+  && pip uninstall -y ansible ansible-core \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+
+
+FROM base-image-runtime AS base-image-runtime-cuda
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=secret,id=github_token,env=GITHUB_TOKEN \
+    --mount=type=ssh \
+    --mount=type=bind,source=setup,target=/autoware,readwrite \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  sed -i "s/git@github\.com:/https:\/\/github\.com\//g" ./ansible-galaxy-requirements.yaml \
+  && sed -i "s/https:\/\/github.com/https:\/\/x-access-token:$GITHUB_TOKEN@github.com/g" ./ansible-galaxy-requirements.yaml \
+  && ./setup-dev-env.sh -y --no-cuda-drivers --runtime \
+  && pip uninstall -y ansible ansible-core \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+
+
+FROM base-image-runtime-cuda AS base-image-build-cuda
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN --mount=type=secret,id=github_token,env=GITHUB_TOKEN \
+    --mount=type=ssh \
+    --mount=type=bind,source=setup,target=/autoware,readwrite \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  sed -i "s/git@github\.com:/https:\/\/github\.com\//g" ./ansible-galaxy-requirements.yaml \
+  && sed -i "s/https:\/\/github.com/https:\/\/x-access-token:$GITHUB_TOKEN@github.com/g" ./ansible-galaxy-requirements.yaml \
+  && ./setup-dev-env.sh -y --no-cuda-drivers \
+  && pip uninstall -y ansible ansible-core \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*

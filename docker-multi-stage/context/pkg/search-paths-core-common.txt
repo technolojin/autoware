@@ -1,0 +1,6 @@
+autoware/autoware_cmake
+autoware/autoware_msgs
+autoware/autoware_internal_msgs
+autoware/autoware_adapi_msgs
+autoware/autoware_utils
+autoware/autoware_lanelet2_extension
