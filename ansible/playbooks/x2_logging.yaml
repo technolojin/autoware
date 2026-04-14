@@ -52,7 +52,6 @@
     - { role: autoware.ecu_system_setup.turn_off_desktop_notification }
     - { role: autoware.ecu_system_setup.mot_env_setup }
     - { role: autoware.ecu_system_setup.release_rosbag_page_cache }
-    - { role: autoware.ecu_system_setup.pyrocan }
     - role: autoware.ecu_system_setup.grpc_cpp
       when: skip_for_github_actions is not defined or not skip_for_github_actions | bool
     - role: autoware.ecu_system_setup.logagent

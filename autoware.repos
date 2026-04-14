@@ -278,12 +278,6 @@ repositories:
     url: git@github.com:tier4/emergency_vehicle_detector.git
     version: c9a0609e91b2a8d59fb1108f2aa0ddc585deed2c
     base: false
-  vendor/pyrocan:
-    labels: [mainecu, logging]
-    type: git
-    url: git@github.com:tier4/pyrocan.git
-    version: f1c9abf9309fae8966bb2500707af063a17aef25
-    base: false
   vendor/rosbag2:
     labels: [mainecu, logging]
     type: git
