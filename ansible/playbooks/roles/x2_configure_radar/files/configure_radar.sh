@@ -13,6 +13,13 @@ fi
 # shellcheck disable=SC1091
 source /home/autoware/autoware.env && true
 export ROS_LOG_DIR="/home/autoware/.ros/log"
+export ROS_HOME="/tmp/configure_radar_ros_home"
+mkdir -p "$ROS_HOME"
+
+cleanup_ros2_daemon() {
+    timeout 3 ros2 daemon stop >/dev/null 2>&1 || true
+}
+trap cleanup_ros2_daemon EXIT
 
 # Wait for the robot state publisher to be ready
 wait_robot_state_publisher() {
@@ -21,7 +28,7 @@ wait_robot_state_publisher() {
     local max_attempts=30
     local attempts=0
 
-    while ! ros2 --no-daemon node list 2>/dev/null | grep -q "$node_name"; do
+    while ! ros2 node list 2>/dev/null | grep -q "$node_name"; do
         attempts=$((attempts + 1))
         echo "Attempt $attempts: Waiting for $node_name..."
 
@@ -46,7 +53,7 @@ call_service_or_exit() {
     echo "$label"
     while [ $attempt -le $max_attempts ]; do
         echo "Attempt $attempt for service: $service"
-        if ros2 --no-daemon service call "$service" "$srv_type" "$args" | tee /tmp/service_output.txt | grep -q "success=True"; then
+        if ros2 service call "$service" "$srv_type" "$args" | tee /tmp/service_output.txt | grep -q "success=True"; then
             echo "[OK] Success: $service"
             return 0
         fi
@@ -56,7 +63,7 @@ call_service_or_exit() {
         attempt=$((attempt + 1))
         sleep 5
     done
-    if ! ros2 --no-daemon service call "$service" "$srv_type" "$args" | tee /tmp/service_output.txt | grep -q "success=True"; then
+    if ! ros2 service call "$service" "$srv_type" "$args" | tee /tmp/service_output.txt | grep -q "success=True"; then
         echo "[NG] Failed: $service"
         cat /tmp/service_output.txt
         exit 1

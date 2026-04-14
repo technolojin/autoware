@@ -1,6 +1,6 @@
 [Unit]
 Description=Configure RADAR after OTA update
-After=network-online.target autoware_launch.service ptp4l@enp3s0.service
+After=network-online.target autoware_main_launch.service ptp4l@enp3s0.service
 Before=rc-local-latest.service
 
 [Service]
