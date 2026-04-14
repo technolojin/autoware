@@ -137,13 +137,7 @@ network_interface_for_tier4_service_standby_wait: enp5s0f1
 simple_system_launch_items:
   # autoware_sub_launch
   - file: simple_system_launch/autoware_sub_launch.service
-    command: |
-      mkdir -p /home/autoware/.ros/autoware_sub_log
-      export ROS_LOG_DIR=/home/autoware/.ros/autoware_sub_log
-      export ROS_DOMAIN_ID=2
-      ros2 launch autoware_launch autoware.sub.launch.xml \
-              vehicle_model:="$VEHICLE_MODEL" \
-              sensor_model:="$SENSOR_MODEL" 2>&1 | tee "$HOME"/autoware_sub.log
+    command_file: "{{ playbook_dir }}/files/simple_system_launch/autoware_sub_launch.sh"
 
 # systemd_analyze_collector
 rsync_target_host_ip: 192.168.20.71
