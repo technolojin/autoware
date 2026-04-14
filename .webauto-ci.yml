@@ -458,6 +458,35 @@ simulations:
           path: /home/autoware/autoware_data/lidar_transfusion
           preserve_original_files: true
 
+  - name: NodeAliveTest_lidar_bevfusion
+    type: perception
+    suite:
+      selector:
+        match_labels:
+          perception_test_type: node_alive
+          detected_object_by_simulation: "false"
+    simulator:
+      deployment:
+        type: container
+        artifact: main
+      runtime:
+        type: gpu1/amd64/large
+      parameters:
+        sensing: "false"
+        use_traffic_light_recognition: "false"
+        evaluation_detection_topic_regex: ^/perception/object_recognition/detection/bevfusion/objects$
+        evaluation_prediction_topic_regex: None
+        perception_mode: lidar
+        lidar_detection_model: bevfusion
+      pre_tasks:
+        - exec: source /home/autoware/pilot-auto/install/setup.bash && ros2 launch autoware_bevfusion bevfusion.launch.xml model_name:=bevfusion_lidar model_path:=/home/autoware/autoware_data/bevfusion build_only:=true
+          mounts:
+            - volume: model
+      volumes:
+        - name: model
+          path: /home/autoware/autoware_data/bevfusion
+          preserve_original_files: true
+
   - name: NodeAliveTest_camera_lidar_fusion_apollo
     type: perception
     suite:
