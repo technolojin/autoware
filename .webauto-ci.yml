@@ -90,6 +90,7 @@ artifacts:
           ml_packages:
             - name: diffusion_planner_for_x2
               release: 20260303-180133_baseline_pre0060_sft0080_V4
+              mountpoint: /tmp/ml_packages/diffusion_planner_for_x2
             - name: centerpoint
               release: x2/2.6.1_ADM-AL30_Ubuntu22.04
               mountpoint: /tmp/ml_packages/centerpoint
