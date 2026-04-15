@@ -32,7 +32,8 @@ repositories:
     labels: [main, common]
     type: git
     url: https://github.com/autowarefoundation/autoware_lanelet2_extension.git
-    version: 0.10.0
+    branch: main
+    version: main
     base: true
   autoware/autoware_system_designer:
     labels: [main, common]
@@ -94,10 +95,6 @@ repositories:
     branch: main
     version: main
     base: true
-  autoware/autoware_system_designer:
-    type: git
-    url: https://github.com/autowarefoundation/autoware_system_designer.git
-    version: main
   autoware/individual_params:
     labels: [main, common]
     type: git
