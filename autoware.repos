@@ -431,7 +431,7 @@ repositories:
     labels: [signage]
     type: git
     url: git@github.com:tier4/AutowareSignage.git
-    version: 70e568e50190f37a2d6f529cfc5bd0799a38856f
+    version: 55c2802c7dc4e848dac1ca459c863affa6cb8a3d
     base: false
   voice_system:
     labels: [voice]
