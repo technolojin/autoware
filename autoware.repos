@@ -236,7 +236,7 @@ repositories:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
     branch: beta/v4.4
-    version: 6855bfa7a4fee85a758416f25cc3beb1ba748583
+    version: a0dbd4ee5260ebf3433925f5d0898f07e2355ad3
     base: false
   autoware/individual_params:
     labels: [mainecu, logging, perception]
