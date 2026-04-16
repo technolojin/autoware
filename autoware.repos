@@ -234,7 +234,7 @@ repositories:
     labels: [main, logging, perception]
     type: git
     url: https://github.com/tier4/agnocast.git
-    version: 23380d67ddeb86ad134fdd1704de8a8bd26b22c9
+    version: 29ac422e4a48b766703e0c9e54fa00b279cde691
     base: true
   autoware/launcher:
     labels: [main, perception] # contains edge_auto_jetson_x2_launch
