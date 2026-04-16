@@ -64,7 +64,7 @@ artifacts:
           environment_variables:
             PARALLEL_WORKERS: "32"
             CCACHE_DIR: /tmp/build/cache/ccache
-            BUILD_LABELS: main mainecu simulator tools document
+            BUILD_LABELS: main simulator tools document
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
@@ -213,7 +213,7 @@ artifacts:
           environment_variables:
             PARALLEL_WORKERS: "32"
             CCACHE_DIR: /tmp/build/cache/ccache
-            BUILD_LABELS: main mainecu simulator tools document
+            BUILD_LABELS: main simulator tools document
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
@@ -331,7 +331,7 @@ artifacts:
           environment_variables:
             PARALLEL_WORKERS: "32"
             CCACHE_DIR: /tmp/build/cache/ccache
-            BUILD_LABELS: main logging # maybe "message logging" after migrate logger to autoware.repos
+            BUILD_LABELS: logging
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
@@ -420,7 +420,7 @@ artifacts:
           environment_variables:
             PARALLEL_WORKERS: "32"
             CCACHE_DIR: /tmp/build/cache/ccache
-            BUILD_LABELS: common perception
+            BUILD_LABELS: perception
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
@@ -512,7 +512,7 @@ artifacts:
           environment_variables:
             PARALLEL_WORKERS: "32"
             CCACHE_DIR: /tmp/build/cache/ccache
-            BUILD_LABELS: common perception
+            BUILD_LABELS: perception
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
@@ -619,7 +619,7 @@ artifacts:
           environment_variables:
             PARALLEL_WORKERS: "32"
             CCACHE_DIR: /tmp/build/cache/ccache
-            BUILD_LABELS: common perception
+            BUILD_LABELS: perception
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists
@@ -701,7 +701,7 @@ artifacts:
           environment_variables:
             PARALLEL_WORKERS: "32"
             CCACHE_DIR: /tmp/build/cache/ccache
-            BUILD_LABELS: common perception
+            BUILD_LABELS: perception
           caches:
             - name: apt-lists
               mountpoint: /var/lib/apt/lists

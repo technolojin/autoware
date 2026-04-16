@@ -1,8 +1,6 @@
 release_supervisors: # people in charge of all releases
   - TomohitoAndo
-parent_repository:
-  url: https://github.com/tier4/pilot-auto
-  sync_version: beta/v0.64
+
 base_branch_for_release: main
 autoware_repos_file: autoware.repos
 additional_repos_files:
@@ -10,10 +8,6 @@ additional_repos_files:
   - tools.repos
 releases:
   - version: v4.3
-    parent:
-      name: vanilla
-      version: v0.48
-      full_sync: true
     release_managers:
       - TomohitoAndo
       - kotaro-hihara
@@ -32,16 +26,32 @@ releases:
           - repo_name: vendor/redundancy_switcher_interface
             release_version: v4.3
   - version: v4.4
-    parent:
-      name: vanilla
-      version: v0.64
-      full_sync: true
     release_managers:
       - TomohitoAndo
       - paulsohn
     released_repositories:
       - from_file: autoware.repos
         repos_list:
+          - repo_name: autoware/core # previously 'base: true' repository
+            release_version: v4.4 # internal release version name (not applied to branch or tag name)
+            track_branch: beta/v0.64 # track vanilla beta branch
+            tag_prefix: x2/v4.4 # ...but tag in different namespace
+          - repo_name: autoware_universe
+            release_version: v4.4
+            track_branch: beta/v0.64 # vanilla
+            tag_prefix: x2/v4.4
+          - repo_name: autoware/tier4_autoware_msgs
+            release_version: v4.4
+            track_branch: beta/v0.64 # vanilla
+            tag_prefix: x2/v4.4
+          - repo_name: autoware/ad_api_adaptor
+            release_version: v4.4
+            track_branch: beta/v0.64 # vanilla
+            tag_prefix: x2/v4.4
+          - repo_name: v2x/vehicle2infrastructure # this will be the last release that v2x is 'base: true'
+            release_version: v4.4
+            track_branch: beta/v0.64 # vanilla
+            tag_prefix: x2/v4.4
           - repo_name: autoware/launcher
             release_version: v4.4
           - repo_name: autoware/mrm_plugin
@@ -54,3 +64,14 @@ releases:
             release_version: v4.4
           - repo_name: product/l4_toolkit
             release_version: v4.4
+      - from_file: tools.repos
+        repos_list:
+          - repo_name: tools
+            release_version: v4.4
+            track_branch: beta/v0.64 # vanilla
+            tag_prefix: x2/v4.4
+    released_ansible_repos:
+      - repo_full_name: tier4/autoware_ecu_system_setup
+        release_version: v4.4
+        track_branch: beta/v0.64 # vanilla
+        tag_prefix: x2/v4.4
