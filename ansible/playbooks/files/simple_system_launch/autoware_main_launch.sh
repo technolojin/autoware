@@ -4,7 +4,7 @@ mkdir -p /home/autoware/.ros/autoware_main_log
 export ROS_LOG_DIR=/home/autoware/.ros/autoware_main_log
 # Temporary v4.4 workaround for planning_setting switching.
 # Remove this block in the next version when planning_setting is handled centrally.
-PLANNING_SETTINGS_FILE="/home/autoware/pilot-auto/planning_settings.env"
+PLANNING_SETTINGS_FILE="/home/autoware/pilot-auto/parameter_settings/planning_settings.env"
 if [ -f "$PLANNING_SETTINGS_FILE" ]; then
     # shellcheck disable=SC1090
     source "$PLANNING_SETTINGS_FILE"
