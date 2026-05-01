@@ -36,7 +36,7 @@ releases:
             release_version: v4.4 # internal release version name (not applied to branch or tag name)
             track_branch: beta/v0.64 # track vanilla beta branch
             tag_prefix: x2/v4.4 # ...but tag in different namespace
-          - repo_name: autoware_universe
+          - repo_name: autoware/universe
             release_version: v4.4
             track_branch: beta/v0.64 # vanilla
             tag_prefix: x2/v4.4
