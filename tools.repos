@@ -4,7 +4,7 @@ repositories:
     type: git
     url: https://github.com/tier4/autoware_tools.git
     branch: beta/v0.64
-    version: c31119ec399e02aa4f533df605481b90e50b2b8f
+    version: x2/v4.4.0
     base: true
   autoware/document:
     labels: [document]

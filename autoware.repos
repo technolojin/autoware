@@ -4,14 +4,14 @@ repositories:
     type: git
     url: https://github.com/tier4/autoware_core.git
     branch: beta/v0.64
-    version: f24f324ef73307b0da6a8959735ecc9aca5ff133
+    version: x2/v4.4.0
     base: true
   autoware/universe:
     labels: [main, logging, perception]
     type: git
     url: https://github.com/tier4/autoware_universe.git
     branch: beta/v0.64
-    version: 64c9d64b894b5dcd864fe5932c7fdce6dba5678e
+    version: x2/v4.4.0
     base: true
   autoware/autoware_cmake:
     labels: [main, logging, perception]
@@ -36,14 +36,14 @@ repositories:
     type: git
     url: https://github.com/tier4/tier4_ad_api_adaptor.git
     branch: beta/v0.64
-    version: 1b68126d934aa1bb17dc924aebb4b2e47880a0ab
+    version: x2/v4.4.0
     base: true
   autoware/tier4_autoware_msgs:
     labels: [main, logging, perception, message]
     type: git
     url: https://github.com/tier4/tier4_autoware_msgs.git
     branch: beta/v0.64
-    version: 325985ec9531d7732f84b6ebb654858a86b0d6a3
+    version: x2/v4.4.0
     base: true
   autoware/autoware_msgs:
     labels: [main, logging, perception, message]
@@ -222,7 +222,7 @@ repositories:
     type: git
     url: git@github.com:tier4/vehicle2infrastructure.git
     branch: beta/v0.64
-    version: 1073947d956201c27607174638bc733e82da9561
+    version: x2/v4.4.0
     base: true
 
   # middleware
@@ -241,28 +241,28 @@ repositories:
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
     branch: beta/v4.4
-    version: c4f3c73708b936e7c9b109143c7e2c02b88b33ce
+    version: v4.4.0
     base: false
   autoware/individual_params:
     labels: [main, logging, perception]
     type: git
     url: git@github.com:tier4/autoware_individual_params.j6_gen2.git
     branch: main
-    version: 611ed6a6743c8bad510ca7cfcc460c6034eccdbd
+    version: v4.4.0
     base: false
   description/vehicle/j6_gen2_description:
     labels: [main, logging]
     type: git
     url: git@github.com:tier4/j6_gen2_description.git
     branch: beta/v4.4
-    version: db0629c23dfb607ef9080692bb016bba775bdd08
+    version: v4.4.0
     base: false
   vendor/mj20_interface:
     labels: [main, logging]
     type: git
     url: git@github.com:tier4/mj20_interface.git
     branch: beta/v4.4
-    version: 427ffad731cd75bd9461aae44059d6f9b80640e8
+    version: v4.4.0
     base: false
   vendor/ros2_socketcan:
     labels: [main, logging]
@@ -275,7 +275,7 @@ repositories:
     type: git
     url: git@github.com:tier4/l4_toolkit.git
     branch: beta/v4.4
-    version: 3cca15bf26c07776483a16b8495b24a6464a3404
+    version: v4.4.0
     base: false
   vendor/emergency_vehicle_detector:
     labels: [main, logging]
@@ -300,7 +300,7 @@ repositories:
     type: git
     url: git@github.com:tier4/redundancy_switcher_interface.git
     branch: beta/v4.4
-    version: 5e4f542408d5217c76a8dc2efb55db25ed248481
+    version: v4.4.0
     base: false
   vendor/domain_bridge:
     labels: [main]
@@ -314,7 +314,7 @@ repositories:
     type: git
     url: git@github.com:tier4/mrm_plugin.x2.git
     branch: beta/v4.4
-    version: 1d8e22118d5dbed3f0cd0687f51bfd0181ba6067
+    version: v4.4.0
     base: false
   edge_auto_jetson/sensor_trigger:
     labels: [perception]
