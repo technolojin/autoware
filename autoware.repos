@@ -9,9 +9,8 @@ repositories:
   autoware/universe:
     labels: [main, logging, perception]
     type: git
-    url: https://github.com/tier4/autoware_universe.git
-    branch: beta/v0.64
-    version: x2/v4.4.0
+    url: git@github.com:technolojin/autoware_universe.git
+    branch: test/4.4.0-wo-shape-esti
     base: true
   autoware/autoware_cmake:
     labels: [main, logging, perception]
@@ -240,8 +239,7 @@ repositories:
     labels: [main, perception] # contains edge_auto_jetson_x2_launch
     type: git
     url: git@github.com:tier4/autoware_launch.x2.git
-    branch: beta/v4.4
-    version: v4.4.0
+    branch: test/4.4.0-wo-shape-esti
     base: false
   autoware/individual_params:
     labels: [main, logging, perception]
